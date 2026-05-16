@@ -149,7 +149,14 @@ def summarize_calcium_trials(
     traces: Array,
     protocol: CalciumImagingProtocol | None = None,
 ) -> GlomerularResponseSummary:
-    """Summarize antennal-lobe calcium trials into glomerular response features."""
+    """Summarize antennal-lobe calcium trials into glomerular response features.
+
+    Convention: ``peak_latency_s`` is measured from *recording onset* (frame 0),
+    not from stimulus onset — it is ``(argmax_in_window + stimulus_start) /
+    acquisition_hz``. Subtract ``stimulus_frame_window[0] / acquisition_hz`` for
+    a stimulus-relative latency. ``mean_response`` follows the negated-ΔF/F sign
+    convention (see ``negative_delta_f_over_f``): negative ⇒ excitatory.
+    """
 
     protocol = protocol or default_calcium_protocol()
     normalized = negative_delta_f_over_f(traces, protocol.baseline_frames)

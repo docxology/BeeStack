@@ -67,7 +67,14 @@ def decode_waggle(
     quality_score: float,
     drift_deg: float = 0.0,
 ) -> DanceVector:
-    """Decode waggle duration and angle into a foraging target."""
+    """Decode waggle duration and angle into a foraging target.
+
+    Fidelity note: this is a reduced-kernel decoder. ``distance_km`` uses the
+    nominal 1 s ↔ 1 km identity, not a species-calibrated von Frisch curve
+    (the real waggle-duration→distance relation is nonlinear and
+    colony/dialect dependent). It is a deterministic placeholder with a clear
+    contract, not an empirically fitted decoder.
+    """
 
     if duration_s < 0:
         raise ValueError("duration_s must be nonnegative")

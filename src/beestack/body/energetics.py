@@ -6,6 +6,14 @@ import math
 
 GRAVITY_M_S2 = 9.80665
 
+# Reference hovering wing power (mW) for a ~80 mg worker at ~230 Hz wing stroke,
+# zero load, undamaged wings. Anchors the model to the 40-80 mW honeybee
+# hovering-flight band in the BeeStack specification; all other terms are
+# dimensionless multiplicative scalings around this reference point.
+_REFERENCE_WING_POWER_MW = 58.0
+_REFERENCE_MASS_MG = 80.0
+_REFERENCE_STROKE_HZ = 230.0
+
 
 def wing_power_mw(
     mass_mg: float,
@@ -28,11 +36,11 @@ def wing_power_mw(
     if not 0 <= wing_area_loss_fraction < 1:
         raise ValueError("wing_area_loss_fraction must be in [0, 1)")
 
-    mass_scale = (mass_mg / 80.0) ** 0.75
-    stroke_scale = stroke_hz / 230.0
+    mass_scale = (mass_mg / _REFERENCE_MASS_MG) ** 0.75
+    stroke_scale = stroke_hz / _REFERENCE_STROKE_HZ
     load_scale = 1.0 + 0.8 * load_fraction
     wear_scale = 1.0 / max(0.25, 1.0 - wing_area_loss_fraction)
-    return float(58.0 * mass_scale * stroke_scale * load_scale * wear_scale)
+    return float(_REFERENCE_WING_POWER_MW * mass_scale * stroke_scale * load_scale * wear_scale)
 
 
 def walking_power_mw(mass_mg: float, speed_m_s: float, terrain_factor: float = 1.0) -> float:

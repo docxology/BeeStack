@@ -9,7 +9,13 @@ Array = NDArray[np.float64]
 
 
 def color_opponency(uv: float, blue: float, green: float) -> Array:
-    """Return normalized UV-blue-green opponency channels."""
+    """Return normalized UV-blue-green opponency channels.
+
+    Note: the three returned channels are not independent — by construction
+    ``(uv-blue) + (blue-green) + (green-uv) == 0``, so the opponent code
+    carries two degrees of freedom, not three. The third channel is retained
+    for downstream symmetry only; treat it as derived, not an extra signal.
+    """
 
     channels = np.array([uv - blue, blue - green, green - uv], dtype=float)
     denom = max(1.0, float(np.max(np.abs(channels))))

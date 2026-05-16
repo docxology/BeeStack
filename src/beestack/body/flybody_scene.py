@@ -508,6 +508,15 @@ def _render_scene_frames(
     render_cfg: FlyBodySceneRenderConfig,
     scene_kind: SceneKind,
 ) -> tuple[list[np.ndarray], FlyBodyContactMetrics]:
+    """Render a strict FlyBody/MuJoCo scene and collect real contact metrics.
+
+    Fidelity note: bee bodies are driven along scripted kinematic poses (state
+    is reset and re-posed each frame), and MuJoCo is used to detect and report
+    *actual* geometry contacts at those poses — it is not a free forward-
+    dynamics rollout. The "strict FlyBody/MuJoCo" claim refers to the real MJCF
+    model + real contact detection, not to dynamical integration of flight.
+    """
+
     mujoco = import_module("mujoco")
     pattern_generators = import_module("flybody.tasks.pattern_generators")
     model = mujoco.MjModel.from_xml_path(str(scene_xml))

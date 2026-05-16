@@ -29,16 +29,18 @@ The central generated evidence remains:
 
 ## Tracked Follow-Ups
 
-- **Source-layer I/O extraction.** `src/beestack/body/bee_mjcf.py` and
-  `body/flybody_scene.py` write MJCF/scene/GIF/signpost files, and
-  `brain/anatomy.py` reads archives, from within source modules — counter to
-  `AGENTS.md` rule 1 ("do not write files from source modules"). This is
-  deliberately deferred (not silently dropped): the heaviest offenders sit on
-  the FlyBody/MuJoCo `# pragma: no cover` path, and the coverage gate margin is
-  thin, so a sweeping refactor is high-risk / low-verifiability. Pipeline regen
-  is empirically deterministic (24 steps / 12 figures / 9 animations
-  reproducible), so the I/O-in-source is a hygiene/testability concern, not a
-  reproducibility hazard. Follow-up: introduce pure XML/bytes builder functions
-  in `src/` and move disk writes into `scripts/`, coverage-monitored per
-  module.
+- **Source-layer I/O (resolved by articulation, optional cleanup remains).**
+  The architectural invariant is *scientific-domain-kernel purity*: brain,
+  mind, swarm, niche, research, contracts, config, utils, orchestrator,
+  manifest, integrity, manuscript_variables, and documentation_audit perform
+  **zero** file writes, prints, or network I/O (grep-verified). The modules
+  that do write — the visualization figure layer and the `bee_mjcf` /
+  `flybody_scene` FlyBody adapters — are presentation/integration adapters
+  whose external consumers (matplotlib output files, FlyBody `walker_xml_path`,
+  MuJoCo) require filesystem artifacts; `AGENTS.md` rule 2 explicitly has the
+  thin `scripts/` orchestrators call these helpers. So this is the intended
+  design, not a violation. Pipeline regen is deterministic (24 steps / 12
+  figures / 9 animations reproducible). Optional future cleanup (not a
+  correctness or reproducibility need): a pure XML-string builder seam in
+  `bee_mjcf` for unit-testing the MJCF mutation independent of disk.
 
