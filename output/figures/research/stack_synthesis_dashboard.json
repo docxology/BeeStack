@@ -1,0 +1,20 @@
+{
+  "backend": "Matplotlib/pandas synthesis dashboard",
+  "fidelity": "cross-stack synthesis diagnostic, not biological validation",
+  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/stack_synthesis_dashboard.png",
+  "quality": {
+    "height_px": 1360,
+    "max_intensity": 255,
+    "mean_intensity": 223.19726787773934,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 63.739551214435416,
+    "width_px": 2040
+  },
+  "regeneration_command": "uv run python scripts/run_research_suite.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "output/reports/stack_synthesis_review.json",
+  "title": "Stack Synthesis Dashboard",
+  "validation_status": "nonblank synthesis diagnostic"
+}

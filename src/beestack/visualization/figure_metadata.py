@@ -4,19 +4,32 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any
+from typing import Any, TypedDict, cast
 
 from PIL import Image, ImageStat
 
 
-def image_quality_summary(path: Path) -> dict[str, float | int | str]:
+class ImageQualitySummary(TypedDict):
+    """Typed image-quality metrics stored in figure sidecars."""
+
+    width_px: int
+    height_px: int
+    mode: str
+    nonzero_histogram_bins: int
+    mean_intensity: float
+    std_intensity: float
+    min_intensity: int
+    max_intensity: int
+
+
+def image_quality_summary(path: Path) -> ImageQualitySummary:
     """Return lightweight, deterministic quality metrics for a rendered figure."""
 
     with Image.open(path) as image:
         grayscale = image.convert("L")
         histogram = grayscale.histogram()
         stat = ImageStat.Stat(grayscale)
-        extrema = grayscale.getextrema()
+        min_intensity, max_intensity = cast(tuple[int, int], grayscale.getextrema())
         return {
             "width_px": int(image.width),
             "height_px": int(image.height),
@@ -24,12 +37,12 @@ def image_quality_summary(path: Path) -> dict[str, float | int | str]:
             "nonzero_histogram_bins": int(sum(1 for count in histogram if count)),
             "mean_intensity": float(stat.mean[0]),
             "std_intensity": float(stat.stddev[0]),
-            "min_intensity": int(extrema[0]),
-            "max_intensity": int(extrema[1]),
+            "min_intensity": int(min_intensity),
+            "max_intensity": int(max_intensity),
         }
 
 
-def assert_nonblank_quality(path: Path, *, min_histogram_bins: int = 8) -> dict[str, float | int | str]:
+def assert_nonblank_quality(path: Path, *, min_histogram_bins: int = 8) -> ImageQualitySummary:
     """Fail if a figure is empty or visually near-uniform."""
 
     summary = image_quality_summary(path)

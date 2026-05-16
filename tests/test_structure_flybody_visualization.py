@@ -517,6 +517,10 @@ def test_swarm_niche_visualization_extra_methods(tmp_path: Path) -> None:
     )
     assert len(empirical_paths) == 13
     assert all(path.exists() for path in empirical_paths)
+    assert all(path.with_suffix(".json").exists() for path in empirical_paths)
+    assert all(
+        "beestack.figure.v1" in path.with_suffix(".json").read_text() for path in empirical_paths
+    )
     with pytest.raises(ValueError, match="at least one empirical panel"):
         generate_empirical_figures(tuple(), tuple(), {}, tmp_path / "empty")
 

@@ -17,6 +17,11 @@ visualization inventory, sensitivity sweeps, and known gaps.
 `project_readiness_review.md` and `.json` summarize strict README/AGENTS
 coverage, documentation-audit health, research-suite known gaps, and
 prioritized project improvements.
+`digital_twin_readiness.md` is the generated roadmap assessment for the full
+systems-biology colony and population-of-colonies digital-twin target; it
+records current evidence tiers, missing capabilities, validation datasets,
+required artifacts, and acceptance tests without claiming the target is already
+implemented.
 `empirical_analysis.md` records downloaded bee-data validation, empirical
 template integration, Jernigan antennal active-sensing integration, archive
 availability caveats, and stack alignment outputs.

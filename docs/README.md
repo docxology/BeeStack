@@ -11,6 +11,8 @@ project. Use it alongside the root `README.md` and the generated reports in
 - `configuration.md`: validated YAML knobs in `manuscript/config.yaml`.
 - `api_reference.md`: public typed records and pure helper functions.
 - `generated_outputs.md`: where every major artifact is written.
+- `digital_twin_path.md`: concrete path from the current scaffold to a full
+  systems-biology colony and population-of-colonies digital twin.
 - `research_operations_playbook.md`: what to run and inspect for each review
   question.
 - `manuscript_development.md`: section roles, claim rules, hydration workflow,
@@ -59,5 +61,6 @@ Generated audits:
 - `output/reports/beestack_research_report.md`
 - `output/reports/methods_analysis.md`
 - `output/reports/stack_synthesis_review.md`
+- `output/reports/digital_twin_readiness.md`
 - `output/reports/manuscript_figure_index.md`
 - `output/reports/project_readiness_review.md`

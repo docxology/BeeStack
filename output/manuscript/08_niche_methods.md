@@ -24,10 +24,10 @@ rather than only as an endpoint.
 
 Thermal stepping updates brood-temperature error and supports
 fanning/heat-source witnesses. The brood-target band is
-$[32, 36]$ \si{\degreeCelsius} centred at 34 \si{\degreeCelsius}
+$[32, 36]$ °C centred at 34 °C
 [@kronenberg1982colonial], and the kernel reports the
 brood-temperature error
-2.424 \si{\degreeCelsius} from that target at the end of
+2.424 °C from that target at the end of
 the run, plus the mean over the rollout. Heat sources (active bees
 clustered around brood) and heat sinks (foragers returning from cool
 ambient) are represented as bounded scalars applied at configured grid
@@ -36,7 +36,7 @@ locations. The kernel is not an aerodynamic CFD solver; it is a
 The sprint calibration adds a bounded thermoregulation gain of
 0.240 on occupied comb cells and
 keeps the generated methods/research scorecards pointed at a
-brood-temperature error target below 3 \si{\degreeCelsius}.
+brood-temperature error target below 3 °C.
 
 ## Foraging landscape
 

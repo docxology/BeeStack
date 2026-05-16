@@ -19,6 +19,7 @@ from ..brain import (
     NeuropilAbbreviation,
     WaggleFollowerSummary,
 )
+from .figure_metadata import write_figure_sidecar
 
 
 def generate_empirical_figures(
@@ -109,7 +110,29 @@ def generate_empirical_figures(
                 ),
             ]
         )
+    for path in paths:
+        write_figure_sidecar(
+            path,
+            title=path.stem.replace("_", " ").title(),
+            backend="Matplotlib empirical-data renderer",
+            fidelity=_empirical_figure_fidelity(path.name),
+            source_data="output/data/empirical_analysis.json",
+            validation_status="nonblank empirical diagnostic",
+            regeneration_command="uv run python scripts/analyze_empirical_bee_data.py",
+        )
     return paths
+
+
+def _empirical_figure_fidelity(filename: str) -> str:
+    """Classify empirical figures without implying calibration completeness."""
+
+    if "waggle" in filename:
+        return "empirical waggle/follower summary diagnostic"
+    if "anatomy" in filename or "neuropil" in filename:
+        return "empirical atlas/inventory summary diagnostic"
+    if "completeness" in filename or "source_map" in filename:
+        return "empirical dataset availability diagnostic"
+    return "empirical panel summary diagnostic"
 
 
 def _panel_heatmap(panel: EmpiricalOdorResponsePanel, path: Path) -> Path:
@@ -376,7 +399,7 @@ def _waggle_phase_coupling(summary: WaggleFollowerSummary, path: Path) -> Path:
         ax.plot([angle, angle], [0.0, 1.0], lw=1.2, alpha=0.65)
         ax.text(angle, 1.12, label, fontsize=8, ha="center", va="center")
     ax.set_title("Waggle follower phase and antenna coupling")
-    ax.set_rticks([])
+    ax.set_yticks([])
     fig.tight_layout()
     fig.savefig(path, dpi=160)
     plt.close(fig)

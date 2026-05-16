@@ -9,7 +9,39 @@ from beestack.brain.empirical_data import (
     _resample_vector,  # noqa: PLC2701
     calcium_dataset_from_trial_array,
     parse_paoli_matlab_payload,
+    parse_tabular_odor_response_rows,
 )
+
+
+def test_parse_tabular_skips_absent_but_fails_loud_on_corruption() -> None:
+    base = dict(
+        dataset_id="d",
+        stimulus_key="odor",
+        response_key="resp",
+        channel_key="glom",
+        modality="calcium",
+        units="dF/F",
+    )
+    # Absent sentinels (None / "" / "NA") are legitimately skipped; valid
+    # numerics aggregate (mean of 1.0 and 3.0 == 2.0).
+    rows = [
+        {"odor": "hexanal", "glom": "g1", "resp": 1.0},
+        {"odor": "hexanal", "glom": "g1", "resp": 3.0},
+        {"odor": "hexanal", "glom": "g1", "resp": "NA"},
+        {"odor": "hexanal", "glom": "g1", "resp": None},
+        {"odor": "octanol", "glom": "g2", "resp": 2.0},
+    ]
+    panel = parse_tabular_odor_response_rows(rows=rows, **base)
+    assert panel.response_matrix.shape == (2, 2)
+    g1 = panel.channel_labels.index("g1")
+    hx = panel.stimulus_labels.index("hexanal")
+    assert panel.response_matrix[g1, hx] == 2.0
+    # Present-but-unparseable / non-finite must fail loudly, not silently drop.
+    for bad in ("err", "#N/A", float("nan"), float("inf")):
+        with pytest.raises(ValueError, match="present but not a"):
+            parse_tabular_odor_response_rows(
+                rows=[{"odor": "hexanal", "glom": "g1", "resp": bad}], **base
+            )
 
 
 def test_parse_paoli_no_arrays_raises() -> None:

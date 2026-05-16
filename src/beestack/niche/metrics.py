@@ -87,6 +87,9 @@ def niche_adapter_summary(grid: CombGrid, cfg: BeeStackConfig) -> NicheAdapterSu
         seasonal_forage_multiplier_midyear=seasonal_forage_multiplier(180, cfg),
         weather_forage_penalty=float(cfg.niche.weather_forage_penalty),
         beehave_resource_proxy=float(metrics.honey_fraction * radius_max),
-        hiveopolis_thermal_band=tuple(float(value) for value in cfg.niche.brood_temperature_band_c),
+        hiveopolis_thermal_band=(
+            float(cfg.niche.brood_temperature_band_c[0]),
+            float(cfg.niche.brood_temperature_band_c[1]),
+        ),
         hiveopolis_brood_target_c=float(cfg.niche.brood_temperature_target_c),
     )

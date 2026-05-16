@@ -5,11 +5,11 @@
   "quality": {
     "height_px": 816,
     "max_intensity": 255,
-    "mean_intensity": 241.24693987889273,
+    "mean_intensity": 241.21293252595154,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 44.9606132659383,
+    "std_intensity": 45.00248576604298,
     "width_px": 1360
   },
   "regeneration_command": "uv run python scripts/run_research_suite.py",

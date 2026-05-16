@@ -41,7 +41,7 @@ The latest synthesis reports validation fraction
 {{STACK_SYNTHESIS_ARTIFACT_COVERAGE}}, and
 {{STACK_SYNTHESIS_SCHOLARSHIP_REF_COUNT}} bibliography anchors. The
 integrated run improved brood-temperature error by
-{{STACK_SYNTHESIS_THERMAL_IMPROVEMENT_C}} \si{\degreeCelsius}. The top
+{{STACK_SYNTHESIS_THERMAL_IMPROVEMENT_C}} °C. The top
 synthesis finding is: **{{STACK_SYNTHESIS_TOP_FINDING}}**
 
 ![BeeStack cross-stack synthesis dashboard](../figures/research/stack_synthesis_dashboard.png){#fig:stack_synthesis_dashboard}

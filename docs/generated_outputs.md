@@ -43,6 +43,9 @@ license-clear, and needed for reproducibility.
 - `output/data/stack_synthesis_review.json`: cross-stack statistical synthesis
   of module readiness, simulation telemetry, empirical parseability, visual
   artifact coverage, signposting, and scholarship anchors.
+- `output/data/digital_twin_readiness.json`: machine-readable requirements,
+  maturity scores, scale summaries, blockers, and next artifacts for the full
+  colony/population digital-twin target.
 - `output/data/manuscript_figure_index.json`: manuscript-oriented artifact index
   with backend, fidelity, validation, and regeneration provenance.
 - `output/data/sensitivity/sensitivity_sweeps.json`: deterministic reduced-kernel
@@ -64,6 +67,7 @@ license-clear, and needed for reproducibility.
 - `output/reports/methods_analysis.md`
 - `output/reports/stack_synthesis_review.md`
 - `output/reports/stack_synthesis_review.json`
+- `output/reports/digital_twin_readiness.md`
 - `output/reports/manuscript_figure_index.md`
 - `output/reports/project_readiness_review.md`
 - `output/reports/project_readiness_review.json`

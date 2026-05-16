@@ -8,12 +8,9 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
 import pandas as pd
-import plotly.express as px
-from skimage import io as skio
-from skimage.measure import label
 
 from ..research import ResearchSuiteReport
-from .figure_metadata import write_figure_sidecar
+from .figure_metadata import assert_nonblank_quality, write_figure_sidecar
 
 
 def generate_research_figures(report: ResearchSuiteReport, output_dir: Path) -> list[Path]:
@@ -63,6 +60,8 @@ def _research_figure_fidelity(filename: str) -> str:
 
 def write_interactive_research_outputs(report: ResearchSuiteReport, output_dir: Path) -> list[Path]:
     """Write optional Plotly HTML research outputs."""
+
+    import plotly.express as px
 
     output_dir.mkdir(parents=True, exist_ok=True)
     scorecard_rows = [
@@ -218,13 +217,15 @@ def _evidence_network(report: ResearchSuiteReport, path: Path) -> Path:
     graph = nx.DiGraph()
     for scorecard in report.module_scorecards:
         graph.add_node(scorecard.module, kind="module")
-        for evidence in scorecard.evidence:
+        for evidence_label in scorecard.evidence:
             evidence_node = f"{scorecard.module}:evidence"
             graph.add_node(evidence_node, kind="evidence")
-            graph.add_edge(scorecard.module, evidence_node, label=evidence[:24])
-    for evidence in report.empirical_evidence:
-        graph.add_node(evidence.dataset_id, kind="empirical")
-        graph.add_edge(evidence.dataset_id, "BeeBrain", label=evidence.integration_target)
+            graph.add_edge(scorecard.module, evidence_node, label=evidence_label[:24])
+    for empirical_record in report.empirical_evidence:
+        graph.add_node(empirical_record.dataset_id, kind="empirical")
+        graph.add_edge(
+            empirical_record.dataset_id, "BeeBrain", label=empirical_record.integration_target
+        )
     positions = nx.spring_layout(graph, seed=13)
     colors = [
         "#f59e0b"
@@ -290,10 +291,4 @@ def _module_metric_bars(report: ResearchSuiteReport, module: str, path: Path) ->
 
 
 def _validate_nonblank_image(path: Path) -> None:
-    image = skio.imread(path)
-    if image.size == 0:
-        raise ValueError(f"{path} is empty")
-    grayscale = image[..., :3].mean(axis=2) if image.ndim == 3 else image
-    foreground = np.abs(grayscale.astype(float) - float(np.median(grayscale))) > 1.0
-    if int(label(foreground).max()) <= 0:
-        raise ValueError(f"{path} appears blank")
+    assert_nonblank_quality(path)

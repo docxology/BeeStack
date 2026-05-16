@@ -1,0 +1,20 @@
+{
+  "backend": "Matplotlib empirical-data renderer",
+  "fidelity": "empirical waggle/follower summary diagnostic",
+  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/beeswarm_waggle_recruitment_diagnostics.png",
+  "quality": {
+    "height_px": 800,
+    "max_intensity": 255,
+    "mean_intensity": 199.8323662109375,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 58.54226867960408,
+    "width_px": 1280
+  },
+  "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "output/data/empirical_analysis.json",
+  "title": "Beeswarm Waggle Recruitment Diagnostics",
+  "validation_status": "nonblank empirical diagnostic"
+}

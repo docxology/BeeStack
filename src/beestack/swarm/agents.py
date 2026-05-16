@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from ..config import BeeStackConfig, Caste
+from ..config import BeeStackConfig
 from ..mind import BeliefState, caste_prior
 from .state import BeeAgent
 
@@ -17,7 +17,7 @@ def initialize_agents(cfg: BeeStackConfig, seed: int) -> tuple[BeeAgent, ...]:
     for idx in range(cfg.swarm.agent_count):
         age = float(rng.uniform(1.0, 35.0))
         probs = caste_prior(age)
-        caste = max(probs, key=probs.get)
+        caste = max(probs, key=lambda caste_name: probs[caste_name])
         belief = BeliefState(
             pose=np.zeros(cfg.mind.latent_dim, dtype=float),
             energy=float(rng.uniform(0.45, 1.0)),
@@ -42,10 +42,12 @@ def initialize_agents(cfg: BeeStackConfig, seed: int) -> tuple[BeeAgent, ...]:
     return tuple(agents)
 
 
-def allocate_tasks(agents: tuple[BeeAgent, ...], colony_need: dict[str, float]) -> dict[Caste, int]:
+def allocate_tasks(agents: tuple[BeeAgent, ...], colony_need: dict[str, float]) -> dict[str, int]:
     """Allocate agents by dominant caste with need-sensitive overrides."""
 
-    counts = {caste: 0 for caste in ("nurse", "forager", "guard", "scout", "wax_builder")}
+    counts: dict[str, int] = {
+        caste: 0 for caste in ("nurse", "forager", "guard", "scout", "wax_builder")
+    }
     food_need = colony_need.get("food_need", 0.0)
     threat = colony_need.get("threat_level", 0.0)
     comb_need = colony_need.get("comb_need", 0.0)

@@ -19,8 +19,8 @@ selected policy was `{{FINAL_POLICY}}`, the final body speed was
 
 The final comb occupancy fraction was {{FINAL_COMB_FRACTION}}, and the
 brood-temperature error at the final step was
-{{BROOD_TEMP_ERROR_C}} \si{\degreeCelsius} from the configured 34
-\si{\degreeCelsius} target [@kronenberg1982colonial]. The run ended
+{{BROOD_TEMP_ERROR_C}} °C from the configured 34
+°C target [@kronenberg1982colonial]. The run ended
 with empirical odor label `{{FINAL_EMPIRICAL_ODOR}}` selected from the
 registered odor templates, and an empirical-alignment score of
 {{FINAL_EMPIRICAL_ALIGNMENT}}.

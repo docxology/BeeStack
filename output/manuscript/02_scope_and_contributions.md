@@ -53,7 +53,7 @@ importable module logic with no filesystem or network side effects;
 computations with no mocks; `manuscript/` holds tokenized prose hydrated
 from real run-time values; and `output/` contains regeneratable
 artifacts. Every non-cache directory is signposted, with
-63 directories covered by local README and
+67 directories covered by local README and
 AGENTS files so that downstream agents — human or LLM — can pick up the
 project without rediscovering its structure.
 

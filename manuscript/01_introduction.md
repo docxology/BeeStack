@@ -10,7 +10,7 @@ constrains what can be foraged, olfactory encoding constrains which odors
 can be communicated, the waggle dance compresses spatial cognition into a
 two-dimensional kinematic signal, temporal polyethism re-tiles the colony
 labour pool every few days, collective thermoregulation maintains the
-brood within a narrow $32$–$36$ \si{\degreeCelsius} band, and comb
+brood within a narrow $32$–$36$ °C band, and comb
 construction structures the very arena in which all of the previous
 processes occur [@seeley1989superorganism; @seeley2010honeybee;
 @menzel2012honey]. Models that treat these processes in isolation lose

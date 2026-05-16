@@ -20,7 +20,7 @@ from ..body import (
     render_flybody_waggle_scene,
 )
 from ..brain import decode_waggle
-from ..config import BeeStackConfig
+from ..config import BeeStackConfig, Caste
 from ..mind import caste_prior
 
 
@@ -119,7 +119,7 @@ def generate_module_animations(
 
 
 def _save(fig, update: Callable[[int], object], frames: int, fps: int, path: Path) -> None:
-    anim = FuncAnimation(fig, update, frames=frames, interval=1000 / fps, blit=False)
+    anim = FuncAnimation(fig, update, frames=frames, interval=1000 / fps, blit=False)  # type: ignore[arg-type]
     anim.save(path, writer=PillowWriter(fps=fps))
     plt.close(fig)
 
@@ -324,7 +324,7 @@ def _animate_mind(
 ) -> AnimationArtifact:
     path = output_dir / "beemind_policy_beliefs.gif"
     fig, ax = plt.subplots(figsize=(6, 4))
-    castes = ["nurse", "forager", "guard", "scout", "wax_builder"]
+    castes: list[Caste] = ["nurse", "forager", "guard", "scout", "wax_builder"]
 
     def update(i: int):
         ax.clear()
@@ -626,7 +626,8 @@ def _animate_niche(
             temp = cfg.niche.ambient_temperature_c + 9 * np.exp(
                 -((x - cols / 2) ** 2 + (y - rows / 2) ** 2) / 20
             )
-            color = plt.cm.inferno((temp - 20) / 25) if idx <= built else (0.92, 0.92, 0.92, 0.35)
+            inferno = plt.get_cmap("inferno")
+            color = inferno((temp - 20) / 25) if idx <= built else (0.92, 0.92, 0.92, 0.35)
             hexagon = RegularPolygon(
                 xy,
                 numVertices=6,

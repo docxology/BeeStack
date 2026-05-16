@@ -7,10 +7,9 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from skimage import io as skio
-from skimage.measure import label
 
 from ..research import StackSynthesisReview
+from .figure_metadata import assert_nonblank_quality, write_figure_sidecar
 
 
 def generate_stack_synthesis_figures(
@@ -25,6 +24,15 @@ def generate_stack_synthesis_figures(
     ]
     for path in paths:
         _validate_nonblank_image(path)
+        write_figure_sidecar(
+            path,
+            title=path.stem.replace("_", " ").title(),
+            backend="Matplotlib/pandas synthesis dashboard",
+            fidelity="cross-stack synthesis diagnostic, not biological validation",
+            source_data="output/reports/stack_synthesis_review.json",
+            validation_status="nonblank synthesis diagnostic",
+            regeneration_command="uv run python scripts/run_research_suite.py",
+        )
     return paths
 
 
@@ -149,10 +157,4 @@ def _stack_synthesis_dashboard(review: StackSynthesisReview, path: Path) -> Path
 
 
 def _validate_nonblank_image(path: Path) -> None:
-    image = skio.imread(path)
-    if image.size == 0:
-        raise ValueError(f"{path} is empty")
-    grayscale = image[..., :3].mean(axis=2) if image.ndim == 3 else image
-    foreground = np.abs(grayscale.astype(float) - float(np.median(grayscale))) > 1.0
-    if int(label(foreground).max()) <= 0:
-        raise ValueError(f"{path} appears blank")
+    assert_nonblank_quality(path)

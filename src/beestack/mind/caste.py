@@ -50,4 +50,4 @@ def dominant_caste(caste_probs: dict[Caste, float]) -> Caste:
     """Return the maximum-probability caste."""
 
     normalized = normalize_caste_probs(caste_probs)
-    return max(normalized, key=normalized.get)
+    return max(normalized, key=lambda caste: normalized[caste])

@@ -301,11 +301,24 @@ def parse_tabular_odor_response_rows(
         if row.get(stimulus_key) in (None, "") or row.get(channel_key) in (None, ""):
             continue
         response = row.get(response_key)
-        if response in (None, ""):
+        if response in (None, "", "NA"):
+            # Legitimately absent measurement (documented missing-data
+            # sentinel) — skipping is the honest "missing, not fabricated"
+            # behaviour the rest of the pipeline reports as a gap.
             continue
+        response_value = _optional_float(response)
+        if response_value is None:
+            # Present-but-unparseable / non-finite is data corruption, not
+            # absence: fail loudly rather than silently shrinking the matrix.
+            raise ValueError(
+                f"{dataset_id}: response {response!r} is present but not a "
+                f"finite number (stimulus={row.get(stimulus_key)!r}, "
+                f"channel={row.get(channel_key)!r}); present-but-unparseable "
+                "cells must fail loudly, not be silently dropped"
+            )
         cidx = channel_index[str(row[channel_key])]
         sidx = stimulus_index[str(row[stimulus_key])]
-        matrix[cidx, sidx] += float(response)
+        matrix[cidx, sidx] += response_value
         counts[cidx, sidx] += 1.0
     if not np.any(counts):
         raise ValueError("rows must contain at least one numeric response")

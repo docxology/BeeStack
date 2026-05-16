@@ -691,7 +691,7 @@ def _swarm_panel(
         for scene in scenes
         for pair in scene.get("metrics", {}).get("bee_bee_contact_pairs", ())
     }
-    waggle_scene_metrics = next(
+    waggle_scene_metrics: dict[str, Any] = next(
         (scene.get("metrics", {}) for scene in scenes if scene.get("scene_name") == "waggle"),
         {},
     )
@@ -963,7 +963,7 @@ def _scenario_sweep_panels(research_report: dict[str, Any]) -> tuple[ScenarioSwe
             name: float(max(values) - min(values)) if values else 0.0
             for name, values in outputs.items()
         }
-        dominant = max(ranges, key=ranges.get) if ranges else "none"
+        dominant = max(ranges, key=lambda name: ranges[name]) if ranges else "none"
         monotonic = tuple(name for name, values in outputs.items() if _is_monotonic(values))
         values = tuple(float(value) for value in sweep.get("values", ()))
         panels.append(

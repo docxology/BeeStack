@@ -8,12 +8,9 @@ from typing import Any
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import plotly.express as px
-from skimage import io as skio
-from skimage.measure import label
 
 from ..research import MethodsAnalysisReport
-from .figure_metadata import write_figure_sidecar
+from .figure_metadata import assert_nonblank_quality, write_figure_sidecar
 
 
 def generate_methods_figures(
@@ -81,6 +78,8 @@ def write_interactive_methods_dashboard(
     output_dir: Path,
 ) -> list[Path]:
     """Write optional Plotly HTML methods-analysis dashboards."""
+
+    import plotly.express as px
 
     output_dir.mkdir(parents=True, exist_ok=True)
     scorecard_rows = [
@@ -314,10 +313,4 @@ def _series(
 
 
 def _validate_nonblank_image(path: Path) -> None:
-    image = skio.imread(path)
-    if image.size == 0:
-        raise ValueError(f"{path} is empty")
-    grayscale = image[..., :3].mean(axis=2) if image.ndim == 3 else image
-    foreground = np.abs(grayscale.astype(float) - float(np.median(grayscale))) > 1.0
-    if int(label(foreground).max()) <= 0:
-        raise ValueError(f"{path} appears blank")
+    assert_nonblank_quality(path)

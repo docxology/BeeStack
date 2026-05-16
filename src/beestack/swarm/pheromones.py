@@ -65,11 +65,11 @@ def pheromone_gradient(
     values = field.values[field.component_index(component)]
     if any(axis < 0 or axis >= limit for axis, limit in zip(cell, values.shape, strict=True)):
         raise ValueError("cell is outside pheromone grid")
-    grads = []
+    grads: list[float] = []
     for dim, axis in enumerate(cell):
         lo = max(0, axis - 1)
         hi = min(values.shape[dim] - 1, axis + 1)
         before = values[tuple(hi if i == dim else c for i, c in enumerate(cell))]
         after = values[tuple(lo if i == dim else c for i, c in enumerate(cell))]
         grads.append(float((before - after) / max(1, hi - lo)))
-    return tuple(grads)
+    return (grads[0], grads[1], grads[2])

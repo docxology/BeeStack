@@ -89,6 +89,9 @@ def test_stack_synthesis_review_serializes_and_figures(tmp_path: Path) -> None:
     figures = generate_stack_synthesis_figures(review, tmp_path)
     assert len(figures) == 1
     assert figures[0].exists() and figures[0].stat().st_size > 0
+    sidecar = figures[0].with_suffix(".json")
+    assert sidecar.exists()
+    assert "cross-stack synthesis diagnostic" in sidecar.read_text()
 
 
 def test_stack_synthesis_record_validation_branches_are_explicit() -> None:

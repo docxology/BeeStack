@@ -24,6 +24,7 @@ def generate_variables(
     figure_index = artifacts.get("manuscript_figure_index", {})
     readiness = artifacts.get("readiness_report", {})
     synthesis = artifacts.get("stack_synthesis", {})
+    twin = artifacts.get("digital_twin_readiness", {})
     bee_visual = animation.get("bee_visual_signature", {})
     contact_physics = animation.get("flybody_contact_physics", {})
     groups = animation.get("groups", {})
@@ -144,6 +145,11 @@ def generate_variables(
         "STACK_SYNTHESIS_SCHOLARSHIP_REF_COUNT": _count(
             synthesis.get("statistics", {}).get("scholarship_reference_count")
         ),
+        "DIGITAL_TWIN_MEAN_MATURITY": _fmt(twin.get("mean_maturity")),
+        "DIGITAL_TWIN_AXIS_COUNT": _count_list_or_value(twin.get("axes")),
+        "DIGITAL_TWIN_READY": str(twin.get("population_twin_ready", "N/A")),
+        "DIGITAL_TWIN_TOP_BLOCKER": _first_string(twin.get("top_blockers")),
+        "DIGITAL_TWIN_NEXT_ARTIFACT": _first_string(twin.get("next_artifacts")),
     }
 
 

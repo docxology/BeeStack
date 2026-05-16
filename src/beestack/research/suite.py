@@ -389,7 +389,7 @@ def _module_scorecards(
     ]
     body_calibration = bee_body_calibration_summary(cfg)
     brain_completeness = empirical.get("brain_data_completeness", {})
-    waggle_metrics = next(
+    waggle_metrics: dict[str, Any] = next(
         (
             scene.get("metrics", {})
             for scene in contact.get("scenes", [])

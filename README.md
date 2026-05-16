@@ -16,14 +16,22 @@ simulation scaffold. It is organized around five typed layers:
 - `BeeNiche`: comb, thermal, foraging-environment, Hiveopolis/BEEHAVE adapter,
   and nest metric kernels.
 
-The project does not claim a complete high-fidelity honeybee simulator. The
-Body animation path uses real [FlyBody](https://github.com/TuragaLab/flybody)
-tasks, and the strict BeeBody and BeeSwarm FlyBody scenes hard-require
-FlyBody: the scripts raise `FlyBodyUnavailableError` instead of falling back to
-reduced or Matplotlib renderers when FlyBody is absent. BeeBrain downloads and
-analyzes curated public honeybee anatomy/activity data when available. Mind,
-the swarm recruitment kernel, and Niche are deterministic reduced kernels with
-clear contracts and validation surfaces.
+The project does not claim a complete honeybee simulator. The Body animation
+path uses real [FlyBody](https://github.com/TuragaLab/flybody) tasks, and the
+strict BeeBody and BeeSwarm FlyBody scenes hard-require FlyBody: the scripts
+raise `FlyBodyUnavailableError` instead of falling back to reduced or Matplotlib
+renderers when FlyBody is absent. BeeBrain downloads and analyzes curated public
+honeybee anatomy/activity data when available. Mind, the swarm recruitment
+kernel, and Niche are deterministic reduced kernels with clear contracts and
+validation surfaces.
+
+The long-horizon digital-twin target is broader than the present scaffold:
+a systems-biology model that assimilates observations for a managed colony and
+for populations of interacting colonies. BeeStack now makes that target
+auditable through `beestack.digital_twin`, `docs/digital_twin_path.md`, and
+`output/data/digital_twin_readiness.json`; these artifacts name the missing
+state variables, datasets, validation residuals, and governance boundaries
+rather than treating the target as a present-tense result.
 
 ## Reader Paths
 
@@ -33,6 +41,7 @@ clear contracts and validation surfaces.
 | Strict 3D waggle evidence | `docs/waggle_3d_scenario.md` | `uv run python scripts/verify_bee_render.py` |
 | BeeBrain data provenance | `docs/beebrain_data_pipeline.md` | `uv run python scripts/analyze_empirical_bee_data.py` |
 | Claim and artifact audit | `docs/research_operations_playbook.md` | `uv run python scripts/audit_documentation.py` |
+| Digital-twin target assessment | `docs/digital_twin_path.md` | `uv run python scripts/assess_digital_twin_readiness.py` |
 | Manuscript editing | `docs/manuscript_development.md` | `uv run python scripts/z_generate_manuscript_variables.py` |
 
 ## Quickstart
@@ -49,6 +58,7 @@ uv run python scripts/analyze_empirical_bee_data.py
 uv run python scripts/run_research_suite.py
 uv run python scripts/run_methods_analysis.py
 uv run python scripts/run_stack_synthesis.py
+uv run python scripts/assess_digital_twin_readiness.py
 uv run python scripts/signpost_project_tree.py --check
 uv run python scripts/audit_documentation.py
 uv run python scripts/z_generate_manuscript_variables.py
@@ -86,6 +96,7 @@ uv run python scripts/verify_bee_render.py
 uv run python scripts/run_research_suite.py
 uv run python scripts/run_methods_analysis.py
 uv run python scripts/run_stack_synthesis.py
+uv run python scripts/assess_digital_twin_readiness.py
 uv run python scripts/review_stack_integrity.py
 uv run python scripts/audit_documentation.py
 uv run python scripts/z_generate_manuscript_variables.py
@@ -108,6 +119,9 @@ uv run python scripts/z_generate_manuscript_variables.py
 - `output/data/stack_synthesis_review.json`: cross-stack statistical synthesis
   of module readiness, simulation telemetry, visualization evidence,
   signposting, empirical parseability, and scholarship anchors.
+- `output/data/digital_twin_readiness.json`: machine-readable assessment of
+  requirements, maturity, blockers, and next artifacts for the full
+  systems-biology colony and population-of-colonies digital-twin target.
 - `output/data/manuscript_figure_index.json`: manuscript-oriented figure and
   artifact provenance index.
 - `output/data/sensitivity/`: deterministic reduced-kernel sensitivity sweep

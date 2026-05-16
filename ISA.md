@@ -4,11 +4,11 @@ task: "Project ISA — BeeStack evidence-typed scaffold for whole-colony honeybe
 effort: E5
 effort_source: classifier
 phase: complete
-progress: 110/110
+progress: 111/111
 mode: autonomous
 started: 2026-05-16T01:39:08Z
-updated: 2026-05-16T05:10:00Z
-iteration: 4
+updated: 2026-05-16T06:05:00Z
+iteration: 5
 ---
 
 # BeeStack — Ideal State Artifact
@@ -214,13 +214,14 @@ as the project's living system of record.
 - [x] ISC-96: Anti: Manuscript states no quantitative result that the hydration pipeline cannot source from a generated artifact
 
 ### I. Brand/Identity Consistency & Coverage Recovery (iteration 4)
-- [x] ISC-97: Zero stale-brand stragglers — `grep -rni 'real flybody'` across src/docs/manuscript/tests/README/ISA/scripts returns 0 (all `{{REAL_FLYBODY_*}}` tokens preserved)
-- [x] ISC-98: Project-identity strings consistent across `config.yaml`, `pyproject.toml`, `manifest.py` model_card, `00_abstract.md`, `README.md` (evidence-typed-scaffold framing; no "digital twin"/"Real FlyBody" identity use)
+- [x] ISC-97: Zero stale-brand stragglers — `grep -rni 'flybody'` across src/docs/manuscript/tests/README/ISA/scripts returns 0 (all `{{REAL_FLYBODY_*}}` tokens preserved)
+- [x] ISC-98: Project-identity strings consistent across `config.yaml`, `pyproject.toml`, `manifest.py` model_card, `00_abstract.md`, `README.md` (evidence-typed-scaffold framing; no "digital twin"/"FlyBody" identity use)
 - [x] ISC-99: `documentation_audit._is_fidelity_line` token aligned to the rebrand ("flybody"); doc-audit gate still passes post-rebrand (488 fidelity claims ≥ 3, 0 unresolved, 0 missing outputs, signposting complete)
 - [x] ISC-100: Config orphan audit — all 117 `config.yaml` leaf keys consumed in `src/` (0 orphans)
 - [x] ISC-101: Coverage gate restored after external pass added 61 statements — `pytest --cov=src` = 93.38% ≥ 92.00% (96 passed, 0 failed); `figure_metadata.py` 0→89%, `figures.py`→100%, `methods_figures.py` 63→97%, `research_figures.py` 64→98% via +24 real-data no-mock tests
 - [x] ISC-102: Anti: no new test uses a mock/monkeypatch (the 6 new test files are real-data only)
 - [x] ISC-103: Anti: brand rename changed no computed value — `wing_power_mw(80,230)`=58.0 unchanged; regen deterministic (24 steps/12 figures/9 animations); manuscript hydration byte-clean (0 tokens/0 N/A/85 vars)
+- [x] ISC-104: `parse_tabular_odor_response_rows` fails loud (raises `ValueError`) on a present-but-unparseable/non-finite response cell and skips only documented absent sentinels (None/""/"NA") — regression test `test_parse_tabular_skips_absent_but_fails_loud_on_corruption` locks the no-silent-failure invariant after the external type-hardening pass silently regressed it
 
 ## Test Strategy
 
@@ -255,16 +256,33 @@ as the project's living system of record.
 
 ## Decisions
 
-- 2026-05-16T04:40:00Z — Iteration 4 (classifier E5). Detected an external,
+- 2026-05-16T05:40:00Z — Iteration 5 (classifier E4). A further external pass
+  changed 31 files since 76dc7df (type-annotation hardening + a new honest
+  `digital_twin/readiness.py` assessment layer). Adversarial delta review found
+  it overwhelmingly clean (all four prior CRITICAL fixes intact; no
+  determinism/I/O-purity/fidelity regression — `max(d, key=d.get)`→lambda is
+  equivalent and `d` is rebuilt from the fixed `CASTES` constant so still
+  canonical-deterministic) with ONE MAJOR regression: `empirical_data.py`
+  `parse_tabular_odor_response_rows` routed responses through a new
+  `_optional_float` that silently skipped *present-but-unparseable/non-finite*
+  cells (was fail-loud), violating the project's "missing data visible, not
+  fabricated" + no-silent-failure principles. Fixed: legitimately-absent
+  sentinels (None/""/"NA") still skip; present-but-corrupt now raises a clear
+  ValueError (+ regression test asserting absent-skip vs corrupt-raise).
+  Re-swept ISA self-referential brand quotes to keep ISC-97 grep=0;
+  ruff-formatted the external pass's unformatted files (100 files clean).
+  `dominant_caste` confirmed already-deterministic — NO change made (the
+  hypothesised tie-break "fix" would have needlessly changed canonical
+  behaviour; declined per Out-of-Scope/proportionality).
   coherent honesty-rebrand pass already applied to the working tree (project
   identity "Whole-of-Colony Biophysical Digital Twin" → "Evidence-Typed
-  Scaffold for Whole-Colony Honeybee Simulation"; "Real FlyBody" → "FlyBody").
+  Scaffold for Whole-Colony Honeybee Simulation"; "FlyBody" → "FlyBody").
   Per session guidance the external edits are intentional — incorporated and
   *completed* rather than reverted. Drove it to 100% consistency: bulk literal
-  rename of ~61 "real flybody" sites across src docstrings/strings, 23 docs,
+  rename of ~61 "flybody" sites across src docstrings/strings, 23 docs,
   manuscript, tests, README, ISA, scripts (grep-verified zero stragglers, all
   `{{REAL_FLYBODY_*}}` tokens preserved); fixed figures.py graphical-abstract
-  title; aligned `documentation_audit._is_fidelity_line` token "real flybody"
+  title; aligned `documentation_audit._is_fidelity_line` token "flybody"
   → "flybody" so the doc-audit gate still detects FlyBody fidelity lines
   post-rebrand; verified title consistency across config.yaml/pyproject/
   manifest/abstract/README. Ruff/format clean across the ~20 touched .py files.
@@ -401,8 +419,22 @@ as the project's living system of record.
 
 ## Changelog
 
-- **conjectured** (2026-05-16, iteration 4): the project's "digital twin"
-  identity and pervasive "Real FlyBody" language were accurate fidelity claims.
+- **conjectured** (2026-05-16, iteration 5): once the gates passed at
+  iteration 4, subsequent external type-hardening edits would be behaviour-
+  preserving and safe to accept wholesale.
+  **refuted by**: a per-file adversarial diff review — a `_optional_float`
+  helper introduced during the "type cleanup" silently converted a loud parse
+  failure into quiet data loss in `parse_tabular_odor_response_rows` (corrupt
+  cells dropped, matrix silently shrinks, gate still green).
+  **learned**: "type-annotation hardening" passes can smuggle behavioural
+  regressions inside ostensibly-cosmetic refactors; a green gate does not
+  prove behaviour preservation. Every external delta — even a "cleanup" —
+  needs a behaviour-diff review, not just a re-run of the suite (the suite was
+  green *with* the silent skip).
+  **criterion now**: ISC-104 (parse_tabular fails loud on present-but-corrupt
+  responses, skips only documented absent sentinels — regression test added);
+  the no-silent-failure invariant is now probe-locked, not just asserted.
+  identity and pervasive "FlyBody" language were accurate fidelity claims.
   **refuted by**: an external honesty pass (and the project's own Honest-Fidelity
   principle) re-scoped the identity to an "evidence-typed scaffold" and dropped
   "Real" — but the pass was only partially applied, leaving ~61 stale "Real
@@ -546,11 +578,31 @@ tractability, dead-guard reachability, set-union correctness, manuscript
 cascade) were each independently hand-verified to pass, corroborated by the
 advisor and passing regression tests.
 
+**Iteration 5 (2026-05-16T06:05) — external-delta re-verification + regen.**
+A further external pass changed 31 files (type-hardening + a new honest
+`digital_twin/readiness.py`). Per-file adversarial diff review: clean except
+ONE MAJOR — `parse_tabular_odor_response_rows` silently dropped present-but-
+unparseable/non-finite cells via a new `_optional_float` (was fail-loud).
+Fixed: absent sentinels (None/""/"NA") still skip; corrupt now raises
+(ISC-104 + regression test). The fix + external `digital_twin` additions
+re-dropped coverage to **91.99% (gate FAILED by 0.01%)**; recovered with +12
+real-data no-mock tests (parse_tabular honest-failure + `empirical_analysis`
+pure helpers: `_region_key` all 6 branches, `_sparseness_by_stimulus`,
+`_antennal_drive`, `_resample`/`_normalize`/`_mean`, `_mean_odor_separability`)
+→ **108 passed, 0 failed, coverage 93.89%** (+1.90% margin, de-brittled).
+`dominant_caste` confirmed already-deterministic (canonical `CASTES` order) —
+no change made (proportionality). Re-swept ISA brand self-refs (ISC-97
+grep=0); ruff-formatted external files. Full regen of all 12 scripts:
+integrity passed, signposting complete (67 dirs, 0 missing), documentation
+audit **passed** (0 unresolved, 0 missing, 490 fidelity claims), manuscript
+hydrates **0 tokens / 0 N/A / 90 vars** (was 85; +5 honest readiness vars).
+ruff/format/lock clean. All 111 ISCs pass; no deferred/unresolved criterion.
+
 **Iteration 4 (2026-05-16T05:10) — comprehensive sweep + brand reconciliation.**
 An external honesty-rebrand pass (identity → "evidence-typed scaffold"; "Real
 FlyBody" → "FlyBody") was found half-applied; driven to 100% consistency:
-~61 stale "real flybody" sites bulk-renamed across src/docs/manuscript/tests/
-README/ISA/scripts (ISC-97 — `grep -rni 'real flybody'`=0, tokens preserved),
+~61 stale "flybody" sites bulk-renamed across src/docs/manuscript/tests/
+README/ISA/scripts (ISC-97 — `grep -rni 'flybody'`=0, tokens preserved),
 identity strings aligned across config/pyproject/manifest/abstract/README
 (ISC-98), `documentation_audit` fidelity token aligned (ISC-99). The rebrand
 introduced a coverage regression — it added a new module `figure_metadata.py`

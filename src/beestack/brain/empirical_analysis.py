@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from collections.abc import Mapping, Sequence
+from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import asdict, dataclass, field
-from typing import Any
+from typing import Any, cast
 
 import numpy as np
 
@@ -406,7 +406,7 @@ def activity_summary_from_components(
         region_response_means=_region_response_means(panel_stats),
         antennal_active_sensing_drive=_antennal_drive(first_antennal),
         neuromodulatory_defence_summary=_neuromodulatory_defence(panel_stats),
-        waggle_follower_summary=waggle_follower_summary.as_dict()
+        waggle_follower_summary=cast(dict[str, object], waggle_follower_summary.as_dict())
         if waggle_follower_summary is not None
         else {},
     )
@@ -597,7 +597,7 @@ def _neuromodulatory_defence(panel_stats: tuple[EmpiricalPanelStats, ...]) -> di
     }
 
 
-def _mean(values: object) -> float:
+def _mean(values: Iterable[Any]) -> float:
     data = [float(value) for value in values if np.isfinite(float(value))]
     return float(np.mean(data)) if data else 0.0
 

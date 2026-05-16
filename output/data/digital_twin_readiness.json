@@ -1,0 +1,308 @@
+{
+  "axes": [
+    {
+      "acceptance_tests": [
+        "schema validates every molecular state variable with units and provenance",
+        "calibration residuals are reported for at least one immune/pathogen/pesticide dataset"
+      ],
+      "axis_id": "omics_metabolism_microbiome",
+      "current_capability": "No molecular state variables are represented in the current scaffold.",
+      "current_tier": "missing",
+      "maturity": 0.05,
+      "missing_capability": "Add transcriptomic, metabolomic, microbiome, immune, pathogen, and pesticide exposure state with colony-time indexing.",
+      "priority": 1,
+      "required_artifacts": [
+        "output/data/systems_biology/omics_state_schema.json",
+        "output/data/systems_biology/pathogen_pesticide_loads.json",
+        "output/reports/systems_biology_calibration.md"
+      ],
+      "scale": "molecular_omics",
+      "target_tier": "validated_assimilative",
+      "title": "Omics, metabolism, microbiome, and xenobiotic state",
+      "validation_data": [
+        "honeybee RNA-seq or qPCR stress-response panels",
+        "metabolomics / lipid / glycogen / vitellogenin assays",
+        "microbiome and pathogen-load panels for Varroa, DWV, Nosema, and brood disease",
+        "pesticide residue and dose-response datasets"
+      ]
+    },
+    {
+      "acceptance_tests": [
+        "brood, nurse, forager, drone, and queen compartments conserve individuals",
+        "mortality and transition residuals are computed against cited life-history data"
+      ],
+      "axis_id": "physiology_life_history",
+      "current_capability": "Body energetics and Niche brood-temperature kernels exist as reduced deterministic models.",
+      "current_tier": "reduced_kernel",
+      "maturity": 0.2,
+      "missing_capability": "Represent age-dependent endocrine, immune, reproductive, nutrition, brood, and mortality state rather than only motion energy and thermal error.",
+      "priority": 2,
+      "required_artifacts": [
+        "output/data/systems_biology/life_history_parameters.json",
+        "output/data/systems_biology/physiology_residuals.json"
+      ],
+      "scale": "cell_tissue_physiology",
+      "target_tier": "validated_assimilative",
+      "title": "Physiology and life-history state",
+      "validation_data": [
+        "caste/age physiology measurements",
+        "brood development and survival curves",
+        "nutrition-to-task-allocation and disease-to-mortality studies"
+      ]
+    },
+    {
+      "acceptance_tests": [
+        "strict FlyBody scene residuals report body, contact, and energy errors",
+        "simulation runs fail closed when strict physics dependencies are absent"
+      ],
+      "axis_id": "individual_sensorimotor_physics",
+      "current_capability": "FlyBody/MuJoCo-backed BeeBody and small multi-bee scenes exist, with reduced fallbacks separated.",
+      "current_tier": "physics_backed",
+      "maturity": 0.45,
+      "missing_capability": "Calibrate segment inertia, adhesion, wing loading, gait, sensory noise, and energetic cost against honeybee-specific experiments.",
+      "priority": 3,
+      "required_artifacts": [
+        "output/data/body_calibration.json",
+        "output/reports/flybody_honeybee_residuals.md"
+      ],
+      "scale": "individual_bee",
+      "target_tier": "validated_assimilative",
+      "title": "Individual BeeBody sensorimotor physics",
+      "validation_data": [
+        "honeybee gait and contact kinematics",
+        "wing-beat and load-lifting measurements",
+        "vision, odor, and antennal sensing benchmarks"
+      ]
+    },
+    {
+      "acceptance_tests": [
+        "neural model reproduces at least one learning or sensory task with residuals",
+        "calcium/anatomy sources are parseable and linked to model variables"
+      ],
+      "axis_id": "neural_behavioral_learning",
+      "current_capability": "Empirical BeeBrain data ingestion and reduced AL/MB/CX transforms are present.",
+      "current_tier": "empirical_data",
+      "maturity": 0.35,
+      "missing_capability": "Replace reduced transforms with calibrated neural dynamics and learning tasks linked to behavioral validation.",
+      "priority": 4,
+      "required_artifacts": [
+        "output/data/brain_calibration_residuals.json",
+        "output/reports/behavioral_validation.md"
+      ],
+      "scale": "individual_bee",
+      "target_tier": "validated_assimilative",
+      "title": "Neural, behavioral, and learning dynamics",
+      "validation_data": [
+        "calcium-imaging odor response panels",
+        "PER conditioning, visual navigation, and waggle-following experiments",
+        "Honeybee Standard Brain anatomy assets"
+      ]
+    },
+    {
+      "acceptance_tests": [
+        "population, brood, and stores obey conservation constraints",
+        "BEEHAVE scenario comparisons are generated with identical input assumptions"
+      ],
+      "axis_id": "colony_demography_resources",
+      "current_capability": "BeeSwarm includes deterministic task allocation, dance recruitment, and BEEHAVE-compatible summaries.",
+      "current_tier": "reduced_kernel",
+      "maturity": 0.25,
+      "missing_capability": "Add queen laying, brood cohorts, nurse-forager transitions, honey/pollen stores, disease, mortality, and resource-conserving flows at colony scale.",
+      "priority": 1,
+      "required_artifacts": [
+        "output/data/colony_state_timeseries.json",
+        "output/data/beehave_calibration_residuals.json"
+      ],
+      "scale": "colony_system",
+      "target_tier": "validated_assimilative",
+      "title": "Colony demography, resource flow, and task allocation",
+      "validation_data": [
+        "BEEHAVE scenario baselines",
+        "longitudinal colony inspection records",
+        "resource-store and demography datasets"
+      ]
+    },
+    {
+      "acceptance_tests": [
+        "landscape drivers are indexed by date, location, units, and source",
+        "nest microclimate predictions are validated against held-out sensor traces"
+      ],
+      "axis_id": "nest_landscape_ecotoxicology",
+      "current_capability": "BeeNiche includes comb, thermal, and foraging-radius kernels plus adapter outputs.",
+      "current_tier": "reduced_kernel",
+      "maturity": 0.25,
+      "missing_capability": "Add weather, land cover, floral phenology, pesticide application, hive-management events, and nest microclimate assimilation.",
+      "priority": 2,
+      "required_artifacts": [
+        "output/data/niche_landscape_driver_timeseries.json",
+        "output/data/nest_microclimate_residuals.json"
+      ],
+      "scale": "nest_landscape",
+      "target_tier": "validated_assimilative",
+      "title": "Nest, forage landscape, weather, and ecotoxicology",
+      "validation_data": [
+        "weather station or reanalysis time series",
+        "remote-sensing floral-resource products",
+        "Hiveopolis or hive-sensor temperature/humidity traces",
+        "pesticide application and residue records"
+      ]
+    },
+    {
+      "acceptance_tests": [
+        "multi-colony simulations conserve colonies and individuals under defined events",
+        "pathogen spread and colony loss are compared with held-out surveillance data"
+      ],
+      "axis_id": "population_network_genetics_epidemiology",
+      "current_capability": "Current BeeSwarm represents one colony; no apiary, regional population, genetics, or disease network is modeled.",
+      "current_tier": "missing",
+      "maturity": 0.0,
+      "missing_capability": "Represent apiaries, feral colonies, queen/drone mating, migration, robbing/drifting, pathogen transmission, and landscape-mediated competition.",
+      "priority": 1,
+      "required_artifacts": [
+        "output/data/population_colony_network.json",
+        "output/data/population_epidemiology_residuals.json",
+        "output/reports/population_twin_validation.md"
+      ],
+      "scale": "population_of_colonies",
+      "target_tier": "validated_assimilative",
+      "title": "Population-of-colonies network, genetics, and epidemiology",
+      "validation_data": [
+        "apiary inspection networks",
+        "colony loss surveys",
+        "queen/drone mating and population-genetic studies",
+        "regional pathogen and Varroa surveillance"
+      ]
+    },
+    {
+      "acceptance_tests": [
+        "posterior predictive checks and forecast skill are reported against held-out observations",
+        "counterfactual interventions declare assumptions and uncertainty intervals"
+      ],
+      "axis_id": "assimilation_uncertainty_intervention",
+      "current_capability": "Current reports preserve provenance and deterministic reproducibility but do not assimilate live or longitudinal observations.",
+      "current_tier": "schematic",
+      "maturity": 0.1,
+      "missing_capability": "Add Bayesian/state-space assimilation, posterior uncertainty, parameter identifiability, intervention scenarios, and forecast scoring.",
+      "priority": 1,
+      "required_artifacts": [
+        "output/data/assimilation_posterior.nc",
+        "output/data/intervention_counterfactuals.json",
+        "output/reports/forecast_skill.md"
+      ],
+      "scale": "assimilation_control",
+      "target_tier": "validated_assimilative",
+      "title": "Data assimilation, uncertainty, and intervention counterfactuals",
+      "validation_data": [
+        "longitudinal hive scale/audio/temperature/count observations",
+        "management-intervention records",
+        "held-out seasonal colony outcomes"
+      ]
+    },
+    {
+      "acceptance_tests": [
+        "every twin claim is linked to evidence tier, data source, and validation status",
+        "decision-support outputs remain clearly marked as research forecasts unless validated clinically/operationally"
+      ],
+      "axis_id": "provenance_governance_operations",
+      "current_capability": "Template-style reports, manuscript variables, signposting, tests, and figure sidecars already support auditability.",
+      "current_tier": "empirical_data",
+      "maturity": 0.55,
+      "missing_capability": "Add twin-specific model cards, data-license checks, uncertainty communication, and decision-support boundary language.",
+      "priority": 3,
+      "required_artifacts": [
+        "output/reports/digital_twin_readiness.md",
+        "output/data/digital_twin_readiness.json",
+        "output/reports/twin_governance_checklist.md"
+      ],
+      "scale": "governance_provenance",
+      "target_tier": "validated_assimilative",
+      "title": "Operational provenance, governance, and safety boundaries",
+      "validation_data": [
+        "dataset licenses and consent constraints",
+        "model-card review checklist",
+        "scenario audit logs"
+      ]
+    }
+  ],
+  "current_status": "BeeStack is currently an evidence-typed scaffold with strict physics in selected Body/Swarm visual paths, empirical BeeBrain ingestion, and reduced colony/niche kernels.",
+  "mean_maturity": 0.244,
+  "next_artifacts": [
+    "output/data/population_colony_network.json",
+    "output/data/population_epidemiology_residuals.json",
+    "output/data/systems_biology/omics_state_schema.json",
+    "output/data/systems_biology/pathogen_pesticide_loads.json",
+    "output/data/assimilation_posterior.nc",
+    "output/data/intervention_counterfactuals.json",
+    "output/data/colony_state_timeseries.json",
+    "output/data/beehave_calibration_residuals.json",
+    "output/data/systems_biology/life_history_parameters.json",
+    "output/data/systems_biology/physiology_residuals.json"
+  ],
+  "population_twin_ready": false,
+  "scale_readiness": [
+    {
+      "axis_count": 1,
+      "mean_maturity": 0.05,
+      "scale": "molecular_omics",
+      "top_blocker": "Add transcriptomic, metabolomic, microbiome, immune, pathogen, and pesticide exposure state with colony-time indexing.",
+      "weakest_axis": "omics_metabolism_microbiome"
+    },
+    {
+      "axis_count": 1,
+      "mean_maturity": 0.2,
+      "scale": "cell_tissue_physiology",
+      "top_blocker": "Represent age-dependent endocrine, immune, reproductive, nutrition, brood, and mortality state rather than only motion energy and thermal error.",
+      "weakest_axis": "physiology_life_history"
+    },
+    {
+      "axis_count": 2,
+      "mean_maturity": 0.4,
+      "scale": "individual_bee",
+      "top_blocker": "Replace reduced transforms with calibrated neural dynamics and learning tasks linked to behavioral validation.",
+      "weakest_axis": "neural_behavioral_learning"
+    },
+    {
+      "axis_count": 1,
+      "mean_maturity": 0.25,
+      "scale": "colony_system",
+      "top_blocker": "Add queen laying, brood cohorts, nurse-forager transitions, honey/pollen stores, disease, mortality, and resource-conserving flows at colony scale.",
+      "weakest_axis": "colony_demography_resources"
+    },
+    {
+      "axis_count": 1,
+      "mean_maturity": 0.25,
+      "scale": "nest_landscape",
+      "top_blocker": "Add weather, land cover, floral phenology, pesticide application, hive-management events, and nest microclimate assimilation.",
+      "weakest_axis": "nest_landscape_ecotoxicology"
+    },
+    {
+      "axis_count": 1,
+      "mean_maturity": 0.0,
+      "scale": "population_of_colonies",
+      "top_blocker": "Represent apiaries, feral colonies, queen/drone mating, migration, robbing/drifting, pathogen transmission, and landscape-mediated competition.",
+      "weakest_axis": "population_network_genetics_epidemiology"
+    },
+    {
+      "axis_count": 1,
+      "mean_maturity": 0.1,
+      "scale": "assimilation_control",
+      "top_blocker": "Add Bayesian/state-space assimilation, posterior uncertainty, parameter identifiability, intervention scenarios, and forecast scoring.",
+      "weakest_axis": "assimilation_uncertainty_intervention"
+    },
+    {
+      "axis_count": 1,
+      "mean_maturity": 0.55,
+      "scale": "governance_provenance",
+      "top_blocker": "Add twin-specific model cards, data-license checks, uncertainty communication, and decision-support boundary language.",
+      "weakest_axis": "provenance_governance_operations"
+    }
+  ],
+  "target": "full systems-biology colony and population-of-colonies honeybee digital twin",
+  "top_blockers": [
+    "Represent apiaries, feral colonies, queen/drone mating, migration, robbing/drifting, pathogen transmission, and landscape-mediated competition.",
+    "Add transcriptomic, metabolomic, microbiome, immune, pathogen, and pesticide exposure state with colony-time indexing.",
+    "Add Bayesian/state-space assimilation, posterior uncertainty, parameter identifiability, intervention scenarios, and forecast scoring.",
+    "Add queen laying, brood cohorts, nurse-forager transitions, honey/pollen stores, disease, mortality, and resource-conserving flows at colony scale.",
+    "Represent age-dependent endocrine, immune, reproductive, nutrition, brood, and mortality state rather than only motion energy and thermal error."
+  ]
+}

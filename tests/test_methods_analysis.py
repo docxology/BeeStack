@@ -352,7 +352,9 @@ def test_methods_analysis_report_figures_and_index(tmp_path: Path) -> None:
     assert len(figure_paths) >= 7
     assert all(path.exists() and path.stat().st_size > 0 for path in figure_paths)
     assert all(path.with_suffix(".json").exists() for path in figure_paths)
-    assert all("beestack.figure.v1" in path.with_suffix(".json").read_text() for path in figure_paths)
+    assert all(
+        "beestack.figure.v1" in path.with_suffix(".json").read_text() for path in figure_paths
+    )
     final_report = report.with_artifacts(tuple(str(path) for path in figure_paths), ())
     rows = manuscript_figure_index(final_report)
     assert len(rows) >= 5

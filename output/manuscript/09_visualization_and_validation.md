@@ -58,7 +58,7 @@ Validation is also textual and structural.
   language, and signposting coverage.
 - The **readiness review**
   (`output/reports/project_readiness_review.md`) records
-  63 signposted directories and
+  67 signposted directories and
   prioritizes the next-improvement backlog from the research gaps —
   the current top priority is BeeBrain calcium acquisition completion (P27).
 

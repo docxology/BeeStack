@@ -53,6 +53,7 @@ def load_artifacts() -> dict:
         / "manuscript_figure_index.json",
         "readiness_report": PROJECT_ROOT / "output" / "reports" / "project_readiness_review.json",
         "stack_synthesis": PROJECT_ROOT / "output" / "data" / "stack_synthesis_review.json",
+        "digital_twin_readiness": PROJECT_ROOT / "output" / "data" / "digital_twin_readiness.json",
     }
     artifacts = {}
     for key, path in paths.items():

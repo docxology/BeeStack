@@ -8,7 +8,64 @@ downstream interpretations, while BeeBody calibration first strengthens
 the Body evidence tier and then propagates through the existing
 cross-layer contracts.
 
-## 1. Resolve BeeBrain calcium-acquisition gaps
+## Full digital-twin target
+
+The long-horizon target is a systems-biology digital twin that spans a
+single managed colony and a population of interacting colonies, using the
+closed-loop, observation-updated sense of digital twin adopted in biomedical
+systems work [@bjornsson2020digitaltwins]. BeeStack
+is not there yet. The generated digital-twin readiness review currently
+tracks 9 axes and reports mean maturity
+0.244, with `population_twin_ready` resolved to
+`False`. The top blocker is: Represent apiaries, feral colonies, queen/drone mating, migration, robbing/drifting, pathogen transmission, and landscape-mediated competition.
+The next named artifact is `output/data/population_colony_network.json`.
+
+That review reframes the roadmap around eight auditable scales:
+
+1. molecular, omics, microbiome, pathogen, pesticide, and nutrition state;
+2. tissue physiology, endocrine state, brood development, and mortality;
+3. individual BeeBody biomechanics, sensory channels, and energetic cost;
+4. neural dynamics, learning, navigation, and behaviour;
+5. colony demography, resource stores, queen laying, disease, and task allocation;
+6. nest microclimate, weather, land cover, floral phenology, and management events;
+7. apiary and regional population networks, genetics, drift, robbing, migration,
+   and pathogen transmission;
+8. assimilation, uncertainty, forecast scoring, intervention counterfactuals,
+   provenance, and governance.
+
+The implementation rule is conservative: an axis moves from scaffold to
+digital-twin evidence only when it has typed state variables, units,
+source provenance, update equations or learned transition models,
+longitudinal assimilation, held-out validation residuals, and a generated
+artifact in `output/data/` or `output/reports/`.
+
+## 1. Build the colony-state ledger
+
+Before adding more detailed submodels, BeeStack needs a conserving colony
+ledger. This ledger should represent queen laying, eggs, larvae, pupae,
+nurses, foragers, drones, dead adults, honey stores, pollen stores,
+pathogen loads, pesticide burden, and management interventions as dated
+state variables with units and provenance.
+
+*Acceptance criterion:* a `colony_state_timeseries.json` artifact exists,
+conserves individuals and resource stores under documented flows, and is
+validated by a report comparing at least one held-out colony inspection or
+BEEHAVE-compatible scenario.
+
+## 2. Add driver ingestion and assimilation surfaces
+
+A colony twin requires external drivers rather than internally chosen
+scenario constants. Add parsers for weather, hive temperature/humidity,
+hive weight, entrance counts, floral-resource proxies, management logs,
+Varroa/pathogen assays, pesticide records, and apiary inspections. These
+should feed a state-space assimilation layer with forecast skill and
+posterior predictive checks.
+
+*Acceptance criterion:* an `assimilation_posterior.nc` or interim JSON
+posterior artifact is written, with a `forecast_skill.md` report describing
+held-out residuals and uncertainty intervals.
+
+## 3. Resolve BeeBrain calcium-acquisition gaps
 
 Complete BeeBrain calcium acquisition by resolving missing local Paoli
 MAT payloads [@paoli2024dryad], validating HDF5/MAT parsing across the
@@ -24,7 +81,7 @@ local parseable calcium payload listed in
 methods panel that reports the calcium modality as parseable rather
 than blocker-documented.
 
-## 2. Calibrate BeeBody beyond visual MJCF
+## 4. Calibrate BeeBody beyond visual MJCF
 
 Calibrate the real-FlyBody BeeBody path beyond the current visual MJCF
 overlays. Specifically, calibrate against published honey-bee
@@ -39,7 +96,7 @@ biomechanics:
 sources for each calibrated parameter and a methods-analysis Body
 panel that reports the residual to the source data.
 
-## 3. Replace BeeBrain kernels with simulator-backed dynamics
+## 5. Replace BeeBrain kernels with simulator-backed dynamics
 
 Replace the functional BeeBrain kernels with simulator-backed AL–MB–CX
 dynamics — for example, a Brian2 or Nengo backend — and add validation
@@ -50,7 +107,7 @@ learning, and navigation [@menzel2012honey; @stone2017central].
 quantitative residuals against at least one published bee
 neuroscience task.
 
-## 4. Extend BeeMind to a learned generative model
+## 6. Extend BeeMind to a learned generative model
 
 Extend BeeMind from bounded policy scoring to a fitted generative
 model with learned transition and observation likelihoods. The
@@ -62,7 +119,7 @@ the stack [@friston2010free; @parr2017working].
 learned variational posterior with diagnostic parity (same
 diagnostic record fields, computed differently).
 
-## 5. Scale BeeSwarm to BEEHAVE-compatible scenarios
+## 7. Scale BeeSwarm to BEEHAVE-compatible scenarios
 
 Scale BeeSwarm beyond strict small-scene visualization by:
 
@@ -77,7 +134,7 @@ Scale BeeSwarm beyond strict small-scene visualization by:
 reports both small-scene contact pairs and BEEHAVE-scale forager
 counts, with traceable provenance for each.
 
-## 6. Extend BeeNiche with ecology and demography
+## 8. Extend BeeNiche with ecology and demography
 
 Calibrate BeeNiche seasonal forage witnesses, add brood demography, and
 extend sparse 3D comb voxels while preserving the current adapter schemas
@@ -89,7 +146,7 @@ this step enables.
 source-calibrated seasonal-forage variance, brood-cohort survival, and a
 parseable Hiveopolis adapter payload.
 
-## 7. Keep project readiness automated
+## 9. Keep project readiness automated
 
 Keep project readiness automated: every generated output leaf should
 remain signposted, audited, and regenerated by uv-managed commands.

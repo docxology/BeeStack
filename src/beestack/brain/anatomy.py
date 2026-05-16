@@ -181,8 +181,10 @@ def atlas_inventory_from_zip(path: Path, asset_id: str | None = None) -> AtlasIn
                 face_count += faces
                 centroid = geometry["centroid"]
                 if centroid is not None and vertices > 0:
-                    centroid_sum = tuple(
-                        centroid_sum[idx] + centroid[idx] * vertices for idx in range(3)
+                    centroid_sum = (
+                        centroid_sum[0] + centroid[0] * vertices,
+                        centroid_sum[1] + centroid[1] * vertices,
+                        centroid_sum[2] + centroid[2] * vertices,
                     )
                 bounds_min = _min3(bounds_min, geometry["bounds_min"])
                 bounds_max = _max3(bounds_max, geometry["bounds_max"])
@@ -329,7 +331,7 @@ def _image_shape_from_member(archive: zipfile.ZipFile, name: str) -> tuple[int, 
         return None
 
 
-def _vrml_geometry(data: bytes) -> dict[str, int | tuple[float, float, float] | None]:
+def _vrml_geometry(data: bytes) -> dict[str, Any]:
     text = data[:5_000_000].decode("utf-8", "ignore")
     point_sections = re.findall(r"point\s*\[([^\]]*)\]", text, flags=re.IGNORECASE | re.DOTALL)
     vertex_count = 0
@@ -343,7 +345,11 @@ def _vrml_geometry(data: bytes) -> dict[str, int | tuple[float, float, float] | 
             vertex_count += 1
             bounds_min = _min3(bounds_min, point)
             bounds_max = _max3(bounds_max, point)
-            centroid_sum = tuple(centroid_sum[axis] + point[axis] for axis in range(3))
+            centroid_sum = (
+                centroid_sum[0] + point[0],
+                centroid_sum[1] + point[1],
+                centroid_sum[2] + point[2],
+            )
     coord_sections = re.findall(r"coordIndex\s*\[([^\]]*)\]", text, flags=re.IGNORECASE | re.DOTALL)
     face_count = sum(section.count("-1") for section in coord_sections)
     return {
@@ -367,7 +373,7 @@ def _min3(
         return right
     if right is None:
         return left
-    return tuple(min(left[idx], right[idx]) for idx in range(3))
+    return (min(left[0], right[0]), min(left[1], right[1]), min(left[2], right[2]))
 
 
 def _max3(
@@ -378,11 +384,11 @@ def _max3(
         return right
     if right is None:
         return left
-    return tuple(max(left[idx], right[idx]) for idx in range(3))
+    return (max(left[0], right[0]), max(left[1], right[1]), max(left[2], right[2]))
 
 
 def _scale3(vector: tuple[float, float, float], scalar: float) -> tuple[float, float, float]:
-    return tuple(value * scalar for value in vector)
+    return (vector[0] * scalar, vector[1] * scalar, vector[2] * scalar)
 
 
 def _choose_abbreviation_label(row: tuple[str, ...]) -> tuple[str, str]:

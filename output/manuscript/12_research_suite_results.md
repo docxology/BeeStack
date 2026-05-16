@@ -41,7 +41,7 @@ The latest synthesis reports validation fraction
 1.000, and
 42 bibliography anchors. The
 integrated run improved brood-temperature error by
-4.415 \si{\degreeCelsius}. The top
+4.415 °C. The top
 synthesis finding is: **Weakest synthesized module is BeeSwarm (readiness 0.925; gaps 3).**
 
 ![BeeStack cross-stack synthesis dashboard](../figures/research/stack_synthesis_dashboard.png){#fig:stack_synthesis_dashboard}
@@ -92,7 +92,7 @@ structurally insensitive under the current reduced kernel
 The readiness review writes
 `output/reports/project_readiness_review.md` and
 `output/reports/project_readiness_review.json`. It currently reports
-strict signposting coverage for 63
+strict signposting coverage for 67
 directories and keeps the next-improvement backlog tied to the
 research-suite gaps. The top prioritized improvement is
 **BeeBrain calcium acquisition completion (P27)**.

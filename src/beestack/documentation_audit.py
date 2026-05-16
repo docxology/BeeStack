@@ -8,7 +8,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 
 EXCLUDED_SIGNPOST_DIR_NAMES = frozenset(
-    {".git", ".venv", ".pytest_cache", ".ruff_cache", "htmlcov", "__pycache__"}
+    {".git", ".venv", ".mypy_cache", ".pytest_cache", ".ruff_cache", "htmlcov", "__pycache__"}
 )
 
 

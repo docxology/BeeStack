@@ -1,7 +1,7 @@
 {
   "documentation_audit": {
     "available": true,
-    "docs_checked": 49,
+    "docs_checked": 50,
     "missing_agents_dirs": [],
     "missing_output_paths": [],
     "missing_readme_dirs": [],
@@ -100,7 +100,7 @@
     "External nectar landscape calibration and brood demography remain future adapter layers."
   ],
   "signposting": {
-    "directory_count": 63,
+    "directory_count": 67,
     "missing_agents_dirs": [],
     "missing_readme_dirs": [],
     "passed": true
