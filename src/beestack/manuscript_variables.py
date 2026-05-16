@@ -1,0 +1,194 @@
+"""Manuscript variable generation from BeeStack analysis outputs."""
+
+from __future__ import annotations
+
+from typing import Any
+
+from .config import BeeStackConfig
+from .manifest import module_coverage
+
+
+def generate_variables(
+    cfg: BeeStackConfig,
+    summary: dict[str, Any],
+    artifacts: dict[str, Any] | None = None,
+) -> dict[str, str]:
+    """Create `{{TOKEN}}` values for the manuscript."""
+
+    artifacts = artifacts or {}
+    coverage = module_coverage(cfg)
+    empirical = artifacts.get("empirical_analysis", {})
+    animation = artifacts.get("animation_manifest", {})
+    research = artifacts.get("research_report", {})
+    methods = artifacts.get("methods_analysis", {})
+    figure_index = artifacts.get("manuscript_figure_index", {})
+    readiness = artifacts.get("readiness_report", {})
+    synthesis = artifacts.get("stack_synthesis", {})
+    bee_visual = animation.get("bee_visual_signature", {})
+    contact_physics = animation.get("flybody_contact_physics", {})
+    groups = animation.get("groups", {})
+    waggle = empirical.get("waggle_follower_analysis", {}).get("summary", {})
+    completeness = empirical.get("brain_data_completeness", {})
+    return {
+        "CONFIG_SEED": str(cfg.seed),
+        "CONTROL_RATE_HZ": str(cfg.timing.control_rate_hz),
+        "PHYSICS_DT_MS": f"{cfg.timing.physics_dt_s * 1000:.1f}",
+        "POLICY_RATE_HZ": str(cfg.timing.policy_rate_hz),
+        "BODY_MASS_MG": f"{cfg.body.body_mass_mg:.1f}",
+        "WING_STROKE_HZ": f"{cfg.body.wing_stroke_hz:.0f}",
+        "OMMATIDIA_PER_EYE": f"{cfg.body.ommatidia_per_eye:,}",
+        "GLOMERULI": str(cfg.brain.glomeruli),
+        "KC_PER_HEMISPHERE": f"{cfg.brain.kenyon_cells_per_hemisphere:,}",
+        "KC_SPARSITY": f"{cfg.brain.kc_sparsity:.2f}",
+        "ACTIVE_KC": f"{cfg.brain.active_kenyon_cells:,}",
+        "HEADING_BINS": str(cfg.brain.heading_bins),
+        "EMPIRICAL_DATASET_COUNT": str(len(cfg.empirical.enabled_dataset_ids)),
+        "CALCIUM_ACQUISITION_HZ": f"{cfg.empirical.calcium_acquisition_hz:.0f}",
+        "ODOR_TEMPLATE_COUNT": str(len(cfg.empirical.odor_templates)),
+        "LATENT_DIM": str(cfg.mind.latent_dim),
+        "POLICY_HORIZON": str(cfg.mind.policy_horizon),
+        "SWARM_AGENTS": str(cfg.swarm.agent_count),
+        "REPRESENTED_COLONY_SIZE": f"{cfg.swarm.represented_colony_size:,}",
+        "COMB_VOXELS": f"{cfg.niche.comb_shape[0] * cfg.niche.comb_shape[1] * cfg.niche.comb_shape[2]:,}",
+        "FLYBODY_ACTION_DIM": str(cfg.flybody.action_dim_default),
+        "ANIMATION_FRAMES": str(cfg.visualization.animation_frames),
+        "ANIMATION_FPS": str(cfg.visualization.animation_fps),
+        "LONG_WAGGLE_ANIMATION_FRAMES": str(cfg.visualization.long_waggle_animation_frames),
+        "LONG_WAGGLE_ANIMATION_FPS": str(cfg.visualization.long_waggle_animation_fps),
+        "MODULE_COUNT": str(len(coverage)),
+        "SIMULATION_STEPS": str(summary.get("steps", "N/A")),
+        "FINAL_POLICY": str(summary.get("final_policy", "N/A")),
+        "FINAL_SPEED_MS": _fmt(summary.get("final_speed_m_s")),
+        "FINAL_ENERGY_J": _fmt(summary.get("final_energy_j")),
+        "MEAN_WING_POWER_MW": _fmt(summary.get("mean_wing_power_mw")),
+        "TOTAL_RECRUITED": str(summary.get("total_recruited_followers", "N/A")),
+        "FINAL_COMB_FRACTION": _fmt(summary.get("final_comb_fraction")),
+        "BROOD_TEMP_ERROR_C": _fmt(summary.get("final_brood_temperature_error_c")),
+        "FINAL_EMPIRICAL_ODOR": str(summary.get("final_empirical_odor", "N/A")),
+        "FINAL_EMPIRICAL_ALIGNMENT": _fmt(summary.get("final_empirical_alignment")),
+        "EMPIRICAL_PANEL_COUNT": _count(empirical.get("panel_count")),
+        "CALCIUM_DATASET_COUNT": _count(empirical.get("calcium_dataset_count")),
+        "ANTENNAL_SUMMARY_COUNT": _count(empirical.get("antennal_movement_summary_count")),
+        "WAGGLE_FOLLOWER_TRACK_COUNT": _count(waggle.get("track_count")),
+        "WAGGLE_FOLLOWER_CONFIDENCE": _fmt(waggle.get("confidence_score")),
+        "WAGGLE_DECODING_IMPROVEMENT": _fmt(waggle.get("decoding_improvement_fraction")),
+        "BRAIN_DATA_PARSEABLE_FRACTION": _fmt(completeness.get("parseable_fraction")),
+        "BRAIN_SOURCE_VERIFIED_FRACTION": _fmt(completeness.get("source_verified_fraction")),
+        "BRAIN_PARSEABILITY_TARGET_SATISFIED": str(
+            completeness.get("parseability_target_satisfied", "N/A")
+        ),
+        "ANATOMY_INVENTORY_COUNT": _count_list_or_value(
+            empirical.get("anatomy_inventories"),
+            empirical.get("anatomy_inventory_count"),
+        ),
+        "EMPIRICAL_TEMPLATE_COUNT": _count(empirical.get("template_count")),
+        "EMPIRICAL_KNOWN_GAP_COUNT": _count_list_or_value(empirical.get("known_gaps")),
+        "ANIMATION_COUNT": _count_list_or_value(animation.get("animations")),
+        "REAL_FLYBODY_ANIMATION_COUNT": _count_list_or_value(groups.get("real_flybody_3d")),
+        "REDUCED_ANIMATION_COUNT": _count_list_or_value(groups.get("reduced_schematic")),
+        "BEE_VISUAL_SCORE": _fmt(bee_visual.get("score")),
+        "BEE_SILHOUETTE_SCORE": _fmt(bee_visual.get("silhouette_score")),
+        "STRICT_SWARM_SCENE_COUNT": _count(contact_physics.get("scene_count")),
+        "RESEARCH_VALIDATION_FRACTION": _fmt(research.get("overall_validation_fraction")),
+        "RESEARCH_VISUALIZATION_COUNT": _count_list_or_value(
+            research.get("visualization_artifacts")
+        ),
+        "RESEARCH_EVIDENCE_COUNT": _count_list_or_value(research.get("empirical_evidence")),
+        "RESEARCH_SWEEP_COUNT": _count_list_or_value(research.get("sensitivity_sweeps")),
+        "RESEARCH_KNOWN_GAP_COUNT": _count_list_or_value(research.get("known_gaps")),
+        "METHODS_PANEL_COUNT": _count(methods.get("module_count")),
+        "METHODS_VALIDATION_FRACTION": _fmt(methods.get("overall_validation_fraction")),
+        "METHODS_VISUALIZATION_COUNT": _count(methods.get("visualization_count")),
+        "METHODS_FIGURE_COUNT": _count_list_or_value(methods.get("figure_paths")),
+        "METHODS_SWEEP_PANEL_COUNT": _count_list_or_value(methods.get("scenario_sweeps")),
+        "METHODS_EVIDENCE_LINK_COUNT": _count_list_or_value(
+            methods.get("manuscript_evidence_links")
+        ),
+        "METHODS_TOP_GAP": _first_string(methods.get("top_validation_gaps")),
+        "METHODS_ALL_VALIDATIONS_PASSED": str(methods.get("all_validations_passed", "N/A")),
+        "METHODS_BODY_MORPHOLOGY_SCORE": _module_metric(methods, "BeeBody", "morphology_score"),
+        "METHODS_BODY_INERTIA_SCORE": _module_metric(methods, "BeeBody", "inertia_rescaling_score"),
+        "METHODS_BRAIN_SOURCE_VERIFIED_FRACTION": _module_metric(
+            methods, "BeeBrain", "brain_source_verified_fraction"
+        ),
+        "METHODS_SWARM_WAGGLE_ORIENTATION_ERROR_DEG": _module_metric(
+            methods, "BeeSwarm", "waggle_follower_orientation_error_deg"
+        ),
+        "METHODS_SWARM_WAGGLE_ORIENTATION_CONFIDENCE": _module_metric(
+            methods, "BeeSwarm", "waggle_follower_orientation_confidence"
+        ),
+        "METHODS_SWARM_WAGGLE_PHASE_COUPLING": _module_metric(
+            methods, "BeeSwarm", "waggle_phase_coupling_score"
+        ),
+        "METHODS_SWARM_CONTACT_PAIR_COUNT": _module_metric(
+            methods, "BeeSwarm", "unique_bee_contact_pair_count"
+        ),
+        "METHODS_NICHE_THERMOREGULATION_GAIN": _module_metric(
+            methods, "BeeNiche", "thermoregulation_gain"
+        ),
+        "MANUSCRIPT_FIGURE_INDEX_COUNT": _count_list_or_value(figure_index.get("figures")),
+        "SIGNPOSTED_DIRECTORY_COUNT": _count(
+            readiness.get("signposting", {}).get("directory_count")
+        ),
+        "READINESS_TOP_PRIORITY": _top_priority(readiness),
+        "STACK_SYNTHESIS_VALIDATION_FRACTION": _fmt(synthesis.get("validation_fraction")),
+        "STACK_SYNTHESIS_READINESS_FRACTION": _fmt(synthesis.get("readiness_fraction")),
+        "STACK_SYNTHESIS_FIGURE_COUNT": _count_list_or_value(synthesis.get("figure_paths")),
+        "STACK_SYNTHESIS_TOP_FINDING": _first_string(synthesis.get("prioritized_findings")),
+        "STACK_SYNTHESIS_THERMAL_IMPROVEMENT_C": _fmt(
+            synthesis.get("statistics", {}).get("simulation_thermal_error_improvement_c")
+        ),
+        "STACK_SYNTHESIS_ARTIFACT_COVERAGE": _fmt(
+            synthesis.get("statistics", {}).get("module_artifact_coverage_fraction")
+        ),
+        "STACK_SYNTHESIS_SCHOLARSHIP_REF_COUNT": _count(
+            synthesis.get("statistics", {}).get("scholarship_reference_count")
+        ),
+    }
+
+
+def _fmt(value: Any) -> str:
+    if isinstance(value, int | float):
+        return f"{float(value):.3f}"
+    return "N/A"
+
+
+def _count(value: Any) -> str:
+    if isinstance(value, int):
+        return str(value)
+    if isinstance(value, float):
+        return str(int(value))
+    return "N/A"
+
+
+def _count_list_or_value(value: Any, fallback: Any = None) -> str:
+    if isinstance(value, list | tuple):
+        return str(len(value))
+    if value is not None:
+        return _count(value)
+    return _count(fallback)
+
+
+def _top_priority(readiness: dict[str, Any]) -> str:
+    improvements = readiness.get("prioritized_improvements", ())
+    if not improvements:
+        return "N/A"
+    first = improvements[0]
+    title = str(first.get("title", "N/A"))
+    priority = first.get("priority", "N/A")
+    return f"{title} (P{priority})"
+
+
+def _first_string(value: Any) -> str:
+    if isinstance(value, list | tuple) and value:
+        return str(value[0])
+    if isinstance(value, str) and value:
+        return value
+    return "N/A"
+
+
+def _module_metric(methods: dict[str, Any], module: str, metric: str) -> str:
+    for panel in methods.get("module_panels", ()) or ():
+        if panel.get("module") == module:
+            return _fmt(panel.get("quantitative_metrics", {}).get(metric))
+    return "N/A"

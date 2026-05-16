@@ -1,0 +1,952 @@
+{
+  "all_validations_passed": true,
+  "figure_paths": [
+    "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/methods_repo_dashboard.png",
+    "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beebody_methods_telemetry_dashboard.png",
+    "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beebrain_methods_empirical_completeness.png",
+    "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beemind_methods_policy_landscape.png",
+    "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beeswarm_methods_contact_recruitment.png",
+    "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beeniche_methods_comb_thermal.png",
+    "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/methods_manuscript_evidence_index.png"
+  ],
+  "interactive_paths": [
+    "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/interactive/methods_dashboard.html",
+    "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/interactive/methods_module_metrics.html"
+  ],
+  "manuscript_evidence_links": [
+    {
+      "artifact_path": "output/reports/bee_visual_verification.md",
+      "claim": "BeeBody animations are real FlyBody-backed and bee-like under cue scoring.",
+      "evidence_type": "visual_validation",
+      "manuscript_section": "manuscript/04_body_methods.md",
+      "module": "BeeBody",
+      "regeneration_command": "uv run python scripts/verify_bee_render.py",
+      "variable_tokens": [
+        "BEE_VISUAL_SCORE",
+        "BEE_SILHOUETTE_SCORE"
+      ]
+    },
+    {
+      "artifact_path": "output/reports/empirical_analysis.md",
+      "claim": "BeeBrain uses real downloaded or cataloged anatomy/activity sources where present.",
+      "evidence_type": "empirical_analysis",
+      "manuscript_section": "manuscript/05_brain_methods.md",
+      "module": "BeeBrain",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "variable_tokens": [
+        "EMPIRICAL_PANEL_COUNT",
+        "ANATOMY_INVENTORY_COUNT"
+      ]
+    },
+    {
+      "artifact_path": "output/reports/waggle_follower_analysis.md",
+      "claim": "BeeBrain integrates curated waggle follower antennal-position decoding evidence when local.",
+      "evidence_type": "waggle_follower_analysis",
+      "manuscript_section": "manuscript/05_brain_methods.md",
+      "module": "BeeBrain",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "variable_tokens": [
+        "WAGGLE_FOLLOWER_TRACK_COUNT",
+        "WAGGLE_FOLLOWER_CONFIDENCE"
+      ]
+    },
+    {
+      "artifact_path": "output/figures/methods/beemind_methods_policy_landscape.png",
+      "claim": "BeeMind exposes selected and competing policies with finite EFE terms.",
+      "evidence_type": "policy_diagnostic",
+      "manuscript_section": "manuscript/06_mind_methods.md",
+      "module": "BeeMind",
+      "regeneration_command": "uv run python scripts/run_methods_analysis.py",
+      "variable_tokens": [
+        "POLICY_HORIZON",
+        "METHODS_VALIDATION_FRACTION"
+      ]
+    },
+    {
+      "artifact_path": "output/reports/flybody_contact_physics.md",
+      "claim": "BeeSwarm production waggle/collision scenes record actual MuJoCo contacts.",
+      "evidence_type": "strict_contact_physics",
+      "manuscript_section": "manuscript/07_swarm_methods.md",
+      "module": "BeeSwarm",
+      "regeneration_command": "uv run python scripts/verify_bee_render.py",
+      "variable_tokens": [
+        "STRICT_SWARM_SCENE_COUNT",
+        "METHODS_SWARM_CONTACT_PAIR_COUNT"
+      ]
+    },
+    {
+      "artifact_path": "output/figures/methods/beeniche_methods_comb_thermal.png",
+      "claim": "BeeNiche reports comb, thermal, and forage metrics through deterministic kernels.",
+      "evidence_type": "niche_diagnostic",
+      "manuscript_section": "manuscript/08_niche_methods.md",
+      "module": "BeeNiche",
+      "regeneration_command": "uv run python scripts/run_methods_analysis.py",
+      "variable_tokens": [
+        "FINAL_COMB_FRACTION",
+        "BROOD_TEMP_ERROR_C"
+      ]
+    }
+  ],
+  "module_count": 5,
+  "module_panels": [
+    {
+      "fidelity_level": "real FlyBody render path plus reduced closed-loop telemetry",
+      "interpretation": "Body evidence combines real FlyBody output with finite closed-loop telemetry.",
+      "known_gaps": [
+        "Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.",
+        "Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset."
+      ],
+      "manuscript_evidence": [
+        {
+          "artifact_path": "output/reports/bee_visual_verification.md",
+          "claim": "BeeBody animations are real FlyBody-backed and bee-like under cue scoring.",
+          "evidence_type": "visual_validation",
+          "manuscript_section": "manuscript/04_body_methods.md",
+          "module": "BeeBody",
+          "regeneration_command": "uv run python scripts/verify_bee_render.py",
+          "variable_tokens": [
+            "BEE_VISUAL_SCORE",
+            "BEE_SILHOUETTE_SCORE"
+          ]
+        }
+      ],
+      "module": "BeeBody",
+      "primary_methods": [
+        "FlyBody task render path",
+        "reduced telemetry witness",
+        "bee morphology cue scoring",
+        "strict scene contact provenance"
+      ],
+      "quantitative_metrics": {
+        "bee_silhouette_score": 1.0,
+        "bee_visual_score": 0.9804109700520833,
+        "contact_proxy_count": 3.0,
+        "energy_drop_j": 0.0008210865967477332,
+        "inertia_rescaling_score": 0.82,
+        "max_speed_m_s": 0.0039966699966303984,
+        "mean_speed_m_s": 0.0039966699966303984,
+        "mean_wing_power_mw": 58.2914264719619,
+        "morphology_score": 1.0,
+        "real_flybody_body_animation_count": 3.0,
+        "wingbeat_frequency_hz": 230.0
+      },
+      "validation_panel": {
+        "checks": [
+          {
+            "detail": "BeeBody GIFs remain visually bee-like",
+            "name": "bee_visual_signature",
+            "passed": true,
+            "threshold": ">= 0.8",
+            "value": 0.9804109700520833
+          },
+          {
+            "detail": "Configured worker wingbeat remains honeybee-like",
+            "name": "wingbeat_frequency",
+            "passed": true,
+            "threshold": "180..260 Hz",
+            "value": 230.0
+          },
+          {
+            "detail": "Generated BeeBody carries finite honeybee calibration targets",
+            "name": "bee_body_calibration_score",
+            "passed": true,
+            "threshold": ">= 0.85",
+            "value": 1.0
+          },
+          {
+            "detail": "finite body telemetry",
+            "name": "finite_body_telemetry",
+            "passed": true,
+            "threshold": "finite",
+            "value": 0.0039966699966303984
+          },
+          {
+            "detail": "wing power positive",
+            "name": "wing_power_positive",
+            "passed": true,
+            "threshold": "> 0",
+            "value": 58.2914264719619
+          },
+          {
+            "detail": "body flybody outputs",
+            "name": "body_flybody_outputs",
+            "passed": true,
+            "threshold": ">= 2",
+            "value": 3
+          },
+          {
+            "detail": "body calibration score",
+            "name": "body_calibration_score",
+            "passed": true,
+            "threshold": ">= 0.85",
+            "value": 1.0
+          }
+        ],
+        "failed_checks": [],
+        "module": "BeeBody",
+        "passed_count": 7,
+        "validation_count": 7,
+        "validation_fraction": 1.0
+      },
+      "visualization_panel": {
+        "animation_count": 3,
+        "artifact_count": 7,
+        "artifact_paths": [
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beebody_flybody_morphology.gif",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beebody_flybody_flight.gif",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beeswarm_10_beebody_collision.gif",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/beebody_motion_power_phase.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/body_energy_timeseries.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beebody_methods_telemetry_dashboard.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/beebody_method_diagnostics.png"
+        ],
+        "backends": [
+          "flybody.walk_imitation+rollout_and_render",
+          "flybody.flight_imitation.WingBeatPatternGenerator+rollout_and_render",
+          "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image"
+        ],
+        "fidelity_levels": [
+          "real_flybody_3d",
+          "real_flybody_3d",
+          "real_flybody_3d_contact_physics",
+          "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic"
+        ],
+        "figure_count": 4,
+        "module": "BeeBody",
+        "validation_statuses": [
+          "verified",
+          "verified",
+          "verified",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "nonblank_static_figure"
+        ]
+      }
+    },
+    {
+      "fidelity_level": "empirical reduced AL-MB-CX kernel",
+      "interpretation": "Brain evidence is strongest for registries, anatomy inventories, and reduced empirical templates.",
+      "known_gaps": [
+        "No heavyweight spiking simulator is required in the default path.",
+        "The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics."
+      ],
+      "manuscript_evidence": [
+        {
+          "artifact_path": "output/reports/empirical_analysis.md",
+          "claim": "BeeBrain uses real downloaded or cataloged anatomy/activity sources where present.",
+          "evidence_type": "empirical_analysis",
+          "manuscript_section": "manuscript/05_brain_methods.md",
+          "module": "BeeBrain",
+          "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+          "variable_tokens": [
+            "EMPIRICAL_PANEL_COUNT",
+            "ANATOMY_INVENTORY_COUNT"
+          ]
+        },
+        {
+          "artifact_path": "output/reports/waggle_follower_analysis.md",
+          "claim": "BeeBrain integrates curated waggle follower antennal-position decoding evidence when local.",
+          "evidence_type": "waggle_follower_analysis",
+          "manuscript_section": "manuscript/05_brain_methods.md",
+          "module": "BeeBrain",
+          "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+          "variable_tokens": [
+            "WAGGLE_FOLLOWER_TRACK_COUNT",
+            "WAGGLE_FOLLOWER_CONFIDENCE"
+          ]
+        }
+      ],
+      "module": "BeeBrain",
+      "primary_methods": [
+        "empirical anatomy inventory",
+        "workbook/CSV activity parsing",
+        "waggle follower antennal-position parsing",
+        "odor-template bank projection",
+        "AL/MB/CX reduced kernel validation"
+      ],
+      "quantitative_metrics": {
+        "anatomy_inventory_count": 7.0,
+        "brain_data_parseable_fraction": 0.6,
+        "brain_source_verified_fraction": 1.0,
+        "calcium_dataset_count": 0.0,
+        "empirical_panel_count": 48.0,
+        "enabled_dataset_count": 10.0,
+        "mean_odor_separability": 0.6511059958748603,
+        "neuropil_count": 22.0,
+        "region_response_class_count": 6.0,
+        "template_count": 24.0,
+        "waggle_decoding_improvement": 0.24776741229159377,
+        "waggle_follower_confidence": 0.28875178634201437
+      },
+      "validation_panel": {
+        "checks": [
+          {
+            "detail": "Empirical templates are available for stack integration",
+            "name": "template_bank",
+            "passed": true,
+            "threshold": ">= 2",
+            "value": 24.0
+          },
+          {
+            "detail": "Honeybee Standard Brain assets are inventoried when local",
+            "name": "anatomy_inventory",
+            "passed": true,
+            "threshold": "> 0",
+            "value": 7
+          },
+          {
+            "detail": "Hadjitofi-Webb waggle-following data is parsed or explicitly gapped",
+            "name": "waggle_follower_source",
+            "passed": true,
+            "threshold": "present or declared gap",
+            "value": true
+          },
+          {
+            "detail": "Curated BeeBrain sources are parseable or source-verified blockers",
+            "name": "brain_parseability_target",
+            "passed": true,
+            "threshold": ">= 0.8 or all blockers source-verified",
+            "value": 0.6
+          },
+          {
+            "detail": "empirical panels present",
+            "name": "empirical_panels_present",
+            "passed": true,
+            "threshold": "> 0",
+            "value": 48.0
+          },
+          {
+            "detail": "template bank present",
+            "name": "template_bank_present",
+            "passed": true,
+            "threshold": "> 0",
+            "value": 24.0
+          },
+          {
+            "detail": "anatomy inventory present",
+            "name": "anatomy_inventory_present",
+            "passed": true,
+            "threshold": "> 0",
+            "value": 7.0
+          },
+          {
+            "detail": "calcium gap declared",
+            "name": "calcium_gap_declared",
+            "passed": true,
+            "threshold": "present or declared gap",
+            "value": 0.0
+          },
+          {
+            "detail": "waggle gap declared",
+            "name": "waggle_gap_declared",
+            "passed": true,
+            "threshold": "present or declared gap",
+            "value": 0.28875178634201437
+          },
+          {
+            "detail": "parseability target satisfied",
+            "name": "parseability_target_satisfied",
+            "passed": true,
+            "threshold": ">= 0.8 or source-verified blockers",
+            "value": 0.6
+          }
+        ],
+        "failed_checks": [],
+        "module": "BeeBrain",
+        "passed_count": 10,
+        "validation_count": 10,
+        "validation_fraction": 1.0
+      },
+      "visualization_panel": {
+        "animation_count": 1,
+        "artifact_count": 18,
+        "artifact_paths": [
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beebrain_neural_anatomy.gif",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/beebrain_empirical_alignment_timeseries.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/bee_brain_multimodal_source_map.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/beeswarm_waggle_recruitment_diagnostics.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/brain_data_completeness_matrix.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_activity_summary.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_anatomy_assets.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_anatomy_projection.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_antennal_movement.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_neuropil_coverage.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_panel_heatmap.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_panel_quality.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_stack_alignment.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/waggle_follower_alignment.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/waggle_phase_coupling.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beebrain_methods_empirical_completeness.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/beebrain_empirical_evidence_map.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/research_empirical_completeness.png"
+        ],
+        "backends": [
+          "matplotlib.funcanimation",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image"
+        ],
+        "fidelity_levels": [
+          "reduced_schematic",
+          "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic"
+        ],
+        "figure_count": 17,
+        "module": "BeeBrain",
+        "validation_statuses": [
+          "verified",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "nonblank_static_figure"
+        ]
+      }
+    },
+    {
+      "fidelity_level": "bounded active-inference-style policy kernel",
+      "interpretation": "Mind methods are transparent and deterministic, with calibration left as a known gap.",
+      "known_gaps": [
+        "No learned transition model or recursive social-belief inference yet.",
+        "Expected free energy terms are transparent hand-calibrated witnesses."
+      ],
+      "manuscript_evidence": [
+        {
+          "artifact_path": "output/figures/methods/beemind_methods_policy_landscape.png",
+          "claim": "BeeMind exposes selected and competing policies with finite EFE terms.",
+          "evidence_type": "policy_diagnostic",
+          "manuscript_section": "manuscript/06_mind_methods.md",
+          "module": "BeeMind",
+          "regeneration_command": "uv run python scripts/run_methods_analysis.py",
+          "variable_tokens": [
+            "POLICY_HORIZON",
+            "METHODS_VALIDATION_FRACTION"
+          ]
+        }
+      ],
+      "module": "BeeMind",
+      "primary_methods": [
+        "expected-free-energy term decomposition",
+        "competing-policy margin analysis",
+        "belief and colony-need sensitivity",
+        "deterministic action contract mapping"
+      ],
+      "quantitative_metrics": {
+        "branching_factor": 4.0,
+        "candidate_count": 4.0,
+        "efe_margin": 0.10801372983415232,
+        "efe_range": 0.26625450046454535,
+        "final_energy_j": 23.999143213986002,
+        "policy_horizon": 10.0,
+        "policy_switch_count": 0.0
+      },
+      "validation_panel": {
+        "checks": [
+          {
+            "detail": "Policy search remains tractable",
+            "name": "policy_horizon",
+            "passed": true,
+            "threshold": "<= 15",
+            "value": 10
+          },
+          {
+            "detail": "Selected policies preserve finite body energy",
+            "name": "finite_energy",
+            "passed": true,
+            "threshold": "finite",
+            "value": 23.999143213986002
+          },
+          {
+            "detail": "finite expected free energy",
+            "name": "finite_expected_free_energy",
+            "passed": true,
+            "threshold": "finite",
+            "value": 0.040078241701388254
+          },
+          {
+            "detail": "policy margin nonnegative",
+            "name": "policy_margin_nonnegative",
+            "passed": true,
+            "threshold": ">= 0",
+            "value": 0.10801372983415232
+          },
+          {
+            "detail": "bounded candidate count",
+            "name": "bounded_candidate_count",
+            "passed": true,
+            "threshold": "<= branching_factor",
+            "value": 4
+          }
+        ],
+        "failed_checks": [],
+        "module": "BeeMind",
+        "passed_count": 5,
+        "validation_count": 5,
+        "validation_fraction": 1.0
+      },
+      "visualization_panel": {
+        "animation_count": 1,
+        "artifact_count": 4,
+        "artifact_paths": [
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beemind_policy_beliefs.gif",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/beemind_policy_timeline.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beemind_methods_policy_landscape.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/beemind_policy_sensitivity.png"
+        ],
+        "backends": [
+          "matplotlib.funcanimation",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image"
+        ],
+        "fidelity_levels": [
+          "reduced_schematic",
+          "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic"
+        ],
+        "figure_count": 3,
+        "module": "BeeMind",
+        "validation_statuses": [
+          "verified",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "nonblank_static_figure"
+        ]
+      }
+    },
+    {
+      "fidelity_level": "reduced communication kernel plus strict FlyBody/MuJoCo BeeBody waggle/collision scenes",
+      "interpretation": "Swarm evidence separates strict small-scene physics from reduced colony dynamics.",
+      "known_gaps": [
+        "Large-N colony dynamics are summarized by configured scaling rather than simulated at full population by default.",
+        "Strict visual scenes prove small-scene contacts, not full BEEHAVE-scale population dynamics.",
+        "Trophallaxis, brood demography, and external weather-forage runtime coupling remain adapter targets."
+      ],
+      "manuscript_evidence": [
+        {
+          "artifact_path": "output/reports/flybody_contact_physics.md",
+          "claim": "BeeSwarm production waggle/collision scenes record actual MuJoCo contacts.",
+          "evidence_type": "strict_contact_physics",
+          "manuscript_section": "manuscript/07_swarm_methods.md",
+          "module": "BeeSwarm",
+          "regeneration_command": "uv run python scripts/verify_bee_render.py",
+          "variable_tokens": [
+            "STRICT_SWARM_SCENE_COUNT",
+            "METHODS_SWARM_CONTACT_PAIR_COUNT"
+          ]
+        }
+      ],
+      "module": "BeeSwarm",
+      "primary_methods": [
+        "strict FlyBody/MuJoCo contact scenes",
+        "BeeBody waggle follower-orientation telemetry",
+        "dance recruitment sensitivity",
+        "pheromone field stability",
+        "BEEHAVE-compatible colony summaries"
+      ],
+      "quantitative_metrics": {
+        "agent_count": 50.0,
+        "contact_graph_edge_count": 10.0,
+        "final_mean_pheromone": 0.0,
+        "mean_recruited_followers": 7.0,
+        "represented_colony_size": 20000.0,
+        "strict_contact_scene_count": 3.0,
+        "total_recruited_followers": 168.0,
+        "unique_bee_contact_pair_count": 15.0,
+        "waggle_follower_orientation_confidence": 0.7878249999999999,
+        "waggle_follower_orientation_error_deg": 19.095750000000013,
+        "waggle_phase_coupling_score": 9.148365930103435e-17
+      },
+      "validation_panel": {
+        "checks": [
+          {
+            "detail": "Production waggle/collision scenes are MuJoCo contact-backed",
+            "name": "strict_contact_scenes",
+            "passed": true,
+            "threshold": "passed",
+            "value": 3
+          },
+          {
+            "detail": "Represented colony covers simulated agents",
+            "name": "represented_colony_size",
+            "passed": true,
+            "threshold": ">= agent_count",
+            "value": 20000
+          },
+          {
+            "detail": "Configured waggle scene followers orient toward the dancer",
+            "name": "waggle_orientation_error_target",
+            "passed": true,
+            "threshold": "< 35.0",
+            "value": 19.095750000000013
+          },
+          {
+            "detail": "Configured waggle scene exceeds follower orientation-confidence target",
+            "name": "waggle_orientation_confidence_target",
+            "passed": true,
+            "threshold": "> 0.65",
+            "value": 0.7878249999999999
+          },
+          {
+            "detail": "strict contact physics passed",
+            "name": "strict_contact_physics_passed",
+            "passed": true,
+            "threshold": "passed",
+            "value": 3
+          },
+          {
+            "detail": "recruitment nonnegative",
+            "name": "recruitment_nonnegative",
+            "passed": true,
+            "threshold": ">= 0",
+            "value": 7.0
+          },
+          {
+            "detail": "pheromone finite",
+            "name": "pheromone_finite",
+            "passed": true,
+            "threshold": "finite",
+            "value": 0.0
+          },
+          {
+            "detail": "waggle follower orientation telemetry",
+            "name": "waggle_follower_orientation_telemetry",
+            "passed": true,
+            "threshold": "finite",
+            "value": 0.7878249999999999
+          },
+          {
+            "detail": "waggle orientation error target",
+            "name": "waggle_orientation_error_target",
+            "passed": true,
+            "threshold": "< 35.0",
+            "value": 19.095750000000013
+          },
+          {
+            "detail": "waggle orientation confidence target",
+            "name": "waggle_orientation_confidence_target",
+            "passed": true,
+            "threshold": "> 0.65",
+            "value": 0.7878249999999999
+          }
+        ],
+        "failed_checks": [],
+        "module": "BeeSwarm",
+        "passed_count": 10,
+        "validation_count": 10,
+        "validation_fraction": 1.0
+      },
+      "visualization_panel": {
+        "animation_count": 4,
+        "artifact_count": 7,
+        "artifact_paths": [
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beeswarm_dance_pheromone.gif",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beeswarm_waggle_dance_configured.gif",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beeswarm_waggle_dance_long.gif",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/beeswarm_recruitment_task_allocation.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beeswarm_methods_contact_recruitment.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/beeswarm_contact_recruitment_scorecard.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beeswarm_10_beebody_collision.gif"
+        ],
+        "backends": [
+          "matplotlib.funcanimation",
+          "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer",
+          "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer"
+        ],
+        "fidelity_levels": [
+          "reduced_schematic",
+          "real_flybody_3d_contact_physics",
+          "real_flybody_3d_contact_physics",
+          "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic",
+          "real_flybody_3d_contact_physics"
+        ],
+        "figure_count": 3,
+        "module": "BeeSwarm",
+        "validation_statuses": [
+          "verified",
+          "verified",
+          "verified",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "generated"
+        ]
+      }
+    },
+    {
+      "fidelity_level": "voxel comb and thermal kernel with adapter schemas",
+      "interpretation": "Niche methods include deterministic seasonal/weather witnesses, not a full ecology engine.",
+      "known_gaps": [
+        "No external Hiveopolis or BEEHAVE engine is required in the default path.",
+        "External nectar landscape calibration and brood demography remain future adapter layers."
+      ],
+      "manuscript_evidence": [
+        {
+          "artifact_path": "output/figures/methods/beeniche_methods_comb_thermal.png",
+          "claim": "BeeNiche reports comb, thermal, and forage metrics through deterministic kernels.",
+          "evidence_type": "niche_diagnostic",
+          "manuscript_section": "manuscript/08_niche_methods.md",
+          "module": "BeeNiche",
+          "regeneration_command": "uv run python scripts/run_methods_analysis.py",
+          "variable_tokens": [
+            "FINAL_COMB_FRACTION",
+            "BROOD_TEMP_ERROR_C"
+          ]
+        }
+      ],
+      "module": "BeeNiche",
+      "primary_methods": [
+        "voxel comb occupancy metrics",
+        "brood thermal stability witness",
+        "forage landscape scenario fields",
+        "Hiveopolis/BEEHAVE adapter schemas"
+      ],
+      "quantitative_metrics": {
+        "brood_target_margin_c": 2.0,
+        "comb_voxels": 864.0,
+        "final_brood_temperature_error_c": 2.4240946882584566,
+        "final_comb_fraction": 0.08333333333333333,
+        "foraging_radius_midpoint_km": 2.0,
+        "mean_brood_temperature_error_c": 3.190730105980709,
+        "mean_comb_fraction": 0.08333333333333333,
+        "thermoregulation_gain": 0.24
+      },
+      "validation_panel": {
+        "checks": [
+          {
+            "detail": "Configured brood target sits inside target band",
+            "name": "brood_temperature_band",
+            "passed": true,
+            "threshold": "within band",
+            "value": 34.0
+          },
+          {
+            "detail": "Comb occupancy witness stays nonnegative",
+            "name": "comb_fraction",
+            "passed": true,
+            "threshold": ">= 0",
+            "value": 0.08333333333333333
+          },
+          {
+            "detail": "Thermoregulated reduced Niche run reaches brood-temperature tolerance",
+            "name": "brood_temperature_calibrated_error",
+            "passed": true,
+            "threshold": "< 3 C",
+            "value": 2.4240946882584566
+          },
+          {
+            "detail": "comb fraction nonnegative",
+            "name": "comb_fraction_nonnegative",
+            "passed": true,
+            "threshold": ">= 0",
+            "value": 0.08333333333333333
+          },
+          {
+            "detail": "thermal error finite",
+            "name": "thermal_error_finite",
+            "passed": true,
+            "threshold": "finite",
+            "value": 3.190730105980709
+          },
+          {
+            "detail": "brood target inside band",
+            "name": "brood_target_inside_band",
+            "passed": true,
+            "threshold": "inside band",
+            "value": 34.0
+          },
+          {
+            "detail": "brood temperature error target",
+            "name": "brood_temperature_error_target",
+            "passed": true,
+            "threshold": "< 3 C",
+            "value": 2.4240946882584566
+          }
+        ],
+        "failed_checks": [],
+        "module": "BeeNiche",
+        "passed_count": 7,
+        "validation_count": 7,
+        "validation_fraction": 1.0
+      },
+      "visualization_panel": {
+        "animation_count": 1,
+        "artifact_count": 5,
+        "artifact_paths": [
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beeniche_comb_thermal.gif",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/beeniche_thermal_comb_panel.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/comb_fraction_timeseries.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beeniche_methods_comb_thermal.png",
+          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/beeniche_thermal_comb_scorecard.png"
+        ],
+        "backends": [
+          "matplotlib.funcanimation",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image"
+        ],
+        "fidelity_levels": [
+          "reduced_schematic",
+          "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic"
+        ],
+        "figure_count": 4,
+        "module": "BeeNiche",
+        "validation_statuses": [
+          "verified",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "nonblank_static_figure"
+        ]
+      }
+    }
+  ],
+  "overall_validation_fraction": 1.0,
+  "scenario_sweeps": [
+    {
+      "dominant_output": "final_comb_fraction",
+      "interpretation": "mind.energy_threshold sweep changed recruitment by 0 and comb fraction by 0 in the reduced kernel.",
+      "monotonic_outputs": [
+        "final_comb_fraction",
+        "final_empirical_alignment",
+        "final_energy_j",
+        "total_recruited_followers"
+      ],
+      "output_ranges": {
+        "final_comb_fraction": 0.0,
+        "final_empirical_alignment": 0.0,
+        "final_energy_j": 0.0,
+        "total_recruited_followers": 0.0
+      },
+      "parameter": "mind.energy_threshold",
+      "values": [
+        0.15,
+        0.3,
+        0.44999999999999996,
+        0.6,
+        0.75
+      ]
+    },
+    {
+      "dominant_output": "total_recruited_followers",
+      "interpretation": "mind.follow_probability_threshold sweep changed recruitment by 30 and comb fraction by 0 in the reduced kernel.",
+      "monotonic_outputs": [
+        "final_comb_fraction",
+        "final_empirical_alignment",
+        "final_energy_j",
+        "total_recruited_followers"
+      ],
+      "output_ranges": {
+        "final_comb_fraction": 0.0,
+        "final_empirical_alignment": 0.0,
+        "final_energy_j": 0.0,
+        "total_recruited_followers": 30.0
+      },
+      "parameter": "mind.follow_probability_threshold",
+      "values": [
+        0.1,
+        0.25,
+        0.4,
+        0.5499999999999999,
+        0.7
+      ]
+    },
+    {
+      "dominant_output": "final_comb_fraction",
+      "interpretation": "niche.ambient_temperature_c sweep changed recruitment by 0 and comb fraction by 0 in the reduced kernel.",
+      "monotonic_outputs": [
+        "final_comb_fraction",
+        "final_empirical_alignment",
+        "final_energy_j",
+        "total_recruited_followers"
+      ],
+      "output_ranges": {
+        "final_comb_fraction": 0.0,
+        "final_empirical_alignment": 0.0,
+        "final_energy_j": 0.0,
+        "total_recruited_followers": 0.0
+      },
+      "parameter": "niche.ambient_temperature_c",
+      "values": [
+        18.0,
+        22.0,
+        26.0,
+        30.0,
+        34.0
+      ]
+    }
+  ],
+  "summary": "Science-first per-module methods panels connecting quantitative diagnostics, validation scorecards, visualization provenance, and manuscript evidence links.",
+  "title": "BeeStack Methods Analysis",
+  "top_validation_gaps": [
+    "Paoli MATLAB calcium traces are not yet local or parseable",
+    "Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.",
+    "Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset.",
+    "No heavyweight spiking simulator is required in the default path.",
+    "The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics.",
+    "No learned transition model or recursive social-belief inference yet.",
+    "Expected free energy terms are transparent hand-calibrated witnesses.",
+    "Large-N colony dynamics are summarized by configured scaling rather than simulated at full population by default."
+  ],
+  "visualization_count": 41
+}

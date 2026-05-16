@@ -1,0 +1,774 @@
+{
+  "configuration": {
+    "body": {
+      "body_mass_mg": 80.0,
+      "leg_dof_per_leg": 4,
+      "olfactory_channels": 170,
+      "ommatidia_per_eye": 6900,
+      "sensor_noise": {
+        "mechanosensory": 0.01,
+        "olfactory": 0.03,
+        "visual": 0.02
+      },
+      "species": "apis_mellifera_worker",
+      "terrain": "comb_surface",
+      "wing_dof_per_wing": 3,
+      "wing_model": "coupled_hamuli",
+      "wing_stroke_hz": 230.0
+    },
+    "brain": {
+      "glomeruli": 170,
+      "heading_bins": 32,
+      "kc_class_i_fraction": 0.9,
+      "kc_sparsity": 0.02,
+      "kenyon_cells_per_hemisphere": 170000,
+      "optic_pixels_per_eye": 6900,
+      "tractable_neuron_target": [
+        500000,
+        1000000
+      ]
+    },
+    "empirical": {
+      "atlas_glomeruli_range": [
+        160,
+        170
+      ],
+      "calcium_acquisition_hz": 100.0,
+      "calcium_baseline_s": 1.0,
+      "calcium_bee_count": 8,
+      "calcium_glomeruli_tracked": 10,
+      "calcium_odorant_count": 3,
+      "calcium_source_dataset_id": "dryad-paoli-2024-al-calcium",
+      "calcium_stimulus_s": [
+        1.0,
+        2.0
+      ],
+      "calcium_trial_count": 20,
+      "enabled_dataset_ids": [
+        "dryad-paoli-2024-al-calcium",
+        "galizia-1999-glomerular-code",
+        "virtual-honeybee-standard-brain",
+        "szyszka-2023-granger-al-network",
+        "kaneko-2016-kenyon-subtypes",
+        "dryad-carcaud-2022-multisite-gcamp",
+        "dryad-andreu-2025-alarm-odorant-receptors",
+        "dryad-jernigan-2026-antennal-movement",
+        "dryad-nouvian-2017-biogenic-amines",
+        "figshare-hadjitofi-2024-waggle-following"
+      ],
+      "odor_templates": [
+        "1-octanol",
+        "clove oil",
+        "geraniol"
+      ],
+      "template_excitation_width": 0.045,
+      "template_inhibition_fraction": 0.35,
+      "template_inhibition_width": 0.14
+    },
+    "flybody": {
+      "action_dim_default": 59,
+      "disable_legs_for_flight": true,
+      "disable_wings_for_walk": true,
+      "flight_future_steps": 5,
+      "flight_joint_filter": 0.0,
+      "flight_terminal_com_dist": 2.0,
+      "flight_time_limit_s": 0.6,
+      "force_actuators": false,
+      "future_steps": 64,
+      "joint_filter": 0.01,
+      "local_fork_path": null,
+      "min_dynamic_pixels": 32,
+      "terminal_com_dist": 0.3,
+      "time_limit_s": 10.0
+    },
+    "mind": {
+      "angle_noise_sigma_deg": 5.0,
+      "branching_factor": 4,
+      "duration_noise_sigma_s": 0.05,
+      "energy_threshold": 0.3,
+      "follow_probability_threshold": 0.3,
+      "initial_caste": "nurse",
+      "latent_dim": 32,
+      "policy_horizon": 10,
+      "risk_sensitivity": 0.5
+    },
+    "niche": {
+      "ambient_temperature_c": 25.0,
+      "brood_temperature_band_c": [
+        32.0,
+        36.0
+      ],
+      "brood_temperature_target_c": 34.0,
+      "comb_shape": [
+        18,
+        12,
+        4
+      ],
+      "foraging_radius_km": [
+        1.0,
+        3.0
+      ],
+      "seasonal_forage_amplitude": 0.35,
+      "thermoregulation_gain": 0.24,
+      "wax_deposit_threshold": 0.35,
+      "weather_forage_penalty": 0.1
+    },
+    "swarm": {
+      "agent_count": 50,
+      "fidelity_level": "level3",
+      "local_followers_per_dance": 12,
+      "pheromone_components": [
+        "alarm",
+        "qmp",
+        "nasanov",
+        "brood",
+        "wax"
+      ],
+      "pheromone_grid_shape": [
+        12,
+        12,
+        4
+      ],
+      "represented_colony_size": 20000
+    },
+    "timing": {
+      "control_rate_hz": 100,
+      "dance_event_rate_hz": 250,
+      "physics_dt_s": 0.0005,
+      "policy_rate_hz": 10
+    },
+    "visualization": {
+      "animation_fps": 8,
+      "animation_frames": 24,
+      "body_camera_id": "walker/track1",
+      "body_plan_subdir": "flybody_bee",
+      "body_render_height": 480,
+      "body_render_width": 640,
+      "flybody_scene_substeps": 4,
+      "long_waggle_animation_fps": 12,
+      "long_waggle_animation_frames": 96,
+      "swarm_collision_altitude_m": 0.05,
+      "swarm_collision_bee_count": 10,
+      "swarm_collision_initial_speed_m_s": 0.35,
+      "swarm_collision_min_actual_contact_pairs": 1,
+      "swarm_collision_radius_m": 0.14,
+      "swarm_collision_scene_radius_m": 0.18,
+      "waggle_dance_angle_deg": 35.0,
+      "waggle_dance_duration_s": 1.2,
+      "waggle_dance_followers": 10,
+      "waggle_dance_loop_radius_m": 0.085,
+      "waggle_dance_quality": 0.8,
+      "waggle_dance_sun_azimuth_deg": 120.0,
+      "waggle_dance_waggle_amplitude_m": 0.035
+    }
+  },
+  "empirical_brain": {
+    "anatomy_datasets": [
+      {
+        "assets": [
+          {
+            "asset_id": "hsb-gray-tiff",
+            "asset_type": "tiff_stack",
+            "description": "Average gray-value image stack for anatomy registration context.",
+            "file_name": "HBSGrey.zip",
+            "size_bytes": 7800000,
+            "title": "Average gray-value TIFF images of the Honeybee Standard Brain",
+            "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/HBSGrey.zip"
+          },
+          {
+            "asset_id": "hsb-gray-jpg",
+            "asset_type": "image_stack",
+            "description": "Compressed gray-value image stack for lightweight visual review.",
+            "file_name": "HBSConfocal.zip",
+            "size_bytes": 1300000,
+            "title": "Average gray-value JPG images of the Honeybee Standard Brain",
+            "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/HBSConfocal.zip"
+          },
+          {
+            "asset_id": "hsb-label-field",
+            "asset_type": "label_field",
+            "description": "Neuropil label-field images for coverage and abbreviation validation.",
+            "file_name": "HBSLabels.zip",
+            "size_bytes": 421327,
+            "title": "Label-field TIFF dataset of the Honeybee Standard Brain",
+            "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/HBSLabels.zip"
+          },
+          {
+            "asset_id": "hsb-vrml-atlas",
+            "asset_type": "vrml",
+            "description": "Interactive 3D surface model with olfactory-path neuron geometry.",
+            "file_name": "VRML.zip",
+            "size_bytes": 5965616,
+            "title": "VRML Honeybee Atlas with olfactory-path neurons",
+            "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/VRML.zip"
+          },
+          {
+            "asset_id": "hsb-vrml-act",
+            "asset_type": "vrml",
+            "description": "Tract-focused VRML anatomy for antennocerebralis pathway metadata.",
+            "file_name": "ACT_Standard.zip",
+            "size_bytes": 2000000,
+            "title": "VRML atlas with antennocerebralis tracts",
+            "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/ACT_Standard.zip"
+          },
+          {
+            "asset_id": "hsb-vrml-alf1",
+            "asset_type": "vrml",
+            "description": "Projection-neuron-style AL-to-MB geometry for olfactory pathway context.",
+            "file_name": "ALF1_Standard.zip",
+            "size_bytes": 2000000,
+            "title": "VRML atlas with ALF-1 neuron connecting AL and MB",
+            "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/ALF1_Standard.zip"
+          },
+          {
+            "asset_id": "hsb-vrml-pe1-pn",
+            "asset_type": "vrml",
+            "description": "Mushroom-body and projection-neuron VRML anatomy for MB pathway context.",
+            "file_name": "Atlas_Pe1_PNII.zip",
+            "size_bytes": 4000000,
+            "title": "VRML atlas with MB intrinsic, Pe1, MB extrinsic, and PN neurons",
+            "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/Atlas_Pe1_PNII.zip"
+          },
+          {
+            "asset_id": "hsb-neuropil-abbreviations",
+            "asset_type": "html_table",
+            "description": "Official abbreviation list for label-field and atlas-region naming.",
+            "file_name": "neuropil_abbreviations.html",
+            "size_bytes": 0,
+            "title": "Honeybee Standard Brain neuropil abbreviation table",
+            "url": "https://www.bcp.fu-berlin.de/en/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/abbreviations/index.html"
+          }
+        ],
+        "dataset_id": "virtual-honeybee-standard-brain",
+        "doi": "10.1002/cne.20644",
+        "integration_target": "download and summarize honeybee neuropil geometry, labels, tracts, and olfactory/mushroom-body anatomy",
+        "license_note": "See source repository or publisher terms.",
+        "sample": "average gray-value, label-field, VRML atlas, tracts, and neuron assets",
+        "source_url": "https://www.bcp.fu-berlin.de/en/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/index.html",
+        "title": "Virtual Honeybee Standard Brain Atlas downloads"
+      }
+    ],
+    "datasets": [
+      {
+        "dataset_id": "dryad-paoli-2024-al-calcium",
+        "doi": "10.5061/dryad.qbzkh18sc",
+        "integration_target": "calibrate PN response latency, inhibition, and odor aftersmell signatures",
+        "license_note": "See source repository or publisher terms.",
+        "modality": "fast Fura-2-dextran calcium imaging",
+        "module_targets": [
+          "antennal_lobe",
+          "mushroom_body"
+        ],
+        "sample": "8 bees, 3 odorants, 20 trials, glomerulus-by-odorant-by-trial-by-time arrays",
+        "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.qbzkh18sc",
+        "title": "Honey bee antennal lobe calcium imaging",
+        "variables": [
+          "deltaF_over_F",
+          "acquisition_frequency_hz",
+          "odor_labels",
+          "glomerulus_xy"
+        ]
+      },
+      {
+        "dataset_id": "galizia-1999-glomerular-code",
+        "doi": "10.1038/8144",
+        "integration_target": "validate odor-specific conserved glomerular response templates",
+        "license_note": "See source repository or publisher terms.",
+        "modality": "calcium-sensitive dye glomerular response maps",
+        "module_targets": [
+          "antennal_lobe"
+        ],
+        "sample": "30 odorants with identified glomerular outlines compared across animals",
+        "source_url": "https://www.nature.com/articles/nn0599_473",
+        "title": "The glomerular code for odor representation in Apis mellifera",
+        "variables": [
+          "odor_identity",
+          "glomerular_response_pattern",
+          "identified_glomeruli"
+        ]
+      },
+      {
+        "dataset_id": "virtual-honeybee-standard-brain",
+        "doi": "10.1002/cne.20644",
+        "integration_target": "anchor BeeBrain region names, geometry, and anatomical provenance",
+        "license_note": "See source repository or publisher terms.",
+        "modality": "3D surface atlas with integrated neurons and tracts",
+        "module_targets": [
+          "whole_brain",
+          "central_complex",
+          "mushroom_body",
+          "antennal_lobe"
+        ],
+        "sample": "average-shape atlas for registering structural and functional data",
+        "source_url": "https://www.bcp.fu-berlin.de/en/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/index.html",
+        "title": "Virtual Honeybee Standard Brain Atlas",
+        "variables": [
+          "neuropil_surfaces",
+          "neuron_tracts",
+          "registration_space"
+        ]
+      },
+      {
+        "dataset_id": "szyszka-2023-granger-al-network",
+        "doi": "10.3390/insects14060539",
+        "integration_target": "test lateral inhibition, latency, and functional-connectivity summaries",
+        "license_note": "See source repository or publisher terms.",
+        "modality": "line-scan calcium dynamics and Granger connectivity",
+        "module_targets": [
+          "antennal_lobe",
+          "functional_connectivity"
+        ],
+        "sample": "10 atlas-identified glomeruli, 30 repetitions, 6 odorants, 100 Hz windows",
+        "source_url": "https://www.mdpi.com/2075-4450/14/6/539",
+        "title": "Transient calcium dynamics in the honey bee antennal lobe network",
+        "variables": [
+          "negative_deltaF_over_F",
+          "glomerular_latency",
+          "VAR_connectivity"
+        ]
+      },
+      {
+        "dataset_id": "kaneko-2016-kenyon-subtypes",
+        "doi": "10.1186/s40851-016-0051-6",
+        "integration_target": "constrain KC class counts and subtype-aware sparse coding reports",
+        "license_note": "See source repository or publisher terms.",
+        "modality": "gene-expression and neural-activity subtype characterization",
+        "module_targets": [
+          "mushroom_body"
+        ],
+        "sample": "large-type, small-type, class-II, and middle-type Kenyon cell evidence",
+        "source_url": "https://zoologicalletters.biomedcentral.com/articles/10.1186/s40851-016-0051-6",
+        "title": "Gene expression profiles and neural activities of honeybee Kenyon cell subtypes",
+        "variables": [
+          "KC_subtype",
+          "marker_gene",
+          "calyx_layer",
+          "neural_activity"
+        ]
+      },
+      {
+        "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+        "doi": "10.5061/dryad.83bk3j9tt",
+        "integration_target": "drive real tabular odor-response panels across AL, LH, and MB calyx channels",
+        "license_note": "See source repository or publisher terms.",
+        "modality": "pan-neuronal GCaMP6f calcium-imaging workbook",
+        "module_targets": [
+          "antennal_lobe",
+          "mushroom_body",
+          "lateral_horn"
+        ],
+        "sample": "Excel files with antennal-lobe, lateral-horn, and mushroom-body calyx odor responses",
+        "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.83bk3j9tt",
+        "title": "Multisite imaging of neural activity using GCaMP6f in the honey bee",
+        "variables": [
+          "S2_Data.xlsx",
+          "S3_Data.xlsx",
+          "S4_Data.xlsx",
+          "odor",
+          "GCaMP6f_response"
+        ]
+      },
+      {
+        "dataset_id": "dryad-andreu-2025-alarm-odorant-receptors",
+        "doi": "10.5061/dryad.rv15dv4k2",
+        "integration_target": "constrain antennal-channel priors for alarm-pheromone response templates",
+        "license_note": "See source repository or publisher terms.",
+        "modality": "odorant-receptor workbook with alarm-pheromone response measurements",
+        "module_targets": [
+          "olfactory_receptors",
+          "antennal_lobe"
+        ],
+        "sample": "supplementary workbook for AmOR136 and AmOR11 receptor tuning",
+        "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.rv15dv4k2",
+        "title": "Identification of two odorant receptors tuned to alarm pheromone in Apis mellifera",
+        "variables": [
+          "odorant",
+          "receptor",
+          "response",
+          "alarm_pheromone_component"
+        ]
+      },
+      {
+        "dataset_id": "dryad-jernigan-2026-antennal-movement",
+        "doi": "10.5061/dryad.qjq2bvqw6",
+        "integration_target": "calibrate antennal vibration and Johnston's-organ event statistics",
+        "license_note": "See source repository or publisher terms.",
+        "modality": "frame-level antennal active-sensing CSV",
+        "module_targets": [
+          "johnstons_organ",
+          "active_sensing",
+          "antennal_lobe"
+        ],
+        "sample": "CSV with bee, plume, frame, antennal tip/base positions, theta, phi, and odor detector columns",
+        "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.qjq2bvqw6",
+        "title": "Antennal movement responses to different plume structures in Apis mellifera",
+        "variables": [
+          "Bee",
+          "Plume",
+          "Frame",
+          "LeftTheta",
+          "RightTheta",
+          "Odor_detector"
+        ]
+      },
+      {
+        "dataset_id": "dryad-nouvian-2017-biogenic-amines",
+        "doi": "10.5061/dryad.rj10c",
+        "integration_target": "summarize alarm-pheromone neuromodulatory defence evidence for BeeMind/BeeBrain interfaces",
+        "license_note": "See source repository or publisher terms.",
+        "modality": "brain biogenic amine and defensive behavior spreadsheets",
+        "module_targets": [
+          "neuromodulation",
+          "defence",
+          "mushroom_body",
+          "central_brain"
+        ],
+        "sample": "Excel workbooks for colonies, individuals, and pharmacological manipulation",
+        "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.rj10c",
+        "title": "Cooperative defence operates by social modulation of biogenic amine levels in the honeybee brain",
+        "variables": [
+          "serotonin",
+          "dopamine",
+          "alarm_pheromone",
+          "stinging_response"
+        ]
+      },
+      {
+        "dataset_id": "figshare-hadjitofi-2024-waggle-following",
+        "doi": "10.6084/m9.figshare.24715977.v1",
+        "integration_target": "calibrate follower antennal alignment, central-complex dance-vector decoding, and waggle recruitment confidence",
+        "license_note": "CC BY 4.0 at Figshare; associated Current Biology article DOI 10.1016/j.cub.2024.02.045.",
+        "modality": "high-speed waggle-following antennal-position CSV and model-error tables",
+        "module_targets": [
+          "johnstons_organ",
+          "central_complex",
+          "waggle_decoding",
+          "swarm"
+        ],
+        "sample": "Apis mellifera nestmate follower positions, antenna angles, binned features, and dance-decoding model errors",
+        "source_url": "https://figshare.com/articles/dataset/Honeybee_antennal_positioning_data_when_following_dances/24715977",
+        "title": "Honeybee antennal positioning data when following dances",
+        "variables": [
+          "angle_to_dancer_deg",
+          "l_antenna_deg",
+          "r_antenna_deg",
+          "antenna_midpoint_deg",
+          "vector_error_deg",
+          "orientation_straightness"
+        ]
+      }
+    ],
+    "loader_capabilities": [
+      "Paoli Dryad MATLAB db.bee calcium arrays",
+      "Dryad workbook/CSV odor-response panels",
+      "Honeybee Standard Brain atlas ZIP, VRML, TIFF, and abbreviation inventories",
+      "atlas-length template projection into process_observation",
+      "calcium baseline/stimulus summaries and odor alignment scores"
+    ],
+    "profile": {
+      "atlas_glomeruli_range": [
+        160,
+        170
+      ],
+      "calcium_protocol": {
+        "acquisition_hz": 100.0,
+        "baseline_s": 1.0,
+        "bee_count": 8,
+        "glomeruli_tracked": 10,
+        "odorant_count": 3,
+        "source_dataset_id": "dryad-paoli-2024-al-calcium",
+        "stimulus_s": [
+          1.0,
+          2.0
+        ],
+        "trial_count": 20
+      },
+      "dataset_ids": [
+        "dryad-paoli-2024-al-calcium",
+        "galizia-1999-glomerular-code",
+        "virtual-honeybee-standard-brain",
+        "szyszka-2023-granger-al-network",
+        "kaneko-2016-kenyon-subtypes",
+        "dryad-carcaud-2022-multisite-gcamp",
+        "dryad-andreu-2025-alarm-odorant-receptors",
+        "dryad-jernigan-2026-antennal-movement",
+        "dryad-nouvian-2017-biogenic-amines",
+        "figshare-hadjitofi-2024-waggle-following"
+      ],
+      "default_glomeruli": 170,
+      "heading_bins": 32,
+      "kc_sparsity_upper_bound": 0.02,
+      "kenyon_cells_per_hemisphere": 170000
+    }
+  },
+  "flybody": {
+    "fork": {
+      "bee_model_target": "flybody/bee/assets/apis_mellifera_worker.xml",
+      "core_model": "flybody/fruitfly/assets/fruitfly.xml",
+      "expected_fork_remote": "https://github.com/docxology/flybody-beestack",
+      "license": "Apache-2.0",
+      "local_path_env": "BEESTACK_FLYBODY_PATH",
+      "upstream_repo": "https://github.com/TuragaLab/flybody"
+    },
+    "patches": [
+      {
+        "operation": "Modify Drosophila mass and inertial tensors -> Apis worker mass 80.0 mg with segment-level inertial rescaling",
+        "rationale": "Honeybee morphology differs from Drosophila and must be represented in MJCF.",
+        "target": "mass_scaling",
+        "validation": "hovering and walking CoT remain finite and within configured benchmark bands"
+      },
+      {
+        "operation": "Modify single dipteran wing pair plus haltere-stabilized flight assumptions -> two forewings and two hindwings, 12 wing DOF, coupled by hamuli",
+        "rationale": "Honeybee morphology differs from Drosophila and must be represented in MJCF.",
+        "target": "four_wing_hamuli",
+        "validation": "forewing-hindwing phase offset remains bounded during 230 Hz stroke cycle"
+      },
+      {
+        "operation": "Modify generic fly tarsi and leg meshes -> hindleg corbicula pollen baskets with load-dependent actuation penalty",
+        "rationale": "Honeybee morphology differs from Drosophila and must be represented in MJCF.",
+        "target": "corbicula_hindlegs",
+        "validation": "loaded flight and comb traversal expose increased actuator load"
+      },
+      {
+        "operation": "Modify fruit-fly compound eye and antenna sensor set -> 6900 ommatidia per eye plus 170 antennal channels",
+        "rationale": "Honeybee morphology differs from Drosophila and must be represented in MJCF.",
+        "target": "apis_sensory_head",
+        "validation": "observation schema validates visual and olfactory dimensions"
+      },
+      {
+        "operation": "Modify fruit-fly abdomen mesh without honeybee colony effectors -> wax glands, Nasonov gland, stinger complex, and honey stomach state hooks",
+        "rationale": "Honeybee morphology differs from Drosophila and must be represented in MJCF.",
+        "target": "abdomen_effectors",
+        "validation": "BeeNiche, BeeSwarm, and BeeBody share wax, alarm, and energy signals"
+      },
+      {
+        "operation": "Retune wing fluid-force coefficients for coupled honeybee forewing/hindwing strokes",
+        "rationale": "The BeeStack spec requires figure-eight wing kinematics and hamular coupling.",
+        "target": "fluid_forces",
+        "validation": "Hovering remains stable at 230 Hz with finite CoT."
+      },
+      {
+        "operation": "Expose BeeStack Observation and Action adapters around FlyBody task environments",
+        "rationale": "The five-module stack needs the same typed 100 Hz I/O boundary across backends.",
+        "target": "task_api",
+        "validation": "validate_observation and validate_action pass for every adapter step."
+      },
+      {
+        "operation": "Add apis_mellifera_worker MJCF, meshes, materials, and actuator groups",
+        "rationale": "BeeBody must ship a reproducible honeybee model target instead of mutating fruitfly.xml in place.",
+        "target": "assets",
+        "validation": "Fork contains bee_model_target and model-card records its source hash."
+      }
+    ]
+  },
+  "limitations": [
+    "BeeBody renders through real FlyBody walk_imitation/flight tasks; BeeSwarm production waggle/collision renders are strict FlyBody/MuJoCo scenes",
+    "BeeBrain, BeeMind, non-visual BeeSwarm dynamics, and BeeNiche remain reduced deterministic kernels",
+    "full flight/adhesion physics, spiking neural simulators, and BEEHAVE are extension points",
+    "raw empirical datasets are downloaded to output/data/empirical_sources and are not bundled as source"
+  ],
+  "modules": [
+    {
+      "explicit_spec_parameters": [
+        "control_rate_hz=100",
+        "physics_dt_s=0.0005",
+        "wing_stroke_hz=230.0",
+        "ommatidia_per_eye=6900"
+      ],
+      "extension_points": [
+        "MuJoCo MJCF backend",
+        "fluid-force flight model",
+        "adhesion actuators"
+      ],
+      "fidelity_note": "Real FlyBody BeeBody walk and WPG flight render paths with deterministic CI fallback.",
+      "implemented_contracts": [
+        "Observation",
+        "Action",
+        "BodyState",
+        "BodyTelemetry"
+      ],
+      "module": "BeeBody"
+    },
+    {
+      "explicit_spec_parameters": [
+        "glomeruli=170",
+        "kc_per_hemisphere=170000",
+        "kc_sparsity=0.02",
+        "heading_bins=32"
+      ],
+      "extension_points": [
+        "Brian2/Nengo/SpikingJelly backend",
+        "VHSB atlas import",
+        "PER validation"
+      ],
+      "fidelity_note": "Empirical reduced AL-MB-CX and dance-decoding model.",
+      "implemented_contracts": [
+        "glomerular_encode",
+        "kenyon_sparse_code",
+        "heading_ring",
+        "decode_waggle"
+      ],
+      "module": "BeeBrain"
+    },
+    {
+      "explicit_spec_parameters": [
+        "latent_dim=32",
+        "policy_horizon=10",
+        "branching_factor=4"
+      ],
+      "extension_points": [
+        "full variational inference",
+        "learned transition model",
+        "recursive social beliefs"
+      ],
+      "fidelity_note": "Bounded active-inference-style policy scoring.",
+      "implemented_contracts": [
+        "BeliefState",
+        "PolicyCandidate",
+        "select_policy",
+        "caste_prior"
+      ],
+      "module": "BeeMind"
+    },
+    {
+      "explicit_spec_parameters": [
+        "agent_count=50",
+        "represented_colony_size=20000",
+        "components=5",
+        "strict_scene_bees=10",
+        "waggle_followers=10"
+      ],
+      "extension_points": [
+        "large-N surrogate training",
+        "trophallaxis contact graph",
+        "multi-colony competition"
+      ],
+      "fidelity_note": "Reduced communication kernel plus strict FlyBody/MuJoCo BeeBody waggle/collision visualizations.",
+      "implemented_contracts": [
+        "BeeAgent",
+        "PheromoneField",
+        "broadcast_dance",
+        "allocate_tasks",
+        "render_flybody_swarm_collision_scene",
+        "render_flybody_waggle_scene",
+        "render_flybody_long_waggle_scene"
+      ],
+      "module": "BeeSwarm"
+    },
+    {
+      "explicit_spec_parameters": [
+        "comb_shape=(18, 12, 4)",
+        "brood_temperature_target_c=34.0",
+        "foraging_radius_km=(1.0, 3.0)"
+      ],
+      "extension_points": [
+        "GPU sparse voxel grid",
+        "BEEHAVE bridge",
+        "Hiveopolis validation"
+      ],
+      "fidelity_note": "Voxel comb and thermal kernel with Hiveopolis/BEEHAVE-compatible adapter outputs.",
+      "implemented_contracts": [
+        "CombGrid",
+        "deposit_wax",
+        "thermal_step",
+        "comb_metrics"
+      ],
+      "module": "BeeNiche"
+    }
+  ],
+  "name": "BeeStack",
+  "purpose": "Whole-of-colony honeybee digital-twin architecture kernel",
+  "reproducibility": {
+    "deterministic_seed": 20260513,
+    "manifest_driven": true,
+    "source_purity": "domain transforms are pure; visualization and MJCF materialization isolate artifact I/O",
+    "unit_boundary": "SI units documented in contracts"
+  },
+  "seed": 20260513,
+  "stack_contracts": [
+    {
+      "invariants": [
+        "compound_eye_left shape (6900,)",
+        "antennal_channels shape (170,)",
+        "body_temperature_k positive kelvin"
+      ],
+      "payload": "Observation",
+      "rate_hz": 100,
+      "schema_ref": "observation_schema",
+      "source": "BeeBody",
+      "target": "BeeBrain"
+    },
+    {
+      "invariants": [
+        "glomerular_activation shape (170,)",
+        "heading_distribution shape (32,)",
+        "kc_code active_fraction <= 0.02"
+      ],
+      "payload": "BrainState",
+      "rate_hz": 100,
+      "schema_ref": "BrainState",
+      "source": "BeeBrain",
+      "target": "BeeMind"
+    },
+    {
+      "invariants": [
+        "legs shape (24,)",
+        "wings shape (12,)",
+        "proboscis in [0, 1]"
+      ],
+      "payload": "Action",
+      "rate_hz": 100,
+      "schema_ref": "action_schema",
+      "source": "BeeMind",
+      "target": "BeeBody"
+    },
+    {
+      "invariants": [
+        "distance_km nonnegative",
+        "azimuth_deg normalized to [0, 360)",
+        "confidence in [0, 1]"
+      ],
+      "payload": "DanceVector",
+      "rate_hz": 250,
+      "schema_ref": "DanceVector",
+      "source": "BeeBrain",
+      "target": "BeeSwarm"
+    },
+    {
+      "invariants": [
+        "need values nonnegative",
+        "food_need brood_need comb_need threat_level keys optional"
+      ],
+      "payload": "colony_need",
+      "rate_hz": 10,
+      "schema_ref": "dict[str, float]",
+      "source": "BeeSwarm",
+      "target": "BeeMind"
+    },
+    {
+      "invariants": [
+        "component count 5",
+        "grid shape (12, 12, 4)",
+        "concentrations nonnegative"
+      ],
+      "payload": "PheromoneField",
+      "rate_hz": 100,
+      "schema_ref": "PheromoneField",
+      "source": "BeeSwarm",
+      "target": "BeeNiche"
+    },
+    {
+      "invariants": [
+        "comb shape (18, 12, 4)",
+        "brood target 34.0 C",
+        "occupancy values finite integer cell classes"
+      ],
+      "payload": "thermal_and_surface_context",
+      "rate_hz": 100,
+      "schema_ref": "CombGrid",
+      "source": "BeeNiche",
+      "target": "BeeBody"
+    }
+  ],
+  "version": "0.1.0"
+}

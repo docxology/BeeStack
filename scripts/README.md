@@ -1,0 +1,54 @@
+# Scripts
+
+Scripts are thin orchestrators. They import pure behavior from `src/beestack/`
+and handle file I/O for the template-style output tree.
+
+```bash
+uv run python scripts/analysis_pipeline.py
+uv run python scripts/generate_animations.py
+uv run python scripts/verify_bee_render.py
+uv run python scripts/review_stack_integrity.py
+uv run python scripts/fetch_empirical_bee_data.py
+uv run python scripts/fetch_empirical_bee_data.py --metadata-only
+uv run python scripts/analyze_empirical_bee_data.py
+uv run python scripts/run_methods_analysis.py
+uv run python scripts/run_stack_synthesis.py
+uv run python scripts/run_research_suite.py
+uv run python scripts/signpost_project_tree.py
+uv run python scripts/signpost_project_tree.py --check
+uv run python scripts/audit_documentation.py
+uv run python scripts/z_generate_manuscript_variables.py
+```
+
+`fetch_empirical_bee_data.py` attempts full curated BeeBrain downloads by
+default, skips local non-empty payloads, falls back from Dryad archive endpoints
+to file-level downloads where possible, catalogs Figshare waggle-following CSVs,
+and records source errors in manifests.
+`analyze_empirical_bee_data.py` integrates downloaded Honeybee Standard Brain
+anatomy assets, workbook panels, MATLAB calcium payloads, Jernigan antennal CSV
+summaries, Hadjitofi-Webb waggle follower CSVs, and Nouvian neuromodulatory
+spreadsheets when available.
+`generate_animations.py` writes real FlyBody BeeBody locomotion GIFs, strict
+FlyBody/MuJoCo BeeSwarm collision/waggle scenes with contact reports, and
+reduced schematic module summaries.
+`verify_bee_render.py` checks BeeBody visual signatures and BeeSwarm strict
+contact-scene evidence.
+`run_methods_analysis.py` writes the science-first methods-analysis report,
+module methods figures, interactive methods dashboard, and manuscript figure
+index.
+`run_stack_synthesis.py` writes the cross-stack statistical synthesis report,
+dashboard figure, and stack-synthesis JSON used by manuscript variables.
+`run_research_suite.py` calls the analysis, empirical, visual-verification, and
+integrity pipelines, then writes the central research report, research figures,
+optional Plotly HTML, sensitivity sweeps, methods-analysis artifacts, and the
+stack-synthesis review.
+`review_stack_integrity.py` writes the module-by-module API, contract,
+validation, diagnostic, evidence, and fidelity review under `output/reports/`.
+`audit_documentation.py` writes documentation freshness and fidelity-claim
+reports under `output/reports/`.
+`signpost_project_tree.py` writes missing `README.md` and `AGENTS.md` files for
+every non-cache directory and emits the project readiness review.
+`methods_analysis_io.py`, `research_suite_io.py`, and `stack_synthesis_io.py`
+are shared I/O-helper modules imported by `run_methods_analysis.py`,
+`run_research_suite.py`, and `run_stack_synthesis.py`, not standalone
+entrypoints.

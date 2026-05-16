@@ -1,0 +1,12 @@
+{
+  "decoded_azimuth_deg": 155.0,
+  "decoded_distance_km": 1.2,
+  "duration_s": 1.2,
+  "follower_count": 10,
+  "follower_orientation_gain": 0.65,
+  "follower_spacing_m": 0.11,
+  "quality": 0.7142857142857143,
+  "relative_angle_deg": 35.0,
+  "sun_azimuth_deg": 120.0,
+  "waggle_run_frequency_hz": 13.0
+}

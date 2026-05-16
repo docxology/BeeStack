@@ -1,0 +1,35 @@
+.venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.DS_Store
+output/pdf/
+output/slides/
+output/web/
+
+# Full Snapshot policy: keep generated reports, figures, GIFs, manifests, and
+# lightweight JSON/Markdown outputs; exclude raw external empirical payloads
+# that are reproducible through scripts/fetch_empirical_bee_data.py.
+output/data/empirical_sources/**/*.zip
+output/data/empirical_sources/**/*.mat
+output/data/empirical_sources/**/*.csv
+output/data/empirical_sources/**/*.tsv
+output/data/empirical_sources/**/*.xlsx
+output/data/empirical_sources/**/*.xls
+output/data/empirical_sources/**/*.tif
+output/data/empirical_sources/**/*.tiff
+output/data/empirical_sources/**/*.jpg
+output/data/empirical_sources/**/*.jpeg
+output/data/empirical_sources/**/*.png
+output/data/empirical_sources/**/*.wrl
+output/data/empirical_sources/**/*.vrml
+!output/data/empirical_sources/**/README.md
+!output/data/empirical_sources/**/AGENTS.md
+!output/data/empirical_sources/catalog.json
+!output/data/empirical_sources/archives.json
+!output/data/empirical_sources/anatomy_downloads.json
+!output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/*.csv

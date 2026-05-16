@@ -1,0 +1,195 @@
+{
+  "figure_paths": [
+    "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/stack_synthesis_dashboard.png"
+  ],
+  "module_panels": [
+    {
+      "artifact_count": 15,
+      "evidence_count": 2,
+      "fidelity_level": "real FlyBody render path plus reduced closed-loop telemetry",
+      "known_gap_count": 2,
+      "log_metric_mean": 0.812684896150744,
+      "metric_count": 14,
+      "module": "BeeBody",
+      "readiness_score": 0.9333333333333332,
+      "validation_fraction": 1.0
+    },
+    {
+      "artifact_count": 25,
+      "evidence_count": 3,
+      "fidelity_level": "empirical reduced AL-MB-CX kernel",
+      "known_gap_count": 2,
+      "log_metric_mean": 0.679363940704431,
+      "metric_count": 14,
+      "module": "BeeBrain",
+      "readiness_score": 0.9333333333333332,
+      "validation_fraction": 1.0
+    },
+    {
+      "artifact_count": 9,
+      "evidence_count": 2,
+      "fidelity_level": "bounded active-inference-style policy kernel",
+      "known_gap_count": 2,
+      "log_metric_mean": 0.4622683579184332,
+      "metric_count": 9,
+      "module": "BeeMind",
+      "readiness_score": 0.9333333333333332,
+      "validation_fraction": 1.0
+    },
+    {
+      "artifact_count": 18,
+      "evidence_count": 2,
+      "fidelity_level": "reduced communication kernel plus strict FlyBody/MuJoCo BeeBody waggle/collision scenes",
+      "known_gap_count": 3,
+      "log_metric_mean": 1.3824048925056165,
+      "metric_count": 14,
+      "module": "BeeSwarm",
+      "readiness_score": 0.9249999999999999,
+      "validation_fraction": 1.0
+    },
+    {
+      "artifact_count": 11,
+      "evidence_count": 2,
+      "fidelity_level": "voxel comb and thermal kernel with adapter schemas",
+      "known_gap_count": 2,
+      "log_metric_mean": 0.7505675574339595,
+      "metric_count": 9,
+      "module": "BeeNiche",
+      "readiness_score": 0.9333333333333332,
+      "validation_fraction": 1.0
+    }
+  ],
+  "prioritized_findings": [
+    "Weakest synthesized module is BeeSwarm (readiness 0.925; gaps 3).",
+    "Cross-stack validation mean is 1.000 with 11 catalogued module gaps.",
+    "Integrated simulation improved brood-temperature error by 4.415 C over 24 steps.",
+    "All synthesis validation gates passed in the latest generated run."
+  ],
+  "readiness_fraction": 0.9316666666666666,
+  "scholarship_keys": [
+    "andreu2025dryad",
+    "becher2014beehave",
+    "bjornsson2020digitaltwins",
+    "carcaud2022dryad",
+    "couvillon2014waggle",
+    "free1987pheromones",
+    "friedman2026beestack",
+    "friston2010free",
+    "galizia1999glomerular",
+    "hadjitofi2024figshare",
+    "honkanen2019sky",
+    "jernigan2026dryad",
+    "johnson2009self",
+    "johnson2010temporal",
+    "kaneko2016kenyon",
+    "khamassi2020bio",
+    "kronenberg1982colonial",
+    "menzel2001cognitive",
+    "menzel2012honey",
+    "millman2020scientific",
+    "mitchell2019modelcards",
+    "nagari2017waggle",
+    "narsicht2020hiveopolis",
+    "nouvian2017dryad",
+    "oreskes1994verification",
+    "paoli2024dryad",
+    "parr2017working",
+    "pfeifer2006morphological",
+    "rybak2010digital",
+    "saltelli2008global",
+    "sasaki2018superorganisms",
+    "seeley1989superorganism",
+    "seeley2003consensus",
+    "seeley2010honeybee",
+    "stone2017central",
+    "szyszka2023granger",
+    "todorov2012mujoco",
+    "vaxenburg2025flybody",
+    "wcislo2003respiratory",
+    "webb2020waggle",
+    "wilkinson2016fair",
+    "wilson2017good"
+  ],
+  "statistics": {
+    "empirical_parseable_fraction": 0.6,
+    "known_gap_count_total": 11.0,
+    "metric_count_total": 60.0,
+    "module_artifact_coverage_fraction": 1.0,
+    "module_readiness_mean": 0.9316666666666666,
+    "module_validation_mean": 1.0,
+    "module_validation_min": 1.0,
+    "module_validation_std": 0.0,
+    "real_flybody_animation_count": 5.0,
+    "reduced_schematic_animation_count": 4.0,
+    "scholarship_reference_count": 42.0,
+    "signposting_fraction": 1.0,
+    "simulation_energy_drop_j": 0.0008210865967477332,
+    "simulation_mean_wing_power_mw": 58.2914264719619,
+    "simulation_policy_switch_count": 0.0,
+    "simulation_recruited_total": 168.0,
+    "simulation_step_count": 24.0,
+    "simulation_thermal_error_improvement_c": 4.414516422852656,
+    "visualization_artifact_count": 66.0
+  },
+  "summary": "Statistical synthesis of module readiness, simulation telemetry, visualization evidence, documentation signposting, empirical coverage, and manuscript scholarship.",
+  "title": "BeeStack Cross-Stack Synthesis Review",
+  "validation_fraction": 1.0,
+  "validations": [
+    {
+      "detail": "Body, Brain, Mind, Swarm, and Niche all appear in synthesis.",
+      "name": "module_coverage",
+      "passed": true,
+      "threshold": 5,
+      "value": 5
+    },
+    {
+      "detail": "Mean module validation fraction meets synthesis target.",
+      "name": "validation_target",
+      "passed": true,
+      "threshold": 0.9,
+      "value": 1.0
+    },
+    {
+      "detail": "Each module has visualization or evidence artifacts.",
+      "name": "artifact_coverage",
+      "passed": true,
+      "threshold": 1.0,
+      "value": 1.0
+    },
+    {
+      "detail": "Every non-cache directory has README.md and AGENTS.md coverage.",
+      "name": "documentation_signposting",
+      "passed": true,
+      "threshold": 1.0,
+      "value": 1.0
+    },
+    {
+      "detail": "BeeBrain parseable-source fraction clears configured minimum.",
+      "name": "empirical_parseability",
+      "passed": true,
+      "threshold": 0.5,
+      "value": 0.6
+    },
+    {
+      "detail": "Body energy does not increase during the deterministic integrated run.",
+      "name": "simulation_energy_finite",
+      "passed": true,
+      "threshold": ">= 0",
+      "value": 0.000821
+    },
+    {
+      "detail": "Brood-temperature error improves over the deterministic run.",
+      "name": "simulation_thermal_improves",
+      "passed": true,
+      "threshold": "> 0",
+      "value": 4.415
+    },
+    {
+      "detail": "Manuscript bibliography includes the configured minimum scholarship anchors.",
+      "name": "scholarship_minimum",
+      "passed": true,
+      "threshold": 7,
+      "value": 42
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+name: BeeStack CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: uv sync --locked --all-extras
+
+      - name: Lint
+        run: uv run ruff check src tests scripts
+
+      - name: Format check
+        run: uv run ruff format --check src tests scripts
+
+      - name: Lockfile check
+        run: uv lock --check
+
+      - name: Test with coverage
+        run: uv run pytest --cov=src --cov-report=term-missing
+
+      - name: Refresh empirical metadata manifests
+        run: uv run python scripts/fetch_empirical_bee_data.py --metadata-only
+
+      - name: Generate core analysis artifacts
+        run: uv run python scripts/analysis_pipeline.py
+
+      - name: Generate methods analysis
+        run: uv run python scripts/run_methods_analysis.py
+
+      - name: Generate research suite
+        run: uv run python scripts/run_research_suite.py
+
+      - name: Documentation audit
+        run: uv run python scripts/audit_documentation.py
+
+      - name: Signposting check
+        run: uv run python scripts/signpost_project_tree.py --check
+
+      - name: Hydrate manuscript
+        run: uv run python scripts/z_generate_manuscript_variables.py

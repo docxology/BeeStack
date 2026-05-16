@@ -1,0 +1,109 @@
+[
+  {
+    "explicit_spec_parameters": [
+      "control_rate_hz=100",
+      "physics_dt_s=0.0005",
+      "wing_stroke_hz=230.0",
+      "ommatidia_per_eye=6900"
+    ],
+    "extension_points": [
+      "MuJoCo MJCF backend",
+      "fluid-force flight model",
+      "adhesion actuators"
+    ],
+    "fidelity_note": "Real FlyBody BeeBody walk and WPG flight render paths with deterministic CI fallback.",
+    "implemented_contracts": [
+      "Observation",
+      "Action",
+      "BodyState",
+      "BodyTelemetry"
+    ],
+    "module": "BeeBody"
+  },
+  {
+    "explicit_spec_parameters": [
+      "glomeruli=170",
+      "kc_per_hemisphere=170000",
+      "kc_sparsity=0.02",
+      "heading_bins=32"
+    ],
+    "extension_points": [
+      "Brian2/Nengo/SpikingJelly backend",
+      "VHSB atlas import",
+      "PER validation"
+    ],
+    "fidelity_note": "Empirical reduced AL-MB-CX and dance-decoding model.",
+    "implemented_contracts": [
+      "glomerular_encode",
+      "kenyon_sparse_code",
+      "heading_ring",
+      "decode_waggle"
+    ],
+    "module": "BeeBrain"
+  },
+  {
+    "explicit_spec_parameters": [
+      "latent_dim=32",
+      "policy_horizon=10",
+      "branching_factor=4"
+    ],
+    "extension_points": [
+      "full variational inference",
+      "learned transition model",
+      "recursive social beliefs"
+    ],
+    "fidelity_note": "Bounded active-inference-style policy scoring.",
+    "implemented_contracts": [
+      "BeliefState",
+      "PolicyCandidate",
+      "select_policy",
+      "caste_prior"
+    ],
+    "module": "BeeMind"
+  },
+  {
+    "explicit_spec_parameters": [
+      "agent_count=50",
+      "represented_colony_size=20000",
+      "components=5",
+      "strict_scene_bees=10",
+      "waggle_followers=10"
+    ],
+    "extension_points": [
+      "large-N surrogate training",
+      "trophallaxis contact graph",
+      "multi-colony competition"
+    ],
+    "fidelity_note": "Reduced communication kernel plus strict FlyBody/MuJoCo BeeBody waggle/collision visualizations.",
+    "implemented_contracts": [
+      "BeeAgent",
+      "PheromoneField",
+      "broadcast_dance",
+      "allocate_tasks",
+      "render_flybody_swarm_collision_scene",
+      "render_flybody_waggle_scene",
+      "render_flybody_long_waggle_scene"
+    ],
+    "module": "BeeSwarm"
+  },
+  {
+    "explicit_spec_parameters": [
+      "comb_shape=(18, 12, 4)",
+      "brood_temperature_target_c=34.0",
+      "foraging_radius_km=(1.0, 3.0)"
+    ],
+    "extension_points": [
+      "GPU sparse voxel grid",
+      "BEEHAVE bridge",
+      "Hiveopolis validation"
+    ],
+    "fidelity_note": "Voxel comb and thermal kernel with Hiveopolis/BEEHAVE-compatible adapter outputs.",
+    "implemented_contracts": [
+      "CombGrid",
+      "deposit_wax",
+      "thermal_step",
+      "comb_metrics"
+    ],
+    "module": "BeeNiche"
+  }
+]

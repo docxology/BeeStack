@@ -1,0 +1,99 @@
+# BeeBody Methods
+
+BeeBody owns the morphology, physics, sensors, actions, and energetics of
+an individual worker, and is the most stringent fidelity boundary in the
+stack. The worker body defaults to {{BODY_MASS_MG}} mg mass, a
+{{WING_STROKE_HZ}} Hz wing stroke, and {{FLYBODY_ACTION_DIM}} FlyBody
+action channels. Production animations use real FlyBody walking and
+flight tasks driven through MuJoCo [@vaxenburg2025flybody;
+@todorov2012mujoco]; a reduced deterministic closed-loop kernel runs in
+parallel for telemetry tests.
+
+## Body plan generation
+
+The body-plan generator writes `apis_mellifera_worker.xml` by modifying a
+FlyBody-compatible body plan while preserving every task-facing joint and
+body name, so the upstream control tasks continue to work without
+modification. The generated MJCF adds honey-bee visual cues that survive
+the renderer: four translucent wings with hindwing coupling, an amber
+abdomen with dark tergite bands, enlarged compound eyes, antennae,
+mouthparts, a stinger, thoracic fuzz, corbiculae on the hind legs, and a
+constricted petiolar waist. These cues are not treated as proof of
+calibrated biomechanics. They are an auditable *visual* body-plan layer
+on top of the FlyBody execution path: the verification script measures
+non-blank dynamic frames, motion pixels, locomotion mode, MJCF cue
+presence, silhouette overlap with a reference bee shape, and the
+*absence* of FlyBody debug aids that would betray a non-bee renderer.
+
+## Walking and flight tasks
+
+Walking animations load the generated body plan through FlyBody
+`WalkImitation` and render frames with `rollout_and_render`. Flight
+animations use `FlightImitationWBPG` plus a `WingBeatPatternGenerator`,
+and the same render path. Both pipelines apply task-specific masks:
+`disable_wings_for_walk = true` and `disable_legs_for_flight = true`
+prevent unphysical co-activation that would otherwise drag the COM
+trajectory off the reference. The future-step horizon
+(`future_steps = 64`) and the `flight_future_steps = 5` setting come
+from the FlyBody defaults; deviating from them changes the imitation
+loss landscape, so they are pinned in `config.yaml`.
+
+The latest verification run reports a BeeBody visual score of
+{{BEE_VISUAL_SCORE}} (cue coverage) and a silhouette score of
+{{BEE_SILHOUETTE_SCORE}} (shape overlap). These are perceptual scores
+on the rendered GIF, not biomechanical scores; they certify that the
+output *looks like a bee*, not that it *moves like one*.
+
+The methods layer now also records a conservative honeybee calibration
+scorecard. The current morphology score is
+{{METHODS_BODY_MORPHOLOGY_SCORE}}, with an inertia-rescaling witness of
+{{METHODS_BODY_INERTIA_SCORE}}. These values are generated from
+configured mass, segment proportions, four-wing coupling, and contact
+proxy counts; they are readiness checks for the generated MJCF, not a
+claim that honeybee inertial tensors have been fully measured.
+
+## Sensors and observations
+
+BeeBody emits an `Observation` record for every control step. It packs
+visual frames (downsampled from the configured per-eye ommatidia to a
+compressed tensor), olfactory channels (one per glomerulus, with
+log-domain projection), mechanosensory state (proprioception, antennal
+contact, leg-load), and a thermosensory scalar. Sensor noise levels —
+$\sigma_\text{visual} = 0.02$, $\sigma_\text{olfactory} = 0.03$,
+$\sigma_\text{mechano} = 0.01$ — are documented in `config.yaml` so that
+sensitivity sweeps can perturb them without code edits.
+
+## Actions and energetics
+
+Actions are unpacked from a {{FLYBODY_ACTION_DIM}}-dimensional vector
+into leg torques (4 DOF/leg, 6 legs), wing kinematics (3 DOF/wing,
+coupled hamuli at the wing root), antennal pose, and mandible state.
+Energy accounting is multiplicative: thoracic flight muscle power
+scales with $\omega^{2}$ where $\omega$ is wing stroke frequency, leg
+power scales with foot-strike load, and resting metabolic rate is a
+floor. The integrated run reports a mean wing power of
+{{MEAN_WING_POWER_MW}} mW and a final body-frame energy budget of
+{{FINAL_ENERGY_J}} J after {{SIMULATION_STEPS}} control steps.
+
+## Methods telemetry panel
+
+The methods-analysis layer adds a Body telemetry dashboard that treats
+the reduced closed-loop motion as a *witness* rather than a substitute
+for FlyBody. It summarizes COM-speed proxy traces, wing-power traces,
+energy budget change, configured wing-beat frequency, and morphology
+cue scores in
+`output/figures/methods/beebody_methods_telemetry_dashboard.png`.
+
+![BeeBody methods telemetry dashboard](../figures/methods/beebody_methods_telemetry_dashboard.png){#fig:body_methods_dashboard}
+
+## Fidelity boundary
+
+BeeBody remains the most stringent fidelity boundary in the stack. It
+is real FlyBody-backed for production rendering, and the visual
+verification confirms that the output *looks like a bee*. The underlying
+articulated topology, mass distribution, inertia tensors, adhesion
+model, wing aerodynamics, and leg-tip contact mechanics still require
+honey-bee-specific biomechanical calibration. This is a recognized
+limitation (§14) and a roadmap priority (§15): visual fidelity is
+necessary but not sufficient for biomechanical claims, and BeeStack
+chooses to *show* this rather than to *paper over* it.

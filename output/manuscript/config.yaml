@@ -1,0 +1,179 @@
+paper:
+  title: "BeeStack: A Whole-of-Colony Biophysical Digital Twin"
+  subtitle: "A Five-Layer Body–Brain–Mind–Swarm–Niche Substrate for Apis mellifera"
+  version: "0.2"
+  date: "May 2026"
+
+authors:
+  - name: "Daniel Ari Friedman"
+    orcid: "0000-0001-6232-9096"
+    email: "danielarifriedman@gmail.com"
+    affiliation: "Active Inference Institute"
+    corresponding: true
+
+publication:
+  doi: ""
+  journal: ""
+  year: "2026"
+
+keywords:
+  - "honeybee"
+  - "Apis mellifera"
+  - "active inference"
+  - "digital twin"
+  - "swarm intelligence"
+  - "niche construction"
+  - "FlyBody"
+  - "MuJoCo"
+  - "antennal lobe"
+  - "mushroom body"
+  - "central complex"
+  - "waggle dance"
+  - "BEEHAVE"
+  - "reproducible research"
+
+metadata:
+  license: "MIT"
+  language: "en"
+  manuscript_dir: "manuscript"
+
+beestack:
+  seed: 20260513
+  timing:
+    physics_dt_s: 0.0005
+    control_rate_hz: 100
+    policy_rate_hz: 10
+    dance_event_rate_hz: 250
+  body:
+    species: apis_mellifera_worker
+    body_mass_mg: 80.0
+    leg_dof_per_leg: 4
+    wing_dof_per_wing: 3
+    wing_model: coupled_hamuli
+    wing_stroke_hz: 230.0
+    ommatidia_per_eye: 6900
+    olfactory_channels: 170
+    terrain: comb_surface
+    sensor_noise:
+      visual: 0.02
+      olfactory: 0.03
+      mechanosensory: 0.01
+  brain:
+    glomeruli: 170
+    kenyon_cells_per_hemisphere: 170000
+    kc_sparsity: 0.02
+    heading_bins: 32
+    optic_pixels_per_eye: 6900
+    tractable_neuron_target: [500000, 1000000]
+    kc_class_i_fraction: 0.90
+  mind:
+    latent_dim: 32
+    initial_caste: nurse
+    energy_threshold: 0.3
+    risk_sensitivity: 0.5
+    policy_horizon: 10
+    branching_factor: 4
+    follow_probability_threshold: 0.3
+    duration_noise_sigma_s: 0.05
+    angle_noise_sigma_deg: 5.0
+  swarm:
+    agent_count: 50
+    represented_colony_size: 20000
+    fidelity_level: level3
+    pheromone_components: [alarm, qmp, nasanov, brood, wax]
+    pheromone_grid_shape: [12, 12, 4]
+    local_followers_per_dance: 12
+  niche:
+    comb_shape: [18, 12, 4]
+    brood_temperature_target_c: 34.0
+    brood_temperature_band_c: [32.0, 36.0]
+    wax_deposit_threshold: 0.35
+    ambient_temperature_c: 25.0
+    foraging_radius_km: [1.0, 3.0]
+    thermoregulation_gain: 0.24
+    seasonal_forage_amplitude: 0.35
+    weather_forage_penalty: 0.10
+  flybody:
+    local_fork_path:
+    action_dim_default: 59
+    terminal_com_dist: 0.3
+    flight_terminal_com_dist: 2.0
+    joint_filter: 0.01
+    flight_joint_filter: 0.0
+    future_steps: 64
+    flight_future_steps: 5
+    time_limit_s: 10.0
+    flight_time_limit_s: 0.6
+    force_actuators: false
+    disable_wings_for_walk: true
+    disable_legs_for_flight: true
+    min_dynamic_pixels: 32
+  empirical:
+    enabled_dataset_ids:
+      - dryad-paoli-2024-al-calcium
+      - galizia-1999-glomerular-code
+      - virtual-honeybee-standard-brain
+      - szyszka-2023-granger-al-network
+      - kaneko-2016-kenyon-subtypes
+      - dryad-carcaud-2022-multisite-gcamp
+      - dryad-andreu-2025-alarm-odorant-receptors
+      - dryad-jernigan-2026-antennal-movement
+      - dryad-nouvian-2017-biogenic-amines
+      - figshare-hadjitofi-2024-waggle-following
+    calcium_source_dataset_id: dryad-paoli-2024-al-calcium
+    calcium_acquisition_hz: 100.0
+    calcium_baseline_s: 1.0
+    calcium_stimulus_s: [1.0, 2.0]
+    calcium_odorant_count: 3
+    calcium_trial_count: 20
+    calcium_bee_count: 8
+    calcium_glomeruli_tracked: 10
+    atlas_glomeruli_range: [160, 170]
+    odor_templates: ["1-octanol", "clove oil", "geraniol"]
+    template_excitation_width: 0.045
+    template_inhibition_width: 0.14
+    template_inhibition_fraction: 0.35
+  visualization:
+    animation_frames: 24
+    animation_fps: 8
+    body_render_width: 640
+    body_render_height: 480
+    body_camera_id: walker/track1
+    body_plan_subdir: flybody_bee
+    swarm_collision_bee_count: 10
+    swarm_collision_radius_m: 0.14
+    swarm_collision_initial_speed_m_s: 0.35
+    swarm_collision_scene_radius_m: 0.18
+    swarm_collision_altitude_m: 0.05
+    swarm_collision_min_actual_contact_pairs: 1
+    waggle_dance_duration_s: 1.2
+    waggle_dance_angle_deg: 35.0
+    waggle_dance_sun_azimuth_deg: 120.0
+    waggle_dance_quality: 0.8
+    waggle_dance_followers: 10
+    waggle_dance_waggle_amplitude_m: 0.035
+    waggle_dance_loop_radius_m: 0.085
+    long_waggle_animation_frames: 96
+    long_waggle_animation_fps: 12
+    flybody_scene_substeps: 4
+  waggle:
+    waggle_run_frequency_hz: 13.0
+    lateral_amplitude_m: 0.035
+    loop_radius_m: 0.085
+    follower_spacing_m: 0.11
+    follower_orientation_gain: 0.65
+    antennal_sampling_gain: 0.75
+    stop_signal_sensitivity: 1.0
+    max_orientation_error_deg: 90.0
+    orientation_error_target_deg: 35.0
+    orientation_confidence_target: 0.65
+  research:
+    scenario_count: 5
+    sensitivity_sweep_size: 5
+    report_figure_formats: ["png"]
+    interactive_outputs: true
+    empirical_completeness_threshold: 0.5
+    max_report_figures: 32
+    synthesis_validation_target: 0.9
+    synthesis_artifact_coverage_target: 1.0
+    synthesis_min_scholarship_refs: 7

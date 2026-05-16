@@ -1,0 +1,127 @@
+{
+  "sweeps": [
+    {
+      "interpretation": "mind.energy_threshold sweep changed recruitment by 0 and comb fraction by 0 in the reduced kernel.",
+      "outputs": {
+        "final_comb_fraction": [
+          0.08333333333333333,
+          0.08333333333333333,
+          0.08333333333333333,
+          0.08333333333333333,
+          0.08333333333333333
+        ],
+        "final_empirical_alignment": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "final_energy_j": [
+          23.99982150291375,
+          23.99982150291375,
+          23.99982150291375,
+          23.99982150291375,
+          23.99982150291375
+        ],
+        "total_recruited_followers": [
+          35.0,
+          35.0,
+          35.0,
+          35.0,
+          35.0
+        ]
+      },
+      "parameter": "mind.energy_threshold",
+      "values": [
+        0.15,
+        0.3,
+        0.44999999999999996,
+        0.6,
+        0.75
+      ]
+    },
+    {
+      "interpretation": "mind.follow_probability_threshold sweep changed recruitment by 30 and comb fraction by 0 in the reduced kernel.",
+      "outputs": {
+        "final_comb_fraction": [
+          0.08333333333333333,
+          0.08333333333333333,
+          0.08333333333333333,
+          0.08333333333333333,
+          0.08333333333333333
+        ],
+        "final_empirical_alignment": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "final_energy_j": [
+          23.99982150291375,
+          23.99982150291375,
+          23.99982150291375,
+          23.99982150291375,
+          23.99982150291375
+        ],
+        "total_recruited_followers": [
+          40.0,
+          35.0,
+          30.0,
+          25.0,
+          10.0
+        ]
+      },
+      "parameter": "mind.follow_probability_threshold",
+      "values": [
+        0.1,
+        0.25,
+        0.4,
+        0.5499999999999999,
+        0.7
+      ]
+    },
+    {
+      "interpretation": "niche.ambient_temperature_c sweep changed recruitment by 0 and comb fraction by 0 in the reduced kernel.",
+      "outputs": {
+        "final_comb_fraction": [
+          0.08333333333333333,
+          0.08333333333333333,
+          0.08333333333333333,
+          0.08333333333333333,
+          0.08333333333333333
+        ],
+        "final_empirical_alignment": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "final_energy_j": [
+          23.99982150291375,
+          23.99982150291375,
+          23.99982150291375,
+          23.99982150291375,
+          23.99982150291375
+        ],
+        "total_recruited_followers": [
+          35.0,
+          35.0,
+          35.0,
+          35.0,
+          35.0
+        ]
+      },
+      "parameter": "niche.ambient_temperature_c",
+      "values": [
+        18.0,
+        22.0,
+        26.0,
+        30.0,
+        34.0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "final_brood_temperature_error_c": 2.4240946882584566,
+  "final_comb_fraction": 0.08333333333333333,
+  "final_empirical_alignment": 0.0,
+  "final_empirical_odor": "geraniol",
+  "final_energy_j": 23.999143213986002,
+  "final_mean_pheromone": 0.0,
+  "final_policy": "nurse_brood",
+  "final_speed_m_s": 0.0039966699966303984,
+  "mean_wing_power_mw": 58.2914264719619,
+  "steps": 24,
+  "total_recruited_followers": 168
+}
