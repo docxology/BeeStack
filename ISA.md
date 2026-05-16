@@ -4,11 +4,11 @@ task: "Project ISA — BeeStack whole-of-colony honeybee digital-twin stack"
 effort: E5
 effort_source: context-override
 phase: complete
-progress: 97/97 (ISC-7 tombstoned → ISC-7.1/7.2, all pass)
+progress: 103/103
 mode: autonomous
 started: 2026-05-16T01:39:08Z
-updated: 2026-05-16T03:45:00Z
-iteration: 2
+updated: 2026-05-16T04:20:00Z
+iteration: 3
 ---
 
 # BeeStack — Ideal State Artifact
@@ -414,6 +414,22 @@ as the project's living system of record.
   **criterion now**: ISC-7 split → ISC-7.1 (domain kernels I/O-pure — verified
   TRUE by grep) + ISC-7.2 (I/O adapters are script-invoked only — verified);
   ISC-7 tombstoned to the split. No refactor needed; the invariant holds.
+- **conjectured** (2026-05-16, iteration 3): the manuscript was already
+  "mature, internally consistent" (prior shallow verdict) and only needed
+  hydration to be publication-ready.
+  **refuted by**: cross-checking every section against the iteration-1/2 code
+  fixes — the prose described the *pre-fix* science: an ω² energetics law the
+  code never had, a KC active-count that implied double the stated sparsity, a
+  "calibrated" waggle decoder that is a 1:1 placeholder, and multi-bee "physics"
+  scenes that are scripted-pose contact renders. Hydration was clean the whole
+  time; the defects were *semantic*, invisible to token/N-A checks.
+  **learned**: a manuscript that hydrates perfectly can still be scientifically
+  false if the code it documents changed underneath it. Manuscript verification
+  must include a prose-vs-current-code cross-check, not just token resolution —
+  fixing the code silently invalidates prose that described the old behaviour.
+  **criterion now**: ISC-92..96 augmented in spirit — manuscript prose must be
+  re-cross-checked against code after any science fix; this pass added that
+  check and the prose now matches the corrected implementation.
 
 ## Verification
 
@@ -477,6 +493,30 @@ cross-vendor concerns Cato scrutinized (calcium sign end-to-end, KC determinism/
 tractability, dead-guard reachability, set-union correctness, manuscript
 cascade) were each independently hand-verified to pass, corroborated by the
 advisor and passing regression tests.
+
+**Iteration 3 (2026-05-16T04:20) — deep manuscript review vs corrected code.**
+Adversarial cross-check of all 18 manuscript sections against the iteration-1/2
+code fixes found prose written against the *old wrong* code. Fixed: **C1** §04
+energetics claimed "power scales with ω²" — corrected code is linear in stroke
+freq around a fixed 58 mW reference (prose now matches); **C2** §00/§03/§05 KC
+active-count (6800) was juxtaposed with per-hemisphere total (170k) implying
+ρ≈0.04 — prose now states "across both hemispheres / whole-brain ×2" (ρ=0.02
+consistent); **C2/KC mechanism** §05 MB prose rewritten to describe the actual
+seeded sparse PN→KC projection + k-WTA (odor-specific, deterministic) instead
+of the old random-choice; **M1** §05/§17 waggle decoder de-overclaimed (nominal
+1 s↔1 km placeholder, Hadjitofi–Webb anchors only follower diagnostics, not the
+decode); **M2** §02/§07/§14 disclose multi-bee scenes are scripted-pose +
+real-contact-detection, not integrated flight dynamics (was an undisclosed
+limitation); **M3** §05 Johnston 200 Hz detector floor vs configured 250 Hz
+event rate clarified; **m1** §05 negated-ΔF/F sign convention documented; **m2**
+§05 colour-opponency 2-DOF caveat; **m3** §03 "BEEHAVE-scale"→"mid-season
+colony scale"; **m4** §16 Python-version statement reconciled to the exercised
+3.11/`requires-python>=3.11`. Citations verified clean (42 `[@key]` all resolve
+to references.bib, no missing, no orphans). Re-hydrated: **85 vars, 0 residual
+tokens, 0 N/A**; documentation audit **passed** (0 unresolved, 0 missing
+outputs, signposting complete). No code/config/science changed — prose only,
+made truthful to the corrected implementation. ISC-92..96 + the methods-prose
+accuracy criteria all pass.
 
 **Iteration 2 (2026-05-16T03:45)** — ISC-7 resolved by correct articulation:
 split into ISC-7.1 (scientific-domain-kernel I/O purity — grep-verified zero

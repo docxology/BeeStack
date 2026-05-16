@@ -23,7 +23,8 @@ every record has a contract that pinned tests check at every commit.
   waggle-decoding, and empirical-alignment fields. The AL channel
   preserves 170 glomeruli; the MB carries
   170,000 Kenyon cells per hemisphere at $\rho =
-  0.02$ sparsity (≈ 6,800 active Kenyon cells); the
+  0.02$ sparsity (≈ 6,800 active across the
+  whole-brain 170,000×2 population); the
   CX uses 32 heading bins
   [@stone2017central; @honkanen2019sky].
 - **BeeMind** transforms `BrainState` and colony-summary inputs into a
@@ -88,7 +89,7 @@ variables:
 | CX heading bins | 32 | [@stone2017central] |
 | Belief latent dim | 32 | Reduced kernel |
 | Swarm agents | 50 | Reduced kernel |
-| Represented colony size | 20,000 | BEEHAVE-scale |
+| Represented colony size | 20,000 | Mid-season colony scale |
 | Comb voxels | 864 | Default $18 \times 12 \times 4$ |
 
 ## Determinism and reproducibility

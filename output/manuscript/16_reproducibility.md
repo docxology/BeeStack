@@ -122,8 +122,9 @@ evidence, while large raw third-party payloads are reproducible caches.
 
 The project has been exercised on:
 
-- macOS arm64 with system Python 3.13 through `uv`,
-- Linux x86_64 in CI with Python 3.11–3.13.
+- macOS arm64 with Python 3.11 through `uv` (the `uv`-managed
+  interpreter; `requires-python >= 3.11`),
+- Linux x86_64 in CI across the Python 3.11–3.13 matrix.
 
 Cross-machine artifact deltas observed in practice are limited to
 PNG rasterization differences and JSON key ordering (which is

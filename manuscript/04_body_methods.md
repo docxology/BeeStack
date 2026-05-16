@@ -68,10 +68,12 @@ sensitivity sweeps can perturb them without code edits.
 Actions are unpacked from a {{FLYBODY_ACTION_DIM}}-dimensional vector
 into leg torques (4 DOF/leg, 6 legs), wing kinematics (3 DOF/wing,
 coupled hamuli at the wing root), antennal pose, and mandible state.
-Energy accounting is multiplicative: thoracic flight muscle power
-scales with $\omega^{2}$ where $\omega$ is wing stroke frequency, leg
-power scales with foot-strike load, and resting metabolic rate is a
-floor. The integrated run reports a mean wing power of
+Energy accounting is multiplicative and reference-anchored, not a
+fitted aerodynamic model: hovering wing power is pinned to a fixed
+~58 mW worker reference (≈80 mg body mass, ≈230 Hz stroke) and scaled
+by dimensionless terms — a mass$^{0.75}$ allometric factor, a *linear*
+stroke-frequency ratio, and load/wing-wear penalties. Leg power scales
+with foot-strike load and resting metabolic rate is a floor. The integrated run reports a mean wing power of
 {{MEAN_WING_POWER_MW}} mW and a final body-frame energy budget of
 {{FINAL_ENERGY_J}} J after {{SIMULATION_STEPS}} control steps.
 

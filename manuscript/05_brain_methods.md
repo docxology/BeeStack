@@ -23,11 +23,16 @@ even when input intensities span orders of magnitude.
 ## Mushroom body (MB)
 
 The MB layer maps the dense AL representation onto a sparse population
-of {{KC_PER_HEMISPHERE}} Kenyon cells per hemisphere with $k$-Winner-Take-All
-activity at $\rho = {{KC_SPARSITY}}$ ({{ACTIVE_KC}} active KCs by
-construction). The KC threshold is derived from the local distribution
-of AL projection sums rather than from a fixed value, so changes in odor
-density do not silently inflate or collapse the active set. The
+of {{KC_PER_HEMISPHERE}} Kenyon cells per hemisphere. Each Kenyon cell
+samples a small fixed fan-in of glomeruli through a seed-fixed sparse
+projection, and a $k$-Winner-Take-All rule keeps the
+{{ACTIVE_KC}} most-driven cells active across both hemispheres
+($\rho = {{KC_SPARSITY}}$ of the whole-brain {{KC_PER_HEMISPHERE}}×2
+population). Because the active set is selected by projected drive
+rather than from the seed alone, *different odors produce different
+sparse codes* — the code is odor-specific and deterministic for a fixed
+seed, and changes in odor density do not silently inflate or collapse
+the active set. The
 class-i Kenyon-cell fraction in the configuration (`kc_class_i_fraction
 = 0.90`) tracks the gene-expression bias documented for the honey-bee MB
 [@kaneko2016kenyon].
@@ -45,18 +50,26 @@ dance decoding) read a consistent heading.
 
 A small set of optic-flow helpers downsample the visual observation to a
 horizon-aligned signal that the CX can consume. These helpers also feed
-the bee-visual signature scorer used by the BeeBody verifier (§4).
+the bee-visual signature scorer used by the BeeBody verifier (§4). The
+UV–blue–green colour-opponency helper returns three channels that are
+constrained to sum to zero, so the opponent code carries two
+independent degrees of freedom (the third channel is derived, not an
+extra signal).
 
 ## Johnston's organ and waggle decoding
 
-The waggle channel transforms antennal-vibration events at the
-configured dance-event rate ({{CONFIG_SEED}}-derived test fixtures use
-the configured 250 Hz dance-event rate) into candidate waggle phases,
-durations, and inferred sun-relative angles. The dance decoder consumes
-those candidates plus the CX heading to produce a recruitment hypothesis
-expressed in the `BrainState`'s waggle field. The decoder is the
-empirical bridge to Hadjitofi–Webb antennal-position tracks
-[@hadjitofi2024figshare].
+The waggle channel transforms antennal-vibration events into candidate
+waggle phases, durations, and inferred sun-relative angles. The
+configured dance-event rate is 250 Hz; the Johnston's-organ event
+detector additionally applies a fixed 200 Hz vibration-frequency floor
+(a hard-coded detector primitive, distinct from the configurable event
+rate). The dance decoder consumes those candidates plus the CX heading
+to produce a recruitment hypothesis in the `BrainState`'s waggle field.
+The distance estimate is a reduced-kernel placeholder — a nominal
+1 s ↔ 1 km identity, **not** a species-calibrated von Frisch curve.
+The Hadjitofi–Webb antennal-position tracks [@hadjitofi2024figshare]
+anchor only the follower-orientation diagnostics
+(`WaggleFollowerSummary`), not the distance/azimuth decode.
 
 ## Empirical registry
 
@@ -85,7 +98,12 @@ activity records. Atlas ZIP and HTML assets become inventories,
 neuropil abbreviation records, and anatomy summaries. Workbook, CSV,
 and MAT-style activity payloads become response panels, calcium
 summaries when local traces are parseable, antennal-movement summaries,
-neuromodulatory summaries, and glomerulus-length templates. The waggle
+neuromodulatory summaries, and glomerulus-length templates. Calcium
+traces are summarised as *negated* ΔF/F: an excitatory response
+(fluorescence increase) yields a negative summary value, so
+`excitatory_fraction` counts glomeruli with mean response < 0 and
+`inhibitory_fraction` those > 0 — a load-bearing sign convention for
+any downstream excitation/inhibition claim. The waggle
 parser converts Hadjitofi–Webb follower tracks into
 `WaggleFollowerSummary` records that pack follower angle/midpoint
 coupling, left/right-antenna synchrony, both-antennae versus

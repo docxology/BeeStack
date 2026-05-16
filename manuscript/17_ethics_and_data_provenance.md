@@ -63,9 +63,11 @@ three directions:
    *schemas* only and does not exfiltrate any sensor data.
 3. **Biosecurity.** Detailed dance-decoding or pheromone-coupling
    models could in principle inform colony-disruption strategies.
-   The current dance decoder is calibrated against published track
-   data only; the kernel is not optimized for disruption and the
-   research suite does not score disruption metrics.
+   The current dance decoder is a reduced-kernel placeholder (nominal
+   distance identity, not a calibrated decoder); only the
+   follower-orientation diagnostics are anchored to published track
+   data. The kernel is not optimized for disruption and the research
+   suite does not score disruption metrics.
 
 Each of these is a *future* concern, not a current capability, and
 each is named here to make the boundary explicit.

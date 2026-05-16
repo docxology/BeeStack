@@ -29,7 +29,7 @@ and hydrates this manuscript from variables generated at run time. The
 default configuration preserves {{GLOMERULI}} antennal-lobe glomeruli,
 {{KC_PER_HEMISPHERE}} Kenyon cells per hemisphere with sparse mushroom-body
 activity at $\rho = {{KC_SPARSITY}}$ (yielding {{ACTIVE_KC}} active Kenyon
-cells), {{HEADING_BINS}} central-complex heading bins
+cells across both hemispheres), {{HEADING_BINS}} central-complex heading bins
 [@stone2017central; @honkanen2019sky], and a {{WING_STROKE_HZ}} Hz wing
 stroke. The empirical run currently integrates {{EMPIRICAL_PANEL_COUNT}}
 response panels, {{ANATOMY_INVENTORY_COUNT}} anatomy inventories,

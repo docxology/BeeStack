@@ -63,9 +63,14 @@ Three concrete consequences:
 
 ## BeeSwarm: scale
 
-The primary BeeSwarm limitation is **scale**. Strict visual scenes
-prove small BeeBody-backed MuJoCo contact scenes —
-3 strict scenes with
+The BeeSwarm limitations are **scale** and **scene fidelity**. The
+strict visual scenes are *scripted-pose* multi-bee scenes: bees are
+re-posed kinematically each frame and MuJoCo supplies real geometry
+and real contact detection at those poses, but the scenes are not an
+integrated forward-dynamics flight simulation. They therefore evidence
+contact structure and morphology, not emergent flight or collision
+dynamics. On scale, the strict scenes prove only small BeeBody-backed
+MuJoCo contact scenes — 3 strict scenes with
 15.000 unique bee-contact pairs at the
 most recent run. The broader colony dynamics are still represented
 through deterministic reduced communication, pheromone, and

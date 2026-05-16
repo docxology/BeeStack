@@ -38,7 +38,7 @@ reduced kernel, or on empirical anchor data.
 | Claim class | Current BeeStack evidence | Primary artifact | What it does not prove |
 |-------------|---------------------------|------------------|------------------------|
 | Bee-shaped individual walking and flight renders | Strict FlyBody tasks over generated honeybee MJCF | `output/reports/bee_visual_verification.md` | Calibrated honeybee ground reaction forces |
-| Multi-BeeBody waggle and collision scenes | Prefixed BeeBody MJCF copies stepped and rendered in MuJoCo | `output/reports/flybody_contact_physics.md` | BEEHAVE-scale colony dynamics |
+| Multi-BeeBody waggle and collision scenes | Prefixed BeeBody MJCF copies driven along scripted kinematic poses, with real MuJoCo geometry/contact detection at those poses | `output/reports/flybody_contact_physics.md` | Integrated multi-bee flight dynamics, or BEEHAVE-scale colony dynamics |
 | BeeBrain empirical anchoring | Curated public anatomy/activity/follower datasets parsed into summaries | `output/data/empirical_analysis.json` | Connectome-level or spiking neural dynamics |
 | Active-inference-style policy selection | Deterministic reduced policy scoring with diagnostics | `output/reports/methods_analysis.md` | Learned colony-optimal control |
 | Comb and brood thermal behavior | Reduced grid and thermal kernels with validation checks | `output/reports/beestack_research_report.md` | Full hive thermodynamics |

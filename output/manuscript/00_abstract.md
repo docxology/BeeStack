@@ -29,7 +29,7 @@ and hydrates this manuscript from variables generated at run time. The
 default configuration preserves 170 antennal-lobe glomeruli,
 170,000 Kenyon cells per hemisphere with sparse mushroom-body
 activity at $\rho = 0.02$ (yielding 6,800 active Kenyon
-cells), 32 central-complex heading bins
+cells across both hemispheres), 32 central-complex heading bins
 [@stone2017central; @honkanen2019sky], and a 230 Hz wing
 stroke. The empirical run currently integrates 48
 response panels, 7 anatomy inventories,

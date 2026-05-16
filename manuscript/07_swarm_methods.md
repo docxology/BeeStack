@@ -38,7 +38,14 @@ The strict visualization channel does not use Matplotlib glyphs. The
 renderer prefix-copies full BeeBody MJCF body plans into multi-bee
 MuJoCo scenes, adds free joints, invisible contact-proxy geoms, floor
 or comb arena geometry, and cameras, then steps `MjModel` and
-`MjData` with `mujoco.Renderer` [@todorov2012mujoco].
+`MjData` with `mujoco.Renderer` [@todorov2012mujoco]. Within each
+frame the bees are placed at *scripted kinematic poses* (state is
+reset and re-posed every frame); MuJoCo provides real model geometry
+and real contact detection at those poses. This is deliberately a
+contact-evidence channel, **not** an integrated forward-dynamics
+flight simulation — "strict FlyBody/MuJoCo" refers to the real MJCF
+model and real contact metrics, not to dynamical integration of the
+multi-bee scene.
 
 ### Ten-bee collision scene
 
