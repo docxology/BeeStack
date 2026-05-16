@@ -57,9 +57,9 @@
   "module_scorecards": [
     {
       "evidence": [
-        "Real FlyBody walking and flight GIFs with MJCF cue scoring."
+        "FlyBody walking and flight GIFs with MJCF cue scoring."
       ],
-      "fidelity_level": "real FlyBody render path plus reduced closed-loop telemetry",
+      "fidelity_level": "FlyBody render path plus reduced closed-loop telemetry",
       "known_gaps": [
         "Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.",
         "Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset."
@@ -411,7 +411,7 @@
       ]
     }
   ],
-  "summary": "Unified scorecards for real FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidence, and reduced validated Mind/Swarm/Niche kernels.",
+  "summary": "Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidence, and reduced validated Mind/Swarm/Niche kernels.",
   "title": "BeeStack Science-First Research Suite",
   "visualization_artifacts": [
     {

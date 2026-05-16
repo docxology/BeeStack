@@ -92,7 +92,7 @@ does not currently model:
 - 3D pollen storage with depletion kinetics, or
 - live Hiveopolis or BEEHAVE runtime callbacks.
 
-Each of those is a roadmap item (§15). The architectural commitment is
+Each of those is a roadmap item. The architectural commitment is
 that adding any of them should *only* modify BeeNiche internals; the
 cross-layer `CombGrid` and `PheromoneField` contracts that link
 BeeNiche to BeeSwarm and BeeBody do not change.

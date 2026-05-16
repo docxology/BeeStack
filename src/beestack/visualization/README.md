@@ -11,7 +11,7 @@ core logic.
 `bee_signature.py` scores actual BeeBody GIF frames and generated MJCF features
 so visualization checks can fail when the render loses honeybee-specific cues.
 Animation artifact metadata includes fidelity level, backend, contact sheet,
-scene XML, and contact-report paths so reports can separate real FlyBody output
+scene XML, and contact-report paths so reports can separate FlyBody output
 from reduced schematic output.
 `empirical_figures.py` renders empirical response heatmaps, panel-quality bars,
 BeeBrain alignment charts, and Jernigan antennal active-sensing summaries from

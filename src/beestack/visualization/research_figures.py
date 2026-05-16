@@ -13,6 +13,7 @@ from skimage import io as skio
 from skimage.measure import label
 
 from ..research import ResearchSuiteReport
+from .figure_metadata import write_figure_sidecar
 
 
 def generate_research_figures(report: ResearchSuiteReport, output_dir: Path) -> list[Path]:
@@ -36,7 +37,28 @@ def generate_research_figures(report: ResearchSuiteReport, output_dir: Path) -> 
     ]
     for path in paths:
         _validate_nonblank_image(path)
+        write_figure_sidecar(
+            path,
+            title=path.stem.replace("_", " ").title(),
+            backend="Matplotlib/pandas/NetworkX",
+            fidelity=_research_figure_fidelity(path.name),
+            source_data="ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+            validation_status="nonblank image and quality sidecar passed",
+            regeneration_command="uv run python scripts/run_research_suite.py",
+        )
     return paths
+
+
+def _research_figure_fidelity(filename: str) -> str:
+    """Classify research-suite figures by evidence tier."""
+
+    if "empirical" in filename or "beebrain" in filename:
+        return "empirical summary projected into reduced BeeBrain contracts"
+    if "beebody" in filename:
+        return "FlyBody-backed render diagnostics plus reduced telemetry"
+    if "network" in filename or "inventory" in filename or "scorecard" in filename:
+        return "research provenance diagnostic"
+    return "reduced deterministic kernel diagnostic"
 
 
 def write_interactive_research_outputs(report: ResearchSuiteReport, output_dir: Path) -> list[Path]:

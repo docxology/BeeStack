@@ -39,7 +39,7 @@ The project implements the five named layers:
 ## Deliberate v0 Reductions
 
 The current scaffold is executable architecture, not a full biological
-simulator. BeeBody now renders through real FlyBody `WalkImitation` and
+simulator. BeeBody now renders through FlyBody `WalkImitation` and
 `FlightImitationWBPG` with a generated honeybee MJCF body plan. BeeSwarm
 collision, configured waggle, and long waggle production GIFs reuse that
 generated BeeBody plan in strict multi-bee MuJoCo scenes with required contact

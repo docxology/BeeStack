@@ -74,7 +74,7 @@ unresolved placeholders.
 
 ## Review Checklist
 
-- The abstract does not claim a full high-fidelity honeybee simulator.
+- The abstract does not claim a full calibrated honeybee simulator.
 - Scope says exactly which modules are strict, empirical, reduced, or
   diagnostic.
 - Methods sections name both the implementation and the validation surface.

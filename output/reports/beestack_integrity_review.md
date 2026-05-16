@@ -17,7 +17,7 @@
 ## BeeBody
 
 - Passed: `True`
-- Fidelity: real FlyBody render path plus reduced closed-loop telemetry
+- Fidelity: FlyBody render path plus reduced closed-loop telemetry
 - Deterministic: `True`
 - Public API: `Observation`, `Action`, `BodyState`, `BodyTelemetry`, `FlyBodyBeeBackend`, `BeeBodyPlanArtifact`
 - Config knobs: `body_mass_mg=80.0`, `wing_stroke_hz=230.0`, `wing_model=coupled_hamuli`, `action_dim_default=59`, `body_render_size=640x480`
@@ -37,7 +37,7 @@
 
 ### Empirical Evidence
 
-- Real FlyBody WalkImitation and FlightImitationWBPG tasks are the production render path.
+- FlyBody WalkImitation and FlightImitationWBPG tasks are the production render path.
 - Worker body mass default is 80 mg and wing stroke default is 230 Hz.
 - Procedural MJCF cues encode honeybee abdomen banding, four wings, hamuli, eyes, antennae, and corbiculae.
 

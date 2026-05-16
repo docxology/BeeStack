@@ -14,6 +14,8 @@
 - ![BeeBrain empirical methods completeness](../figures/methods/beebrain_methods_empirical_completeness.png){#fig:brain_methods_completeness}
 - # Empirical BeeBrain Data
 - # Empirical BeeBrain Results
+- # FlyBody Integration
+- ## BeeSwarm Strict FlyBody Scenes
 - ## Empirical BeeBrain Scope
 - ## Empirical datasets
 - ## Empirical figures
@@ -22,62 +24,92 @@
 - ## Reduced communication kernel
 - ## Reduced kernels are useful when their boundaries are explicit
 - ## `uv run python scripts/fetch_empirical_bee_data.py` Is Slow
-- ({{REAL_FLYBODY_ANIMATION_COUNT}} real FlyBody, {{REDUCED_ANIMATION_COUNT}}
-- **BeeBody** is real FlyBody-backed for rendering plus a reduced
+- ({{REAL_FLYBODY_ANIMATION_COUNT}} FlyBody, {{REDUCED_ANIMATION_COUNT}}
+- **BeeBody** is FlyBody-backed for rendering plus a reduced
 - **BeeBrain** is an empirical reduced neural kernel — empirical at
+- **BeeSwarm** combines strict FlyBody/MuJoCo visual scenes
 - **Empirical claims** are tied to the BeeBrain data registry and to
 - **Empirical reduced kernel**: BeeBrain loaders, parsers, summaries, and
-- **Real FlyBody/MuJoCo rendering** is claimed only for BeeBody walking,
+- **FlyBody/MuJoCo rendering** is claimed only for BeeBody walking,
 - **Reduced validated kernel**: BeeMind, non-visual BeeSwarm, and BeeNiche
+- **Strict FlyBody/MuJoCo 3D**: production BeeBody walking/flight and BeeSwarm
 - **visualization and validation**, **integrated results**, **empirical
+- *absence* of FlyBody debug aids inconsistent with the honeybee render.
 - *reduced communication kernel* models dance recruitment, pheromone
+- 1. **FlyBody-backed body and small-scene swarm visuals** with
 - 1. **No live colony-data calibration.** The empirical anchors are
-- 1. **Real FlyBody-backed body and small-scene swarm visuals** with
 - 1. wiring the reduced communication summaries through a BEEHAVE
 - 2. **Empirical BeeBrain acquisition and analysis** covering anatomy
 - 3D, reduced kernel, schematic), validation status (passed/passed with
 - 4. **Validated reduced kernels** for BeeMind active-inference policy
 - 5. For empirical data, follow the registered source ID back to its
 - @todorov2012mujoco]; a reduced deterministic closed-loop kernel runs in
-- A reduced BeeBrain that *quietly fabricates* missing calcium traces
+- A reduced BeeBrain that substitutes synthetic values for missing calcium
 - ACT --> BODY["BeeBody FlyBody MJCF + reduced telemetry"]
-- BeeBody GIFs are generated through real FlyBody render tasks. The BeeSwarm
-- BeeBody uses a real FlyBody/MuJoCo render path, and production BeeSwarm
-- BeeBrain empirical gate: `brain_data_parseable_fraction >= 0.800`, or every
+- Actions are unpacked from a {{FLYBODY_ACTION_DIM}}-dimensional vector
+- BEEHAVE-compatible colony summaries, and strict FlyBody/MuJoCo multi-BeeBody
+- BeeBody GIFs are generated through FlyBody render tasks. The BeeSwarm
+- BeeBody uses a FlyBody/MuJoCo render path, and production BeeSwarm
+- BeeBrain empirical gate: `brain_data_parseable_fraction >= 0.5` in this
 - BeeBrain has an end-to-end empirical pipeline for curated honeybee anatomy and
-- BeeBrain is a *reduced neural kernel with a real empirical-data surface*.
-- BeeBrain is a reduced neural kernel with a real empirical-data surface. The
+- BeeBrain is a *reduced neural kernel with an empirical-data surface*.
+- BeeBrain is a reduced neural kernel with an empirical-data surface. The
 - BeeBrain is empirically anchored but kinetically reduced. It does not
 - BeeStack does not claim to be a finished biological simulator. Its
 - BeeStack does not generate new animal-research data. All empirical
+- BeeStack fork target: `https://github.com/docxology/flybody-beestack`
 - BeeStack records the error in `output/data/empirical_sources/archives.json` and
+- BeeStack treats FlyBody as the strict BeeBody physics/render substrate. The
 - BeeStack treats empirical raw data as regeneratable output. The source code
 - BeeSwarm outputs reduced dance recruitment, pheromone gradients, task
 - BeeSwarm waggle recruitment diagnostics include empirical follower confidence,
-- Empirical anchor data are summarized in §11; the research-suite
+- Body animation path uses real [FlyBody](https://github.com/TuragaLab/flybody)
+- Calibrate the real-FlyBody BeeBody path beyond the current visual MJCF
 - Empirically, the visual-validation layer catches three recurring
 - Every empirical source registered in `src/beestack/research/methods.py`
 - Figures under `output/figures/empirical/` report panel quality, panel
+- FlyBody [@vaxenburg2025flybody] walking and wing-beat flight tasks
+- FlyBody tasks, using a generated honeybee MJCF body plan.
+- FlyBody whole-body fruit-fly physics [@vaxenburg2025flybody]
+- FlyBody-compatible body plan while preserving every task-facing joint and
+- FlyBody-generated BeeBody MJCF scenes stepped and rendered by MuJoCo, and the
+- FlyBody/MuJoCo 3D renders; Brain, Mind, recruitment-field Swarm, and Niche
+- FlyBody/MuJoCo 3D scenes built from prefixed copies of the generated
+- FlyBody/MuJoCo BeeSwarm collision/waggle scenes with contact reports, and
+- FlyBody/MuJoCo production scenes for waggle/collision visualization.
 - FlyBody/MuJoCo, empirical reduced, reduced validated, or diagnostic/schematic.
+- FlyBody/MuJoCo-backed witnesses from reduced kernels and empirical summaries.
+- FlyBody: the scripts raise `FlyBodyUnavailableError` instead of falling back to
+- Frame count, GIF fps, BeeBody render dimensions, camera ID, FlyBody body-plan
 - It assembles fidelity-labelled scorecards, empirical-evidence rows,
 - It does not claim connectome-level dynamics, a heavyweight spiking
 - Limit empirical BeeBrain alignment to one odor template for a small experiment:
+- Local override: set `BEESTACK_FLYBODY_PATH=/path/to/flybody-beestack` or
+- MJCF assets used by FlyBody.
+- MJCF/FlyBody/MuJoCo path with render and contact verification. They do
 - Mind, and Niche emit deterministic reduced module GIFs under
+- MuJoCo/FlyBody-backed, dynamic, XML-backed, and supported by contact metrics.
+- Point BeeStack at a local FlyBody fork and use a custom action dimension if the
+- Point `BEESTACK_FLYBODY_PATH` at a checked-out BeeStack FlyBody fork to use
 - Preserve the fidelity tier in the sentence: strict FlyBody/MuJoCo, empirical
-- Production animation paths use real FlyBody tasks:
+- Production animation paths use FlyBody tasks:
 - Raw empirical downloads live in `output/data/empirical_sources/` and
 - Recruitment diagnostics combine decoded dance confidence, empirical
 - Regenerate the central science report after empirical analysis and animation
 - Runtime, empirical, and visualization configuration: `tests/test_config_contracts.py`.
 - Scope says exactly which modules are strict, empirical, reduced, or
+- Strict FlyBody scene XML and contact-scene animation metadata:
+- Subdirectories contain data, figures, reports, interactive HTML, strict FlyBody
 - Swarm production animations, empirical reduced for BeeBrain, and reduced
 - The `beestack.empirical` config section controls enabled dataset IDs, calcium
-- The abstract does not claim a full high-fidelity honeybee simulator.
-- The animation pipeline is module-aligned: BeeBody emits real FlyBody walking
+- The abstract does not claim a full calibrated honeybee simulator.
+- The animation pipeline is module-aligned: BeeBody emits FlyBody walking
 - The biological scale assumptions that shape the current reduced
 - The code validates and integrates real downloaded workbook/CSV/MAT/anatomy
 - The current BeeBrain empirical layer projects available odor templates
+- The current claim is FlyBody/MuJoCo-backed rendering and contact evidence, not
 - The current dance decoder is a reduced-kernel placeholder (nominal
+- The current empirical readiness gate uses the configured
 - The current empirical run integrates {{EMPIRICAL_PANEL_COUNT}}
 - The current scaffold is executable architecture, not a full biological
 - The distance estimate is a reduced-kernel placeholder — a nominal
@@ -89,20 +121,30 @@
 - The integrated run does not claim:
 - The latest run contains {{EMPIRICAL_PANEL_COUNT}} empirical panels,
 - The project does not claim a complete high-fidelity honeybee simulator. The
-- The project now has real FlyBody/MuJoCo production outputs for Body
+- The project now has FlyBody/MuJoCo-backed render and contact artifacts
 - The reduced kernel initializes {{SWARM_AGENTS}} agents, broadcasts dance
+- The render path is configurable through `beestack.flybody` and
+- The report must preserve fidelity labels: strict FlyBody/MuJoCo for Body and
 - The research suite assembles five module scorecards, empirical evidence
 - The research suite is a typed assembly layer for method scorecards, empirical
+- The scene applies BeeStack/FlyBody walking controls to legs and low-amplitude
 - Then inspect `output/data/empirical_sources/catalog.json` and
+- Then open `output/reports/flybody_contact_physics.md` and the scene-specific
 - These functions are intentionally lightweight. They inspect downloaded ZIP/HTML
 - This has two consequences. First, empirical coverage metrics are not
-- This is a real empirical-data pipeline, not a full connectome simulator. It
+- This is an empirical-data pipeline, not a full connectome simulator. It
+- Upstream: `https://github.com/TuragaLab/flybody`
+- Use this when BeeBody, FlyBody integration, BeeSwarm strict scenes, animation
+- Walking animations load the generated body plan through FlyBody
 - [@vaxenburg2025flybody; @todorov2012mujoco] with a reduced
-- `BeeBody`: real FlyBody-backed walking and wing-beat flight rendering through
+- [@vaxenburg2025flybody] and a honeybee MJCF body plan, but the
+- [@vaxenburg2025flybody] inside MuJoCo [@todorov2012mujoco]; the
+- `BeeBody`: FlyBody-backed walking and wing-beat flight rendering through
 - `BeeBrainAnatomySummary`: asset count, downloaded count, neuropil coverage,
 - `BeeBrainDataCompletenessPanel` reports downloaded and parseable fractions,
 - `BeeBrain`: reduced but empirical-data-driven AL/MB/CX, odor-template,
 - `BrainState`: AL/MB/CX/dance/empirical-alignment output.
+- `EMPIRICAL_KNOWN_GAP_COUNT = {{EMPIRICAL_KNOWN_GAP_COUNT}}`, and the
 - `EmpiricalAnatomyDataset`
 - `EmpiricalBrainDataset`
 - `EmpiricalCalciumDataset`
@@ -111,10 +153,26 @@
 - `EmpiricalPanelStats`
 - `EmpiricalTemplateBank`
 - `EmpiricalWaggleFollowerDataset`
+- `FlyBodyBeeBackend.write_modified_body_plan()` copies FlyBody's fruitfly asset
+- `FlyBodyBeeBackend.write_modified_body_plan()`. It prefix-copies the body,
+- `FlyBodyBeeBackend`
+- `FlyBodyContactMetrics`
+- `FlyBodySceneArtifact`
+- `FlyBodySceneRenderConfig`
 - `analyze_empirical_bee_data.py` integrates downloaded Honeybee Standard Brain
-- `beebody_flybody_flight.gif`: real FlyBody `FlightImitationWBPG` rollout
-- `beebody_flybody_morphology.gif`: real FlyBody `WalkImitation` rollout
+- `beebody_flybody_flight.gif`: FlyBody `FlightImitationWBPG` rollout
+- `beebody_flybody_morphology.gif`: FlyBody `WalkImitation` rollout
+- `beestack.flybody.local_fork_path` in `manuscript/config.yaml`.
+- `beeswarm_10_beebody_collision.gif`: strict FlyBody/MuJoCo scene with ten
+- `beeswarm_waggle_dance_configured.gif`: strict FlyBody/MuJoCo scene with one
+- `beeswarm_waggle_dance_long.gif` are production FlyBody-generated BeeBody
+- `beeswarm_waggle_dance_long.gif`: long strict FlyBody/MuJoCo scene with the
+- `brain_data_parseable_fraction` must satisfy the configured empirical
 - `build_empirical_template_bank(panels, cfg)`
+- `build_flybody_modification_plan()` emits a machine-readable plan covering:
+- `contact_metrics.json` files under `output/animations/flybody_scenes/`. Common
+- `create_bee_flight_imitation_env()` uses FlyBody's `FlightImitationWBPG`,
+- `create_bee_walk_imitation_env()` uses FlyBody's own `FruitFly`,
 - `empirical_alignment_score()`
 - `empirical_analysis.md` records downloaded bee-data validation, empirical
 - `empirical_anatomy_datasets()`
@@ -124,10 +182,36 @@
 - `empirical`: BeeBrain dataset IDs, calcium-imaging protocol metadata,
 - `fetch_empirical_bee_data.py` attempts full curated BeeBrain downloads by
 - `fetch_empirical_bee_data.py` performs full curated downloads by default. It
-- `flybody_integration.md`: BeeBody's real FlyBody render path and modified
-- `flybody`: real FlyBody action dimension, local fork path, walk-imitation
-- `generate_animations.py` writes real FlyBody BeeBody locomotion GIFs, strict
-- `output/animations/`: real FlyBody BeeBody GIFs and strict FlyBody/MuJoCo
+- `flybody_contact_physics.md` and `.json` record scene XML paths, frame counts,
+- `flybody_contact_report_markdown(artifacts)`
+- `flybody_integration.md`: BeeBody's FlyBody render path and modified
+- `flybody_scene` FlyBody adapters — are presentation/integration adapters
+- `flybody_scenes/waggle_long/contact_metrics.json` for manuscript visual
+- `flybody`: FlyBody action dimension, local fork path, walk-imitation
+- `generate_animations.py` writes FlyBody BeeBody locomotion GIFs, strict
+- `output/animations/`: FlyBody BeeBody GIFs and strict FlyBody/MuJoCo
+- `output/animations/beebody_flybody_flight.gif`
+- `output/animations/beebody_flybody_flight_contact_sheet.png`,
+- `output/animations/beebody_flybody_morphology.gif`
+- `output/animations/beebody_flybody_morphology_contact_sheet.png`,
+- `output/animations/flybody_bee/bee_body_plan_manifest.json`, and the patched
+- `output/animations/flybody_scenes/`: generated multi-bee MJCF scene XMLs,
+- `output/animations/flybody_scenes/`; the combined report is
+- `output/animations/flybody_scenes/collision/`,
+- `output/animations/flybody_scenes/collision/collision_flybody_scene.xml`
+- `output/animations/flybody_scenes/collision/contact_metrics.json`
+- `output/animations/flybody_scenes/waggle/`, and
+- `output/animations/flybody_scenes/waggle/contact_metrics.json`
+- `output/animations/flybody_scenes/waggle/contact_metrics.json`: short-scene
+- `output/animations/flybody_scenes/waggle/waggle_flybody_scene.xml`
+- `output/animations/flybody_scenes/waggle/waggle_flybody_scene.xml`: MuJoCo XML
+- `output/animations/flybody_scenes/waggle_long/`.
+- `output/animations/flybody_scenes/waggle_long/`. The combined contact report is
+- `output/animations/flybody_scenes/waggle_long/contact_metrics.json`
+- `output/animations/flybody_scenes/waggle_long/contact_metrics.json`:
+- `output/animations/flybody_scenes/waggle_long/waggle_long_flybody_scene.xml`
+- `output/animations/flybody_scenes/waggle_long/waggle_long_flybody_scene.xml`:
+- `output/data/animation_manifest.json`. BeeBody walking is rendered by FlyBody's
 - `output/data/brain_data_completeness.json`: curated-source downloaded and
 - `output/data/empirical_analysis.json`
 - `output/data/empirical_analysis.json` — workbook, CSV, MAT,
@@ -150,6 +234,7 @@
 - `output/data/empirical_template_bank.json` — registered odor
 - `output/data/empirical_template_bank.json`: empirical odor templates and
 - `output/data/model_card.json`: configuration, contracts, empirical registries,
+- `output/data/model_card.json`: configuration, contracts, registries, FlyBody
 - `output/data/sensitivity/`: deterministic reduced-kernel sensitivity sweep
 - `output/data/sensitivity/sensitivity_sweeps.json`: deterministic reduced-kernel
 - `output/figures/beebrain_empirical_alignment_timeseries.png`
@@ -175,42 +260,67 @@
 - `output/interactive/`. Raw empirical downloads live under
 - `output/manuscript/`. Simulation data, empirical BeeBrain reports,
 - `output/reports/empirical_analysis.md`
+- `output/reports/flybody_contact_physics.json`
+- `output/reports/flybody_contact_physics.json`. BeeBody also writes
+- `output/reports/flybody_contact_physics.md`
+- `output/reports/flybody_contact_physics.md`.
+- `output/reports/flybody_contact_physics.md`: MuJoCo contact evidence for the
+- `output/reports/flybody_contact_physics.md`;
+- `output/reports/flybody_contact_physics.md`; the animation manifest groups both
+- `render_bee_flight_frames()` writes `beebody_flybody_flight.gif` from the FlyBody flight task. Both paths use name-aware BeeStack-to-FlyBody action
+- `render_bee_walk_frames()` calls `flybody.utils.rollout_and_render()` and writes
+- `render_flybody_long_waggle_scene(cfg, animations_dir, ...)`
+- `render_flybody_swarm_collision_scene(cfg, animations_dir, ...)`
+- `render_flybody_waggle_scene(cfg, animations_dir, ...)`
+- `research.empirical_completeness_threshold` from `manuscript/config.yaml`
+- `research.empirical_completeness_threshold` in `manuscript/config.yaml`. The
 - `run_research_suite.py` calls the analysis, empirical, visual-verification, and
 - `run_simulation(..., empirical_odor_templates=...)`.
 - `scripts/analyze_empirical_bee_data.py` writes:
 - `scripts/fetch_empirical_bee_data.py` now attempts full curated downloads by
+- `src/beestack/body/flybody_scene.py` builds production BeeSwarm collision,
+- `tests/test_structure_flybody_visualization.py`.
 - `uv lock --check`, `pytest --cov=src`, metadata-only empirical fetches,
 - `uv run python scripts/analyze_empirical_bee_data.py` and
-- `visualization_gallery.md`: real FlyBody 3D, empirical, reduced schematic,
+- `visualization_gallery.md`: FlyBody 3D, empirical, reduced schematic,
+- `waggle_3d_scenario.md`: strict short and long BeeBody/FlyBody/MuJoCo waggle
 - a directory is canonical source, generated output, downloaded data, or
 - access allows it. It then projects those data into reduced BeeBrain contracts:
-- action channels. Production animations use real FlyBody walking and
+- action channels. Production animations use FlyBody walking and
 - active-sensing drive, and empirical-alignment diagnostics. BeeStack does not yet
+- allocation, colony-level EFE aggregation, and strict FlyBody/MuJoCo
+- and `output/animations/flybody_scenes/waggle_long/contact_metrics.json`.
 - and activity sources — currently {{EMPIRICAL_PANEL_COUNT}} panels,
+- and flight GIFs; BeeSwarm emits strict FlyBody/MuJoCo collision, configured
 - and parseable. Check `output/data/empirical_sources/anatomy_downloads.json` and
 - and reduced: AL templates, Kenyon sparse coding, a heading ring, waggle decoding,
+- and remediation path. Empirically known gaps are catalogued as
 - and the long multi-BeeBody waggle-dance scenario. Reduced schematic
 - animations are reduced schematic summaries.
-- animations: {{REAL_FLYBODY_ANIMATION_COUNT}} real FlyBody/MuJoCo
+- animations: {{REAL_FLYBODY_ANIMATION_COUNT}} FlyBody/MuJoCo
 - antennal summaries, and {{EMPIRICAL_TEMPLATE_COUNT}} templates with
 - back to reduced renderers when FlyBody is absent. The collision output must
 - backend is deterministic and reduced, while the APIs are designed so that
+- bee shape, and — importantly — *absence* of FlyBody debug aids
 - behavior cannot be reduced to independent reflex modules; horizontal
 - belong under `output/data/empirical_sources/` and can be regenerated with uv.
 - biological engines. They are reduced validated kernels with diagnostics.
 - bounded reduced kernels with explicit diagnostics.
-- catalogued as `EMPIRICAL_KNOWN_GAP_COUNT = {{EMPIRICAL_KNOWN_GAP_COUNT}}`,
+- by FlyBody-generated scene XMLs, rendered by MuJoCo, and supported by finite
 - come from the reduced energetics model, not from a measured
 - confirm `output/data/empirical_sources/virtual-honeybee-standard-brain/`
 - contact evidence* and *reduced large-colony dynamics* explicit at a
 - contains registries, typed records, parsers, and tests; downloaded archives stay
+- contracts aligned with FlyBody/MuJoCo stepping; they should not be read
 - contracts, configuration knobs, diagnostics, empirical evidence,
 - contracts, validation checks, diagnostics, empirical evidence, fidelity levels,
-- contribution is a reproducible substrate that keeps real FlyBody/MuJoCo
+- contribution is a reproducible substrate that keeps FlyBody/MuJoCo
 - coverage, simulation telemetry, empirical parseability, signposting
+- dance floor, applies BeeStack/FlyBody walking controls, and fails if floor/body
 - declared backends; that empirical sources have parse statuses; and that
 - diagnostics, empirical evidence, fidelity level, and known gaps.
 - diagnostics, visual evidence, empirical source records, and manuscript
+- directory, including generated output leaves such as FlyBody copied assets,
 - downloaded and parseable fractions, plus an explicit module/modality
 - downloaded and parsed BeeBrain data. A claim about policy selection,
 - downloaded payloads on disk. The current empirical run integrates
@@ -218,7 +328,7 @@
 - downloaded/parseable scorecard and module/modality matrix.
 - dynamics remain reduced
 - empirical BeeBrain evidence: `output/data/empirical_analysis.json` and
-- empirical alignment metric in §10, and for the methods-analysis
+- empirical alignment metric in the integrated results, and for the
 - empirical dashboard. This is the highest-leverage near-term move:
 - empirical evidence records, visualization inventories, sensitivity sweeps, and
 - empirical follower confidence without breaking existing call sites.
@@ -226,37 +336,53 @@
 - empirical-evidence count, and known-gap count, so the heatmap row for
 - empirical:
 - empirical_completeness_threshold: 0.5
-- energetics. Production rendering runs through real FlyBody tasks
+- energetics. Production rendering runs through FlyBody tasks
 - evidence, visualization provenance, deterministic reduced-kernel sensitivity
 - explicitly *reduced kernels*. Their value is contract integration,
 - fabricates empirical measurements for unavailable files.
 - feature is empirical traceability: Honey-Bee Standard Brain anatomy,
+- fidelity groups, BeeBody visual signatures, and strict FlyBody contact-scene
 - figure formats, interactive-output toggle, empirical completeness threshold,
 - figures, some are reduced-kernel diagnostics, and some are schematic
+- flight simulation — "strict FlyBody/MuJoCo" refers to the real MJCF
+- flight tasks driven through MuJoCo [@vaxenburg2025flybody;
+- flybody:
+- flybody_scene_substeps: 4
+- following quantities are inherited from FlyBody defaults rather than
+- for FlyBody. It summarizes COM-speed proxy traces, wing-power traces,
 - for generated FlyBody assets, empirical dataset leaves, and diagnostic folders.
 - formats, sensitivity sweeps with fewer than two values, invalid empirical
 - fractions, empirical odor separability, aftersmell/post-odor response,
 - fresh empirical, FlyBody, and visualization provenance inputs.
+- from the FlyBody defaults; deviating from them changes the imitation
+- generated honeybee MJCF body plan that FlyBody loads through `walker_xml_path`.
+- graph recorded in `output/animations/flybody_scenes/waggle/contact_metrics.json`
 - heading distribution, dance events, and empirical alignment metadata.
 - helper adds empirical follower confidence, follower-alignment score, stop-signal
 - into a reduced AL–MB–CX path; the alignment metric measures whether
-- is real FlyBody-backed for production rendering, and the visual
+- is FlyBody-backed for production rendering, and the visual
+- its backend (e.g. FlyBody, MuJoCo, Matplotlib), fidelity level (real
 - kinematics are registered, downloaded when available, parsed, and
+- local_fork_path: /absolute/path/to/flybody-beestack
+- mapping, so walking channels align with FlyBody claw/head/abdomen/leg actuator
 - method scorecards, validation fractions, visual inventory, empirical evidence,
 - model cards, methods panels, and hydrated manuscript sections. A reduced
+- must not appear in the production `real_flybody_3d` manifest group.
+- name-aware BeeStack-to-FlyBody tripod walking action policy.
+- names, paths, and reproducible commands. Claim strict FlyBody/MuJoCo only for
 - neural model remains a reduced AL–MB–CX and dance-decoding kernel.
 - objects. Some are strict FlyBody/MuJoCo renders, some are empirical
 - of module readiness, simulation telemetry, empirical parseability, visual
+- on top of the FlyBody execution path: the verification script measures
 - or parseable, so the empirical alignment metric currently sits closer
 - orientation but not biomechanical or empirical evidence.
 - output/            Regeneratable artifacts and raw empirical downloads
 - outputs and {{REDUCED_ANIMATION_COUNT}} reduced schematic outputs. The
 - outputs, empirical BeeBrain evidence, reduced kernels, validation reports,
-- parser status, and remediation path. Empirically known gaps are
 - per-frame features, binned antenna features, model error tables, reduced
+- project depends on the upstream FlyBody package through uv, then writes a
 - public APIs, contracts, config knobs, validations, diagnostics, empirical
 - raw external empirical archives or large third-party payloads that can be
-- real FlyBody [@vaxenburg2025flybody] walking and wing-beat flight tasks
 - records, empirical evidence records, sensitivity sweeps, and known gaps.
 - recruitment threshold integrating decoded dance confidence, empirical
 - reduced closed-loop kernel remains for deterministic telemetry tests.
@@ -272,47 +398,63 @@
 - reduced.
 - regenerated by `scripts/fetch_empirical_bee_data.py`. The `.gitignore` is
 - registered odor templates, and an empirical-alignment score of
-- renderer uses real FlyBody walking and flight tasks
+- renderer uses FlyBody walking and flight tasks
 - reviewable in git. Raw empirical archives and large third-party payloads under
 - reviewable project artifacts. Raw external empirical archives and large
 - reviews, visualization manifests, empirical analyses, research-suite
 - running the whole pipeline. Raw external empirical archives, caches,
+- scene can cite strict FlyBody/MuJoCo render artifacts. A claim about
 - scope, architecture, module methods, empirical data, validation, results,
 - scorecards, empirical summaries, animation manifests, and integrity reports. It
 - scorecards, {{RESEARCH_EVIDENCE_COUNT}} empirical evidence records,
 - script to a `src/beestack/` import, and each registered empirical
+- sheets in `output/animations/`. The common issues are missing FlyBody runtime,
 - sheets sit beside each GIF for quick visual review. Reduced Matplotlib
 - signposting, empirical parseability, and scholarship anchors.
-- simulator. BeeBody now renders through real FlyBody `WalkImitation` and
+- simulator. BeeBody now renders through FlyBody `WalkImitation` and
 - small improvement in BeeBrain empirical coverage can unlock multiple
+- strict FlyBody scene scripts raise `FlyBodyUnavailableError` instead of falling
 - strict-scene body plans, empirical dataset folders, and diagnostic probe
 - stroke. The empirical run currently integrates {{EMPIRICAL_PANEL_COUNT}}
 - structurally insensitive under the current reduced kernel
 - summaries, and {{EMPIRICAL_TEMPLATE_COUNT}} integrated odor templates,
 - surfaces for module completeness, fidelity levels, empirical evidence, and gaps.
 - task allocation, or thermal regulation must be framed as a reduced
+- tasks [@vaxenburg2025flybody] running inside MuJoCo
+- tasks, and the strict BeeBody and BeeSwarm FlyBody scenes hard-require
+- the FlyBody walking and flight renders carry honeybee visual and locomotion cues
 - the data surface, reduced at the dynamics surface.
 - the non-visual swarm communication kernel, and BeeNiche remain reduced
 - the reduced closed loop.
 - the reduced closed-loop motion as a *witness* rather than a substitute
+- the resulting MuJoCo frames into `beebody_flybody_morphology.gif`.
 - the swarm recruitment kernel, and Niche are deterministic reduced kernels with
+- thermal traces. Empirical anchor data are summarized in "Empirical Results";
 - third-party source payloads under `output/data/empirical_sources/` are
+- through FlyBody/MuJoCo tasks; the brain layer is anchored to public
 - through deterministic reduced communication, pheromone, and
-- through real FlyBody/MuJoCo tasks; the brain layer is anchored to public
+- under `output/animations/flybody_scenes/`. Research-suite figures live under
 - under `output/data/empirical_sources/`.
+- use generated honeybee MJCF body plans driven by FlyBody
 - uv run python scripts/analyze_empirical_bee_data.py
 - uv run python scripts/fetch_empirical_bee_data.py
 - uv run python scripts/fetch_empirical_bee_data.py --force
 - uv run python scripts/fetch_empirical_bee_data.py --metadata-only
+- visible FlyBody debug aids. The same verifier also checks that the BeeSwarm
 - visualization inventory, empirical evidence, sensitivity sweeps, and gaps.
 - waggle decoding, with explicit empirical dataset provenance for calcium
+- waggle outputs under `real_flybody_3d`.
 - waggle spacing, orientation gain, antennal sampling gain, and empirical
 - waggle, and long waggle scenes plus a reduced recruitment-field summary; Brain,
 - waggle-dance GIFs that hard-fail without FlyBody, plus reduced Brain, Mind,
 - waggle-decoding, and empirical-alignment fields. The AL channel
-- whether an output is real FlyBody 3D, empirical, reduced schematic, or
+- waggle/collision production GIFs are strict MuJoCo/FlyBody scene renders.
+- waist constriction, locomotion motion, and absence of visible FlyBody debug
+- whether an output is FlyBody 3D, empirical, reduced schematic, or
+- whose external consumers (matplotlib output files, FlyBody `walker_xml_path`,
 - with empirical odor label `{{FINAL_EMPIRICAL_ODOR}}` selected from the
 - with module method scorecards, validation fractions, empirical evidence,
+- written to `output/reports/flybody_contact_physics.md` and
 - written under `output/`. Raw empirical downloads live in
 - {{BRAIN_DATA_PARSEABLE_FRACTION}}` and `EMPIRICAL_KNOWN_GAP_COUNT =
 - {{EMPIRICAL_KNOWN_GAP_COUNT}} empirical known gaps, making *missing
@@ -324,25 +466,29 @@
 - {{FINAL_EMPIRICAL_ALIGNMENT}}.
 - {{RESEARCH_EVIDENCE_COUNT}} empirical evidence records,
 - {{RESEARCH_EVIDENCE_COUNT}} empirical evidence records, and an overall
+- {{WING_STROKE_HZ}} Hz wing stroke, and {{FLYBODY_ACTION_DIM}} FlyBody
 - | Active-inference-style policy selection | Deterministic reduced policy scoring with diagnostics | `output/reports/methods_analysis.md` | Learned colony-optimal control |
+- | Bee-shaped individual walking and flight renders | Strict FlyBody tasks over generated honeybee MJCF | `output/reports/bee_visual_verification.md` | Calibrated honeybee ground reaction forces |
 - | BeeBrain data provenance | `docs/beebrain_data_pipeline.md` | `uv run python scripts/analyze_empirical_bee_data.py` |
 - | BeeBrain empirical anchoring | Curated public anatomy/activity/follower datasets parsed into summaries | `output/data/empirical_analysis.json` | Connectome-level or spiking neural dynamics |
 - | Belief latent dim | {{LATENT_DIM}} | Reduced kernel |
 - | Comb and brood thermal behavior | Reduced grid and thermal kernels with validation checks | `output/reports/beestack_research_report.md` | Full hive thermodynamics |
+- | Multi-BeeBody waggle and collision scenes | Prefixed BeeBody MJCF copies driven along scripted kinematic poses, with real MuJoCo geometry/contact detection at those poses | `output/reports/flybody_contact_physics.md` | Integrated multi-bee flight dynamics, or BEEHAVE-scale colony dynamics |
+- | Review strict 3D waggle | `docs/waggle_3d_scenario.md` | `output/animations/flybody_scenes/waggle_long/contact_metrics.json` | Orientation error below 35 degrees and confidence above 0.65 |
 - | Swarm agents | {{SWARM_AGENTS}} | Reduced kernel |
 - | `04_body_methods.md` | BeeBody FlyBody and reduced telemetry methods | Body GIFs, MJCF, visual verification |
 - | `05_brain_methods.md` | BeeBrain empirical reduced-kernel methods | Empirical reports and data completeness |
 - | `07_swarm_methods.md` | Reduced swarm plus strict 3D waggle/collision | Contact physics report and scene XMLs |
 - | `11_empirical_results.md` | BeeBrain data and source completeness | Empirical analysis outputs |
-- | `output/animations/beebody_flybody_flight.gif` | FlyBody `FlightImitationWBPG` + `WingBeatPatternGenerator` + `rollout_and_render` | Real FlyBody 3D | Same BeeBody MJCF and flight action mapping | Bee silhouette score, wing/body motion, MJCF cue audit |
-- | `output/animations/beebody_flybody_morphology.gif` | FlyBody `WalkImitation` + `rollout_and_render` | Real FlyBody 3D | `apis_mellifera_worker.xml`, `walker_xml_path`, BeeStack walking action mapping | Bee silhouette score, motion pixels, MJCF cue audit |
+- | `output/animations/beebody_flybody_flight.gif` | FlyBody `FlightImitationWBPG` + `WingBeatPatternGenerator` + `rollout_and_render` | FlyBody 3D | Same BeeBody MJCF and flight action mapping | Bee silhouette score, wing/body motion, MJCF cue audit |
+- | `output/animations/beebody_flybody_morphology.gif` | FlyBody `WalkImitation` + `rollout_and_render` | FlyBody 3D | `apis_mellifera_worker.xml`, `walker_xml_path`, BeeStack walking action mapping | Bee silhouette score, motion pixels, MJCF cue audit |
 - | `output/animations/beebrain_neural_anatomy.gif` | Matplotlib animation | Reduced schematic with empirical anchors | AL/MB/CX config and empirical BeeBrain summaries | Deterministic generation and documented fidelity |
 - | `output/animations/beemind_policy_beliefs.gif` | Matplotlib animation | Reduced schematic | BeeMind caste priors and policy diagnostics | Deterministic generation and manifest signposting |
 - | `output/animations/beeniche_comb_thermal.gif` | Matplotlib animation | Reduced schematic | Comb occupancy and brood thermal field | Deterministic generation and manifest signposting |
-- | `output/animations/beeswarm_10_beebody_collision.gif` | `mujoco.MjModel`, `MjData`, `Renderer` over prefixed BeeBody MJCF copies | Real FlyBody 3D contact physics | Ten BeeBody copies, WPG wing controls, hidden contact proxies | Actual bee-bee contact pairs in `flybody_contact_physics` |
+- | `output/animations/beeswarm_10_beebody_collision.gif` | `mujoco.MjModel`, `MjData`, `Renderer` over prefixed BeeBody MJCF copies | FlyBody 3D contact physics | Ten BeeBody copies, WPG wing controls, hidden contact proxies | Actual bee-bee contact pairs in `flybody_contact_physics` |
 - | `output/animations/beeswarm_dance_pheromone.gif` | Matplotlib animation | Reduced schematic | BeeSwarm recruitment and pheromone field state | Manifest caption/alt text and deterministic generation |
-- | `output/animations/beeswarm_waggle_dance_configured.gif` | `mujoco.MjModel`, `MjData`, `Renderer` over prefixed BeeBody MJCF copies | Real FlyBody 3D contact physics | Dancer/follower BeeBody copies, decoded waggle path, domain waggle kinematics, comb/floor arena | Dynamic frames plus floor/body contact and follower-orientation metrics |
-- | `output/animations/beeswarm_waggle_dance_long.gif` | `mujoco.MjModel`, `MjData`, `Renderer` over prefixed BeeBody MJCF copies | Real FlyBody 3D contact physics | Long phase-aware BeeBody waggle dancer plus ten followers, return loops, folded/low-amplitude wing motion, comb/floor arena | Dynamic frames, floor/body contact, orientation confidence, phase samples, and contact graph in `waggle_long/contact_metrics.json` |
+- | `output/animations/beeswarm_waggle_dance_configured.gif` | `mujoco.MjModel`, `MjData`, `Renderer` over prefixed BeeBody MJCF copies | FlyBody 3D contact physics | Dancer/follower BeeBody copies, decoded waggle path, domain waggle kinematics, comb/floor arena | Dynamic frames plus floor/body contact and follower-orientation metrics |
+- | `output/animations/beeswarm_waggle_dance_long.gif` | `mujoco.MjModel`, `MjData`, `Renderer` over prefixed BeeBody MJCF copies | FlyBody 3D contact physics | Long phase-aware BeeBody waggle dancer plus ten followers, return loops, folded/low-amplitude wing motion, comb/floor arena | Dynamic frames, floor/body contact, orientation confidence, phase samples, and contact graph in `waggle_long/contact_metrics.json` |
 - | `output/figures/beebrain_empirical_alignment_timeseries.png` | Matplotlib | Empirical summary | Empirical odor-template alignment records | Empirical analysis report |
 - | `output/figures/beeniche_thermal_comb_panel.png` | Matplotlib | Reduced niche summary | Comb and thermal fields | Analysis pipeline and tests |
 - | `output/figures/beeswarm_recruitment_task_allocation.png` | Matplotlib | Reduced swarm summary | BeeSwarm recruitment/task allocation | Analysis pipeline and tests |
@@ -352,6 +498,7 @@
 - | `output/figures/empirical/waggle_follower_alignment.png`, `waggle_phase_coupling.png`, `beeswarm_waggle_recruitment_diagnostics.png` | Matplotlib | Empirical waggle figure | Hadjitofi-Webb follower antenna and model-error CSV summaries | Waggle follower analysis report |
 - | `output/reports/beestack_integrity_review.md` | Report | Stack audit | APIs, contracts, validations, empirical evidence, fidelity gaps |
 - | `output/reports/beestack_research_report.md` | Report | Research suite | Method scorecards, sensitivity sweeps, empirical evidence, visual inventory |
+- | `output/reports/flybody_contact_physics.md` | Report | Strict contact physics | Contact frames, pairs, floor contacts, min contact distance, scene XMLs |
 - | `output/reports/waggle_follower_analysis.md` | Report | Empirical waggle analysis | Figshare follower tracks, antenna alignment, model-error summaries, completeness |
 
 ## Missing Output References

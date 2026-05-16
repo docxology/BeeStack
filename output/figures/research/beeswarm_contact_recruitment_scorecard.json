@@ -1,0 +1,20 @@
+{
+  "backend": "Matplotlib/pandas/NetworkX",
+  "fidelity": "research provenance diagnostic",
+  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/beeswarm_contact_recruitment_scorecard.png",
+  "quality": {
+    "height_px": 816,
+    "max_intensity": 255,
+    "mean_intensity": 243.48460117502884,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 43.69386954614348,
+    "width_px": 1360
+  },
+  "regeneration_command": "uv run python scripts/run_research_suite.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+  "title": "Beeswarm Contact Recruitment Scorecard",
+  "validation_status": "nonblank image and quality sidecar passed"
+}

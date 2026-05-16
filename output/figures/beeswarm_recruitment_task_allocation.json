@@ -1,0 +1,20 @@
+{
+  "backend": "Matplotlib",
+  "fidelity": "reduced deterministic kernel diagnostic",
+  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/beeswarm_recruitment_task_allocation.png",
+  "quality": {
+    "height_px": 720,
+    "max_intensity": 255,
+    "mean_intensity": 218.42431657848326,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 46.936987756339406,
+    "width_px": 1260
+  },
+  "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "output/data/simulation_records.json and module coverage records",
+  "title": "Beeswarm Recruitment Task Allocation",
+  "validation_status": "nonblank quality sidecar generated"
+}

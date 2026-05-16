@@ -1,0 +1,20 @@
+{
+  "backend": "Matplotlib/pandas",
+  "fidelity": "reduced deterministic kernel diagnostic",
+  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beemind_methods_policy_landscape.png",
+  "quality": {
+    "height_px": 972,
+    "max_intensity": 255,
+    "mean_intensity": 235.42891969292228,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 50.70976053882772,
+    "width_px": 1710
+  },
+  "regeneration_command": "uv run python scripts/run_methods_analysis.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+  "title": "Beemind Methods Policy Landscape",
+  "validation_status": "nonblank image and quality sidecar passed"
+}

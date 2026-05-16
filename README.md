@@ -1,9 +1,9 @@
 # BeeStack
 
 BeeStack is a uv-managed research-operations project for a modular honeybee
-digital-twin stack. It is organized around five typed layers:
+simulation scaffold. It is organized around five typed layers:
 
-- `BeeBody`: real FlyBody-backed walking and wing-beat flight rendering through
+- `BeeBody`: FlyBody-backed walking and wing-beat flight rendering through
   FlyBody tasks, using a generated honeybee MJCF body plan.
 - `BeeBrain`: reduced but empirical-data-driven AL/MB/CX, odor-template,
   antennal active-sensing, waggle-follower decoding, anatomy-inventory, and
@@ -132,7 +132,7 @@ uv run python scripts/z_generate_manuscript_variables.py
   Swarm, Niche, plus a repo-wide methods dashboard and manuscript evidence
   index.
 - `output/interactive/`: optional Plotly HTML research-suite views.
-- `output/animations/`: real FlyBody BeeBody GIFs and strict FlyBody/MuJoCo
+- `output/animations/`: FlyBody BeeBody GIFs and strict FlyBody/MuJoCo
   BeeSwarm ten-bee collision, short configured waggle, and long multi-BeeBody
   waggle-dance GIFs that hard-fail without FlyBody, plus reduced Brain, Mind,
   swarm-recruitment, and Niche animations.
@@ -198,11 +198,13 @@ example, Dryad archive endpoints may reject some large archives; the fetcher
 then records the error and attempts file-level downloads where the catalog
 exposes URLs.
 
-The current completeness target is two-layered: BeeStack aims for
-`brain_data_parseable_fraction >= 0.800`, and when an upstream source is
-registered but not locally parseable it must still be DOI/source-verified with
-an explicit blocker, parser status, and remediation path in
-`output/data/brain_data_completeness.json`.
+The current empirical readiness gate uses the configured
+`research.empirical_completeness_threshold` from `manuscript/config.yaml`
+(`0.5` in this checkout). BeeStack also records every registered-but-not-local
+or nonparseable source with DOI/source verification, parser status, blocker,
+and remediation path in `output/data/brain_data_completeness.json`. A stricter
+`0.800` parseability target remains an improvement target, not a satisfied
+current result.
 
 ## Documentation
 
@@ -218,5 +220,5 @@ Start with `docs/README.md`, then use:
 - `docs/validation_criteria.md` for acceptance criteria.
 - `docs/troubleshooting.md` for common failures.
 
-The original specification remains at the repository root:
-`BeeStack  A Whole-of-Colony Biophysical Digital Twin — Project Specification.md`.
+The historical project specification is summarized in `docs/spec_review.md`;
+current claims are governed by generated reports under `output/reports/`.

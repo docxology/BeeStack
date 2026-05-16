@@ -9,8 +9,10 @@ reviewable in git. Raw empirical archives and large third-party payloads under
 Current readiness targets:
 
 - Source coverage gate: `pytest --cov=src` at or above 92%.
-- BeeBrain empirical gate: `brain_data_parseable_fraction >= 0.800`, or every
-  remaining blocker is DOI/source-verified with parser status and remediation.
+- BeeBrain empirical gate: `brain_data_parseable_fraction >= 0.5` in this
+  checkout, plus DOI/source verification, parser status, and remediation for
+  every remaining blocker. The stricter `0.800` target remains an improvement
+  target.
 - BeeBody calibration gate: morphology calibration score at or above 0.85.
 - BeeSwarm waggle gate: mean follower orientation error below 35 degrees and
   orientation confidence above 0.65.

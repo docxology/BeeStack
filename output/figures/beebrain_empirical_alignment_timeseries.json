@@ -1,0 +1,20 @@
+{
+  "backend": "Matplotlib",
+  "fidelity": "empirical summary projected into a reduced BeeBrain contract",
+  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/beebrain_empirical_alignment_timeseries.png",
+  "quality": {
+    "height_px": 720,
+    "max_intensity": 255,
+    "mean_intensity": 249.82908289241624,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 33.02079194874929,
+    "width_px": 1260
+  },
+  "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "output/data/simulation_records.json and module coverage records",
+  "title": "Beebrain Empirical Alignment Timeseries",
+  "validation_status": "nonblank quality sidecar generated"
+}

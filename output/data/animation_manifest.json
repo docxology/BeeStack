@@ -1,11 +1,11 @@
 {
   "accessibility": {
     "beebody_flybody_flight.gif": {
-      "alt_text": "Real FlyBody-rendered honeybee flight animation using FlightImitationWBPG, WingBeatPatternGenerator, the generated apis_mellifera_worker MJCF, and translucent coupled forewing/hindwing surfaces.",
+      "alt_text": "FlyBody-rendered honeybee flight animation using FlightImitationWBPG, WingBeatPatternGenerator, the generated apis_mellifera_worker MJCF, and translucent coupled forewing/hindwing surfaces.",
       "caption": "BeeBody flight animation rendered by FlyBody flight_imitation, WingBeatPatternGenerator, rollout_and_render, and the same custom honeybee MJCF body plan."
     },
     "beebody_flybody_morphology.gif": {
-      "alt_text": "Real FlyBody-rendered honeybee walking animation using a generated apis_mellifera_worker MJCF, name-aware BeeStack-to-FlyBody action mapping, hind wings, corbiculae, stinger, and abdominal bands.",
+      "alt_text": "FlyBody-rendered honeybee walking animation using a generated apis_mellifera_worker MJCF, name-aware BeeStack-to-FlyBody action mapping, hind wings, corbiculae, stinger, and abdominal bands.",
       "caption": "BeeBody walking animation rendered by FlyBody walk_imitation, rollout_and_render, a custom modified honeybee MJCF body plan, and a tripod-gait BeeStack action policy."
     },
     "beebrain_neural_anatomy.gif": {
@@ -39,7 +39,7 @@
   },
   "animations": [
     {
-      "alt_text": "Real FlyBody-rendered honeybee walking animation using a generated apis_mellifera_worker MJCF, name-aware BeeStack-to-FlyBody action mapping, hind wings, corbiculae, stinger, and abdominal bands.",
+      "alt_text": "FlyBody-rendered honeybee walking animation using a generated apis_mellifera_worker MJCF, name-aware BeeStack-to-FlyBody action mapping, hind wings, corbiculae, stinger, and abdominal bands.",
       "backend": "flybody.walk_imitation+rollout_and_render",
       "caption": "BeeBody walking animation rendered by FlyBody walk_imitation, rollout_and_render, a custom modified honeybee MJCF body plan, and a tripod-gait BeeStack action policy.",
       "contact_report": "",
@@ -55,7 +55,7 @@
       "title": "BeeBody FlyBody tripod walking render"
     },
     {
-      "alt_text": "Real FlyBody-rendered honeybee flight animation using FlightImitationWBPG, WingBeatPatternGenerator, the generated apis_mellifera_worker MJCF, and translucent coupled forewing/hindwing surfaces.",
+      "alt_text": "FlyBody-rendered honeybee flight animation using FlightImitationWBPG, WingBeatPatternGenerator, the generated apis_mellifera_worker MJCF, and translucent coupled forewing/hindwing surfaces.",
       "backend": "flybody.flight_imitation.WingBeatPatternGenerator+rollout_and_render",
       "caption": "BeeBody flight animation rendered by FlyBody flight_imitation, WingBeatPatternGenerator, rollout_and_render, and the same custom honeybee MJCF body plan.",
       "contact_report": "",

@@ -1,15 +1,14 @@
 # Visualization and Validation
 
 BeeStack treats visualization as *evidence* only when the backend and
-validation status are explicit. A pretty figure that hides its fidelity
-is a liability; a figure that declares its provenance, validates its
-content, and links back to the script that produced it is reproducible
-evidence.
+validation status are explicit. A figure without fidelity metadata is not used
+as evidence. A figure that declares its provenance, validates its content, and
+links back to the script that produced it is reproducible evidence.
 
 ## Animation manifest
 
 The animation manifest currently contains 9
-animations: 5 real FlyBody/MuJoCo
+animations: 5 FlyBody/MuJoCo
 outputs and 4 reduced schematic outputs. The
 real group contains BeeBody walking, BeeBody flight, the
 BeeSwarm ten-bee collision scene, the BeeSwarm configured waggle dance,
@@ -25,7 +24,7 @@ Visual checks operate at several levels:
    pixels per second, locomotion mode (walking vs. flight),
    honeybee MJCF cue presence, silhouette overlap with a reference
    bee shape, and — importantly — *absence* of FlyBody debug aids
-   that would betray a non-bee renderer. The latest run reports a
+   inconsistent with a honeybee render. The latest run reports a
    BeeBody visual score of 0.980 and a silhouette
    score of 1.000.
 2. **BeeSwarm verification** requires MuJoCo contact reports for
@@ -66,9 +65,9 @@ Validation is also textual and structural.
 ## Methods-analysis figures
 
 The methods-analysis pass adds 7 static methods
-figures, 6 manuscript evidence links, and
-a manuscript figure index with 41
-artifact rows. The index maps every cited figure or visual artifact to
+figures, JSON sidecar metadata for generated methods and research figures,
+6 manuscript evidence links, and a manuscript
+figure index with 41 artifact rows. The index maps every cited figure or visual artifact to
 its backend (e.g. FlyBody, MuJoCo, Matplotlib), fidelity level (real
 3D, reduced kernel, schematic), validation status (passed/passed with
 caveats/known gap), and the regeneration command needed to reproduce
@@ -82,8 +81,8 @@ it.
 
 The combined effect of these layers is that a reader can audit *any
 figure* in this manuscript to determine: which kernel produced it,
-what fidelity tier the kernel sits in, whether the figure passed
-validation, and how to regenerate it. That is the operational meaning
+what fidelity tier the kernel sits in, whether the figure passed nonblank/quality validation, where its sidecar
+metadata lives, and how to regenerate it. That is the operational meaning
 of "reproducible research" inside BeeStack: not merely "the code is
 public," but "every claim is linkable, every figure is regenerable,
 and every fidelity gap is named" [@wilson2017good].
@@ -104,5 +103,7 @@ failure modes that pure-numerical validation does not:
    contact-proxy geoms) is rejected as evidence before it reaches the
    methods-analysis Swarm panel.
 
-Each of those failure modes is something the project has caught in
-practice, and each is now a regression test in `tests/`.
+Each failure mode is represented by a generated diagnostic or
+regression-style test in `tests/`, so the manuscript claim stays at the
+level of what the validators check rather than undocumented debugging
+history.

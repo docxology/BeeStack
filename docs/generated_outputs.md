@@ -145,7 +145,7 @@ license-clear, and needed for reproducibility.
 - `output/animations/flybody_scenes/waggle_long/waggle_long_flybody_scene.xml`
 - `output/animations/flybody_scenes/waggle_long/contact_metrics.json`
 
-BeeBody GIFs are generated through real FlyBody render tasks. The BeeSwarm
+BeeBody GIFs are generated through FlyBody render tasks. The BeeSwarm
 collision, configured waggle, and long waggle-dance GIFs are strict
 FlyBody-generated BeeBody MJCF scenes stepped and rendered by MuJoCo, and the
 strict FlyBody scene scripts raise `FlyBodyUnavailableError` instead of falling

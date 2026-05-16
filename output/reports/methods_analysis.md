@@ -12,13 +12,13 @@ Science-first per-module methods panels connecting quantitative diagnostics, val
 
 ### BeeBody
 
-- Fidelity: `real FlyBody render path plus reduced closed-loop telemetry`
+- Fidelity: `FlyBody render path plus reduced closed-loop telemetry`
 - Methods: FlyBody task render path; reduced telemetry witness; bee morphology cue scoring; strict scene contact provenance
 - Metrics: `bee_silhouette_score=1`, `bee_visual_score=0.98`, `contact_proxy_count=3`, `energy_drop_j=0.000821`, `inertia_rescaling_score=0.82`, `max_speed_m_s=0.004`, `mean_speed_m_s=0.004`, `mean_wing_power_mw=58.3`, `morphology_score=1`, `real_flybody_body_animation_count=3`, `wingbeat_frequency_hz=230`
 - Validation fraction: `1.000`
 - Visual artifacts: `7`
 - Manuscript evidence: output/reports/bee_visual_verification.md
-- Interpretation: Body evidence combines real FlyBody output with finite closed-loop telemetry.
+- Interpretation: Body evidence combines FlyBody output with finite closed-loop telemetry.
 - Known gaps: Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.; Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset.
 
 ### BeeBrain
@@ -93,7 +93,7 @@ Science-first per-module methods panels connecting quantitative diagnostics, val
 
 ## Manuscript Evidence Links
 
-- `manuscript/04_body_methods.md` BeeBody: `output/reports/bee_visual_verification.md` (visual_validation) supports BeeBody animations are real FlyBody-backed and bee-like under cue scoring.
+- `manuscript/04_body_methods.md` BeeBody: `output/reports/bee_visual_verification.md` (visual_validation) supports BeeBody animations are FlyBody-backed and bee-like under cue scoring.
 - `manuscript/05_brain_methods.md` BeeBrain: `output/reports/empirical_analysis.md` (empirical_analysis) supports BeeBrain uses real downloaded or cataloged anatomy/activity sources where present.
 - `manuscript/05_brain_methods.md` BeeBrain: `output/reports/waggle_follower_analysis.md` (waggle_follower_analysis) supports BeeBrain integrates curated waggle follower antennal-position decoding evidence when local.
 - `manuscript/06_mind_methods.md` BeeMind: `output/figures/methods/beemind_methods_policy_landscape.png` (policy_diagnostic) supports BeeMind exposes selected and competing policies with finite EFE terms.

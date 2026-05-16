@@ -1,0 +1,20 @@
+{
+  "backend": "Matplotlib",
+  "fidelity": "reduced deterministic kernel diagnostic",
+  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/comb_fraction_timeseries.png",
+  "quality": {
+    "height_px": 720,
+    "max_intensity": 255,
+    "mean_intensity": 248.51414572310406,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 36.22929339983392,
+    "width_px": 1260
+  },
+  "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "output/data/simulation_records.json and module coverage records",
+  "title": "Comb Fraction Timeseries",
+  "validation_status": "nonblank quality sidecar generated"
+}

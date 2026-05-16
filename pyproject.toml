@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "beestack"
 version = "0.1.0"
-description = "Template-compliant BeeStack digital-twin scaffold for honeybee colony simulation"
+description = "Template-compliant evidence-typed scaffold for honeybee colony simulation"
 authors = [
     {name = "Daniel Ari Friedman"},
 ]

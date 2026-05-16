@@ -39,7 +39,7 @@ def module_coverage(cfg: BeeStackConfig) -> tuple[ModuleCoverage, ...]:
                 f"ommatidia_per_eye={cfg.body.ommatidia_per_eye}",
             ),
             ("MuJoCo MJCF backend", "fluid-force flight model", "adhesion actuators"),
-            "Real FlyBody BeeBody walk and WPG flight render paths with deterministic CI fallback.",
+            "FlyBody BeeBody walk and WPG flight render paths with deterministic CI fallback.",
         ),
         ModuleCoverage(
             "BeeBrain",
@@ -110,7 +110,7 @@ def model_card(cfg: BeeStackConfig) -> dict[str, Any]:
     return {
         "name": "BeeStack",
         "version": "0.1.0",
-        "purpose": "Whole-of-colony honeybee digital-twin architecture kernel",
+        "purpose": "Evidence-typed scaffold for whole-colony honeybee simulation",
         "seed": cfg.seed,
         "modules": [module.as_dict() for module in modules],
         "configuration": {
@@ -145,7 +145,7 @@ def model_card(cfg: BeeStackConfig) -> dict[str, Any]:
             "source_purity": "domain transforms are pure; visualization and MJCF materialization isolate artifact I/O",
         },
         "limitations": [
-            "BeeBody renders through real FlyBody walk_imitation/flight tasks; BeeSwarm production waggle/collision renders are strict FlyBody/MuJoCo scenes",
+            "BeeBody renders through FlyBody walk_imitation/flight tasks; BeeSwarm production waggle/collision renders are strict FlyBody/MuJoCo scenes",
             "BeeBrain, BeeMind, non-visual BeeSwarm dynamics, and BeeNiche remain reduced deterministic kernels",
             "full flight/adhesion physics, spiking neural simulators, and BEEHAVE are extension points",
             "raw empirical datasets are downloaded to output/data/empirical_sources and are not bundled as source",

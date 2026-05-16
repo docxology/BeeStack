@@ -28,20 +28,20 @@ and records source errors in manifests.
 anatomy assets, workbook panels, MATLAB calcium payloads, Jernigan antennal CSV
 summaries, Hadjitofi-Webb waggle follower CSVs, and Nouvian neuromodulatory
 spreadsheets when available.
-`generate_animations.py` writes real FlyBody BeeBody locomotion GIFs, strict
+`generate_animations.py` writes FlyBody BeeBody locomotion GIFs, strict
 FlyBody/MuJoCo BeeSwarm collision/waggle scenes with contact reports, and
 reduced schematic module summaries.
 `verify_bee_render.py` checks BeeBody visual signatures and BeeSwarm strict
 contact-scene evidence.
-`run_methods_analysis.py` writes the science-first methods-analysis report,
-module methods figures, interactive methods dashboard, and manuscript figure
-index.
+`run_methods_analysis.py` writes the methods-analysis report, module methods
+figures, JSON figure sidecars, interactive methods dashboard, and manuscript
+figure index.
 `run_stack_synthesis.py` writes the cross-stack statistical synthesis report,
 dashboard figure, and stack-synthesis JSON used by manuscript variables.
 `run_research_suite.py` calls the analysis, empirical, visual-verification, and
-integrity pipelines, then writes the central research report, research figures,
-optional Plotly HTML, sensitivity sweeps, methods-analysis artifacts, and the
-stack-synthesis review.
+integrity pipelines, then writes the central research report, research figures
+with JSON sidecars, optional Plotly HTML, sensitivity sweeps, methods-analysis
+artifacts, and the stack-synthesis review.
 `review_stack_integrity.py` writes the module-by-module API, contract,
 validation, diagnostic, evidence, and fidelity review under `output/reports/`.
 `audit_documentation.py` writes documentation freshness and fidelity-claim

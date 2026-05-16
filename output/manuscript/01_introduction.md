@@ -57,7 +57,7 @@ prose only. This is deliberately modest and structural: the initial
 backend is deterministic and reduced, while the APIs are designed so that
 higher-fidelity engines can replace individual modules without rewriting
 the entire stack. Body and small-scene swarm rendering already run
-through real FlyBody/MuJoCo tasks; the brain layer is anchored to public
+through FlyBody/MuJoCo tasks; the brain layer is anchored to public
 empirical sources; the mind, communication, and niche layers ship as
 bounded reduced kernels with explicit diagnostics.
 
@@ -82,13 +82,13 @@ software, and documentation that produce those data [@wilkinson2016fair].
 BeeStack borrows the spirit of model-card reporting [@mitchell2019modelcards]
 without pretending that a biological simulation is an ML benchmark: each
 module has intended-use language, fidelity labels, validation criteria,
-known gaps, and generated artifacts. The same restraint matters for
-"digital twin" language. Digital twins in biomedicine are normally
-understood as data-integrating models that can be updated against
-individual or system-specific observations [@bjornsson2020digitaltwins].
-BeeStack is not yet that mature closed loop for a particular colony. It
-is a twin-ready research scaffold whose APIs, provenance records, and
-validation reports make such coupling possible later.
+known gaps, and generated artifacts. The same restraint matters for closed-loop twin language. In biomedicine,
+that label is normally reserved for data-integrating models that can be
+updated against individual or system-specific observations
+[@bjornsson2020digitaltwins].
+BeeStack is not yet a closed-loop twin for a particular colony. It is a
+research scaffold whose APIs, provenance records, and validation reports
+make future colony-coupled work easier to audit.
 
 ## How this manuscript mirrors the philosophy
 
@@ -103,9 +103,9 @@ provenance**.
 That structure is intended to make it easy to replace one layer at a
 time while preserving the evidentiary trail for the stack as a whole. It
 also lets reviewers focus on the layer relevant to their expertise: a
-biomechanicist can read §4 without the dance-decoding details of §5, and
-a neuroethologist can read §5 without committing to the contact-physics
-arguments of §7.
+biomechanicist can read the BeeBody methods without the dance-decoding
+details of the BeeBrain methods, and a neuroethologist can read the BeeBrain
+methods without committing to the BeeSwarm contact-physics arguments.
 
 ## Claim discipline
 
@@ -115,17 +115,17 @@ scene can cite strict FlyBody/MuJoCo render artifacts. A claim about
 odor templates, anatomy inventories, or waggle-follower antennae can cite
 downloaded and parsed BeeBrain data. A claim about policy selection,
 task allocation, or thermal regulation must be framed as a reduced
-validated-kernel claim unless and until an external high-fidelity engine
+validated-kernel claim unless and until a stricter external engine
 or calibrated dataset is actually wired into the contract. This
 discipline is not a rhetorical hedge; it is the mechanism that lets a
-large modular system improve one layer at a time without smuggling
-future work into present-tense results.
+large modular system improve one layer at a time without reporting planned
+capabilities as present-tense results.
 
 ## Reading guide
 
 Readers who want a one-page mental model should start with the abstract
-and §3 ("System Architecture and Contracts"). Readers who want to
-reproduce the run should jump to §16 ("Reproducibility"). Readers
-evaluating fidelity claims should read §13 ("Discussion") and §14
-("Limitations") before §10 ("Integrated Results") so the fidelity tier
+and "System Architecture and Contracts." Readers who want to reproduce the
+run should jump to "Reproducibility." Readers evaluating fidelity claims
+should read "Discussion" and "Limitations" before "Integrated Results" so
+the fidelity tier
 of each number is visible before the number itself.

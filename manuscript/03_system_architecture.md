@@ -15,7 +15,7 @@ every record has a contract that pinned tests check at every commit.
   (vision through {{OMMATIDIA_PER_EYE}}-per-eye ommatidia, olfaction
   through {{GLOMERULI}} antennal channels, mechanosensation), action
   unpacking (leg torques, wing kinematics, antennal motion), and
-  energetics. Production rendering runs through real FlyBody tasks
+  energetics. Production rendering runs through FlyBody tasks
   [@vaxenburg2025flybody] inside MuJoCo [@todorov2012mujoco]; the
   reduced closed-loop kernel remains for deterministic telemetry tests.
 - **BeeBrain** transforms observations into `BrainState` records that
@@ -68,11 +68,12 @@ same data contracts before it can enter the closed loop.
 
 ## Timing and scale
 
-The default configuration preserves a {{CONTROL_RATE_HZ}} Hz
+The default configuration uses a {{CONTROL_RATE_HZ}} Hz
 observation–action boundary, {{POLICY_RATE_HZ}} Hz policy cadence
 (typical: every tenth control step), and {{PHYSICS_DT_MS}} ms physics
-step. These rates derive from observed insect sensorimotor latencies
-and from FlyBody's task expectations rather than from convenience.
+step. These are interface and integration choices that keep the layer
+contracts aligned with FlyBody/MuJoCo stepping; they should not be read
+as calibrated honey-bee sensorimotor latency estimates.
 
 The biological scale assumptions that shape the current reduced
 kernels are recorded in `config.yaml` and propagated as manuscript
@@ -110,7 +111,7 @@ reports, methods-analysis dashboards, and hydrated manuscript files.
 These outputs are not incidental side effects; they are how BeeStack
 records what level of evidence backs each claim. The animation manifest
 currently contains {{ANIMATION_COUNT}} animations
-({{REAL_FLYBODY_ANIMATION_COUNT}} real FlyBody, {{REDUCED_ANIMATION_COUNT}}
+({{REAL_FLYBODY_ANIMATION_COUNT}} FlyBody, {{REDUCED_ANIMATION_COUNT}}
 reduced schematic), and the manuscript figure index links
 {{MANUSCRIPT_FIGURE_INDEX_COUNT}} figures and visual artifacts to their
 backend, fidelity tier, validation status, and regeneration command.
@@ -118,7 +119,7 @@ backend, fidelity tier, validation status, and regeneration command.
 ## Module dependencies
 
 The static module-coverage figure (`output/figures/module_contract_coverage.png`,
-see §10) renders the dependency surface explicitly so that reviewers can
+see "Integrated Results") renders the dependency surface explicitly so that reviewers can
 trace the path from a single observation to a single action without
 having to read the code.
 

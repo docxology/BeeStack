@@ -1,8 +1,10 @@
 # FlyBody Integration
 
-BeeStack treats FlyBody as the high-fidelity BeeBody substrate. The project
-depends on the upstream FlyBody package through uv, then writes a generated
-honeybee MJCF body plan that FlyBody loads through `walker_xml_path`.
+BeeStack treats FlyBody as the strict BeeBody physics/render substrate. The
+project depends on the upstream FlyBody package through uv, then writes a
+generated honeybee MJCF body plan that FlyBody loads through `walker_xml_path`.
+The current claim is FlyBody/MuJoCo-backed rendering and contact evidence, not
+a calibrated whole-bee biomechanics model.
 
 ## Intended Fork
 
@@ -40,8 +42,7 @@ classes, passing the generated XML through `walker_xml_path`.
 
 `render_bee_walk_frames()` calls `flybody.utils.rollout_and_render()` and writes
 the resulting MuJoCo frames into `beebody_flybody_morphology.gif`.
-`render_bee_flight_frames()` writes `beebody_flybody_flight.gif` from the real
-FlyBody flight task. Both paths use name-aware BeeStack-to-FlyBody action
+`render_bee_flight_frames()` writes `beebody_flybody_flight.gif` from the FlyBody flight task. Both paths use name-aware BeeStack-to-FlyBody action
 mapping, so walking channels align with FlyBody claw/head/abdomen/leg actuator
 names and flight channels align with wing joints plus the WPG user channel. The
 older schematic BeeBody GIF path has been removed from production orchestration.

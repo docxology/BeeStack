@@ -1,6 +1,6 @@
 # BeeStack Science-First Research Suite
 
-Unified scorecards for real FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidence, and reduced validated Mind/Swarm/Niche kernels.
+Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidence, and reduced validated Mind/Swarm/Niche kernels.
 
 - Overall validation fraction: `1.000`
 - Module scorecards: `5`
@@ -12,10 +12,10 @@ Unified scorecards for real FlyBody 3D Body/Swarm outputs, empirical BeeBrain ev
 
 ### BeeBody
 
-- Fidelity: `real FlyBody render path plus reduced closed-loop telemetry`
+- Fidelity: `FlyBody render path plus reduced closed-loop telemetry`
 - Validation fraction: `1.000`
 - Metrics: `bee_silhouette_score=1`, `bee_visual_score=0.98`, `body_mass_mg=80`, `contact_proxy_count=3`, `inertia_rescaling_score=0.82`, `morphology_score=1`, `real_flybody_animation_count=3`, `wing_stroke_hz=230`
-- Evidence: Real FlyBody walking and flight GIFs with MJCF cue scoring.
+- Evidence: FlyBody walking and flight GIFs with MJCF cue scoring.
 - Known gaps: Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.; Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset.
 
 ### BeeBrain

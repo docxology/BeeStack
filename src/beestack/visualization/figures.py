@@ -9,6 +9,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import Circle, FancyArrowPatch, Rectangle, RegularPolygon
 
+from .figure_metadata import write_figure_sidecar
+
 
 def generate_analysis_figures(
     records: list[dict[str, Any]], module_names: list[str], fig_dir: Path
@@ -16,7 +18,7 @@ def generate_analysis_figures(
     """Generate deterministic module diagnostics and whole-stack abstracts."""
 
     fig_dir.mkdir(parents=True, exist_ok=True)
-    return [
+    paths = [
         _energy_timeseries(records, fig_dir / "body_energy_timeseries.png"),
         _comb_timeseries(records, fig_dir / "comb_fraction_timeseries.png"),
         _module_coverage(module_names, fig_dir / "module_contract_coverage.png"),
@@ -34,6 +36,27 @@ def generate_analysis_figures(
         _scale_ladder(fig_dir / "beestack_scale_ladder.png"),
         _pipeline_overview(fig_dir / "beestack_pipeline_overview.png"),
     ]
+    for path in paths:
+        write_figure_sidecar(
+            path,
+            title=path.stem.replace("_", " ").title(),
+            backend="Matplotlib",
+            fidelity=_analysis_figure_fidelity(path.name),
+            source_data="output/data/simulation_records.json and module coverage records",
+            validation_status="nonblank quality sidecar generated",
+            regeneration_command="uv run python scripts/analysis_pipeline.py",
+        )
+    return paths
+
+
+def _analysis_figure_fidelity(filename: str) -> str:
+    """Classify base analysis figures without overstating biological fidelity."""
+
+    if "beebrain_empirical" in filename:
+        return "empirical summary projected into a reduced BeeBrain contract"
+    if "graphical_abstract" in filename or "contract" in filename or "pipeline" in filename:
+        return "architecture schematic"
+    return "reduced deterministic kernel diagnostic"
 
 
 def _steps(records: list[dict[str, Any]]) -> list[int]:
@@ -255,7 +278,7 @@ def _stack_graphical_abstract(module_names: list[str], path: Path) -> Path:
         ha="center",
         fontsize=10,
     )
-    ax.set_title("BeeStack graphical abstract: body-first honeybee digital twin")
+    ax.set_title("BeeStack graphical abstract: body-first honeybee evidence-typed scaffold")
     fig.tight_layout()
     fig.savefig(path, dpi=180)
     plt.close(fig)

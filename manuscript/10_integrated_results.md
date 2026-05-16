@@ -64,7 +64,7 @@ whether the underlying neural model is biologically calibrated. A high
 alignment score with the current kernel is a sanity check that the
 template-bank pipeline is wired correctly; it is not a claim about
 neural predictive validity. The full predictive validity claim lives
-in the roadmap (§15).
+in the roadmap.
 
 ## What the run does *not* claim
 
@@ -93,9 +93,9 @@ manuscript without fabrication*. That is the operational meaning of
 ## Cross-references to per-module results
 
 Where the run touches a specific module, the relevant per-module
-results section provides the depth: BeeBody (§4) for the energetics
-and rendering, BeeBrain (§5) for the AL–MB–CX trace, BeeMind (§6) for
-the policy-score landscape, BeeSwarm (§7) for the recruitment and
-contact pairs, and BeeNiche (§8) for the comb and thermal traces.
-Empirical anchor data are summarized in §11; the research-suite
-scorecards and known-gaps catalog are in §12.
+results section provides the depth: BeeBody for the energetics and rendering,
+BeeBrain for the AL–MB–CX trace, BeeMind for the policy-score landscape,
+BeeSwarm for the recruitment and contact pairs, and BeeNiche for the comb and
+thermal traces. Empirical anchor data are summarized in "Empirical Results";
+the research-suite
+scorecards and known-gaps catalog are in "Research-Suite Results."

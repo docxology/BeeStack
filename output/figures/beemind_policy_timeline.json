@@ -1,0 +1,20 @@
+{
+  "backend": "Matplotlib",
+  "fidelity": "reduced deterministic kernel diagnostic",
+  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/beemind_policy_timeline.png",
+  "quality": {
+    "height_px": 684,
+    "max_intensity": 255,
+    "mean_intensity": 250.22005448430886,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 30.839212772555367,
+    "width_px": 1332
+  },
+  "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "output/data/simulation_records.json and module coverage records",
+  "title": "Beemind Policy Timeline",
+  "validation_status": "nonblank quality sidecar generated"
+}

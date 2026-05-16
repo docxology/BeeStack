@@ -151,7 +151,7 @@ class NicheConfig:
 
 @dataclass(frozen=True)
 class FlyBodyConfig:
-    """Real FlyBody runtime, MJCF, and rendering parameters."""
+    """FlyBody runtime, MJCF, and rendering parameters."""
 
     local_fork_path: str | None = None
     action_dim_default: int = 59

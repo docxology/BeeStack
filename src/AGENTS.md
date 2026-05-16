@@ -1,10 +1,10 @@
 # src/ - BeeStack Source
 
-`src/beestack/` contains pure domain logic. Keep this layer free of file I/O,
-plotting, printing, network calls, and template infrastructure imports.
-
-Source modules should expose typed dataclasses and functions that are directly
-testable with deterministic inputs. Scripts under `../scripts/` are responsible
-for orchestration and artifact writing.
+`src/beestack/` contains the importable implementation. Domain packages
+(`body`, `brain`, `mind`, `swarm`, `niche`, `research`) should keep biological
+kernels deterministic and free of orchestration side effects. The
+`visualization` package is the explicit exception: it owns reusable figure and
+animation builders, including JSON sidecar metadata, while scripts under
+`../scripts/` decide when those builders write project artifacts.
 
 Every package directory should carry its own `README.md` and `AGENTS.md`.

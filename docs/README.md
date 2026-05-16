@@ -17,7 +17,7 @@ project. Use it alongside the root `README.md` and the generated reports in
   and manuscript review checklist.
 - `validation_criteria.md`: acceptance criteria for Body, Brain, Mind, Swarm,
   Niche, docs, and manuscript outputs.
-- `visualization_gallery.md`: real FlyBody 3D, empirical, reduced schematic,
+- `visualization_gallery.md`: FlyBody 3D, empirical, reduced schematic,
   diagnostic, research-suite, and methods-analysis artifact index.
 
 ## BeeBrain Research Operations
@@ -32,7 +32,7 @@ project. Use it alongside the root `README.md` and the generated reports in
 
 ## Body And Visualization
 
-- `flybody_integration.md`: BeeBody's real FlyBody render path and modified
+- `flybody_integration.md`: BeeBody's FlyBody render path and modified
   honeybee body plan.
 - `animations.md`: module animation outputs, contact sheets, and accessibility
   manifest.

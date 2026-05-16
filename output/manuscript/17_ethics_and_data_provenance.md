@@ -9,11 +9,13 @@ each.
 ## Data sources and licensing
 
 Every empirical source registered in `src/beestack/research/methods.py`
-is a *public* dataset with a recorded DOI and a recorded license.
-Currently registered sources:
+is a public source, dataset, or publication with provenance metadata:
+a DOI or source note where available, plus a license or access note
+when the source provides one. The table below separates dataset
+licenses from publication/atlas access notes.
 
-| Source | DOI | License / Note |
-|--------|-----|----------------|
+| Source | DOI / source note | License / access note |
+|--------|-------------------|-----------------------|
 | Paoli AL calcium imaging [@paoli2024dryad] | 10.5061/dryad.qbzkh18sc | Dryad CC0 |
 | Carcaud multisite GCaMP [@carcaud2022dryad] | 10.5061/dryad.83bk3j9tt | Dryad CC0 |
 | Andreu alarm receptors [@andreu2025dryad] | 10.5061/dryad.rv15dv4k2 | Dryad CC0 |
@@ -29,7 +31,7 @@ The download manifest under `output/data/empirical_sources/` records
 the DOI, source URL, file size, and download timestamp for each local
 payload. The Hadjitofi–Webb dataset's CC BY 4.0 license is honored by
 explicit attribution in the methods analysis, in the manuscript
-section that uses the data (§5), and in the bibliography.
+sections that use the data, and in the bibliography.
 
 ## Animal-research ethics
 
@@ -41,7 +43,7 @@ neither requires nor performs additional ethical review, because no
 new live-animal experimentation is conducted.
 
 Should a future BeeStack downstream project couple to a live monitored
-hive (a possibility named in §15's BEEHAVE/Hiveopolis adapter work),
+hive (a possibility named in the BEEHAVE/Hiveopolis adapter roadmap work),
 that downstream project will be subject to its host institution's
 animal-research ethical review at that time. The current commitment
 is therefore: *the architectural seam is in place, but the activation
@@ -49,13 +51,13 @@ is not*.
 
 ## Dual-use considerations
 
-A whole-of-colony digital twin has plausible dual-use exposure in
-three directions:
+A future hive-coupled, whole-colony simulation scaffold would have
+plausible dual-use exposure in three directions:
 
 1. **Agricultural application.** A calibrated colony model could
    inform pesticide-exposure forecasting or pollination optimization.
    BeeStack does not currently support quantitative recommendations
-   in either direction, and §14's limitations enumeration makes this
+   in either direction, and the limitations enumeration makes this
    explicit.
 2. **Wildlife monitoring.** Sensor-stream coupling through the
    Hiveopolis adapter [@narsicht2020hiveopolis] could expose
@@ -96,8 +98,8 @@ every step is auditable and every gap is named.
 ## Closing note
 
 Honey bees matter ecologically, economically, and scientifically
-[@menzel2012honey; @seeley2010honeybee]. A digital twin that hides
-its fidelity gaps is worse than no digital twin at all, because it
-spends public credibility on undeserved confidence. BeeStack tries
-to model the bees honestly, and to *show that it is trying* in every
-prose section, every figure, and every JSON report.
+[@menzel2012honey; @seeley2010honeybee]. Because colony models can
+influence ecological, agricultural, or robotic decisions, BeeStack
+reports fidelity gaps, provenance, and current non-capabilities
+alongside every generated result. Its evidence should be visible in
+prose sections, figures, and JSON reports.

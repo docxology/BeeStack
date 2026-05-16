@@ -1,0 +1,20 @@
+{
+  "backend": "Matplotlib/pandas/NetworkX",
+  "fidelity": "research provenance diagnostic",
+  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/research_fidelity_evidence_network.png",
+  "quality": {
+    "height_px": 1190,
+    "max_intensity": 255,
+    "mean_intensity": 249.69140682155216,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 27.82134619515762,
+    "width_px": 1700
+  },
+  "regeneration_command": "uv run python scripts/run_research_suite.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+  "title": "Research Fidelity Evidence Network",
+  "validation_status": "nonblank image and quality sidecar passed"
+}

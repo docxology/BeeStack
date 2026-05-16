@@ -11,7 +11,7 @@
       "fluid-force flight model",
       "adhesion actuators"
     ],
-    "fidelity_note": "Real FlyBody BeeBody walk and WPG flight render paths with deterministic CI fallback.",
+    "fidelity_note": "FlyBody BeeBody walk and WPG flight render paths with deterministic CI fallback.",
     "implemented_contracts": [
       "Observation",
       "Action",

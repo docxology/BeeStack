@@ -13,6 +13,7 @@ from skimage import io as skio
 from skimage.measure import label
 
 from ..research import MethodsAnalysisReport
+from .figure_metadata import write_figure_sidecar
 
 
 def generate_methods_figures(
@@ -49,7 +50,30 @@ def generate_methods_figures(
     ]
     for path in paths:
         _validate_nonblank_image(path)
+        write_figure_sidecar(
+            path,
+            title=path.stem.replace("_", " ").title(),
+            backend="Matplotlib/pandas",
+            fidelity=_methods_figure_fidelity(path.name),
+            source_data="MethodsAnalysisReport, simulation records, and manuscript evidence links",
+            validation_status="nonblank image and quality sidecar passed",
+            regeneration_command="uv run python scripts/run_methods_analysis.py",
+        )
     return paths
+
+
+def _methods_figure_fidelity(filename: str) -> str:
+    """Classify methods figures by evidence tier."""
+
+    if "beebody" in filename:
+        return "FlyBody-backed render diagnostics plus reduced telemetry"
+    if "beebrain" in filename:
+        return "empirical completeness summary projected into reduced BeeBrain contracts"
+    if "beeswarm" in filename:
+        return "strict scene contact/recruitment diagnostic with reduced-kernel context"
+    if "dashboard" in filename or "evidence_index" in filename:
+        return "methods provenance diagnostic"
+    return "reduced deterministic kernel diagnostic"
 
 
 def write_interactive_methods_dashboard(

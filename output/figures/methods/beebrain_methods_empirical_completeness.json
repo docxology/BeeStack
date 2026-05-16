@@ -1,0 +1,20 @@
+{
+  "backend": "Matplotlib/pandas",
+  "fidelity": "empirical completeness summary projected into reduced BeeBrain contracts",
+  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beebrain_methods_empirical_completeness.png",
+  "quality": {
+    "height_px": 972,
+    "max_intensity": 255,
+    "mean_intensity": 237.7603283758092,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 50.25056210457111,
+    "width_px": 1710
+  },
+  "regeneration_command": "uv run python scripts/run_methods_analysis.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+  "title": "Beebrain Methods Empirical Completeness",
+  "validation_status": "nonblank image and quality sidecar passed"
+}

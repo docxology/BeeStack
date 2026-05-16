@@ -1,26 +1,27 @@
 ---
 project: BeeStack
-task: "Project ISA — BeeStack whole-of-colony honeybee digital-twin stack"
+task: "Project ISA — BeeStack evidence-typed scaffold for whole-colony honeybee simulation"
 effort: E5
-effort_source: context-override
+effort_source: classifier
 phase: complete
-progress: 103/103
+progress: 110/110
 mode: autonomous
 started: 2026-05-16T01:39:08Z
-updated: 2026-05-16T04:20:00Z
-iteration: 3
+updated: 2026-05-16T05:10:00Z
+iteration: 4
 ---
 
 # BeeStack — Ideal State Artifact
 
 ## Problem
 
-BeeStack is a five-layer (Body→Brain→Mind→Swarm→Niche) honeybee digital-twin
-research-operations project living in `projects_in_progress/`. It has 61 source
+BeeStack is a five-layer (Body→Brain→Mind→Swarm→Niche) honeybee
+evidence-typed simulation scaffold living in `projects_in_progress/`. It has 61 source
 modules, 11 test files, 15 orchestration scripts, 22 manuscript sections, and 23
 docs, but is at "Initial commit" with everything untracked. The project defines
 explicit acceptance gates (coverage ≥92%, morphology ≥0.85, waggle error <35°,
-brain parseable fraction ≥0.800, thermal error <3°C, zero unresolved manuscript
+brain parseable fraction at the configured gate (0.5 in `config.yaml`; 0.800 as
+an improvement target), thermal error <3°C, zero unresolved manuscript
 variables, clean documentation audit) yet none have been freshly verified end to
 end. The manuscript ships with 16 sections containing unresolved `{{VARIABLE}}`
 tokens. A comprehensive review must establish empirical ground truth across every
@@ -117,7 +118,7 @@ as the project's living system of record.
 ### B. Methods — per-module scientific & code review (Body/Brain/Mind/Swarm/Niche/Research/Visualization/Utils)
 - [x] ISC-13: BeeBody — `morphology.py` MJCF includes all required bee cues (banded abdomen, 4 translucent wings, hamuli coupling, compound eyes, antennae, proboscis, mandibles, thorax fuzz, stinger, pollen baskets) verified by test
 - [x] ISC-14: BeeBody — morphology calibration score ≥ 0.85 in generated report
-- [x] ISC-15: BeeBody — `flybody_adapter.py` references real FlyBody tasks (WalkImitation, FlightImitationWBPG, WingBeatPatternGenerator, walker_xml_path, rollout_and_render)
+- [x] ISC-15: BeeBody — `flybody_adapter.py` references FlyBody tasks (WalkImitation, FlightImitationWBPG, WingBeatPatternGenerator, walker_xml_path, rollout_and_render)
 - [x] ISC-16: BeeBody — `energetics.py` cost-of-transport / power outputs finite and unit-consistent
 - [x] ISC-17: BeeBody — `flybody_scene.py` produces valid multi-bee MJCF scene XML with prefixed bodies/joints/actuators
 - [x] ISC-18: BeeBody — `simulation.py` step loop covered by test (direct or via orchestrator) with assertions
@@ -126,7 +127,7 @@ as the project's living system of record.
 - [x] ISC-21: BeeBrain — activity parsers handle Paoli `.mat`, Carcaud/Andreu/Nouvian workbooks, Jernigan CSV (when payloads present)
 - [x] ISC-22: BeeBrain — waggle-follower parsers handle Hadjitofi-Webb Figshare CSVs (per-frame, binned, model-error, reduced-error, straightness)
 - [x] ISC-23: BeeBrain — `BeeBrainActivitySummary` reports all required fields (separability, latency, inhibitory/excitatory fraction, aftersmell, region means, antennal drive, waggle confidence, neuromodulatory defence)
-- [x] ISC-24: BeeBrain — `brain_data_parseable_fraction` ≥ 0.800 OR every blocker DOI/source-verified with parser status + remediation in `brain_data_completeness.json`
+- [x] ISC-24: BeeBrain — `brain_data_parseable_fraction` satisfies the configured gate (0.5 here) and every blocker is DOI/source-verified with parser status + remediation in `brain_data_completeness.json`
 - [x] ISC-25: BeeBrain — `central_complex.py`, `mushroom_body.py`, `olfaction.py`, `vision.py`, `waggle.py` outputs finite & shape-correct (tests)
 - [x] ISC-26: BeeMind — policy diagnostics include selected policy, competing policies, energy/risk terms, belief deltas, colony-need inputs
 - [x] ISC-27: BeeMind — `caste.py` priors and `dance.py` belief updates deterministic and covered
@@ -184,7 +185,7 @@ as the project's living system of record.
 - [x] ISC-73: BeeSwarm waggle gate — follower orientation confidence > 0.65 (same deferral rule)
 - [x] ISC-74: BeeBody calibration gate — morphology score ≥ 0.85 (report field)
 - [x] ISC-75: BeeNiche thermal gate — brood-temperature error < 3.0 °C (report field)
-- [x] ISC-76: BeeBrain empirical gate — parseable fraction ≥ 0.800 OR fully documented blockers
+- [x] ISC-76: BeeBrain empirical gate — parseable fraction satisfies the configured gate and remaining blockers are fully documented
 - [x] ISC-77: Research figures under `output/figures/research/` non-blank
 - [x] ISC-78: Methods figures under `output/figures/methods/` non-blank
 - [x] ISC-79: Interactive Plotly HTML (if produced) contains data traces
@@ -211,6 +212,15 @@ as the project's living system of record.
 - [x] ISC-94: `99_references.md` citation keys all resolvable; no broken `[@key]` anchors; references.bib present/consistent
 - [x] ISC-95: Every figure referenced in manuscript exists at its stated path
 - [x] ISC-96: Anti: Manuscript states no quantitative result that the hydration pipeline cannot source from a generated artifact
+
+### I. Brand/Identity Consistency & Coverage Recovery (iteration 4)
+- [x] ISC-97: Zero stale-brand stragglers — `grep -rni 'real flybody'` across src/docs/manuscript/tests/README/ISA/scripts returns 0 (all `{{REAL_FLYBODY_*}}` tokens preserved)
+- [x] ISC-98: Project-identity strings consistent across `config.yaml`, `pyproject.toml`, `manifest.py` model_card, `00_abstract.md`, `README.md` (evidence-typed-scaffold framing; no "digital twin"/"Real FlyBody" identity use)
+- [x] ISC-99: `documentation_audit._is_fidelity_line` token aligned to the rebrand ("flybody"); doc-audit gate still passes post-rebrand (488 fidelity claims ≥ 3, 0 unresolved, 0 missing outputs, signposting complete)
+- [x] ISC-100: Config orphan audit — all 117 `config.yaml` leaf keys consumed in `src/` (0 orphans)
+- [x] ISC-101: Coverage gate restored after external pass added 61 statements — `pytest --cov=src` = 93.38% ≥ 92.00% (96 passed, 0 failed); `figure_metadata.py` 0→89%, `figures.py`→100%, `methods_figures.py` 63→97%, `research_figures.py` 64→98% via +24 real-data no-mock tests
+- [x] ISC-102: Anti: no new test uses a mock/monkeypatch (the 6 new test files are real-data only)
+- [x] ISC-103: Anti: brand rename changed no computed value — `wing_power_mw(80,230)`=58.0 unchanged; regen deterministic (24 steps/12 figures/9 animations); manuscript hydration byte-clean (0 tokens/0 N/A/85 vars)
 
 ## Test Strategy
 
@@ -245,6 +255,32 @@ as the project's living system of record.
 
 ## Decisions
 
+- 2026-05-16T04:40:00Z — Iteration 4 (classifier E5). Detected an external,
+  coherent honesty-rebrand pass already applied to the working tree (project
+  identity "Whole-of-Colony Biophysical Digital Twin" → "Evidence-Typed
+  Scaffold for Whole-Colony Honeybee Simulation"; "Real FlyBody" → "FlyBody").
+  Per session guidance the external edits are intentional — incorporated and
+  *completed* rather than reverted. Drove it to 100% consistency: bulk literal
+  rename of ~61 "real flybody" sites across src docstrings/strings, 23 docs,
+  manuscript, tests, README, ISA, scripts (grep-verified zero stragglers, all
+  `{{REAL_FLYBODY_*}}` tokens preserved); fixed figures.py graphical-abstract
+  title; aligned `documentation_audit._is_fidelity_line` token "real flybody"
+  → "flybody" so the doc-audit gate still detects FlyBody fidelity lines
+  post-rebrand; verified title consistency across config.yaml/pyproject/
+  manifest/abstract/README. Ruff/format clean across the ~20 touched .py files.
+- 2026-05-16T04:40:00Z — Config orphan audit (ISC-80, done properly): all 117
+  `config.yaml` leaf keys appear in `src/` — zero orphan keys.
+- 2026-05-16T04:40:00Z — Coverage "add": +16 real-data, no-mock tests for the
+  thinnest non-FlyBody-gated branches — synthesis validation/edge
+  (`ModuleSynthesisPanel`, `_signposting_fraction` incl. the union-fix branch,
+  `_validate_metric_map`, `_simulation_time_series_statistics`,
+  `_float_from_nested`), empirical_data parser raises + the paoli relabel
+  fallback, animations pure helpers (`_as_uint8`/`_frame_to_image`/
+  `_save_frames_as_gif`/`_save_contact_sheet`/`waggle_dance_visualization_config`).
+  parse_paoli relabel given an explicit honesty comment (deterministic
+  positional fallback, provenance in `source_variables` — not silent
+  corruption), consistent with the manuscript's "missing data visible, not
+  fabricated" claim.
 - 2026-05-16T01:39:08Z — Tier set E5 via context-override. Classifier returned
   E3 with `SOURCE: classifier` but `REASON: inference failed: Timeout after
   25000ms` — that is the fail-safe path, not a genuine classification. The task
@@ -365,6 +401,22 @@ as the project's living system of record.
 
 ## Changelog
 
+- **conjectured** (2026-05-16, iteration 4): the project's "digital twin"
+  identity and pervasive "Real FlyBody" language were accurate fidelity claims.
+  **refuted by**: an external honesty pass (and the project's own Honest-Fidelity
+  principle) re-scoped the identity to an "evidence-typed scaffold" and dropped
+  "Real" — but the pass was only partially applied, leaving ~61 stale "Real
+  FlyBody" sites and a stale graphical-abstract/identity strings, i.e. a
+  half-applied rebrand is itself an inconsistency a reviewer would catch.
+  **learned**: a fidelity-honesty rename is only honest when it is *complete and
+  consistent* across code strings, docstrings, docs, manuscript, tests, config,
+  and the audit detector — a brand sweep needs grep-proof of zero stragglers and
+  a check that gate detectors (here `documentation_audit._is_fidelity_line`)
+  still fire on the renamed terms.
+  **criterion now**: ISC-97 (zero stale-brand stragglers, grep-verified),
+  ISC-98 (identity strings consistent across config/pyproject/manifest/abstract/
+  README), ISC-99 (doc-audit fidelity detector aligned to the rebrand) — all
+  pass; +16 no-mock coverage tests added for the thin branches.
 - **conjectured** (2026-05-16): The shallow exploration's verdict that BeeStack
   had "no code-quality issues, no mocks, all methods sound" — i.e. the project
   was already at ideal state and the task was a light polish.
@@ -493,6 +545,25 @@ cross-vendor concerns Cato scrutinized (calcium sign end-to-end, KC determinism/
 tractability, dead-guard reachability, set-union correctness, manuscript
 cascade) were each independently hand-verified to pass, corroborated by the
 advisor and passing regression tests.
+
+**Iteration 4 (2026-05-16T05:10) — comprehensive sweep + brand reconciliation.**
+An external honesty-rebrand pass (identity → "evidence-typed scaffold"; "Real
+FlyBody" → "FlyBody") was found half-applied; driven to 100% consistency:
+~61 stale "real flybody" sites bulk-renamed across src/docs/manuscript/tests/
+README/ISA/scripts (ISC-97 — `grep -rni 'real flybody'`=0, tokens preserved),
+identity strings aligned across config/pyproject/manifest/abstract/README
+(ISC-98), `documentation_audit` fidelity token aligned (ISC-99). The rebrand
+introduced a coverage regression — it added a new module `figure_metadata.py`
+(29 stmts, 0%) + ~107 sidecar lines in figures/methods/research figures,
+dropping coverage 92.59%→**90.28% (gate FAILED)**. Recovered with +24 real-data
+no-mock tests (test_figure_metadata, test_figures_generation, plus synthesis/
+empirical_data/animations coverage): full suite **96 passed, 0 failed,
+coverage 93.38% ≥ 92** (ISC-101); figures.py 78.85→100%, methods_figures
+63→97%, research_figures 64→98%. Config orphan audit clean (117 keys, 0 —
+ISC-100). Post-rebrand regen deterministic; documentation audit **passed**
+(0 unresolved, 0 missing, signposting complete, 488 fidelity claims);
+manuscript hydrates 0 tokens / 0 N/A / 85 vars (ISC-103). No computed value
+changed (`wing_power_mw(80,230)`=58.0; ISC-103). Ruff/format/lock clean.
 
 **Iteration 3 (2026-05-16T04:20) — deep manuscript review vs corrected code.**
 Adversarial cross-check of all 18 manuscript sections against the iteration-1/2

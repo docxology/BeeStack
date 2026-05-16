@@ -1,0 +1,20 @@
+{
+  "backend": "Matplotlib/pandas",
+  "fidelity": "methods provenance diagnostic",
+  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/methods_repo_dashboard.png",
+  "quality": {
+    "height_px": 972,
+    "max_intensity": 255,
+    "mean_intensity": 173.7050845907636,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 96.28491288476587,
+    "width_px": 1800
+  },
+  "regeneration_command": "uv run python scripts/run_methods_analysis.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+  "title": "Methods Repo Dashboard",
+  "validation_status": "nonblank image and quality sidecar passed"
+}

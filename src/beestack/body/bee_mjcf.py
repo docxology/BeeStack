@@ -315,7 +315,7 @@ def _ensure_camera(
 ) -> None:
     if body.find(f"camera[@name='{name}']") is None:
         ET.SubElement(body, "camera", {"name": name, "mode": mode, "pos": pos, "xyaxes": xyaxes})
-        patches.append("BeeBody camera added for real FlyBody rendering")
+        patches.append("BeeBody camera added for FlyBody rendering")
 
 
 def _ensure_hindwing(body: ET.Element, side: str, pos: str, quat: str, patches: list[str]) -> None:

@@ -1,0 +1,20 @@
+{
+  "backend": "Matplotlib",
+  "fidelity": "reduced deterministic kernel diagnostic",
+  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/beebody_motion_power_phase.png",
+  "quality": {
+    "height_px": 756,
+    "max_intensity": 255,
+    "mean_intensity": 246.43993218858188,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 40.70766939276583,
+    "width_px": 1296
+  },
+  "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "output/data/simulation_records.json and module coverage records",
+  "title": "Beebody Motion Power Phase",
+  "validation_status": "nonblank quality sidecar generated"
+}

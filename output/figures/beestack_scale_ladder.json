@@ -1,0 +1,20 @@
+{
+  "backend": "Matplotlib",
+  "fidelity": "reduced deterministic kernel diagnostic",
+  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/beestack_scale_ladder.png",
+  "quality": {
+    "height_px": 792,
+    "max_intensity": 255,
+    "mean_intensity": 218.87937359708192,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 255,
+    "std_intensity": 56.24985070737526,
+    "width_px": 1440
+  },
+  "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "output/data/simulation_records.json and module coverage records",
+  "title": "Beestack Scale Ladder",
+  "validation_status": "nonblank quality sidecar generated"
+}

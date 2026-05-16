@@ -42,14 +42,14 @@ state transition. Body geometry, wing placement, leg contacts, floor
 contacts, orientation, and collision proxies constrain what the simulated
 bee can visibly do.
 
-The project now has real FlyBody/MuJoCo production outputs for Body
-walking, Body flight, multi-BeeBody collision, and the configured
-waggle-dance scene. Those artifacts justify a narrow claim: the
-production animations are generated from a BeeBody MJCF/FlyBody/MuJoCo
-path with contact and render verification. They do not yet justify a
-broader kinetics claim. Segmental masses, aerodynamic coefficients,
-adhesive contact, inertial tensors, and wing-load coupling remain
-calibration gaps. That distinction is important because a convincing
+The project now has FlyBody/MuJoCo-backed render and contact artifacts
+for Body walking, Body flight, multi-BeeBody collision, and the
+configured waggle-dance scene. Those artifacts justify a narrow claim:
+the animations and contact reports are generated through a BeeBody
+MJCF/FlyBody/MuJoCo path with render and contact verification. They do
+not yet justify a broader kinetics claim. Segmental masses, aerodynamic
+coefficients, adhesive contact, inertial tensors, and wing-load coupling
+remain calibration gaps. That distinction matters because a convincing
 bee-shaped render can otherwise hide incorrect physics.
 
 ## BeeBrain as a data-assimilation surface
@@ -77,7 +77,7 @@ methods-analysis report, and roadmap.
 
 ## Reduced kernels are useful when their boundaries are explicit
 
-BeeMind, the broad BeeSwarm kernels, and BeeNiche are not high-fidelity
+BeeMind, the broad BeeSwarm kernels, and BeeNiche are not calibrated
 biological engines. They are reduced validated kernels with diagnostics.
 That status is still valuable. BeeMind makes expected-free-energy-like
 policy terms inspectable and deterministic; BeeSwarm exposes how decoded
@@ -93,7 +93,7 @@ model cards, methods panels, and hydrated manuscript sections. A reduced
 kernel can be replaced later by BEEHAVE, Hiveopolis, a learned
 generative model, or a neural simulator if it satisfies the same public
 contracts. Until then, the correct claim is "validated witness," not
-"complete biological mechanism."
+"calibrated biological mechanism."
 
 ## What the visualization suite contributes
 
@@ -111,10 +111,10 @@ records, frame dynamics, and a stable artifact path. It is not valuable
 because it "looks like a colony" in a general cinematic sense. The
 contact report and manifest define what the animation proves.
 
-## Digital-twin implications
+## Future colony-coupling implications
 
-BeeStack should be described as a digital-twin scaffold rather than a
-completed digital twin. Mature biological digital twins integrate large
+BeeStack should be described as an evidence-typed scaffold rather than a
+completed colony-specific twin. Mature colony-coupled models integrate large
 multimodal data streams and update predictions against individual or
 system-specific observations [@bjornsson2020digitaltwins]. BeeStack has
 the pieces a future hive-coupled twin would need: FAIR-style data
@@ -129,7 +129,7 @@ claim is narrower and more durable: BeeStack establishes a modular,
 auditable, evidence-typed substrate on which higher-fidelity modules can
 be swapped in without erasing the provenance trail.
 
-The stack-synthesis review added in §12 is deliberately consistent with
+The stack-synthesis review is deliberately consistent with
 that restraint. Oreskes and colleagues warned that numerical models of
 open natural systems should be treated as partially confirmable
 heuristics rather than finally verified mirrors of nature
@@ -141,7 +141,7 @@ coverage, and scholarship anchors in one auditable record.
 
 ## Reading the current results
 
-The integrated results in §10 and research-suite results in §12 should
+The integrated results and research-suite results should
 therefore be read as reproducibility and integrity results first, and
 biological prediction results second. They show that the project can
 orchestrate Body, Brain, Mind, Swarm, and Niche in one uv-managed run;
@@ -154,5 +154,5 @@ predict colony survival, pesticide response, full dance-language use, or
 field-scale foraging success.
 
 That distinction is the central scholarly posture of BeeStack: be
-ambitious about integration, conservative about claims, and relentless
+ambitious about integration, conservative about claims, and explicit
 about evidence trails.

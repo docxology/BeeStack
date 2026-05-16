@@ -1,0 +1,20 @@
+{
+  "backend": "Matplotlib/pandas/NetworkX",
+  "fidelity": "reduced deterministic kernel diagnostic",
+  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/beemind_policy_sensitivity.png",
+  "quality": {
+    "height_px": 816,
+    "max_intensity": 255,
+    "mean_intensity": 233.26796965109574,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 51.82626818000342,
+    "width_px": 1360
+  },
+  "regeneration_command": "uv run python scripts/run_research_suite.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+  "title": "Beemind Policy Sensitivity",
+  "validation_status": "nonblank image and quality sidecar passed"
+}

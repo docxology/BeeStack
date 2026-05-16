@@ -1,7 +1,7 @@
 # Architecture
 
 BeeStack is implemented as a standalone project in the research-template style.
-BeeBody uses a real FlyBody/MuJoCo render path, and production BeeSwarm
+BeeBody uses a FlyBody/MuJoCo render path, and production BeeSwarm
 waggle/collision animations reuse the same generated BeeBody MJCF inside
 strict MuJoCo contact scenes. The other v0 module backends are intentionally
 reduced so the five-layer contract stays executable while leaving
@@ -45,7 +45,7 @@ does not perform file I/O itself; `scripts/run_research_suite.py` and
 `output/figures/research/`, `output/interactive/`, and
 `output/data/sensitivity/`.
 
-The animation pipeline is module-aligned: BeeBody emits real FlyBody walking
+The animation pipeline is module-aligned: BeeBody emits FlyBody walking
 and flight GIFs; BeeSwarm emits strict FlyBody/MuJoCo collision, configured
 waggle, and long waggle scenes plus a reduced recruitment-field summary; Brain,
 Mind, and Niche emit deterministic reduced module GIFs under

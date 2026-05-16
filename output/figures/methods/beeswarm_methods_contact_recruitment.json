@@ -1,0 +1,20 @@
+{
+  "backend": "Matplotlib/pandas",
+  "fidelity": "strict scene contact/recruitment diagnostic with reduced-kernel context",
+  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beeswarm_methods_contact_recruitment.png",
+  "quality": {
+    "height_px": 972,
+    "max_intensity": 255,
+    "mean_intensity": 244.39819447452652,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 42.78342867624806,
+    "width_px": 1710
+  },
+  "regeneration_command": "uv run python scripts/run_methods_analysis.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+  "title": "Beeswarm Methods Contact Recruitment",
+  "validation_status": "nonblank image and quality sidecar passed"
+}

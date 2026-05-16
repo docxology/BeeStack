@@ -16,7 +16,7 @@
   "manuscript_evidence_links": [
     {
       "artifact_path": "output/reports/bee_visual_verification.md",
-      "claim": "BeeBody animations are real FlyBody-backed and bee-like under cue scoring.",
+      "claim": "BeeBody animations are FlyBody-backed and bee-like under cue scoring.",
       "evidence_type": "visual_validation",
       "manuscript_section": "manuscript/04_body_methods.md",
       "module": "BeeBody",
@@ -90,8 +90,8 @@
   "module_count": 5,
   "module_panels": [
     {
-      "fidelity_level": "real FlyBody render path plus reduced closed-loop telemetry",
-      "interpretation": "Body evidence combines real FlyBody output with finite closed-loop telemetry.",
+      "fidelity_level": "FlyBody render path plus reduced closed-loop telemetry",
+      "interpretation": "Body evidence combines FlyBody output with finite closed-loop telemetry.",
       "known_gaps": [
         "Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.",
         "Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset."
@@ -99,7 +99,7 @@
       "manuscript_evidence": [
         {
           "artifact_path": "output/reports/bee_visual_verification.md",
-          "claim": "BeeBody animations are real FlyBody-backed and bee-like under cue scoring.",
+          "claim": "BeeBody animations are FlyBody-backed and bee-like under cue scoring.",
           "evidence_type": "visual_validation",
           "manuscript_section": "manuscript/04_body_methods.md",
           "module": "BeeBody",

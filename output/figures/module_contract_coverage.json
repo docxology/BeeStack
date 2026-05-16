@@ -1,0 +1,20 @@
+{
+  "backend": "Matplotlib",
+  "fidelity": "architecture schematic",
+  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/module_contract_coverage.png",
+  "quality": {
+    "height_px": 720,
+    "max_intensity": 255,
+    "mean_intensity": 170.27023258377426,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 87.90799783066281,
+    "width_px": 1260
+  },
+  "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "output/data/simulation_records.json and module coverage records",
+  "title": "Module Contract Coverage",
+  "validation_status": "nonblank quality sidecar generated"
+}

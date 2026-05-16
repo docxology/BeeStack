@@ -504,12 +504,12 @@ def _body_panel(
                 "manuscript/04_body_methods.md",
                 "output/reports/bee_visual_verification.md",
                 "visual_validation",
-                "BeeBody animations are real FlyBody-backed and bee-like under cue scoring.",
+                "BeeBody animations are FlyBody-backed and bee-like under cue scoring.",
                 "uv run python scripts/verify_bee_render.py",
                 ("BEE_VISUAL_SCORE", "BEE_SILHOUETTE_SCORE"),
             ),
         ),
-        interpretation="Body evidence combines real FlyBody output with finite closed-loop telemetry.",
+        interpretation="Body evidence combines FlyBody output with finite closed-loop telemetry.",
     )
 
 

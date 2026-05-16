@@ -1,19 +1,20 @@
 # Visualization Gallery
 
 This index maps BeeStack visual artifacts to backend, fidelity, source data,
-regeneration command, and validation status. It is the first place to check
-whether an output is real FlyBody 3D, empirical, reduced schematic, or
+regeneration command, validation status, and the `.json` sidecar metadata
+written beside static analysis, research, and methods figures. It is the first place to check
+whether an output is FlyBody 3D, empirical, reduced schematic, or
 diagnostic.
 
 ## Production Animations
 
 | Artifact | Backend | Fidelity | Source / contract | Validation |
 | --- | --- | --- | --- | --- |
-| `output/animations/beebody_flybody_morphology.gif` | FlyBody `WalkImitation` + `rollout_and_render` | Real FlyBody 3D | `apis_mellifera_worker.xml`, `walker_xml_path`, BeeStack walking action mapping | Bee silhouette score, motion pixels, MJCF cue audit |
-| `output/animations/beebody_flybody_flight.gif` | FlyBody `FlightImitationWBPG` + `WingBeatPatternGenerator` + `rollout_and_render` | Real FlyBody 3D | Same BeeBody MJCF and flight action mapping | Bee silhouette score, wing/body motion, MJCF cue audit |
-| `output/animations/beeswarm_10_beebody_collision.gif` | `mujoco.MjModel`, `MjData`, `Renderer` over prefixed BeeBody MJCF copies | Real FlyBody 3D contact physics | Ten BeeBody copies, WPG wing controls, hidden contact proxies | Actual bee-bee contact pairs in `flybody_contact_physics` |
-| `output/animations/beeswarm_waggle_dance_configured.gif` | `mujoco.MjModel`, `MjData`, `Renderer` over prefixed BeeBody MJCF copies | Real FlyBody 3D contact physics | Dancer/follower BeeBody copies, decoded waggle path, domain waggle kinematics, comb/floor arena | Dynamic frames plus floor/body contact and follower-orientation metrics |
-| `output/animations/beeswarm_waggle_dance_long.gif` | `mujoco.MjModel`, `MjData`, `Renderer` over prefixed BeeBody MJCF copies | Real FlyBody 3D contact physics | Long phase-aware BeeBody waggle dancer plus ten followers, return loops, folded/low-amplitude wing motion, comb/floor arena | Dynamic frames, floor/body contact, orientation confidence, phase samples, and contact graph in `waggle_long/contact_metrics.json` |
+| `output/animations/beebody_flybody_morphology.gif` | FlyBody `WalkImitation` + `rollout_and_render` | FlyBody 3D | `apis_mellifera_worker.xml`, `walker_xml_path`, BeeStack walking action mapping | Bee silhouette score, motion pixels, MJCF cue audit |
+| `output/animations/beebody_flybody_flight.gif` | FlyBody `FlightImitationWBPG` + `WingBeatPatternGenerator` + `rollout_and_render` | FlyBody 3D | Same BeeBody MJCF and flight action mapping | Bee silhouette score, wing/body motion, MJCF cue audit |
+| `output/animations/beeswarm_10_beebody_collision.gif` | `mujoco.MjModel`, `MjData`, `Renderer` over prefixed BeeBody MJCF copies | FlyBody 3D contact physics | Ten BeeBody copies, WPG wing controls, hidden contact proxies | Actual bee-bee contact pairs in `flybody_contact_physics` |
+| `output/animations/beeswarm_waggle_dance_configured.gif` | `mujoco.MjModel`, `MjData`, `Renderer` over prefixed BeeBody MJCF copies | FlyBody 3D contact physics | Dancer/follower BeeBody copies, decoded waggle path, domain waggle kinematics, comb/floor arena | Dynamic frames plus floor/body contact and follower-orientation metrics |
+| `output/animations/beeswarm_waggle_dance_long.gif` | `mujoco.MjModel`, `MjData`, `Renderer` over prefixed BeeBody MJCF copies | FlyBody 3D contact physics | Long phase-aware BeeBody waggle dancer plus ten followers, return loops, folded/low-amplitude wing motion, comb/floor arena | Dynamic frames, floor/body contact, orientation confidence, phase samples, and contact graph in `waggle_long/contact_metrics.json` |
 | `output/animations/beeswarm_dance_pheromone.gif` | Matplotlib animation | Reduced schematic | BeeSwarm recruitment and pheromone field state | Manifest caption/alt text and deterministic generation |
 | `output/animations/beebrain_neural_anatomy.gif` | Matplotlib animation | Reduced schematic with empirical anchors | AL/MB/CX config and empirical BeeBrain summaries | Deterministic generation and documented fidelity |
 | `output/animations/beemind_policy_beliefs.gif` | Matplotlib animation | Reduced schematic | BeeMind caste priors and policy diagnostics | Deterministic generation and manifest signposting |
@@ -44,9 +45,9 @@ and `output/animations/flybody_scenes/waggle_long/contact_metrics.json`.
 | `output/figures/empirical/*.png` | Matplotlib | Empirical figure | Downloaded/parsed BeeBrain anatomy and activity records | `analyze_empirical_bee_data.py` and empirical report |
 | `output/figures/empirical/waggle_follower_alignment.png`, `waggle_phase_coupling.png`, `beeswarm_waggle_recruitment_diagnostics.png` | Matplotlib | Empirical waggle figure | Hadjitofi-Webb follower antenna and model-error CSV summaries | Waggle follower analysis report |
 | `output/figures/empirical/brain_data_completeness_matrix.png`, `bee_brain_multimodal_source_map.png` | Matplotlib | Empirical completeness figure | Curated BeeBrain registry, downloaded status, parser status | Brain data completeness JSON |
-| `output/figures/research/*.png` | Matplotlib, pandas, NetworkX, scikit-image | Research diagnostic | `ResearchSuiteReport` scorecards, evidence, sweeps, and visual inventory | Nonblank image validation and research-suite tests |
+| `output/figures/research/*.png` plus sidecar `.json` files | Matplotlib, pandas, NetworkX, scikit-image | Research diagnostic | `ResearchSuiteReport` scorecards, evidence, sweeps, and visual inventory | Nonblank image validation, image-quality sidecar, and research-suite tests |
 | `output/figures/research/stack_synthesis_dashboard.png` | Matplotlib, pandas, scikit-image | Cross-stack synthesis diagnostic | `StackSynthesisReview` module readiness, telemetry, artifacts, signposting, and scholarship statistics | Nonblank image validation and synthesis tests |
-| `output/figures/methods/*.png` | Matplotlib, pandas, scikit-image | Methods diagnostic | `MethodsAnalysisReport` module panels, validation panels, scenario sweeps, and manuscript evidence links | Nonblank image validation and methods-analysis tests |
+| `output/figures/methods/*.png` plus sidecar `.json` files | Matplotlib, pandas, scikit-image | Methods diagnostic | `MethodsAnalysisReport` module panels, validation panels, scenario sweeps, and manuscript evidence links | Nonblank image validation, image-quality sidecar, and methods-analysis tests |
 
 Regenerate figures with:
 

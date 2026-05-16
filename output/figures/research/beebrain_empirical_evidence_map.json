@@ -1,0 +1,20 @@
+{
+  "backend": "Matplotlib/pandas/NetworkX",
+  "fidelity": "empirical summary projected into reduced BeeBrain contracts",
+  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/beebrain_empirical_evidence_map.png",
+  "quality": {
+    "height_px": 816,
+    "max_intensity": 255,
+    "mean_intensity": 237.46032385380622,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 49.40195575327014,
+    "width_px": 1360
+  },
+  "regeneration_command": "uv run python scripts/run_research_suite.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+  "title": "Beebrain Empirical Evidence Map",
+  "validation_status": "nonblank image and quality sidecar passed"
+}

@@ -113,7 +113,7 @@ def test_research_records_reject_nonfinite_payloads() -> None:
     validation = ResearchValidationRecord("finite", True, 1.0, ">= 0", "finite check")
     scorecard = ModuleMethodScorecard(
         "BeeBody",
-        "real FlyBody",
+        "FlyBody",
         {"score": 1.0},
         (validation,),
         ("evidence",),
@@ -123,7 +123,7 @@ def test_research_records_reject_nonfinite_payloads() -> None:
     with pytest.raises(ValueError, match="finite"):
         ModuleMethodScorecard(
             "BeeBody",
-            "real FlyBody",
+            "FlyBody",
             {"bad": float("nan")},
             (validation,),
             ("evidence",),
@@ -139,7 +139,7 @@ def test_research_record_validation_branches_are_explicit() -> None:
     validation = ResearchValidationRecord("finite", True, 1.0, ">= 0", "finite check")
     scorecard = ModuleMethodScorecard(
         "BeeBody",
-        "real FlyBody",
+        "FlyBody",
         {"score": 1.0},
         (validation,),
         ("evidence",),
@@ -240,6 +240,8 @@ def test_research_suite_report_figures_and_interactive_outputs(tmp_path: Path) -
     figure_paths = generate_research_figures(report, tmp_path / "figures")
     assert len(figure_paths) >= 10
     assert all(path.exists() and path.stat().st_size > 0 for path in figure_paths)
+    assert all(path.with_suffix(".json").exists() for path in figure_paths)
+    assert all("quality" in path.with_suffix(".json").read_text() for path in figure_paths)
     html_paths = write_interactive_research_outputs(report, tmp_path / "interactive")
     assert len(html_paths) == 2
     assert all("Plotly" in path.read_text(encoding="utf-8") for path in html_paths)

@@ -562,7 +562,7 @@
     ]
   },
   "limitations": [
-    "BeeBody renders through real FlyBody walk_imitation/flight tasks; BeeSwarm production waggle/collision renders are strict FlyBody/MuJoCo scenes",
+    "BeeBody renders through FlyBody walk_imitation/flight tasks; BeeSwarm production waggle/collision renders are strict FlyBody/MuJoCo scenes",
     "BeeBrain, BeeMind, non-visual BeeSwarm dynamics, and BeeNiche remain reduced deterministic kernels",
     "full flight/adhesion physics, spiking neural simulators, and BEEHAVE are extension points",
     "raw empirical datasets are downloaded to output/data/empirical_sources and are not bundled as source"
@@ -580,7 +580,7 @@
         "fluid-force flight model",
         "adhesion actuators"
       ],
-      "fidelity_note": "Real FlyBody BeeBody walk and WPG flight render paths with deterministic CI fallback.",
+      "fidelity_note": "FlyBody BeeBody walk and WPG flight render paths with deterministic CI fallback.",
       "implemented_contracts": [
         "Observation",
         "Action",
@@ -677,7 +677,7 @@
     }
   ],
   "name": "BeeStack",
-  "purpose": "Whole-of-colony honeybee digital-twin architecture kernel",
+  "purpose": "Evidence-typed scaffold for whole-colony honeybee simulation",
   "reproducibility": {
     "deterministic_seed": 20260513,
     "manifest_driven": true,

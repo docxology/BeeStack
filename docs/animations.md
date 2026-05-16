@@ -5,10 +5,10 @@ Production BeeBody and BeeSwarm collision/waggle outputs are real
 FlyBody/MuJoCo 3D renders; Brain, Mind, recruitment-field Swarm, and Niche
 animations are reduced schematic summaries.
 
-- `beebody_flybody_morphology.gif`: real FlyBody `WalkImitation` rollout
+- `beebody_flybody_morphology.gif`: FlyBody `WalkImitation` rollout
   rendered from the generated `apis_mellifera_worker.xml` MJCF body plan with a
   name-aware BeeStack-to-FlyBody tripod walking action policy.
-- `beebody_flybody_flight.gif`: real FlyBody `FlightImitationWBPG` rollout
+- `beebody_flybody_flight.gif`: FlyBody `FlightImitationWBPG` rollout
   rendered from the same bee MJCF with `WingBeatPatternGenerator` wing motion.
 - `beebrain_neural_anatomy.gif`: bee brain anatomy with AL -> MB -> CX neural
   activity flow.

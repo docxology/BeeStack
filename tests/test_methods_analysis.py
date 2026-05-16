@@ -47,7 +47,7 @@ def _research_report() -> dict[str, object]:
                 "known_gaps": ["known gap"],
             }
             for module, fidelity in (
-                ("BeeBody", "real FlyBody"),
+                ("BeeBody", "FlyBody"),
                 ("BeeBrain", "empirical reduced"),
                 ("BeeMind", "bounded policy"),
                 ("BeeSwarm", "strict contact plus reduced swarm"),
@@ -113,7 +113,7 @@ def test_methods_analysis_records_validate_and_serialize() -> None:
         (
             ModuleMethodsPanel(
                 "BeeBody",
-                "real FlyBody",
+                "FlyBody",
                 ("method",),
                 {"metric": 1.0},
                 validation,
@@ -160,7 +160,7 @@ def test_methods_analysis_validation_branches_are_explicit() -> None:
     )
     panel = ModuleMethodsPanel(
         "BeeBody",
-        "real FlyBody",
+        "FlyBody",
         ("method",),
         {"metric": 1.0},
         validation,
@@ -351,6 +351,8 @@ def test_methods_analysis_report_figures_and_index(tmp_path: Path) -> None:
     figure_paths = generate_methods_figures(report, records, tmp_path / "figures")
     assert len(figure_paths) >= 7
     assert all(path.exists() and path.stat().st_size > 0 for path in figure_paths)
+    assert all(path.with_suffix(".json").exists() for path in figure_paths)
+    assert all("beestack.figure.v1" in path.with_suffix(".json").read_text() for path in figure_paths)
     final_report = report.with_artifacts(tuple(str(path) for path in figure_paths), ())
     rows = manuscript_figure_index(final_report)
     assert len(rows) >= 5

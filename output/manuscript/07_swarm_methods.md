@@ -106,7 +106,7 @@ Recruitment diagnostics combine decoded dance confidence, empirical
 waggle-follower confidence, follower-alignment score, stop-signal
 inhibition [@seeley2003consensus], and colony food need. Thresholding
 local followers requires *all* of those signals to exceed their
-configured bounds; partial signals do not produce phantom recruits.
+configured bounds; partial signals do not increment recruitment counts.
 Dance recruitment then feeds back into the task allocator so that
 sustained high-quality dances produce a measurable shift in the active
 forager fraction across the colony.
@@ -132,6 +132,6 @@ BEEHAVE-scale population dynamics, and the manuscript and figure index
 say so. The current bound on BeeSwarm honesty is the *scale gap*
 between the 50 small-scene agent count and the
 20,000 BEEHAVE-scale represented count. Closing
-that gap is a roadmap item (§15): the path runs through BEEHAVE
+that gap remains a roadmap item: the path runs through BEEHAVE
 adapter coupling and, later, surrogate agents trained from
 higher-fidelity rollouts.

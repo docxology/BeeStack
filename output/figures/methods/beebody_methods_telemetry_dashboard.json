@@ -1,0 +1,20 @@
+{
+  "backend": "Matplotlib/pandas",
+  "fidelity": "FlyBody-backed render diagnostics plus reduced telemetry",
+  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beebody_methods_telemetry_dashboard.png",
+  "quality": {
+    "height_px": 1152,
+    "max_intensity": 255,
+    "mean_intensity": 242.66525607638889,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 46.438053272099644,
+    "width_px": 1800
+  },
+  "regeneration_command": "uv run python scripts/run_methods_analysis.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+  "title": "Beebody Methods Telemetry Dashboard",
+  "validation_status": "nonblank image and quality sidecar passed"
+}

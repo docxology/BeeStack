@@ -10,7 +10,7 @@ together determine which claims the stack is and is not entitled to make.
 The five biological layers do not currently sit at the same level of
 biological realism, and the project is explicit about that asymmetry.
 
-- **Real FlyBody/MuJoCo rendering** is claimed only for BeeBody walking,
+- **FlyBody/MuJoCo rendering** is claimed only for BeeBody walking,
   BeeBody flight, and strict BeeSwarm waggle and collision scenes. These
   use generated honeybee MJCF body plans driven by FlyBody
   `WalkImitation`, `FlightImitationWBPG`, and `WingBeatPatternGenerator`
@@ -89,7 +89,7 @@ an unstructured refactor.
 The implementation therefore contributes an audited substrate for
 progressive fidelity upgrades:
 
-1. **Real FlyBody-backed body and small-scene swarm visuals** with
+1. **FlyBody-backed body and small-scene swarm visuals** with
    contact-physics evidence, recorded in
    `output/reports/flybody_contact_physics.md`.
 2. **Empirical BeeBrain acquisition and analysis** covering anatomy
@@ -106,8 +106,8 @@ progressive fidelity upgrades:
 
 ## What BeeStack is not
 
-For clarity, BeeStack is not a high-fidelity honey-bee biophysical
-simulator, not a connectome-level brain model, not a learned generative
+For clarity, BeeStack is not a calibrated honey-bee biophysical simulator,
+not a connectome-level brain model, not a learned generative
 agent, not a population-ecology engine, and not a colony-health
 decision-support tool. Each of those is a legitimate downstream project
 that BeeStack is designed to *enable*; none of them is claimed as a

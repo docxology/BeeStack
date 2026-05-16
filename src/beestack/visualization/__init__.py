@@ -18,6 +18,7 @@ from .empirical_figures import (
     WaggleFollowerSummary,
     generate_empirical_figures,
 )
+from .figure_metadata import assert_nonblank_quality, image_quality_summary, write_figure_sidecar
 from .figures import generate_analysis_figures
 from .methods_figures import generate_methods_figures, write_interactive_methods_dashboard
 from .research_figures import generate_research_figures, write_interactive_research_outputs
@@ -30,6 +31,7 @@ __all__ = [
     "WaggleDanceVisualizationConfig",
     "WaggleFollowerSummary",
     "analyze_bee_render_signature",
+    "assert_nonblank_quality",
     "bee_render_report_markdown",
     "generate_empirical_figures",
     "generate_analysis_figures",
@@ -37,9 +39,11 @@ __all__ = [
     "generate_module_animations",
     "generate_research_figures",
     "generate_stack_synthesis_figures",
+    "image_quality_summary",
     "mjcf_bee_features",
     "mjcf_bee_silhouette_features",
     "waggle_dance_visualization_config",
     "write_interactive_methods_dashboard",
     "write_interactive_research_outputs",
+    "write_figure_sidecar",
 ]

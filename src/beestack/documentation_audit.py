@@ -182,7 +182,7 @@ def _is_fidelity_line(line: str) -> bool:
     return any(
         token in lowered
         for token in (
-            "real flybody",
+            "flybody",
             "reduced",
             "not a full",
             "does not claim",

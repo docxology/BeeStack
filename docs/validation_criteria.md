@@ -17,7 +17,7 @@ Coverage over `src/` must remain at or above 92%.
 
 ## BeeBody
 
-- Production animation paths use real FlyBody tasks:
+- Production animation paths use FlyBody tasks:
   `WalkImitation`, `FlightImitationWBPG`, `WingBeatPatternGenerator`,
   `walker_xml_path`, and `rollout_and_render`.
 - Generated MJCF includes bee-specific cues: fuller banded abdomen, four
@@ -67,8 +67,10 @@ Coverage over `src/` must remain at or above 92%.
 - `BeeBrainDataCompletenessPanel` reports downloaded and parseable fractions,
   modality counts, module-target counts, a module/modality matrix, and explicit
   source gaps.
-- `brain_data_parseable_fraction` targets 0.800. Remaining blockers are allowed
-  only when every curated source is DOI/source-verified and the blocker,
+- `brain_data_parseable_fraction` must satisfy the configured empirical
+  completeness threshold (`0.5` in `manuscript/config.yaml`). The stricter
+  `0.800` parseability target remains an improvement target. Remaining blockers
+  are allowed only when every curated source is DOI/source-verified and the blocker,
   parser status, and remediation path are recorded.
 
 ## Mind, Swarm, Niche

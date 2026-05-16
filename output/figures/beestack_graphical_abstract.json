@@ -1,0 +1,20 @@
+{
+  "backend": "Matplotlib",
+  "fidelity": "architecture schematic",
+  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/beestack_graphical_abstract.png",
+  "quality": {
+    "height_px": 864,
+    "max_intensity": 255,
+    "mean_intensity": 239.55862075617284,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 46.5345612504023,
+    "width_px": 1800
+  },
+  "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "output/data/simulation_records.json and module coverage records",
+  "title": "Beestack Graphical Abstract",
+  "validation_status": "nonblank quality sidecar generated"
+}

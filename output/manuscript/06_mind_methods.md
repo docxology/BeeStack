@@ -74,7 +74,7 @@ BeeMind does not yet claim:
    high-confidence dance does shift patch beliefs) but the precise
    likelihood functions are not learned from data.
 
-Each of those gaps is roadmap-tagged (§15) and can enter the kernel
+Each of those gaps is roadmap-tagged and can enter the kernel
 through the same `BeliefState` and `Action` contracts. The architecture
 deliberately keeps these gaps separable from the rest of the stack: a
 learned generative BeeMind would replace `score_policies()` and the

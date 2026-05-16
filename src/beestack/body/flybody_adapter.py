@@ -118,7 +118,7 @@ def action_to_flybody_named_action(
     FlyBody's walking action vector starts with claw adhesion and head/abdomen
     channels before leg joints; flight tasks expose wing joints plus a
     wing-beat-pattern user channel. Name-aware mapping keeps BeeStack's typed
-    Body action contract aligned with those real FlyBody task APIs.
+    Body action contract aligned with those FlyBody task APIs.
     """
 
     shape = getattr(action_spec, "shape", None)
@@ -300,7 +300,7 @@ class FlyBodyBeeBackend:
         return build_flybody_modification_plan(self.cfg)
 
     def write_modified_body_plan(self, output_dir: Path) -> BeeBodyPlanArtifact:
-        """Write the custom honeybee MJCF body plan used by real FlyBody runs."""
+        """Write the custom honeybee MJCF body plan used by FlyBody runs."""
 
         try:
             artifact = write_modified_bee_body_plan(self.cfg, output_dir, self.fork_path)
@@ -440,7 +440,7 @@ class FlyBodyBeeBackend:
             ) from exc
 
     def step_walk_imitation_env(self, env: Any, action: Action) -> Any:
-        """Step a real FlyBody walking environment with a mapped BeeStack action."""
+        """Step a FlyBody walking environment with a mapped BeeStack action."""
 
         if hasattr(env, "action_spec"):
             fly_action = action_to_flybody_named_action(
@@ -465,7 +465,7 @@ class FlyBodyBeeBackend:
         width: int | None = None,
         height: int | None = None,
     ) -> tuple[list[np.ndarray], BeeBodyPlanArtifact]:
-        """Roll out and render a real FlyBody BeeBody walking animation."""
+        """Roll out and render a FlyBody BeeBody walking animation."""
 
         steps = self.cfg.visualization.animation_frames if steps is None else steps
         camera_id = self.cfg.visualization.body_camera_id if camera_id is None else camera_id
@@ -508,7 +508,7 @@ class FlyBodyBeeBackend:
         width: int | None = None,
         height: int | None = None,
     ) -> tuple[list[np.ndarray], BeeBodyPlanArtifact]:
-        """Roll out and render a real FlyBody BeeBody flight animation."""
+        """Roll out and render a FlyBody BeeBody flight animation."""
 
         steps = self.cfg.visualization.animation_frames if steps is None else steps
         camera_id = self.cfg.visualization.body_camera_id if camera_id is None else camera_id

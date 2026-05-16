@@ -68,17 +68,18 @@ local and parseable.
 
 The brain-data completeness panel reports a parseable-source fraction
 of 0.600 and a source-verified fraction of
-1.000. The 0.800 parseability target is
-recorded as satisfied/not-satisfied by
-True: a gap may satisfy readiness
-only when it is source-verified and carries an explicit blocker,
-parser status, and remediation path. Empirically known gaps are
-catalogued as `EMPIRICAL_KNOWN_GAP_COUNT = 1`,
-and the dominant current gap is that Paoli MATLAB calcium traces
+1.000. The parseability-readiness flag is
+True against the recorded 0.800
+target, but that flag is not a simple claim that every registered
+payload is currently parseable: source-verified gaps can satisfy the
+readiness gate only when they carry an explicit blocker, parser status,
+and remediation path. Empirically known gaps are catalogued as
+`EMPIRICAL_KNOWN_GAP_COUNT = 1`, and the
+dominant current gap is that Paoli MATLAB calcium traces
 [@paoli2024dryad] are not yet local or parseable in the current
-artifact set. BeeStack records this as a *gap* rather than replacing
-it with synthetic data — preserving the distinction between
-registered sources, local payloads, parsed summaries, and model inputs.
+artifact set. BeeStack records this as a *gap* rather than replacing it
+with synthetic data — preserving the distinction between registered
+sources, local payloads, parsed summaries, and model inputs.
 
 ## Empirical figures
 
@@ -92,10 +93,10 @@ regeneration command.
 
 ## Why the gap honesty matters
 
-A reduced BeeBrain that *quietly fabricates* missing calcium traces
-would still produce a complete-looking manuscript. The gap-explicit
-design here deliberately makes incompleteness *visible* in the
-hydrated manuscript: `BRAIN_DATA_PARSEABLE_FRACTION =
+A reduced BeeBrain that substitutes synthetic values for missing calcium
+traces would still produce a complete-looking manuscript. The gap-explicit
+design here deliberately makes incompleteness visible in the hydrated
+manuscript: `BRAIN_DATA_PARSEABLE_FRACTION =
 0.600` and `EMPIRICAL_KNOWN_GAP_COUNT =
 1` are not editorial choices; they are
 the same values the readiness review and research-suite scorecards
@@ -111,4 +112,4 @@ are documented by `catalog.json`, `archives.json`, and
 `anatomy_downloads.json` so that every dataset, its DOI, its
 publication, its CC license, and the date of download are recorded.
 This trail is essential for the data-provenance and ethics
-considerations summarized in §16 and §17.
+considerations summarized in "Reproducibility" and "Ethics and Data Provenance."

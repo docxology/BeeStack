@@ -1,6 +1,6 @@
 # Empirical BeeBrain Data
 
-BeeBrain is a reduced neural kernel with a real empirical-data surface. The
+BeeBrain is a reduced neural kernel with an empirical-data surface. The
 registry, download planner, parsers, validation records, figures, and reports
 make the fidelity boundary explicit.
 

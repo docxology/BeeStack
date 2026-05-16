@@ -127,7 +127,7 @@ def stack_integrity_review(cfg: BeeStackConfig) -> StackIntegrityReview:
         modules=modules,
         contract_edges=_contract_edges(cfg),
         summary=(
-            "Body-first BeeStack review: BeeBody uses real FlyBody render tasks; "
+            "Body-first BeeStack review: BeeBody uses FlyBody render tasks; "
             "Brain, Mind, Swarm, and Niche expose deterministic reduced kernels "
             "with explicit empirical evidence, validation records, and adapter schemas."
         ),
@@ -248,12 +248,12 @@ def _body_report(cfg: BeeStackConfig) -> ModuleIntegrityReport:
             ),
         ),
         empirical_evidence=(
-            "Real FlyBody WalkImitation and FlightImitationWBPG tasks are the production render path.",
+            "FlyBody WalkImitation and FlightImitationWBPG tasks are the production render path.",
             "Worker body mass default is 80 mg and wing stroke default is 230 Hz.",
             "Procedural MJCF cues encode honeybee abdomen banding, four wings, hamuli, eyes, antennae, and corbiculae.",
         ),
         diagnostics=diagnostics,
-        fidelity_level="real FlyBody render path plus reduced closed-loop telemetry",
+        fidelity_level="FlyBody render path plus reduced closed-loop telemetry",
         known_gaps=(
             "Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.",
             "Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset.",

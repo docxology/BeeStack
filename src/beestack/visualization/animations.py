@@ -140,7 +140,7 @@ def _animate_body(
         )
     except FlyBodyUnavailableError as exc:
         raise FlyBodyUnavailableError(
-            "BeeBody animation now requires real FlyBody rendering. Run `uv sync` "
+            "BeeBody animation now requires FlyBody rendering. Run `uv sync` "
             "and ensure MuJoCo can render headlessly, or set BEESTACK_FLYBODY_PATH "
             "to a BeeStack FlyBody fork."
         ) from exc
@@ -153,7 +153,7 @@ def _animate_body(
         frames,
         fps,
         "BeeBody FlyBody tripod walking render",
-        "Real FlyBody-rendered honeybee walking animation using a generated apis_mellifera_worker MJCF, name-aware BeeStack-to-FlyBody action mapping, hind wings, corbiculae, stinger, and abdominal bands.",
+        "FlyBody-rendered honeybee walking animation using a generated apis_mellifera_worker MJCF, name-aware BeeStack-to-FlyBody action mapping, hind wings, corbiculae, stinger, and abdominal bands.",
         "BeeBody walking animation rendered by FlyBody walk_imitation, rollout_and_render, a custom modified honeybee MJCF body plan, and a tripod-gait BeeStack action policy.",
         "flybody.walk_imitation+rollout_and_render",
         body_plan.xml_path,
@@ -179,7 +179,7 @@ def _animate_body_flight(
         )
     except FlyBodyUnavailableError as exc:
         raise FlyBodyUnavailableError(
-            "BeeBody flight animation requires real FlyBody flight_imitation rendering. "
+            "BeeBody flight animation requires FlyBody flight_imitation rendering. "
             "Run `uv sync` and ensure MuJoCo can render headlessly, or set "
             "BEESTACK_FLYBODY_PATH to a BeeStack FlyBody fork."
         ) from exc
@@ -192,7 +192,7 @@ def _animate_body_flight(
         frames,
         fps,
         "BeeBody FlyBody wing-beat flight render",
-        "Real FlyBody-rendered honeybee flight animation using FlightImitationWBPG, WingBeatPatternGenerator, the generated apis_mellifera_worker MJCF, and translucent coupled forewing/hindwing surfaces.",
+        "FlyBody-rendered honeybee flight animation using FlightImitationWBPG, WingBeatPatternGenerator, the generated apis_mellifera_worker MJCF, and translucent coupled forewing/hindwing surfaces.",
         "BeeBody flight animation rendered by FlyBody flight_imitation, WingBeatPatternGenerator, rollout_and_render, and the same custom honeybee MJCF body plan.",
         "flybody.flight_imitation.WingBeatPatternGenerator+rollout_and_render",
         body_plan.xml_path,

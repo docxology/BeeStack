@@ -50,7 +50,7 @@ synthesis finding is: **{{STACK_SYNTHESIS_TOP_FINDING}}**
 
 The scorecards make fidelity labels first-class.
 
-- **BeeBody** is real FlyBody-backed for rendering plus a reduced
+- **BeeBody** is FlyBody-backed for rendering plus a reduced
   closed-loop telemetry kernel.
 - **BeeBrain** is an empirical reduced neural kernel — empirical at
   the data surface, reduced at the dynamics surface.

@@ -1,6 +1,6 @@
 # BeeBrain Methods
 
-BeeBrain is a *reduced neural kernel with a real empirical-data surface*.
+BeeBrain is a *reduced neural kernel with an empirical-data surface*.
 It implements antennal-lobe encoding, lateral inhibition, sparse Kenyon-cell
 coding, central-complex heading integration, optic-flow helpers, Johnston's
 organ waggle-event detection, and dance decoding. The default configuration
@@ -50,7 +50,7 @@ dance decoding) read a consistent heading.
 
 A small set of optic-flow helpers downsample the visual observation to a
 horizon-aligned signal that the CX can consume. These helpers also feed
-the bee-visual signature scorer used by the BeeBody verifier (§4). The
+the bee-visual signature scorer used by the BeeBody verifier. The
 UV–blue–green colour-opponency helper returns three channels that are
 constrained to sum to zero, so the opponent code carries two
 independent degrees of freedom (the third channel is derived, not an

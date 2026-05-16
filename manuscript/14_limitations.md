@@ -5,12 +5,13 @@ claim is not biological prediction, but disciplined integration: each
 module can be run, tested, visualized, audited, and replaced behind
 explicit contracts. The honest framing of the limitations is therefore
 *per module*, with each module's limit pinned to the fidelity tier
-declared in §2 and the scorecards summarized in §12.
+declared in "Scope and Contributions" and the scorecards summarized in
+"Research-Suite Results."
 
 ## BeeBody: calibration
 
 The primary BeeBody limitation is **biomechanical calibration**. The
-renderer uses real FlyBody walking and flight tasks
+renderer uses FlyBody walking and flight tasks
 [@vaxenburg2025flybody] and a honeybee MJCF body plan, but the
 following quantities are inherited from FlyBody defaults rather than
 calibrated against a honey-bee biomechanics dataset:
@@ -113,8 +114,8 @@ explicit acknowledgement.
 
 ## Closing the gaps
 
-Every limitation in this section appears in §12's known-gaps catalog,
-is interpreted in §13's discussion, and appears again in §15's roadmap,
+Every limitation in this section appears in the research-suite known-gaps
+catalog, is interpreted in the discussion, and appears again in the roadmap,
 with a specific next step. The architectural
 commitment is that closing any one of these gaps modifies *only* its
 home module — because of the cross-layer contracts, fixing BeeBrain

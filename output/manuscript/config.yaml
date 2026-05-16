@@ -1,6 +1,6 @@
 paper:
-  title: "BeeStack: A Whole-of-Colony Biophysical Digital Twin"
-  subtitle: "A Five-Layer Body–Brain–Mind–Swarm–Niche Substrate for Apis mellifera"
+  title: "BeeStack: An Evidence-Typed Scaffold for Whole-Colony Honeybee Simulation"
+  subtitle: "A Body–Brain–Mind–Swarm–Niche Substrate for Auditable Apis mellifera Modeling"
   version: "0.2"
   date: "May 2026"
 
@@ -20,7 +20,7 @@ keywords:
   - "honeybee"
   - "Apis mellifera"
   - "active inference"
-  - "digital twin"
+  - "simulation scaffold"
   - "swarm intelligence"
   - "niche construction"
   - "FlyBody"

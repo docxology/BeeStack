@@ -4,7 +4,7 @@ BeeBody owns the morphology, physics, sensors, actions, and energetics of
 an individual worker, and is the most stringent fidelity boundary in the
 stack. The worker body defaults to {{BODY_MASS_MG}} mg mass, a
 {{WING_STROKE_HZ}} Hz wing stroke, and {{FLYBODY_ACTION_DIM}} FlyBody
-action channels. Production animations use real FlyBody walking and
+action channels. Production animations use FlyBody walking and
 flight tasks driven through MuJoCo [@vaxenburg2025flybody;
 @todorov2012mujoco]; a reduced deterministic closed-loop kernel runs in
 parallel for telemetry tests.
@@ -23,7 +23,7 @@ calibrated biomechanics. They are an auditable *visual* body-plan layer
 on top of the FlyBody execution path: the verification script measures
 non-blank dynamic frames, motion pixels, locomotion mode, MJCF cue
 presence, silhouette overlap with a reference bee shape, and the
-*absence* of FlyBody debug aids that would betray a non-bee renderer.
+*absence* of FlyBody debug aids inconsistent with the honeybee render.
 
 ## Walking and flight tasks
 
@@ -91,11 +91,11 @@ cue scores in
 ## Fidelity boundary
 
 BeeBody remains the most stringent fidelity boundary in the stack. It
-is real FlyBody-backed for production rendering, and the visual
+is FlyBody-backed for production rendering, and the visual
 verification confirms that the output *looks like a bee*. The underlying
 articulated topology, mass distribution, inertia tensors, adhesion
 model, wing aerodynamics, and leg-tip contact mechanics still require
 honey-bee-specific biomechanical calibration. This is a recognized
-limitation (§14) and a roadmap priority (§15): visual fidelity is
+limitation and a roadmap priority: visual fidelity is
 necessary but not sufficient for biomechanical claims, and BeeStack
-chooses to *show* this rather than to *paper over* it.
+reports this limitation rather than folding it into a single fidelity score.

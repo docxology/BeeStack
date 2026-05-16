@@ -15,7 +15,7 @@ every record has a contract that pinned tests check at every commit.
   (vision through 6,900-per-eye ommatidia, olfaction
   through 170 antennal channels, mechanosensation), action
   unpacking (leg torques, wing kinematics, antennal motion), and
-  energetics. Production rendering runs through real FlyBody tasks
+  energetics. Production rendering runs through FlyBody tasks
   [@vaxenburg2025flybody] inside MuJoCo [@todorov2012mujoco]; the
   reduced closed-loop kernel remains for deterministic telemetry tests.
 - **BeeBrain** transforms observations into `BrainState` records that
@@ -68,11 +68,12 @@ same data contracts before it can enter the closed loop.
 
 ## Timing and scale
 
-The default configuration preserves a 100 Hz
+The default configuration uses a 100 Hz
 observation–action boundary, 10 Hz policy cadence
 (typical: every tenth control step), and 0.5 ms physics
-step. These rates derive from observed insect sensorimotor latencies
-and from FlyBody's task expectations rather than from convenience.
+step. These are interface and integration choices that keep the layer
+contracts aligned with FlyBody/MuJoCo stepping; they should not be read
+as calibrated honey-bee sensorimotor latency estimates.
 
 The biological scale assumptions that shape the current reduced
 kernels are recorded in `config.yaml` and propagated as manuscript
@@ -110,7 +111,7 @@ reports, methods-analysis dashboards, and hydrated manuscript files.
 These outputs are not incidental side effects; they are how BeeStack
 records what level of evidence backs each claim. The animation manifest
 currently contains 9 animations
-(5 real FlyBody, 4
+(5 FlyBody, 4
 reduced schematic), and the manuscript figure index links
 41 figures and visual artifacts to their
 backend, fidelity tier, validation status, and regeneration command.
@@ -118,7 +119,7 @@ backend, fidelity tier, validation status, and regeneration command.
 ## Module dependencies
 
 The static module-coverage figure (`output/figures/module_contract_coverage.png`,
-see §10) renders the dependency surface explicitly so that reviewers can
+see "Integrated Results") renders the dependency surface explicitly so that reviewers can
 trace the path from a single observation to a single action without
 having to read the code.
 

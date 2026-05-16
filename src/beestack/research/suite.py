@@ -257,7 +257,7 @@ def assemble_research_suite_report(
     return ResearchSuiteReport(
         title="BeeStack Science-First Research Suite",
         summary=(
-            "Unified scorecards for real FlyBody 3D Body/Swarm outputs, empirical "
+            "Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical "
             "BeeBrain evidence, and reduced validated Mind/Swarm/Niche kernels."
         ),
         module_scorecards=scorecards,
@@ -439,7 +439,7 @@ def _module_scorecards(
                     "Generated BeeBody carries finite honeybee calibration targets",
                 ),
             ),
-            ("Real FlyBody walking and flight GIFs with MJCF cue scoring.",),
+            ("FlyBody walking and flight GIFs with MJCF cue scoring.",),
         ),
         _scorecard(
             "BeeBrain",

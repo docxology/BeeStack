@@ -91,14 +91,16 @@ Parsed activity artifacts include:
 
 ## Fidelity Notes
 
-This is a real empirical-data pipeline, not a full connectome simulator. It
+This is an empirical-data pipeline, not a full connectome simulator. It
 downloads and parses public honeybee anatomy/activity payloads where upstream
 access allows it. It then projects those data into reduced BeeBrain contracts:
 odor templates, calcium summaries, antennal vibration drive, waggle-follower
 decoding confidence, neuropil coverage, and region response summaries. Missing
 or blocked files are reported as gaps.
 
-The current sprint target is `brain_data_parseable_fraction >= 0.800`. When a
+The current configured gate is `brain_data_parseable_fraction >= 0.5`, set by
+`research.empirical_completeness_threshold` in `manuscript/config.yaml`. The
+stricter `0.800` parseability target remains an improvement target. When a
 source cannot yet be parsed locally, the completeness panel can still pass the
 readiness gate only if the source is DOI/source-verified and the manifest
 records the precise blocker, parser status, and remediation path. This is how

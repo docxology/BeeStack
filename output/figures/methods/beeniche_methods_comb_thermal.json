@@ -1,0 +1,20 @@
+{
+  "backend": "Matplotlib/pandas",
+  "fidelity": "reduced deterministic kernel diagnostic",
+  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beeniche_methods_comb_thermal.png",
+  "quality": {
+    "height_px": 846,
+    "max_intensity": 255,
+    "mean_intensity": 248.64948318886263,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 35.598453055219366,
+    "width_px": 1800
+  },
+  "regeneration_command": "uv run python scripts/run_methods_analysis.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+  "title": "Beeniche Methods Comb Thermal",
+  "validation_status": "nonblank image and quality sidecar passed"
+}

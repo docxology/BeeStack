@@ -230,6 +230,11 @@ def parse_paoli_matlab_payload(payload: Mapping[str, Any]) -> EmpiricalCalciumDa
         normalized.append(np.moveaxis(np.asarray(array, dtype=float), 0, -1))
     traces = np.stack(normalized, axis=0)
     fs = _scalar_or_mean(_field(db, "fs", 100.0))
+    # If upstream label vectors are absent or length-mismatched we fall back to
+    # deterministic positional labels (odor_N / glomerulus_N). This is an
+    # explicit, reproducible fallback — not silent corruption — and the
+    # synthesized labels are distinguishable from real ones by their pattern;
+    # provenance of the parsed fields is recorded in `source_variables` below.
     odors = _string_tuple(_field(db, "odors", ()))
     if len(odors) != traces.shape[1]:
         odors = tuple(f"odor_{idx}" for idx in range(traces.shape[1]))

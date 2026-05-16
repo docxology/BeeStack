@@ -14,7 +14,7 @@ validated by `src/beestack/config.py`.
   recruitment fan-out.
 - `niche`: comb grid, brood thermal band, wax threshold, ambient temperature,
   and foraging radius.
-- `flybody`: real FlyBody action dimension, local fork path, walk-imitation
+- `flybody`: FlyBody action dimension, local fork path, walk-imitation
   task options, rollout horizon, and rendered-frame motion validation.
 - `empirical`: BeeBrain dataset IDs, calcium-imaging protocol metadata,
   atlas-glomerulus range, odor-template names, and template shape parameters.
