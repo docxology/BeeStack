@@ -143,6 +143,9 @@ evidence, visualization provenance, deterministic reduced-kernel sensitivity
 sweeps, and known gaps. Scripts own file I/O and use this API to write
 `output/reports/beestack_research_report.md` and
 `output/reports/beestack_research_report.json`.
+`EmpiricalEvidenceRecord.availability_status` is required and must be one of
+`parsed`, `generated`, `registered_absent`, `network_gated_absent`, or
+`missing_optional`.
 
 ## Methods Analysis
 
@@ -160,7 +163,8 @@ sweeps, and known gaps. Scripts own file I/O and use this API to write
 The methods-analysis layer consumes generated run telemetry, research-suite
 scorecards, empirical summaries, animation manifests, and integrity reports. It
 returns typed module panels that connect quantitative diagnostics, validation
-checks, visual artifacts, known gaps, and manuscript claims. Scripts own file
+checks, visual artifacts, known gaps, and manuscript claims with explicit
+evidence availability. Scripts own file
 I/O and write `output/data/methods_analysis.json`,
 `output/reports/methods_analysis.md`, and the manuscript figure index.
 
@@ -172,6 +176,8 @@ I/O and write `output/data/methods_analysis.json`,
 - `integrity_review_markdown(review)`
 - `audit_documentation(project_root)`
 - `documentation_audit_markdown(audit)`
+- `audit_generated_reports(project_root)`
+- `generated_report_audit_markdown(audit)`
 
 The generated model card and integrity review are the primary machine-readable
 surfaces for module completeness, fidelity levels, empirical evidence, and gaps.

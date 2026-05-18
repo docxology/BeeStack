@@ -2,10 +2,13 @@
 
 Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidence, and reduced validated Mind/Swarm/Niche kernels.
 
-- Overall validation fraction: `0.750`
+- Overall validation fraction: `1.000`
 - Module scorecards: `5`
-- Visualization artifacts: `53`
-- Empirical evidence records: `5`
+- Visualization artifacts: `66`
+- Empirical registry/evidence rows: `5`
+- Parsed empirical evidence rows: `3`
+- Local empirical records represented: `139`
+- Empirical availability states: `generated=1, missing_optional=0, network_gated_absent=1, parsed=3, registered_absent=0`
 - Sensitivity sweeps: `3`
 
 ## Module Scorecards
@@ -21,8 +24,8 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 ### BeeBrain
 
 - Fidelity: `empirical reduced AL-MB-CX kernel`
-- Validation fraction: `0.000`
-- Metrics: `anatomy_inventory_count=0`, `brain_data_parseable_fraction=0`, `empirical_panel_count=0`, `mean_odor_separability=0`, `registered_dataset_count=10`, `source_verified_fraction=0`, `template_count=0`, `waggle_follower_confidence=0`
+- Validation fraction: `1.000`
+- Metrics: `anatomy_inventory_count=7`, `brain_data_parseable_fraction=0.6`, `empirical_panel_count=48`, `mean_odor_separability=0.651`, `registered_dataset_count=10`, `source_verified_fraction=1`, `template_count=24`, `waggle_follower_confidence=0.289`
 - Evidence: Curated public honeybee anatomy/activity loaders and template-bank integration.
 - Known gaps: No heavyweight spiking simulator is required in the default path.; The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics.
 
@@ -55,7 +58,7 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 ### mind.energy_threshold
 
 - Values: `0.15, 0.3, 0.45, 0.6, 0.75`
-- Interpretation: mind.energy_threshold sweep changed recruitment by 0 and comb fraction by 0 in the reduced kernel.
+- Interpretation: mind.energy_threshold sweep is insensitive under the current reduced kernel; recruitment and comb fraction ranges both stayed at 0.
 
 ### mind.follow_probability_threshold
 
@@ -65,7 +68,7 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 ### niche.ambient_temperature_c
 
 - Values: `18, 22, 26, 30, 34`
-- Interpretation: niche.ambient_temperature_c sweep changed recruitment by 0 and comb fraction by 0 in the reduced kernel.
+- Interpretation: niche.ambient_temperature_c sweep is insensitive under the current reduced kernel; recruitment and comb fraction ranges both stayed at 0.
 
 ## Visualization Inventory
 
@@ -89,6 +92,19 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 - `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/beeswarm_recruitment_task_allocation.png`: figure, research_diagnostic, nonblank_static_figure
 - `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/body_energy_timeseries.png`: figure, research_diagnostic, nonblank_static_figure
 - `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/comb_fraction_timeseries.png`: figure, research_diagnostic, nonblank_static_figure
+- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/bee_brain_multimodal_source_map.png`: figure, research_diagnostic, nonblank_static_figure
+- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/beeswarm_waggle_recruitment_diagnostics.png`: figure, research_diagnostic, nonblank_static_figure
+- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/brain_data_completeness_matrix.png`: figure, research_diagnostic, nonblank_static_figure
+- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_activity_summary.png`: figure, research_diagnostic, nonblank_static_figure
+- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_anatomy_assets.png`: figure, research_diagnostic, nonblank_static_figure
+- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_anatomy_projection.png`: figure, research_diagnostic, nonblank_static_figure
+- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_antennal_movement.png`: figure, research_diagnostic, nonblank_static_figure
+- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_neuropil_coverage.png`: figure, research_diagnostic, nonblank_static_figure
+- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_panel_heatmap.png`: figure, research_diagnostic, nonblank_static_figure
+- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_panel_quality.png`: figure, research_diagnostic, nonblank_static_figure
+- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_stack_alignment.png`: figure, research_diagnostic, nonblank_static_figure
+- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/waggle_follower_alignment.png`: figure, research_diagnostic, nonblank_static_figure
+- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/waggle_phase_coupling.png`: figure, research_diagnostic, nonblank_static_figure
 - `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beebody_methods_telemetry_dashboard.png`: figure, research_diagnostic, nonblank_static_figure
 - `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beebrain_methods_empirical_completeness.png`: figure, research_diagnostic, nonblank_static_figure
 - `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beemind_methods_policy_landscape.png`: figure, research_diagnostic, nonblank_static_figure
@@ -125,8 +141,8 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 
 ## Empirical Evidence
 
-- `empirical-panels`: workbook/CSV odor response panels, completeness `0.000`, records `0`
-- `calcium-datasets`: Paoli-style calcium traces, completeness `0.000`, records `0`
-- `honeybee-standard-brain`: atlas/VRML/TIFF anatomy assets, completeness `0.000`, records `0`
-- `template-bank`: glomerulus-length empirical templates, completeness `0.000`, records `0`
-- `figshare-hadjitofi-2024-waggle-following`: waggle follower antennal-position CSVs, completeness `0.000`, records `0`
+- `empirical-panels`: workbook/CSV odor response panels, status `parsed`, completeness `1.000`, records `48`
+- `calcium-datasets`: Paoli-style calcium traces, status `network_gated_absent`, completeness `0.000`, records `0`, gap `network gated absent; below configured completeness threshold`
+- `honeybee-standard-brain`: atlas/VRML/TIFF anatomy assets, status `parsed`, completeness `0.800`, records `8`
+- `template-bank`: glomerulus-length empirical templates, status `generated`, completeness `1.000`, records `24`
+- `figshare-hadjitofi-2024-waggle-following`: waggle follower antennal-position CSVs, status `parsed`, completeness `0.289`, records `59`, gap `below configured completeness threshold`

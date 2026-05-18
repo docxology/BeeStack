@@ -175,6 +175,7 @@ def test_methods_analysis_validation_branches_are_explicit() -> None:
         ("BeeBody", "section", "artifact", "type", "claim", "cmd", ()),
         ("BeeBody", "section", "artifact", "type", "claim", "cmd", ("",)),
         ("", "section", "artifact", "type", "claim", "cmd", ("TOKEN",)),
+        ("BeeBody", "section", "artifact", "type", "claim", "cmd", ("TOKEN",), "bad_status"),
     ]
     for args in invalid_links:
         with pytest.raises(ValueError):
@@ -286,7 +287,16 @@ def test_methods_analysis_handles_missing_payloads_and_regeneration_commands() -
     )
     assert len(report.scenario_sweeps) == 1
     assert report.scenario_sweeps[0].dominant_output == "not_yet_generated"
+    assert report.scenario_sweeps[0].insensitive_outputs == ("not_yet_generated",)
     assert report.top_validation_gaps
+    brain = next(panel for panel in report.module_panels if panel.module == "BeeBrain")
+    assert {link.availability_status for link in brain.manuscript_evidence} <= {
+        "missing_optional",
+        "network_gated_absent",
+    }
+    markdown = methods_analysis_markdown(report)
+    assert "Evidence Availability Links" in markdown
+    assert "supports BeeBrain uses" not in markdown
     fallback_paths = tuple(
         path for panel in report.module_panels for path in panel.visualization_panel.artifact_paths
     )
@@ -358,7 +368,9 @@ def test_methods_analysis_report_figures_and_index(tmp_path: Path) -> None:
     )
     assert report.module_count == 5
     assert report.overall_validation_fraction > 0.8
-    assert "BeeStack Methods Analysis" in methods_analysis_markdown(report)
+    markdown = methods_analysis_markdown(report)
+    assert "BeeStack Methods Analysis" in markdown
+    assert "Evidence status" in markdown
     figure_paths = generate_methods_figures(report, records, tmp_path / "figures")
     assert len(figure_paths) >= 7
     assert all(path.exists() and path.stat().st_size > 0 for path in figure_paths)

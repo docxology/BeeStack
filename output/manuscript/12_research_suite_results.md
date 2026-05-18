@@ -13,10 +13,10 @@ The research suite writes
 `output/reports/beestack_research_report.json`, and
 `output/data/research_suite_report.json`. It reports five module
 scorecards, 5 empirical evidence records,
-53 visualization artifacts,
+66 visualization artifacts,
 3 deterministic sensitivity sweeps, and
 11 known gaps. The overall validation
-fraction is 0.750.
+fraction is 1.000.
 
 ![BeeStack research scorecard heatmap](../figures/research/research_module_scorecard_heatmap.png){#fig:research_scorecard}
 
@@ -36,13 +36,13 @@ writes `output/reports/stack_synthesis_review.md`,
 `output/figures/research/stack_synthesis_dashboard.png`.
 
 The latest synthesis reports validation fraction
-0.750, synthesized readiness fraction
-0.842, artifact coverage
+1.000, synthesized readiness fraction
+0.932, artifact coverage
 1.000, and
 42 bibliography anchors. The
 integrated run improved brood-temperature error by
 4.415 °C. The top
-synthesis finding is: **Weakest synthesized module is BeeBrain (readiness 0.483; gaps 2).**
+synthesis finding is: **Weakest synthesized module is BeeSwarm (readiness 0.925; gaps 3).**
 
 ![BeeStack cross-stack synthesis dashboard](../figures/research/stack_synthesis_dashboard.png){#fig:stack_synthesis_dashboard}
 
@@ -92,7 +92,7 @@ structurally insensitive under the current reduced kernel
 The readiness review writes
 `output/reports/project_readiness_review.md` and
 `output/reports/project_readiness_review.json`. It currently reports
-strict signposting coverage for 60
+strict signposting coverage for 61
 directories and keeps the next-improvement backlog tied to the
 research-suite gaps. The top prioritized improvement is
 **BeeBrain calcium acquisition completion (P27)**.
@@ -113,10 +113,10 @@ The methods-analysis report writes
 `output/data/manuscript_figure_index.json`. It reports
 5 module methods panels,
 3 scenario-sweep panels,
-28 linked visualization records, and an
-overall methods validation fraction of 0.800.
-Its `all_validations_passed` flag is False,
-and its highest-priority visible gap is **BeeBrain: template_bank**.
+41 linked visualization records, and an
+overall methods validation fraction of 1.000.
+Its `all_validations_passed` flag is True,
+and its highest-priority visible gap is **dryad-paoli-2024-al-calcium cataloged but no archive or file-level payload is local**.
 
 ## What "validation fraction" means
 

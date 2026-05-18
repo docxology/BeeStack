@@ -1,43 +1,55 @@
 {
+  "empirical_availability_counts": {
+    "generated": 1,
+    "missing_optional": 0,
+    "network_gated_absent": 1,
+    "parsed": 3,
+    "registered_absent": 0
+  },
   "empirical_evidence": [
     {
-      "completeness_fraction": 0.0,
+      "availability_status": "parsed",
+      "completeness_fraction": 1.0,
       "dataset_id": "empirical-panels",
       "integration_target": "BeeBrain templates",
-      "known_gap": "below configured completeness threshold",
-      "local_records": 0,
+      "known_gap": "",
+      "local_records": 48,
       "modality": "workbook/CSV odor response panels"
     },
     {
+      "availability_status": "network_gated_absent",
       "completeness_fraction": 0.0,
       "dataset_id": "calcium-datasets",
       "integration_target": "BeeBrain calcium summaries",
-      "known_gap": "below configured completeness threshold",
+      "known_gap": "network gated absent; below configured completeness threshold",
       "local_records": 0,
       "modality": "Paoli-style calcium traces"
     },
     {
-      "completeness_fraction": 0.0,
+      "availability_status": "parsed",
+      "completeness_fraction": 0.8,
       "dataset_id": "honeybee-standard-brain",
       "integration_target": "BeeBrain anatomy mapping",
-      "known_gap": "below configured completeness threshold",
-      "local_records": 0,
+      "known_gap": "",
+      "local_records": 8,
       "modality": "atlas/VRML/TIFF anatomy assets"
     },
     {
-      "completeness_fraction": 0.0,
+      "availability_status": "generated",
+      "completeness_fraction": 1.0,
       "dataset_id": "template-bank",
       "integration_target": "Stack empirical drive",
-      "known_gap": "below configured completeness threshold",
-      "local_records": 0,
+      "known_gap": "",
+      "local_records": 24,
       "modality": "glomerulus-length empirical templates"
     },
     {
-      "completeness_fraction": 0.0,
+      "availability_status": "parsed",
+      "completeness_fraction": 0.28875178634201437,
       "dataset_id": "figshare-hadjitofi-2024-waggle-following",
       "integration_target": "BeeBrain/BeeSwarm waggle decoding",
       "known_gap": "below configured completeness threshold",
-      "local_records": 0,
+      "local_records": 59,
       "modality": "waggle follower antennal-position CSVs"
     }
   ],
@@ -54,6 +66,7 @@
     "No external Hiveopolis or BEEHAVE engine is required in the default path.",
     "External nectar landscape calibration and brood demography remain future adapter layers."
   ],
+  "local_empirical_record_count": 139,
   "module_scorecards": [
     {
       "evidence": [
@@ -110,45 +123,45 @@
         "The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics."
       ],
       "metrics": {
-        "anatomy_inventory_count": 0.0,
-        "brain_data_parseable_fraction": 0.0,
-        "empirical_panel_count": 0.0,
-        "mean_odor_separability": 0.0,
+        "anatomy_inventory_count": 7.0,
+        "brain_data_parseable_fraction": 0.6,
+        "empirical_panel_count": 48.0,
+        "mean_odor_separability": 0.6511059958748603,
         "registered_dataset_count": 10.0,
-        "source_verified_fraction": 0.0,
-        "template_count": 0.0,
-        "waggle_follower_confidence": 0.0
+        "source_verified_fraction": 1.0,
+        "template_count": 24.0,
+        "waggle_follower_confidence": 0.28875178634201437
       },
       "module": "BeeBrain",
-      "validation_fraction": 0.0,
+      "validation_fraction": 1.0,
       "validations": [
         {
           "detail": "Empirical templates are available for stack integration",
           "name": "template_bank",
-          "passed": false,
+          "passed": true,
           "threshold": ">= 2",
-          "value": 0.0
+          "value": 24.0
         },
         {
           "detail": "Honeybee Standard Brain assets are inventoried when local",
           "name": "anatomy_inventory",
-          "passed": false,
+          "passed": true,
           "threshold": "> 0",
-          "value": 0
+          "value": 7
         },
         {
           "detail": "Hadjitofi-Webb waggle-following data is parsed or explicitly gapped",
           "name": "waggle_follower_source",
-          "passed": false,
+          "passed": true,
           "threshold": "present or declared gap",
-          "value": false
+          "value": true
         },
         {
           "detail": "Curated BeeBrain sources are parseable or source-verified blockers",
           "name": "brain_parseability_target",
-          "passed": false,
+          "passed": true,
           "threshold": ">= 0.8 or all blockers source-verified",
-          "value": 0
+          "value": 0.6
         }
       ]
     },
@@ -285,10 +298,11 @@
       ]
     }
   ],
-  "overall_validation_fraction": 0.75,
+  "overall_validation_fraction": 1.0,
+  "parsed_empirical_evidence_count": 3,
   "sensitivity_sweeps": [
     {
-      "interpretation": "mind.energy_threshold sweep changed recruitment by 0 and comb fraction by 0 in the reduced kernel.",
+      "interpretation": "mind.energy_threshold sweep is insensitive under the current reduced kernel; recruitment and comb fraction ranges both stayed at 0.",
       "outputs": {
         "final_comb_fraction": [
           0.08333333333333333,
@@ -370,7 +384,7 @@
       ]
     },
     {
-      "interpretation": "niche.ambient_temperature_c sweep changed recruitment by 0 and comb fraction by 0 in the reduced kernel.",
+      "interpretation": "niche.ambient_temperature_c sweep is insensitive under the current reduced kernel; recruitment and comb fraction ranges both stayed at 0.",
       "outputs": {
         "final_comb_fraction": [
           0.08333333333333333,
@@ -590,6 +604,123 @@
       "backend": "matplotlib/networkx/scikit-image",
       "fidelity_level": "research_diagnostic",
       "path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/comb_fraction_timeseries.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/bee_brain_multimodal_source_map.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/beeswarm_waggle_recruitment_diagnostics.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/brain_data_completeness_matrix.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_activity_summary.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_anatomy_assets.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_anatomy_projection.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_antennal_movement.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_neuropil_coverage.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_panel_heatmap.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_panel_quality.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_stack_alignment.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/waggle_follower_alignment.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/waggle_phase_coupling.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",
       "source_data": "research_suite_report",
       "validation_status": "nonblank_static_figure"

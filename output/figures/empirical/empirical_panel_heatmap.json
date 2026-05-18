@@ -1,0 +1,20 @@
+{
+  "backend": "Matplotlib empirical-data renderer",
+  "fidelity": "empirical panel summary diagnostic",
+  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_panel_heatmap.png",
+  "quality": {
+    "height_px": 800,
+    "max_intensity": 255,
+    "mean_intensity": 154.80915104166667,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 99.9635826064094,
+    "width_px": 1440
+  },
+  "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "output/data/empirical_analysis.json",
+  "title": "Empirical Panel Heatmap",
+  "validation_status": "nonblank empirical diagnostic"
+}

@@ -55,10 +55,11 @@ uv run python scripts/verify_bee_render.py
 uv run python scripts/review_stack_integrity.py
 uv run python scripts/fetch_empirical_bee_data.py
 uv run python scripts/analyze_empirical_bee_data.py
-uv run python scripts/run_research_suite.py
+uv run python scripts/run_research_suite.py --assemble-only
 uv run python scripts/run_methods_analysis.py
 uv run python scripts/run_stack_synthesis.py
 uv run python scripts/assess_digital_twin_readiness.py
+uv run python scripts/verify_generated_reports.py
 uv run python scripts/signpost_project_tree.py --check
 uv run python scripts/audit_documentation.py
 uv run python scripts/z_generate_manuscript_variables.py
@@ -96,12 +97,14 @@ uv run python scripts/analyze_empirical_bee_data.py
 uv run python scripts/analysis_pipeline.py
 uv run python scripts/generate_animations.py
 uv run python scripts/verify_bee_render.py
-uv run python scripts/run_research_suite.py
+uv run python scripts/review_stack_integrity.py
+uv run python scripts/run_research_suite.py --assemble-only
 uv run python scripts/run_methods_analysis.py
 uv run python scripts/run_stack_synthesis.py
 uv run python scripts/assess_digital_twin_readiness.py
-uv run python scripts/review_stack_integrity.py
+uv run python scripts/verify_generated_reports.py
 uv run python scripts/audit_documentation.py
+uv run python scripts/signpost_project_tree.py --check
 uv run python scripts/z_generate_manuscript_variables.py
 ```
 
@@ -152,10 +155,12 @@ uv run python scripts/z_generate_manuscript_variables.py
 - `output/reports/flybody_contact_physics.md`: MuJoCo contact evidence for the
   BeeSwarm production collision, configured waggle, and long waggle scenes.
 - `output/reports/beestack_research_report.md`: central research report with
-  method scorecards, validation fractions, visual inventory, empirical evidence,
-  sensitivity sweeps, and known gaps.
+  method scorecards, validation fractions, visual inventory, empirical
+  registry/evidence rows, evidence availability states, sensitivity sweeps, and
+  known gaps.
 - `output/reports/methods_analysis.md`: science-first methods report linking
-  per-module diagnostics, visualizations, validations, and manuscript claims.
+  per-module diagnostics, visualizations, validations, manuscript claims, and
+  explicit evidence availability states.
 - `output/reports/stack_synthesis_review.md`: synthesized statistical review
   tying module scorecards, simulation records, artifacts, signposting, and
   manuscript scholarship into one auditable surface.
@@ -167,6 +172,9 @@ uv run python scripts/z_generate_manuscript_variables.py
   diagnostics, validation records, fidelity levels, and gaps.
 - `output/reports/documentation_audit.md`: documentation freshness and fidelity
   claim audit.
+- `output/reports/generated_report_audit.md`: generated-report freshness and
+  semantic audit for stale local reports, missing current evidence paths, and
+  unsupported support claims.
 - `output/manuscript/`: manuscript sections with variables resolved.
 
 Network-gated empirical analysis adds these artifacts only when the relevant

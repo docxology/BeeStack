@@ -140,6 +140,11 @@ from .documentation_audit import (
     documentation_audit_markdown,
     signposted_directories,
 )
+from .generated_report_audit import (
+    GeneratedReportAudit,
+    audit_generated_reports,
+    generated_report_audit_markdown,
+)
 from .integrity import (
     DiagnosticRecord,
     ModuleIntegrityReport,
@@ -176,6 +181,7 @@ from .orchestrator import (
     task_allocation_snapshot,
 )
 from .research import (
+    EVIDENCE_AVAILABILITY_STATES,
     EmpiricalEvidenceRecord,
     ManuscriptEvidenceLink,
     MethodsAnalysisReport,
@@ -247,6 +253,7 @@ __all__ = [
     "DiagnosticRecord",
     "DigitalTwinReadinessReview",
     "DocumentationAudit",
+    "EVIDENCE_AVAILABILITY_STATES",
     "EmpiricalAnatomyDataset",
     "EmpiricalBrainDataset",
     "EmpiricalCalciumDataset",
@@ -264,6 +271,7 @@ __all__ = [
     "FlyBodySceneArtifact",
     "FlyBodySceneRenderConfig",
     "FollowerOrientationDiagnostics",
+    "GeneratedReportAudit",
     "GlomerularResponseSummary",
     "HoneybeeCalibrationTarget",
     "ManuscriptEvidenceLink",
@@ -335,11 +343,13 @@ __all__ = [
     "contract_matrix",
     "cost_of_transport",
     "dance_recruitment_diagnostics",
+    "audit_generated_reports",
     "dataset_by_id",
     "datasets_for_module",
     "decode_waggle",
     "dominant_caste",
     "documentation_audit_markdown",
+    "generated_report_audit_markdown",
     "signposted_directories",
     "digital_twin_axis_catalog",
     "digital_twin_readiness_markdown",

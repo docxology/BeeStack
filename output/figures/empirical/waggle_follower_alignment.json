@@ -1,0 +1,20 @@
+{
+  "backend": "Matplotlib empirical-data renderer",
+  "fidelity": "empirical waggle/follower summary diagnostic",
+  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/waggle_follower_alignment.png",
+  "quality": {
+    "height_px": 800,
+    "max_intensity": 255,
+    "mean_intensity": 229.5938559027778,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 57.35582488001318,
+    "width_px": 1440
+  },
+  "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "output/data/empirical_analysis.json",
+  "title": "Waggle Follower Alignment",
+  "validation_status": "nonblank empirical diagnostic"
+}

@@ -113,7 +113,7 @@ records what level of evidence backs each claim. The animation manifest
 currently contains 9 animations
 (5 FlyBody, 4
 reduced schematic), and the manuscript figure index links
-28 figures and visual artifacts to their
+41 figures and visual artifacts to their
 backend, fidelity tier, validation status, and regeneration command.
 
 ## Module dependencies

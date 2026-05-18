@@ -37,9 +37,12 @@ coverage for every non-cache directory.
 
 ```bash
 uv run python scripts/analyze_empirical_bee_data.py
-uv run python scripts/run_research_suite.py
+uv run python scripts/verify_bee_render.py
+uv run python scripts/review_stack_integrity.py
+uv run python scripts/run_research_suite.py --assemble-only
 uv run python scripts/run_methods_analysis.py
 uv run python scripts/run_stack_synthesis.py
+uv run python scripts/verify_generated_reports.py
 ```
 
 Use this when BeeBrain data, scorecards, methods figures, sensitivity sweeps,
@@ -70,16 +73,22 @@ uv run python scripts/analysis_pipeline.py
 uv run python scripts/analyze_empirical_bee_data.py
 uv run python scripts/generate_animations.py
 uv run python scripts/verify_bee_render.py
-uv run python scripts/run_research_suite.py
+uv run python scripts/review_stack_integrity.py
+uv run python scripts/run_research_suite.py --assemble-only
 uv run python scripts/run_methods_analysis.py
 uv run python scripts/run_stack_synthesis.py
-uv run python scripts/review_stack_integrity.py
+uv run python scripts/assess_digital_twin_readiness.py
+uv run python scripts/verify_generated_reports.py
 uv run python scripts/audit_documentation.py
 uv run python scripts/signpost_project_tree.py --check
 uv run python scripts/z_generate_manuscript_variables.py
 ```
 
 Use this before declaring a project-wide science or manuscript sprint complete.
+`run_research_suite.py --assemble-only` is the preferred full-gate mode after
+the prerequisite analysis, empirical, visual-verification, and integrity scripts
+have already run. The generated-report audit is the freshness gate for
+availability-status claims and stale local report files.
 
 ## Claim Tiers
 

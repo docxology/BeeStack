@@ -17,3 +17,8 @@ Research records separate four surfaces: implementation verification, empirical
 validation, sensitivity, and applicability. Raising a module's evidence tier or
 digital-twin readiness requires matching generated artifacts and validation
 residuals, not just stronger prose.
+
+Empirical and manuscript evidence availability is typed. Use only
+`parsed`, `generated`, `registered_absent`, `network_gated_absent`, or
+`missing_optional`; absent BeeBrain payloads must remain explicit availability
+states rather than manuscript support claims.

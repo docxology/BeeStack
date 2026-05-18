@@ -138,6 +138,48 @@ def test_stack_synthesis_record_validation_branches_are_explicit() -> None:
         )
 
 
+def test_failed_synthesis_gates_use_failure_wording() -> None:
+    _cfg, records, summary, research, methods = _synthesis_fixture()
+    strict_cfg = config_from_mapping(
+        {
+            "research": {
+                "sensitivity_sweep_size": 3,
+                "synthesis_validation_target": 0.95,
+                "synthesis_artifact_coverage_target": 0.2,
+                "synthesis_min_scholarship_refs": 2,
+                "empirical_completeness_threshold": 0.95,
+            }
+        }
+    )
+
+    review = assemble_stack_synthesis_review(
+        strict_cfg,
+        simulation_records=records,
+        simulation_summary=summary,
+        research_report=research,
+        methods_analysis=methods,
+        animation_manifest=_manifest(),
+        documentation_audit={
+            "directory_count": 10,
+            "missing_readme_dirs": (),
+            "missing_agents_dirs": (),
+        },
+        readiness_review={"signposting": {"directory_count": 10}},
+        bibliography_keys=("seeley1989superorganism", "saltelli2008global"),
+    )
+    markdown = stack_synthesis_markdown(review)
+
+    assert "`validation_target`: gap" in markdown
+    assert "does not meet synthesis target" in markdown
+    assert "`empirical_parseability`: gap" in markdown
+    assert "does not clear configured minimum" in markdown
+    assert "gap; value" in markdown
+    assert (
+        "gap; value `0.8`; threshold `0.95`. BeeBrain parseable-source fraction clears"
+        not in markdown
+    )
+
+
 def test_synthesis_config_validation_rejects_bad_thresholds() -> None:
     for payload in (
         {"research": {"synthesis_validation_target": -0.1}},

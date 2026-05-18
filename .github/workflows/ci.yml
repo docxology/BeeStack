@@ -42,14 +42,32 @@ jobs:
       - name: Refresh empirical metadata manifests
         run: uv run python scripts/fetch_empirical_bee_data.py --metadata-only
 
+      - name: Analyze empirical payloads when local
+        run: uv run python scripts/analyze_empirical_bee_data.py
+
       - name: Generate core analysis artifacts
         run: uv run python scripts/analysis_pipeline.py
+
+      - name: Verify BeeBody and BeeSwarm render evidence
+        run: uv run python scripts/verify_bee_render.py
+
+      - name: Review stack integrity
+        run: uv run python scripts/review_stack_integrity.py
+
+      - name: Generate research suite
+        run: uv run python scripts/run_research_suite.py --assemble-only
 
       - name: Generate methods analysis
         run: uv run python scripts/run_methods_analysis.py
 
-      - name: Generate research suite
-        run: uv run python scripts/run_research_suite.py
+      - name: Generate stack synthesis
+        run: uv run python scripts/run_stack_synthesis.py
+
+      - name: Assess digital-twin readiness
+        run: uv run python scripts/assess_digital_twin_readiness.py
+
+      - name: Generated-report audit
+        run: uv run python scripts/verify_generated_reports.py
 
       - name: Documentation audit
         run: uv run python scripts/audit_documentation.py

@@ -102,6 +102,162 @@
       "validation_status": "nonblank_static_figure"
     },
     {
+      "artifact_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/bee_brain_multimodal_source_map.png",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "manuscript_sections": [
+        "manuscript/05_brain_methods.md",
+        "manuscript/05_brain_methods.md"
+      ],
+      "module": "BeeBrain",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/beeswarm_waggle_recruitment_diagnostics.png",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "manuscript_sections": [
+        "manuscript/05_brain_methods.md",
+        "manuscript/05_brain_methods.md"
+      ],
+      "module": "BeeBrain",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/brain_data_completeness_matrix.png",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "manuscript_sections": [
+        "manuscript/05_brain_methods.md",
+        "manuscript/05_brain_methods.md"
+      ],
+      "module": "BeeBrain",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_activity_summary.png",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "manuscript_sections": [
+        "manuscript/05_brain_methods.md",
+        "manuscript/05_brain_methods.md"
+      ],
+      "module": "BeeBrain",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_anatomy_assets.png",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "manuscript_sections": [
+        "manuscript/05_brain_methods.md",
+        "manuscript/05_brain_methods.md"
+      ],
+      "module": "BeeBrain",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_anatomy_projection.png",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "manuscript_sections": [
+        "manuscript/05_brain_methods.md",
+        "manuscript/05_brain_methods.md"
+      ],
+      "module": "BeeBrain",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_antennal_movement.png",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "manuscript_sections": [
+        "manuscript/05_brain_methods.md",
+        "manuscript/05_brain_methods.md"
+      ],
+      "module": "BeeBrain",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_neuropil_coverage.png",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "manuscript_sections": [
+        "manuscript/05_brain_methods.md",
+        "manuscript/05_brain_methods.md"
+      ],
+      "module": "BeeBrain",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_panel_heatmap.png",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "manuscript_sections": [
+        "manuscript/05_brain_methods.md",
+        "manuscript/05_brain_methods.md"
+      ],
+      "module": "BeeBrain",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_panel_quality.png",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "manuscript_sections": [
+        "manuscript/05_brain_methods.md",
+        "manuscript/05_brain_methods.md"
+      ],
+      "module": "BeeBrain",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_stack_alignment.png",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "manuscript_sections": [
+        "manuscript/05_brain_methods.md",
+        "manuscript/05_brain_methods.md"
+      ],
+      "module": "BeeBrain",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/waggle_follower_alignment.png",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "manuscript_sections": [
+        "manuscript/05_brain_methods.md",
+        "manuscript/05_brain_methods.md"
+      ],
+      "module": "BeeBrain",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/waggle_phase_coupling.png",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "manuscript_sections": [
+        "manuscript/05_brain_methods.md",
+        "manuscript/05_brain_methods.md"
+      ],
+      "module": "BeeBrain",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
       "artifact_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beebrain_methods_empirical_completeness.png",
       "backend": "matplotlib/networkx/scikit-image",
       "fidelity_level": "research_diagnostic",

@@ -10,7 +10,7 @@ import numpy as np
 from ..body import bee_body_calibration_summary
 from ..config import BeeStackConfig
 from ..mind import initial_belief, policy_selection_diagnostics
-from .suite import ResearchValidationRecord
+from .suite import EVIDENCE_AVAILABILITY_STATES, ResearchValidationRecord
 
 
 @dataclass(frozen=True)
@@ -24,6 +24,7 @@ class ManuscriptEvidenceLink:
     claim: str
     regeneration_command: str
     variable_tokens: tuple[str, ...]
+    availability_status: str = "generated"
 
     def __post_init__(self) -> None:
         for field_name, value in asdict(self).items():
@@ -32,6 +33,12 @@ class ManuscriptEvidenceLink:
                     raise ValueError("manuscript evidence link needs at least one variable token")
                 if not all(isinstance(token, str) and token for token in value):
                     raise ValueError("manuscript evidence variable tokens must be nonempty")
+            elif field_name == "availability_status":
+                if value not in EVIDENCE_AVAILABILITY_STATES:
+                    raise ValueError(
+                        "manuscript evidence availability_status must be one of "
+                        f"{', '.join(sorted(EVIDENCE_AVAILABILITY_STATES))}"
+                    )
             elif not isinstance(value, str) or not value:
                 raise ValueError(f"manuscript evidence {field_name} must be nonempty")
 
@@ -193,6 +200,7 @@ class ScenarioSweepPanel:
     dominant_output: str
     monotonic_outputs: tuple[str, ...]
     interpretation: str
+    insensitive_outputs: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
         if not self.parameter:
@@ -207,6 +215,8 @@ class ScenarioSweepPanel:
             raise ValueError("scenario sweep dominant_output must exist in ranges")
         if not self.interpretation:
             raise ValueError("scenario sweep interpretation must be nonempty")
+        if not all(output in self.output_ranges for output in self.insensitive_outputs):
+            raise ValueError("scenario sweep insensitive_outputs must exist in ranges")
 
     def as_dict(self) -> dict[str, object]:
         return asdict(self)
@@ -287,9 +297,19 @@ class MethodsAnalysisReport:
             "manuscript_evidence_links": [
                 link.as_dict() for link in self.manuscript_evidence_links
             ],
+            "evidence_availability_counts": self.evidence_availability_counts,
             "top_validation_gaps": self.top_validation_gaps,
             "figure_paths": self.figure_paths,
             "interactive_paths": self.interactive_paths,
+        }
+
+    @property
+    def evidence_availability_counts(self) -> dict[str, int]:
+        return {
+            status: sum(
+                link.availability_status == status for link in self.manuscript_evidence_links
+            )
+            for status in sorted(EVIDENCE_AVAILABILITY_STATES)
         }
 
 
@@ -324,7 +344,7 @@ def assemble_methods_analysis_report(
         title="BeeStack Methods Analysis",
         summary=(
             "Science-first per-module methods panels connecting quantitative diagnostics, "
-            "validation scorecards, visualization provenance, and manuscript evidence links."
+            "validation scorecards, visualization provenance, and manuscript evidence availability."
         ),
         module_panels=modules,
         scenario_sweeps=sweeps,
@@ -363,7 +383,7 @@ def methods_analysis_markdown(report: MethodsAnalysisReport) -> str:
                 f"- Metrics: {_metric_summary(panel.quantitative_metrics)}",
                 f"- Validation fraction: `{panel.validation_panel.validation_fraction:.3f}`",
                 f"- Visual artifacts: `{panel.visualization_panel.artifact_count}`",
-                f"- Manuscript evidence: {'; '.join(link.artifact_path for link in panel.manuscript_evidence)}",
+                f"- Evidence status: {_evidence_status_summary(panel.manuscript_evidence)}",
                 f"- Interpretation: {panel.interpretation}",
                 f"- Known gaps: {'; '.join(panel.known_gaps)}",
                 "",
@@ -379,15 +399,17 @@ def methods_analysis_markdown(report: MethodsAnalysisReport) -> str:
                 f"- Dominant output: `{sweep.dominant_output}`",
                 f"- Output ranges: {_metric_summary(sweep.output_ranges)}",
                 f"- Monotonic outputs: `{', '.join(sweep.monotonic_outputs) or 'none'}`",
+                f"- Insensitive outputs: `{', '.join(sweep.insensitive_outputs) or 'none'}`",
                 f"- Interpretation: {sweep.interpretation}",
                 "",
             ]
         )
-    lines.extend(["## Manuscript Evidence Links", ""])
+    lines.extend(["## Evidence Availability Links", ""])
     for link in report.manuscript_evidence_links:
+        verb = "supports" if link.availability_status in {"parsed", "generated"} else "is gated for"
         lines.append(
             f"- `{link.manuscript_section}` {link.module}: `{link.artifact_path}` "
-            f"({link.evidence_type}) supports {link.claim}"
+            f"({link.evidence_type}, {link.availability_status}) {verb} {link.claim}"
         )
     lines.extend(["", "## Top Validation Gaps", ""])
     lines.extend(f"- {gap}" for gap in report.top_validation_gaps)
@@ -576,6 +598,16 @@ def _brain_panel(
             ">= 0.8 or source-verified blockers",
         ),
     )
+    empirical_status = _empirical_link_status(
+        metrics["empirical_panel_count"] + metrics["anatomy_inventory_count"],
+        known_gaps,
+        "empirical",
+    )
+    waggle_status = _empirical_link_status(
+        metrics["waggle_follower_confidence"],
+        known_gaps,
+        "waggle-following",
+    )
     return _panel(
         "BeeBrain",
         scorecards,
@@ -598,6 +630,7 @@ def _brain_panel(
                 "BeeBrain uses real downloaded or cataloged anatomy/activity sources where present.",
                 "uv run python scripts/analyze_empirical_bee_data.py",
                 ("EMPIRICAL_PANEL_COUNT", "ANATOMY_INVENTORY_COUNT"),
+                empirical_status,
             ),
             ManuscriptEvidenceLink(
                 "BeeBrain",
@@ -607,9 +640,13 @@ def _brain_panel(
                 "BeeBrain integrates curated waggle follower antennal-position decoding evidence when local.",
                 "uv run python scripts/analyze_empirical_bee_data.py",
                 ("WAGGLE_FOLLOWER_TRACK_COUNT", "WAGGLE_FOLLOWER_CONFIDENCE"),
+                waggle_status,
             ),
         ),
-        interpretation="Brain evidence is strongest for registries, anatomy inventories, and reduced empirical templates.",
+        interpretation=(
+            "Brain evidence separates source registries from parsed local anatomy/activity "
+            "payloads and declares availability gates when public data are absent."
+        ),
     )
 
 
@@ -964,7 +1001,12 @@ def _scenario_sweep_panels(research_report: dict[str, Any]) -> tuple[ScenarioSwe
             for name, values in outputs.items()
         }
         dominant = max(ranges, key=lambda name: ranges[name]) if ranges else "none"
-        monotonic = tuple(name for name, values in outputs.items() if _is_monotonic(values))
+        insensitive = tuple(name for name, value_range in ranges.items() if value_range == 0.0)
+        monotonic = tuple(
+            name
+            for name, values in outputs.items()
+            if name not in insensitive and _is_monotonic(values)
+        )
         values = tuple(float(value) for value in sweep.get("values", ()))
         panels.append(
             ScenarioSweepPanel(
@@ -974,6 +1016,7 @@ def _scenario_sweep_panels(research_report: dict[str, Any]) -> tuple[ScenarioSwe
                 dominant_output=dominant,
                 monotonic_outputs=monotonic,
                 interpretation=str(sweep.get("interpretation", "No interpretation recorded.")),
+                insensitive_outputs=insensitive,
             )
         )
     if panels:
@@ -986,6 +1029,7 @@ def _scenario_sweep_panels(research_report: dict[str, Any]) -> tuple[ScenarioSwe
             dominant_output="not_yet_generated",
             monotonic_outputs=(),
             interpretation="Sensitivity sweeps were not available when this report was assembled.",
+            insensitive_outputs=("not_yet_generated",),
         ),
     )
 
@@ -1079,6 +1123,22 @@ def _check(
 
 def _metric_summary(metrics: dict[str, float]) -> str:
     return ", ".join(f"`{name}={value:.3g}`" for name, value in sorted(metrics.items()))
+
+
+def _evidence_status_summary(links: tuple[ManuscriptEvidenceLink, ...]) -> str:
+    return "; ".join(f"{link.artifact_path} [{link.availability_status}]" for link in links)
+
+
+def _empirical_link_status(
+    represented_value: float,
+    known_gaps: tuple[str, ...],
+    gap_token: str,
+) -> str:
+    if represented_value > 0:
+        return "parsed"
+    if any(gap_token in gap.lower() for gap in known_gaps):
+        return "network_gated_absent"
+    return "missing_optional"
 
 
 def _safe_mean(values: np.ndarray) -> float:

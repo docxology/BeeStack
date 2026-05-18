@@ -91,13 +91,19 @@ Coverage over `src/` must remain at or above 92%.
 ## Research Suite
 
 ```bash
-uv run python scripts/run_research_suite.py
+uv run python scripts/review_stack_integrity.py
+uv run python scripts/run_research_suite.py --assemble-only
 uv run python scripts/run_methods_analysis.py
 uv run python scripts/run_stack_synthesis.py
+uv run python scripts/verify_generated_reports.py
 ```
 
 - `ResearchSuiteReport` must include five module scorecards, visualization
-  records, empirical evidence records, sensitivity sweeps, and known gaps.
+  records, empirical registry/evidence rows, evidence availability states,
+  sensitivity sweeps, and known gaps.
+- Empirical evidence rows must use one of `parsed`, `generated`,
+  `registered_absent`, `network_gated_absent`, or `missing_optional`; rows with
+  absent availability states must not be rendered as current manuscript support.
 - Scorecard metrics and sensitivity outputs must be finite, typed, JSON
   serializable, and deterministic from a fixed config/seed.
 - Research figures under `output/figures/research/` must be nonblank, and
@@ -106,8 +112,11 @@ uv run python scripts/run_stack_synthesis.py
   Swarm production animations, empirical reduced for BeeBrain, and reduced
   validated kernels for Mind, non-visual Swarm dynamics, and Niche.
 - `MethodsAnalysisReport` must include five module methods panels, validation
-  panels, visualization panels, scenario sweep panels, manuscript evidence
+  panels, visualization panels, scenario sweep panels, evidence availability
   links, finite quantitative metrics, and top validation gaps.
+- `scripts/verify_generated_reports.py` must pass with no stale
+  local test-result reports, no missing `parsed`/`generated` evidence artifact,
+  and no failed synthesis gate that still uses success wording.
 - Methods figures under `output/figures/methods/` must be nonblank, and Plotly
   methods HTML outputs under `output/interactive/` must contain traces.
 - `StackSynthesisReview` must include five module synthesis panels, finite

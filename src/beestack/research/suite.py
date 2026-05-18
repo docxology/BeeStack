@@ -11,6 +11,16 @@ from ..body import bee_body_calibration_summary
 from ..config import BeeStackConfig
 from ..orchestrator import run_simulation
 
+EVIDENCE_AVAILABILITY_STATES = frozenset(
+    {
+        "parsed",
+        "registered_absent",
+        "network_gated_absent",
+        "missing_optional",
+        "generated",
+    }
+)
+
 
 @dataclass(frozen=True)
 class ResearchValidationRecord:
@@ -104,6 +114,7 @@ class EmpiricalEvidenceRecord:
     local_records: int
     completeness_fraction: float
     integration_target: str
+    availability_status: str
     known_gap: str
 
     def __post_init__(self) -> None:
@@ -117,6 +128,11 @@ class EmpiricalEvidenceRecord:
             raise ValueError("empirical completeness_fraction must be in [0, 1]")
         if not self.integration_target:
             raise ValueError("empirical integration_target must be nonempty")
+        if self.availability_status not in EVIDENCE_AVAILABILITY_STATES:
+            raise ValueError(
+                "empirical availability_status must be one of "
+                f"{', '.join(sorted(EVIDENCE_AVAILABILITY_STATES))}"
+            )
 
     def as_dict(self) -> dict[str, float | int | str]:
         return asdict(self)
@@ -186,10 +202,30 @@ class ResearchSuiteReport:
                 artifact.as_dict() for artifact in self.visualization_artifacts
             ],
             "empirical_evidence": [evidence.as_dict() for evidence in self.empirical_evidence],
+            "empirical_availability_counts": self.empirical_availability_counts,
+            "parsed_empirical_evidence_count": self.parsed_empirical_evidence_count,
+            "local_empirical_record_count": self.local_empirical_record_count,
             "sensitivity_sweeps": [sweep.as_dict() for sweep in self.sensitivity_sweeps],
             "overall_validation_fraction": self.overall_validation_fraction,
             "known_gaps": self.known_gaps,
         }
+
+    @property
+    def empirical_availability_counts(self) -> dict[str, int]:
+        return {
+            status: sum(
+                evidence.availability_status == status for evidence in self.empirical_evidence
+            )
+            for status in sorted(EVIDENCE_AVAILABILITY_STATES)
+        }
+
+    @property
+    def parsed_empirical_evidence_count(self) -> int:
+        return sum(evidence.availability_status == "parsed" for evidence in self.empirical_evidence)
+
+    @property
+    def local_empirical_record_count(self) -> int:
+        return sum(evidence.local_records for evidence in self.empirical_evidence)
 
 
 def run_sensitivity_sweeps(cfg: BeeStackConfig) -> tuple[SensitivitySweepResult, ...]:
@@ -280,7 +316,10 @@ def research_report_markdown(report: ResearchSuiteReport) -> str:
         f"- Overall validation fraction: `{report.overall_validation_fraction:.3f}`",
         f"- Module scorecards: `{len(report.module_scorecards)}`",
         f"- Visualization artifacts: `{len(report.visualization_artifacts)}`",
-        f"- Empirical evidence records: `{len(report.empirical_evidence)}`",
+        f"- Empirical registry/evidence rows: `{len(report.empirical_evidence)}`",
+        f"- Parsed empirical evidence rows: `{report.parsed_empirical_evidence_count}`",
+        f"- Local empirical records represented: `{report.local_empirical_record_count}`",
+        f"- Empirical availability states: `{_availability_summary(report.empirical_availability_counts)}`",
         f"- Sensitivity sweeps: `{len(report.sensitivity_sweeps)}`",
         "",
         "## Module Scorecards",
@@ -320,8 +359,10 @@ def research_report_markdown(report: ResearchSuiteReport) -> str:
     for evidence in report.empirical_evidence:
         lines.append(
             f"- `{evidence.dataset_id}`: {evidence.modality}, "
+            f"status `{evidence.availability_status}`, "
             f"completeness `{evidence.completeness_fraction:.3f}`, "
             f"records `{evidence.local_records}`"
+            + (f", gap `{evidence.known_gap}`" if evidence.known_gap else "")
         )
     lines.append("")
     return "\n".join(lines)
@@ -358,9 +399,16 @@ def _sweep(
 def _interpret_sweep(parameter: str, outputs: dict[str, tuple[float, ...]]) -> str:
     recruited = outputs["total_recruited_followers"]
     comb = outputs["final_comb_fraction"]
+    recruitment_range = max(recruited) - min(recruited)
+    comb_range = max(comb) - min(comb)
+    if recruitment_range == 0 and comb_range == 0:
+        return (
+            f"{parameter} sweep is insensitive under the current reduced kernel; "
+            "recruitment and comb fraction ranges both stayed at 0."
+        )
     return (
-        f"{parameter} sweep changed recruitment by {max(recruited) - min(recruited):.3g} "
-        f"and comb fraction by {max(comb) - min(comb):.3g} in the reduced kernel."
+        f"{parameter} sweep changed recruitment by {recruitment_range:.3g} "
+        f"and comb fraction by {comb_range:.3g} in the reduced kernel."
     )
 
 
@@ -710,6 +758,7 @@ def _empirical_evidence(
             panel_count,
             panel_count / expected,
             "BeeBrain templates",
+            "network_gated_absent",
         ),
         (
             "calcium-datasets",
@@ -717,6 +766,7 @@ def _empirical_evidence(
             calcium_count,
             min(1.0, calcium_count / max(1, cfg.empirical.calcium_bee_count)),
             "BeeBrain calcium summaries",
+            "network_gated_absent",
         ),
         (
             "honeybee-standard-brain",
@@ -724,6 +774,7 @@ def _empirical_evidence(
             anatomy_count,
             min(1.0, anatomy_count / expected),
             "BeeBrain anatomy mapping",
+            "registered_absent",
         ),
         (
             "template-bank",
@@ -731,6 +782,7 @@ def _empirical_evidence(
             template_count,
             min(1.0, template_count / max(1, len(cfg.empirical.odor_templates))),
             "Stack empirical drive",
+            "missing_optional",
         ),
         (
             "figshare-hadjitofi-2024-waggle-following",
@@ -738,6 +790,7 @@ def _empirical_evidence(
             waggle_track_count,
             min(1.0, _float(waggle.get("confidence_score"))),
             "BeeBrain/BeeSwarm waggle decoding",
+            "network_gated_absent",
         ),
     )
     return tuple(
@@ -747,11 +800,17 @@ def _empirical_evidence(
             local_records=local_records,
             completeness_fraction=float(np.clip(completeness, 0.0, 1.0)),
             integration_target=target,
-            known_gap=""
-            if completeness >= cfg.research.empirical_completeness_threshold
-            else "below configured completeness threshold",
+            availability_status=status,
+            known_gap=_empirical_known_gap(
+                completeness,
+                cfg.research.empirical_completeness_threshold,
+                status,
+            ),
         )
-        for dataset_id, modality, local_records, completeness, target in records
+        for dataset_id, modality, local_records, completeness, target, absent_status in records
+        for status in (
+            _empirical_availability_status(dataset_id, local_records, completeness, absent_status),
+        )
     )
 
 
@@ -767,6 +826,37 @@ def _validation(
 
 def _metric_summary(metrics: dict[str, float]) -> str:
     return ", ".join(f"`{name}={value:.3g}`" for name, value in sorted(metrics.items()))
+
+
+def _availability_summary(counts: dict[str, int]) -> str:
+    return ", ".join(f"{status}={count}" for status, count in sorted(counts.items()))
+
+
+def _empirical_availability_status(
+    dataset_id: str,
+    local_records: int,
+    completeness: float,
+    absent_status: str,
+) -> str:
+    if dataset_id == "template-bank" and local_records > 0:
+        return "generated"
+    if local_records > 0:
+        return "parsed"
+    if absent_status in EVIDENCE_AVAILABILITY_STATES:
+        return absent_status
+    return "missing_optional"
+
+
+def _empirical_known_gap(
+    completeness: float,
+    threshold: float,
+    availability_status: str,
+) -> str:
+    if availability_status in {"registered_absent", "network_gated_absent", "missing_optional"}:
+        return f"{availability_status.replace('_', ' ')}; below configured completeness threshold"
+    if completeness < threshold:
+        return "below configured completeness threshold"
+    return ""
 
 
 def _float(value: Any, default: float = 0.0) -> float:

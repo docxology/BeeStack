@@ -31,6 +31,7 @@ Before finishing changes, run:
 ```bash
 uv run pytest --cov=src --cov-report=term-missing
 uv run python scripts/analysis_pipeline.py
+uv run python scripts/verify_generated_reports.py
 uv run python scripts/audit_documentation.py
 uv run python scripts/signpost_project_tree.py --check
 uv run python scripts/z_generate_manuscript_variables.py

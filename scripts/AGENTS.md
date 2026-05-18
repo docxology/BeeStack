@@ -11,3 +11,9 @@ Keep scripts thin:
   invented values.
 - Keep signposting and readiness reports synchronized after scripts create new
   output directories.
+- Prefer `run_research_suite.py --assemble-only` after prerequisite analysis,
+  empirical, render-verification, and integrity scripts have already run in the
+  same gate; use the default full mode only for local convenience.
+- Run `verify_generated_reports.py` after research, methods, synthesis, and
+  digital-twin reports are refreshed so stale local test summaries and
+  unsupported evidence claims fail loudly.
