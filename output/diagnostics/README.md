@@ -1,4 +1,7 @@
 # Output Diagnostics
 
-Generated diagnostic artifacts for visual and empirical QA. These files are
-regeneratable from scripts and are not canonical source.
+Generated diagnostic artifacts for visual, FlyBody, or empirical QA.
+
+- Scope: Regeneratable diagnostic outputs.
+- Regenerate: uv run python scripts/analysis_pipeline.py
+- Canonical source: BeeStack scripts and source helpers

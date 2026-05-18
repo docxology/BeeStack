@@ -1,4 +1,6 @@
-# output/animations/ - BeeStack
+# output/animations
 
-Generated animation artifacts. Update animation builders in
-`src/beestack/visualization/animations.py` and regenerate through scripts.
+Generated or downloaded artifact area. Do not hand-edit scientific outputs; change the producing script or source helper and regenerate.
+
+- Canonical source: scripts/generate_animations.py and src/beestack/visualization/
+- Regeneration command: uv run python scripts/generate_animations.py

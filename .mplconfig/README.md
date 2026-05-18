@@ -1,7 +1,8 @@
-# .mplconfig
+# Matplotlib Runtime Config
 
-BeeStack project directory.
+Project-local Matplotlib runtime configuration and font cache for deterministic
+headless rendering.
 
-- Scope: Project support files.
+- Scope: Rendering support files; do not treat as scientific source data.
 - Regenerate: n/a
-- Canonical source: This directory's files are source-of-truth unless local guidance says otherwise.
+- Canonical source: Matplotlib runtime configuration used by local figure writers.

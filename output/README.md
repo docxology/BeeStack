@@ -1,25 +1,13 @@
 # Output
 
-Regeneratable BeeStack artifacts. Run:
+Regeneratable BeeStack artifacts and downloaded empirical payloads.
 
-```bash
-uv run python scripts/analysis_pipeline.py
-uv run python scripts/generate_animations.py
-uv run python scripts/fetch_empirical_bee_data.py
-uv run python scripts/analyze_empirical_bee_data.py
-uv run python scripts/run_research_suite.py
-uv run python scripts/signpost_project_tree.py --check
-uv run python scripts/audit_documentation.py
-uv run python scripts/z_generate_manuscript_variables.py
-```
+- Scope: Generated output tree, including data, reports, figures, animations,
+  manuscript hydration, external-research notes, logs, checkpoints, simulation
+  traces, and local export leaves.
+- Regenerate: uv run python scripts/analysis_pipeline.py
+- Canonical source: BeeStack scripts and source helpers
 
-Subdirectories contain data, figures, reports, interactive HTML, strict FlyBody
-scene assets, and hydrated manuscript sources. Animations are written under
-`output/animations/`; strict BeeSwarm MuJoCo scene XMLs and contact reports live
-under `output/animations/flybody_scenes/`. Research-suite figures live under
-`output/figures/research/`; optional Plotly views live under
-`output/interactive/`. Raw empirical downloads live under
-`output/data/empirical_sources/` and are not package source.
-Every non-cache output directory, including raw asset and dataset leaves, is
-signposted with local `README.md` and `AGENTS.md` files by
-`scripts/signpost_project_tree.py`.
+Do not hand-edit scientific outputs. Change source code, config, scripts, or
+manuscript sources and regenerate. Optional empirical-analysis artifacts appear
+only when local public payloads are present and parseable.

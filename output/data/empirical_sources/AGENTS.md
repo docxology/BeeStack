@@ -1,4 +1,6 @@
-# empirical_sources/ - BeeStack
+# output/data/empirical_sources
 
-This directory is generated from public Dryad metadata and small archives.
-Avoid editing downloaded files; update the fetch script or registry instead.
+Generated or downloaded artifact area. Do not hand-edit scientific outputs; change the producing script or source helper and regenerate.
+
+- Canonical source: scripts/fetch_empirical_bee_data.py
+- Regeneration command: uv run python scripts/fetch_empirical_bee_data.py

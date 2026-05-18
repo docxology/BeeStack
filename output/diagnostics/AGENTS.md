@@ -1,4 +1,7 @@
-# output/diagnostics/ - BeeStack
+# output/diagnostics
 
-This directory contains generated QA diagnostics. Prefer regenerating these
-artifacts through scripts rather than editing them by hand.
+Generated or downloaded artifact area. Do not hand-edit scientific outputs;
+change the producing script or source helper and regenerate.
+
+- Canonical source: BeeStack scripts and source helpers
+- Regeneration command: uv run python scripts/analysis_pipeline.py

@@ -19,6 +19,12 @@ skips files that already exist and are non-empty. `--metadata-only` writes
 catalog manifests without downloading missing payloads. `--force` re-downloads
 local files.
 
+`analyze_empirical_bee_data.py` is intentionally network-gated. When no local
+workbook/CSV/MAT empirical panels are present, it exits successfully with a
+skip message so offline core verification can proceed. When panels are present,
+it must parse, validate, analyze, visualize, and report real payloads; it must
+not fabricate surrogate empirical traces.
+
 ## Anatomy Sources
 
 The Honeybee Standard Brain registry includes the FU Berlin gray-value stacks,

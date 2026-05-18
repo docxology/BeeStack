@@ -12,3 +12,8 @@ links.
 `synthesis.py` owns `StackSynthesisReview`, a cross-stack statistical layer over
 module readiness, simulation telemetry, visualization artifacts, empirical
 parseability, signposting, and manuscript scholarship anchors.
+
+Research records separate four surfaces: implementation verification, empirical
+validation, sensitivity, and applicability. Raising a module's evidence tier or
+digital-twin readiness requires matching generated artifacts and validation
+residuals, not just stronger prose.

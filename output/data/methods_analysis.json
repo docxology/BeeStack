@@ -1,5 +1,5 @@
 {
-  "all_validations_passed": true,
+  "all_validations_passed": false,
   "figure_paths": [
     "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/methods_repo_dashboard.png",
     "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beebody_methods_telemetry_dashboard.png",
@@ -273,136 +273,121 @@
         "AL/MB/CX reduced kernel validation"
       ],
       "quantitative_metrics": {
-        "anatomy_inventory_count": 7.0,
-        "brain_data_parseable_fraction": 0.6,
-        "brain_source_verified_fraction": 1.0,
+        "anatomy_inventory_count": 0.0,
+        "brain_data_parseable_fraction": 0.0,
+        "brain_source_verified_fraction": 0.0,
         "calcium_dataset_count": 0.0,
-        "empirical_panel_count": 48.0,
+        "empirical_panel_count": 0.0,
         "enabled_dataset_count": 10.0,
-        "mean_odor_separability": 0.6511059958748603,
-        "neuropil_count": 22.0,
-        "region_response_class_count": 6.0,
-        "template_count": 24.0,
-        "waggle_decoding_improvement": 0.24776741229159377,
-        "waggle_follower_confidence": 0.28875178634201437
+        "mean_odor_separability": 0.0,
+        "neuropil_count": 0.0,
+        "region_response_class_count": 0.0,
+        "template_count": 0.0,
+        "waggle_decoding_improvement": 0.0,
+        "waggle_follower_confidence": 0.0
       },
       "validation_panel": {
         "checks": [
           {
             "detail": "Empirical templates are available for stack integration",
             "name": "template_bank",
-            "passed": true,
+            "passed": false,
             "threshold": ">= 2",
-            "value": 24.0
+            "value": 0.0
           },
           {
             "detail": "Honeybee Standard Brain assets are inventoried when local",
             "name": "anatomy_inventory",
-            "passed": true,
+            "passed": false,
             "threshold": "> 0",
-            "value": 7
+            "value": 0
           },
           {
             "detail": "Hadjitofi-Webb waggle-following data is parsed or explicitly gapped",
             "name": "waggle_follower_source",
-            "passed": true,
+            "passed": false,
             "threshold": "present or declared gap",
-            "value": true
+            "value": false
           },
           {
             "detail": "Curated BeeBrain sources are parseable or source-verified blockers",
             "name": "brain_parseability_target",
-            "passed": true,
+            "passed": false,
             "threshold": ">= 0.8 or all blockers source-verified",
-            "value": 0.6
+            "value": 0
           },
           {
             "detail": "empirical panels present",
             "name": "empirical_panels_present",
-            "passed": true,
+            "passed": false,
             "threshold": "> 0",
-            "value": 48.0
+            "value": 0.0
           },
           {
             "detail": "template bank present",
             "name": "template_bank_present",
-            "passed": true,
+            "passed": false,
             "threshold": "> 0",
-            "value": 24.0
+            "value": 0.0
           },
           {
             "detail": "anatomy inventory present",
             "name": "anatomy_inventory_present",
-            "passed": true,
+            "passed": false,
             "threshold": "> 0",
-            "value": 7.0
+            "value": 0.0
           },
           {
             "detail": "calcium gap declared",
             "name": "calcium_gap_declared",
-            "passed": true,
+            "passed": false,
             "threshold": "present or declared gap",
             "value": 0.0
           },
           {
             "detail": "waggle gap declared",
             "name": "waggle_gap_declared",
-            "passed": true,
+            "passed": false,
             "threshold": "present or declared gap",
-            "value": 0.28875178634201437
+            "value": 0.0
           },
           {
             "detail": "parseability target satisfied",
             "name": "parseability_target_satisfied",
-            "passed": true,
+            "passed": false,
             "threshold": ">= 0.8 or source-verified blockers",
-            "value": 0.6
+            "value": 0.0
           }
         ],
-        "failed_checks": [],
+        "failed_checks": [
+          "template_bank",
+          "anatomy_inventory",
+          "waggle_follower_source",
+          "brain_parseability_target",
+          "empirical_panels_present",
+          "template_bank_present",
+          "anatomy_inventory_present",
+          "calcium_gap_declared",
+          "waggle_gap_declared",
+          "parseability_target_satisfied"
+        ],
         "module": "BeeBrain",
-        "passed_count": 10,
+        "passed_count": 0,
         "validation_count": 10,
-        "validation_fraction": 1.0
+        "validation_fraction": 0.0
       },
       "visualization_panel": {
         "animation_count": 1,
-        "artifact_count": 18,
+        "artifact_count": 5,
         "artifact_paths": [
           "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beebrain_neural_anatomy.gif",
           "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/beebrain_empirical_alignment_timeseries.png",
-          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/bee_brain_multimodal_source_map.png",
-          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/beeswarm_waggle_recruitment_diagnostics.png",
-          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/brain_data_completeness_matrix.png",
-          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_activity_summary.png",
-          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_anatomy_assets.png",
-          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_anatomy_projection.png",
-          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_antennal_movement.png",
-          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_neuropil_coverage.png",
-          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_panel_heatmap.png",
-          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_panel_quality.png",
-          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_stack_alignment.png",
-          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/waggle_follower_alignment.png",
-          "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/waggle_phase_coupling.png",
           "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beebrain_methods_empirical_completeness.png",
           "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/beebrain_empirical_evidence_map.png",
           "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/research_empirical_completeness.png"
         ],
         "backends": [
           "matplotlib.funcanimation",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
           "matplotlib/networkx/scikit-image",
           "matplotlib/networkx/scikit-image",
           "matplotlib/networkx/scikit-image",
@@ -413,38 +398,12 @@
           "research_diagnostic",
           "research_diagnostic",
           "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
           "research_diagnostic"
         ],
-        "figure_count": 17,
+        "figure_count": 4,
         "module": "BeeBrain",
         "validation_statuses": [
           "verified",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
           "nonblank_static_figure",
           "nonblank_static_figure",
           "nonblank_static_figure",
@@ -861,7 +820,7 @@
       }
     }
   ],
-  "overall_validation_fraction": 1.0,
+  "overall_validation_fraction": 0.8,
   "scenario_sweeps": [
     {
       "dominant_output": "final_comb_fraction",
@@ -939,14 +898,14 @@
   "summary": "Science-first per-module methods panels connecting quantitative diagnostics, validation scorecards, visualization provenance, and manuscript evidence links.",
   "title": "BeeStack Methods Analysis",
   "top_validation_gaps": [
-    "Paoli MATLAB calcium traces are not yet local or parseable",
-    "Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.",
-    "Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset.",
-    "No heavyweight spiking simulator is required in the default path.",
-    "The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics.",
-    "No learned transition model or recursive social-belief inference yet.",
-    "Expected free energy terms are transparent hand-calibrated witnesses.",
-    "Large-N colony dynamics are summarized by configured scaling rather than simulated at full population by default."
+    "BeeBrain: template_bank",
+    "BeeBrain: anatomy_inventory",
+    "BeeBrain: waggle_follower_source",
+    "BeeBrain: brain_parseability_target",
+    "BeeBrain: empirical_panels_present",
+    "BeeBrain: template_bank_present",
+    "BeeBrain: anatomy_inventory_present",
+    "BeeBrain: calcium_gap_declared"
   ],
-  "visualization_count": 41
+  "visualization_count": 28
 }

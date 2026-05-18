@@ -125,3 +125,21 @@ The documentation audit checks command references, source links, generated
 output paths, fidelity language, and unresolved manuscript variables. The
 manuscript generation step must leave no unresolved `{{TOKEN}}` variables in
 `output/manuscript/`.
+
+## External Research And Digital-Twin Boundaries
+
+- README and module docs must distinguish current evidence tiers from the
+  long-term digital-twin target. BeeStack is a scaffold until longitudinal
+  assimilation, held-out forecast skill, residual reporting, and governance
+  artifacts are implemented.
+- Any claim about FlyBody/MuJoCo fidelity must name the exact generated scene,
+  renderer/backend, contact or visual signature check, and failure mode when
+  strict dependencies are absent.
+- Any claim about waggle-following or antennal-position evidence must name the
+  public source, parser, generated summary, and confidence/error metric.
+- Any BEEHAVE, Hiveopolis, colony-demography, or population-of-colonies claim
+  must be framed as adapter/readiness work unless validated against external
+  scenario tables or longitudinal observations.
+- Any external-source refresh that materially changes scope or methods language
+  should leave a note under `output/llm/` or an equivalent report artifact with
+  source URLs, date, command, and affected documentation paths.

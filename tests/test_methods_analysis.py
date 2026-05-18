@@ -287,6 +287,17 @@ def test_methods_analysis_handles_missing_payloads_and_regeneration_commands() -
     assert len(report.scenario_sweeps) == 1
     assert report.scenario_sweeps[0].dominant_output == "not_yet_generated"
     assert report.top_validation_gaps
+    fallback_paths = tuple(
+        path for panel in report.module_panels for path in panel.visualization_panel.artifact_paths
+    )
+    fallback_statuses = tuple(
+        status
+        for panel in report.module_panels
+        for status in panel.visualization_panel.validation_statuses
+    )
+    assert all("methods_evidence_gap" in path for path in fallback_paths)
+    assert "missing_methods_figure_reference" in fallback_statuses
+    assert not any("placeholder" in path for path in fallback_paths)
     paths = (
         "output/animations/a.gif",
         "output/figures/empirical/a.png",

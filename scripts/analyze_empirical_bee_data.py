@@ -715,9 +715,20 @@ def main() -> None:
         source_dir
     )
     if not panels:
-        raise SystemExit(
-            "No empirical panels found. Run scripts/fetch_empirical_bee_data.py first."
+        # Network-gated optional subsystem: empirical datasets are downloaded by
+        # scripts/fetch_empirical_bee_data.py and are "not bundled as source"
+        # (see beestack.manifest). In the offline core pipeline they are absent
+        # by design, so a hard SystemExit here would fail the entire analysis
+        # stage for an artifact that documentation/audit already treats as
+        # optional. Degrade gracefully (warn + skip, exit 0) so the stage
+        # continues; strict analysis is preserved whenever panels are present.
+        print(
+            "[SKIP] analyze_empirical_bee_data: no empirical panels found "
+            "(network-gated — run scripts/fetch_empirical_bee_data.py to enable). "
+            "Skipping empirical analysis; expected in the offline core pipeline.",
+            file=sys.stderr,
         )
+        return
     stats = tuple(analyze_odor_panel(panel) for panel in panels)
     calcium_summaries = tuple(
         summarize_calcium_trials(dataset.traces, dataset.protocol(cfg))

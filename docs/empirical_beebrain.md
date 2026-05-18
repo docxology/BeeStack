@@ -101,6 +101,11 @@ The analyzer writes:
 - `output/figures/empirical/brain_data_completeness_matrix.png`
 - `output/figures/empirical/bee_brain_multimodal_source_map.png`
 
+If no local empirical panels are available, the analyzer records a skip at the
+command boundary and leaves these network-gated analysis artifacts absent. That
+absence is acceptable for offline core verification only when the catalogs and
+documentation still state which sources are missing or blocked.
+
 ## Activity Metrics
 
 `BeeBrainActivitySummary` reports calcium latency, inhibitory/excitatory

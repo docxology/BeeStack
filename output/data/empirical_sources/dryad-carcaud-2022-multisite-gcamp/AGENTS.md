@@ -1,4 +1,6 @@
-# dryad-carcaud-2022-multisite-gcamp/ - BeeStack
+# output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp
 
-Downloaded archive directory. Regenerate with
-`uv run python scripts/fetch_empirical_bee_data.py`.
+Generated or downloaded artifact area. Do not hand-edit scientific outputs; change the producing script or source helper and regenerate.
+
+- Canonical source: scripts/fetch_empirical_bee_data.py
+- Regeneration command: uv run python scripts/fetch_empirical_bee_data.py

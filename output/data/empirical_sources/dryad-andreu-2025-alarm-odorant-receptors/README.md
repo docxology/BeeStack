@@ -1,4 +1,7 @@
-# Dryad Andreu 2025 Alarm Odorant Receptors
+# Empirical Source: dryad-andreu-2025-alarm-odorant-receptors
 
-Small downloaded Dryad archive for honeybee alarm-pheromone odorant-receptor
-supplementary data.
+Dataset-specific raw payloads, archives, or file-level downloads.
+
+- Scope: Regeneratable empirical dataset payloads.
+- Regenerate: uv run python scripts/fetch_empirical_bee_data.py
+- Canonical source: scripts/fetch_empirical_bee_data.py

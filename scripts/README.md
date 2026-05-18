@@ -27,7 +27,8 @@ and records source errors in manifests.
 `analyze_empirical_bee_data.py` integrates downloaded Honeybee Standard Brain
 anatomy assets, workbook panels, MATLAB calcium payloads, Jernigan antennal CSV
 summaries, Hadjitofi-Webb waggle follower CSVs, and Nouvian neuromodulatory
-spreadsheets when available.
+spreadsheets when available. If no local empirical panels exist, it exits with a
+skip message so offline core verification can continue without fabricated data.
 `generate_animations.py` writes FlyBody BeeBody locomotion GIFs, strict
 FlyBody/MuJoCo BeeSwarm collision/waggle scenes with contact reports, and
 reduced schematic module summaries.
@@ -45,9 +46,11 @@ artifacts, and the stack-synthesis review.
 `review_stack_integrity.py` writes the module-by-module API, contract,
 validation, diagnostic, evidence, and fidelity review under `output/reports/`.
 `audit_documentation.py` writes documentation freshness and fidelity-claim
-reports under `output/reports/`.
+reports under `output/reports/`, including generated-output references found in
+nested `README.md` and `AGENTS.md` signposts.
 `signpost_project_tree.py` writes missing `README.md` and `AGENTS.md` files for
-every non-cache directory and emits the project readiness review.
+every non-cache directory, excludes caches such as `.uv-cache/`, and emits the
+project readiness review.
 `methods_analysis_io.py`, `research_suite_io.py`, and `stack_synthesis_io.py`
 are shared I/O-helper modules imported by `run_methods_analysis.py`,
 `run_research_suite.py`, and `run_stack_synthesis.py`, not standalone

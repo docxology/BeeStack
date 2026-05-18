@@ -955,50 +955,73 @@ def _write_scene_readmes(scene_dir: Path, scene_name: str) -> None:
     scene_dir.mkdir(parents=True, exist_ok=True)
     parent = scene_dir.parent
     parent.mkdir(parents=True, exist_ok=True)
-    (parent / "README.md").write_text(
+    _write_generated_signpost(
+        parent,
+        readme_title="Strict FlyBody Scene Outputs",
+        agent_title="output/animations/flybody_scenes",
+        purpose=(
+            "Generated strict BeeBody 3D MuJoCo scenes for collision and waggle-dance validation."
+        ),
+        scope="Regeneratable strict-scene XMLs, contact metrics, body-plan assets, and local signposts.",
+        canonical_source="src/beestack/body/flybody_scene.py and scripts/generate_animations.py",
+        regenerate="uv run python scripts/generate_animations.py",
+        agent_guidance=(
+            "Generated strict FlyBody/MuJoCo scene area. Preserve contact metrics, "
+            "body-plan provenance, and backend/fidelity wording; change scene logic "
+            "in source helpers and regenerate through the animation scripts."
+        ),
+    )
+    _write_generated_signpost(
+        scene_dir,
+        readme_title=f"Strict FlyBody Scene: {scene_name}",
+        agent_title=f"output/animations/flybody_scenes/{scene_name}",
+        purpose="Generated strict BeeBody 3D MuJoCo scene assets and contact telemetry.",
+        scope="Regeneratable strict-scene output for visual and contact validation.",
+        canonical_source="src/beestack/body/flybody_scene.py",
+        regenerate="uv run python scripts/generate_animations.py",
+        agent_guidance=(
+            "Generated strict FlyBody/MuJoCo scene area. Preserve contact metrics, "
+            "body-plan provenance, and backend/fidelity wording; change scene logic "
+            "in source helpers and regenerate through the animation scripts."
+        ),
+    )
+
+
+def _write_generated_signpost(
+    directory: Path,
+    *,
+    readme_title: str,
+    agent_title: str,
+    purpose: str,
+    scope: str,
+    canonical_source: str,
+    regenerate: str,
+    agent_guidance: str,
+) -> None:
+    (directory / "README.md").write_text(
         "\n".join(
             [
-                "# FlyBody Scene Outputs",
+                f"# {readme_title}",
                 "",
-                "Generated strict BeeBody 3D MuJoCo scenes for BeeSwarm production",
-                "animations. Each child directory contains a scene XML, copied",
-                "BeeBody body-plan assets, a contact report, and local signposting.",
+                purpose,
+                "",
+                f"- Scope: {scope}",
+                f"- Regenerate: {regenerate}",
+                f"- Canonical source: {canonical_source}",
                 "",
             ]
         ),
         encoding="utf-8",
     )
-    (parent / "AGENTS.md").write_text(
+    (directory / "AGENTS.md").write_text(
         "\n".join(
             [
-                "# output/animations/flybody_scenes",
+                f"# {agent_title}",
                 "",
-                "Generated output. Regenerate through `scripts/generate_animations.py`",
-                "or `scripts/analysis_pipeline.py`; edit source behavior in",
-                "`src/beestack/body/flybody_scene.py`.",
+                agent_guidance,
                 "",
-            ]
-        ),
-        encoding="utf-8",
-    )
-    (scene_dir / "README.md").write_text(
-        "\n".join(
-            [
-                f"# FlyBody {scene_name.title()} Scene",
-                "",
-                "Generated strict BeeBody 3D MuJoCo scene assets. Regenerate with",
-                "`uv run python scripts/generate_animations.py` or the full analysis pipeline.",
-                "",
-            ]
-        ),
-        encoding="utf-8",
-    )
-    (scene_dir / "AGENTS.md").write_text(
-        "\n".join(
-            [
-                f"# flybody_scenes/{scene_name}",
-                "",
-                "Generated output. Update scene construction in `src/beestack/body/flybody_scene.py`.",
+                f"- Canonical source: {canonical_source}",
+                f"- Regeneration command: {regenerate}",
                 "",
             ]
         ),

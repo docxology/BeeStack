@@ -36,7 +36,7 @@ Anatomy records summarize:
 - neuropil abbreviations (a vocabulary required to align activity
   panels against atlas regions).
 
-The latest run loads 7 anatomy inventories.
+The latest run loads N/A anatomy inventories.
 These inventories are typed (`AnatomyInventory` dataclasses) and
 serialized so that downstream summaries do not have to re-parse the
 raw ZIP/HTML payloads at every analysis step.
@@ -57,24 +57,24 @@ Activity records summarize:
   [@galizia1999glomerular] combined with Szyszka transient
   dynamics [@szyszka2023granger]).
 
-The latest run contains 48 empirical panels,
-1 antennal summaries, and
-24 integrated templates. The waggle-follower
-analysis contributes 59 tracks with
-confidence 0.289 when the Figshare source is
+The latest run contains N/A empirical panels,
+N/A antennal summaries, and
+N/A integrated templates. The waggle-follower
+analysis contributes N/A tracks with
+confidence N/A when the Figshare source is
 local and parseable.
 
 ## Data completeness
 
 The brain-data completeness panel reports a parseable-source fraction
-of 0.600 and a source-verified fraction of
-1.000. The parseability-readiness flag is
-True against the recorded 0.800
+of N/A and a source-verified fraction of
+N/A. The parseability-readiness flag is
+N/A against the recorded 0.800
 target, but that flag is not a simple claim that every registered
 payload is currently parseable: source-verified gaps can satisfy the
 readiness gate only when they carry an explicit blocker, parser status,
 and remediation path. Empirically known gaps are catalogued as
-`EMPIRICAL_KNOWN_GAP_COUNT = 1`, and the
+`EMPIRICAL_KNOWN_GAP_COUNT = N/A`, and the
 dominant current gap is that Paoli MATLAB calcium traces
 [@paoli2024dryad] are not yet local or parseable in the current
 artifact set. BeeStack records this as a *gap* rather than replacing it
@@ -97,8 +97,8 @@ A reduced BeeBrain that substitutes synthetic values for missing calcium
 traces would still produce a complete-looking manuscript. The gap-explicit
 design here deliberately makes incompleteness visible in the hydrated
 manuscript: `BRAIN_DATA_PARSEABLE_FRACTION =
-0.600` and `EMPIRICAL_KNOWN_GAP_COUNT =
-1` are not editorial choices; they are
+N/A` and `EMPIRICAL_KNOWN_GAP_COUNT =
+N/A` are not editorial choices; they are
 the same values the readiness review and research-suite scorecards
 read. A reviewer can read the manuscript, the JSON reports, and the
 readiness review without having to cross-check that they tell the

@@ -15,6 +15,8 @@ project. Use it alongside the root `README.md` and the generated reports in
   systems-biology colony and population-of-colonies digital twin.
 - `research_operations_playbook.md`: what to run and inspect for each review
   question.
+- `baseline_readiness.md`: current Full Snapshot readiness targets, generated
+  evidence anchors, and tracked follow-ups.
 - `manuscript_development.md`: section roles, claim rules, hydration workflow,
   and manuscript review checklist.
 - `validation_criteria.md`: acceptance criteria for Body, Brain, Mind, Swarm,
@@ -48,15 +50,15 @@ project. Use it alongside the root `README.md` and the generated reports in
 - `agent_instructions.md`: operating rules for future agents.
 - `research_operations_playbook.md`: regeneration tiers, claim tiers, and the
   source-to-manuscript artifact trace pattern.
+- `baseline_readiness.md`: current readiness gates and known cleanup targets.
 - `spec_review.md`: mapping from the specification to implemented coverage.
 - `testing_philosophy.md`: zero-mock verification doctrine.
 - `signposting.md`: directory README/AGENTS coverage and readiness-review rules.
 
-Generated audits:
+Core generated audits:
 
 - `output/reports/beestack_integrity_review.md`
 - `output/reports/documentation_audit.md`
-- `output/reports/empirical_analysis.md`
 - `output/reports/flybody_contact_physics.md`
 - `output/reports/beestack_research_report.md`
 - `output/reports/methods_analysis.md`
@@ -64,3 +66,7 @@ Generated audits:
 - `output/reports/digital_twin_readiness.md`
 - `output/reports/manuscript_figure_index.md`
 - `output/reports/project_readiness_review.md`
+
+Network-gated empirical reports such as `output/reports/empirical_analysis.md`
+and `output/reports/waggle_follower_analysis.md` are generated only when local
+public empirical payloads are present and parseable.

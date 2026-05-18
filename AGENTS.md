@@ -12,6 +12,15 @@ This project follows the research-template pattern:
    `scripts/z_generate_manuscript_variables.py`.
 5. Use `uv` for environment and dependency management.
 
+6. Documentation and signposting are code contracts. When changing methods,
+   outputs, or fidelity language, update the nearest `README.md` and
+   `AGENTS.md`, then run the signposting and documentation audit gates.
+7. Empirical BeeBrain analysis is network/data gated. If public payloads are
+   absent, document the availability state and blockers; do not synthesize fake
+   empirical traces to make reports look complete.
+8. Digital-twin wording must stay conservative until longitudinal assimilation,
+   held-out validation residuals, uncertainty, and governance artifacts exist.
+
 The upstream instruction asked agents to read `skills/PAI/SKILL.md`. If that
 path is absent in this project checkout, use the installed PAI skill from the
 configured Codex skill roots and preserve its practical constraints: explicit
@@ -22,5 +31,7 @@ Before finishing changes, run:
 ```bash
 uv run pytest --cov=src --cov-report=term-missing
 uv run python scripts/analysis_pipeline.py
+uv run python scripts/audit_documentation.py
+uv run python scripts/signpost_project_tree.py --check
 uv run python scripts/z_generate_manuscript_variables.py
 ```

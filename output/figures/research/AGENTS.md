@@ -1,5 +1,6 @@
 # output/figures/research
 
-Generated research-suite figures. Regenerate through
-`uv run python scripts/run_research_suite.py`; source logic lives in
-`src/beestack/visualization/research_figures.py`.
+Generated or downloaded artifact area. Do not hand-edit scientific outputs; change the producing script or source helper and regenerate.
+
+- Canonical source: scripts/analysis_pipeline.py or scripts/analyze_empirical_bee_data.py
+- Regeneration command: uv run python scripts/analysis_pipeline.py

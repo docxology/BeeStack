@@ -8,8 +8,52 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 
 EXCLUDED_SIGNPOST_DIR_NAMES = frozenset(
-    {".git", ".venv", ".mypy_cache", ".pytest_cache", ".ruff_cache", "htmlcov", "__pycache__"}
+    {
+        ".git",
+        ".mypy_cache",
+        ".pytest_cache",
+        ".ruff_cache",
+        ".uv-cache",
+        ".venv",
+        "__pycache__",
+        "htmlcov",
+    }
 )
+
+# Network-gated empirical aggregate artifacts that are *documented* but produced
+# only by the optional, network-dependent empirical pipeline (raw datasets are
+# "downloaded to output/data/empirical_sources and are not bundled as source" —
+# see ``beestack.manifest``). The core (offline) pipeline legitimately does not
+# emit these, so documentation that references them must not be flagged as a
+# missing-output defect. These five carry no ``empirical`` path token, so they
+# are enumerated explicitly; everything else optional is matched structurally
+# by an ``empirical`` path segment or a directory-style reference.
+_NETWORK_GATED_EMPIRICAL_OUTPUTS = frozenset(
+    {
+        "bee_brain_end_to_end_report.json",
+        "brain_data_completeness.json",
+        "waggle_follower_analysis.json",
+        "waggle_follower_analysis.md",
+        "baseline_readiness_note.md",
+    }
+)
+
+
+def _is_optional_output_reference(ref: str, project_root: Path) -> bool:
+    """Return True when a documented ``output/`` reference is legitimately optional.
+
+    A reference is optional (and therefore not a "missing output" defect) when it
+    is a directory-style mention (documentation describing a location, not a file
+    artifact) or part of the network-gated empirical subsystem the core pipeline
+    does not produce offline.
+    """
+
+    if ref.endswith("/") or (project_root / ref).is_dir():
+        return True
+    parts = ref.split("/")
+    if any(part.startswith("empirical") for part in parts):
+        return True
+    return Path(ref).name in _NETWORK_GATED_EMPIRICAL_OUTPUTS
 
 
 @dataclass(frozen=True)
@@ -43,7 +87,12 @@ def audit_documentation(project_root: Path) -> DocumentationAudit:
     output_refs = tuple(
         sorted({ref.rstrip(".,;:)") for ref in re.findall(r"output/[A-Za-z0-9_./-]+", combined)})
     )
-    missing = tuple(ref for ref in output_refs if not (project_root / ref).exists())
+    missing = tuple(
+        ref
+        for ref in output_refs
+        if not (project_root / ref).exists()
+        and not _is_optional_output_reference(ref, project_root)
+    )
     signposted_dirs = signposted_directories(project_root)
     missing_readmes = tuple(
         _relative_dir(project_root, directory)
@@ -168,13 +217,17 @@ def _documentation_files(project_root: Path) -> tuple[Path, ...]:
         project_root / "output" / "README.md",
         project_root / "output" / "reports" / "README.md",
     )
-    files: list[Path] = []
+    files: set[Path] = set()
     for root in roots:
         if root.is_file():
-            files.append(root)
+            files.add(root)
         elif root.is_dir():
-            files.extend(sorted(root.glob("*.md")))
-    return tuple(path for path in files if path.exists())
+            files.update(root.glob("*.md"))
+    for directory in signposted_directories(project_root):
+        files.update(
+            path for path in (directory / "README.md", directory / "AGENTS.md") if path.exists()
+        )
+    return tuple(sorted(files))
 
 
 def _is_fidelity_line(line: str) -> bool:

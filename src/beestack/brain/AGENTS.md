@@ -5,3 +5,8 @@
 - Preserve the 170 glomeruli, 170k KC per hemisphere, rho <= 0.02, and 32-bin
   CX defaults unless the config explicitly overrides them.
 - Put neural records in `state.py`; do not duplicate dataclasses across modules.
+- Treat empirical data as optional external evidence. Parsers should fail loud
+  on corrupt local payloads, while scripts may skip cleanly when no public
+  payloads are local.
+- Do not invent odor, calcium, anatomy, or waggle-follower values to satisfy a
+  completeness score.

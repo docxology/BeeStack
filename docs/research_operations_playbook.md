@@ -100,6 +100,29 @@ When writing manuscript prose, prefer the strongest tier that is actually
 supported by generated artifacts. Do not let the biological ambition of a module
 replace its implemented fidelity tier.
 
+## External Source Freshness
+
+Use a source-refresh pass before changing fidelity language, digital-twin
+claims, empirical-data scope, or public-method comparisons. Current external
+checks should answer these questions and leave links or notes in
+`output/llm/` when they materially affect documentation:
+
+- **Research-software reproducibility**: do README, lockfile, command, test,
+  license, and example surfaces meet current FAIR/JOSS-style expectations for
+  reusable scientific software?
+- **Model credibility**: do validation sections separate verification,
+  empirical validation, uncertainty, and applicability boundaries instead of
+  collapsing them into one "passed" label?
+- **Honeybee evidence**: do waggle, antennal-positioning, BeeBrain, colony, and
+  BEEHAVE-adapter claims cite current public sources and keep reduced kernels
+  distinct from calibrated biological dynamics?
+- **Digital-twin maturity**: does every "digital twin" phrase point to
+  assimilation, held-out validation, residuals, provenance, and governance
+  requirements that are either implemented or explicitly roadmapped?
+- **Artifact provenance**: can every figure, report, manuscript value, and
+  generated scene be traced to source code, input data, config, command, and a
+  validation surface?
+
 ## Artifact Trace Pattern
 
 For every material claim, keep this chain intact:

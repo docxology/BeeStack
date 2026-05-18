@@ -178,13 +178,7 @@ def _directory_context(project_root: Path, directory: Path) -> dict[str, str]:
     canonical_source = _canonical_source(parts, generated)
     regenerate = _regeneration_command(parts, generated)
     title, purpose, scope = _title_purpose_scope(parts)
-    agent_guidance = (
-        "Generated or downloaded artifact area. Do not hand-edit scientific outputs; "
-        "change the producing script or source helper and regenerate."
-        if generated
-        else "Project source area. Preserve the research-template separation between "
-        "pure source behavior, script I/O, tests, manuscript prose, and output artifacts."
-    )
+    agent_guidance = _agent_guidance(parts, generated)
     return {
         "title": title,
         "agent_title": rel,
@@ -232,6 +226,12 @@ def _title_purpose_scope(parts: tuple[str, ...]) -> tuple[str, str, str]:
             "Repository automation for lint, test, documentation, signposting, and manuscript gates.",
             "CI and repository automation metadata.",
         )
+    if parts[0] == ".mplconfig":
+        return (
+            "Matplotlib Runtime Config",
+            "Project-local Matplotlib runtime configuration and font cache for deterministic headless rendering.",
+            "Rendering support files; do not treat as scientific source data.",
+        )
     if parts[0] == "output":
         return _output_context(parts)
     return (
@@ -246,6 +246,7 @@ def _source_context(parts: tuple[str, ...]) -> tuple[str, str, str]:
     descriptions = {
         "body": "BeeBody physical simulation, FlyBody adapter, MJCF, and energetics helpers.",
         "brain": "BeeBrain empirical anatomy/activity loaders and reduced AL-MB-CX logic.",
+        "digital_twin": "Digital-twin readiness catalog, maturity scoring, and roadmap report rendering.",
         "mind": "BeeMind belief, policy, and expected-free-energy diagnostics.",
         "swarm": "BeeSwarm agents, dances, pheromones, allocation, and colony metrics.",
         "niche": "BeeNiche comb, thermal, forage, and adapter-schema logic.",
@@ -274,6 +275,19 @@ def _source_context(parts: tuple[str, ...]) -> tuple[str, str, str]:
 
 def _output_context(parts: tuple[str, ...]) -> tuple[str, str, str]:
     rel = "/".join(parts)
+    if parts[:3] == ("output", "animations", "flybody_scenes"):
+        if len(parts) == 3:
+            return (
+                "Strict FlyBody Scene Outputs",
+                "Generated strict BeeBody 3D MuJoCo scenes for collision and waggle-dance validation.",
+                "Regeneratable strict-scene XMLs, contact metrics, body-plan assets, and local signposts.",
+            )
+        scene = parts[3]
+        return (
+            f"Strict FlyBody Scene: {scene}",
+            "Generated strict BeeBody 3D MuJoCo scene assets and contact telemetry.",
+            "Regeneratable strict-scene output for visual and contact validation.",
+        )
     if parts[:3] == ("output", "animations", "flybody_bee"):
         if parts[-1] == "assets":
             return (
@@ -318,12 +332,20 @@ def _output_context(parts: tuple[str, ...]) -> tuple[str, str, str]:
             "Regeneratable diagnostic outputs.",
         )
     output_descriptions = {
+        ".checkpoints": "Generated checkpoint metadata for resumable local pipeline runs.",
         "animations": "Generated GIFs, contact sheets, strict-scene XMLs, and animation outputs.",
         "data": "Generated JSON payloads, manifests, empirical analysis, and sensitivity data.",
         "figures": "Generated static figures for analysis, empirical data, and research reports.",
         "interactive": "Generated Plotly HTML research-suite views.",
+        "llm": "LLM-assisted research notes and external-analysis transcripts used as audit inputs.",
+        "logs": "Local command logs, CI excerpts, and verification transcripts.",
         "manuscript": "Hydrated manuscript sections with variables resolved.",
+        "pdf": "Local PDF exports from manuscript or report tooling; ignored except signposts.",
         "reports": "Generated Markdown/JSON reports and audits.",
+        "simulations": "Local simulation trace exports and scenario run payloads.",
+        "slides": "Local slide exports from manuscript or report tooling; ignored except signposts.",
+        "tex": "Local TeX intermediates from manuscript export tooling.",
+        "web": "Local web exports or static report bundles; ignored except signposts.",
     }
     if len(parts) >= 2:
         name = parts[1]
@@ -342,6 +364,8 @@ def _output_context(parts: tuple[str, ...]) -> tuple[str, str, str]:
 def _canonical_source(parts: tuple[str, ...], generated: bool) -> str:
     if not generated:
         return "This directory's files are source-of-truth unless local guidance says otherwise."
+    if parts[:2] == ("output", ".checkpoints"):
+        return "Local pipeline checkpoint writer"
     if parts[:2] == ("output", "animations"):
         return "scripts/generate_animations.py and src/beestack/visualization/"
     if parts[:3] == ("output", "data", "empirical_sources"):
@@ -350,16 +374,28 @@ def _canonical_source(parts: tuple[str, ...], generated: bool) -> str:
         return "scripts/analysis_pipeline.py or scripts/analyze_empirical_bee_data.py"
     if parts[:2] == ("output", "interactive"):
         return "scripts/run_research_suite.py"
+    if parts[:2] == ("output", "llm"):
+        return "External-research or LLM-analysis command recorded with each artifact"
+    if parts[:2] == ("output", "logs"):
+        return "The local command, CI job, or verification run that emitted each log"
     if parts[:2] == ("output", "reports"):
         return "scripts/*.py report writers"
     if parts[:2] == ("output", "manuscript"):
         return "scripts/z_generate_manuscript_variables.py"
+    if parts[:2] == ("output", "simulations"):
+        return "scripts/analysis_pipeline.py and scenario-specific simulation exporters"
+    if parts[:2] == ("output", "tex"):
+        return "Manuscript export tooling"
+    if parts[:2] in (("output", "pdf"), ("output", "slides"), ("output", "web")):
+        return "Local export tooling; artifacts are not part of the core snapshot"
     return "BeeStack scripts and source helpers"
 
 
 def _regeneration_command(parts: tuple[str, ...], generated: bool) -> str:
     if not generated:
         return "n/a"
+    if parts[:2] == ("output", ".checkpoints"):
+        return "uv run python scripts/analysis_pipeline.py"
     if parts[:3] == ("output", "data", "empirical_sources"):
         return "uv run python scripts/fetch_empirical_bee_data.py"
     if parts[:2] == ("output", "animations"):
@@ -368,11 +404,52 @@ def _regeneration_command(parts: tuple[str, ...], generated: bool) -> str:
         return "uv run python scripts/analysis_pipeline.py"
     if parts[:2] == ("output", "interactive"):
         return "uv run python scripts/run_research_suite.py"
+    if parts[:2] in (("output", "llm"), ("output", "logs")):
+        return "rerun the recorded command that produced the artifact"
     if parts[:2] == ("output", "manuscript"):
         return "uv run python scripts/z_generate_manuscript_variables.py"
     if parts[:2] == ("output", "reports"):
         return "uv run python scripts/analysis_pipeline.py"
+    if parts[:2] == ("output", "simulations"):
+        return "uv run python scripts/analysis_pipeline.py"
+    if parts[:2] == ("output", "tex"):
+        return "manuscript export command used for the local build"
+    if parts[:2] in (("output", "pdf"), ("output", "slides"), ("output", "web")):
+        return "local export command; not part of core CI"
     return "uv run python scripts/analysis_pipeline.py"
+
+
+def _agent_guidance(parts: tuple[str, ...], generated: bool) -> str:
+    if generated:
+        if parts[:3] == ("output", "animations", "flybody_scenes"):
+            return (
+                "Generated strict FlyBody/MuJoCo scene area. Preserve contact metrics, "
+                "body-plan provenance, and backend/fidelity wording; change scene logic "
+                "in source helpers and regenerate through the animation scripts."
+            )
+        if parts[:2] in (("output", "pdf"), ("output", "slides"), ("output", "web")):
+            return (
+                "Local export artifact area. Keep README/AGENTS signposts, but do not "
+                "treat exported PDFs, slides, or web bundles as canonical manuscript source."
+            )
+        if parts[:2] in (("output", "llm"), ("output", "logs")):
+            return (
+                "Generated audit-evidence area. Preserve prompts, source URLs, commands, "
+                "timestamps, and verification context when adding artifacts here."
+            )
+        return (
+            "Generated or downloaded artifact area. Do not hand-edit scientific outputs; "
+            "change the producing script or source helper and regenerate."
+        )
+    if parts[:1] == (".mplconfig",):
+        return (
+            "Project-local Matplotlib support area. Keep render configuration deterministic; "
+            "do not treat font-cache JSON as scientific evidence."
+        )
+    return (
+        "Project source area. Preserve the research-template separation between "
+        "pure source behavior, script I/O, tests, manuscript prose, and output artifacts."
+    )
 
 
 def _read_json(path: Path) -> dict[str, Any]:

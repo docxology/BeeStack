@@ -20,7 +20,10 @@ reported as a known gap.
 
 ## BeeBrain Analysis Finds No Panels
 
-Run:
+This is not a core-pipeline failure when the empirical payloads have not been
+downloaded. `scripts/analyze_empirical_bee_data.py` should print a skip message
+and exit successfully in that offline state. To enable the full empirical
+analysis, run:
 
 ```bash
 uv run python scripts/fetch_empirical_bee_data.py
@@ -29,7 +32,9 @@ uv run python scripts/analyze_empirical_bee_data.py
 
 Then inspect `output/data/empirical_sources/catalog.json` and
 `output/data/empirical_sources/archives.json`. At least one workbook or direct
-file-level workbook must be local for odor-response panel analysis.
+file-level workbook must be local for odor-response panel analysis. If payloads
+are still absent, the correct next action is to improve acquisition or document
+the blocker, not to substitute synthetic empirical data.
 
 ## Anatomy Figures Are Missing
 

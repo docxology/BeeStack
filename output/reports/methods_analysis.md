@@ -3,10 +3,10 @@
 Science-first per-module methods panels connecting quantitative diagnostics, validation scorecards, visualization provenance, and manuscript evidence links.
 
 - Module panels: `5`
-- Overall validation fraction: `1.000`
-- Visualization records represented: `41`
+- Overall validation fraction: `0.800`
+- Visualization records represented: `28`
 - Scenario sweep panels: `3`
-- All validations passed: `True`
+- All validations passed: `False`
 
 ## Module Methods Panels
 
@@ -25,9 +25,9 @@ Science-first per-module methods panels connecting quantitative diagnostics, val
 
 - Fidelity: `empirical reduced AL-MB-CX kernel`
 - Methods: empirical anatomy inventory; workbook/CSV activity parsing; waggle follower antennal-position parsing; odor-template bank projection; AL/MB/CX reduced kernel validation
-- Metrics: `anatomy_inventory_count=7`, `brain_data_parseable_fraction=0.6`, `brain_source_verified_fraction=1`, `calcium_dataset_count=0`, `empirical_panel_count=48`, `enabled_dataset_count=10`, `mean_odor_separability=0.651`, `neuropil_count=22`, `region_response_class_count=6`, `template_count=24`, `waggle_decoding_improvement=0.248`, `waggle_follower_confidence=0.289`
-- Validation fraction: `1.000`
-- Visual artifacts: `18`
+- Metrics: `anatomy_inventory_count=0`, `brain_data_parseable_fraction=0`, `brain_source_verified_fraction=0`, `calcium_dataset_count=0`, `empirical_panel_count=0`, `enabled_dataset_count=10`, `mean_odor_separability=0`, `neuropil_count=0`, `region_response_class_count=0`, `template_count=0`, `waggle_decoding_improvement=0`, `waggle_follower_confidence=0`
+- Validation fraction: `0.000`
+- Visual artifacts: `5`
 - Manuscript evidence: output/reports/empirical_analysis.md; output/reports/waggle_follower_analysis.md
 - Interpretation: Brain evidence is strongest for registries, anatomy inventories, and reduced empirical templates.
 - Known gaps: No heavyweight spiking simulator is required in the default path.; The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics.
@@ -102,11 +102,11 @@ Science-first per-module methods panels connecting quantitative diagnostics, val
 
 ## Top Validation Gaps
 
-- Paoli MATLAB calcium traces are not yet local or parseable
-- Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.
-- Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset.
-- No heavyweight spiking simulator is required in the default path.
-- The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics.
-- No learned transition model or recursive social-belief inference yet.
-- Expected free energy terms are transparent hand-calibrated witnesses.
-- Large-N colony dynamics are summarized by configured scaling rather than simulated at full population by default.
+- BeeBrain: template_bank
+- BeeBrain: anatomy_inventory
+- BeeBrain: waggle_follower_source
+- BeeBrain: brain_parseability_target
+- BeeBrain: empirical_panels_present
+- BeeBrain: template_bank_present
+- BeeBrain: anatomy_inventory_present
+- BeeBrain: calcium_gap_declared

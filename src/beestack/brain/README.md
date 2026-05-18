@@ -27,3 +27,9 @@ diagnostics.
 `empirical_analysis.py` validates panels, computes response statistics, builds
 template banks, reports source completeness, and supports stack-level empirical
 alignment analysis.
+
+Empirical analysis is evidence-gated: absent public payloads are recorded or
+skipped by scripts, while present payloads must pass real parser and validation
+paths. BeeBrain reduced neural dynamics should not be described as full
+spiking, connectome, or standard-brain registration until those validation
+artifacts exist.

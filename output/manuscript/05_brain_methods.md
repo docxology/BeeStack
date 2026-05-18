@@ -65,7 +65,7 @@ detector additionally applies a fixed 200 Hz vibration-frequency floor
 (a hard-coded detector primitive, distinct from the configurable event
 rate). The dance decoder consumes those candidates plus the CX heading
 to produce a recruitment hypothesis in the `BrainState`'s waggle field.
-The distance estimate is a reduced-kernel placeholder — a nominal
+The distance estimate is a reduced-kernel baseline — a nominal
 1 s ↔ 1 km identity, **not** a species-calibrated von Frisch curve.
 The Hadjitofi–Webb antennal-position tracks [@hadjitofi2024figshare]
 anchor only the follower-orientation diagnostics
@@ -114,21 +114,21 @@ integrated stack run.
 
 ## Empirical run integration
 
-The current empirical run integrates 48
-odor-response panels, 7 anatomy inventories,
-1 antennal-movement summaries, and
-24 templates. It also records
-59 waggle-follower tracks when the
+The current empirical run integrates N/A
+odor-response panels, N/A anatomy inventories,
+N/A antennal-movement summaries, and
+N/A templates. It also records
+N/A waggle-follower tracks when the
 Figshare files are local, with follower-decoding confidence
-0.289 and decoding improvement
-0.248. The brain-data parseable-source
-fraction is 0.600. The run records
-0 local calcium datasets and
-1 empirical known gaps, making *missing
+N/A and decoding improvement
+N/A. The brain-data parseable-source
+fraction is N/A. The run records
+N/A local calcium datasets and
+N/A empirical known gaps, making *missing
 upstream payloads visible* instead of fabricating data.
-The source-verified fraction is 1.000,
+The source-verified fraction is N/A,
 and the 0.800 parseability-readiness target is recorded as
-True because every remaining
+N/A because every remaining
 nonparseable source must carry a DOI/source URL, parser status, blocker,
 and remediation path.
 
@@ -140,7 +140,7 @@ anatomy-inventory count, neuropil count, region-response class count,
 odor separability, and calcium-dataset availability. The figure is
 written to
 `output/figures/methods/beebrain_methods_empirical_completeness.png`,
-and the top gap is propagated as Paoli MATLAB calcium traces are not yet local or parseable.
+and the top gap is propagated as BeeBrain: template_bank.
 
 ![BeeBrain empirical methods completeness](../figures/methods/beebrain_methods_empirical_completeness.png){#fig:brain_methods_completeness}
 

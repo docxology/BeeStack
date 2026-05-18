@@ -852,10 +852,10 @@ def _panel(
     scorecard = scorecards.get(module, {})
     visual_records = visuals.get(module) or [
         {
-            "path": f"output/figures/methods/{module.lower()}_methods_placeholder.png",
+            "path": f"output/figures/methods/{module.lower()}_methods_evidence_gap.png",
             "backend": "matplotlib",
-            "fidelity_level": "methods_diagnostic",
-            "validation_status": "generated_by_methods_analysis",
+            "fidelity_level": "methods_evidence_gap",
+            "validation_status": "missing_methods_figure_reference",
         }
     ]
     return ModuleMethodsPanel(

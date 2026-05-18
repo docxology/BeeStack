@@ -72,8 +72,8 @@ def decode_waggle(
     Fidelity note: this is a reduced-kernel decoder. ``distance_km`` uses the
     nominal 1 s ↔ 1 km identity, not a species-calibrated von Frisch curve
     (the real waggle-duration→distance relation is nonlinear and
-    colony/dialect dependent). It is a deterministic placeholder with a clear
-    contract, not an empirically fitted decoder.
+    colony/dialect dependent). It is a deterministic reduced baseline with a
+    clear contract, not an empirically fitted decoder.
     """
 
     if duration_s < 0:

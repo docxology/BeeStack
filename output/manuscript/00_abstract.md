@@ -33,15 +33,15 @@ default configuration preserves 170 antennal-lobe glomeruli,
 activity at $\rho = 0.02$ (yielding 6,800 active Kenyon
 cells across both hemispheres), 32 central-complex heading bins
 [@stone2017central; @honkanen2019sky], and a 230 Hz wing
-stroke. The empirical run currently integrates 48
-response panels, 7 anatomy inventories,
-1 antennal-movement summaries, and
-24 odor templates, with a parseable-source
-fraction of 0.600. The research suite reports
-66 visualization artifacts,
+stroke. The empirical run currently integrates N/A
+response panels, N/A anatomy inventories,
+N/A antennal-movement summaries, and
+N/A odor templates, with a parseable-source
+fraction of N/A. The research suite reports
+53 visualization artifacts,
 3 deterministic sensitivity sweeps,
 5 empirical evidence records, and an overall
-validation fraction of 1.000. The methods-analysis
+validation fraction of 0.750. The methods-analysis
 pass adds 5 module dashboards,
 7 static methods figures, and
 6 manuscript-evidence cross-links.

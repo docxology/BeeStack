@@ -1,16 +1,16 @@
 # BeeStack Project Readiness Review
 
 - Passed: `True`
-- Signposted directories: `67`
+- Signposted directories: `60`
 - Signposting passed: `True`
 - Documentation audit available: `True`
 - Documentation audit passed: `True`
 - Methods analysis available: `True`
-- Methods validation fraction: `1.000`
+- Methods validation fraction: `0.800`
 - Methods figure count: `7`
 - Stack synthesis available: `True`
-- Stack synthesis validation fraction: `1.000`
-- Stack synthesis readiness fraction: `0.932`
+- Stack synthesis validation fraction: `0.750`
+- Stack synthesis readiness fraction: `0.842`
 - Stack synthesis figure count: `1`
 
 ## Signposting Gaps
@@ -19,8 +19,8 @@
 
 ## Stack Synthesis Findings
 
-- Weakest synthesized module is BeeSwarm (readiness 0.925; gaps 3).
-- Cross-stack validation mean is 1.000 with 11 catalogued module gaps.
+- Weakest synthesized module is BeeBrain (readiness 0.483; gaps 2).
+- Cross-stack validation mean is 0.800 with 11 catalogued module gaps.
 - Integrated simulation improved brood-temperature error by 4.415 C over 24 steps.
 
 ## Prioritized Improvements
@@ -34,14 +34,14 @@
 
 ## Methods Analysis Gaps
 
-- Paoli MATLAB calcium traces are not yet local or parseable
-- Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.
-- Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset.
-- No heavyweight spiking simulator is required in the default path.
-- The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics.
-- No learned transition model or recursive social-belief inference yet.
-- Expected free energy terms are transparent hand-calibrated witnesses.
-- Large-N colony dynamics are summarized by configured scaling rather than simulated at full population by default.
+- BeeBrain: template_bank
+- BeeBrain: anatomy_inventory
+- BeeBrain: waggle_follower_source
+- BeeBrain: brain_parseability_target
+- BeeBrain: empirical_panels_present
+- BeeBrain: template_bank_present
+- BeeBrain: anatomy_inventory_present
+- BeeBrain: calcium_gap_declared
 
 ## Research Known Gaps
 

@@ -1,3 +1,7 @@
-# Dryad Carcaud 2022 Multisite GCaMP
+# Empirical Source: dryad-carcaud-2022-multisite-gcamp
 
-Small downloaded Dryad archive for multisite honeybee GCaMP6f imaging data.
+Dataset-specific raw payloads, archives, or file-level downloads.
+
+- Scope: Regeneratable empirical dataset payloads.
+- Regenerate: uv run python scripts/fetch_empirical_bee_data.py
+- Canonical source: scripts/fetch_empirical_bee_data.py

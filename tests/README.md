@@ -8,4 +8,7 @@ The test suite validates:
 - integrated deterministic simulation,
 - model-card and manuscript variable generation,
 - strict FlyBody/MuJoCo BeeSwarm scene XML/contact outputs,
-- script-generated output artifacts.
+- script-generated output artifacts,
+- documentation/signposting coverage for non-cache directories,
+- optional empirical-data gates that distinguish absent public payloads from
+  parseable real datasets.

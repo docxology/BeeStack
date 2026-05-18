@@ -58,7 +58,7 @@ Validation is also textual and structural.
   language, and signposting coverage.
 - The **readiness review**
   (`output/reports/project_readiness_review.md`) records
-  67 signposted directories and
+  60 signposted directories and
   prioritizes the next-improvement backlog from the research gaps —
   the current top priority is BeeBrain calcium acquisition completion (P27).
 
@@ -67,7 +67,7 @@ Validation is also textual and structural.
 The methods-analysis pass adds 7 static methods
 figures, JSON sidecar metadata for generated methods and research figures,
 6 manuscript evidence links, and a manuscript
-figure index with 41 artifact rows. The index maps every cited figure or visual artifact to
+figure index with 28 artifact rows. The index maps every cited figure or visual artifact to
 its backend (e.g. FlyBody, MuJoCo, Matplotlib), fidelity level (real
 3D, reduced kernel, schematic), validation status (passed/passed with
 caveats/known gap), and the regeneration command needed to reproduce

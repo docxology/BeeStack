@@ -65,7 +65,7 @@ detector additionally applies a fixed 200 Hz vibration-frequency floor
 (a hard-coded detector primitive, distinct from the configurable event
 rate). The dance decoder consumes those candidates plus the CX heading
 to produce a recruitment hypothesis in the `BrainState`'s waggle field.
-The distance estimate is a reduced-kernel placeholder — a nominal
+The distance estimate is a reduced-kernel baseline — a nominal
 1 s ↔ 1 km identity, **not** a species-calibrated von Frisch curve.
 The Hadjitofi–Webb antennal-position tracks [@hadjitofi2024figshare]
 anchor only the follower-orientation diagnostics

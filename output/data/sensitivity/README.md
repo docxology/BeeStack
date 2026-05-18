@@ -1,3 +1,7 @@
-# Sensitivity Outputs
+# output/data/sensitivity
 
-Deterministic reduced-kernel sensitivity sweep payloads.
+Generated JSON payloads, manifests, empirical analysis, and sensitivity data.
+
+- Scope: Regeneratable output artifacts.
+- Regenerate: uv run python scripts/analysis_pipeline.py
+- Canonical source: BeeStack scripts and source helpers

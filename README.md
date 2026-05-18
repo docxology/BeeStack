@@ -69,6 +69,9 @@ default and skips local files that already exist. Use `--metadata-only` when you
 only want manifests and source catalogs. Large raw data are written to
 `output/data/empirical_sources/` and are treated as regeneratable outputs, not
 package source.
+If no workbook/CSV/MAT empirical panels are local, `scripts/analyze_empirical_bee_data.py`
+is allowed to skip the optional empirical-analysis stage while the offline core
+analysis, reports, signposting, and manuscript hydration continue.
 
 ## Snapshot Policy
 
@@ -109,8 +112,6 @@ uv run python scripts/z_generate_manuscript_variables.py
 - `output/data/task_allocation.json`: deterministic task-allocation snapshot
   written unconditionally by `scripts/analysis_pipeline.py` from the simulation
   result.
-- `output/data/bee_brain_end_to_end_report.json`: typed BeeBrain anatomy and
-  activity report.
 - `output/data/research_suite_report.json`: unified method scorecards,
   visualization inventory, empirical evidence, sensitivity sweeps, and gaps.
 - `output/data/methods_analysis.json`: science-first per-module methods panels,
@@ -126,12 +127,6 @@ uv run python scripts/z_generate_manuscript_variables.py
   artifact provenance index.
 - `output/data/sensitivity/`: deterministic reduced-kernel sensitivity sweep
   payloads.
-- `output/data/empirical_analysis.json`: workbook/CSV/MAT/anatomy summaries,
-  template-bank diagnostics, and stack integration results.
-- `output/data/waggle_follower_analysis.json`: Hadjitofi-Webb waggle follower
-  antennal-position summaries and BeeBrain/BeeSwarm decoding confidence.
-- `output/data/brain_data_completeness.json`: curated-source downloaded and
-  parseable fractions, module/modality matrix, and explicit source gaps.
 - `output/data/empirical_sources/`: downloaded Dryad and Honeybee Standard Brain
   payloads plus Figshare waggle-following CSVs, `catalog.json`,
   `archives.json`, and `anatomy_downloads.json`.
@@ -156,8 +151,6 @@ uv run python scripts/z_generate_manuscript_variables.py
   duration, angle, sun azimuth, distance, quality, and follower settings.
 - `output/reports/flybody_contact_physics.md`: MuJoCo contact evidence for the
   BeeSwarm production collision, configured waggle, and long waggle scenes.
-- `output/reports/waggle_follower_analysis.md`: curated waggle-follower source
-  status, follower alignment metrics, decoding error, and completeness summary.
 - `output/reports/beestack_research_report.md`: central research report with
   method scorecards, validation fractions, visual inventory, empirical evidence,
   sensitivity sweeps, and known gaps.
@@ -176,6 +169,17 @@ uv run python scripts/z_generate_manuscript_variables.py
   claim audit.
 - `output/manuscript/`: manuscript sections with variables resolved.
 
+Network-gated empirical analysis adds these artifacts only when the relevant
+public payloads are local and parseable: `output/data/empirical_analysis.json`,
+`output/data/empirical_template_bank.json`,
+`output/data/bee_brain_end_to_end_report.json`,
+`output/data/waggle_follower_analysis.json`,
+`output/data/brain_data_completeness.json`,
+`output/reports/empirical_analysis.md`,
+`output/reports/waggle_follower_analysis.md`, and empirical figures under
+`output/figures/empirical/`. Their absence in an offline core run is a recorded
+data-availability state, not a license to invent replacement values.
+
 ## Project Layout
 
 ```text
@@ -189,7 +193,10 @@ output/            Regeneratable artifacts and raw empirical downloads
 
 Every non-cache project directory has `README.md` and `AGENTS.md` guidance for
 future agents. `scripts/signpost_project_tree.py` regenerates missing signposts
-for generated FlyBody assets, empirical dataset leaves, and diagnostic folders.
+for generated FlyBody assets, empirical dataset leaves, diagnostic folders, LLM
+audit evidence, logs, simulation exports, and local export leaves. Cache
+directories such as `.uv-cache/`, `.mypy_cache/`, `.pytest_cache/`,
+`.ruff_cache/`, `__pycache__/`, and `*.egg-info` are deliberately excluded.
 
 ## Empirical BeeBrain Scope
 
@@ -229,6 +236,8 @@ Start with `docs/README.md`, then use:
 - `docs/data_acquisition_runbook.md` for operational data-fetch guidance.
 - `docs/api_reference.md` for the public typed records and functions.
 - `docs/generated_outputs.md` for artifact paths.
+- `docs/baseline_readiness.md` for current readiness gates and tracked
+  follow-ups.
 - `docs/visualization_gallery.md` for every GIF/figure/report, its backend,
   fidelity level, source data, regeneration command, and validation status.
 - `docs/validation_criteria.md` for acceptance criteria.

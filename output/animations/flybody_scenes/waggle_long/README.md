@@ -1,4 +1,7 @@
-# FlyBody Waggle_Long Scene
+# Strict FlyBody Scene: waggle_long
 
-Generated strict BeeBody 3D MuJoCo scene assets. Regenerate with
-`uv run python scripts/generate_animations.py` or the full analysis pipeline.
+Generated strict BeeBody 3D MuJoCo scene assets and contact telemetry.
+
+- Scope: Regeneratable strict-scene output for visual and contact validation.
+- Regenerate: uv run python scripts/generate_animations.py
+- Canonical source: src/beestack/body/flybody_scene.py
