@@ -11,27 +11,33 @@ import pandas as pd
 
 from ..research import ResearchSuiteReport
 from .figure_metadata import assert_nonblank_quality, write_figure_sidecar
+from .style import PALETTE, apply_panel_style, module_color, style_context
 
 
 def generate_research_figures(report: ResearchSuiteReport, output_dir: Path) -> list[Path]:
     """Generate science-first research report figures."""
 
     output_dir.mkdir(parents=True, exist_ok=True)
-    paths = [
-        _scorecard_heatmap(report, output_dir / "research_module_scorecard_heatmap.png"),
-        _validation_bars(report, output_dir / "research_validation_scorecard.png"),
-        _sensitivity_sweeps(report, output_dir / "research_sensitivity_sweeps.png"),
-        _evidence_network(report, output_dir / "research_fidelity_evidence_network.png"),
-        _visualization_inventory(report, output_dir / "research_visualization_inventory.png"),
-        _empirical_completeness(report, output_dir / "research_empirical_completeness.png"),
-        _module_metric_bars(report, "BeeBody", output_dir / "beebody_method_diagnostics.png"),
-        _module_metric_bars(report, "BeeBrain", output_dir / "beebrain_empirical_evidence_map.png"),
-        _module_metric_bars(report, "BeeMind", output_dir / "beemind_policy_sensitivity.png"),
-        _module_metric_bars(
-            report, "BeeSwarm", output_dir / "beeswarm_contact_recruitment_scorecard.png"
-        ),
-        _module_metric_bars(report, "BeeNiche", output_dir / "beeniche_thermal_comb_scorecard.png"),
-    ]
+    with style_context():
+        paths = [
+            _scorecard_heatmap(report, output_dir / "research_module_scorecard_heatmap.png"),
+            _validation_bars(report, output_dir / "research_validation_scorecard.png"),
+            _sensitivity_sweeps(report, output_dir / "research_sensitivity_sweeps.png"),
+            _evidence_network(report, output_dir / "research_fidelity_evidence_network.png"),
+            _visualization_inventory(report, output_dir / "research_visualization_inventory.png"),
+            _empirical_completeness(report, output_dir / "research_empirical_completeness.png"),
+            _module_metric_bars(report, "BeeBody", output_dir / "beebody_method_diagnostics.png"),
+            _module_metric_bars(
+                report, "BeeBrain", output_dir / "beebrain_empirical_evidence_map.png"
+            ),
+            _module_metric_bars(report, "BeeMind", output_dir / "beemind_policy_sensitivity.png"),
+            _module_metric_bars(
+                report, "BeeSwarm", output_dir / "beeswarm_contact_recruitment_scorecard.png"
+            ),
+            _module_metric_bars(
+                report, "BeeNiche", output_dir / "beeniche_thermal_comb_scorecard.png"
+            ),
+        ]
     for path in paths:
         _validate_nonblank_image(path)
         write_figure_sidecar(
@@ -143,9 +149,9 @@ def _scorecard_heatmap(report: ResearchSuiteReport, path: Path) -> Path:
             normalized[column] = 1.0 if float(values.max()) > 0 else 0.0
         else:
             normalized[column] = (values - float(values.min())) / span
-    fig, ax = plt.subplots(figsize=(10, 5.8))
+    fig, ax = plt.subplots(figsize=(10.5, 5.9))
     image = ax.imshow(normalized.to_numpy(), aspect="auto", cmap="viridis", vmin=0, vmax=1)
-    ax.set_title("BeeStack dense research method scorecard")
+    ax.set_title("BeeStack dense research method scorecard", loc="left")
     ax.set_xticks(range(len(normalized.columns)), normalized.columns, rotation=25, ha="right")
     ax.set_yticks(range(len(normalized.index)), normalized.index)
     for row_index, module in enumerate(frame.index):
@@ -186,11 +192,15 @@ def _validation_bars(report: ResearchSuiteReport, path: Path) -> Path:
         }
     )
     fig, ax = plt.subplots(figsize=(8, 4.5))
-    ax.bar(frame["module"], frame["validation_fraction"], color="#2a9d8f")
+    ax.bar(
+        frame["module"],
+        frame["validation_fraction"],
+        color=[module_color(module) for module in frame["module"]],
+    )
     ax.set_ylim(0, 1.05)
     ax.set_ylabel("Validation fraction")
     ax.set_title("Research-suite validation scorecard")
-    ax.grid(axis="y", alpha=0.2)
+    apply_panel_style(ax, grid_axis="y")
     fig.tight_layout()
     fig.savefig(path, dpi=170)
     plt.close(fig)
@@ -228,11 +238,11 @@ def _evidence_network(report: ResearchSuiteReport, path: Path) -> Path:
         )
     positions = nx.spring_layout(graph, seed=13)
     colors = [
-        "#f59e0b"
+        module_color("BeeBody")
         if graph.nodes[node]["kind"] == "module"
-        else "#2563eb"
+        else module_color("BeeBrain")
         if graph.nodes[node]["kind"] == "empirical"
-        else "#94a3b8"
+        else PALETTE[5]
         for node in graph.nodes
     ]
     fig, ax = plt.subplots(figsize=(10, 7))
@@ -252,10 +262,10 @@ def _visualization_inventory(report: ResearchSuiteReport, path: Path) -> Path:
     counts = frame.groupby(["artifact_type", "fidelity_level"]).size().reset_index(name="count")
     labels = [f"{row.artifact_type}\n{row.fidelity_level}" for row in counts.itertuples()]
     fig, ax = plt.subplots(figsize=(9, 5))
-    ax.barh(labels[::-1], counts["count"].to_numpy()[::-1], color="#d99a28")
+    ax.barh(labels[::-1], counts["count"].to_numpy()[::-1], color=module_color("BeeBody"))
     ax.set_xlabel("Artifact count")
     ax.set_title("Visualization artifact inventory by fidelity")
-    ax.grid(axis="x", alpha=0.2)
+    apply_panel_style(ax, grid_axis="x")
     fig.tight_layout()
     fig.savefig(path, dpi=170)
     plt.close(fig)
@@ -265,11 +275,15 @@ def _visualization_inventory(report: ResearchSuiteReport, path: Path) -> Path:
 def _empirical_completeness(report: ResearchSuiteReport, path: Path) -> Path:
     frame = pd.DataFrame([evidence.as_dict() for evidence in report.empirical_evidence])
     fig, ax = plt.subplots(figsize=(9, 5))
-    ax.barh(frame["dataset_id"][::-1], frame["completeness_fraction"][::-1], color="#3a6ea5")
+    ax.barh(
+        frame["dataset_id"][::-1],
+        frame["completeness_fraction"][::-1],
+        color=module_color("BeeBrain"),
+    )
     ax.set_xlim(0, 1)
     ax.set_xlabel("Completeness fraction")
     ax.set_title("BeeBrain empirical evidence completeness")
-    ax.grid(axis="x", alpha=0.2)
+    apply_panel_style(ax, grid_axis="x")
     fig.tight_layout()
     fig.savefig(path, dpi=170)
     plt.close(fig)
@@ -281,9 +295,9 @@ def _module_metric_bars(report: ResearchSuiteReport, module: str, path: Path) ->
     labels = list(scorecard.metrics)
     values = [scorecard.metrics[label] for label in labels]
     fig, ax = plt.subplots(figsize=(8, 4.8))
-    ax.barh(labels[::-1], values[::-1], color="#5b8e7d")
+    ax.barh(labels[::-1], values[::-1], color=module_color(module))
     ax.set_title(f"{module} research diagnostics")
-    ax.grid(axis="x", alpha=0.2)
+    apply_panel_style(ax, grid_axis="x")
     fig.tight_layout()
     fig.savefig(path, dpi=170)
     plt.close(fig)

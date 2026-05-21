@@ -1,7 +1,7 @@
 {
   "sweeps": [
     {
-      "interpretation": "mind.energy_threshold sweep changed recruitment by 0 and comb fraction by 0 in the reduced kernel.",
+      "interpretation": "mind.energy_threshold sweep is insensitive under the current reduced kernel; recruitment and comb fraction ranges both stayed at 0.",
       "outputs": {
         "final_comb_fraction": [
           0.08333333333333333,
@@ -83,7 +83,7 @@
       ]
     },
     {
-      "interpretation": "niche.ambient_temperature_c sweep changed recruitment by 0 and comb fraction by 0 in the reduced kernel.",
+      "interpretation": "niche.ambient_temperature_c sweep is insensitive under the current reduced kernel; recruitment and comb fraction ranges both stayed at 0.",
       "outputs": {
         "final_comb_fraction": [
           0.08333333333333333,

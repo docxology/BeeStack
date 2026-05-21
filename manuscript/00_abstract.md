@@ -13,14 +13,15 @@ full BeeBody MJCF copies inside the same physics engine with required contact
 metrics, while remaining scripted small-scene visual/contact witnesses rather
 than integrated colony dynamics; BeeBrain ingests curated public
 *Apis mellifera* anatomy and activity datasets — including the Honey-Bee
-Standard Brain ecosystem [@rybak2010digital], glomerular odor codes
+Standard Brain atlas and integration ecosystem
+[@brandt2005standardbrain; @rybak2010digital], glomerular odor codes
 [@galizia1999glomerular], calcium imaging
 [@paoli2024dryad; @carcaud2022dryad; @szyszka2023granger], Kenyon-cell
 subtype gene expression [@kaneko2016kenyon], alarm-pheromone receptors
 [@andreu2025dryad], antennal active-sensing kinematics
 [@jernigan2026dryad], biogenic-amine spreadsheets [@nouvian2017dryad],
 and Hadjitofi–Webb dance-follower antennal positioning
-[@hadjitofi2024figshare] — and converts them into typed anatomy
+[@hadjitofi2024figshare; @hadjitofi2024currentbiology] — and converts them into typed anatomy
 inventories, response panels, and dance-decoding templates; while BeeMind,
 the non-visual swarm communication kernel, and BeeNiche remain reduced
 deterministic kernels with explicit contracts and labeled gaps.

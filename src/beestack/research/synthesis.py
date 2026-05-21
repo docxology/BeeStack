@@ -8,6 +8,7 @@ from typing import Any
 import numpy as np
 
 from ..config import BeeStackConfig
+from ..utils import project_relative_path, project_relative_payload
 from .suite import ResearchValidationRecord
 
 MODULES = ("BeeBody", "BeeBrain", "BeeMind", "BeeSwarm", "BeeNiche")
@@ -102,22 +103,24 @@ class StackSynthesisReview:
             self.validations,
             self.prioritized_findings,
             self.scholarship_keys,
-            figure_paths,
+            tuple(project_relative_path(path) for path in figure_paths),
         )
 
     def as_dict(self) -> dict[str, object]:
-        return {
-            "title": self.title,
-            "summary": self.summary,
-            "module_panels": [panel.as_dict() for panel in self.module_panels],
-            "statistics": self.statistics,
-            "validations": [validation.as_dict() for validation in self.validations],
-            "validation_fraction": self.validation_fraction,
-            "readiness_fraction": self.readiness_fraction,
-            "prioritized_findings": self.prioritized_findings,
-            "scholarship_keys": self.scholarship_keys,
-            "figure_paths": self.figure_paths,
-        }
+        return project_relative_payload(
+            {
+                "title": self.title,
+                "summary": self.summary,
+                "module_panels": [panel.as_dict() for panel in self.module_panels],
+                "statistics": self.statistics,
+                "validations": [validation.as_dict() for validation in self.validations],
+                "validation_fraction": self.validation_fraction,
+                "readiness_fraction": self.readiness_fraction,
+                "prioritized_findings": self.prioritized_findings,
+                "scholarship_keys": self.scholarship_keys,
+                "figure_paths": self.figure_paths,
+            }
+        )
 
 
 def assemble_stack_synthesis_review(
@@ -229,7 +232,7 @@ def stack_synthesis_markdown(review: StackSynthesisReview) -> str:
     lines.extend(f"- `@{key}`" for key in review.scholarship_keys)
     if review.figure_paths:
         lines.extend(["", "## Figures", ""])
-        lines.extend(f"- `{path}`" for path in review.figure_paths)
+        lines.extend(f"- `{project_relative_path(path)}`" for path in review.figure_paths)
     return "\n".join(lines) + "\n"
 
 
@@ -312,6 +315,16 @@ def _synthesis_validations(
     statistics: dict[str, float],
     panels: tuple[ModuleSynthesisPanel, ...],
 ) -> tuple[ResearchValidationRecord, ...]:
+    validation_target_passed = (
+        statistics["module_validation_mean"] >= cfg.research.synthesis_validation_target
+    )
+    artifact_coverage_passed = (
+        statistics["module_artifact_coverage_fraction"]
+        >= cfg.research.synthesis_artifact_coverage_target
+    )
+    empirical_parseability_passed = (
+        statistics["empirical_parseable_fraction"] >= cfg.research.empirical_completeness_threshold
+    )
     return (
         ResearchValidationRecord(
             "module_coverage",
@@ -322,18 +335,25 @@ def _synthesis_validations(
         ),
         ResearchValidationRecord(
             "validation_target",
-            statistics["module_validation_mean"] >= cfg.research.synthesis_validation_target,
+            validation_target_passed,
             round(statistics["module_validation_mean"], 3),
             cfg.research.synthesis_validation_target,
-            "Mean module validation fraction meets synthesis target.",
+            _gate_detail(
+                validation_target_passed,
+                "Mean module validation fraction meets synthesis target.",
+                "Mean module validation fraction does not meet synthesis target.",
+            ),
         ),
         ResearchValidationRecord(
             "artifact_coverage",
-            statistics["module_artifact_coverage_fraction"]
-            >= cfg.research.synthesis_artifact_coverage_target,
+            artifact_coverage_passed,
             round(statistics["module_artifact_coverage_fraction"], 3),
             cfg.research.synthesis_artifact_coverage_target,
-            "Each module has visualization or evidence artifacts.",
+            _gate_detail(
+                artifact_coverage_passed,
+                "Each module has visualization or evidence artifacts.",
+                "At least one module lacks the configured visualization or evidence artifact coverage.",
+            ),
         ),
         ResearchValidationRecord(
             "documentation_signposting",
@@ -344,11 +364,14 @@ def _synthesis_validations(
         ),
         ResearchValidationRecord(
             "empirical_parseability",
-            statistics["empirical_parseable_fraction"]
-            >= cfg.research.empirical_completeness_threshold,
+            empirical_parseability_passed,
             round(statistics["empirical_parseable_fraction"], 3),
             cfg.research.empirical_completeness_threshold,
-            "BeeBrain parseable-source fraction clears configured minimum.",
+            _gate_detail(
+                empirical_parseability_passed,
+                "BeeBrain parseable-source fraction clears configured minimum.",
+                "BeeBrain parseable-source fraction does not clear configured minimum.",
+            ),
         ),
         ResearchValidationRecord(
             "simulation_energy_finite",
@@ -373,6 +396,10 @@ def _synthesis_validations(
             "Manuscript bibliography includes the configured minimum scholarship anchors.",
         ),
     )
+
+
+def _gate_detail(passed: bool, pass_detail: str, fail_detail: str) -> str:
+    return pass_detail if passed else fail_detail
 
 
 def _prioritized_findings(

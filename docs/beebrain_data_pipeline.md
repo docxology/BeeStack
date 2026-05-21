@@ -27,12 +27,14 @@ not fabricate surrogate empirical traces.
 
 ## Anatomy Sources
 
-The Honeybee Standard Brain registry includes the FU Berlin gray-value stacks,
-label-field TIFFs, VRML atlas/neuron/tract archives, and neuropil abbreviation
-HTML:
+The Honeybee Standard Brain registry separates the Brandt et al. 2005 atlas
+paper from the later Rybak et al. digital-integration ecosystem. It includes
+the FU Berlin gray-value stacks, label-field TIFFs, VRML atlas/neuron/tract
+archives, and neuropil abbreviation HTML:
 
 - [Virtual Honeybee Standard Brain](https://www.bcp.fu-berlin.de/en/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/index.html)
-- DOI: `10.1002/cne.20644`
+- Atlas DOI: `10.1002/cne.20644`
+- Digital Bee Brain DOI: `10.3389/fnsys.2010.00030`
 
 Parsed anatomy artifacts include:
 
@@ -54,6 +56,9 @@ The activity pipeline covers all curated BeeBrain activity datasets:
 - Nouvian Dryad brain biogenic-amine and cooperative-defence spreadsheets.
 - Hadjitofi and Webb 2024 Figshare waggle-following antennal-position CSVs
   ([dataset DOI `10.6084/m9.figshare.24715977.v1`](https://figshare.com/articles/dataset/Honeybee_antennal_positioning_data_when_following_dances/24715977)).
+  The paired Current Biology article DOI is `10.1016/j.cub.2024.02.045` and
+  supports follower antennal-positioning interpretation, not colony-scale
+  recruitment validation.
 
 Parsed activity artifacts include:
 

@@ -39,6 +39,13 @@ configuration-derived statements flow through
 - Keep each paragraph tied to one layer or one cross-layer interface.
 - Preserve the fidelity tier in the sentence: strict FlyBody/MuJoCo, empirical
   reduced, reduced validated, or diagnostic/schematic.
+- Use source citations as evidence contracts, not decoration. Non-obvious
+  method and fidelity claims should have Pandoc citation keys that resolve in
+  `references.bib`; required scholarly sources carry DOI/source URLs and are
+  checked by the offline source audit.
+- Treat Perplexity or general web search as discovery only. Final manuscript
+  evidence must point to directly verified scholarly or official sources and to
+  generated artifacts where the artifact is the evidence.
 
 ## Figure Callout Pattern
 
@@ -49,15 +56,37 @@ Every manuscript figure should answer four questions in nearby prose:
 3. Which output file or report validates it?
 4. What should the reader not infer from it?
 
+The figure sidecar should encode the same contract mechanically: `caption`,
+`alt_text`, `manuscript_section`, `manuscript_label`, `claim_tier`,
+`citation_keys`, `source_dois`, optional `design_citation_keys`,
+`design_source_dois`, `accessibility_checks`, `unsupported_inference`,
+`priority`, source data, validation status, and regeneration command. The
+documentation audit checks hydrated `output/manuscript/` figure paths, labels,
+captions, sidecars, curated high-priority figure insertion, and the
+primary-figure caption pattern for backend, source data, validation, and
+conservative interpretation.
+
 For example, a BeeSwarm strict waggle figure can support "BeeBody MJCF copies
 were composed into a MuJoCo scene with contacts and follower-orientation
 diagnostics." It cannot support "the colony-level recruitment model is
 biomechanically validated."
 
+The generated methods-analysis source-claim crosswalk is the machine-readable
+version of this pattern. It ties module, method, configuration tokens, artifact
+path, manuscript section, citation keys, source DOIs, claim tier, and
+availability status into one JSON surface.
+
+The main manuscript should stay curated: promote a figure only when it clarifies
+the reader-facing evidence contract or a section-level result. The
+`manuscript_figure_claim_map` figure is the registry-derived overview of those
+promoted figures; additional diagnostics should remain in the generated figure
+index, gallery, or reports unless they directly reduce manuscript ambiguity.
+
 ## Hydration Workflow
 
 ```bash
 uv run python scripts/analysis_pipeline.py
+uv run python scripts/verify_generated_reports.py
 uv run python scripts/z_generate_manuscript_variables.py
 uv run python scripts/audit_documentation.py
 ```

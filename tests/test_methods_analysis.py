@@ -98,6 +98,11 @@ def test_methods_analysis_records_validate_and_serialize() -> None:
         "claim",
         "uv run python scripts/run_methods_analysis.py",
         ("BEE_VISUAL_SCORE",),
+        "generated",
+        ("vaxenburg2025flybody", "todorov2012mujoco"),
+        ("10.1038/s41586-025-09029-4", "10.1109/IROS.2012.6386109"),
+        "figure",
+        "strict_flybody_mujoco",
     )
     sweep = ScenarioSweepPanel(
         "x",
@@ -132,7 +137,82 @@ def test_methods_analysis_records_validate_and_serialize() -> None:
     )
     payload = report.as_dict()
     assert payload["overall_validation_fraction"] == 1.0
+    evidence_payload = payload["manuscript_evidence_links"][0]
+    assert evidence_payload["citation_keys"] == (
+        "vaxenburg2025flybody",
+        "todorov2012mujoco",
+    )
+    assert evidence_payload["source_dois"] == (
+        "10.1038/s41586-025-09029-4",
+        "10.1109/IROS.2012.6386109",
+    )
+    assert payload["source_claim_crosswalk"][0]["artifact_kind"] == "figure"
     json.dumps(payload)
+
+
+def test_manuscript_figure_index_normalizes_project_absolute_artifact_paths() -> None:
+    project_root = Path(__file__).resolve().parents[1]
+    absolute_artifact = str(project_root / "output" / "figures" / "beebody_motion_power_phase.png")
+    visual = ModuleVisualizationPanel(
+        "BeeBody",
+        (absolute_artifact,),
+        ("matplotlib",),
+        ("methods_diagnostic",),
+        ("nonblank",),
+    )
+    validation = ModuleValidationPanel(
+        "BeeBody",
+        (ResearchValidationRecord("finite", True, 1.0, "finite", "finite check"),),
+    )
+    link = ManuscriptEvidenceLink(
+        "BeeBody",
+        "manuscript/04_body_methods.md",
+        absolute_artifact,
+        "figure",
+        "claim",
+        "uv run python scripts/run_methods_analysis.py",
+        ("BEE_VISUAL_SCORE",),
+        "generated",
+        ("vaxenburg2025flybody",),
+        ("10.1038/s41586-025-09029-4",),
+        "figure",
+        "strict_flybody_mujoco",
+    )
+    sweep = ScenarioSweepPanel(
+        "x",
+        (0.0, 1.0),
+        {"y": 1.0},
+        "y",
+        ("y",),
+        "monotonic",
+    )
+    report = MethodsAnalysisReport(
+        "Methods",
+        "Summary",
+        (
+            ModuleMethodsPanel(
+                "BeeBody",
+                "FlyBody",
+                ("method",),
+                {"metric": 1.0},
+                validation,
+                visual,
+                (link,),
+                ("gap",),
+                "interpretation",
+            ),
+        ),
+        (sweep,),
+        (link,),
+        ("gap",),
+        (),
+        (),
+        True,
+    )
+
+    rows = manuscript_figure_index(report)
+
+    assert rows[0]["artifact_path"] == "output/figures/beebody_motion_power_phase.png"
     with pytest.raises(ValueError, match="matching lengths"):
         ModuleVisualizationPanel("BeeBody", ("a",), (), ("fidelity",), ("ok",))
     with pytest.raises(ValueError, match="finite"):
@@ -157,6 +237,11 @@ def test_methods_analysis_validation_branches_are_explicit() -> None:
         "claim",
         "uv run python scripts/generate_animations.py",
         ("BEE_VISUAL_SCORE",),
+        "generated",
+        ("vaxenburg2025flybody",),
+        ("10.1038/s41586-025-09029-4",),
+        "animation",
+        "strict_flybody_mujoco",
     )
     panel = ModuleMethodsPanel(
         "BeeBody",
@@ -175,6 +260,77 @@ def test_methods_analysis_validation_branches_are_explicit() -> None:
         ("BeeBody", "section", "artifact", "type", "claim", "cmd", ()),
         ("BeeBody", "section", "artifact", "type", "claim", "cmd", ("",)),
         ("", "section", "artifact", "type", "claim", "cmd", ("TOKEN",)),
+        ("BeeBody", "section", "artifact", "type", "claim", "cmd", ("TOKEN",), "bad_status"),
+        (
+            "BeeBody",
+            "section",
+            "artifact",
+            "type",
+            "claim",
+            "cmd",
+            ("TOKEN",),
+            "generated",
+            (),
+            ("10.0000/source",),
+            "figure",
+            "strict_flybody_mujoco",
+        ),
+        (
+            "BeeBody",
+            "section",
+            "artifact",
+            "type",
+            "claim",
+            "cmd",
+            ("TOKEN",),
+            "generated",
+            ("source",),
+            (),
+            "figure",
+            "strict_flybody_mujoco",
+        ),
+        (
+            "BeeBody",
+            "section",
+            "artifact",
+            "type",
+            "claim",
+            "cmd",
+            ("TOKEN",),
+            "generated",
+            ("source",),
+            ("10.0000/source",),
+            "",
+            "strict_flybody_mujoco",
+        ),
+        (
+            "BeeBody",
+            "section",
+            "artifact",
+            "type",
+            "claim",
+            "cmd",
+            ("TOKEN",),
+            "generated",
+            ("source",),
+            ("not-a-doi",),
+            "figure",
+            "strict_flybody_mujoco",
+        ),
+        (
+            "BeeBody",
+            "section",
+            "artifact",
+            "type",
+            "claim",
+            "cmd",
+            ("TOKEN",),
+            "generated",
+            ("source",),
+            ("10.0000/source",),
+            "figure",
+            "",
+        ),
     ]
     for args in invalid_links:
         with pytest.raises(ValueError):
@@ -286,7 +442,16 @@ def test_methods_analysis_handles_missing_payloads_and_regeneration_commands() -
     )
     assert len(report.scenario_sweeps) == 1
     assert report.scenario_sweeps[0].dominant_output == "not_yet_generated"
+    assert report.scenario_sweeps[0].insensitive_outputs == ("not_yet_generated",)
     assert report.top_validation_gaps
+    brain = next(panel for panel in report.module_panels if panel.module == "BeeBrain")
+    assert {link.availability_status for link in brain.manuscript_evidence} <= {
+        "missing_optional",
+        "network_gated_absent",
+    }
+    markdown = methods_analysis_markdown(report)
+    assert "Evidence Availability Links" in markdown
+    assert "supports BeeBrain uses" not in markdown
     fallback_paths = tuple(
         path for panel in report.module_panels for path in panel.visualization_panel.artifact_paths
     )
@@ -358,7 +523,28 @@ def test_methods_analysis_report_figures_and_index(tmp_path: Path) -> None:
     )
     assert report.module_count == 5
     assert report.overall_validation_fraction > 0.8
-    assert "BeeStack Methods Analysis" in methods_analysis_markdown(report)
+    payload = report.as_dict()
+    assert len(payload["source_claim_crosswalk"]) == len(payload["manuscript_evidence_links"])
+    first_crosswalk = payload["source_claim_crosswalk"][0]
+    assert {
+        "module",
+        "method",
+        "config_knobs",
+        "artifact_path",
+        "manuscript_section",
+        "citation_keys",
+        "source_dois",
+        "availability_status",
+        "figure_caption",
+        "figure_alt_text",
+        "unsupported_inference",
+    } <= set(first_crosswalk)
+    assert all(link["citation_keys"] for link in payload["manuscript_evidence_links"])
+    assert all(link["source_dois"] for link in payload["manuscript_evidence_links"])
+    markdown = methods_analysis_markdown(report)
+    assert "BeeStack Methods Analysis" in markdown
+    assert "Source-Claim Crosswalk" in markdown
+    assert "Evidence status" in markdown
     figure_paths = generate_methods_figures(report, records, tmp_path / "figures")
     assert len(figure_paths) >= 7
     assert all(path.exists() and path.stat().st_size > 0 for path in figure_paths)
@@ -369,7 +555,9 @@ def test_methods_analysis_report_figures_and_index(tmp_path: Path) -> None:
     final_report = report.with_artifacts(tuple(str(path) for path in figure_paths), ())
     rows = manuscript_figure_index(final_report)
     assert len(rows) >= 5
+    assert {"caption", "alt_text", "claim_tier", "unsupported_inference"} <= set(rows[0])
     assert "BeeStack Manuscript Figure Index" in manuscript_figure_index_markdown(rows)
+    assert "Caption" in manuscript_figure_index_markdown(rows)
     html_paths = write_interactive_methods_dashboard(final_report, tmp_path / "interactive")
     assert len(html_paths) == 2
     assert all("Plotly" in path.read_text(encoding="utf-8") for path in html_paths)

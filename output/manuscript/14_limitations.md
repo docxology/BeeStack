@@ -31,10 +31,10 @@ silhouette score 1.000) certifies that the
 
 The primary BeeBrain limitation is **dynamical fidelity**. BeeBrain
 can acquire, parse, summarize, and integrate real honey-bee anatomy
-and activity sources — currently N/A panels,
-N/A inventories, N/A
-antennal summaries, and N/A templates with
-parseable fraction N/A. But the default
+and activity sources — currently 48 panels,
+7 inventories, 1
+antennal summaries, and 24 templates with
+parseable fraction 0.600. But the default
 neural model remains a reduced AL–MB–CX and dance-decoding kernel.
 It does not claim connectome-level dynamics, a heavyweight spiking
 simulator, or learned synaptic plasticity. The most concrete gap is

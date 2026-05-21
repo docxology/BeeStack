@@ -154,7 +154,7 @@ def test_research_record_validation_branches_are_explicit() -> None:
         "uv run python scripts/run_research_suite.py",
         "nonblank",
     )
-    evidence = EmpiricalEvidenceRecord("dataset", "calcium", 1, 0.5, "template", "")
+    evidence = EmpiricalEvidenceRecord("dataset", "calcium", 1, 0.5, "template", "parsed", "")
     sweep = SensitivitySweepResult("x", (0.0, 1.0), {"y": (0.1, 0.2)}, "ok")
 
     for args in (
@@ -178,11 +178,12 @@ def test_research_record_validation_branches_are_explicit() -> None:
             ModuleMethodScorecard(*args)
 
     for args in (
-        ("", "calcium", 1, 0.5, "template", ""),
-        ("dataset", "", 1, 0.5, "template", ""),
-        ("dataset", "calcium", -1, 0.5, "template", ""),
-        ("dataset", "calcium", 1, 1.5, "template", ""),
-        ("dataset", "calcium", 1, 0.5, "", ""),
+        ("", "calcium", 1, 0.5, "template", "parsed", ""),
+        ("dataset", "", 1, 0.5, "template", "parsed", ""),
+        ("dataset", "calcium", -1, 0.5, "template", "parsed", ""),
+        ("dataset", "calcium", 1, 1.5, "template", "parsed", ""),
+        ("dataset", "calcium", 1, 0.5, "", "parsed", ""),
+        ("dataset", "calcium", 1, 0.5, "template", "bad_status", ""),
     ):
         with pytest.raises(ValueError):
             EmpiricalEvidenceRecord(*args)
@@ -235,7 +236,10 @@ def test_research_suite_report_figures_and_interactive_outputs(tmp_path: Path) -
     payload = report.as_dict()
     assert len(payload["module_scorecards"]) == 5
     assert payload["overall_validation_fraction"] > 0.8
-    assert "BeeStack Science-First" in research_report_markdown(report)
+    markdown = research_report_markdown(report)
+    assert "BeeStack Science-First" in markdown
+    assert "Empirical registry/evidence rows" in markdown
+    assert payload["empirical_availability_counts"]["parsed"] >= 1
     json.dumps(payload)
     figure_paths = generate_research_figures(report, tmp_path / "figures")
     assert len(figure_paths) >= 10

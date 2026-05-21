@@ -116,6 +116,8 @@ reduced schematic), and the manuscript figure index links
 {{MANUSCRIPT_FIGURE_INDEX_COUNT}} figures and visual artifacts to their
 backend, fidelity tier, validation status, and regeneration command.
 
+![Matplotlib BeeStack graphical abstract generated from module contracts and coverage records; sidecar validation checks the raster output, and the figure supports architecture traceability rather than biological or digital-twin validation.](../figures/beestack_graphical_abstract.png){#fig:beestack_graphical_abstract}
+
 ## Module dependencies
 
 The static module-coverage figure (`output/figures/module_contract_coverage.png`,

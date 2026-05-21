@@ -67,9 +67,10 @@ rate). The dance decoder consumes those candidates plus the CX heading
 to produce a recruitment hypothesis in the `BrainState`'s waggle field.
 The distance estimate is a reduced-kernel baseline — a nominal
 1 s ↔ 1 km identity, **not** a species-calibrated von Frisch curve.
-The Hadjitofi–Webb antennal-position tracks [@hadjitofi2024figshare]
-anchor only the follower-orientation diagnostics
-(`WaggleFollowerSummary`), not the distance/azimuth decode.
+The Hadjitofi–Webb antennal-position tracks and article
+[@hadjitofi2024figshare; @hadjitofi2024currentbiology] anchor only
+the follower-orientation diagnostics (`WaggleFollowerSummary`), not
+the distance/azimuth decode and not colony-scale recruitment validation.
 
 ## Empirical registry
 
@@ -81,7 +82,8 @@ mellifera* sources:
 - Szyszka antennal-lobe Granger-causal dynamics
   [@szyszka2023granger];
 - Kaneko Kenyon-cell subtype expression [@kaneko2016kenyon];
-- the Virtual Honey-Bee Standard Brain ecosystem
+- the Honey-Bee Standard Brain atlas [@brandt2005standardbrain] and
+  Virtual Honey-Bee Standard Brain integration ecosystem
   [@rybak2010digital];
 - Carcaud multisite GCaMP workbooks [@carcaud2022dryad];
 - Andreu alarm-odorant receptor data [@andreu2025dryad];
@@ -89,7 +91,8 @@ mellifera* sources:
   [@jernigan2026dryad];
 - Nouvian biogenic-amine spreadsheets [@nouvian2017dryad];
 - Hadjitofi–Webb Figshare waggle-following dataset
-  [@hadjitofi2024figshare] (CC BY 4.0).
+  [@hadjitofi2024figshare] (CC BY 4.0) and Current Biology article
+  [@hadjitofi2024currentbiology].
 
 ## Parser layer
 
@@ -114,21 +117,21 @@ integrated stack run.
 
 ## Empirical run integration
 
-The current empirical run integrates N/A
-odor-response panels, N/A anatomy inventories,
-N/A antennal-movement summaries, and
-N/A templates. It also records
-N/A waggle-follower tracks when the
+The current empirical run integrates 48
+odor-response panels, 7 anatomy inventories,
+1 antennal-movement summaries, and
+24 templates. It also records
+59 waggle-follower tracks when the
 Figshare files are local, with follower-decoding confidence
-N/A and decoding improvement
-N/A. The brain-data parseable-source
-fraction is N/A. The run records
-N/A local calcium datasets and
-N/A empirical known gaps, making *missing
+0.289 and decoding improvement
+0.248. The brain-data parseable-source
+fraction is 0.600. The run records
+0 local calcium datasets and
+2 empirical known gaps, making *missing
 upstream payloads visible* instead of fabricating data.
-The source-verified fraction is N/A,
+The source-verified fraction is 1.000,
 and the 0.800 parseability-readiness target is recorded as
-N/A because every remaining
+True because every remaining
 nonparseable source must carry a DOI/source URL, parser status, blocker,
 and remediation path.
 
@@ -140,9 +143,9 @@ anatomy-inventory count, neuropil count, region-response class count,
 odor separability, and calcium-dataset availability. The figure is
 written to
 `output/figures/methods/beebrain_methods_empirical_completeness.png`,
-and the top gap is propagated as BeeBrain: template_bank.
+and the top gap is propagated as dryad-paoli-2024-al-calcium cataloged but no archive or file-level payload is local.
 
-![BeeBrain empirical methods completeness](../figures/methods/beebrain_methods_empirical_completeness.png){#fig:brain_methods_completeness}
+![Matplotlib/pandas BeeBrain empirical-completeness dashboard generated from MethodsAnalysisReport and empirical-analysis metadata; sidecar validation checks the raster, and the figure supports source availability and parser-gap claims rather than connectome-scale or calcium-validated dynamics.](../figures/methods/beebrain_methods_empirical_completeness.png){#fig:brain_methods_completeness}
 
 ## Fidelity boundary
 

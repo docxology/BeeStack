@@ -57,7 +57,7 @@ exposes candidate count, expected-free-energy range, selected-policy
 margin, policy-switch count, and final energy. The figure is written to
 `output/figures/methods/beemind_methods_policy_landscape.png`.
 
-![BeeMind policy-landscape methods panel](../figures/methods/beemind_methods_policy_landscape.png){#fig:mind_methods_policy}
+![Matplotlib/pandas BeeMind policy-landscape dashboard generated from MethodsAnalysisReport and policy diagnostics; sidecar validation checks the raster, and the figure supports finite reduced-kernel policy transparency rather than a learned biological generative model.](../figures/methods/beemind_methods_policy_landscape.png){#fig:mind_methods_policy}
 
 ## Fidelity boundary
 

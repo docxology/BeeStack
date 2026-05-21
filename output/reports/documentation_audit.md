@@ -1,17 +1,28 @@
 # BeeStack Documentation Audit
 
 - Passed: `True`
-- Documents checked: `160`
-- `uv run` commands referenced: `221`
+- Documents checked: `164`
+- `uv run` commands referenced: `245`
 - Source links referenced: `8`
-- Generated-output paths referenced: `172`
+- Generated-output paths referenced: `178`
 - Unresolved manuscript variables: `0`
-- Signposted directories: `60`
+- Signposted directories: `61`
 - Signposting passed: `True`
+- Source audit passed: `True`
+- Figure audit passed: `True`
 
 ## Fidelity Language
 
-- ![BeeBrain empirical methods completeness](../figures/methods/beebrain_methods_empirical_completeness.png){#fig:brain_methods_completeness}
+- ![Matplotlib BeeBody energy time series generated from simulation records; sidecar validation checks the raster, and the figure supports deterministic reduced-run energy accounting rather than calibrated honeybee energetics.](../figures/body_energy_timeseries.png){#fig:body_energy}
+- ![Matplotlib empirical completeness matrix generated from the BeeBrain source registry and parser statuses; sidecar validation checks the raster, and the figure supports availability and blocker claims rather than synthetic completion of absent calcium traces.](../figures/empirical/brain_data_completeness_matrix.png){#fig:brain_data_completeness_matrix}
+- ![Matplotlib empirical multimodal source map generated from BeeBrain anatomy, odor, antennal, and waggle-follower source metadata; sidecar validation checks the raster, and the figure supports source-to-contract traceability rather than completed empirical assimilation.](../figures/empirical/bee_brain_multimodal_source_map.png){#fig:brain_multimodal_source_map}
+- ![Matplotlib manuscript figure claim map generated from the figure registry and manuscript figure index; sidecar validation checks the raster, and the figure supports figure-provenance review rather than adding empirical evidence.](../figures/manuscript_figure_claim_map.png){#fig:manuscript_figure_claim_map}
+- ![Matplotlib/NetworkX fidelity and evidence network generated from ResearchSuiteReport evidence records; sidecar validation checks the raster, and the figure supports evidence provenance rather than empirical completeness.](../figures/research/research_fidelity_evidence_network.png){#fig:research_network}
+- ![Matplotlib/pandas BeeBrain empirical-completeness dashboard generated from MethodsAnalysisReport and empirical-analysis metadata; sidecar validation checks the raster, and the figure supports source availability and parser-gap claims rather than connectome-scale or calcium-validated dynamics.](../figures/methods/beebrain_methods_empirical_completeness.png){#fig:brain_methods_completeness}
+- ![Matplotlib/pandas BeeMind policy-landscape dashboard generated from MethodsAnalysisReport and policy diagnostics; sidecar validation checks the raster, and the figure supports finite reduced-kernel policy transparency rather than a learned biological generative model.](../figures/methods/beemind_methods_policy_landscape.png){#fig:mind_methods_policy}
+- ![Matplotlib/pandas BeeSwarm contact and recruitment dashboard generated from MethodsAnalysisReport, animation manifest, and simulation records; sidecar validation checks the raster, and the figure separates strict small-scene contact evidence from reduced colony-scale recruitment summaries rather than validating colony-scale recruitment dynamics.](../figures/methods/beeswarm_methods_contact_recruitment.png){#fig:swarm_methods_contact}
+- ![Matplotlib/pandas manuscript evidence index generated from MethodsAnalysisReport evidence links; sidecar validation checks the raster, and the figure supports manuscript provenance coverage rather than absent empirical support.](../figures/methods/methods_manuscript_evidence_index.png){#fig:methods_evidence_index}
+- ![Matplotlib/pandas sensitivity sweep panel generated from deterministic reduced-kernel sweeps; sidecar validation checks the raster, and the figure supports local parameter sensitivity rather than external scenario validation.](../figures/research/research_sensitivity_sweeps.png){#fig:research_sweeps}
 - # Empirical BeeBrain Data
 - # Empirical BeeBrain Results
 - # Empirical Source: dryad-andreu-2025-alarm-odorant-receptors
@@ -51,6 +62,7 @@
 - # output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following
 - # output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files
 - # output/data/empirical_sources/virtual-honeybee-standard-brain
+- # output/figures/empirical
 - ## BeeSwarm Strict FlyBody Scenes
 - ## Empirical BeeBrain Scope
 - ## Empirical datasets
@@ -117,6 +129,8 @@
 - Do not fabricate optional empirical payloads to satisfy downstream reports.
 - Downloaded and cataloged BeeBrain anatomy/activity source payloads.
 - Empirical analysis is evidence-gated: absent public payloads are recorded or
+- Empirical and manuscript evidence availability is typed. Use only
+- Empirical evidence rows must use one of `parsed`, `generated`,
 - Empirically, the visual-validation layer catches three recurring
 - Every empirical source registered in `src/beestack/research/methods.py`
 - Figshare waggle-following CSVs into `EmpiricalWaggleFollowerDataset`,
@@ -146,7 +160,6 @@
 - It does not claim connectome-level dynamics, a heavyweight spiking
 - Keep optional network/data stages explicit. Empirical scripts may skip when
 - Keep the reduced telemetry path deterministic, but do not silently downgrade
-- Keep workflow steps conservative and aligned with local commands. Do not add network-heavy full empirical downloads to routine CI; use metadata-only fetches and generated-artifact checks.
 - Limit empirical BeeBrain alignment to one odor template for a small experiment:
 - Local override: set `BEESTACK_FLYBODY_PATH=/path/to/flybody-beestack` or
 - MJCF assets used by FlyBody.
@@ -232,6 +245,7 @@
 - `EmpiricalAnatomyDataset`
 - `EmpiricalBrainDataset`
 - `EmpiricalCalciumDataset`
+- `EmpiricalEvidenceRecord.availability_status` is required and must be one of
 - `EmpiricalEvidenceRecord`
 - `EmpiricalOdorResponsePanel`
 - `EmpiricalPanelStats`
@@ -243,6 +257,7 @@
 - `FlyBodyContactMetrics`
 - `FlyBodySceneArtifact`
 - `FlyBodySceneRenderConfig`
+- `analysis_pipeline.py`, `analyze_empirical_bee_data.py`, `verify_bee_render.py`,
 - `analyze_empirical_bee_data.py` integrates downloaded Honeybee Standard Brain
 - `analyze_empirical_bee_data.py` is intentionally network-gated. When no local
 - `beebody_flybody_flight.gif`: FlyBody `FlightImitationWBPG` rollout
@@ -377,7 +392,6 @@
 - `tests/test_structure_flybody_visualization.py`.
 - `uv lock --check`, `pytest --cov=src`, metadata-only empirical fetches,
 - `uv run python scripts/analyze_empirical_bee_data.py` and
-- `visualization/`: deterministic figure builders and FlyBody-backed animation writers.
 - `visualization_gallery.md`: FlyBody 3D, empirical, reduced schematic,
 - `waggle_3d_scenario.md`: strict short and long BeeBody/FlyBody/MuJoCo waggle
 - `walker_xml_path` before rendering with `flybody.utils.rollout_and_render`. This is evidence of
@@ -407,9 +421,11 @@
 - biological engines. They are reduced validated kernels with diagnostics.
 - bounded reduced kernels with explicit diagnostics.
 - by FlyBody-generated scene XMLs, rendered by MuJoCo, and supported by finite
+- claims current empirical or manuscript evidence, it must either point to an
 - claims, empirical-data scope, or public-method comparisons. Current external
 - clearly when FlyBody or MuJoCo is unavailable.
 - come from the reduced energetics model, not from a measured
+- confidence, empirical waggle-follower confidence, follower-alignment
 - confirm `output/data/empirical_sources/virtual-honeybee-standard-brain/`
 - contact evidence* and *reduced large-colony dynamics* explicit at a
 - contains registries, typed records, parsers, and tests; downloaded archives stay
@@ -440,6 +456,7 @@
 - empirical sources; the mind, communication, and niche layers ship as
 - empirical traces to make reports look complete.
 - empirical validation, uncertainty, and applicability boundaries instead of
+- empirical, render-verification, and integrity scripts have already run in the
 - empirical-evidence count, and known-gap count, so the heatmap row for
 - empirical:
 - empirical_completeness_threshold: 0.5
@@ -450,6 +467,7 @@
 - feature is empirical traceability: Honey-Bee Standard Brain anatomy,
 - fidelity groups, BeeBody visual signatures, and strict FlyBody contact-scene
 - figure formats, interactive-output toggle, empirical completeness threshold,
+- figure registry, sidecar metadata, and FlyBody-backed animation writers.
 - figures, some are reduced-kernel diagnostics, and some are schematic
 - flight simulation — "strict FlyBody/MuJoCo" refers to the real MJCF
 - flight tasks driven through MuJoCo [@vaxenburg2025flybody;
@@ -458,6 +476,7 @@
 - following quantities are inherited from FlyBody defaults rather than
 - for FlyBody. It summarizes COM-speed proxy traces, wing-power traces,
 - for generated FlyBody assets, empirical dataset leaves, diagnostic folders, LLM
+- forager fraction across the colony. This supports a reduced diagnostic
 - formats, sensitivity sweeps with fewer than two values, invalid empirical
 - fractions, empirical odor separability, aftersmell/post-odor response,
 - fresh empirical, FlyBody, and visualization provenance inputs.
@@ -477,12 +496,13 @@
 - local_fork_path: /absolute/path/to/flybody-beestack
 - manuscript sources and regenerate. Optional empirical-analysis artifacts appear
 - mapping, so walking channels align with FlyBody claw/head/abdomen/leg actuator
-- method scorecards, validation fractions, visual inventory, empirical evidence,
+- method scorecards, validation fractions, visual inventory, empirical
 - model cards, methods panels, and hydrated manuscript sections. A reduced
 - module readiness, simulation telemetry, visualization artifacts, empirical
 - must not appear in the production `real_flybody_3d` manifest group.
 - name-aware BeeStack-to-FlyBody tripod walking action policy.
 - names, paths, and reproducible commands. Claim strict FlyBody/MuJoCo only for
+- network-heavy full empirical downloads to routine CI; use metadata-only fetches,
 - neural model remains a reduced AL–MB–CX and dance-decoding kernel.
 - not fabricate surrogate empirical traces.
 - objects. Some are strict FlyBody/MuJoCo renders, some are empirical
@@ -498,6 +518,7 @@
 - path uses real [FlyBody](https://github.com/TuragaLab/flybody) tasks, and the
 - paths. BeeBrain reduced neural dynamics should not be described as full
 - per-frame features, binned antenna features, model error tables, reduced
+- place to check whether an output is FlyBody 3D, empirical, reduced schematic,
 - project depends on the upstream FlyBody package through uv, then writes a
 - public APIs, contracts, config knobs, validations, diagnostics, empirical
 - public empirical payloads are present and parseable.
@@ -505,13 +526,13 @@
 - raise `FlyBodyUnavailableError` instead of falling back to reduced or Matplotlib
 - range, and odor-template priors used by the empirical helpers and
 - raw external empirical archives or large third-party payloads that can be
-- records, empirical evidence records, sensitivity sweeps, and known gaps.
-- recruitment threshold integrating decoded dance confidence, empirical
+- records, empirical registry/evidence rows, evidence availability states,
 - reduced closed-loop kernel remains for deterministic telemetry tests.
 - reduced communication kernel, not from a BEEHAVE-scale
 - reduced diagnostics, or roadmap items.
 - reduced in several layers, but the reduction is explicit enough that a
 - reduced kernel, or on empirical anchor data.
+- reduced kernels, compatibility summaries, and the still-blocked digital-twin
 - reduced recruitment and pheromone witnesses. It reports
 - reduced schematic module summaries.
 - reduced schematic), and the manuscript figure index links
@@ -552,9 +573,11 @@
 - task allocation, or thermal regulation must be framed as a reduced
 - tasks [@vaxenburg2025flybody] running inside MuJoCo
 - template banks, reports source completeness, and supports stack-level empirical
+- that contract: it separates strict rendered physics, empirical availability,
 - the blocker, not to substitute synthetic empirical data.
 - the data surface, reduced at the dynamics surface.
 - the non-visual swarm communication kernel, and BeeNiche remain reduced
+- the prerequisite analysis, empirical, visual-verification, and integrity scripts
 - the reduced closed loop.
 - the reduced closed-loop motion as a *witness* rather than a substitute
 - the resulting MuJoCo frames into `beebody_flybody_morphology.gif`.
@@ -578,7 +601,6 @@
 - waggle-dance GIFs that hard-fail without FlyBody, plus reduced Brain, Mind,
 - waggle-decoding, and empirical-alignment fields. The AL channel
 - waist constriction, locomotion motion, and absence of visible FlyBody debug
-- whether an output is FlyBody 3D, empirical, reduced schematic, or
 - whose external consumers (matplotlib output files, FlyBody `walker_xml_path`,
 - with empirical odor label `{{FINAL_EMPIRICAL_ODOR}}` selected from the
 - workbook/CSV/MAT empirical panels are present, it exits successfully with a
@@ -641,3 +663,29 @@
 ## Missing AGENTS Files
 
 - None detected.
+
+## Source Audit
+
+- Passed: `True`
+- missing_citation_keys: `0`
+- doi_mismatches: `0`
+- missing_required_bib_fields: `0`
+- registry_dois_missing: `0`
+- figure_registry_citation_keys_missing: `0`
+- figure_registry_source_dois_missing: `0`
+- unconservative_digital_twin_claims: `0`
+
+## Figure Audit
+
+- Passed: `True`
+- missing_image_paths: `0`
+- missing_labels: `0`
+- duplicate_labels: `0`
+- missing_captions: `0`
+- missing_sidecar_paths: `0`
+- missing_high_priority_artifacts: `0`
+- absent_positive_claims: `0`
+- sidecar_required_field_failures: `0`
+- sidecar_manuscript_mismatches: `0`
+- primary_caption_contract_failures: `0`
+- absolute_path_leaks: `0`

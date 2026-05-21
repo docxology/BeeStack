@@ -80,7 +80,7 @@ midpoint. The panel is written to
 `output/figures/methods/beeniche_methods_comb_thermal.png` so niche
 claims are anchored to *quantitative traces* rather than to prose alone.
 
-![BeeNiche comb and thermal methods panel](../figures/methods/beeniche_methods_comb_thermal.png){#fig:niche_methods_comb_thermal}
+![Matplotlib/pandas BeeNiche comb and thermal dashboard generated from MethodsAnalysisReport and simulation records; sidecar validation checks the raster, and the figure supports deterministic comb/thermal diagnostics rather than a full ecology or hive thermodynamics engine.](../figures/methods/beeniche_methods_comb_thermal.png){#fig:niche_methods_comb_thermal}
 
 ## Fidelity boundary
 

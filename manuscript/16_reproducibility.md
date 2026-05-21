@@ -27,6 +27,7 @@ uv run python scripts/run_research_suite.py
 uv run python scripts/run_methods_analysis.py
 uv run python scripts/run_stack_synthesis.py
 uv run python scripts/review_stack_integrity.py
+uv run python scripts/verify_generated_reports.py
 uv run python scripts/audit_documentation.py
 uv run python scripts/signpost_project_tree.py --check
 uv run python scripts/z_generate_manuscript_variables.py
@@ -103,9 +104,9 @@ three reasons:
 The CI workflow runs `ruff check`, `ruff format --check`,
 `uv lock --check`, `pytest --cov=src`, metadata-only empirical fetches,
 the analysis pipeline, methods analysis, research suite, documentation
-audit, signposting check, and manuscript hydration. A failed generated
-artifact or documentation gate produces a CI failure even if all tests
-pass.
+audit, generated-report audit, signposting check, and manuscript hydration.
+A failed generated artifact, source-audit, or documentation gate produces a
+CI failure even if all tests pass.
 
 ## Full Snapshot policy
 
@@ -137,7 +138,11 @@ modules, and a hydrated manuscript pipeline, behavior changes are
 visible through: tests (numerical assertions), JSON payloads
 (diagnostic deltas), figures (visual deltas), animations
 (verification-script deltas), documentation audits (drift between
-prose and code), readiness reviews (changes in prioritized gaps), and
-stack-integrity reports (changes in fidelity labels). A reviewer who
+prose, code, citation metadata, and source registries), generated-report
+audits (evidence-link metadata and freshness), readiness reviews
+(changes in prioritized gaps), and stack-integrity reports (changes in
+fidelity labels). A reviewer who
 suspects that a claim has drifted from its evidence can diff any of
-those surfaces.
+those surfaces. This is the local FAIR-software contract for BeeStack:
+source code, citations, generated artifacts, and validation commands
+remain mutually inspectable [@lamprecht2020fairsoftware].

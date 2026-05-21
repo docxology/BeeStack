@@ -1,20 +1,63 @@
 {
+  "accessibility_checks": {
+    "background": "#FFFFFF",
+    "contrast_ratio": 17.73971700407407,
+    "foreground": "#111827",
+    "large_text_passed": true,
+    "large_text_threshold": 3.0,
+    "normal_text_passed": true,
+    "normal_text_threshold": 4.5,
+    "standard": "WCAG 2.1 AA contrast thresholds"
+  },
+  "alt_text": "Five BeeStack modules arranged as a left-to-right contract chain.",
+  "artifact_kind": "figure",
   "backend": "Matplotlib",
+  "caption": "Showcase architecture schematic linking BeeBody, BeeBrain, BeeMind, BeeSwarm, and BeeNiche through typed contracts and generated evidence.",
+  "citation_keys": [
+    "wilson2017good",
+    "lamprecht2020fairsoftware"
+  ],
+  "claim_tier": "architecture_schematic",
+  "design_citation_keys": [
+    "rougier2014figures",
+    "cleveland1984graphical",
+    "crameri2020colour",
+    "w3c2023wcag21",
+    "wilkinson2016fair",
+    "heer2012interactive",
+    "ragan2016provenance"
+  ],
+  "design_source_dois": [
+    "10.1371/journal.pcbi.1003833",
+    "10.1080/01621459.1984.10478080",
+    "10.1038/s41467-020-19160-7",
+    "10.1038/sdata.2016.18",
+    "10.1145/2133806.2133821",
+    "10.1109/TVCG.2015.2467551"
+  ],
   "fidelity": "architecture schematic",
-  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/beestack_graphical_abstract.png",
+  "figure_path": "output/figures/beestack_graphical_abstract.png",
+  "manuscript_label": "fig:beestack_graphical_abstract",
+  "manuscript_section": "manuscript/03_system_architecture.md",
+  "priority": "primary",
   "quality": {
-    "height_px": 864,
+    "height_px": 848,
     "max_intensity": 255,
-    "mean_intensity": 239.55862075617284,
+    "mean_intensity": 237.83138378881463,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 46.5345612504023,
-    "width_px": 1800
+    "std_intensity": 49.1582216747675,
+    "width_px": 1784
   },
   "regeneration_command": "uv run python scripts/analysis_pipeline.py",
   "schema": "beestack.figure.v1",
-  "source_data": "output/data/simulation_records.json and module coverage records",
+  "source_data": "module coverage records and stack contract definitions",
+  "source_dois": [
+    "10.1371/journal.pcbi.1005510",
+    "10.3233/DS-190026"
+  ],
   "title": "Beestack Graphical Abstract",
+  "unsupported_inference": "Does not support a claim of biological or digital-twin validation.",
   "validation_status": "nonblank quality sidecar generated"
 }

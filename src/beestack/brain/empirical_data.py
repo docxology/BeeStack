@@ -10,6 +10,7 @@ import numpy as np
 from numpy.typing import NDArray
 
 from ..config import BeeStackConfig
+from ..utils import project_relative_payload
 from .empirical import CalciumImagingProtocol, default_calcium_protocol, negative_delta_f_over_f
 
 Array = NDArray[np.float64]
@@ -174,12 +175,14 @@ class EmpiricalWaggleFollowerDataset:
     source_files: tuple[str, ...] = ()
 
     def as_dict(self) -> dict[str, object]:
-        return {
-            "dataset_id": self.dataset_id,
-            "tracks": [track.as_dict() for track in self.tracks],
-            "summary": self.summary.as_dict(),
-            "source_files": self.source_files,
-        }
+        return project_relative_payload(
+            {
+                "dataset_id": self.dataset_id,
+                "tracks": [track.as_dict() for track in self.tracks],
+                "summary": self.summary.as_dict(),
+                "source_files": self.source_files,
+            }
+        )
 
 
 def calcium_dataset_from_trial_array(

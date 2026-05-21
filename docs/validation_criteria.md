@@ -91,13 +91,19 @@ Coverage over `src/` must remain at or above 92%.
 ## Research Suite
 
 ```bash
-uv run python scripts/run_research_suite.py
+uv run python scripts/review_stack_integrity.py
+uv run python scripts/run_research_suite.py --assemble-only
 uv run python scripts/run_methods_analysis.py
 uv run python scripts/run_stack_synthesis.py
+uv run python scripts/verify_generated_reports.py
 ```
 
 - `ResearchSuiteReport` must include five module scorecards, visualization
-  records, empirical evidence records, sensitivity sweeps, and known gaps.
+  records, empirical registry/evidence rows, evidence availability states,
+  sensitivity sweeps, and known gaps.
+- Empirical evidence rows must use one of `parsed`, `generated`,
+  `registered_absent`, `network_gated_absent`, or `missing_optional`; rows with
+  absent availability states must not be rendered as current manuscript support.
 - Scorecard metrics and sensitivity outputs must be finite, typed, JSON
   serializable, and deterministic from a fixed config/seed.
 - Research figures under `output/figures/research/` must be nonblank, and
@@ -106,10 +112,29 @@ uv run python scripts/run_stack_synthesis.py
   Swarm production animations, empirical reduced for BeeBrain, and reduced
   validated kernels for Mind, non-visual Swarm dynamics, and Niche.
 - `MethodsAnalysisReport` must include five module methods panels, validation
-  panels, visualization panels, scenario sweep panels, manuscript evidence
-  links, finite quantitative metrics, and top validation gaps.
+  panels, visualization panels, scenario sweep panels, evidence availability
+  links, a source-claim crosswalk, finite quantitative metrics, and top
+  validation gaps.
+- Every methods manuscript evidence link must preserve `citation_keys`,
+  `source_dois`, `artifact_kind`, `claim_tier`, and `availability_status`.
+- `scripts/verify_generated_reports.py` must pass with no stale
+  local test-result reports, no missing `parsed`/`generated` evidence artifact,
+  no failed synthesis gate that still uses success wording, and no project-root
+  absolute paths in generated JSON/Markdown under `output/data` or
+  `output/reports`.
 - Methods figures under `output/figures/methods/` must be nonblank, and Plotly
   methods HTML outputs under `output/interactive/` must contain traces.
+- Figure sidecars must preserve caption, alt text, manuscript section, Pandoc
+  figure label, claim tier, unsupported-inference boundary, validation status,
+  source data, regeneration command, accessibility checks, and optional
+  figure-design citation metadata.
+- The figure audit must pass: hydrated manuscript image paths must resolve,
+  labels must be unique, captions must be nonempty, PNG sidecars must exist,
+  curated high-priority figures must be inserted, and gap/absent figures must
+  not be captioned as positive support. Sidecar labels/captions must agree with
+  hydrated manuscript callouts, primary manuscript captions must name backend,
+  source data, validation, and conservative interpretation, and generated
+  project-local paths must not leak checkout-specific absolute prefixes.
 - `StackSynthesisReview` must include five module synthesis panels, finite
   simulation telemetry statistics, artifact/signposting/scholarship gates, and
   a nonblank `output/figures/research/stack_synthesis_dashboard.png` figure.
@@ -122,8 +147,11 @@ uv run python scripts/z_generate_manuscript_variables.py
 ```
 
 The documentation audit checks command references, source links, generated
-output paths, fidelity language, and unresolved manuscript variables. The
-manuscript generation step must leave no unresolved `{{TOKEN}}` variables in
+output paths, fidelity language, unresolved manuscript variables, Pandoc
+citation keys, required BibTeX DOI/source URL metadata, bibliography coverage
+for dataset-registry DOIs, manuscript figure references, figure sidecars,
+curated figure insertion, and conservative digital-twin wording. The manuscript
+generation step must leave no unresolved `{{TOKEN}}` variables in
 `output/manuscript/`.
 
 ## External Research And Digital-Twin Boundaries
@@ -137,6 +165,8 @@ manuscript generation step must leave no unresolved `{{TOKEN}}` variables in
   strict dependencies are absent.
 - Any claim about waggle-following or antennal-position evidence must name the
   public source, parser, generated summary, and confidence/error metric.
+- Hadjitofi-Webb evidence supports follower antennal-positioning and
+  decoding-error diagnostics; it does not validate colony-scale recruitment.
 - Any BEEHAVE, Hiveopolis, colony-demography, or population-of-colonies claim
   must be framed as adapter/readiness work unless validated against external
   scenario tables or longitudinal observations.

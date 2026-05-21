@@ -2,10 +2,13 @@
 
 Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidence, and reduced validated Mind/Swarm/Niche kernels.
 
-- Overall validation fraction: `0.750`
+- Overall validation fraction: `1.000`
 - Module scorecards: `5`
-- Visualization artifacts: `53`
-- Empirical evidence records: `5`
+- Visualization artifacts: `68`
+- Empirical registry/evidence rows: `5`
+- Parsed empirical evidence rows: `3`
+- Local empirical records represented: `139`
+- Empirical availability states: `generated=1, missing_optional=0, network_gated_absent=1, parsed=3, registered_absent=0`
 - Sensitivity sweeps: `3`
 
 ## Module Scorecards
@@ -21,8 +24,8 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 ### BeeBrain
 
 - Fidelity: `empirical reduced AL-MB-CX kernel`
-- Validation fraction: `0.000`
-- Metrics: `anatomy_inventory_count=0`, `brain_data_parseable_fraction=0`, `empirical_panel_count=0`, `mean_odor_separability=0`, `registered_dataset_count=10`, `source_verified_fraction=0`, `template_count=0`, `waggle_follower_confidence=0`
+- Validation fraction: `1.000`
+- Metrics: `anatomy_inventory_count=7`, `brain_data_parseable_fraction=0.6`, `empirical_panel_count=48`, `mean_odor_separability=0.651`, `registered_dataset_count=10`, `source_verified_fraction=1`, `template_count=24`, `waggle_follower_confidence=0.289`
 - Evidence: Curated public honeybee anatomy/activity loaders and template-bank integration.
 - Known gaps: No heavyweight spiking simulator is required in the default path.; The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics.
 
@@ -55,7 +58,7 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 ### mind.energy_threshold
 
 - Values: `0.15, 0.3, 0.45, 0.6, 0.75`
-- Interpretation: mind.energy_threshold sweep changed recruitment by 0 and comb fraction by 0 in the reduced kernel.
+- Interpretation: mind.energy_threshold sweep is insensitive under the current reduced kernel; recruitment and comb fraction ranges both stayed at 0.
 
 ### mind.follow_probability_threshold
 
@@ -65,68 +68,83 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 ### niche.ambient_temperature_c
 
 - Values: `18, 22, 26, 30, 34`
-- Interpretation: niche.ambient_temperature_c sweep changed recruitment by 0 and comb fraction by 0 in the reduced kernel.
+- Interpretation: niche.ambient_temperature_c sweep is insensitive under the current reduced kernel; recruitment and comb fraction ranges both stayed at 0.
 
 ## Visualization Inventory
 
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beebody_flybody_morphology.gif`: animation, real_flybody_3d, verified
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beebody_flybody_flight.gif`: animation, real_flybody_3d, verified
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beebrain_neural_anatomy.gif`: animation, reduced_schematic, verified
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beemind_policy_beliefs.gif`: animation, reduced_schematic, verified
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beeswarm_dance_pheromone.gif`: animation, reduced_schematic, verified
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beeswarm_10_beebody_collision.gif`: animation, real_flybody_3d_contact_physics, verified
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beeswarm_waggle_dance_configured.gif`: animation, real_flybody_3d_contact_physics, verified
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beeswarm_waggle_dance_long.gif`: animation, real_flybody_3d_contact_physics, verified
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beeniche_comb_thermal.gif`: animation, reduced_schematic, verified
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/beebody_motion_power_phase.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/beebrain_empirical_alignment_timeseries.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/beemind_policy_timeline.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/beeniche_thermal_comb_panel.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/beestack_contract_network.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/beestack_graphical_abstract.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/beestack_pipeline_overview.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/beestack_scale_ladder.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/beeswarm_recruitment_task_allocation.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/body_energy_timeseries.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/comb_fraction_timeseries.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beebody_methods_telemetry_dashboard.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beebrain_methods_empirical_completeness.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beemind_methods_policy_landscape.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beeniche_methods_comb_thermal.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beeswarm_methods_contact_recruitment.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/methods_manuscript_evidence_index.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/methods_repo_dashboard.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/module_contract_coverage.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/beebody_method_diagnostics.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/beebrain_empirical_evidence_map.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/beemind_policy_sensitivity.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/beeniche_thermal_comb_scorecard.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/beeswarm_contact_recruitment_scorecard.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/research_empirical_completeness.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/research_fidelity_evidence_network.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/research_module_scorecard_heatmap.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/research_sensitivity_sweeps.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/research_validation_scorecard.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/research_visualization_inventory.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/stack_synthesis_dashboard.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/research_module_scorecard_heatmap.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/research_validation_scorecard.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/research_sensitivity_sweeps.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/research_fidelity_evidence_network.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/research_visualization_inventory.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/research_empirical_completeness.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/beebody_method_diagnostics.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/beebrain_empirical_evidence_map.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/beemind_policy_sensitivity.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/beeswarm_contact_recruitment_scorecard.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/beeniche_thermal_comb_scorecard.png`: figure, research_diagnostic, nonblank_static_figure
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/interactive/research_scorecards.html`: interactive_html, research_diagnostic, html_trace_present
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/interactive/research_sensitivity_sweeps.html`: interactive_html, research_diagnostic, html_trace_present
+- `output/animations/beebody_flybody_morphology.gif`: animation, real_flybody_3d, verified
+- `output/animations/beebody_flybody_flight.gif`: animation, real_flybody_3d, verified
+- `output/animations/beebrain_neural_anatomy.gif`: animation, reduced_schematic, verified
+- `output/animations/beemind_policy_beliefs.gif`: animation, reduced_schematic, verified
+- `output/animations/beeswarm_dance_pheromone.gif`: animation, reduced_schematic, verified
+- `output/animations/beeswarm_10_beebody_collision.gif`: animation, real_flybody_3d_contact_physics, verified
+- `output/animations/beeswarm_waggle_dance_configured.gif`: animation, real_flybody_3d_contact_physics, verified
+- `output/animations/beeswarm_waggle_dance_long.gif`: animation, real_flybody_3d_contact_physics, verified
+- `output/animations/beeniche_comb_thermal.gif`: animation, reduced_schematic, verified
+- `output/figures/beebody_motion_power_phase.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/beebrain_empirical_alignment_timeseries.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/beemind_policy_timeline.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/beeniche_thermal_comb_panel.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/beestack_contract_network.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/beestack_evidence_ladder.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/beestack_graphical_abstract.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/beestack_pipeline_overview.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/beestack_scale_ladder.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/beeswarm_recruitment_task_allocation.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/body_energy_timeseries.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/comb_fraction_timeseries.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/empirical/bee_brain_multimodal_source_map.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/empirical/beeswarm_waggle_recruitment_diagnostics.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/empirical/brain_data_completeness_matrix.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/empirical/empirical_activity_summary.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/empirical/empirical_anatomy_assets.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/empirical/empirical_anatomy_projection.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/empirical/empirical_antennal_movement.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/empirical/empirical_neuropil_coverage.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/empirical/empirical_panel_heatmap.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/empirical/empirical_panel_quality.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/empirical/empirical_stack_alignment.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/empirical/waggle_follower_alignment.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/empirical/waggle_phase_coupling.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/manuscript_figure_claim_map.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/methods/beebody_methods_telemetry_dashboard.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/methods/beebrain_methods_empirical_completeness.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/methods/beemind_methods_policy_landscape.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/methods/beeniche_methods_comb_thermal.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/methods/beeswarm_methods_contact_recruitment.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/methods/methods_manuscript_evidence_index.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/methods/methods_repo_dashboard.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/module_contract_coverage.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/beebody_method_diagnostics.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/beebrain_empirical_evidence_map.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/beemind_policy_sensitivity.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/beeniche_thermal_comb_scorecard.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/beeswarm_contact_recruitment_scorecard.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/research_empirical_completeness.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/research_fidelity_evidence_network.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/research_module_scorecard_heatmap.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/research_sensitivity_sweeps.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/research_validation_scorecard.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/research_visualization_inventory.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/stack_synthesis_dashboard.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/research_module_scorecard_heatmap.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/research_validation_scorecard.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/research_sensitivity_sweeps.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/research_fidelity_evidence_network.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/research_visualization_inventory.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/research_empirical_completeness.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/beebody_method_diagnostics.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/beebrain_empirical_evidence_map.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/beemind_policy_sensitivity.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/beeswarm_contact_recruitment_scorecard.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/beeniche_thermal_comb_scorecard.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/interactive/research_scorecards.html`: interactive_html, research_diagnostic, html_trace_present
+- `output/interactive/research_sensitivity_sweeps.html`: interactive_html, research_diagnostic, html_trace_present
 
 ## Empirical Evidence
 
-- `empirical-panels`: workbook/CSV odor response panels, completeness `0.000`, records `0`
-- `calcium-datasets`: Paoli-style calcium traces, completeness `0.000`, records `0`
-- `honeybee-standard-brain`: atlas/VRML/TIFF anatomy assets, completeness `0.000`, records `0`
-- `template-bank`: glomerulus-length empirical templates, completeness `0.000`, records `0`
-- `figshare-hadjitofi-2024-waggle-following`: waggle follower antennal-position CSVs, completeness `0.000`, records `0`
+- `empirical-panels`: workbook/CSV odor response panels, status `parsed`, completeness `1.000`, records `48`
+- `calcium-datasets`: Paoli-style calcium traces, status `network_gated_absent`, completeness `0.000`, records `0`, gap `network gated absent; below configured completeness threshold`
+- `honeybee-standard-brain`: atlas/VRML/TIFF anatomy assets, status `parsed`, completeness `0.800`, records `8`
+- `template-bank`: glomerulus-length empirical templates, status `generated`, completeness `1.000`, records `24`
+- `figshare-hadjitofi-2024-waggle-following`: waggle follower antennal-position CSVs, status `parsed`, completeness `0.289`, records `59`, gap `below configured completeness threshold`

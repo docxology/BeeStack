@@ -14,6 +14,9 @@ uv run python scripts/analyze_empirical_bee_data.py
 uv run python scripts/run_methods_analysis.py
 uv run python scripts/run_stack_synthesis.py
 uv run python scripts/run_research_suite.py
+uv run python scripts/run_research_suite.py --assemble-only
+uv run python scripts/assess_digital_twin_readiness.py
+uv run python scripts/verify_generated_reports.py
 uv run python scripts/signpost_project_tree.py
 uv run python scripts/signpost_project_tree.py --check
 uv run python scripts/audit_documentation.py
@@ -40,9 +43,17 @@ figure index.
 `run_stack_synthesis.py` writes the cross-stack statistical synthesis report,
 dashboard figure, and stack-synthesis JSON used by manuscript variables.
 `run_research_suite.py` calls the analysis, empirical, visual-verification, and
-integrity pipelines, then writes the central research report, research figures
-with JSON sidecars, optional Plotly HTML, sensitivity sweeps, methods-analysis
-artifacts, and the stack-synthesis review.
+integrity pipelines by default, then writes the central research report,
+research figures with JSON sidecars, optional Plotly HTML, sensitivity sweeps,
+methods-analysis artifacts, and the stack-synthesis review. Use
+`run_research_suite.py --assemble-only` in CI or full-gate scripts after
+`analysis_pipeline.py`, `analyze_empirical_bee_data.py`, `verify_bee_render.py`,
+and `review_stack_integrity.py` have already run once.
+`assess_digital_twin_readiness.py` writes conservative digital-twin maturity,
+blocker, validation-residual, and governance readiness reports.
+`verify_generated_reports.py` writes and enforces the generated-report audit,
+including stale local test-report files, missing current evidence artifacts, and
+failed gates whose detail text still uses success wording.
 `review_stack_integrity.py` writes the module-by-module API, contract,
 validation, diagnostic, evidence, and fidelity review under `output/reports/`.
 `audit_documentation.py` writes documentation freshness and fidelity-claim

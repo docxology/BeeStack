@@ -40,7 +40,7 @@ rather than treating the target as a present-tense result.
 | First successful local run | `README.md` quickstart | `uv run python scripts/analysis_pipeline.py` |
 | Strict 3D waggle evidence | `docs/waggle_3d_scenario.md` | `uv run python scripts/verify_bee_render.py` |
 | BeeBrain data provenance | `docs/beebrain_data_pipeline.md` | `uv run python scripts/analyze_empirical_bee_data.py` |
-| Claim and artifact audit | `docs/research_operations_playbook.md` | `uv run python scripts/audit_documentation.py` |
+| Claim, source, and artifact audit | `docs/research_operations_playbook.md` | `uv run python scripts/audit_documentation.py` |
 | Digital-twin target assessment | `docs/digital_twin_path.md` | `uv run python scripts/assess_digital_twin_readiness.py` |
 | Manuscript editing | `docs/manuscript_development.md` | `uv run python scripts/z_generate_manuscript_variables.py` |
 
@@ -55,10 +55,11 @@ uv run python scripts/verify_bee_render.py
 uv run python scripts/review_stack_integrity.py
 uv run python scripts/fetch_empirical_bee_data.py
 uv run python scripts/analyze_empirical_bee_data.py
-uv run python scripts/run_research_suite.py
+uv run python scripts/run_research_suite.py --assemble-only
 uv run python scripts/run_methods_analysis.py
 uv run python scripts/run_stack_synthesis.py
 uv run python scripts/assess_digital_twin_readiness.py
+uv run python scripts/verify_generated_reports.py
 uv run python scripts/signpost_project_tree.py --check
 uv run python scripts/audit_documentation.py
 uv run python scripts/z_generate_manuscript_variables.py
@@ -96,12 +97,14 @@ uv run python scripts/analyze_empirical_bee_data.py
 uv run python scripts/analysis_pipeline.py
 uv run python scripts/generate_animations.py
 uv run python scripts/verify_bee_render.py
-uv run python scripts/run_research_suite.py
+uv run python scripts/review_stack_integrity.py
+uv run python scripts/run_research_suite.py --assemble-only
 uv run python scripts/run_methods_analysis.py
 uv run python scripts/run_stack_synthesis.py
 uv run python scripts/assess_digital_twin_readiness.py
-uv run python scripts/review_stack_integrity.py
+uv run python scripts/verify_generated_reports.py
 uv run python scripts/audit_documentation.py
+uv run python scripts/signpost_project_tree.py --check
 uv run python scripts/z_generate_manuscript_variables.py
 ```
 
@@ -115,8 +118,8 @@ uv run python scripts/z_generate_manuscript_variables.py
 - `output/data/research_suite_report.json`: unified method scorecards,
   visualization inventory, empirical evidence, sensitivity sweeps, and gaps.
 - `output/data/methods_analysis.json`: science-first per-module methods panels,
-  validation panels, scenario sweep summaries, manuscript evidence links, and
-  top validation gaps.
+  validation panels, scenario sweep summaries, manuscript evidence links, a
+  source-claim crosswalk with citation keys/DOIs, and top validation gaps.
 - `output/data/stack_synthesis_review.json`: cross-stack statistical synthesis
   of module readiness, simulation telemetry, visualization evidence,
   signposting, empirical parseability, and scholarship anchors.
@@ -124,7 +127,9 @@ uv run python scripts/z_generate_manuscript_variables.py
   requirements, maturity, blockers, and next artifacts for the full
   systems-biology colony and population-of-colonies digital-twin target.
 - `output/data/manuscript_figure_index.json`: manuscript-oriented figure and
-  artifact provenance index.
+  artifact provenance index with captions, alt text, claim tiers, unsupported
+  inference boundaries, sidecar validation status, repo-relative artifact
+  paths, and regeneration commands.
 - `output/data/sensitivity/`: deterministic reduced-kernel sensitivity sweep
   payloads.
 - `output/data/empirical_sources/`: downloaded Dryad and Honeybee Standard Brain
@@ -133,8 +138,9 @@ uv run python scripts/z_generate_manuscript_variables.py
 - `output/figures/empirical/`: empirical panel, activity, antennal, waggle
   follower, data-completeness, anatomy asset/projection, and neuropil coverage
   figures.
-- `output/figures/`: module diagnostics and whole-stack graphical abstracts,
-  including the BeeStack contract network, scale ladder, and pipeline overview.
+- `output/figures/`: module diagnostics and whole-stack showcase schematics,
+  including the BeeStack graphical abstract, contract network, scale ladder,
+  evidence ladder, and pipeline overview.
 - `output/figures/research/`: science-first scorecard, sensitivity, empirical
   completeness, module diagnostics, and evidence-network figures.
 - `output/figures/methods/`: module methods dashboards for Body, Brain, Mind,
@@ -152,10 +158,12 @@ uv run python scripts/z_generate_manuscript_variables.py
 - `output/reports/flybody_contact_physics.md`: MuJoCo contact evidence for the
   BeeSwarm production collision, configured waggle, and long waggle scenes.
 - `output/reports/beestack_research_report.md`: central research report with
-  method scorecards, validation fractions, visual inventory, empirical evidence,
-  sensitivity sweeps, and known gaps.
+  method scorecards, validation fractions, visual inventory, empirical
+  registry/evidence rows, evidence availability states, sensitivity sweeps, and
+  known gaps.
 - `output/reports/methods_analysis.md`: science-first methods report linking
-  per-module diagnostics, visualizations, validations, and manuscript claims.
+  per-module diagnostics, visualizations, validations, manuscript claims, and
+  explicit evidence availability states, source DOIs, and claim tiers.
 - `output/reports/stack_synthesis_review.md`: synthesized statistical review
   tying module scorecards, simulation records, artifacts, signposting, and
   manuscript scholarship into one auditable surface.
@@ -165,8 +173,12 @@ uv run python scripts/z_generate_manuscript_variables.py
   documentation-audit health, research gaps, and prioritized next improvements.
 - `output/reports/beestack_integrity_review.md`: module APIs, contracts,
   diagnostics, validation records, fidelity levels, and gaps.
-- `output/reports/documentation_audit.md`: documentation freshness and fidelity
-  claim audit.
+- `output/reports/documentation_audit.md`: documentation freshness, figure
+  reference, fidelity claim, citation-key, BibTeX DOI/URL, source-registry, and
+  conservative digital-twin language audit.
+- `output/reports/generated_report_audit.md`: generated-report freshness and
+  semantic audit for stale local reports, missing current evidence paths,
+  missing evidence-link citation metadata, and unsupported support claims.
 - `output/manuscript/`: manuscript sections with variables resolved.
 
 Network-gated empirical analysis adds these artifacts only when the relevant
@@ -212,7 +224,8 @@ The curated BeeBrain registry covers:
 - Nouvian 2017/2018 Dryad brain biogenic-amine and defence spreadsheets.
 - [Hadjitofi & Webb 2024 Figshare waggle-following data](https://figshare.com/articles/dataset/Honeybee_antennal_positioning_data_when_following_dances/24715977):
   CC BY 4.0 follower positions, antennal angles, binned features, and model
-  error CSVs for dance-vector decoding.
+  error CSVs for dance-vector decoding, paired with their Current Biology
+  antennal-positioning article DOI `10.1016/j.cub.2024.02.045`.
 
 Unavailable upstream files are reported as gaps, not silently invented. For
 example, Dryad archive endpoints may reject some large archives; the fetcher
@@ -244,4 +257,5 @@ Start with `docs/README.md`, then use:
 - `docs/troubleshooting.md` for common failures.
 
 The historical project specification is summarized in `docs/spec_review.md`;
-current claims are governed by generated reports under `output/reports/`.
+current claims are governed by generated reports under `output/reports/` plus
+the offline source audit embedded in `output/reports/documentation_audit.md`.

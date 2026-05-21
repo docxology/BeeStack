@@ -17,12 +17,14 @@ recruitment events drawn from the BeeBrain dance decoder, updates a
 small grid of pheromone components (alarm, queen mandibular pheromone,
 Nasanov, brood, wax) on a $12 \times 12 \times 4$ pheromone-grid shape,
 allocates tasks across nurse, forager, guard, builder, and fanner roles,
-and writes BEEHAVE-compatible summary fields [@becher2014beehave]. The
-local-follower count per dance is configurable (default 12), with the
-recruitment threshold integrating decoded dance confidence, empirical
-waggle-follower confidence, follower-alignment score, stop-signal
-inhibition, and colony food need before any dance produces a recruited
-follower.
+and writes BEEHAVE-compatible summary fields [@becher2014beehave].
+This is compatibility/parity language only: the current kernel has not
+been validated against BEEHAVE scenario tables or colony-demography
+time series. The local-follower count per dance is configurable
+(default 12), with the recruitment threshold integrating decoded dance
+confidence, empirical waggle-follower confidence, follower-alignment
+score, stop-signal inhibition, and colony food need before any dance
+produces a recruited follower.
 
 The kernel is *bounded*: every dance produces at most
 `local_followers_per_dance` followers, every pheromone component decays
@@ -66,8 +68,12 @@ of 13 Hz, a lateral amplitude of 0.035 m, a loop radius of 0.085 m, and
 follower spacing of 0.11 m, with a follower-orientation gain of 0.65
 and an antennal-sampling gain of 0.75. These parameters come from
 quantitative waggle-dance literature [@nagari2017waggle;
-@couvillon2014waggle; @webb2020waggle] and are pinned in `config.yaml`
-so the scene reproduces deterministically across machines.
+@couvillon2014waggle; @webb2020waggle; @wario2015automatic] and are
+pinned in `config.yaml` so the scene reproduces deterministically
+across machines. The Hadjitofi–Webb source supports follower
+antennal-positioning and decoding-error diagnostics
+[@hadjitofi2024currentbiology], not a claim that the rendered scene
+validates colony-scale recruitment.
 
 ### Long multi-BeeBody waggle scene
 
@@ -87,7 +93,11 @@ it writes its own scene XML and contact report under
 
 The contact report records floor/body contact, waggle phase samples,
 follower distance, orientation error, and follower-orientation
-confidence for both waggle scenes. The latest manifest contains
+confidence for both waggle scenes. The follower-orientation terms are
+linked to the antennal-positioning evidence above and to automated
+tracking/decoding methods for waggle-dance measurements
+[@wario2015automatic]; they remain small-scene diagnostics. The latest
+manifest contains
 {{STRICT_SWARM_SCENE_COUNT}} strict BeeSwarm scenes. These scenes are
 evidence for small-scene
 contact physics and BeeBody-backed multi-agent rendering — not for
@@ -109,7 +119,9 @@ local followers requires *all* of those signals to exceed their
 configured bounds; partial signals do not increment recruitment counts.
 Dance recruitment then feeds back into the task allocator so that
 sustained high-quality dances produce a measurable shift in the active
-forager fraction across the colony.
+forager fraction across the colony. This supports a reduced diagnostic
+claim about the local recruitment kernel, not a validation claim about
+BEEHAVE-scale colony dynamics.
 
 ## Methods-analysis Swarm panel
 
@@ -122,7 +134,7 @@ phase-coupling diagnostics above. This keeps the separation between *real 3D
 contact evidence* and *reduced large-colony dynamics* explicit at a
 glance.
 
-![BeeSwarm contact and recruitment methods panel](../figures/methods/beeswarm_methods_contact_recruitment.png){#fig:swarm_methods_contact}
+![Matplotlib/pandas BeeSwarm contact and recruitment dashboard generated from MethodsAnalysisReport, animation manifest, and simulation records; sidecar validation checks the raster, and the figure separates strict small-scene contact evidence from reduced colony-scale recruitment summaries rather than validating colony-scale recruitment dynamics.](../figures/methods/beeswarm_methods_contact_recruitment.png){#fig:swarm_methods_contact}
 
 ## Fidelity boundary
 

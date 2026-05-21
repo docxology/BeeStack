@@ -140,6 +140,12 @@ from .documentation_audit import (
     documentation_audit_markdown,
     signposted_directories,
 )
+from .figure_audit import FigureAudit, audit_figures
+from .generated_report_audit import (
+    GeneratedReportAudit,
+    audit_generated_reports,
+    generated_report_audit_markdown,
+)
 from .integrity import (
     DiagnosticRecord,
     ModuleIntegrityReport,
@@ -176,6 +182,7 @@ from .orchestrator import (
     task_allocation_snapshot,
 )
 from .research import (
+    EVIDENCE_AVAILABILITY_STATES,
     EmpiricalEvidenceRecord,
     ManuscriptEvidenceLink,
     MethodsAnalysisReport,
@@ -199,6 +206,13 @@ from .research import (
     research_report_markdown,
     run_sensitivity_sweeps,
     stack_synthesis_markdown,
+)
+from .source_audit import (
+    SourceAudit,
+    audit_sources,
+    extract_pandoc_citation_keys,
+    parse_bibtex_entries,
+    source_audit_markdown,
 )
 from .swarm import (
     BeeAgent,
@@ -247,6 +261,8 @@ __all__ = [
     "DiagnosticRecord",
     "DigitalTwinReadinessReview",
     "DocumentationAudit",
+    "FigureAudit",
+    "EVIDENCE_AVAILABILITY_STATES",
     "EmpiricalAnatomyDataset",
     "EmpiricalBrainDataset",
     "EmpiricalCalciumDataset",
@@ -264,6 +280,7 @@ __all__ = [
     "FlyBodySceneArtifact",
     "FlyBodySceneRenderConfig",
     "FollowerOrientationDiagnostics",
+    "GeneratedReportAudit",
     "GlomerularResponseSummary",
     "HoneybeeCalibrationTarget",
     "ManuscriptEvidenceLink",
@@ -291,6 +308,7 @@ __all__ = [
     "StackContract",
     "StackIntegrityReview",
     "StackSynthesisReview",
+    "SourceAudit",
     "SensitivitySweepResult",
     "TwinReadinessAxis",
     "TwinScale",
@@ -319,6 +337,8 @@ __all__ = [
     "assemble_stack_synthesis_review",
     "assess_digital_twin_readiness",
     "audit_documentation",
+    "audit_figures",
+    "audit_sources",
     "adapter_smoke_rollout",
     "bee_body_calibration_summary",
     "bee_flight_cycle_action",
@@ -335,11 +355,13 @@ __all__ = [
     "contract_matrix",
     "cost_of_transport",
     "dance_recruitment_diagnostics",
+    "audit_generated_reports",
     "dataset_by_id",
     "datasets_for_module",
     "decode_waggle",
     "dominant_caste",
     "documentation_audit_markdown",
+    "generated_report_audit_markdown",
     "signposted_directories",
     "digital_twin_axis_catalog",
     "digital_twin_readiness_markdown",
@@ -347,6 +369,7 @@ __all__ = [
     "empirical_brain_datasets",
     "empirical_anatomy_datasets",
     "empirical_brain_profile",
+    "extract_pandoc_citation_keys",
     "flybody_action_dim_from_env",
     "flybody_action_names_from_spec",
     "flybody_contact_report_markdown",
@@ -369,6 +392,7 @@ __all__ = [
     "observation_schema",
     "odor_panel_sparseness",
     "parse_paoli_matlab_payload",
+    "parse_bibtex_entries",
     "parse_tabular_odor_response_rows",
     "pheromone_gradient",
     "policy_selection_diagnostics",
@@ -382,6 +406,7 @@ __all__ = [
     "run_simulation",
     "run_sensitivity_sweeps",
     "stack_synthesis_markdown",
+    "source_audit_markdown",
     "select_policy",
     "stack_contracts",
     "stack_integrity_review",

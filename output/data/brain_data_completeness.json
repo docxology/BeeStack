@@ -1,0 +1,234 @@
+{
+  "dataset_count": 10,
+  "downloaded_dataset_count": 6,
+  "downloaded_fraction": 0.6,
+  "modality_counts": {
+    "3d": 1,
+    "brain": 1,
+    "calcium-sensitive": 1,
+    "fast": 1,
+    "frame-level": 1,
+    "gene-expression": 1,
+    "high-speed": 1,
+    "line-scan": 1,
+    "odorant-receptor": 1,
+    "pan-neuronal": 1
+  },
+  "module_modality_matrix": {
+    "active_sensing": {
+      "frame-level": 1
+    },
+    "antennal_lobe": {
+      "3d": 1,
+      "calcium-sensitive": 1,
+      "fast": 1,
+      "frame-level": 1,
+      "line-scan": 1,
+      "odorant-receptor": 1,
+      "pan-neuronal": 1
+    },
+    "central_brain": {
+      "brain": 1
+    },
+    "central_complex": {
+      "3d": 1,
+      "high-speed": 1
+    },
+    "defence": {
+      "brain": 1
+    },
+    "functional_connectivity": {
+      "line-scan": 1
+    },
+    "johnstons_organ": {
+      "frame-level": 1,
+      "high-speed": 1
+    },
+    "lateral_horn": {
+      "pan-neuronal": 1
+    },
+    "mushroom_body": {
+      "3d": 1,
+      "brain": 1,
+      "fast": 1,
+      "gene-expression": 1,
+      "pan-neuronal": 1
+    },
+    "neuromodulation": {
+      "brain": 1
+    },
+    "olfactory_receptors": {
+      "odorant-receptor": 1
+    },
+    "swarm": {
+      "high-speed": 1
+    },
+    "waggle_decoding": {
+      "high-speed": 1
+    },
+    "whole_brain": {
+      "3d": 1
+    }
+  },
+  "module_target_counts": {
+    "active_sensing": 1,
+    "antennal_lobe": 7,
+    "central_brain": 1,
+    "central_complex": 2,
+    "defence": 1,
+    "functional_connectivity": 1,
+    "johnstons_organ": 2,
+    "lateral_horn": 1,
+    "mushroom_body": 5,
+    "neuromodulation": 1,
+    "olfactory_receptors": 1,
+    "swarm": 1,
+    "waggle_decoding": 1,
+    "whole_brain": 1
+  },
+  "parseability_target": 0.8,
+  "parseability_target_satisfied": true,
+  "parseable_dataset_count": 6,
+  "parseable_fraction": 0.6,
+  "source_gaps": [
+    {
+      "dataset_id": "dryad-paoli-2024-al-calcium",
+      "detail": "curated source is registered but no local payload is present",
+      "remediation": "run scripts/fetch_empirical_bee_data.py for full downloads",
+      "severity": "medium"
+    },
+    {
+      "dataset_id": "galizia-1999-glomerular-code",
+      "detail": "curated source is registered but no local payload is present",
+      "remediation": "run scripts/fetch_empirical_bee_data.py for full downloads",
+      "severity": "medium"
+    },
+    {
+      "dataset_id": "szyszka-2023-granger-al-network",
+      "detail": "curated source is registered but no local payload is present",
+      "remediation": "run scripts/fetch_empirical_bee_data.py for full downloads",
+      "severity": "medium"
+    },
+    {
+      "dataset_id": "kaneko-2016-kenyon-subtypes",
+      "detail": "curated source is registered but no local payload is present",
+      "remediation": "run scripts/fetch_empirical_bee_data.py for full downloads",
+      "severity": "medium"
+    }
+  ],
+  "source_statuses": [
+    {
+      "blocker": "no_local_payload",
+      "dataset_id": "dryad-paoli-2024-al-calcium",
+      "doi": "10.5061/dryad.qbzkh18sc",
+      "downloaded": false,
+      "parseable": false,
+      "parser_status": "download_blocked:401 Unauthorized",
+      "remediation": "run scripts/fetch_empirical_bee_data.py for full downloads",
+      "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.qbzkh18sc",
+      "source_verified": true
+    },
+    {
+      "blocker": "no_local_payload",
+      "dataset_id": "galizia-1999-glomerular-code",
+      "doi": "10.1038/8144",
+      "downloaded": false,
+      "parseable": false,
+      "parser_status": "source_verified_waiting_for_payload",
+      "remediation": "run scripts/fetch_empirical_bee_data.py for full downloads",
+      "source_url": "https://www.nature.com/articles/nn0599_473",
+      "source_verified": true
+    },
+    {
+      "blocker": "",
+      "dataset_id": "virtual-honeybee-standard-brain",
+      "doi": "10.1002/cne.20644",
+      "downloaded": true,
+      "parseable": true,
+      "parser_status": "parsed",
+      "remediation": "none",
+      "source_url": "https://www.bcp.fu-berlin.de/en/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/index.html",
+      "source_verified": true
+    },
+    {
+      "blocker": "no_local_payload",
+      "dataset_id": "szyszka-2023-granger-al-network",
+      "doi": "10.3390/insects14060539",
+      "downloaded": false,
+      "parseable": false,
+      "parser_status": "source_verified_waiting_for_payload",
+      "remediation": "run scripts/fetch_empirical_bee_data.py for full downloads",
+      "source_url": "https://www.mdpi.com/2075-4450/14/6/539",
+      "source_verified": true
+    },
+    {
+      "blocker": "no_local_payload",
+      "dataset_id": "kaneko-2016-kenyon-subtypes",
+      "doi": "10.1186/s40851-016-0051-6",
+      "downloaded": false,
+      "parseable": false,
+      "parser_status": "source_verified_waiting_for_payload",
+      "remediation": "run scripts/fetch_empirical_bee_data.py for full downloads",
+      "source_url": "https://zoologicalletters.biomedcentral.com/articles/10.1186/s40851-016-0051-6",
+      "source_verified": true
+    },
+    {
+      "blocker": "",
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "doi": "10.5061/dryad.83bk3j9tt",
+      "downloaded": true,
+      "parseable": true,
+      "parser_status": "parsed",
+      "remediation": "none",
+      "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.83bk3j9tt",
+      "source_verified": true
+    },
+    {
+      "blocker": "",
+      "dataset_id": "dryad-andreu-2025-alarm-odorant-receptors",
+      "doi": "10.5061/dryad.rv15dv4k2",
+      "downloaded": true,
+      "parseable": true,
+      "parser_status": "parsed",
+      "remediation": "none",
+      "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.rv15dv4k2",
+      "source_verified": true
+    },
+    {
+      "blocker": "",
+      "dataset_id": "dryad-jernigan-2026-antennal-movement",
+      "doi": "10.5061/dryad.qjq2bvqw6",
+      "downloaded": true,
+      "parseable": true,
+      "parser_status": "parsed",
+      "remediation": "none",
+      "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.qjq2bvqw6",
+      "source_verified": true
+    },
+    {
+      "blocker": "",
+      "dataset_id": "dryad-nouvian-2017-biogenic-amines",
+      "doi": "10.5061/dryad.rj10c",
+      "downloaded": true,
+      "parseable": true,
+      "parser_status": "parsed",
+      "remediation": "none",
+      "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.rj10c",
+      "source_verified": true
+    },
+    {
+      "blocker": "",
+      "dataset_id": "figshare-hadjitofi-2024-waggle-following",
+      "doi": "10.6084/m9.figshare.24715977.v1",
+      "downloaded": true,
+      "parseable": true,
+      "parser_status": "parsed",
+      "remediation": "none",
+      "source_url": "https://figshare.com/articles/dataset/Honeybee_antennal_positioning_data_when_following_dances/24715977",
+      "source_verified": true
+    }
+  ],
+  "source_verified_blocked_count": 4,
+  "source_verified_dataset_count": 10,
+  "source_verified_fraction": 1.0
+}

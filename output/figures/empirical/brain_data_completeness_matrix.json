@@ -1,0 +1,38 @@
+{
+  "alt_text": "Matrix of BeeBrain source availability, parser status, and verification state.",
+  "artifact_kind": "figure",
+  "backend": "Matplotlib empirical-data renderer",
+  "caption": "Empirical completeness matrix showing which BeeBrain source rows are registered, locally available, parseable, and source-verified.",
+  "citation_keys": [
+    "galizia1999glomerular",
+    "brandt2005standardbrain",
+    "paoli2024dryad"
+  ],
+  "claim_tier": "empirical_availability_diagnostic",
+  "fidelity": "empirical dataset availability diagnostic",
+  "figure_path": "output/figures/empirical/brain_data_completeness_matrix.png",
+  "manuscript_label": "fig:brain_data_completeness_matrix",
+  "manuscript_section": "manuscript/11_empirical_results.md",
+  "priority": "primary",
+  "quality": {
+    "height_px": 860,
+    "max_intensity": 255,
+    "mean_intensity": 224.96970228214158,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 71.91743722270645,
+    "width_px": 1499
+  },
+  "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "output/data/brain_data_completeness.json",
+  "source_dois": [
+    "10.1038/8144",
+    "10.1002/cne.20644",
+    "10.5061/dryad.qbzkh18sc"
+  ],
+  "title": "Brain Data Completeness Matrix",
+  "unsupported_inference": "Does not replace absent calcium payloads with synthetic traces.",
+  "validation_status": "nonblank empirical diagnostic"
+}

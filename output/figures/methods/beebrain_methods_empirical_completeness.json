@@ -1,20 +1,65 @@
 {
+  "accessibility_checks": {
+    "background": "#FFFFFF",
+    "contrast_ratio": 17.73971700407407,
+    "foreground": "#111827",
+    "large_text_passed": true,
+    "large_text_threshold": 3.0,
+    "normal_text_passed": true,
+    "normal_text_threshold": 4.5,
+    "standard": "WCAG 2.1 AA contrast thresholds"
+  },
+  "alt_text": "BeeBrain empirical completeness panel with source availability and gap markers.",
+  "artifact_kind": "figure",
   "backend": "Matplotlib/pandas",
+  "caption": "BeeBrain completeness dashboard reporting available empirical channels, parser gaps, and the absence of locally parsed calcium datasets.",
+  "citation_keys": [
+    "galizia1999glomerular",
+    "brandt2005standardbrain",
+    "paoli2024dryad"
+  ],
+  "claim_tier": "empirical_reduced_or_availability_gated",
+  "design_citation_keys": [
+    "rougier2014figures",
+    "cleveland1984graphical",
+    "crameri2020colour",
+    "w3c2023wcag21",
+    "wilkinson2016fair",
+    "heer2012interactive",
+    "ragan2016provenance"
+  ],
+  "design_source_dois": [
+    "10.1371/journal.pcbi.1003833",
+    "10.1080/01621459.1984.10478080",
+    "10.1038/s41467-020-19160-7",
+    "10.1038/sdata.2016.18",
+    "10.1145/2133806.2133821",
+    "10.1109/TVCG.2015.2467551"
+  ],
   "fidelity": "empirical completeness summary projected into reduced BeeBrain contracts",
-  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beebrain_methods_empirical_completeness.png",
+  "figure_path": "output/figures/methods/beebrain_methods_empirical_completeness.png",
+  "manuscript_label": "fig:brain_methods_completeness",
+  "manuscript_section": "manuscript/05_brain_methods.md",
+  "priority": "primary",
   "quality": {
-    "height_px": 972,
+    "height_px": 1050,
     "max_intensity": 255,
-    "mean_intensity": 244.7099234712295,
+    "mean_intensity": 248.41863022495133,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 42.189872628329844,
-    "width_px": 1710
+    "std_intensity": 33.43584084912429,
+    "width_px": 2373
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
   "schema": "beestack.figure.v1",
-  "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+  "source_data": "MethodsAnalysisReport and empirical analysis report",
+  "source_dois": [
+    "10.1038/8144",
+    "10.1002/cne.20644",
+    "10.5061/dryad.qbzkh18sc"
+  ],
   "title": "Beebrain Methods Empirical Completeness",
+  "unsupported_inference": "Does not support connectome-scale or calcium-validated dynamics.",
   "validation_status": "nonblank image and quality sidecar passed"
 }

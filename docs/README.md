@@ -59,6 +59,7 @@ Core generated audits:
 
 - `output/reports/beestack_integrity_review.md`
 - `output/reports/documentation_audit.md`
+- `output/reports/generated_report_audit.md`
 - `output/reports/flybody_contact_physics.md`
 - `output/reports/beestack_research_report.md`
 - `output/reports/methods_analysis.md`

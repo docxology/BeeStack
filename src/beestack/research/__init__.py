@@ -13,6 +13,7 @@ from .methods import (
     methods_analysis_markdown,
 )
 from .suite import (
+    EVIDENCE_AVAILABILITY_STATES,
     EmpiricalEvidenceRecord,
     ModuleMethodScorecard,
     ResearchSuiteReport,
@@ -32,6 +33,7 @@ from .synthesis import (
 
 __all__ = [
     "EmpiricalEvidenceRecord",
+    "EVIDENCE_AVAILABILITY_STATES",
     "ManuscriptEvidenceLink",
     "MethodsAnalysisReport",
     "ModuleMethodScorecard",

@@ -27,11 +27,11 @@ registered odor templates, and an empirical-alignment score of
 
 ## Witness figures
 
-![BeeBody energy across the integrated run](../figures/body_energy_timeseries.png){#fig:body_energy}
+![Matplotlib BeeBody energy time series generated from simulation records; sidecar validation checks the raster, and the figure supports deterministic reduced-run energy accounting rather than calibrated honeybee energetics.](../figures/body_energy_timeseries.png){#fig:body_energy}
 
-![BeeNiche comb occupancy witness](../figures/comb_fraction_timeseries.png){#fig:comb_fraction}
+![Matplotlib BeeNiche comb-occupancy time series generated from simulation records; sidecar validation checks the raster, and the figure supports deterministic niche-kernel behavior rather than full hive ecology.](../figures/comb_fraction_timeseries.png){#fig:comb_fraction}
 
-![BeeStack module contract coverage](../figures/module_contract_coverage.png){#fig:module_coverage}
+![Matplotlib BeeStack module contract coverage generated from module coverage records; sidecar validation checks the raster, and the figure supports implemented-contract coverage rather than scientific validation completeness.](../figures/module_contract_coverage.png){#fig:module_coverage}
 
 ## Artifact trace
 

@@ -11,6 +11,7 @@ import pandas as pd
 
 from ..research import MethodsAnalysisReport
 from .figure_metadata import assert_nonblank_quality, write_figure_sidecar
+from .style import PALETTE, add_panel_label, apply_panel_style, module_color, style_context
 
 
 def generate_methods_figures(
@@ -21,30 +22,35 @@ def generate_methods_figures(
     """Generate publication-oriented methods-analysis figures."""
 
     output_dir.mkdir(parents=True, exist_ok=True)
-    paths = [
-        _repo_methods_dashboard(report, output_dir / "methods_repo_dashboard.png"),
-        _body_telemetry(records, report, output_dir / "beebody_methods_telemetry_dashboard.png"),
-        _module_metric_panel(
-            report,
-            "BeeBrain",
-            output_dir / "beebrain_methods_empirical_completeness.png",
-            "BeeBrain empirical completeness and anatomy mapping",
-        ),
-        _module_metric_panel(
-            report,
-            "BeeMind",
-            output_dir / "beemind_methods_policy_landscape.png",
-            "BeeMind policy landscape diagnostics",
-        ),
-        _module_metric_panel(
-            report,
-            "BeeSwarm",
-            output_dir / "beeswarm_methods_contact_recruitment.png",
-            "BeeSwarm contact and recruitment diagnostics",
-        ),
-        _niche_comb_thermal(records, report, output_dir / "beeniche_methods_comb_thermal.png"),
-        _manuscript_evidence_index(report, output_dir / "methods_manuscript_evidence_index.png"),
-    ]
+    with style_context():
+        paths = [
+            _repo_methods_dashboard(report, output_dir / "methods_repo_dashboard.png"),
+            _body_telemetry(
+                records, report, output_dir / "beebody_methods_telemetry_dashboard.png"
+            ),
+            _module_metric_panel(
+                report,
+                "BeeBrain",
+                output_dir / "beebrain_methods_empirical_completeness.png",
+                "BeeBrain empirical completeness and anatomy mapping",
+            ),
+            _module_metric_panel(
+                report,
+                "BeeMind",
+                output_dir / "beemind_methods_policy_landscape.png",
+                "BeeMind policy landscape diagnostics",
+            ),
+            _module_metric_panel(
+                report,
+                "BeeSwarm",
+                output_dir / "beeswarm_methods_contact_recruitment.png",
+                "BeeSwarm contact and recruitment diagnostics",
+            ),
+            _niche_comb_thermal(records, report, output_dir / "beeniche_methods_comb_thermal.png"),
+            _manuscript_evidence_index(
+                report, output_dir / "methods_manuscript_evidence_index.png"
+            ),
+        ]
     for path in paths:
         _validate_nonblank_image(path)
         write_figure_sidecar(
@@ -145,9 +151,9 @@ def _repo_methods_dashboard(report: MethodsAnalysisReport, path: Path) -> Path:
             normalized[column] = 1.0 if float(values.max()) > 0 else 0.0
         else:
             normalized[column] = (values - float(values.min())) / span
-    fig, ax = plt.subplots(figsize=(10, 5.4))
+    fig, ax = plt.subplots(figsize=(10.5, 5.6))
     image = ax.imshow(normalized.to_numpy(), aspect="auto", cmap="cividis", vmin=0, vmax=1)
-    ax.set_title("BeeStack science-first methods dashboard")
+    ax.set_title("BeeStack science-first methods dashboard", loc="left")
     ax.set_xticks(range(len(frame.columns)), frame.columns, rotation=25, ha="right")
     ax.set_yticks(range(len(frame.index)), frame.index)
     for row_index, module in enumerate(frame.index):
@@ -182,21 +188,18 @@ def _body_telemetry(
     body_panel = _panel(report, "BeeBody")
     metrics = body_panel.quantitative_metrics
     fig, axes = plt.subplots(2, 2, figsize=(10, 6.4))
-    axes[0, 0].plot(steps, speed, color="#0f766e", marker="o")
-    axes[0, 0].set_title("COM speed witness")
-    axes[0, 0].set_ylabel("m/s")
-    axes[0, 1].plot(steps, wing_power, color="#d97706", marker="s")
-    axes[0, 1].set_title("Wingbeat power witness")
-    axes[0, 1].set_ylabel("mW")
-    axes[1, 0].plot(steps, energy, color="#2563eb", marker="^")
-    axes[1, 0].set_title("Energy budget")
-    axes[1, 0].set_ylabel("J")
+    axes[0, 0].plot(steps, speed, color=module_color("BeeBody"), marker="o")
+    apply_panel_style(axes[0, 0], title="COM speed witness", ylabel="m/s", grid_axis="both")
+    axes[0, 1].plot(steps, wing_power, color=PALETTE[0], marker="s")
+    apply_panel_style(axes[0, 1], title="Wingbeat power witness", ylabel="mW", grid_axis="both")
+    axes[1, 0].plot(steps, energy, color=module_color("BeeBrain"), marker="^")
+    apply_panel_style(axes[1, 0], title="Energy budget", ylabel="J", grid_axis="both")
     labels = ["bee_visual_score", "bee_silhouette_score", "wingbeat_frequency_hz"]
     values = [metrics.get(label, 0.0) for label in labels]
-    axes[1, 1].barh(labels[::-1], values[::-1], color="#7c3aed")
-    axes[1, 1].set_title("Morphology and wingbeat cues")
-    for axis in axes.ravel():
-        axis.grid(alpha=0.22)
+    axes[1, 1].barh(labels[::-1], values[::-1], color=module_color("BeeMind"))
+    apply_panel_style(axes[1, 1], title="Morphology and wingbeat cues", grid_axis="x")
+    for label, axis in zip(("A", "B", "C", "D"), axes.ravel(), strict=True):
+        add_panel_label(axis, label)
     fig.suptitle("BeeBody methods telemetry and morphology diagnostics", y=0.995)
     fig.tight_layout()
     fig.savefig(path, dpi=180)
@@ -214,20 +217,35 @@ def _module_metric_panel(
     items = sorted(panel.quantitative_metrics.items(), key=lambda item: abs(item[1]))
     labels = [item[0] for item in items]
     values = [item[1] for item in items]
-    fig, ax = plt.subplots(figsize=(9.5, 5.4))
-    ax.barh(labels, values, color="#2a9d8f")
-    ax.set_title(title)
-    ax.set_xlabel("Metric value")
-    ax.grid(axis="x", alpha=0.22)
-    ax.text(
-        0.02,
-        0.03,
-        f"Validation {panel.validation_panel.validation_fraction:.2f}; "
-        f"{panel.visualization_panel.artifact_count} linked visual artifacts",
-        transform=ax.transAxes,
-        fontsize=9,
-        bbox={"facecolor": "white", "edgecolor": "#d1d5db", "alpha": 0.85},
+    fig = plt.figure(figsize=(11, 5.8))
+    grid = fig.add_gridspec(1, 2, width_ratios=[1.55, 1.0])
+    ax = fig.add_subplot(grid[0, 0])
+    ax_context = fig.add_subplot(grid[0, 1])
+    ax.barh(labels, values, color=module_color(module))
+    apply_panel_style(ax, title=title, xlabel="Metric value", grid_axis="x")
+    add_panel_label(ax, "A")
+    ax_context.axis("off")
+    evidence = panel.manuscript_evidence[0]
+    context_lines = (
+        f"Validation fraction\n{panel.validation_panel.validation_fraction:.2f}",
+        f"Linked visual artifacts\n{panel.visualization_panel.artifact_count}",
+        f"Claim tier\n{evidence.claim_tier.replace('_', ' ')}",
+        f"Availability\n{evidence.availability_status}",
+        "Conservative boundary\n" + panel.interpretation,
     )
+    for index, text in enumerate(context_lines):
+        y = 0.93 - index * 0.18
+        ax_context.text(
+            0.02,
+            y,
+            text,
+            transform=ax_context.transAxes,
+            va="top",
+            fontsize=9,
+            bbox={"boxstyle": "round,pad=0.35", "facecolor": "#F8FAFC", "edgecolor": "#CBD5E1"},
+        )
+    add_panel_label(ax_context, "B")
+    fig.suptitle(f"{module}: methods evidence, validation, and claim boundary", y=0.995)
     fig.tight_layout()
     fig.savefig(path, dpi=180)
     plt.close(fig)
@@ -244,16 +262,24 @@ def _niche_comb_thermal(
     temp_error = _series(records, "brood_temperature_error_c")
     panel = _panel(report, "BeeNiche")
     fig, axes = plt.subplots(1, 2, figsize=(10, 4.7))
-    axes[0].plot(steps, comb, marker="s", color="#7c2d12")
-    axes[0].set_title("Comb occupancy trajectory")
-    axes[0].set_xlabel("Control step")
-    axes[0].set_ylabel("Fraction")
-    axes[1].plot(steps, temp_error, marker="o", color="#dc2626")
-    axes[1].set_title("Brood thermal error")
-    axes[1].set_xlabel("Control step")
-    axes[1].set_ylabel("C")
-    for axis in axes:
-        axis.grid(alpha=0.22)
+    axes[0].plot(steps, comb, marker="s", color=module_color("BeeNiche"))
+    apply_panel_style(
+        axes[0],
+        title="Comb occupancy trajectory",
+        xlabel="Control step",
+        ylabel="Fraction",
+        grid_axis="both",
+    )
+    axes[1].plot(steps, temp_error, marker="o", color=PALETTE[6])
+    apply_panel_style(
+        axes[1],
+        title="Brood thermal error",
+        xlabel="Control step",
+        ylabel="C",
+        grid_axis="both",
+    )
+    for label, axis in zip(("A", "B"), axes, strict=True):
+        add_panel_label(axis, label)
     fig.suptitle(
         f"BeeNiche methods validation {panel.validation_panel.validation_fraction:.2f}",
         y=0.98,
@@ -278,8 +304,20 @@ def _manuscript_evidence_index(report: MethodsAnalysisReport, path: Path) -> Pat
     frame = pd.DataFrame(rows)
     x = np.arange(len(frame))
     fig, ax = plt.subplots(figsize=(9.5, 5.0))
-    ax.bar(x - 0.2, frame["evidence_links"], width=0.4, label="Evidence links", color="#2563eb")
-    ax.bar(x + 0.2, frame["visual_artifacts"], width=0.4, label="Visual artifacts", color="#f59e0b")
+    ax.bar(
+        x - 0.2,
+        frame["evidence_links"],
+        width=0.4,
+        label="Evidence links",
+        color=module_color("BeeBrain"),
+    )
+    ax.bar(
+        x + 0.2,
+        frame["visual_artifacts"],
+        width=0.4,
+        label="Visual artifacts",
+        color=module_color("BeeBody"),
+    )
     ax2 = ax.twinx()
     ax2.plot(x, frame["validation_fraction"], color="#111827", marker="o", label="Validation")
     ax.set_xticks(x, frame["module"], rotation=20, ha="right")
@@ -287,7 +325,7 @@ def _manuscript_evidence_index(report: MethodsAnalysisReport, path: Path) -> Pat
     ax2.set_ylabel("Validation fraction")
     ax2.set_ylim(0, 1.05)
     ax.set_title("Manuscript evidence index by module")
-    ax.grid(axis="y", alpha=0.22)
+    apply_panel_style(ax, grid_axis="y")
     ax.legend(loc="upper left")
     ax2.legend(loc="upper right")
     fig.tight_layout()

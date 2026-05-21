@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 from beestack.visualization.figures import generate_analysis_figures
@@ -29,18 +30,31 @@ def _records() -> list[dict[str, object]]:
 def test_generate_analysis_figures_writes_pngs_and_sidecars(tmp_path: Path) -> None:
     modules = ["BeeBody", "BeeBrain", "BeeMind", "BeeSwarm", "BeeNiche"]
     paths = generate_analysis_figures(_records(), modules, tmp_path)
-    assert len(paths) == 12
+    assert len(paths) == 14
+    assert tmp_path / "manuscript_figure_claim_map.png" in paths
     for p in paths:
         assert p.exists(), f"missing figure {p}"
         assert p.stat().st_size > 0
         sidecar = p.with_suffix(".json")
         assert sidecar.exists(), f"missing sidecar for {p}"
         assert sidecar.stat().st_size > 0
+        payload = json.loads(sidecar.read_text(encoding="utf-8"))
+        assert payload["caption"]
+        assert payload["alt_text"]
+        assert payload["claim_tier"]
+        assert payload["unsupported_inference"]
+        assert payload["accessibility_checks"]["normal_text_passed"]
+    claim_map = json.loads((tmp_path / "manuscript_figure_claim_map.json").read_text())
+    assert claim_map["manuscript_label"] == "fig:manuscript_figure_claim_map"
+    assert "rougier2014figures" in claim_map["design_citation_keys"]
+    assert "cleveland1984graphical" in claim_map["design_citation_keys"]
+    assert "ragan2016provenance" in claim_map["design_citation_keys"]
+    assert claim_map["metrics"]["primary_figure_count"] >= 10
 
 
 def test_generate_analysis_figures_empty_records(tmp_path: Path) -> None:
     # Degenerate input must still produce valid non-empty figures (defensive
     # series helpers return [default]).
     paths = generate_analysis_figures([], [], tmp_path)
-    assert len(paths) == 12
+    assert len(paths) == 14
     assert all(p.exists() and p.stat().st_size > 0 for p in paths)

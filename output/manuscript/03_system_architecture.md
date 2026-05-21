@@ -113,8 +113,10 @@ records what level of evidence backs each claim. The animation manifest
 currently contains 9 animations
 (5 FlyBody, 4
 reduced schematic), and the manuscript figure index links
-28 figures and visual artifacts to their
+45 figures and visual artifacts to their
 backend, fidelity tier, validation status, and regeneration command.
+
+![Matplotlib BeeStack graphical abstract generated from module contracts and coverage records; sidecar validation checks the raster output, and the figure supports architecture traceability rather than biological or digital-twin validation.](../figures/beestack_graphical_abstract.png){#fig:beestack_graphical_abstract}
 
 ## Module dependencies
 

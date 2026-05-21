@@ -16,6 +16,7 @@ if str(SRC_ROOT) not in sys.path:
     sys.path.insert(0, str(SRC_ROOT))
 
 from beestack import BeeStackConfig, config_from_mapping
+from beestack.utils import project_relative_path, project_relative_payload
 from beestack.visualization import generate_module_animations, waggle_dance_visualization_config
 from beestack.visualization.bee_signature import (
     analyze_bee_render_signature,
@@ -51,8 +52,8 @@ def main() -> None:
     artifacts = generate_module_animations(cfg, PROJECT_ROOT / "output" / "animations")
     waggle_config = waggle_dance_visualization_config(cfg)
     bee_signatures = _bee_signatures(artifacts, cfg)
-    bee_visual_report = _bee_visual_report(bee_signatures)
     contact_physics_report = _contact_physics_report(artifacts)
+    bee_visual_report = _bee_visual_report(bee_signatures, contact_physics_report)
     manifest = {
         "animations": [artifact.as_dict() for artifact in artifacts],
         "groups": _animation_groups(artifacts),
@@ -64,6 +65,7 @@ def main() -> None:
         "bee_visual_signature": bee_visual_report,
         "flybody_contact_physics": contact_physics_report,
     }
+    manifest = project_relative_payload(manifest, PROJECT_ROOT)
     path = PROJECT_ROOT / "output" / "data" / "animation_manifest.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
@@ -78,9 +80,17 @@ def main() -> None:
         encoding="utf-8",
     )
     (report_dir / "bee_visual_verification.md").write_text(
-        "\n".join(
-            bee_render_report_markdown(signature, artifact.path, artifact.source)
-            for artifact, signature in bee_signatures
+        (
+            "\n".join(
+                bee_render_report_markdown(
+                    signature,
+                    project_relative_path(artifact.path, PROJECT_ROOT),
+                    project_relative_path(artifact.source, PROJECT_ROOT),
+                )
+                for artifact, signature in bee_signatures
+            )
+            + "\n\n"
+            + _contact_physics_markdown(contact_physics_report)
         ),
         encoding="utf-8",
     )
@@ -120,20 +130,25 @@ def _bee_signatures(artifacts, cfg: BeeStackConfig):
     return signatures
 
 
-def _bee_visual_report(bee_signatures) -> dict[str, object]:
+def _bee_visual_report(bee_signatures, contact_physics_report) -> dict[str, object]:
+    body_visual_passed = all(signature.bee_like for _, signature in bee_signatures)
+    swarm_contact_passed = bool(contact_physics_report.get("passed", False))
     return {
-        "bee_like": all(signature.bee_like for _, signature in bee_signatures),
+        "bee_like": body_visual_passed and swarm_contact_passed,
+        "body_visual_passed": body_visual_passed,
+        "swarm_contact_physics_passed": swarm_contact_passed,
         "score": min(signature.score for _, signature in bee_signatures),
         "silhouette_score": min(signature.silhouette_score for _, signature in bee_signatures),
         "animations": [
             {
-                "gif": artifact.path,
-                "contact_sheet": artifact.contact_sheet,
-                "mjcf": artifact.source,
+                "gif": project_relative_path(artifact.path, PROJECT_ROOT),
+                "contact_sheet": project_relative_path(artifact.contact_sheet, PROJECT_ROOT),
+                "mjcf": project_relative_path(artifact.source, PROJECT_ROOT),
                 **signature.as_dict(),
             }
             for artifact, signature in bee_signatures
         ],
+        "swarm": project_relative_payload(contact_physics_report, PROJECT_ROOT),
     }
 
 
@@ -141,7 +156,12 @@ def _contact_physics_report(artifacts) -> dict[str, object]:
     scenes = []
     for artifact in artifacts:
         if artifact.contact_report:
-            scenes.append(json.loads(Path(artifact.contact_report).read_text(encoding="utf-8")))
+            scenes.append(
+                project_relative_payload(
+                    json.loads(Path(artifact.contact_report).read_text(encoding="utf-8")),
+                    PROJECT_ROOT,
+                )
+            )
     return {
         "passed": bool(scenes) and all(scene["metrics"]["passed"] for scene in scenes),
         "scene_count": len(scenes),
