@@ -14,7 +14,7 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 - `module_validation_std`: 0.000
 - `real_flybody_animation_count`: 5.000
 - `reduced_schematic_animation_count`: 4.000
-- `scholarship_reference_count`: 42.000
+- `scholarship_reference_count`: 52.000
 - `signposting_fraction`: 1.000
 - `simulation_energy_drop_j`: 0.001
 - `simulation_mean_wing_power_mw`: 58.291
@@ -22,7 +22,7 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 - `simulation_recruited_total`: 168.000
 - `simulation_step_count`: 24.000
 - `simulation_thermal_error_improvement_c`: 4.415
-- `visualization_artifact_count`: 66.000
+- `visualization_artifact_count`: 68.000
 
 ## Module Panels
 
@@ -43,7 +43,7 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 - `empirical_parseability`: pass; value `0.6`; threshold `0.5`. BeeBrain parseable-source fraction clears configured minimum.
 - `simulation_energy_finite`: pass; value `0.000821`; threshold `>= 0`. Body energy does not increase during the deterministic integrated run.
 - `simulation_thermal_improves`: pass; value `4.415`; threshold `> 0`. Brood-temperature error improves over the deterministic run.
-- `scholarship_minimum`: pass; value `42`; threshold `7`. Manuscript bibliography includes the configured minimum scholarship anchors.
+- `scholarship_minimum`: pass; value `52`; threshold `7`. Manuscript bibliography includes the configured minimum scholarship anchors.
 
 ## Prioritized Findings
 
@@ -57,13 +57,18 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 - `@andreu2025dryad`
 - `@becher2014beehave`
 - `@bjornsson2020digitaltwins`
+- `@brandt2005standardbrain`
 - `@carcaud2022dryad`
+- `@cleveland1984graphical`
 - `@couvillon2014waggle`
+- `@crameri2020colour`
 - `@free1987pheromones`
 - `@friedman2026beestack`
 - `@friston2010free`
 - `@galizia1999glomerular`
+- `@hadjitofi2024currentbiology`
 - `@hadjitofi2024figshare`
+- `@heer2012interactive`
 - `@honkanen2019sky`
 - `@jernigan2026dryad`
 - `@johnson2009self`
@@ -71,6 +76,7 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 - `@kaneko2016kenyon`
 - `@khamassi2020bio`
 - `@kronenberg1982colonial`
+- `@lamprecht2020fairsoftware`
 - `@menzel2001cognitive`
 - `@menzel2012honey`
 - `@millman2020scientific`
@@ -82,6 +88,8 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 - `@paoli2024dryad`
 - `@parr2017working`
 - `@pfeifer2006morphological`
+- `@ragan2016provenance`
+- `@rougier2014figures`
 - `@rybak2010digital`
 - `@saltelli2008global`
 - `@sasaki2018superorganisms`
@@ -92,6 +100,8 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 - `@szyszka2023granger`
 - `@todorov2012mujoco`
 - `@vaxenburg2025flybody`
+- `@w3c2023wcag21`
+- `@wario2015automatic`
 - `@wcislo2003respiratory`
 - `@webb2020waggle`
 - `@wilkinson2016fair`
@@ -99,4 +109,4 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 
 ## Figures
 
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/stack_synthesis_dashboard.png`
+- `output/figures/research/stack_synthesis_dashboard.png`

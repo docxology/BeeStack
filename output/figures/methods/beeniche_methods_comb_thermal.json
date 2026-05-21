@@ -1,20 +1,63 @@
 {
+  "accessibility_checks": {
+    "background": "#FFFFFF",
+    "contrast_ratio": 17.73971700407407,
+    "foreground": "#111827",
+    "large_text_passed": true,
+    "large_text_threshold": 3.0,
+    "normal_text_passed": true,
+    "normal_text_threshold": 4.5,
+    "standard": "WCAG 2.1 AA contrast thresholds"
+  },
+  "alt_text": "BeeNiche methods panel with comb, thermal, and forage-context diagnostics.",
+  "artifact_kind": "figure",
   "backend": "Matplotlib/pandas",
+  "caption": "BeeNiche methods panel showing comb occupancy, brood thermal error, foraging-radius context, and deterministic niche-kernel validation.",
+  "citation_keys": [
+    "kronenberg1982colonial",
+    "johnson2009self",
+    "becher2014beehave"
+  ],
+  "claim_tier": "reduced_validated_kernel",
+  "design_citation_keys": [
+    "rougier2014figures",
+    "cleveland1984graphical",
+    "crameri2020colour",
+    "w3c2023wcag21",
+    "wilkinson2016fair",
+    "heer2012interactive",
+    "ragan2016provenance"
+  ],
+  "design_source_dois": [
+    "10.1371/journal.pcbi.1003833",
+    "10.1080/01621459.1984.10478080",
+    "10.1038/s41467-020-19160-7",
+    "10.1038/sdata.2016.18",
+    "10.1145/2133806.2133821",
+    "10.1109/TVCG.2015.2467551"
+  ],
   "fidelity": "reduced deterministic kernel diagnostic",
-  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beeniche_methods_comb_thermal.png",
+  "figure_path": "output/figures/methods/beeniche_methods_comb_thermal.png",
+  "manuscript_label": "fig:niche_methods_comb_thermal",
+  "manuscript_section": "manuscript/08_niche_methods.md",
+  "priority": "primary",
   "quality": {
-    "height_px": 846,
+    "height_px": 840,
     "max_intensity": 255,
-    "mean_intensity": 248.6403841607565,
+    "mean_intensity": 249.69701480592238,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 35.623156877885684,
-    "width_px": 1800
+    "std_intensity": 30.372357620076297,
+    "width_px": 1785
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
   "schema": "beestack.figure.v1",
-  "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+  "source_data": "MethodsAnalysisReport and simulation records",
+  "source_dois": [
+    "10.1111/1365-2664.12222"
+  ],
   "title": "Beeniche Methods Comb Thermal",
+  "unsupported_inference": "Does not support a full ecology or hive thermodynamics engine.",
   "validation_status": "nonblank image and quality sidecar passed"
 }

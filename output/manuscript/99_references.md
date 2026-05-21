@@ -10,6 +10,7 @@ the role they play in the stack.
 - BeeStack project specification [@friedman2026beestack]
 - Reproducible-research practice [@wilson2017good]
 - FAIR data and workflow principles [@wilkinson2016fair]
+- FAIR research-software principles [@lamprecht2020fairsoftware]
 - Transparent model reporting [@mitchell2019modelcards]
 - Numerical-model validation caution [@oreskes1994verification]
 - Global sensitivity analysis [@saltelli2008global]
@@ -24,7 +25,8 @@ the role they play in the stack.
 
 ## Brain anatomy and activity
 
-- Honey-Bee Standard Brain ecosystem [@rybak2010digital]
+- Honey-Bee Standard Brain atlas [@brandt2005standardbrain]
+- Honey-Bee Standard Brain integration ecosystem [@rybak2010digital]
 - Glomerular odor code [@galizia1999glomerular]
 - Antennal-lobe Granger-causal transient dynamics
   [@szyszka2023granger]
@@ -48,6 +50,8 @@ the role they play in the stack.
 - Nouvian biogenic amines [@nouvian2017dryad]
 - Hadjitofi–Webb dance-follower kinematics
   [@hadjitofi2024figshare]
+- Hadjitofi–Webb dance-follower antennal positioning article
+  [@hadjitofi2024currentbiology]
 
 ## Mind and active inference
 
@@ -66,6 +70,8 @@ the role they play in the stack.
 - Choosing a home [@seeley2003consensus]
 - Waggle-dance review [@nagari2017waggle]
 - Waggle-dance distance indicators [@couvillon2014waggle]
+- Automated waggle-dance tracking and decoding
+  [@wario2015automatic]
 - Pheromones of social bees [@free1987pheromones]
 - Temporal polyethism [@johnson2010temporal]
 

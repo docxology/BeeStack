@@ -9,6 +9,7 @@ from typing import Any, cast
 import numpy as np
 
 from ..config import BeeStackConfig
+from ..utils import project_relative_payload
 from .anatomy import BeeBrainAnatomySummary
 from .empirical import GlomerularResponseSummary, empirical_alignment_score
 from .empirical_data import (
@@ -206,15 +207,17 @@ class BeeBrainEndToEndReport:
     known_gaps: tuple[str, ...]
 
     def as_dict(self) -> dict[str, object]:
-        return {
-            "anatomy": self.anatomy.as_dict(),
-            "activity": self.activity.as_dict(),
-            "dataset_ids": self.dataset_ids,
-            "figure_paths": self.figure_paths,
-            "archive_status": self.archive_status,
-            "anatomy_downloads": self.anatomy_downloads,
-            "known_gaps": self.known_gaps,
-        }
+        return project_relative_payload(
+            {
+                "anatomy": self.anatomy.as_dict(),
+                "activity": self.activity.as_dict(),
+                "dataset_ids": self.dataset_ids,
+                "figure_paths": self.figure_paths,
+                "archive_status": self.archive_status,
+                "anatomy_downloads": self.anatomy_downloads,
+                "known_gaps": self.known_gaps,
+            }
+        )
 
 
 def validate_odor_panel(panel: EmpiricalOdorResponsePanel) -> tuple[DataQualityCheck, ...]:

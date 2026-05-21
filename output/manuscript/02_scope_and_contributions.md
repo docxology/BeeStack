@@ -75,7 +75,7 @@ Executability is enforced at three levels.
 
 The research suite assembles five module scorecards, empirical evidence
 records, visualization inventories, deterministic sensitivity sweeps,
-and known gaps. It currently reports 66
+and known gaps. It currently reports 68
 visualization artifacts, 3 sensitivity sweeps,
 5 empirical evidence records,
 11 explicitly catalogued gaps, and an overall

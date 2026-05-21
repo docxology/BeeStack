@@ -55,7 +55,9 @@ Validation is also textual and structural.
 - The **documentation audit**
   (`output/reports/documentation_audit.md`) checks
   generated-output references, manuscript hydration, fidelity
-  language, and signposting coverage.
+  language, signposting coverage, Pandoc citation keys, required
+  BibTeX DOI/URL metadata, registry DOI coverage, and conservative
+  digital-twin wording.
 - The **readiness review**
   (`output/reports/project_readiness_review.md`) records
   61 signposted directories and
@@ -66,16 +68,46 @@ Validation is also textual and structural.
 
 The methods-analysis pass adds 7 static methods
 figures, JSON sidecar metadata for generated methods and research figures,
-6 manuscript evidence links, and a manuscript
-figure index with 41 artifact rows. The index maps every cited figure or visual artifact to
+6 manuscript evidence links, and a source-claim
+crosswalk that carries module, method, configuration tokens, artifact path,
+citation keys, source DOIs, claim tier, and availability status. It also writes
+a manuscript figure index with 45 artifact rows.
+The index maps every cited figure or visual artifact to
 its backend (e.g. FlyBody, MuJoCo, Matplotlib), fidelity level (real
 3D, reduced kernel, schematic), validation status (passed/passed with
 caveats/known gap), and the regeneration command needed to reproduce
-it.
+it. The evidence ladder in
+`output/figures/beestack_evidence_ladder.png` is the reader-facing version of
+that contract: it separates strict rendered physics, empirical availability,
+reduced kernels, compatibility summaries, and the still-blocked digital-twin
+claim.
 
-![BeeStack methods dashboard](../figures/methods/methods_repo_dashboard.png){#fig:methods_dashboard}
+![Matplotlib BeeStack evidence ladder generated from methods analysis, readiness review, and artifact manifests; sidecar validation checks the raster, and the figure states which visual tiers support current claims rather than digital-twin readiness.](../figures/beestack_evidence_ladder.png){#fig:beestack_evidence_ladder}
 
-![BeeStack manuscript evidence index](../figures/methods/methods_manuscript_evidence_index.png){#fig:methods_evidence_index}
+![Matplotlib manuscript figure claim map generated from the figure registry and manuscript figure index; sidecar validation checks the raster, and the figure supports figure-provenance review rather than adding empirical evidence.](../figures/manuscript_figure_claim_map.png){#fig:manuscript_figure_claim_map}
+
+![Matplotlib/pandas BeeStack methods dashboard generated from MethodsAnalysisReport; sidecar validation checks the raster, and the figure supports provenance and validation coverage claims rather than biological predictive validity.](../figures/methods/methods_repo_dashboard.png){#fig:methods_dashboard}
+
+![Matplotlib/pandas manuscript evidence index generated from MethodsAnalysisReport evidence links; sidecar validation checks the raster, and the figure supports manuscript provenance coverage rather than absent empirical support.](../figures/methods/methods_manuscript_evidence_index.png){#fig:methods_evidence_index}
+
+## Figure design, accessibility, and claim discipline
+
+The main-manuscript figures follow a reader-facing design contract:
+consistent typography and panel structure, restrained non-data ink,
+perceptually safer colour choices, contrast checks for text-like marks,
+purposeful alt text, position- and length-oriented encodings for the
+main evidence maps, and captions that name the backend, source data,
+validation status, and unsupported inference. The design rules are
+grounded in practical figure guidance, graphical-perception evidence,
+colour-map misuse literature, WCAG contrast/accessibility standards,
+FAIR provenance principles, and visual-analytics provenance frameworks
+[@rougier2014figures; @cleveland1984graphical; @crameri2020colour;
+@w3c2023wcag21; @wilkinson2016fair; @heer2012interactive;
+@ragan2016provenance]. The implementation is deliberately mechanical:
+sidecars record accessibility checks, design citations, source-data
+classes, and claim-tier boundaries, and the figure audit fails if a
+primary manuscript caption omits the
+backend/source/validation/conservative-interpretation pattern.
 
 ## Why this matters
 
@@ -85,7 +117,8 @@ what fidelity tier the kernel sits in, whether the figure passed nonblank/qualit
 metadata lives, and how to regenerate it. That is the operational meaning
 of "reproducible research" inside BeeStack: not merely "the code is
 public," but "every claim is linkable, every figure is regenerable,
-and every fidelity gap is named" [@wilson2017good].
+and every fidelity gap is named" [@wilson2017good;
+@lamprecht2020fairsoftware].
 
 ## Failure modes that visualization catches
 

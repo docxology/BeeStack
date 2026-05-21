@@ -10,6 +10,7 @@ import pandas as pd
 
 from ..research import StackSynthesisReview
 from .figure_metadata import assert_nonblank_quality, write_figure_sidecar
+from .style import PALETTE, apply_panel_style, module_color, style_context
 
 
 def generate_stack_synthesis_figures(
@@ -19,9 +20,10 @@ def generate_stack_synthesis_figures(
     """Generate cross-stack synthesis figures."""
 
     output_dir.mkdir(parents=True, exist_ok=True)
-    paths = [
-        _stack_synthesis_dashboard(review, output_dir / "stack_synthesis_dashboard.png"),
-    ]
+    with style_context():
+        paths = [
+            _stack_synthesis_dashboard(review, output_dir / "stack_synthesis_dashboard.png"),
+        ]
     for path in paths:
         _validate_nonblank_image(path)
         write_figure_sidecar(
@@ -46,14 +48,29 @@ def _stack_synthesis_dashboard(review: StackSynthesisReview, path: Path) -> Path
     ax_findings = fig.add_subplot(grid[1, 1])
 
     x = np.arange(len(frame))
-    ax_readiness.bar(x - 0.18, frame["validation_fraction"], width=0.36, label="validation")
-    ax_readiness.bar(x + 0.18, frame["readiness_score"], width=0.36, label="readiness")
+    colors = [module_color(module) for module in frame["module"]]
+    ax_readiness.bar(
+        x - 0.18,
+        frame["validation_fraction"],
+        width=0.36,
+        label="validation",
+        color=colors,
+        alpha=0.86,
+    )
+    ax_readiness.bar(
+        x + 0.18,
+        frame["readiness_score"],
+        width=0.36,
+        label="readiness",
+        color=PALETTE[5],
+        alpha=0.72,
+    )
     ax_readiness.set_xticks(x, frame["module"], rotation=25, ha="right")
     ax_readiness.set_ylim(0, 1.05)
     ax_readiness.set_ylabel("Fraction")
     ax_readiness.set_title("Module validation and synthesized readiness")
     ax_readiness.legend(fontsize=8)
-    ax_readiness.grid(axis="y", alpha=0.2)
+    apply_panel_style(ax_readiness, grid_axis="y")
 
     ax_artifacts.scatter(
         frame["artifact_count"],
@@ -92,7 +109,7 @@ def _stack_synthesis_dashboard(review: StackSynthesisReview, path: Path) -> Path
     ax_artifacts.set_xlabel("Artifact count")
     ax_artifacts.set_ylabel("Known gap count")
     ax_artifacts.set_title("Artifacts versus explicit gaps")
-    ax_artifacts.grid(alpha=0.2)
+    apply_panel_style(ax_artifacts, grid_axis="both")
 
     stat_names = [
         "simulation_thermal_error_improvement_c",
@@ -119,7 +136,13 @@ def _stack_synthesis_dashboard(review: StackSynthesisReview, path: Path) -> Path
     bars = ax_stats.bar(
         labels,
         stat_values,
-        color=["#0f766e", "#2563eb", "#7c3aed", "#ca8a04", "#475569"],
+        color=[
+            module_color("BeeNiche"),
+            module_color("BeeBrain"),
+            module_color("BeeMind"),
+            module_color("BeeBody"),
+            PALETTE[5],
+        ],
     )
     for bar, raw in zip(bars, raw_values, strict=True):
         ax_stats.text(
@@ -133,7 +156,7 @@ def _stack_synthesis_dashboard(review: StackSynthesisReview, path: Path) -> Path
     ax_stats.set_ylim(0, 1.12)
     ax_stats.set_ylabel("Normalized gate score")
     ax_stats.set_title("Cross-stack statistical gates")
-    ax_stats.grid(axis="y", alpha=0.2)
+    apply_panel_style(ax_stats, grid_axis="y")
 
     ax_findings.axis("off")
     finding_text = "\n\n".join(f"- {finding}" for finding in review.prioritized_findings)

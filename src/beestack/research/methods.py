@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
+from pathlib import Path
 from typing import Any
 
 import numpy as np
@@ -10,6 +11,12 @@ import numpy as np
 from ..body import bee_body_calibration_summary
 from ..config import BeeStackConfig
 from ..mind import initial_belief, policy_selection_diagnostics
+from ..utils import project_relative_path
+from ..visualization.figure_registry import (
+    all_figure_narratives,
+    figure_narrative_for_path,
+    generic_figure_sidecar_fields,
+)
 from .suite import EVIDENCE_AVAILABILITY_STATES, ResearchValidationRecord
 
 
@@ -25,14 +32,18 @@ class ManuscriptEvidenceLink:
     regeneration_command: str
     variable_tokens: tuple[str, ...]
     availability_status: str = "generated"
+    citation_keys: tuple[str, ...] = ()
+    source_dois: tuple[str, ...] = ()
+    artifact_kind: str = ""
+    claim_tier: str = ""
 
     def __post_init__(self) -> None:
         for field_name, value in asdict(self).items():
-            if field_name == "variable_tokens":
+            if field_name in {"variable_tokens", "citation_keys", "source_dois"}:
                 if not value:
-                    raise ValueError("manuscript evidence link needs at least one variable token")
+                    raise ValueError(f"manuscript evidence link needs at least one {field_name}")
                 if not all(isinstance(token, str) and token for token in value):
-                    raise ValueError("manuscript evidence variable tokens must be nonempty")
+                    raise ValueError(f"manuscript evidence {field_name} values must be nonempty")
             elif field_name == "availability_status":
                 if value not in EVIDENCE_AVAILABILITY_STATES:
                     raise ValueError(
@@ -41,9 +52,13 @@ class ManuscriptEvidenceLink:
                     )
             elif not isinstance(value, str) or not value:
                 raise ValueError(f"manuscript evidence {field_name} must be nonempty")
+        if not all(_looks_like_doi(doi) for doi in self.source_dois):
+            raise ValueError("manuscript evidence source_dois must look like DOI strings")
 
     def as_dict(self) -> dict[str, object]:
-        return asdict(self)
+        payload = asdict(self)
+        payload["artifact_path"] = project_relative_path(self.artifact_path)
+        return payload
 
 
 @dataclass(frozen=True)
@@ -136,7 +151,7 @@ class ModuleVisualizationPanel:
             "artifact_count": self.artifact_count,
             "figure_count": self.figure_count,
             "animation_count": self.animation_count,
-            "artifact_paths": self.artifact_paths,
+            "artifact_paths": tuple(project_relative_path(path) for path in self.artifact_paths),
             "backends": self.backends,
             "fidelity_levels": self.fidelity_levels,
             "validation_statuses": self.validation_statuses,
@@ -297,10 +312,13 @@ class MethodsAnalysisReport:
             "manuscript_evidence_links": [
                 link.as_dict() for link in self.manuscript_evidence_links
             ],
+            "source_claim_crosswalk": self.source_claim_crosswalk,
             "evidence_availability_counts": self.evidence_availability_counts,
             "top_validation_gaps": self.top_validation_gaps,
-            "figure_paths": self.figure_paths,
-            "interactive_paths": self.interactive_paths,
+            "figure_paths": tuple(project_relative_path(path) for path in self.figure_paths),
+            "interactive_paths": tuple(
+                project_relative_path(path) for path in self.interactive_paths
+            ),
         }
 
     @property
@@ -311,6 +329,37 @@ class MethodsAnalysisReport:
             )
             for status in sorted(EVIDENCE_AVAILABILITY_STATES)
         }
+
+    @property
+    def source_claim_crosswalk(self) -> tuple[dict[str, object], ...]:
+        panels = {panel.module: panel for panel in self.module_panels}
+        rows: list[dict[str, object]] = []
+        for link in self.manuscript_evidence_links:
+            panel = panels.get(link.module)
+            narrative = figure_narrative_for_path(link.artifact_path)
+            rows.append(
+                {
+                    "module": link.module,
+                    "method": "; ".join(panel.primary_methods) if panel else link.evidence_type,
+                    "config_knobs": link.variable_tokens,
+                    "artifact_path": project_relative_path(link.artifact_path),
+                    "artifact_kind": link.artifact_kind,
+                    "claim_tier": link.claim_tier,
+                    "manuscript_section": link.manuscript_section,
+                    "citation_keys": link.citation_keys,
+                    "source_dois": link.source_dois,
+                    "availability_status": link.availability_status,
+                    "claim": link.claim,
+                    "figure_caption": narrative.caption if narrative else link.claim,
+                    "figure_alt_text": narrative.alt_text if narrative else link.claim,
+                    "unsupported_inference": (
+                        narrative.unsupported_inference
+                        if narrative
+                        else "Does not support claims beyond the linked generated artifact."
+                    ),
+                }
+            )
+        return tuple(rows)
 
 
 def assemble_methods_analysis_report(
@@ -409,7 +458,26 @@ def methods_analysis_markdown(report: MethodsAnalysisReport) -> str:
         verb = "supports" if link.availability_status in {"parsed", "generated"} else "is gated for"
         lines.append(
             f"- `{link.manuscript_section}` {link.module}: `{link.artifact_path}` "
-            f"({link.evidence_type}, {link.availability_status}) {verb} {link.claim}"
+            f"({link.evidence_type}, {link.availability_status}, {link.claim_tier}) "
+            f"{verb} {link.claim} Citations: "
+            f"{', '.join(f'@{key}' for key in link.citation_keys)}."
+        )
+    lines.extend(
+        [
+            "",
+            "## Source-Claim Crosswalk",
+            "",
+            "| Module | Artifact | Claim tier | Citation keys | Source DOIs | Availability |",
+            "| --- | --- | --- | --- | --- | --- |",
+        ]
+    )
+    for row in report.source_claim_crosswalk:
+        lines.append(
+            "| "
+            f"{row['module']} | `{row['artifact_path']}` | {row['claim_tier']} | "
+            f"{', '.join(f'@{key}' for key in row['citation_keys'])} | "
+            f"{', '.join(f'https://doi.org/{doi}' for doi in row['source_dois'])} | "
+            f"{row['availability_status']} |"
         )
     lines.extend(["", "## Top Validation Gaps", ""])
     lines.extend(f"- {gap}" for gap in report.top_validation_gaps)
@@ -421,6 +489,7 @@ def manuscript_figure_index(report: MethodsAnalysisReport) -> tuple[dict[str, ob
     """Return a manuscript-oriented artifact index with regeneration provenance."""
 
     rows: list[dict[str, object]] = []
+    seen_artifacts: set[str] = set()
     for panel in report.module_panels:
         for path, backend, fidelity, status in zip(
             panel.visualization_panel.artifact_paths,
@@ -429,10 +498,11 @@ def manuscript_figure_index(report: MethodsAnalysisReport) -> tuple[dict[str, ob
             panel.visualization_panel.validation_statuses,
             strict=True,
         ):
+            relative_path = project_relative_path(path)
             rows.append(
                 {
                     "module": panel.module,
-                    "artifact_path": path,
+                    "artifact_path": relative_path,
                     "backend": backend,
                     "fidelity_level": fidelity,
                     "validation_status": status,
@@ -441,9 +511,27 @@ def manuscript_figure_index(report: MethodsAnalysisReport) -> tuple[dict[str, ob
                         for link in panel.manuscript_evidence
                         if link.module == panel.module
                     ),
-                    "regeneration_command": _regeneration_command(path),
+                    "regeneration_command": _regeneration_command(relative_path),
+                    **_figure_index_narrative(relative_path, fidelity),
                 }
             )
+            seen_artifacts.add(_artifact_key(relative_path))
+    for narrative in all_figure_narratives():
+        if narrative.priority != "primary" or _artifact_key(narrative.artifact_path) in seen_artifacts:
+            continue
+        rows.append(
+            {
+                "module": "BeeStack",
+                "artifact_path": narrative.artifact_path,
+                "backend": _backend_from_artifact_path(narrative.artifact_path),
+                "fidelity_level": narrative.fidelity_level,
+                "validation_status": "curated_primary_figure",
+                "manuscript_sections": (narrative.manuscript_section,),
+                "regeneration_command": narrative.regeneration_command,
+                **narrative.as_index_fields(),
+            }
+        )
+        seen_artifacts.add(_artifact_key(narrative.artifact_path))
     return tuple(rows)
 
 
@@ -453,18 +541,49 @@ def manuscript_figure_index_markdown(rows: tuple[dict[str, object], ...]) -> str
     lines = [
         "# BeeStack Manuscript Figure Index",
         "",
-        "| Module | Artifact | Backend | Fidelity | Validation | Regenerate |",
-        "| --- | --- | --- | --- | --- | --- |",
+        "| Module | Artifact | Caption | Claim Tier | Fidelity | Validation | Regenerate |",
+        "| --- | --- | --- | --- | --- | --- | --- |",
     ]
     for row in rows:
         lines.append(
             "| "
-            f"{row['module']} | `{row['artifact_path']}` | {row['backend']} | "
+            f"{row['module']} | `{row['artifact_path']}` | {row['caption']} | "
+            f"{row['claim_tier']} | "
             f"{row['fidelity_level']} | {row['validation_status']} | "
             f"`{row['regeneration_command']}` |"
         )
     lines.append("")
     return "\n".join(lines)
+
+
+def _figure_index_narrative(path: str, fidelity: str) -> dict[str, object]:
+    narrative = figure_narrative_for_path(path)
+    if narrative:
+        return narrative.as_index_fields()
+    return generic_figure_sidecar_fields(
+        Path(path),
+        title=Path(path).stem.replace("_", " ").title(),
+        fidelity=fidelity,
+        source_data="generated BeeStack figure artifact",
+        regeneration_command=_regeneration_command(path),
+    )
+
+
+def _artifact_key(path: str) -> str:
+    parts = Path(path).as_posix().split("/")
+    if "output" in parts:
+        return "/".join(parts[parts.index("output") :])
+    return Path(path).name
+
+
+def _backend_from_artifact_path(path: str) -> str:
+    if path.endswith(".gif"):
+        return "animation renderer"
+    if "/research/" in path:
+        return "Matplotlib/pandas/NetworkX"
+    if "/methods/" in path:
+        return "Matplotlib/pandas"
+    return "Matplotlib"
 
 
 def _body_panel(
@@ -529,6 +648,11 @@ def _body_panel(
                 "BeeBody animations are FlyBody-backed and bee-like under cue scoring.",
                 "uv run python scripts/verify_bee_render.py",
                 ("BEE_VISUAL_SCORE", "BEE_SILHOUETTE_SCORE"),
+                "generated",
+                ("vaxenburg2025flybody", "todorov2012mujoco"),
+                ("10.1038/s41586-025-09029-4", "10.1109/IROS.2012.6386109"),
+                "visual_validation_report",
+                "strict_flybody_mujoco_witness",
             ),
         ),
         interpretation="Body evidence combines FlyBody output with finite closed-loop telemetry.",
@@ -631,6 +755,28 @@ def _brain_panel(
                 "uv run python scripts/analyze_empirical_bee_data.py",
                 ("EMPIRICAL_PANEL_COUNT", "ANATOMY_INVENTORY_COUNT"),
                 empirical_status,
+                (
+                    "brandt2005standardbrain",
+                    "rybak2010digital",
+                    "galizia1999glomerular",
+                    "paoli2024dryad",
+                    "carcaud2022dryad",
+                    "andreu2025dryad",
+                    "jernigan2026dryad",
+                    "nouvian2017dryad",
+                ),
+                (
+                    "10.1002/cne.20644",
+                    "10.3389/fnsys.2010.00030",
+                    "10.1038/8144",
+                    "10.5061/dryad.qbzkh18sc",
+                    "10.5061/dryad.83bk3j9tt",
+                    "10.5061/dryad.rv15dv4k2",
+                    "10.5061/dryad.qjq2bvqw6",
+                    "10.5061/dryad.rj10c",
+                ),
+                "empirical_report",
+                "empirical_reduced_or_availability_gated",
             ),
             ManuscriptEvidenceLink(
                 "BeeBrain",
@@ -641,6 +787,10 @@ def _brain_panel(
                 "uv run python scripts/analyze_empirical_bee_data.py",
                 ("WAGGLE_FOLLOWER_TRACK_COUNT", "WAGGLE_FOLLOWER_CONFIDENCE"),
                 waggle_status,
+                ("hadjitofi2024figshare", "hadjitofi2024currentbiology"),
+                ("10.6084/m9.figshare.24715977.v1", "10.1016/j.cub.2024.02.045"),
+                "empirical_report",
+                "follower_antennal_positioning_evidence",
             ),
         ),
         interpretation=(
@@ -706,6 +856,11 @@ def _mind_panel(
                 "BeeMind exposes selected and competing policies with finite EFE terms.",
                 "uv run python scripts/run_methods_analysis.py",
                 ("POLICY_HORIZON", "METHODS_VALIDATION_FRACTION"),
+                "generated",
+                ("friston2010free", "parr2017working"),
+                ("10.1038/nrn2787", "10.1038/s41598-017-15249-0"),
+                "methods_figure",
+                "reduced_validated_kernel",
             ),
         ),
         interpretation="Mind methods are transparent and deterministic, with calibration left as a known gap.",
@@ -805,6 +960,21 @@ def _swarm_panel(
                 "BeeSwarm production waggle/collision scenes record actual MuJoCo contacts.",
                 "uv run python scripts/verify_bee_render.py",
                 ("STRICT_SWARM_SCENE_COUNT", "METHODS_SWARM_CONTACT_PAIR_COUNT"),
+                "generated",
+                (
+                    "vaxenburg2025flybody",
+                    "todorov2012mujoco",
+                    "becher2014beehave",
+                    "hadjitofi2024currentbiology",
+                ),
+                (
+                    "10.1038/s41586-025-09029-4",
+                    "10.1109/IROS.2012.6386109",
+                    "10.1111/1365-2664.12222",
+                    "10.1016/j.cub.2024.02.045",
+                ),
+                "contact_physics_report",
+                "strict_small_scene_not_colony_dynamics",
             ),
         ),
         interpretation="Swarm evidence separates strict small-scene physics from reduced colony dynamics.",
@@ -866,6 +1036,11 @@ def _niche_panel(
                 "BeeNiche reports comb, thermal, and forage metrics through deterministic kernels.",
                 "uv run python scripts/run_methods_analysis.py",
                 ("FINAL_COMB_FRACTION", "BROOD_TEMP_ERROR_C"),
+                "generated",
+                ("kronenberg1982colonial", "johnson2009self", "becher2014beehave"),
+                ("10.1111/1365-2664.12222",),
+                "methods_figure",
+                "reduced_validated_kernel",
             ),
         ),
         interpretation=(
@@ -959,7 +1134,7 @@ def _visualization_records_by_module(
         if module:
             records[module].append(
                 {
-                    "path": path,
+                    "path": project_relative_path(path),
                     "backend": "matplotlib/pandas",
                     "fidelity_level": "methods_diagnostic",
                     "validation_status": "nonblank_methods_figure",
@@ -972,7 +1147,9 @@ def _visualization_records_by_module(
 
 def _visual_record_from_artifact(artifact: dict[str, Any]) -> dict[str, str]:
     return {
-        "path": str(artifact.get("path") or artifact.get("gif_path") or "unknown_artifact"),
+        "path": project_relative_path(
+            str(artifact.get("path") or artifact.get("gif_path") or "unknown_artifact")
+        ),
         "backend": str(artifact.get("backend") or artifact.get("render_backend") or "matplotlib"),
         "fidelity_level": str(artifact.get("fidelity_level", "diagnostic")),
         "validation_status": str(artifact.get("validation_status", "generated")),
@@ -1127,6 +1304,13 @@ def _metric_summary(metrics: dict[str, float]) -> str:
 
 def _evidence_status_summary(links: tuple[ManuscriptEvidenceLink, ...]) -> str:
     return "; ".join(f"{link.artifact_path} [{link.availability_status}]" for link in links)
+
+
+def _looks_like_doi(value: str) -> bool:
+    lowered = value.lower()
+    if lowered.startswith("https://doi.org/"):
+        lowered = lowered.removeprefix("https://doi.org/")
+    return lowered.startswith("10.") and "/" in lowered
 
 
 def _empirical_link_status(

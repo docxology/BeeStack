@@ -15,29 +15,29 @@ This report covers the curated Hadjitofi-Webb Figshare waggle-following source a
 
 ## Source Files
 
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-24-binned.csv`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-48-binned.csv`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-features.csv`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-full_antenna_len-120-binned.csv`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-full_antenna_len-48-binned.csv`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-both_antennae_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-both_antennae_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-left_only_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-left_only_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-errors.csv`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-binned_errors.csv`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-errors.csv`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-4bins-errors.csv`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-no_antennae_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-errors.csv`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-no_antennae_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-errors.csv`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-no_antennae_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-right_only_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-right_only_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-mid_antenna_len-120-binned.csv`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-mid_antenna_len-48-binned.csv`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/orientation_straightness.csv`
+- `output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-24-binned.csv`
+- `output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-48-binned.csv`
+- `output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-features.csv`
+- `output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-full_antenna_len-120-binned.csv`
+- `output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-full_antenna_len-48-binned.csv`
+- `output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-both_antennae_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv`
+- `output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-both_antennae_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv`
+- `output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-left_only_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv`
+- `output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-left_only_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv`
+- `output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-errors.csv`
+- `output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv`
+- `output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-binned_errors.csv`
+- `output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-errors.csv`
+- `output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv`
+- `output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-4bins-errors.csv`
+- `output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-no_antennae_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-errors.csv`
+- `output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-no_antennae_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-errors.csv`
+- `output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-no_antennae_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv`
+- `output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-right_only_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv`
+- `output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-right_only_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv`
+- `output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-mid_antenna_len-120-binned.csv`
+- `output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-mid_antenna_len-48-binned.csv`
+- `output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/orientation_straightness.csv`
 
 ## BeeBrain Data Completeness
 

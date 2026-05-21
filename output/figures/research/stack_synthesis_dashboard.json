@@ -1,20 +1,63 @@
 {
+  "accessibility_checks": {
+    "background": "#FFFFFF",
+    "contrast_ratio": 17.73971700407407,
+    "foreground": "#111827",
+    "large_text_passed": true,
+    "large_text_threshold": 3.0,
+    "normal_text_passed": true,
+    "normal_text_threshold": 4.5,
+    "standard": "WCAG 2.1 AA contrast thresholds"
+  },
+  "alt_text": "Four-panel synthesis dashboard with readiness bars, artifact-gap scatter, gates, and findings.",
+  "artifact_kind": "figure",
   "backend": "Matplotlib/pandas synthesis dashboard",
+  "caption": "Cross-stack synthesis dashboard summarizing validation fractions, readiness, artifacts, explicit gaps, and scholarship anchors.",
+  "citation_keys": [
+    "wilson2017good",
+    "lamprecht2020fairsoftware"
+  ],
+  "claim_tier": "cross_stack_synthesis_diagnostic",
+  "design_citation_keys": [
+    "rougier2014figures",
+    "cleveland1984graphical",
+    "crameri2020colour",
+    "w3c2023wcag21",
+    "wilkinson2016fair",
+    "heer2012interactive",
+    "ragan2016provenance"
+  ],
+  "design_source_dois": [
+    "10.1371/journal.pcbi.1003833",
+    "10.1080/01621459.1984.10478080",
+    "10.1038/s41467-020-19160-7",
+    "10.1038/sdata.2016.18",
+    "10.1145/2133806.2133821",
+    "10.1109/TVCG.2015.2467551"
+  ],
   "fidelity": "cross-stack synthesis diagnostic, not biological validation",
-  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/stack_synthesis_dashboard.png",
+  "figure_path": "output/figures/research/stack_synthesis_dashboard.png",
+  "manuscript_label": "fig:stack_synthesis_dashboard",
+  "manuscript_section": "manuscript/12_research_suite_results.md",
+  "priority": "primary",
   "quality": {
-    "height_px": 1360,
+    "height_px": 1351,
     "max_intensity": 255,
-    "mean_intensity": 223.19726787773934,
+    "mean_intensity": 222.04358262364613,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 63.739551214435416,
-    "width_px": 2040
+    "std_intensity": 62.274048244134605,
+    "width_px": 1927
   },
   "regeneration_command": "uv run python scripts/run_research_suite.py",
   "schema": "beestack.figure.v1",
   "source_data": "output/reports/stack_synthesis_review.json",
+  "source_dois": [
+    "10.1371/journal.pcbi.1005510",
+    "10.3233/DS-190026"
+  ],
   "title": "Stack Synthesis Dashboard",
+  "unsupported_inference": "Does not make BeeStack digital-twin ready.",
   "validation_status": "nonblank synthesis diagnostic"
 }

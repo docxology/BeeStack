@@ -15,6 +15,7 @@ SRC_ROOT = PROJECT_ROOT / "src"
 if str(SRC_ROOT) not in sys.path:
     sys.path.insert(0, str(SRC_ROOT))
 
+from beestack.utils import project_relative_path, project_relative_payload
 from beestack.visualization import analyze_bee_render_signature, bee_render_report_markdown
 
 WAGGLE_ERROR_TARGET_DEG = 35.0
@@ -73,31 +74,34 @@ def main() -> None:
         signature.bee_like and contact_sheet.exists()
         for _, _, contact_sheet, signature in signatures
     )
-    swarm_report = _verify_swarm_scenes()
+    swarm_report = project_relative_payload(_verify_swarm_scenes(), PROJECT_ROOT)
     passed = body_passed and swarm_report["passed"]
     report_dir = PROJECT_ROOT / "output" / "reports"
     report_dir.mkdir(parents=True, exist_ok=True)
     (report_dir / "bee_visual_verification.json").write_text(
         json.dumps(
-            {
-                "bee_like": passed,
-                "body_visual_passed": body_passed,
-                "swarm_contact_physics_passed": swarm_report["passed"],
-                "score": min(signature.score for _, _, _, signature in signatures),
-                "silhouette_score": min(
-                    signature.silhouette_score for _, _, _, signature in signatures
-                ),
-                "animations": [
-                    {
-                        "gif": str(gif_path),
-                        "contact_sheet": str(contact_sheet),
-                        "mjcf": str(xml_path),
-                        **signature.as_dict(),
-                    }
-                    for _, gif_path, contact_sheet, signature in signatures
-                ],
-                "swarm": swarm_report,
-            },
+            project_relative_payload(
+                {
+                    "bee_like": passed,
+                    "body_visual_passed": body_passed,
+                    "swarm_contact_physics_passed": swarm_report["passed"],
+                    "score": min(signature.score for _, _, _, signature in signatures),
+                    "silhouette_score": min(
+                        signature.silhouette_score for _, _, _, signature in signatures
+                    ),
+                    "animations": [
+                        {
+                            "gif": str(gif_path),
+                            "contact_sheet": str(contact_sheet),
+                            "mjcf": str(xml_path),
+                            **signature.as_dict(),
+                        }
+                        for _, gif_path, contact_sheet, signature in signatures
+                    ],
+                    "swarm": swarm_report,
+                },
+                PROJECT_ROOT,
+            ),
             indent=2,
             sort_keys=True,
         )
@@ -106,7 +110,11 @@ def main() -> None:
     )
     (report_dir / "bee_visual_verification.md").write_text(
         "\n".join(
-            bee_render_report_markdown(signature, str(gif_path), str(xml_path))
+            bee_render_report_markdown(
+                signature,
+                project_relative_path(gif_path, PROJECT_ROOT),
+                project_relative_path(xml_path, PROJECT_ROOT),
+            )
             for _, gif_path, _, signature in signatures
         )
         + "\n\n"

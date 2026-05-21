@@ -8,6 +8,7 @@ from typing import Any
 import numpy as np
 
 from ..config import BeeStackConfig
+from ..utils import project_relative_path, project_relative_payload
 from .suite import ResearchValidationRecord
 
 MODULES = ("BeeBody", "BeeBrain", "BeeMind", "BeeSwarm", "BeeNiche")
@@ -102,22 +103,24 @@ class StackSynthesisReview:
             self.validations,
             self.prioritized_findings,
             self.scholarship_keys,
-            figure_paths,
+            tuple(project_relative_path(path) for path in figure_paths),
         )
 
     def as_dict(self) -> dict[str, object]:
-        return {
-            "title": self.title,
-            "summary": self.summary,
-            "module_panels": [panel.as_dict() for panel in self.module_panels],
-            "statistics": self.statistics,
-            "validations": [validation.as_dict() for validation in self.validations],
-            "validation_fraction": self.validation_fraction,
-            "readiness_fraction": self.readiness_fraction,
-            "prioritized_findings": self.prioritized_findings,
-            "scholarship_keys": self.scholarship_keys,
-            "figure_paths": self.figure_paths,
-        }
+        return project_relative_payload(
+            {
+                "title": self.title,
+                "summary": self.summary,
+                "module_panels": [panel.as_dict() for panel in self.module_panels],
+                "statistics": self.statistics,
+                "validations": [validation.as_dict() for validation in self.validations],
+                "validation_fraction": self.validation_fraction,
+                "readiness_fraction": self.readiness_fraction,
+                "prioritized_findings": self.prioritized_findings,
+                "scholarship_keys": self.scholarship_keys,
+                "figure_paths": self.figure_paths,
+            }
+        )
 
 
 def assemble_stack_synthesis_review(
@@ -229,7 +232,7 @@ def stack_synthesis_markdown(review: StackSynthesisReview) -> str:
     lines.extend(f"- `@{key}`" for key in review.scholarship_keys)
     if review.figure_paths:
         lines.extend(["", "## Figures", ""])
-        lines.extend(f"- `{path}`" for path in review.figure_paths)
+        lines.extend(f"- `{project_relative_path(path)}`" for path in review.figure_paths)
     return "\n".join(lines) + "\n"
 
 

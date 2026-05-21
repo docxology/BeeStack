@@ -3,11 +3,11 @@
     {
       "amber_fraction": 0.021544596354166667,
       "bee_like": true,
-      "contact_sheet": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beebody_flybody_morphology_contact_sheet.png",
+      "contact_sheet": "output/animations/beebody_flybody_morphology_contact_sheet.png",
       "dark_fraction": 0.17631103515625,
       "debug_aid_fraction": 0.0,
       "frame_count": 24,
-      "gif": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beebody_flybody_morphology.gif",
+      "gif": "output/animations/beebody_flybody_morphology.gif",
       "image_shape": [
         480,
         640,
@@ -17,7 +17,7 @@
       "locomotion_score": 1.0,
       "mean_adjacent_motion_pixels": 213356.60869565216,
       "membrane_fraction": 0.050507134331597224,
-      "mjcf": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/flybody_bee/assets/apis_mellifera_worker.xml",
+      "mjcf": "output/animations/flybody_bee/assets/apis_mellifera_worker.xml",
       "mjcf_features_missing": [],
       "mjcf_features_present": [
         "apis model name",
@@ -57,11 +57,11 @@
     {
       "amber_fraction": 0.023692762586805555,
       "bee_like": true,
-      "contact_sheet": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beebody_flybody_flight_contact_sheet.png",
+      "contact_sheet": "output/animations/beebody_flybody_flight_contact_sheet.png",
       "dark_fraction": 0.33862806532118056,
       "debug_aid_fraction": 0.0,
       "frame_count": 24,
-      "gif": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beebody_flybody_flight.gif",
+      "gif": "output/animations/beebody_flybody_flight.gif",
       "image_shape": [
         480,
         640,
@@ -71,7 +71,7 @@
       "locomotion_score": 1.0,
       "mean_adjacent_motion_pixels": 173460.13043478262,
       "membrane_fraction": 0.01673516167534722,
-      "mjcf": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/flybody_bee/assets/apis_mellifera_worker.xml",
+      "mjcf": "output/animations/flybody_bee/assets/apis_mellifera_worker.xml",
       "mjcf_features_missing": [],
       "mjcf_features_present": [
         "apis model name",
@@ -118,9 +118,33 @@
     "scene_count": 3,
     "scenes": [
       {
-        "contact_report": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/flybody_scenes/collision/contact_metrics.json",
-        "frame_count": 24,
-        "gif": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beeswarm_10_beebody_collision.gif",
+        "body_plan_manifest_path": "output/animations/flybody_scenes/collision/body_plan/bee_body_plan_manifest.json",
+        "body_plan_xml_path": "output/animations/flybody_scenes/collision/body_plan/assets/apis_mellifera_worker.xml",
+        "config": {
+          "altitude_m": 0.05,
+          "antennal_sampling_gain": 0.75,
+          "bee_count": 10,
+          "follower_orientation_gain": 0.65,
+          "follower_spacing_m": 0.11,
+          "fps": 8,
+          "frames": 24,
+          "height": 480,
+          "initial_speed_m_s": 0.35,
+          "min_actual_contact_pairs": 1,
+          "scene_name": "collision",
+          "scene_radius_m": 0.18,
+          "stop_signal_sensitivity": 1.0,
+          "substeps": 4,
+          "waggle_amplitude_m": 0.035,
+          "waggle_loop_radius_m": 0.085,
+          "waggle_run_frequency_hz": 13.0,
+          "width": 640
+        },
+        "contact_report_path": "output/animations/flybody_scenes/collision/contact_metrics.json",
+        "contact_sheet_path": "output/animations/beeswarm_10_beebody_collision_contact_sheet.png",
+        "fps": 8,
+        "frames": 24,
+        "gif_path": "output/animations/beeswarm_10_beebody_collision.gif",
         "metrics": {
           "bee_bee_contact_count": 182,
           "bee_bee_contact_frame_indices": [
@@ -223,24 +247,38 @@
           "waggle_phase_coupling_score": 0.0,
           "waggle_phase_samples": []
         },
-        "motion_pixels": 571057,
-        "passed": true,
         "render_backend": "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer",
-        "scene": "collision",
-        "scene_xml": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/flybody_scenes/collision/collision_flybody_scene.xml",
-        "xml_checks": {
-          "contact_core_count": 10,
-          "duplicate_names": [],
-          "expected_bees": 10,
-          "free_joint_count": 10,
-          "passed": true,
-          "prefixed_actuator_count": 780
-        }
+        "scene_name": "collision",
+        "scene_xml_path": "output/animations/flybody_scenes/collision/collision_flybody_scene.xml"
       },
       {
-        "contact_report": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/flybody_scenes/waggle/contact_metrics.json",
-        "frame_count": 24,
-        "gif": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beeswarm_waggle_dance_configured.gif",
+        "body_plan_manifest_path": "output/animations/flybody_scenes/waggle/body_plan/bee_body_plan_manifest.json",
+        "body_plan_xml_path": "output/animations/flybody_scenes/waggle/body_plan/assets/apis_mellifera_worker.xml",
+        "config": {
+          "altitude_m": 0.05,
+          "antennal_sampling_gain": 0.75,
+          "bee_count": 11,
+          "follower_orientation_gain": 0.65,
+          "follower_spacing_m": 0.11,
+          "fps": 8,
+          "frames": 24,
+          "height": 480,
+          "initial_speed_m_s": 0.35,
+          "min_actual_contact_pairs": 1,
+          "scene_name": "waggle",
+          "scene_radius_m": 0.18,
+          "stop_signal_sensitivity": 1.0,
+          "substeps": 4,
+          "waggle_amplitude_m": 0.035,
+          "waggle_loop_radius_m": 0.085,
+          "waggle_run_frequency_hz": 13.0,
+          "width": 640
+        },
+        "contact_report_path": "output/animations/flybody_scenes/waggle/contact_metrics.json",
+        "contact_sheet_path": "output/animations/beeswarm_waggle_dance_configured_contact_sheet.png",
+        "fps": 8,
+        "frames": 24,
+        "gif_path": "output/animations/beeswarm_waggle_dance_configured.gif",
         "metrics": {
           "bee_bee_contact_count": 240,
           "bee_bee_contact_frame_indices": [
@@ -384,24 +422,38 @@
             0.5415019762845852
           ]
         },
-        "motion_pixels": 317962,
-        "passed": true,
         "render_backend": "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer",
-        "scene": "waggle",
-        "scene_xml": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/flybody_scenes/waggle/waggle_flybody_scene.xml",
-        "xml_checks": {
-          "contact_core_count": 11,
-          "duplicate_names": [],
-          "expected_bees": 11,
-          "free_joint_count": 11,
-          "passed": true,
-          "prefixed_actuator_count": 858
-        }
+        "scene_name": "waggle",
+        "scene_xml_path": "output/animations/flybody_scenes/waggle/waggle_flybody_scene.xml"
       },
       {
-        "contact_report": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/flybody_scenes/waggle_long/contact_metrics.json",
-        "frame_count": 96,
-        "gif": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beeswarm_waggle_dance_long.gif",
+        "body_plan_manifest_path": "output/animations/flybody_scenes/waggle_long/body_plan/bee_body_plan_manifest.json",
+        "body_plan_xml_path": "output/animations/flybody_scenes/waggle_long/body_plan/assets/apis_mellifera_worker.xml",
+        "config": {
+          "altitude_m": 0.05,
+          "antennal_sampling_gain": 0.75,
+          "bee_count": 11,
+          "follower_orientation_gain": 0.65,
+          "follower_spacing_m": 0.11,
+          "fps": 12,
+          "frames": 96,
+          "height": 480,
+          "initial_speed_m_s": 0.35,
+          "min_actual_contact_pairs": 1,
+          "scene_name": "waggle_long",
+          "scene_radius_m": 0.18,
+          "stop_signal_sensitivity": 1.0,
+          "substeps": 4,
+          "waggle_amplitude_m": 0.035,
+          "waggle_loop_radius_m": 0.085,
+          "waggle_run_frequency_hz": 13.0,
+          "width": 640
+        },
+        "contact_report_path": "output/animations/flybody_scenes/waggle_long/contact_metrics.json",
+        "contact_sheet_path": "output/animations/beeswarm_waggle_dance_long_contact_sheet.png",
+        "fps": 12,
+        "frames": 96,
+        "gif_path": "output/animations/beeswarm_waggle_dance_long.gif",
         "metrics": {
           "bee_bee_contact_count": 960,
           "bee_bee_contact_frame_indices": [
@@ -756,19 +808,9 @@
             0.37320574162679426
           ]
         },
-        "motion_pixels": 317951,
-        "passed": true,
         "render_backend": "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer",
-        "scene": "waggle_long",
-        "scene_xml": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/flybody_scenes/waggle_long/waggle_long_flybody_scene.xml",
-        "xml_checks": {
-          "contact_core_count": 11,
-          "duplicate_names": [],
-          "expected_bees": 11,
-          "free_joint_count": 11,
-          "passed": true,
-          "prefixed_actuator_count": 858
-        }
+        "scene_name": "waggle_long",
+        "scene_xml_path": "output/animations/flybody_scenes/waggle_long/waggle_long_flybody_scene.xml"
       }
     ]
   },

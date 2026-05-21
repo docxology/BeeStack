@@ -7,6 +7,9 @@ import re
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
+from .figure_audit import audit_figures
+from .source_audit import audit_sources
+
 EXCLUDED_SIGNPOST_DIR_NAMES = frozenset(
     {
         ".git",
@@ -71,6 +74,10 @@ class DocumentationAudit:
     missing_agents_dirs: tuple[str, ...]
     signposting_passed: bool
     fidelity_claims: tuple[str, ...]
+    source_audit: dict[str, object]
+    source_audit_passed: bool
+    figure_audit: dict[str, object]
+    figure_audit_passed: bool
     passed: bool
 
     def as_dict(self) -> dict[str, object]:
@@ -115,6 +122,8 @@ def audit_documentation(project_root: Path) -> DocumentationAudit:
             {line.strip("- ").strip() for line in combined.splitlines() if _is_fidelity_line(line)}
         )
     )
+    source_audit = audit_sources(project_root)
+    figure_audit = audit_figures(project_root)
     passed = (
         len(documents) >= 8
         and len(commands) >= 8
@@ -123,6 +132,8 @@ def audit_documentation(project_root: Path) -> DocumentationAudit:
         and not missing
         and signposting_passed
         and len(fidelity_claims) >= 3
+        and source_audit.passed
+        and figure_audit.passed
     )
     return DocumentationAudit(
         docs_checked=len(documents),
@@ -136,6 +147,10 @@ def audit_documentation(project_root: Path) -> DocumentationAudit:
         missing_agents_dirs=missing_agents,
         signposting_passed=signposting_passed,
         fidelity_claims=fidelity_claims,
+        source_audit=source_audit.as_dict(),
+        source_audit_passed=source_audit.passed,
+        figure_audit=figure_audit.as_dict(),
+        figure_audit_passed=figure_audit.passed,
         passed=passed,
     )
 
@@ -154,6 +169,8 @@ def documentation_audit_markdown(audit: DocumentationAudit) -> str:
         f"- Unresolved manuscript variables: `{audit.unresolved_variable_count}`",
         f"- Signposted directories: `{audit.directory_count}`",
         f"- Signposting passed: `{audit.signposting_passed}`",
+        f"- Source audit passed: `{audit.source_audit_passed}`",
+        f"- Figure audit passed: `{audit.figure_audit_passed}`",
         "",
         "## Fidelity Language",
         "",
@@ -174,6 +191,37 @@ def documentation_audit_markdown(audit: DocumentationAudit) -> str:
         lines.extend(f"- `{path}/AGENTS.md`" for path in audit.missing_agents_dirs)
     else:
         lines.append("- None detected.")
+    lines.extend(["", "## Source Audit", ""])
+    lines.append(f"- Passed: `{audit.source_audit_passed}`")
+    for key in (
+        "missing_citation_keys",
+        "doi_mismatches",
+        "missing_required_bib_fields",
+        "registry_dois_missing",
+        "figure_registry_citation_keys_missing",
+        "figure_registry_source_dois_missing",
+        "unconservative_digital_twin_claims",
+    ):
+        values = tuple(str(value) for value in audit.source_audit.get(key, ()) or ())
+        lines.append(f"- {key}: `{len(values)}`")
+    lines.append("")
+    lines.extend(["## Figure Audit", ""])
+    lines.append(f"- Passed: `{audit.figure_audit_passed}`")
+    for key in (
+        "missing_image_paths",
+        "missing_labels",
+        "duplicate_labels",
+        "missing_captions",
+        "missing_sidecar_paths",
+        "missing_high_priority_artifacts",
+        "absent_positive_claims",
+        "sidecar_required_field_failures",
+        "sidecar_manuscript_mismatches",
+        "primary_caption_contract_failures",
+        "absolute_path_leaks",
+    ):
+        values = tuple(str(value) for value in audit.figure_audit.get(key, ()) or ())
+        lines.append(f"- {key}: `{len(values)}`")
     lines.append("")
     return "\n".join(lines)
 

@@ -8,6 +8,10 @@ from typing import Any, TypedDict, cast
 
 from PIL import Image, ImageStat
 
+from ..utils import project_relative_path
+from .figure_registry import figure_narrative_for_path, generic_figure_sidecar_fields
+from .style import wcag_contrast_check
+
 
 class ImageQualitySummary(TypedDict):
     """Typed image-quality metrics stored in figure sidecars."""
@@ -65,21 +69,67 @@ def write_figure_sidecar(
     validation_status: str,
     regeneration_command: str,
     metrics: dict[str, Any] | None = None,
+    caption: str | None = None,
+    alt_text: str | None = None,
+    manuscript_section: str | None = None,
+    manuscript_label: str | None = None,
+    claim_tier: str | None = None,
+    citation_keys: tuple[str, ...] = (),
+    source_dois: tuple[str, ...] = (),
+    accessibility_checks: dict[str, Any] | None = None,
+    design_citation_keys: tuple[str, ...] = (),
+    design_source_dois: tuple[str, ...] = (),
+    unsupported_inference: str | None = None,
+    priority: str | None = None,
+    artifact_kind: str = "figure",
 ) -> Path:
     """Write a JSON sidecar describing figure provenance and validation."""
 
     quality = assert_nonblank_quality(path)
+    narrative = figure_narrative_for_path(path)
+    narrative_fields = (
+        narrative.as_sidecar_fields()
+        if narrative
+        else generic_figure_sidecar_fields(
+            path,
+            title=title,
+            fidelity=fidelity,
+            source_data=source_data,
+            regeneration_command=regeneration_command,
+        )
+    )
     payload: dict[str, Any] = {
         "schema": "beestack.figure.v1",
-        "figure_path": str(path),
+        "figure_path": project_relative_path(path),
         "title": title,
         "backend": backend,
         "fidelity": fidelity,
-        "source_data": source_data,
+        "source_data": project_relative_path(source_data),
         "validation_status": validation_status,
         "regeneration_command": regeneration_command,
         "quality": quality,
+        "accessibility_checks": accessibility_checks or wcag_contrast_check(),
     }
+    payload.update(narrative_fields)
+    overrides: dict[str, object | None] = {
+        "caption": caption,
+        "alt_text": alt_text,
+        "manuscript_section": manuscript_section,
+        "manuscript_label": manuscript_label,
+        "claim_tier": claim_tier,
+        "unsupported_inference": unsupported_inference,
+        "priority": priority,
+        "artifact_kind": artifact_kind,
+    }
+    payload.update({key: value for key, value in overrides.items() if value is not None})
+    if citation_keys:
+        payload["citation_keys"] = citation_keys
+    if source_dois:
+        payload["source_dois"] = source_dois
+    if design_citation_keys:
+        payload["design_citation_keys"] = design_citation_keys
+    if design_source_dois:
+        payload["design_source_dois"] = design_source_dois
     if metrics:
         payload["metrics"] = metrics
     sidecar = path.with_suffix(".json")

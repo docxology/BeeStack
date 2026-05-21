@@ -94,6 +94,35 @@ def test_stack_synthesis_review_serializes_and_figures(tmp_path: Path) -> None:
     assert "cross-stack synthesis diagnostic" in sidecar.read_text()
 
 
+def test_stack_synthesis_review_normalizes_project_local_figure_paths() -> None:
+    project_root = Path(__file__).resolve().parents[1]
+    cfg, records, summary, research, methods = _synthesis_fixture()
+    review = assemble_stack_synthesis_review(
+        cfg,
+        simulation_records=records,
+        simulation_summary=summary,
+        research_report=research,
+        methods_analysis=methods,
+        animation_manifest=_manifest(),
+        documentation_audit={
+            "directory_count": 10,
+            "missing_readme_dirs": (),
+            "missing_agents_dirs": (),
+        },
+        readiness_review={"signposting": {"directory_count": 10}},
+        bibliography_keys=("seeley1989superorganism", "saltelli2008global"),
+    ).with_figures(
+        (str(project_root / "output" / "figures" / "research" / "stack_synthesis.png"),)
+    )
+
+    payload = review.as_dict()
+    markdown = stack_synthesis_markdown(review)
+
+    assert payload["figure_paths"] == ("output/figures/research/stack_synthesis.png",)
+    assert str(project_root) not in markdown
+    assert "`output/figures/research/stack_synthesis.png`" in markdown
+
+
 def test_stack_synthesis_record_validation_branches_are_explicit() -> None:
     with pytest.raises(ValueError, match="unknown"):
         ModuleSynthesisPanel("BeeWing", "real", 1.0, 1, 1, 1, 1, 0.0, 1.0)

@@ -96,12 +96,23 @@ Science-first per-module methods panels connecting quantitative diagnostics, val
 
 ## Evidence Availability Links
 
-- `manuscript/04_body_methods.md` BeeBody: `output/reports/bee_visual_verification.md` (visual_validation, generated) supports BeeBody animations are FlyBody-backed and bee-like under cue scoring.
-- `manuscript/05_brain_methods.md` BeeBrain: `output/reports/empirical_analysis.md` (empirical_analysis, parsed) supports BeeBrain uses real downloaded or cataloged anatomy/activity sources where present.
-- `manuscript/05_brain_methods.md` BeeBrain: `output/reports/waggle_follower_analysis.md` (waggle_follower_analysis, parsed) supports BeeBrain integrates curated waggle follower antennal-position decoding evidence when local.
-- `manuscript/06_mind_methods.md` BeeMind: `output/figures/methods/beemind_methods_policy_landscape.png` (policy_diagnostic, generated) supports BeeMind exposes selected and competing policies with finite EFE terms.
-- `manuscript/07_swarm_methods.md` BeeSwarm: `output/reports/flybody_contact_physics.md` (strict_contact_physics, generated) supports BeeSwarm production waggle/collision scenes record actual MuJoCo contacts.
-- `manuscript/08_niche_methods.md` BeeNiche: `output/figures/methods/beeniche_methods_comb_thermal.png` (niche_diagnostic, generated) supports BeeNiche reports comb, thermal, and forage metrics through deterministic kernels.
+- `manuscript/04_body_methods.md` BeeBody: `output/reports/bee_visual_verification.md` (visual_validation, generated, strict_flybody_mujoco_witness) supports BeeBody animations are FlyBody-backed and bee-like under cue scoring. Citations: @vaxenburg2025flybody, @todorov2012mujoco.
+- `manuscript/05_brain_methods.md` BeeBrain: `output/reports/empirical_analysis.md` (empirical_analysis, parsed, empirical_reduced_or_availability_gated) supports BeeBrain uses real downloaded or cataloged anatomy/activity sources where present. Citations: @brandt2005standardbrain, @rybak2010digital, @galizia1999glomerular, @paoli2024dryad, @carcaud2022dryad, @andreu2025dryad, @jernigan2026dryad, @nouvian2017dryad.
+- `manuscript/05_brain_methods.md` BeeBrain: `output/reports/waggle_follower_analysis.md` (waggle_follower_analysis, parsed, follower_antennal_positioning_evidence) supports BeeBrain integrates curated waggle follower antennal-position decoding evidence when local. Citations: @hadjitofi2024figshare, @hadjitofi2024currentbiology.
+- `manuscript/06_mind_methods.md` BeeMind: `output/figures/methods/beemind_methods_policy_landscape.png` (policy_diagnostic, generated, reduced_validated_kernel) supports BeeMind exposes selected and competing policies with finite EFE terms. Citations: @friston2010free, @parr2017working.
+- `manuscript/07_swarm_methods.md` BeeSwarm: `output/reports/flybody_contact_physics.md` (strict_contact_physics, generated, strict_small_scene_not_colony_dynamics) supports BeeSwarm production waggle/collision scenes record actual MuJoCo contacts. Citations: @vaxenburg2025flybody, @todorov2012mujoco, @becher2014beehave, @hadjitofi2024currentbiology.
+- `manuscript/08_niche_methods.md` BeeNiche: `output/figures/methods/beeniche_methods_comb_thermal.png` (niche_diagnostic, generated, reduced_validated_kernel) supports BeeNiche reports comb, thermal, and forage metrics through deterministic kernels. Citations: @kronenberg1982colonial, @johnson2009self, @becher2014beehave.
+
+## Source-Claim Crosswalk
+
+| Module | Artifact | Claim tier | Citation keys | Source DOIs | Availability |
+| --- | --- | --- | --- | --- | --- |
+| BeeBody | `output/reports/bee_visual_verification.md` | strict_flybody_mujoco_witness | @vaxenburg2025flybody, @todorov2012mujoco | https://doi.org/10.1038/s41586-025-09029-4, https://doi.org/10.1109/IROS.2012.6386109 | generated |
+| BeeBrain | `output/reports/empirical_analysis.md` | empirical_reduced_or_availability_gated | @brandt2005standardbrain, @rybak2010digital, @galizia1999glomerular, @paoli2024dryad, @carcaud2022dryad, @andreu2025dryad, @jernigan2026dryad, @nouvian2017dryad | https://doi.org/10.1002/cne.20644, https://doi.org/10.3389/fnsys.2010.00030, https://doi.org/10.1038/8144, https://doi.org/10.5061/dryad.qbzkh18sc, https://doi.org/10.5061/dryad.83bk3j9tt, https://doi.org/10.5061/dryad.rv15dv4k2, https://doi.org/10.5061/dryad.qjq2bvqw6, https://doi.org/10.5061/dryad.rj10c | parsed |
+| BeeBrain | `output/reports/waggle_follower_analysis.md` | follower_antennal_positioning_evidence | @hadjitofi2024figshare, @hadjitofi2024currentbiology | https://doi.org/10.6084/m9.figshare.24715977.v1, https://doi.org/10.1016/j.cub.2024.02.045 | parsed |
+| BeeMind | `output/figures/methods/beemind_methods_policy_landscape.png` | reduced_validated_kernel | @friston2010free, @parr2017working | https://doi.org/10.1038/nrn2787, https://doi.org/10.1038/s41598-017-15249-0 | generated |
+| BeeSwarm | `output/reports/flybody_contact_physics.md` | strict_small_scene_not_colony_dynamics | @vaxenburg2025flybody, @todorov2012mujoco, @becher2014beehave, @hadjitofi2024currentbiology | https://doi.org/10.1038/s41586-025-09029-4, https://doi.org/10.1109/IROS.2012.6386109, https://doi.org/10.1111/1365-2664.12222, https://doi.org/10.1016/j.cub.2024.02.045 | generated |
+| BeeNiche | `output/figures/methods/beeniche_methods_comb_thermal.png` | reduced_validated_kernel | @kronenberg1982colonial, @johnson2009self, @becher2014beehave | https://doi.org/10.1111/1365-2664.12222 | generated |
 
 ## Top Validation Gaps
 

@@ -1,6 +1,6 @@
 {
   "figure_paths": [
-    "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/research/stack_synthesis_dashboard.png"
+    "output/figures/research/stack_synthesis_dashboard.png"
   ],
   "module_panels": [
     {
@@ -70,13 +70,18 @@
     "andreu2025dryad",
     "becher2014beehave",
     "bjornsson2020digitaltwins",
+    "brandt2005standardbrain",
     "carcaud2022dryad",
+    "cleveland1984graphical",
     "couvillon2014waggle",
+    "crameri2020colour",
     "free1987pheromones",
     "friedman2026beestack",
     "friston2010free",
     "galizia1999glomerular",
+    "hadjitofi2024currentbiology",
     "hadjitofi2024figshare",
+    "heer2012interactive",
     "honkanen2019sky",
     "jernigan2026dryad",
     "johnson2009self",
@@ -84,6 +89,7 @@
     "kaneko2016kenyon",
     "khamassi2020bio",
     "kronenberg1982colonial",
+    "lamprecht2020fairsoftware",
     "menzel2001cognitive",
     "menzel2012honey",
     "millman2020scientific",
@@ -95,6 +101,8 @@
     "paoli2024dryad",
     "parr2017working",
     "pfeifer2006morphological",
+    "ragan2016provenance",
+    "rougier2014figures",
     "rybak2010digital",
     "saltelli2008global",
     "sasaki2018superorganisms",
@@ -105,6 +113,8 @@
     "szyszka2023granger",
     "todorov2012mujoco",
     "vaxenburg2025flybody",
+    "w3c2023wcag21",
+    "wario2015automatic",
     "wcislo2003respiratory",
     "webb2020waggle",
     "wilkinson2016fair",
@@ -121,7 +131,7 @@
     "module_validation_std": 0.0,
     "real_flybody_animation_count": 5.0,
     "reduced_schematic_animation_count": 4.0,
-    "scholarship_reference_count": 42.0,
+    "scholarship_reference_count": 52.0,
     "signposting_fraction": 1.0,
     "simulation_energy_drop_j": 0.0008210865967477332,
     "simulation_mean_wing_power_mw": 58.2914264719619,
@@ -129,7 +139,7 @@
     "simulation_recruited_total": 168.0,
     "simulation_step_count": 24.0,
     "simulation_thermal_error_improvement_c": 4.414516422852656,
-    "visualization_artifact_count": 66.0
+    "visualization_artifact_count": 68.0
   },
   "summary": "Statistical synthesis of module readiness, simulation telemetry, visualization evidence, documentation signposting, empirical coverage, and manuscript scholarship.",
   "title": "BeeStack Cross-Stack Synthesis Review",
@@ -189,7 +199,7 @@
       "name": "scholarship_minimum",
       "passed": true,
       "threshold": 7,
-      "value": 42
+      "value": 52
     }
   ]
 }

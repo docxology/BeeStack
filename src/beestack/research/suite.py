@@ -10,6 +10,7 @@ import numpy as np
 from ..body import bee_body_calibration_summary
 from ..config import BeeStackConfig
 from ..orchestrator import run_simulation
+from ..utils import project_relative_path
 
 EVIDENCE_AVAILABILITY_STATES = frozenset(
     {
@@ -102,7 +103,10 @@ class VisualizationArtifactRecord:
                 raise ValueError(f"visualization {field_name} must be a nonempty string")
 
     def as_dict(self) -> dict[str, str]:
-        return asdict(self)
+        payload = asdict(self)
+        payload["path"] = project_relative_path(self.path)
+        payload["source_data"] = project_relative_path(self.source_data)
+        return payload
 
 
 @dataclass(frozen=True)
@@ -693,14 +697,14 @@ def _visualization_artifacts(
     for artifact in manifest.get("animations", []):
         records.append(
             VisualizationArtifactRecord(
-                path=str(artifact["path"]),
+                path=project_relative_path(str(artifact["path"])),
                 artifact_type="animation",
                 backend=str(
                     artifact.get("render_backend") or artifact.get("backend") or "matplotlib"
                 ),
                 fidelity_level=str(artifact.get("fidelity_level", "unknown")),
-                source_data=str(
-                    artifact.get("source") or artifact.get("scene_xml") or "generated state"
+                source_data=project_relative_path(
+                    str(artifact.get("source") or artifact.get("scene_xml") or "generated state")
                 ),
                 regeneration_command="uv run python scripts/generate_animations.py",
                 validation_status="verified" if artifact.get("contact_sheet") else "generated",
@@ -709,7 +713,7 @@ def _visualization_artifacts(
     for path in figure_paths:
         records.append(
             VisualizationArtifactRecord(
-                path=path,
+                path=project_relative_path(path),
                 artifact_type="figure",
                 backend="matplotlib/networkx/scikit-image",
                 fidelity_level="research_diagnostic",
@@ -721,7 +725,7 @@ def _visualization_artifacts(
     for path in interactive_paths:
         records.append(
             VisualizationArtifactRecord(
-                path=path,
+                path=project_relative_path(path),
                 artifact_type="interactive_html",
                 backend="plotly",
                 fidelity_level="research_diagnostic",

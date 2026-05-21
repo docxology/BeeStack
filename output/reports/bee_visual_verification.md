@@ -2,8 +2,8 @@
 
 - Verdict: **PASS**
 - Locomotion mode: `walk`
-- GIF: `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beebody_flybody_morphology.gif`
-- MJCF: `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/flybody_bee/assets/apis_mellifera_worker.xml`
+- GIF: `output/animations/beebody_flybody_morphology.gif`
+- MJCF: `output/animations/flybody_bee/assets/apis_mellifera_worker.xml`
 - Score: `1.000`
 - Bee silhouette score: `1.000`
 - Locomotion score: `1.000`
@@ -59,8 +59,8 @@
 
 - Verdict: **PASS**
 - Locomotion mode: `flight`
-- GIF: `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beebody_flybody_flight.gif`
-- MJCF: `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/flybody_bee/assets/apis_mellifera_worker.xml`
+- GIF: `output/animations/beebody_flybody_flight.gif`
+- MJCF: `output/animations/flybody_bee/assets/apis_mellifera_worker.xml`
 - Score: `0.980`
 - Bee silhouette score: `1.000`
 - Locomotion score: `1.000`
@@ -113,46 +113,46 @@
 - none
 
 
-# BeeSwarm Strict FlyBody Contact Verification
+# FlyBody Contact Physics Report
 
 - Passed: `True`
 - Scene count: `3`
 
 ## collision
 
-- GIF: `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beeswarm_10_beebody_collision.gif`
-- Scene XML: `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/flybody_scenes/collision/collision_flybody_scene.xml`
-- Contact report: `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/flybody_scenes/collision/contact_metrics.json`
-- Backend: `flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer`
-- Motion pixels: `571057`
+- GIF: `output/animations/beeswarm_10_beebody_collision.gif`
+- Contact sheet: `output/animations/beeswarm_10_beebody_collision_contact_sheet.png`
+- Scene XML: `output/animations/flybody_scenes/collision/collision_flybody_scene.xml`
+- Body plan: `output/animations/flybody_scenes/collision/body_plan/assets/apis_mellifera_worker.xml`
+- Render backend: `flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer`
+- Bee count: `10`
+- Frames with bee-bee contacts: `20`
 - Bee-bee contact pairs: `bee_00-bee_01, bee_00-bee_02, bee_00-bee_09, bee_01-bee_02, bee_01-bee_07, bee_01-bee_09, bee_02-bee_03, bee_03-bee_04, bee_04-bee_05, bee_05-bee_06, bee_06-bee_07, bee_07-bee_08, bee_08-bee_09`
-- Floor contacts: `5`
-- Follower orientation error: `0.000` deg
-- Follower orientation confidence: `0.000`
-- XML passed: `True`
+- Floor contact count: `5`
+- Minimum contact distance: `-0.032476391711236306`
 
 ## waggle
 
-- GIF: `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beeswarm_waggle_dance_configured.gif`
-- Scene XML: `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/flybody_scenes/waggle/waggle_flybody_scene.xml`
-- Contact report: `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/flybody_scenes/waggle/contact_metrics.json`
-- Backend: `flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer`
-- Motion pixels: `317962`
+- GIF: `output/animations/beeswarm_waggle_dance_configured.gif`
+- Contact sheet: `output/animations/beeswarm_waggle_dance_configured_contact_sheet.png`
+- Scene XML: `output/animations/flybody_scenes/waggle/waggle_flybody_scene.xml`
+- Body plan: `output/animations/flybody_scenes/waggle/body_plan/assets/apis_mellifera_worker.xml`
+- Render backend: `flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer`
+- Bee count: `11`
+- Frames with bee-bee contacts: `24`
 - Bee-bee contact pairs: `bee_01-bee_02, bee_01-bee_10, bee_02-bee_03, bee_03-bee_04, bee_04-bee_05, bee_05-bee_06, bee_06-bee_07, bee_07-bee_08, bee_08-bee_09, bee_09-bee_10`
-- Floor contacts: `22`
-- Follower orientation error: `19.096` deg
-- Follower orientation confidence: `0.788`
-- XML passed: `True`
+- Floor contact count: `22`
+- Minimum contact distance: `-0.007146013856803874`
 
 ## waggle_long
 
-- GIF: `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/beeswarm_waggle_dance_long.gif`
-- Scene XML: `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/flybody_scenes/waggle_long/waggle_long_flybody_scene.xml`
-- Contact report: `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/animations/flybody_scenes/waggle_long/contact_metrics.json`
-- Backend: `flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer`
-- Motion pixels: `317951`
+- GIF: `output/animations/beeswarm_waggle_dance_long.gif`
+- Contact sheet: `output/animations/beeswarm_waggle_dance_long_contact_sheet.png`
+- Scene XML: `output/animations/flybody_scenes/waggle_long/waggle_long_flybody_scene.xml`
+- Body plan: `output/animations/flybody_scenes/waggle_long/body_plan/assets/apis_mellifera_worker.xml`
+- Render backend: `flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer`
+- Bee count: `11`
+- Frames with bee-bee contacts: `96`
 - Bee-bee contact pairs: `bee_01-bee_02, bee_01-bee_10, bee_02-bee_03, bee_03-bee_04, bee_04-bee_05, bee_05-bee_06, bee_06-bee_07, bee_07-bee_08, bee_08-bee_09, bee_09-bee_10`
-- Floor contacts: `89`
-- Follower orientation error: `19.096` deg
-- Follower orientation confidence: `0.788`
-- XML passed: `True`
+- Floor contact count: `89`
+- Minimum contact distance: `-0.007152310767314903`

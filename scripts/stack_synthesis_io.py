@@ -12,15 +12,17 @@ from beestack import (
     assemble_stack_synthesis_review,
     stack_synthesis_markdown,
 )
+from beestack.utils import project_relative_path, project_relative_payload
 from beestack.visualization import generate_stack_synthesis_figures
 from signpost_project_tree import write_project_readiness_review, write_signposts
 
 BIB_KEY_RE = re.compile(r"@\w+\{([^,]+),")
 
 
-def write_json(path: Path, payload: Any) -> None:
+def write_json(path: Path, payload: Any, project_root: Path | None = None) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    normalized = project_relative_payload(payload, project_root)
+    path.write_text(json.dumps(normalized, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
 def read_json(path: Path, default: Any | None = None) -> Any:
@@ -61,15 +63,18 @@ def write_stack_synthesis_outputs(
         readiness_review=read_json(reports_dir / "project_readiness_review.json"),
         bibliography_keys=bibliography_keys(project_root),
     )
-    figures = tuple(str(path) for path in generate_stack_synthesis_figures(review, figure_dir))
+    figures = tuple(
+        project_relative_path(path, project_root)
+        for path in generate_stack_synthesis_figures(review, figure_dir)
+    )
     review = review.with_figures(figures)
 
     data_path = data_dir / "stack_synthesis_review.json"
     report_json = reports_dir / "stack_synthesis_review.json"
     report_md = reports_dir / "stack_synthesis_review.md"
     payload = review.as_dict()
-    write_json(data_path, payload)
-    write_json(report_json, payload)
+    write_json(data_path, payload, project_root)
+    write_json(report_json, payload, project_root)
     report_md.parent.mkdir(parents=True, exist_ok=True)
     report_md.write_text(stack_synthesis_markdown(review), encoding="utf-8")
     write_signposts(project_root)

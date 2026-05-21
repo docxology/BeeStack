@@ -1,0 +1,66 @@
+{
+  "accessibility_checks": {
+    "background": "#FFFFFF",
+    "contrast_ratio": 17.73971700407407,
+    "foreground": "#111827",
+    "large_text_passed": true,
+    "large_text_threshold": 3.0,
+    "normal_text_passed": true,
+    "normal_text_threshold": 4.5,
+    "standard": "WCAG 2.1 AA contrast thresholds"
+  },
+  "alt_text": "Table-style map of manuscript figures with section placement, claim tier, source-data class, validation status, and not-supported boundaries.",
+  "artifact_kind": "figure",
+  "backend": "Matplotlib",
+  "caption": "Manuscript figure claim map showing inserted primary figures by manuscript section, claim tier, source-data class, validation status, and conservative boundary.",
+  "citation_keys": [
+    "wilson2017good",
+    "lamprecht2020fairsoftware"
+  ],
+  "claim_tier": "manuscript_figure_provenance_map",
+  "design_citation_keys": [
+    "rougier2014figures",
+    "cleveland1984graphical",
+    "crameri2020colour",
+    "w3c2023wcag21",
+    "wilkinson2016fair",
+    "heer2012interactive",
+    "ragan2016provenance"
+  ],
+  "design_source_dois": [
+    "10.1371/journal.pcbi.1003833",
+    "10.1080/01621459.1984.10478080",
+    "10.1038/s41467-020-19160-7",
+    "10.1038/sdata.2016.18",
+    "10.1145/2133806.2133821",
+    "10.1109/TVCG.2015.2467551"
+  ],
+  "fidelity": "architecture schematic",
+  "figure_path": "output/figures/manuscript_figure_claim_map.png",
+  "manuscript_label": "fig:manuscript_figure_claim_map",
+  "manuscript_section": "manuscript/09_visualization_and_validation.md",
+  "metrics": {
+    "primary_figure_count": 11
+  },
+  "priority": "primary",
+  "quality": {
+    "height_px": 1417,
+    "max_intensity": 255,
+    "mean_intensity": 239.156160664091,
+    "min_intensity": 24,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 232,
+    "std_intensity": 43.89121792675052,
+    "width_px": 2360
+  },
+  "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "figure registry and manuscript figure index",
+  "source_dois": [
+    "10.1371/journal.pcbi.1005510",
+    "10.3233/DS-190026"
+  ],
+  "title": "Manuscript Figure Claim Map",
+  "unsupported_inference": "Does not add empirical evidence beyond the registered figure sidecars.",
+  "validation_status": "nonblank quality sidecar generated"
+}

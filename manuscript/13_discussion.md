@@ -120,7 +120,7 @@ system-specific observations [@bjornsson2020digitaltwins]. BeeStack has
 the pieces a future hive-coupled twin would need: FAIR-style data
 records, explicit software workflows, module contracts, generated
 reports, validation checks, and artifact provenance
-[@wilkinson2016fair]. It does not yet have live colony calibration or
+[@wilkinson2016fair; @lamprecht2020fairsoftware]. It does not yet have live colony calibration or
 closed-loop assimilation.
 
 This is a useful place to stop in v0. A premature twin claim would make

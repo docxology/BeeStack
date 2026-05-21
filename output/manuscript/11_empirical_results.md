@@ -19,7 +19,8 @@ The empirical pipeline writes:
   glomerulus-length profiles;
 - `output/data/waggle_follower_analysis.json` — Hadjitofi–Webb
   waggle-follower antennal-position summaries and BeeBrain/BeeSwarm
-  decoding confidence [@hadjitofi2024figshare];
+  decoding confidence [@hadjitofi2024figshare;
+  @hadjitofi2024currentbiology];
 - `output/data/brain_data_completeness.json` — curated-source
   downloaded and parseable fractions, plus an explicit module/modality
   matrix;
@@ -30,9 +31,10 @@ The empirical pipeline writes:
 
 Anatomy records summarize:
 
-- Honey-Bee Standard Brain assets and ZIP inventories
+- Honey-Bee Standard Brain atlas assets and ZIP inventories
+  [@brandt2005standardbrain];
+- VRML/TIFF/HTML metadata derived from the standard-brain ecosystem
   [@rybak2010digital];
-- VRML/TIFF/HTML metadata derived from the standard-brain ecosystem;
 - neuropil abbreviations (a vocabulary required to align activity
   panels against atlas regions).
 
@@ -50,7 +52,8 @@ Activity records summarize:
 - antennal-movement summaries from Jernigan plume-tracking CSVs
   [@jernigan2026dryad];
 - waggle-follower antennal-position and dance-vector model-error
-  summaries from Hadjitofi–Webb [@hadjitofi2024figshare];
+  summaries from Hadjitofi–Webb [@hadjitofi2024figshare;
+  @hadjitofi2024currentbiology];
 - neuromodulatory spreadsheets from Nouvian biogenic-amine assays
   [@nouvian2017dryad];
 - template-bank integration (Galizia–Sachse glomerular maps
@@ -90,6 +93,10 @@ completeness, anatomy assets, simplified anatomy projection, neuropil
 coverage, and activity summaries. Each figure is registered in the
 manuscript figure index with its backend, fidelity tier, and
 regeneration command.
+
+![Matplotlib empirical completeness matrix generated from the BeeBrain source registry and parser statuses; sidecar validation checks the raster, and the figure supports availability and blocker claims rather than synthetic completion of absent calcium traces.](../figures/empirical/brain_data_completeness_matrix.png){#fig:brain_data_completeness_matrix}
+
+![Matplotlib empirical multimodal source map generated from BeeBrain anatomy, odor, antennal, and waggle-follower source metadata; sidecar validation checks the raster, and the figure supports source-to-contract traceability rather than completed empirical assimilation.](../figures/empirical/bee_brain_multimodal_source_map.png){#fig:brain_multimodal_source_map}
 
 ## Why the gap honesty matters
 

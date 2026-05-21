@@ -54,6 +54,7 @@ from beestack.brain import (
     validate_calcium_dataset,
     waggle_vibration_from_followers,
 )
+from beestack.utils import project_relative_path, project_relative_payload
 from beestack.visualization import generate_empirical_figures
 from signpost_project_tree import write_project_readiness_review, write_signposts
 
@@ -70,7 +71,8 @@ def load_config() -> BeeStackConfig:
 
 def write_json(path: Path, payload: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    normalized = project_relative_payload(payload, PROJECT_ROOT)
+    path.write_text(json.dumps(normalized, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
 def load_empirical_panels(source_dir: Path) -> tuple[EmpiricalOdorResponsePanel, ...]:
@@ -118,7 +120,7 @@ def load_waggle_follower_dataset(source_dir: Path) -> EmpiricalWaggleFollowerDat
         rows = _csv_rows(csv_path)
         if not rows:
             continue
-        source_files.append(str(csv_path))
+        source_files.append(project_relative_path(csv_path, PROJECT_ROOT))
         lowered = csv_path.name.lower()
         stamped = [dict(row, _source_file=csv_path.name) for row in rows]
         if "features" in lowered and {"bee_id", "angle_to_dancer_deg"} <= set(rows[0]):
@@ -844,9 +846,11 @@ def main() -> None:
         anatomy=anatomy_summary,
         activity=activity_summary,
         dataset_ids=tuple(sorted({panel.dataset_id for panel in panels})),
-        figure_paths=tuple(str(path) for path in figure_paths),
+        figure_paths=tuple(project_relative_path(path, PROJECT_ROOT) for path in figure_paths),
         archive_status=tuple(archive_status),
-        anatomy_downloads=tuple(record.as_dict() for record in anatomy_records),
+        anatomy_downloads=tuple(
+            project_relative_payload(record.as_dict(), PROJECT_ROOT) for record in anatomy_records
+        ),
         known_gaps=tuple(known_gaps),
     )
     report["end_to_end_report"] = end_to_end_report.as_dict()
@@ -1098,7 +1102,7 @@ def _markdown_report(report: dict[str, Any], figure_paths: list[Path]) -> str:
             lines.append(f"- {gap}.")
     lines.extend(["", "## Figures", ""])
     for path in figure_paths:
-        lines.append(f"- `{path}`")
+        lines.append(f"- `{project_relative_path(path, PROJECT_ROOT)}`")
     lines.append("")
     return "\n".join(lines)
 
@@ -1142,7 +1146,10 @@ def _waggle_markdown(
                 "",
             ]
         )
-        lines.extend(f"- `{path}`" for path in waggle_dataset.source_files[:24])
+        lines.extend(
+            f"- `{project_relative_path(path, PROJECT_ROOT)}`"
+            for path in waggle_dataset.source_files[:24]
+        )
         lines.append("")
     completeness = data_completeness.as_dict()
     lines.extend(

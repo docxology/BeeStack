@@ -18,11 +18,11 @@ scorecards, {{RESEARCH_EVIDENCE_COUNT}} empirical evidence records,
 {{RESEARCH_KNOWN_GAP_COUNT}} known gaps. The overall validation
 fraction is {{RESEARCH_VALIDATION_FRACTION}}.
 
-![BeeStack research scorecard heatmap](../figures/research/research_module_scorecard_heatmap.png){#fig:research_scorecard}
+![Matplotlib/pandas research scorecard heatmap generated from ResearchSuiteReport scorecards and visual inventory; sidecar validation checks the raster, and the figure supports deterministic validation coverage rather than biological predictive validity.](../figures/research/research_module_scorecard_heatmap.png){#fig:research_scorecard}
 
-![BeeStack sensitivity sweeps](../figures/research/research_sensitivity_sweeps.png){#fig:research_sweeps}
+![Matplotlib/pandas sensitivity sweep panel generated from deterministic reduced-kernel sweeps; sidecar validation checks the raster, and the figure supports local parameter sensitivity rather than external scenario validation.](../figures/research/research_sensitivity_sweeps.png){#fig:research_sweeps}
 
-![BeeStack fidelity and evidence network](../figures/research/research_fidelity_evidence_network.png){#fig:research_network}
+![Matplotlib/NetworkX fidelity and evidence network generated from ResearchSuiteReport evidence records; sidecar validation checks the raster, and the figure supports evidence provenance rather than empirical completeness.](../figures/research/research_fidelity_evidence_network.png){#fig:research_network}
 
 ## Stack-synthesis review
 
@@ -44,7 +44,7 @@ integrated run improved brood-temperature error by
 {{STACK_SYNTHESIS_THERMAL_IMPROVEMENT_C}} °C. The top
 synthesis finding is: **{{STACK_SYNTHESIS_TOP_FINDING}}**
 
-![BeeStack cross-stack synthesis dashboard](../figures/research/stack_synthesis_dashboard.png){#fig:stack_synthesis_dashboard}
+![Matplotlib/pandas cross-stack synthesis dashboard generated from StackSynthesisReview; sidecar validation checks the raster, and the figure supports readiness/gap synthesis rather than digital-twin readiness while preserving DIGITAL_TWIN_READY=False.](../figures/research/stack_synthesis_dashboard.png){#fig:stack_synthesis_dashboard}
 
 ## Module scorecards
 

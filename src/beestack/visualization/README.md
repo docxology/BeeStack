@@ -8,6 +8,13 @@ the recruitment-field Swarm view, and Niche remain Matplotlib summaries.
 Plotting belongs here or in thin scripts, never in Body/Brain/Mind/Swarm/Niche
 core logic.
 
+`style.py` centralizes the showcase publication palette, typography, panel
+labels, and grid treatment used by Matplotlib/NetworkX figures. `figure_registry.py`
+records curated manuscript figure captions, alt text, claim tiers, intended
+sections, labels, citations, and unsupported-inference boundaries. `figure_metadata.py`
+writes those registry fields into JSON sidecars alongside image-quality checks
+so visual artifacts are auditable evidence, not manuscript-only decoration.
+
 `bee_signature.py` scores actual BeeBody GIF frames and generated MJCF features
 so visualization checks can fail when the render loses honeybee-specific cues.
 Animation artifact metadata includes fidelity level, backend, contact sheet,

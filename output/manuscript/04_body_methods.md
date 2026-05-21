@@ -86,7 +86,7 @@ energy budget change, configured wing-beat frequency, and morphology
 cue scores in
 `output/figures/methods/beebody_methods_telemetry_dashboard.png`.
 
-![BeeBody methods telemetry dashboard](../figures/methods/beebody_methods_telemetry_dashboard.png){#fig:body_methods_dashboard}
+![Matplotlib/pandas BeeBody methods dashboard generated from MethodsAnalysisReport and simulation records; sidecar validation checks a nonblank raster, and the figure supports telemetry and fidelity-boundary claims rather than calibrated honeybee biomechanics.](../figures/methods/beebody_methods_telemetry_dashboard.png){#fig:body_methods_dashboard}
 
 ## Fidelity boundary
 

@@ -21,6 +21,7 @@ class GeneratedReportAudit:
     stale_report_paths: tuple[str, ...]
     missing_current_evidence_paths: tuple[str, ...]
     unsupported_report_claims: tuple[str, ...]
+    project_root_path_leaks: tuple[str, ...] = ()
 
     @property
     def passed(self) -> bool:
@@ -28,6 +29,7 @@ class GeneratedReportAudit:
             self.stale_report_paths
             or self.missing_current_evidence_paths
             or self.unsupported_report_claims
+            or self.project_root_path_leaks
         )
 
     def as_dict(self) -> dict[str, object]:
@@ -54,6 +56,7 @@ def audit_generated_reports(project_root: Path) -> GeneratedReportAudit:
         dict.fromkeys(
             (
                 *_unsupported_method_markdown_claims(reports_dir / "methods_analysis.md"),
+                *_unsupported_method_evidence_metadata(methods),
                 *_unsupported_research_claims(
                     reports_dir / "beestack_research_report.md", research
                 ),
@@ -61,7 +64,8 @@ def audit_generated_reports(project_root: Path) -> GeneratedReportAudit:
             )
         )
     )
-    return GeneratedReportAudit(stale_reports, missing_evidence, unsupported)
+    path_leaks = _project_root_path_leaks(project_root, data_dir, reports_dir)
+    return GeneratedReportAudit(stale_reports, missing_evidence, unsupported, path_leaks)
 
 
 def generated_report_audit_markdown(audit: GeneratedReportAudit) -> str:
@@ -74,6 +78,7 @@ def generated_report_audit_markdown(audit: GeneratedReportAudit) -> str:
         f"- Stale report files: `{len(audit.stale_report_paths)}`",
         f"- Missing current evidence paths: `{len(audit.missing_current_evidence_paths)}`",
         f"- Unsupported report claims: `{len(audit.unsupported_report_claims)}`",
+        f"- Project-root path leaks: `{len(audit.project_root_path_leaks)}`",
         "",
         "## Stale Report Files",
         "",
@@ -83,6 +88,8 @@ def generated_report_audit_markdown(audit: GeneratedReportAudit) -> str:
     lines.extend(_list_or_none(audit.missing_current_evidence_paths))
     lines.extend(["", "## Unsupported Report Claims", ""])
     lines.extend(_list_or_none(audit.unsupported_report_claims))
+    lines.extend(["", "## Project-Root Path Leaks", ""])
+    lines.extend(_list_or_none(audit.project_root_path_leaks))
     lines.append("")
     return "\n".join(lines)
 
@@ -112,6 +119,22 @@ def _unsupported_method_markdown_claims(path: Path) -> tuple[str, ...]:
         lowered = line.lower()
         if any(status in lowered for status in ABSENT_EVIDENCE_STATES) and " supports " in lowered:
             claims.append(f"Absent evidence rendered as support: {line.strip()}")
+    return tuple(claims)
+
+
+def _unsupported_method_evidence_metadata(methods_analysis: dict[str, Any]) -> tuple[str, ...]:
+    claims: list[str] = []
+    required = ("citation_keys", "source_dois", "artifact_kind", "claim_tier")
+    for link in methods_analysis.get("manuscript_evidence_links", ()) or ():
+        artifact_path = str(link.get("artifact_path", "unknown artifact"))
+        for field in required:
+            value = link.get(field)
+            if not value:
+                claims.append(f"{artifact_path} is missing manuscript evidence {field}.")
+        for doi in link.get("source_dois", ()) or ():
+            doi_text = str(doi).removeprefix("https://doi.org/")
+            if not (doi_text.startswith("10.") and "/" in doi_text):
+                claims.append(f"{artifact_path} has malformed source DOI: {doi}")
     return tuple(claims)
 
 
@@ -150,6 +173,18 @@ def _read_json(path: Path) -> dict[str, Any]:
     if not path.exists():
         return {}
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _project_root_path_leaks(project_root: Path, *roots: Path) -> tuple[str, ...]:
+    root_text = project_root.resolve().as_posix()
+    leaks: list[str] = []
+    for root in roots:
+        if not root.exists():
+            continue
+        for path in sorted((*root.glob("*.json"), *root.glob("*.md"))):
+            if root_text in path.read_text(encoding="utf-8", errors="replace"):
+                leaks.append(_relative(project_root, path))
+    return tuple(dict.fromkeys(leaks))
 
 
 def _list_or_none(values: tuple[str, ...]) -> list[str]:

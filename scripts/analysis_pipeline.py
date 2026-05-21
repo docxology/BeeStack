@@ -35,6 +35,7 @@ from beestack import (
     stack_integrity_review,
     task_allocation_snapshot,
 )
+from beestack.utils import project_relative_path, project_relative_payload
 from beestack.visualization import (
     generate_analysis_figures,
     generate_module_animations,
@@ -126,24 +127,27 @@ def main() -> None:
         waggle_config.as_dict(),
     )
     bee_signatures = _bee_signatures(animations, cfg)
-    bee_visual_report = _bee_visual_report(bee_signatures)
     contact_physics_report = _contact_physics_report(animations)
+    bee_visual_report = _bee_visual_report(bee_signatures, contact_physics_report)
     write_json(
         PROJECT_ROOT / "output" / "data" / "animation_manifest.json",
-        {
-            "animations": [artifact.as_dict() for artifact in animations],
-            "groups": _animation_groups(animations),
-            "waggle_dance_config": waggle_config.as_dict(),
-            "accessibility": {
-                Path(artifact.path).name: {
-                    "alt_text": artifact.alt_text,
-                    "caption": artifact.caption,
-                }
-                for artifact in animations
+        project_relative_payload(
+            {
+                "animations": [artifact.as_dict() for artifact in animations],
+                "groups": _animation_groups(animations),
+                "waggle_dance_config": waggle_config.as_dict(),
+                "accessibility": {
+                    Path(artifact.path).name: {
+                        "alt_text": artifact.alt_text,
+                        "caption": artifact.caption,
+                    }
+                    for artifact in animations
+                },
+                "bee_visual_signature": bee_visual_report,
+                "flybody_contact_physics": contact_physics_report,
             },
-            "bee_visual_signature": bee_visual_report,
-            "flybody_contact_physics": contact_physics_report,
-        },
+            PROJECT_ROOT,
+        ),
     )
     write_json(
         PROJECT_ROOT / "output" / "reports" / "flybody_contact_physics.json",
@@ -158,9 +162,17 @@ def main() -> None:
         bee_visual_report,
     )
     (PROJECT_ROOT / "output" / "reports" / "bee_visual_verification.md").write_text(
-        "\n".join(
-            bee_render_report_markdown(signature, artifact.path, artifact.source)
-            for artifact, signature in bee_signatures
+        (
+            "\n".join(
+                bee_render_report_markdown(
+                    signature,
+                    project_relative_path(artifact.path, PROJECT_ROOT),
+                    project_relative_path(artifact.source, PROJECT_ROOT),
+                )
+                for artifact, signature in bee_signatures
+            )
+            + "\n\n"
+            + _contact_physics_markdown(contact_physics_report)
         ),
         encoding="utf-8",
     )
@@ -207,20 +219,25 @@ def _bee_signatures(artifacts, cfg: BeeStackConfig):
     return signatures
 
 
-def _bee_visual_report(bee_signatures) -> dict[str, object]:
+def _bee_visual_report(bee_signatures, contact_physics_report) -> dict[str, object]:
+    body_visual_passed = all(signature.bee_like for _, signature in bee_signatures)
+    swarm_contact_passed = bool(contact_physics_report.get("passed", False))
     return {
-        "bee_like": all(signature.bee_like for _, signature in bee_signatures),
+        "bee_like": body_visual_passed and swarm_contact_passed,
+        "body_visual_passed": body_visual_passed,
+        "swarm_contact_physics_passed": swarm_contact_passed,
         "score": min(signature.score for _, signature in bee_signatures),
         "silhouette_score": min(signature.silhouette_score for _, signature in bee_signatures),
         "animations": [
             {
-                "gif": artifact.path,
-                "contact_sheet": artifact.contact_sheet,
-                "mjcf": artifact.source,
+                "gif": project_relative_path(artifact.path, PROJECT_ROOT),
+                "contact_sheet": project_relative_path(artifact.contact_sheet, PROJECT_ROOT),
+                "mjcf": project_relative_path(artifact.source, PROJECT_ROOT),
                 **signature.as_dict(),
             }
             for artifact, signature in bee_signatures
         ],
+        "swarm": project_relative_payload(contact_physics_report, PROJECT_ROOT),
     }
 
 
@@ -228,7 +245,12 @@ def _contact_physics_report(artifacts) -> dict[str, object]:
     scenes = []
     for artifact in artifacts:
         if artifact.contact_report:
-            scenes.append(json.loads(Path(artifact.contact_report).read_text(encoding="utf-8")))
+            scenes.append(
+                project_relative_payload(
+                    json.loads(Path(artifact.contact_report).read_text(encoding="utf-8")),
+                    PROJECT_ROOT,
+                )
+            )
     return {
         "passed": bool(scenes) and all(scene["metrics"]["passed"] for scene in scenes),
         "scene_count": len(scenes),

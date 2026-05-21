@@ -20,6 +20,17 @@ This project follows the research-template pattern:
    empirical traces to make reports look complete.
 8. Digital-twin wording must stay conservative until longitudinal assimilation,
    held-out validation residuals, uncertainty, and governance artifacts exist.
+9. Source evidence is an offline contract. Manuscript citations must use Pandoc
+   bracket syntax, required BibTeX entries must carry verified DOI/source URLs,
+   generated methods links must include citation keys, source DOIs, artifact
+   kind, claim tier, and availability status, and Perplexity/web discovery must
+   not replace directly verified scholarly or official sources.
+10. Manuscript figures are evidence artifacts. Figure sidecars must preserve
+    caption, alt text, manuscript section, label, claim tier, fidelity tier,
+    source data, regeneration command, and unsupported-inference language; the
+    hydrated manuscript must reference only existing generated images with
+    sidecars. Generated project-local artifact paths should serialize as stable
+    `output/...` paths, not checkout-specific absolute paths.
 
 The upstream instruction asked agents to read `skills/PAI/SKILL.md`. If that
 path is absent in this project checkout, use the installed PAI skill from the
@@ -29,6 +40,8 @@ criteria, specificity, implementation, and verification.
 Before finishing changes, run:
 
 ```bash
+uv lock --check
+uv run ruff check src tests scripts
 uv run pytest --cov=src --cov-report=term-missing
 uv run python scripts/analysis_pipeline.py
 uv run python scripts/verify_generated_reports.py

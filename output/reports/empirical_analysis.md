@@ -68,16 +68,16 @@
 
 ## Figures
 
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_panel_heatmap.png`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_panel_quality.png`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_stack_alignment.png`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_antennal_movement.png`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_anatomy_assets.png`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_anatomy_projection.png`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_neuropil_coverage.png`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/empirical_activity_summary.png`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/waggle_follower_alignment.png`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/waggle_phase_coupling.png`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/beeswarm_waggle_recruitment_diagnostics.png`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/brain_data_completeness_matrix.png`
-- `/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/empirical/bee_brain_multimodal_source_map.png`
+- `output/figures/empirical/empirical_panel_heatmap.png`
+- `output/figures/empirical/empirical_panel_quality.png`
+- `output/figures/empirical/empirical_stack_alignment.png`
+- `output/figures/empirical/empirical_antennal_movement.png`
+- `output/figures/empirical/empirical_anatomy_assets.png`
+- `output/figures/empirical/empirical_anatomy_projection.png`
+- `output/figures/empirical/empirical_neuropil_coverage.png`
+- `output/figures/empirical/empirical_activity_summary.png`
+- `output/figures/empirical/waggle_follower_alignment.png`
+- `output/figures/empirical/waggle_phase_coupling.png`
+- `output/figures/empirical/beeswarm_waggle_recruitment_diagnostics.png`
+- `output/figures/empirical/brain_data_completeness_matrix.png`
+- `output/figures/empirical/bee_brain_multimodal_source_map.png`

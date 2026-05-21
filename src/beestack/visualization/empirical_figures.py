@@ -20,6 +20,7 @@ from ..brain import (
     WaggleFollowerSummary,
 )
 from .figure_metadata import write_figure_sidecar
+from .style import PALETTE, apply_panel_style, module_color, style_context
 
 
 def generate_empirical_figures(
@@ -40,76 +41,77 @@ def generate_empirical_figures(
     if not panels:
         raise ValueError("at least one empirical panel is required")
     output_dir.mkdir(parents=True, exist_ok=True)
-    paths = [
-        _panel_heatmap(panels[0], output_dir / "empirical_panel_heatmap.png"),
-        _panel_quality_bars(panel_stats, output_dir / "empirical_panel_quality.png"),
-        _stack_alignment_bars(stack_alignment, output_dir / "empirical_stack_alignment.png"),
-    ]
-    if antennal_summaries:
-        paths.append(
-            _antennal_movement_bars(
-                antennal_summaries[0], output_dir / "empirical_antennal_movement.png"
-            )
-        )
-    if anatomy_summary is not None and anatomy_inventories:
-        paths.append(
-            _anatomy_asset_bars(
-                anatomy_summary,
-                anatomy_inventories,
-                output_dir / "empirical_anatomy_assets.png",
-            )
-        )
-        if any(inventory.vrml_centroid is not None for inventory in anatomy_inventories):
+    with style_context():
+        paths = [
+            _panel_heatmap(panels[0], output_dir / "empirical_panel_heatmap.png"),
+            _panel_quality_bars(panel_stats, output_dir / "empirical_panel_quality.png"),
+            _stack_alignment_bars(stack_alignment, output_dir / "empirical_stack_alignment.png"),
+        ]
+        if antennal_summaries:
             paths.append(
-                _anatomy_projection(
-                    anatomy_inventories,
-                    output_dir / "empirical_anatomy_projection.png",
+                _antennal_movement_bars(
+                    antennal_summaries[0], output_dir / "empirical_antennal_movement.png"
                 )
             )
-    if neuropil_abbreviations:
-        paths.append(
-            _neuropil_coverage_bars(
-                neuropil_abbreviations,
-                output_dir / "empirical_neuropil_coverage.png",
+        if anatomy_summary is not None and anatomy_inventories:
+            paths.append(
+                _anatomy_asset_bars(
+                    anatomy_summary,
+                    anatomy_inventories,
+                    output_dir / "empirical_anatomy_assets.png",
+                )
             )
-        )
-    if activity_summary is not None:
-        paths.append(
-            _activity_summary_bars(
-                activity_summary,
-                output_dir / "empirical_activity_summary.png",
+            if any(inventory.vrml_centroid is not None for inventory in anatomy_inventories):
+                paths.append(
+                    _anatomy_projection(
+                        anatomy_inventories,
+                        output_dir / "empirical_anatomy_projection.png",
+                    )
+                )
+        if neuropil_abbreviations:
+            paths.append(
+                _neuropil_coverage_bars(
+                    neuropil_abbreviations,
+                    output_dir / "empirical_neuropil_coverage.png",
+                )
             )
-        )
-    if waggle_summary is not None:
-        paths.extend(
-            [
-                _waggle_follower_alignment(
-                    waggle_summary,
-                    output_dir / "waggle_follower_alignment.png",
-                ),
-                _waggle_phase_coupling(
-                    waggle_summary,
-                    output_dir / "waggle_phase_coupling.png",
-                ),
-                _waggle_recruitment_diagnostics(
-                    waggle_summary,
-                    output_dir / "beeswarm_waggle_recruitment_diagnostics.png",
-                ),
-            ]
-        )
-    if data_completeness is not None:
-        paths.extend(
-            [
-                _brain_data_completeness_matrix(
-                    data_completeness,
-                    output_dir / "brain_data_completeness_matrix.png",
-                ),
-                _brain_multimodal_source_map(
-                    data_completeness,
-                    output_dir / "bee_brain_multimodal_source_map.png",
-                ),
-            ]
-        )
+        if activity_summary is not None:
+            paths.append(
+                _activity_summary_bars(
+                    activity_summary,
+                    output_dir / "empirical_activity_summary.png",
+                )
+            )
+        if waggle_summary is not None:
+            paths.extend(
+                [
+                    _waggle_follower_alignment(
+                        waggle_summary,
+                        output_dir / "waggle_follower_alignment.png",
+                    ),
+                    _waggle_phase_coupling(
+                        waggle_summary,
+                        output_dir / "waggle_phase_coupling.png",
+                    ),
+                    _waggle_recruitment_diagnostics(
+                        waggle_summary,
+                        output_dir / "beeswarm_waggle_recruitment_diagnostics.png",
+                    ),
+                ]
+            )
+        if data_completeness is not None:
+            paths.extend(
+                [
+                    _brain_data_completeness_matrix(
+                        data_completeness,
+                        output_dir / "brain_data_completeness_matrix.png",
+                    ),
+                    _brain_multimodal_source_map(
+                        data_completeness,
+                        output_dir / "bee_brain_multimodal_source_map.png",
+                    ),
+                ]
+            )
     for path in paths:
         write_figure_sidecar(
             path,
@@ -163,7 +165,7 @@ def _panel_quality_bars(stats: tuple[EmpiricalPanelStats, ...], path: Path) -> P
     ax.barh(labels[::-1], values[::-1], color="#2a9d8f")
     ax.set_title("Empirical panel mean absolute response")
     ax.set_xlabel("Mean absolute response")
-    ax.grid(axis="x", alpha=0.2)
+    apply_panel_style(ax, grid_axis="x")
     fig.tight_layout()
     fig.savefig(path, dpi=160)
     plt.close(fig)
@@ -175,12 +177,12 @@ def _stack_alignment_bars(stack_alignment: dict[str, float], path: Path) -> Path
     labels = [label for label, _ in ranked]
     values = [value for _, value in ranked]
     fig, ax = plt.subplots(figsize=(9, 5))
-    ax.barh(labels[::-1], values[::-1], color="#e9a227")
+    ax.barh(labels[::-1], values[::-1], color=module_color("BeeBrain"))
     ax.set_title("BeeBrain alignment to empirical templates")
     ax.set_xlabel("Cosine alignment")
     ax.set_xlim(min(-1.0, min(values, default=0.0)), 1.0)
     ax.axvline(0, color="#222222", lw=0.8)
-    ax.grid(axis="x", alpha=0.2)
+    apply_panel_style(ax, grid_axis="x")
     fig.tight_layout()
     fig.savefig(path, dpi=160)
     plt.close(fig)
@@ -206,12 +208,18 @@ def _antennal_movement_bars(summary: AntennalMovementSummary, path: Path) -> Pat
     ax.barh(
         labels[::-1],
         values[::-1],
-        color=["#5b8e7d", "#f2b134", "#f2b134", "#d95d39", "#3a6ea5"][::-1],
+        color=[
+            module_color("BeeNiche"),
+            module_color("BeeBody"),
+            module_color("BeeBody"),
+            PALETTE[6],
+            module_color("BeeBrain"),
+        ][::-1],
     )
     ax.set_title("Jernigan empirical antennal active sensing")
     ax.set_xlabel("Normalized summary value")
     ax.set_xlim(0.0, 1.0)
-    ax.grid(axis="x", alpha=0.2)
+    apply_panel_style(ax, grid_axis="x")
     ax.text(
         0.01,
         -0.18,

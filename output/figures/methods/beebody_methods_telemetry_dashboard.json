@@ -1,20 +1,63 @@
 {
+  "accessibility_checks": {
+    "background": "#FFFFFF",
+    "contrast_ratio": 17.73971700407407,
+    "foreground": "#111827",
+    "large_text_passed": true,
+    "large_text_threshold": 3.0,
+    "normal_text_passed": true,
+    "normal_text_threshold": 4.5,
+    "standard": "WCAG 2.1 AA contrast thresholds"
+  },
+  "alt_text": "Four-panel BeeBody telemetry dashboard with speed, wing power, energy, and cues.",
+  "artifact_kind": "figure",
   "backend": "Matplotlib/pandas",
+  "caption": "BeeBody methods dashboard showing reduced telemetry, energy, wing-power, and morphology cues beside the FlyBody-backed fidelity boundary.",
+  "citation_keys": [
+    "vaxenburg2025flybody",
+    "todorov2012mujoco"
+  ],
+  "claim_tier": "strict_visual_plus_reduced_telemetry",
+  "design_citation_keys": [
+    "rougier2014figures",
+    "cleveland1984graphical",
+    "crameri2020colour",
+    "w3c2023wcag21",
+    "wilkinson2016fair",
+    "heer2012interactive",
+    "ragan2016provenance"
+  ],
+  "design_source_dois": [
+    "10.1371/journal.pcbi.1003833",
+    "10.1080/01621459.1984.10478080",
+    "10.1038/s41467-020-19160-7",
+    "10.1038/sdata.2016.18",
+    "10.1145/2133806.2133821",
+    "10.1109/TVCG.2015.2467551"
+  ],
   "fidelity": "FlyBody-backed render diagnostics plus reduced telemetry",
-  "figure_path": "/Users/4d/Documents/GitHub/template/projects_in_progress/BeeStack/output/figures/methods/beebody_methods_telemetry_dashboard.png",
+  "figure_path": "output/figures/methods/beebody_methods_telemetry_dashboard.png",
+  "manuscript_label": "fig:body_methods_dashboard",
+  "manuscript_section": "manuscript/04_body_methods.md",
+  "priority": "primary",
   "quality": {
-    "height_px": 1152,
+    "height_px": 1157,
     "max_intensity": 255,
-    "mean_intensity": 242.6138527199074,
+    "mean_intensity": 244.29792557304918,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 46.515974503484095,
-    "width_px": 1800
+    "std_intensity": 40.63569425855534,
+    "width_px": 1786
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
   "schema": "beestack.figure.v1",
-  "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+  "source_data": "MethodsAnalysisReport and simulation records",
+  "source_dois": [
+    "10.1038/s41586-025-09029-4",
+    "10.1109/IROS.2012.6386109"
+  ],
   "title": "Beebody Methods Telemetry Dashboard",
+  "unsupported_inference": "Does not calibrate honeybee biomechanics or aerodynamics.",
   "validation_status": "nonblank image and quality sidecar passed"
 }
