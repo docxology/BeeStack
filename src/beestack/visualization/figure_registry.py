@@ -153,7 +153,7 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
             "BeeSwarm, and BeeNiche through typed contracts and generated evidence."
         ),
         alt_text="Five BeeStack modules arranged as a left-to-right contract chain.",
-        manuscript_section="manuscript/03_system_architecture.md",
+        manuscript_section="manuscript/04_evidence_typed_architecture.md",
         manuscript_label="fig:beestack_graphical_abstract",
         claim_tier="architecture_schematic",
         fidelity_level="architecture schematic",
@@ -170,7 +170,7 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
             "status, source data, and unsupported inference for current BeeStack figures."
         ),
         alt_text="Tiered evidence ladder with current BeeStack capabilities and blocked claims.",
-        manuscript_section="manuscript/09_visualization_and_validation.md",
+        manuscript_section="manuscript/08_validation_and_figures.md",
         manuscript_label="fig:beestack_evidence_ladder",
         claim_tier="fidelity_boundary",
         fidelity_level="cross-stack evidence schematic",
@@ -190,13 +190,213 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
             "Table-style map of manuscript figures with section placement, claim tier, "
             "source-data class, validation status, and not-supported boundaries."
         ),
-        manuscript_section="manuscript/09_visualization_and_validation.md",
+        manuscript_section="manuscript/08_validation_and_figures.md",
         manuscript_label="fig:manuscript_figure_claim_map",
         claim_tier="manuscript_figure_provenance_map",
         fidelity_level="manuscript evidence map",
         source_data="figure registry and manuscript figure index",
         regeneration_command="uv run python scripts/analysis_pipeline.py",
         unsupported_inference="Does not add empirical evidence beyond the registered figure sidecars.",
+        priority="primary",
+    ),
+    _narrative(
+        "output/figures/beestack_first_principles_claim_audit.png",
+        title="BeeStack first-principles claim audit",
+        caption=(
+            "First-principles claim audit separating hard evidence constraints, "
+            "replaceable implementation choices, and blocked digital-twin claims."
+        ),
+        alt_text=(
+            "Table-style claim audit mapping hard constraints, evidence surfaces, "
+            "and unsupported manuscript boundaries."
+        ),
+        manuscript_section="manuscript/02_claim_ledger.md",
+        manuscript_label="fig:first_principles_claim_audit",
+        claim_tier="first_principles_claim_boundary",
+        fidelity_level="evidence-boundary schematic",
+        source_data="figure registry, source audit, and generated project contracts",
+        regeneration_command="uv run python scripts/analysis_pipeline.py",
+        unsupported_inference=(
+            "Does not add evidence beyond registered reports or make blocked claims current."
+        ),
+        priority="primary",
+    ),
+    _narrative(
+        "output/figures/beestack_scholarship_evidence_matrix.png",
+        title="BeeStack scholarship evidence matrix",
+        caption=(
+            "Scholarship evidence matrix mapping directly verified sources to manuscript "
+            "sections, figure targets, DOI-bearing source records, and claim tiers."
+        ),
+        alt_text=(
+            "Matrix of verified scholarship sources with DOI status, target sections, "
+            "target figures, and claim-tier categories."
+        ),
+        manuscript_section="manuscript/03_materials_and_source_provenance.md",
+        manuscript_label="fig:scholarship_evidence_matrix",
+        claim_tier="scholarship_evidence_matrix",
+        fidelity_level="source-refresh and bibliography diagnostic",
+        source_data="source refresh ledger, bibliography, source audit, and figure registry",
+        regeneration_command="uv run python scripts/analysis_pipeline.py",
+        unsupported_inference="Does not replace direct DOI/source verification or add empirical data.",
+        priority="primary",
+        citation_keys=("fair4rs2022principles", "wilkinson2016fair", "lamprecht2020fairsoftware"),
+        source_dois=("10.1038/s41597-022-01710-x", "10.1038/sdata.2016.18", "10.3233/DS-190026"),
+    ),
+    _narrative(
+        "output/figures/beebody_beeswarm_micro_macro_calibration.png",
+        title="BeeBody and BeeSwarm micro-to-macro calibration map",
+        caption=(
+            "Calibration-boundary map connecting strict BeeBody/FlyBody scene metrics, "
+            "waggle-motion anchors, and reduced BeeSwarm or BEEHAVE-compatible colony summaries."
+        ),
+        alt_text=(
+            "Flow diagram from strict body-scene metrics through waggle evidence to "
+            "reduced swarm and BEEHAVE-compatible summaries."
+        ),
+        manuscript_section="manuscript/05_methods_body_swarm.md",
+        manuscript_label="fig:body_swarm_micro_macro",
+        claim_tier="micro_macro_calibration_boundary",
+        fidelity_level="strict small-scene evidence plus reduced swarm diagnostic",
+        source_data="FlyBody scene metrics, simulation records, BEEHAVE anchor, and source refresh ledger",
+        regeneration_command="uv run python scripts/analysis_pipeline.py",
+        unsupported_inference=(
+            "Does not calibrate colony-scale recruitment or make small-scene contacts a population model."
+        ),
+        priority="primary",
+        citation_keys=(
+            "vaxenburg2025flybody",
+            "todorov2012mujoco",
+            "becher2014beehave",
+            "riley2005flightpaths",
+            "landgraf2011roboticdance",
+        ),
+        source_dois=(
+            "10.1038/s41586-025-09029-4",
+            "10.1109/IROS.2012.6386109",
+            "10.1111/1365-2664.12222",
+            "10.1038/nature03526",
+            "10.1371/journal.pone.0021354",
+        ),
+    ),
+    _narrative(
+        "output/figures/beebrain_beemind_anatomy_policy_map.png",
+        title="BeeBrain to BeeMind anatomy-policy map",
+        caption=(
+            "Anatomy-to-policy map linking antennal-lobe, mushroom-body, central-complex, "
+            "and waggle-follower anchors to BeeMind belief and policy contracts."
+        ),
+        alt_text=(
+            "Diagram mapping BeeBrain anatomy and waggle neuroethology anchors into "
+            "BeeMind belief, preference, and policy terms."
+        ),
+        manuscript_section="manuscript/06_methods_brain_mind.md",
+        manuscript_label="fig:brain_mind_anatomy_policy",
+        claim_tier="neurocognitive_mapping_diagnostic",
+        fidelity_level="anatomy-data-to-belief-policy mapping diagnostic",
+        source_data="source refresh ledger, BeeBrain source registry, and active-inference methods records",
+        regeneration_command="uv run python scripts/analysis_pipeline.py",
+        unsupported_inference="Does not support connectome-scale, calcium-validated, or learned generative dynamics.",
+        priority="primary",
+        citation_keys=(
+            "brandt2005standardbrain",
+            "rybak2010digital",
+            "galizia1999glomerular",
+            "hateren2019neuroethology",
+            "friston2010free",
+            "parr2017working",
+        ),
+        source_dois=(
+            "10.1002/cne.20644",
+            "10.3389/fnsys.2010.00030",
+            "10.1038/8144",
+            "10.3390/insects10100336",
+            "10.1038/nrn2787",
+            "10.1038/s41598-017-15249-0",
+        ),
+    ),
+    _narrative(
+        "output/figures/beeniche_adapter_niche_map.png",
+        title="BeeNiche adapter and niche map",
+        caption=(
+            "Adapter map placing BEEHAVE-compatible colony summaries beside comb, "
+            "thermal, and forage fields without claiming full hive ecology."
+        ),
+        alt_text=(
+            "Comb, thermal, forage, BEEHAVE, and Hiveopolis adapter nodes connected "
+            "through explicit current and blocked interfaces."
+        ),
+        manuscript_section="manuscript/07_methods_niche.md",
+        manuscript_label="fig:niche_adapter_map",
+        claim_tier="adapter_boundary_diagnostic",
+        fidelity_level="BEEHAVE/Hiveopolis adapter and niche-boundary diagnostic",
+        source_data="source refresh ledger, niche methods records, simulation records, and adapter notes",
+        regeneration_command="uv run python scripts/analysis_pipeline.py",
+        unsupported_inference="Does not validate full ecology, real-time hive control, or thermodynamic colony dynamics.",
+        priority="primary",
+        citation_keys=("becher2014beehave", "narsicht2020hiveopolis", "johnson2009self", "kronenberg1982colonial"),
+        source_dois=("10.1111/1365-2664.12222",),
+    ),
+    _narrative(
+        "output/figures/beestack_validation_readiness_residuals.png",
+        title="BeeStack validation readiness and residual blockers",
+        caption=(
+            "Validation-readiness panel separating implemented verification checks from "
+            "blocked held-out residual, uncertainty, assimilation, and governance evidence."
+        ),
+        alt_text=(
+            "Readiness panel showing implemented checks and explicitly blocked residual "
+            "or uncertainty rows instead of invented validation."
+        ),
+        manuscript_section="manuscript/08_validation_and_figures.md",
+        manuscript_label="fig:validation_readiness_residuals",
+        claim_tier="validation_readiness_boundary",
+        fidelity_level="validation and residual-readiness boundary diagnostic",
+        source_data="source refresh ledger, readiness review, generated reports, and figure sidecars",
+        regeneration_command="uv run python scripts/analysis_pipeline.py",
+        unsupported_inference="Does not provide held-out residuals, uncertainty quantification, or digital-twin readiness.",
+        priority="primary",
+        citation_keys=("oreskes1994verification", "fair4rs2022principles", "bjornsson2020digitaltwins"),
+        source_dois=("10.1126/science.263.5147.641", "10.1038/s41597-022-01710-x", "10.1186/s13073-019-0701-3"),
+    ),
+    _narrative(
+        "output/figures/methods/methods_repo_dashboard.png",
+        title="BeeStack methods dashboard",
+        caption=(
+            "Methods dashboard summarizing per-module validation, evidence links, "
+            "visual artifacts, metric counts, and explicit gap counts."
+        ),
+        alt_text=(
+            "Heatmap of methods-analysis module rows and normalized validation, "
+            "metric, visual-artifact, evidence-link, and gap columns."
+        ),
+        manuscript_section="manuscript/08_validation_and_figures.md",
+        manuscript_label="fig:methods_dashboard",
+        claim_tier="methods_provenance_diagnostic",
+        fidelity_level="methods provenance diagnostic",
+        source_data="MethodsAnalysisReport module panels and validation panels",
+        regeneration_command="uv run python scripts/run_methods_analysis.py",
+        unsupported_inference="Does not support biological predictive validity.",
+        priority="primary",
+    ),
+    _narrative(
+        "output/figures/methods/methods_manuscript_evidence_index.png",
+        title="BeeStack manuscript evidence index",
+        caption=(
+            "Manuscript evidence index comparing evidence-link counts, visual-artifact "
+            "counts, and validation fractions by BeeStack module."
+        ),
+        alt_text=(
+            "Grouped bars for module evidence links and visual artifacts with a "
+            "validation-fraction line."
+        ),
+        manuscript_section="manuscript/08_validation_and_figures.md",
+        manuscript_label="fig:methods_evidence_index",
+        claim_tier="methods_provenance_diagnostic",
+        fidelity_level="methods provenance diagnostic",
+        source_data="MethodsAnalysisReport manuscript evidence links",
+        regeneration_command="uv run python scripts/run_methods_analysis.py",
+        unsupported_inference="Does not substitute evidence links for absent empirical support.",
         priority="primary",
     ),
     _narrative(
@@ -207,7 +407,7 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
             "and morphology cues beside the FlyBody-backed fidelity boundary."
         ),
         alt_text="Four-panel BeeBody telemetry dashboard with speed, wing power, energy, and cues.",
-        manuscript_section="manuscript/04_body_methods.md",
+        manuscript_section="manuscript/05_methods_body_swarm.md",
         manuscript_label="fig:body_methods_dashboard",
         claim_tier="strict_visual_plus_reduced_telemetry",
         fidelity_level="FlyBody-backed render diagnostics plus reduced telemetry",
@@ -226,7 +426,7 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
             "parser gaps, and the absence of locally parsed calcium datasets."
         ),
         alt_text="BeeBrain empirical completeness panel with source availability and gap markers.",
-        manuscript_section="manuscript/05_brain_methods.md",
+        manuscript_section="manuscript/06_methods_brain_mind.md",
         manuscript_label="fig:brain_methods_completeness",
         claim_tier="empirical_reduced_or_availability_gated",
         fidelity_level="empirical completeness summary projected into reduced contracts",
@@ -245,7 +445,7 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
             "candidate-policy margin, and deterministic action-contract outputs."
         ),
         alt_text="BeeMind policy diagnostics with finite policy metrics and validation status.",
-        manuscript_section="manuscript/06_mind_methods.md",
+        manuscript_section="manuscript/06_methods_brain_mind.md",
         manuscript_label="fig:mind_methods_policy",
         claim_tier="reduced_validated_kernel",
         fidelity_level="reduced deterministic active-inference diagnostic",
@@ -264,7 +464,7 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
             "reduced recruitment and BEEHAVE-compatible colony summaries."
         ),
         alt_text="BeeSwarm methods panel with contact metrics and reduced recruitment traces.",
-        manuscript_section="manuscript/07_swarm_methods.md",
+        manuscript_section="manuscript/05_methods_body_swarm.md",
         manuscript_label="fig:swarm_methods_contact",
         claim_tier="strict_small_scene_not_colony_dynamics",
         fidelity_level="strict scene contact diagnostic with reduced-kernel context",
@@ -287,7 +487,7 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
             "foraging-radius context, and deterministic niche-kernel validation."
         ),
         alt_text="BeeNiche methods panel with comb, thermal, and forage-context diagnostics.",
-        manuscript_section="manuscript/08_niche_methods.md",
+        manuscript_section="manuscript/07_methods_niche.md",
         manuscript_label="fig:niche_methods_comb_thermal",
         claim_tier="reduced_validated_kernel",
         fidelity_level="reduced deterministic niche diagnostic",
@@ -299,6 +499,57 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
         source_dois=("10.1111/1365-2664.12222",),
     ),
     _narrative(
+        "output/figures/body_energy_timeseries.png",
+        title="BeeBody energy time series",
+        caption=(
+            "Integrated-run BeeBody energy witness showing deterministic reduced "
+            "energy accounting across control steps."
+        ),
+        alt_text="Line chart of BeeBody energy over integrated-run control steps.",
+        manuscript_section="manuscript/10_integrated_results.md",
+        manuscript_label="fig:body_energy",
+        claim_tier="integrated_run_witness",
+        fidelity_level="reduced deterministic kernel diagnostic",
+        source_data="output/data/simulation_records.json",
+        regeneration_command="uv run python scripts/analysis_pipeline.py",
+        unsupported_inference="Does not calibrate honeybee energetics.",
+        priority="primary",
+    ),
+    _narrative(
+        "output/figures/comb_fraction_timeseries.png",
+        title="BeeNiche comb occupancy time series",
+        caption=(
+            "Integrated-run comb-occupancy witness showing deterministic BeeNiche "
+            "state changes across control steps."
+        ),
+        alt_text="Line chart of BeeNiche comb occupancy fraction over control steps.",
+        manuscript_section="manuscript/10_integrated_results.md",
+        manuscript_label="fig:comb_fraction",
+        claim_tier="integrated_run_witness",
+        fidelity_level="reduced deterministic kernel diagnostic",
+        source_data="output/data/simulation_records.json",
+        regeneration_command="uv run python scripts/analysis_pipeline.py",
+        unsupported_inference="Does not validate full hive ecology.",
+        priority="primary",
+    ),
+    _narrative(
+        "output/figures/module_contract_coverage.png",
+        title="BeeStack module contract coverage",
+        caption=(
+            "Contract-coverage witness showing the implemented v0 module contracts "
+            "that participate in the integrated run."
+        ),
+        alt_text="Bar chart showing implemented v0 contract coverage for BeeStack modules.",
+        manuscript_section="manuscript/10_integrated_results.md",
+        manuscript_label="fig:module_coverage",
+        claim_tier="contract_coverage_witness",
+        fidelity_level="contract coverage diagnostic",
+        source_data="output/data/module_coverage.json",
+        regeneration_command="uv run python scripts/analysis_pipeline.py",
+        unsupported_inference="Does not prove scientific validation completeness.",
+        priority="primary",
+    ),
+    _narrative(
         "output/figures/empirical/brain_data_completeness_matrix.png",
         title="Brain data completeness matrix",
         caption=(
@@ -306,7 +557,7 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
             "registered, locally available, parseable, and source-verified."
         ),
         alt_text="Matrix of BeeBrain source availability, parser status, and verification state.",
-        manuscript_section="manuscript/11_empirical_results.md",
+        manuscript_section="manuscript/09_empirical_results.md",
         manuscript_label="fig:brain_data_completeness_matrix",
         claim_tier="empirical_availability_diagnostic",
         fidelity_level="empirical dataset availability diagnostic",
@@ -325,7 +576,7 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
             "and waggle-follower records by integration target and local availability."
         ),
         alt_text="Network-style map of empirical BeeBrain source channels and integration targets.",
-        manuscript_section="manuscript/11_empirical_results.md",
+        manuscript_section="manuscript/09_empirical_results.md",
         manuscript_label="fig:brain_multimodal_source_map",
         claim_tier="empirical_availability_diagnostic",
         fidelity_level="empirical dataset availability diagnostic",
@@ -341,6 +592,57 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
         source_dois=("10.1038/8144", "10.1002/cne.20644", "10.1016/j.cub.2024.02.045"),
     ),
     _narrative(
+        "output/figures/research/research_module_scorecard_heatmap.png",
+        title="BeeStack research module scorecard heatmap",
+        caption=(
+            "Research scorecard heatmap summarizing validation fraction, metrics, "
+            "evidence, gaps, and visual artifacts by module."
+        ),
+        alt_text="Heatmap of module-level research scorecard quantities.",
+        manuscript_section="manuscript/11_research_synthesis.md",
+        manuscript_label="fig:research_scorecard",
+        claim_tier="research_scorecard_diagnostic",
+        fidelity_level="research provenance diagnostic",
+        source_data="ResearchSuiteReport scorecards and visual inventory",
+        regeneration_command="uv run python scripts/run_research_suite.py",
+        unsupported_inference="Does not support biological predictive validity.",
+        priority="primary",
+    ),
+    _narrative(
+        "output/figures/research/research_sensitivity_sweeps.png",
+        title="BeeStack research sensitivity sweeps",
+        caption=(
+            "Deterministic sensitivity-sweep panel showing reduced-kernel response "
+            "under controlled one-parameter perturbations."
+        ),
+        alt_text="Small-multiple line charts of sensitivity sweep outputs by parameter.",
+        manuscript_section="manuscript/11_research_synthesis.md",
+        manuscript_label="fig:research_sweeps",
+        claim_tier="reduced_sensitivity_diagnostic",
+        fidelity_level="reduced deterministic kernel diagnostic",
+        source_data="ResearchSuiteReport sensitivity sweeps",
+        regeneration_command="uv run python scripts/run_research_suite.py",
+        unsupported_inference="Does not replace Bayesian calibration or external scenario validation.",
+        priority="primary",
+    ),
+    _narrative(
+        "output/figures/research/research_fidelity_evidence_network.png",
+        title="BeeStack fidelity evidence network",
+        caption=(
+            "Evidence network linking module scorecards, empirical BeeBrain records, "
+            "and provenance nodes from the research suite."
+        ),
+        alt_text="Network diagram linking BeeStack modules to evidence and empirical source nodes.",
+        manuscript_section="manuscript/11_research_synthesis.md",
+        manuscript_label="fig:research_network",
+        claim_tier="research_evidence_network",
+        fidelity_level="research provenance diagnostic",
+        source_data="ResearchSuiteReport evidence records",
+        regeneration_command="uv run python scripts/run_research_suite.py",
+        unsupported_inference="Does not make empirical coverage complete.",
+        priority="primary",
+    ),
+    _narrative(
         "output/figures/research/stack_synthesis_dashboard.png",
         title="BeeStack cross-stack synthesis dashboard",
         caption=(
@@ -348,7 +650,7 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
             "readiness, artifacts, explicit gaps, and scholarship anchors."
         ),
         alt_text="Four-panel synthesis dashboard with readiness bars, artifact-gap scatter, gates, and findings.",
-        manuscript_section="manuscript/12_research_suite_results.md",
+        manuscript_section="manuscript/11_research_synthesis.md",
         manuscript_label="fig:stack_synthesis_dashboard",
         claim_tier="cross_stack_synthesis_diagnostic",
         fidelity_level="cross-stack synthesis diagnostic, not biological validation",

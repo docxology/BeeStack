@@ -18,6 +18,7 @@ from PIL import Image
 
 from ..brain import decode_waggle, waggle_kinematics_from_config
 from ..config import BeeStackConfig
+from ..utils import project_relative_payload
 from .bee_mjcf import BeeBodyPlanArtifact
 from .flybody_adapter import (
     FlyBodyBeeBackend,
@@ -129,7 +130,7 @@ class FlyBodySceneArtifact:
     config: FlyBodySceneRenderConfig
 
     def as_dict(self) -> dict[str, object]:
-        payload = asdict(self)
+        payload = project_relative_payload(asdict(self))
         payload["metrics"] = self.metrics.as_dict()
         payload["config"] = self.config.as_dict()
         return payload

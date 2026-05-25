@@ -4,7 +4,7 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 
 - Overall validation fraction: `1.000`
 - Module scorecards: `5`
-- Visualization artifacts: `68`
+- Visualization artifacts: `74`
 - Empirical registry/evidence rows: `5`
 - Parsed empirical evidence rows: `3`
 - Local empirical records represented: `139`
@@ -81,15 +81,21 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 - `output/animations/beeswarm_waggle_dance_configured.gif`: animation, real_flybody_3d_contact_physics, verified
 - `output/animations/beeswarm_waggle_dance_long.gif`: animation, real_flybody_3d_contact_physics, verified
 - `output/animations/beeniche_comb_thermal.gif`: animation, reduced_schematic, verified
+- `output/figures/beebody_beeswarm_micro_macro_calibration.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/beebody_motion_power_phase.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/beebrain_beemind_anatomy_policy_map.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/beebrain_empirical_alignment_timeseries.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/beemind_policy_timeline.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/beeniche_adapter_niche_map.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/beeniche_thermal_comb_panel.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/beestack_contract_network.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/beestack_evidence_ladder.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/beestack_first_principles_claim_audit.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/beestack_graphical_abstract.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/beestack_pipeline_overview.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/beestack_scale_ladder.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/beestack_scholarship_evidence_matrix.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/beestack_validation_readiness_residuals.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/beeswarm_recruitment_task_allocation.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/body_energy_timeseries.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/comb_fraction_timeseries.png`: figure, research_diagnostic, nonblank_static_figure

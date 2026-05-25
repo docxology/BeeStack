@@ -35,6 +35,7 @@ from beestack import (
     stack_integrity_review,
     task_allocation_snapshot,
 )
+from beestack.source_refresh import write_source_refresh_ledger
 from beestack.utils import project_relative_path, project_relative_payload
 from beestack.visualization import (
     generate_analysis_figures,
@@ -110,6 +111,7 @@ def main() -> None:
     write_json(PROJECT_ROOT / "output" / "data" / "simulation_records.json", records)
     write_json(PROJECT_ROOT / "output" / "data" / "module_coverage.json", coverage)
     write_json(PROJECT_ROOT / "output" / "data" / "model_card.json", model_card(cfg))
+    write_source_refresh_ledger(PROJECT_ROOT)
     write_json(
         PROJECT_ROOT / "output" / "reports" / "beestack_integrity_review.json",
         integrity_review.as_dict(),

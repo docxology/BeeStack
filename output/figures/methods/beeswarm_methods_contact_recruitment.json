@@ -39,7 +39,7 @@
   "fidelity": "strict scene contact/recruitment diagnostic with reduced-kernel context",
   "figure_path": "output/figures/methods/beeswarm_methods_contact_recruitment.png",
   "manuscript_label": "fig:swarm_methods_contact",
-  "manuscript_section": "manuscript/07_swarm_methods.md",
+  "manuscript_section": "manuscript/05_methods_body_swarm.md",
   "priority": "primary",
   "quality": {
     "height_px": 1050,

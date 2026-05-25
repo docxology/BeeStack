@@ -1,7 +1,7 @@
 {
   "dataset_count": 10,
-  "downloaded_dataset_count": 6,
-  "downloaded_fraction": 0.6,
+  "downloaded_dataset_count": 7,
+  "downloaded_fraction": 0.7,
   "modality_counts": {
     "3d": 1,
     "brain": 1,
@@ -93,9 +93,9 @@
   "source_gaps": [
     {
       "dataset_id": "dryad-paoli-2024-al-calcium",
-      "detail": "curated source is registered but no local payload is present",
-      "remediation": "run scripts/fetch_empirical_bee_data.py for full downloads",
-      "severity": "medium"
+      "detail": "local payload exists but no parser emitted a BeeStack analysis record",
+      "remediation": "inspect file inventory and add a targeted parser or mark out of scope",
+      "severity": "low"
     },
     {
       "dataset_id": "galizia-1999-glomerular-code",
@@ -118,13 +118,13 @@
   ],
   "source_statuses": [
     {
-      "blocker": "no_local_payload",
+      "blocker": "local_payload_not_parseable",
       "dataset_id": "dryad-paoli-2024-al-calcium",
       "doi": "10.5061/dryad.qbzkh18sc",
-      "downloaded": false,
+      "downloaded": true,
       "parseable": false,
       "parser_status": "download_blocked:401 Unauthorized",
-      "remediation": "run scripts/fetch_empirical_bee_data.py for full downloads",
+      "remediation": "inspect file inventory and add a targeted parser or mark out of scope",
       "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.qbzkh18sc",
       "source_verified": true
     },

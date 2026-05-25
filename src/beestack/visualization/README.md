@@ -31,3 +31,7 @@ typed `StackSynthesisReview`.
 `methods_figures.py` renders the methods dashboard, module methods panels,
 manuscript evidence index, and optional Plotly methods dashboards from the
 typed methods-analysis report.
+
+Any raster promoted into `manuscript/` should have a matching curated
+`FigureNarrative`; generic sidecar metadata is only for supporting diagnostics
+that remain in generated reports or the visualization gallery.

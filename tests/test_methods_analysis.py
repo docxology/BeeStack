@@ -92,7 +92,7 @@ def test_methods_analysis_records_validate_and_serialize() -> None:
     )
     link = ManuscriptEvidenceLink(
         "BeeBody",
-        "manuscript/04_body_methods.md",
+        "manuscript/05_methods_body_swarm.md",
         "/tmp/beebody.png",
         "figure",
         "claim",
@@ -166,7 +166,7 @@ def test_manuscript_figure_index_normalizes_project_absolute_artifact_paths() ->
     )
     link = ManuscriptEvidenceLink(
         "BeeBody",
-        "manuscript/04_body_methods.md",
+        "manuscript/05_methods_body_swarm.md",
         absolute_artifact,
         "figure",
         "claim",
@@ -231,7 +231,7 @@ def test_methods_analysis_validation_branches_are_explicit() -> None:
     )
     link = ManuscriptEvidenceLink(
         "BeeBody",
-        "manuscript/04_body_methods.md",
+        "manuscript/05_methods_body_swarm.md",
         "output/animations/beebody.gif",
         "animation",
         "claim",

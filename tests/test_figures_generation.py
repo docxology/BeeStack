@@ -30,8 +30,16 @@ def _records() -> list[dict[str, object]]:
 def test_generate_analysis_figures_writes_pngs_and_sidecars(tmp_path: Path) -> None:
     modules = ["BeeBody", "BeeBrain", "BeeMind", "BeeSwarm", "BeeNiche"]
     paths = generate_analysis_figures(_records(), modules, tmp_path)
-    assert len(paths) == 14
+    assert len(paths) == 20
     assert tmp_path / "manuscript_figure_claim_map.png" in paths
+    for filename in (
+        "beestack_scholarship_evidence_matrix.png",
+        "beebody_beeswarm_micro_macro_calibration.png",
+        "beebrain_beemind_anatomy_policy_map.png",
+        "beeniche_adapter_niche_map.png",
+        "beestack_validation_readiness_residuals.png",
+    ):
+        assert tmp_path / filename in paths
     for p in paths:
         assert p.exists(), f"missing figure {p}"
         assert p.stat().st_size > 0
@@ -56,5 +64,5 @@ def test_generate_analysis_figures_empty_records(tmp_path: Path) -> None:
     # Degenerate input must still produce valid non-empty figures (defensive
     # series helpers return [default]).
     paths = generate_analysis_figures([], [], tmp_path)
-    assert len(paths) == 14
+    assert len(paths) == 20
     assert all(p.exists() and p.stat().st_size > 0 for p in paths)

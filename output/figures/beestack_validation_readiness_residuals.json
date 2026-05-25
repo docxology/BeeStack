@@ -1,0 +1,65 @@
+{
+  "accessibility_checks": {
+    "background": "#FFFFFF",
+    "contrast_ratio": 17.73971700407407,
+    "foreground": "#111827",
+    "large_text_passed": true,
+    "large_text_threshold": 3.0,
+    "normal_text_passed": true,
+    "normal_text_threshold": 4.5,
+    "standard": "WCAG 2.1 AA contrast thresholds"
+  },
+  "alt_text": "Readiness panel showing implemented checks and explicitly blocked residual or uncertainty rows instead of invented validation.",
+  "artifact_kind": "figure",
+  "backend": "Matplotlib",
+  "caption": "Validation-readiness panel separating implemented verification checks from blocked held-out residual, uncertainty, assimilation, and governance evidence.",
+  "citation_keys": [
+    "oreskes1994verification",
+    "fair4rs2022principles",
+    "bjornsson2020digitaltwins"
+  ],
+  "claim_tier": "validation_readiness_boundary",
+  "design_citation_keys": [
+    "rougier2014figures",
+    "cleveland1984graphical",
+    "crameri2020colour",
+    "w3c2023wcag21",
+    "wilkinson2016fair",
+    "heer2012interactive",
+    "ragan2016provenance"
+  ],
+  "design_source_dois": [
+    "10.1371/journal.pcbi.1003833",
+    "10.1080/01621459.1984.10478080",
+    "10.1038/s41467-020-19160-7",
+    "10.1038/sdata.2016.18",
+    "10.1145/2133806.2133821",
+    "10.1109/TVCG.2015.2467551"
+  ],
+  "fidelity": "architecture schematic",
+  "figure_path": "output/figures/beestack_validation_readiness_residuals.png",
+  "manuscript_label": "fig:validation_readiness_residuals",
+  "manuscript_section": "manuscript/08_validation_and_figures.md",
+  "priority": "primary",
+  "quality": {
+    "height_px": 1064,
+    "max_intensity": 255,
+    "mean_intensity": 244.0645052387286,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 38.834820240857994,
+    "width_px": 2216
+  },
+  "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "source refresh ledger, readiness review, generated reports, and figure sidecars",
+  "source_dois": [
+    "10.1126/science.263.5147.641",
+    "10.1038/s41597-022-01710-x",
+    "10.1186/s13073-019-0701-3"
+  ],
+  "title": "Beestack Validation Readiness Residuals",
+  "unsupported_inference": "Does not provide held-out residuals, uncertainty quantification, or digital-twin readiness.",
+  "validation_status": "nonblank quality sidecar generated"
+}

@@ -38,7 +38,7 @@
   "fidelity": "architecture schematic",
   "figure_path": "output/figures/beestack_evidence_ladder.png",
   "manuscript_label": "fig:beestack_evidence_ladder",
-  "manuscript_section": "manuscript/09_visualization_and_validation.md",
+  "manuscript_section": "manuscript/08_validation_and_figures.md",
   "priority": "primary",
   "quality": {
     "height_px": 1028,

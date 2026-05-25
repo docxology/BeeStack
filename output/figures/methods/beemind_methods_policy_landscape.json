@@ -38,7 +38,7 @@
   "fidelity": "reduced deterministic kernel diagnostic",
   "figure_path": "output/figures/methods/beemind_methods_policy_landscape.png",
   "manuscript_label": "fig:mind_methods_policy",
-  "manuscript_section": "manuscript/06_mind_methods.md",
+  "manuscript_section": "manuscript/06_methods_brain_mind.md",
   "priority": "primary",
   "quality": {
     "height_px": 1050,

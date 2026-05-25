@@ -513,7 +513,25 @@
       "artifact_type": "figure",
       "backend": "matplotlib/networkx/scikit-image",
       "fidelity_level": "research_diagnostic",
+      "path": "output/figures/beebody_beeswarm_micro_macro_calibration.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
       "path": "output/figures/beebody_motion_power_phase.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "output/figures/beebrain_beemind_anatomy_policy_map.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",
       "source_data": "research_suite_report",
       "validation_status": "nonblank_static_figure"
@@ -532,6 +550,15 @@
       "backend": "matplotlib/networkx/scikit-image",
       "fidelity_level": "research_diagnostic",
       "path": "output/figures/beemind_policy_timeline.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "output/figures/beeniche_adapter_niche_map.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",
       "source_data": "research_suite_report",
       "validation_status": "nonblank_static_figure"
@@ -567,6 +594,15 @@
       "artifact_type": "figure",
       "backend": "matplotlib/networkx/scikit-image",
       "fidelity_level": "research_diagnostic",
+      "path": "output/figures/beestack_first_principles_claim_audit.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
       "path": "output/figures/beestack_graphical_abstract.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",
       "source_data": "research_suite_report",
@@ -586,6 +622,24 @@
       "backend": "matplotlib/networkx/scikit-image",
       "fidelity_level": "research_diagnostic",
       "path": "output/figures/beestack_scale_ladder.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "output/figures/beestack_scholarship_evidence_matrix.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "output/figures/beestack_validation_readiness_residuals.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",
       "source_data": "research_suite_report",
       "validation_status": "nonblank_static_figure"

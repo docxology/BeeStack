@@ -1,0 +1,64 @@
+{
+  "accessibility_checks": {
+    "background": "#FFFFFF",
+    "contrast_ratio": 17.73971700407407,
+    "foreground": "#111827",
+    "large_text_passed": true,
+    "large_text_threshold": 3.0,
+    "normal_text_passed": true,
+    "normal_text_threshold": 4.5,
+    "standard": "WCAG 2.1 AA contrast thresholds"
+  },
+  "alt_text": "Comb, thermal, forage, BEEHAVE, and Hiveopolis adapter nodes connected through explicit current and blocked interfaces.",
+  "artifact_kind": "figure",
+  "backend": "Matplotlib",
+  "caption": "Adapter map placing BEEHAVE-compatible colony summaries beside comb, thermal, and forage fields without claiming full hive ecology.",
+  "citation_keys": [
+    "becher2014beehave",
+    "narsicht2020hiveopolis",
+    "johnson2009self",
+    "kronenberg1982colonial"
+  ],
+  "claim_tier": "adapter_boundary_diagnostic",
+  "design_citation_keys": [
+    "rougier2014figures",
+    "cleveland1984graphical",
+    "crameri2020colour",
+    "w3c2023wcag21",
+    "wilkinson2016fair",
+    "heer2012interactive",
+    "ragan2016provenance"
+  ],
+  "design_source_dois": [
+    "10.1371/journal.pcbi.1003833",
+    "10.1080/01621459.1984.10478080",
+    "10.1038/s41467-020-19160-7",
+    "10.1038/sdata.2016.18",
+    "10.1145/2133806.2133821",
+    "10.1109/TVCG.2015.2467551"
+  ],
+  "fidelity": "architecture schematic",
+  "figure_path": "output/figures/beeniche_adapter_niche_map.png",
+  "manuscript_label": "fig:niche_adapter_map",
+  "manuscript_section": "manuscript/07_methods_niche.md",
+  "priority": "primary",
+  "quality": {
+    "height_px": 1028,
+    "max_intensity": 255,
+    "mean_intensity": 233.85654139879065,
+    "min_intensity": 24,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 232,
+    "std_intensity": 52.453201185237624,
+    "width_px": 2036
+  },
+  "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "source refresh ledger, niche methods records, simulation records, and adapter notes",
+  "source_dois": [
+    "10.1111/1365-2664.12222"
+  ],
+  "title": "Beeniche Adapter Niche Map",
+  "unsupported_inference": "Does not validate full ecology, real-time hive control, or thermodynamic colony dynamics.",
+  "validation_status": "nonblank quality sidecar generated"
+}

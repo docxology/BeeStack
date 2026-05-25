@@ -39,7 +39,7 @@ response panels, 7 anatomy inventories,
 1 antennal-movement summaries, and
 24 odor templates, with a parseable-source
 fraction of 0.600. The research suite reports
-68 visualization artifacts,
+74 visualization artifacts,
 3 deterministic sensitivity sweeps,
 5 empirical evidence records, and an overall
 validation fraction of 1.000. The methods-analysis

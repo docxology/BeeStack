@@ -42,7 +42,7 @@ This report covers the curated Hadjitofi-Webb Figshare waggle-following source a
 ## BeeBrain Data Completeness
 
 - Curated datasets: `10`
-- Downloaded datasets: `6`
+- Downloaded datasets: `7`
 - Parseable datasets: `6`
 - Parseable fraction: `0.600`
 - Source-verified datasets: `10`

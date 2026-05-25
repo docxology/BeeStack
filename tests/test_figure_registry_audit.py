@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 import numpy as np
@@ -38,7 +39,7 @@ def test_figure_narrative_registry_has_curated_primary_contract() -> None:
     narrative = figure_narrative_for_path(Path("output/figures/beestack_graphical_abstract.png"))
 
     assert narrative is not None
-    assert narrative.manuscript_section == "manuscript/03_system_architecture.md"
+    assert narrative.manuscript_section == "manuscript/04_evidence_typed_architecture.md"
     assert narrative.manuscript_label == "fig:beestack_graphical_abstract"
     assert narrative.priority == "primary"
     assert "not" in narrative.unsupported_inference.lower()
@@ -48,6 +49,38 @@ def test_figure_narrative_registry_has_curated_primary_contract() -> None:
     assert "ragan2016provenance" in narrative.design_citation_keys
     assert "output/figures/beestack_graphical_abstract.png" in high_priority_figure_artifacts()
     assert "output/figures/manuscript_figure_claim_map.png" in high_priority_figure_artifacts()
+    for artifact in (
+        "output/figures/beestack_scholarship_evidence_matrix.png",
+        "output/figures/beebody_beeswarm_micro_macro_calibration.png",
+        "output/figures/beebrain_beemind_anatomy_policy_map.png",
+        "output/figures/beeniche_adapter_niche_map.png",
+        "output/figures/beestack_validation_readiness_residuals.png",
+    ):
+        figure = figure_narrative_for_path(artifact)
+        assert figure is not None, artifact
+        assert figure.priority == "primary"
+        assert figure.citation_keys
+        assert figure.source_dois
+        assert "Does not" in figure.unsupported_inference
+        assert artifact in high_priority_figure_artifacts()
+
+
+def test_all_inserted_manuscript_figures_have_curated_registry_narratives() -> None:
+    project_root = Path(__file__).resolve().parents[1]
+    image_re = re.compile(r"!\[[^\]]+\]\((?P<path>[^)]+)\)\{#(?P<label>[^}]+)\}")
+    references: list[tuple[str, str]] = []
+    for markdown_path in sorted((project_root / "output" / "manuscript").glob("*.md")):
+        for match in image_re.finditer(markdown_path.read_text(encoding="utf-8")):
+            resolved = (markdown_path.parent / match.group("path")).resolve()
+            artifact = resolved.relative_to(project_root.resolve()).as_posix()
+            references.append((artifact, match.group("label")))
+
+    assert references
+    for artifact, label in references:
+        narrative = figure_narrative_for_path(artifact)
+        assert narrative is not None, artifact
+        assert narrative.priority == "primary", artifact
+        assert narrative.manuscript_label == label
 
 
 def test_generic_figure_fields_do_not_promise_animation_sidecars() -> None:
@@ -80,7 +113,7 @@ def test_write_figure_sidecar_adds_registry_narrative_metadata(tmp_path: Path) -
     payload = json.loads(sidecar.read_text(encoding="utf-8"))
     assert payload["caption"].startswith("Showcase architecture schematic")
     assert payload["alt_text"]
-    assert payload["manuscript_section"] == "manuscript/03_system_architecture.md"
+    assert payload["manuscript_section"] == "manuscript/04_evidence_typed_architecture.md"
     assert payload["manuscript_label"] == "fig:beestack_graphical_abstract"
     assert payload["claim_tier"] == "architecture_schematic"
     assert payload["design_citation_keys"]

@@ -1,4 +1,14 @@
 {
+  "accessibility_checks": {
+    "background": "#FFFFFF",
+    "contrast_ratio": 17.73971700407407,
+    "foreground": "#111827",
+    "large_text_passed": true,
+    "large_text_threshold": 3.0,
+    "normal_text_passed": true,
+    "normal_text_threshold": 4.5,
+    "standard": "WCAG 2.1 AA contrast thresholds"
+  },
   "alt_text": "Network-style map of empirical BeeBrain source channels and integration targets.",
   "artifact_kind": "figure",
   "backend": "Matplotlib empirical-data renderer",
@@ -9,10 +19,27 @@
     "hadjitofi2024currentbiology"
   ],
   "claim_tier": "empirical_availability_diagnostic",
+  "design_citation_keys": [
+    "rougier2014figures",
+    "cleveland1984graphical",
+    "crameri2020colour",
+    "w3c2023wcag21",
+    "wilkinson2016fair",
+    "heer2012interactive",
+    "ragan2016provenance"
+  ],
+  "design_source_dois": [
+    "10.1371/journal.pcbi.1003833",
+    "10.1080/01621459.1984.10478080",
+    "10.1038/s41467-020-19160-7",
+    "10.1038/sdata.2016.18",
+    "10.1145/2133806.2133821",
+    "10.1109/TVCG.2015.2467551"
+  ],
   "fidelity": "empirical dataset availability diagnostic",
   "figure_path": "output/figures/empirical/bee_brain_multimodal_source_map.png",
   "manuscript_label": "fig:brain_multimodal_source_map",
-  "manuscript_section": "manuscript/11_empirical_results.md",
+  "manuscript_section": "manuscript/09_empirical_results.md",
   "priority": "primary",
   "quality": {
     "height_px": 784,

@@ -4,7 +4,7 @@ Science-first per-module methods panels connecting quantitative diagnostics, val
 
 - Module panels: `5`
 - Overall validation fraction: `1.000`
-- Visualization records represented: `41`
+- Visualization records represented: `44`
 - Scenario sweep panels: `3`
 - All validations passed: `True`
 
@@ -16,7 +16,7 @@ Science-first per-module methods panels connecting quantitative diagnostics, val
 - Methods: FlyBody task render path; reduced telemetry witness; bee morphology cue scoring; strict scene contact provenance
 - Metrics: `bee_silhouette_score=1`, `bee_visual_score=0.98`, `contact_proxy_count=3`, `energy_drop_j=0.000821`, `inertia_rescaling_score=0.82`, `max_speed_m_s=0.004`, `mean_speed_m_s=0.004`, `mean_wing_power_mw=58.3`, `morphology_score=1`, `real_flybody_body_animation_count=3`, `wingbeat_frequency_hz=230`
 - Validation fraction: `1.000`
-- Visual artifacts: `7`
+- Visual artifacts: `8`
 - Evidence status: output/reports/bee_visual_verification.md [generated]
 - Interpretation: Body evidence combines FlyBody output with finite closed-loop telemetry.
 - Known gaps: Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.; Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset.
@@ -27,7 +27,7 @@ Science-first per-module methods panels connecting quantitative diagnostics, val
 - Methods: empirical anatomy inventory; workbook/CSV activity parsing; waggle follower antennal-position parsing; odor-template bank projection; AL/MB/CX reduced kernel validation
 - Metrics: `anatomy_inventory_count=7`, `brain_data_parseable_fraction=0.6`, `brain_source_verified_fraction=1`, `calcium_dataset_count=0`, `empirical_panel_count=48`, `enabled_dataset_count=10`, `mean_odor_separability=0.651`, `neuropil_count=22`, `region_response_class_count=6`, `template_count=24`, `waggle_decoding_improvement=0.248`, `waggle_follower_confidence=0.289`
 - Validation fraction: `1.000`
-- Visual artifacts: `18`
+- Visual artifacts: `19`
 - Evidence status: output/reports/empirical_analysis.md [parsed]; output/reports/waggle_follower_analysis.md [parsed]
 - Interpretation: Brain evidence separates source registries from parsed local anatomy/activity payloads and declares availability gates when public data are absent.
 - Known gaps: No heavyweight spiking simulator is required in the default path.; The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics.
@@ -60,7 +60,7 @@ Science-first per-module methods panels connecting quantitative diagnostics, val
 - Methods: voxel comb occupancy metrics; brood thermal stability witness; forage landscape scenario fields; Hiveopolis/BEEHAVE adapter schemas
 - Metrics: `brood_target_margin_c=2`, `comb_voxels=864`, `final_brood_temperature_error_c=2.42`, `final_comb_fraction=0.0833`, `foraging_radius_midpoint_km=2`, `mean_brood_temperature_error_c=3.19`, `mean_comb_fraction=0.0833`, `thermoregulation_gain=0.24`
 - Validation fraction: `1.000`
-- Visual artifacts: `5`
+- Visual artifacts: `6`
 - Evidence status: output/figures/methods/beeniche_methods_comb_thermal.png [generated]
 - Interpretation: Niche methods include deterministic seasonal/weather witnesses, not a full ecology engine.
 - Known gaps: No external Hiveopolis or BEEHAVE engine is required in the default path.; External nectar landscape calibration and brood demography remain future adapter layers.
@@ -96,12 +96,12 @@ Science-first per-module methods panels connecting quantitative diagnostics, val
 
 ## Evidence Availability Links
 
-- `manuscript/04_body_methods.md` BeeBody: `output/reports/bee_visual_verification.md` (visual_validation, generated, strict_flybody_mujoco_witness) supports BeeBody animations are FlyBody-backed and bee-like under cue scoring. Citations: @vaxenburg2025flybody, @todorov2012mujoco.
-- `manuscript/05_brain_methods.md` BeeBrain: `output/reports/empirical_analysis.md` (empirical_analysis, parsed, empirical_reduced_or_availability_gated) supports BeeBrain uses real downloaded or cataloged anatomy/activity sources where present. Citations: @brandt2005standardbrain, @rybak2010digital, @galizia1999glomerular, @paoli2024dryad, @carcaud2022dryad, @andreu2025dryad, @jernigan2026dryad, @nouvian2017dryad.
-- `manuscript/05_brain_methods.md` BeeBrain: `output/reports/waggle_follower_analysis.md` (waggle_follower_analysis, parsed, follower_antennal_positioning_evidence) supports BeeBrain integrates curated waggle follower antennal-position decoding evidence when local. Citations: @hadjitofi2024figshare, @hadjitofi2024currentbiology.
-- `manuscript/06_mind_methods.md` BeeMind: `output/figures/methods/beemind_methods_policy_landscape.png` (policy_diagnostic, generated, reduced_validated_kernel) supports BeeMind exposes selected and competing policies with finite EFE terms. Citations: @friston2010free, @parr2017working.
-- `manuscript/07_swarm_methods.md` BeeSwarm: `output/reports/flybody_contact_physics.md` (strict_contact_physics, generated, strict_small_scene_not_colony_dynamics) supports BeeSwarm production waggle/collision scenes record actual MuJoCo contacts. Citations: @vaxenburg2025flybody, @todorov2012mujoco, @becher2014beehave, @hadjitofi2024currentbiology.
-- `manuscript/08_niche_methods.md` BeeNiche: `output/figures/methods/beeniche_methods_comb_thermal.png` (niche_diagnostic, generated, reduced_validated_kernel) supports BeeNiche reports comb, thermal, and forage metrics through deterministic kernels. Citations: @kronenberg1982colonial, @johnson2009self, @becher2014beehave.
+- `manuscript/05_methods_body_swarm.md` BeeBody: `output/reports/bee_visual_verification.md` (visual_validation, generated, strict_flybody_mujoco_witness) supports BeeBody animations are FlyBody-backed and bee-like under cue scoring. Citations: @vaxenburg2025flybody, @todorov2012mujoco.
+- `manuscript/06_methods_brain_mind.md` BeeBrain: `output/reports/empirical_analysis.md` (empirical_analysis, parsed, empirical_reduced_or_availability_gated) supports BeeBrain uses real downloaded or cataloged anatomy/activity sources where present. Citations: @brandt2005standardbrain, @rybak2010digital, @galizia1999glomerular, @paoli2024dryad, @carcaud2022dryad, @andreu2025dryad, @jernigan2026dryad, @nouvian2017dryad.
+- `manuscript/06_methods_brain_mind.md` BeeBrain: `output/reports/waggle_follower_analysis.md` (waggle_follower_analysis, parsed, follower_antennal_positioning_evidence) supports BeeBrain integrates curated waggle follower antennal-position decoding evidence when local. Citations: @hadjitofi2024figshare, @hadjitofi2024currentbiology.
+- `manuscript/06_methods_brain_mind.md` BeeMind: `output/figures/methods/beemind_methods_policy_landscape.png` (policy_diagnostic, generated, reduced_validated_kernel) supports BeeMind exposes selected and competing policies with finite EFE terms. Citations: @friston2010free, @parr2017working.
+- `manuscript/05_methods_body_swarm.md` BeeSwarm: `output/reports/flybody_contact_physics.md` (strict_contact_physics, generated, strict_small_scene_not_colony_dynamics) supports BeeSwarm production waggle/collision scenes record actual MuJoCo contacts. Citations: @vaxenburg2025flybody, @todorov2012mujoco, @becher2014beehave, @hadjitofi2024currentbiology.
+- `manuscript/07_methods_niche.md` BeeNiche: `output/figures/methods/beeniche_methods_comb_thermal.png` (niche_diagnostic, generated, reduced_validated_kernel) supports BeeNiche reports comb, thermal, and forage metrics through deterministic kernels. Citations: @kronenberg1982colonial, @johnson2009self, @becher2014beehave.
 
 ## Source-Claim Crosswalk
 
@@ -116,7 +116,6 @@ Science-first per-module methods panels connecting quantitative diagnostics, val
 
 ## Top Validation Gaps
 
-- dryad-paoli-2024-al-calcium cataloged but no archive or file-level payload is local
 - Paoli MATLAB calcium traces are not yet local or parseable
 - Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.
 - Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset.
@@ -124,3 +123,4 @@ Science-first per-module methods panels connecting quantitative diagnostics, val
 - The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics.
 - No learned transition model or recursive social-belief inference yet.
 - Expected free energy terms are transparent hand-calibrated witnesses.
+- Large-N colony dynamics are summarized by configured scaling rather than simulated at full population by default.

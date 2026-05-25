@@ -39,7 +39,7 @@
   "fidelity": "reduced deterministic kernel diagnostic",
   "figure_path": "output/figures/methods/beeniche_methods_comb_thermal.png",
   "manuscript_label": "fig:niche_methods_comb_thermal",
-  "manuscript_section": "manuscript/08_niche_methods.md",
+  "manuscript_section": "manuscript/07_methods_niche.md",
   "priority": "primary",
   "quality": {
     "height_px": 840,

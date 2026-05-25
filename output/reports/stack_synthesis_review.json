@@ -4,7 +4,7 @@
   ],
   "module_panels": [
     {
-      "artifact_count": 15,
+      "artifact_count": 17,
       "evidence_count": 2,
       "fidelity_level": "FlyBody render path plus reduced closed-loop telemetry",
       "known_gap_count": 2,
@@ -15,7 +15,7 @@
       "validation_fraction": 1.0
     },
     {
-      "artifact_count": 25,
+      "artifact_count": 27,
       "evidence_count": 3,
       "fidelity_level": "empirical reduced AL-MB-CX kernel",
       "known_gap_count": 2,
@@ -26,7 +26,7 @@
       "validation_fraction": 1.0
     },
     {
-      "artifact_count": 9,
+      "artifact_count": 10,
       "evidence_count": 2,
       "fidelity_level": "bounded active-inference-style policy kernel",
       "known_gap_count": 2,
@@ -37,7 +37,7 @@
       "validation_fraction": 1.0
     },
     {
-      "artifact_count": 18,
+      "artifact_count": 19,
       "evidence_count": 2,
       "fidelity_level": "reduced communication kernel plus strict FlyBody/MuJoCo BeeBody waggle/collision scenes",
       "known_gap_count": 3,
@@ -48,7 +48,7 @@
       "validation_fraction": 1.0
     },
     {
-      "artifact_count": 11,
+      "artifact_count": 13,
       "evidence_count": 2,
       "fidelity_level": "voxel comb and thermal kernel with adapter schemas",
       "known_gap_count": 2,
@@ -75,12 +75,14 @@
     "cleveland1984graphical",
     "couvillon2014waggle",
     "crameri2020colour",
+    "fair4rs2022principles",
     "free1987pheromones",
     "friedman2026beestack",
     "friston2010free",
     "galizia1999glomerular",
     "hadjitofi2024currentbiology",
     "hadjitofi2024figshare",
+    "hateren2019neuroethology",
     "heer2012interactive",
     "honkanen2019sky",
     "jernigan2026dryad",
@@ -90,6 +92,7 @@
     "khamassi2020bio",
     "kronenberg1982colonial",
     "lamprecht2020fairsoftware",
+    "landgraf2011roboticdance",
     "menzel2001cognitive",
     "menzel2012honey",
     "millman2020scientific",
@@ -102,6 +105,7 @@
     "parr2017working",
     "pfeifer2006morphological",
     "ragan2016provenance",
+    "riley2005flightpaths",
     "rougier2014figures",
     "rybak2010digital",
     "saltelli2008global",
@@ -131,7 +135,7 @@
     "module_validation_std": 0.0,
     "real_flybody_animation_count": 5.0,
     "reduced_schematic_animation_count": 4.0,
-    "scholarship_reference_count": 52.0,
+    "scholarship_reference_count": 56.0,
     "signposting_fraction": 1.0,
     "simulation_energy_drop_j": 0.0008210865967477332,
     "simulation_mean_wing_power_mw": 58.2914264719619,
@@ -139,7 +143,7 @@
     "simulation_recruited_total": 168.0,
     "simulation_step_count": 24.0,
     "simulation_thermal_error_improvement_c": 4.414516422852656,
-    "visualization_artifact_count": 68.0
+    "visualization_artifact_count": 74.0
   },
   "summary": "Statistical synthesis of module readiness, simulation telemetry, visualization evidence, documentation signposting, empirical coverage, and manuscript scholarship.",
   "title": "BeeStack Cross-Stack Synthesis Review",
@@ -199,7 +203,7 @@
       "name": "scholarship_minimum",
       "passed": true,
       "threshold": 7,
-      "value": 52
+      "value": 56
     }
   ]
 }

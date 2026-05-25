@@ -14,7 +14,7 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 - `module_validation_std`: 0.000
 - `real_flybody_animation_count`: 5.000
 - `reduced_schematic_animation_count`: 4.000
-- `scholarship_reference_count`: 52.000
+- `scholarship_reference_count`: 56.000
 - `signposting_fraction`: 1.000
 - `simulation_energy_drop_j`: 0.001
 - `simulation_mean_wing_power_mw`: 58.291
@@ -22,17 +22,17 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 - `simulation_recruited_total`: 168.000
 - `simulation_step_count`: 24.000
 - `simulation_thermal_error_improvement_c`: 4.415
-- `visualization_artifact_count`: 68.000
+- `visualization_artifact_count`: 74.000
 
 ## Module Panels
 
 | Module | Fidelity | Validation | Readiness | Metrics | Evidence | Artifacts | Gaps |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| BeeBody | FlyBody render path plus reduced closed-loop telemetry | 1.000 | 0.933 | 14 | 2 | 15 | 2 |
-| BeeBrain | empirical reduced AL-MB-CX kernel | 1.000 | 0.933 | 14 | 3 | 25 | 2 |
-| BeeMind | bounded active-inference-style policy kernel | 1.000 | 0.933 | 9 | 2 | 9 | 2 |
-| BeeSwarm | reduced communication kernel plus strict FlyBody/MuJoCo BeeBody waggle/collision scenes | 1.000 | 0.925 | 14 | 2 | 18 | 3 |
-| BeeNiche | voxel comb and thermal kernel with adapter schemas | 1.000 | 0.933 | 9 | 2 | 11 | 2 |
+| BeeBody | FlyBody render path plus reduced closed-loop telemetry | 1.000 | 0.933 | 14 | 2 | 17 | 2 |
+| BeeBrain | empirical reduced AL-MB-CX kernel | 1.000 | 0.933 | 14 | 3 | 27 | 2 |
+| BeeMind | bounded active-inference-style policy kernel | 1.000 | 0.933 | 9 | 2 | 10 | 2 |
+| BeeSwarm | reduced communication kernel plus strict FlyBody/MuJoCo BeeBody waggle/collision scenes | 1.000 | 0.925 | 14 | 2 | 19 | 3 |
+| BeeNiche | voxel comb and thermal kernel with adapter schemas | 1.000 | 0.933 | 9 | 2 | 13 | 2 |
 
 ## Validations
 
@@ -43,7 +43,7 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 - `empirical_parseability`: pass; value `0.6`; threshold `0.5`. BeeBrain parseable-source fraction clears configured minimum.
 - `simulation_energy_finite`: pass; value `0.000821`; threshold `>= 0`. Body energy does not increase during the deterministic integrated run.
 - `simulation_thermal_improves`: pass; value `4.415`; threshold `> 0`. Brood-temperature error improves over the deterministic run.
-- `scholarship_minimum`: pass; value `52`; threshold `7`. Manuscript bibliography includes the configured minimum scholarship anchors.
+- `scholarship_minimum`: pass; value `56`; threshold `7`. Manuscript bibliography includes the configured minimum scholarship anchors.
 
 ## Prioritized Findings
 
@@ -62,12 +62,14 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 - `@cleveland1984graphical`
 - `@couvillon2014waggle`
 - `@crameri2020colour`
+- `@fair4rs2022principles`
 - `@free1987pheromones`
 - `@friedman2026beestack`
 - `@friston2010free`
 - `@galizia1999glomerular`
 - `@hadjitofi2024currentbiology`
 - `@hadjitofi2024figshare`
+- `@hateren2019neuroethology`
 - `@heer2012interactive`
 - `@honkanen2019sky`
 - `@jernigan2026dryad`
@@ -77,6 +79,7 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 - `@khamassi2020bio`
 - `@kronenberg1982colonial`
 - `@lamprecht2020fairsoftware`
+- `@landgraf2011roboticdance`
 - `@menzel2001cognitive`
 - `@menzel2012honey`
 - `@millman2020scientific`
@@ -89,6 +92,7 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 - `@parr2017working`
 - `@pfeifer2006morphological`
 - `@ragan2016provenance`
+- `@riley2005flightpaths`
 - `@rougier2014figures`
 - `@rybak2010digital`
 - `@saltelli2008global`

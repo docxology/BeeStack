@@ -642,7 +642,7 @@ def _body_panel(
         evidence=(
             ManuscriptEvidenceLink(
                 "BeeBody",
-                "manuscript/04_body_methods.md",
+                "manuscript/05_methods_body_swarm.md",
                 "output/reports/bee_visual_verification.md",
                 "visual_validation",
                 "BeeBody animations are FlyBody-backed and bee-like under cue scoring.",
@@ -748,7 +748,7 @@ def _brain_panel(
         evidence=(
             ManuscriptEvidenceLink(
                 "BeeBrain",
-                "manuscript/05_brain_methods.md",
+                "manuscript/06_methods_brain_mind.md",
                 "output/reports/empirical_analysis.md",
                 "empirical_analysis",
                 "BeeBrain uses real downloaded or cataloged anatomy/activity sources where present.",
@@ -780,7 +780,7 @@ def _brain_panel(
             ),
             ManuscriptEvidenceLink(
                 "BeeBrain",
-                "manuscript/05_brain_methods.md",
+                "manuscript/06_methods_brain_mind.md",
                 "output/reports/waggle_follower_analysis.md",
                 "waggle_follower_analysis",
                 "BeeBrain integrates curated waggle follower antennal-position decoding evidence when local.",
@@ -850,7 +850,7 @@ def _mind_panel(
         evidence=(
             ManuscriptEvidenceLink(
                 "BeeMind",
-                "manuscript/06_mind_methods.md",
+                "manuscript/06_methods_brain_mind.md",
                 "output/figures/methods/beemind_methods_policy_landscape.png",
                 "policy_diagnostic",
                 "BeeMind exposes selected and competing policies with finite EFE terms.",
@@ -954,7 +954,7 @@ def _swarm_panel(
         evidence=(
             ManuscriptEvidenceLink(
                 "BeeSwarm",
-                "manuscript/07_swarm_methods.md",
+                "manuscript/05_methods_body_swarm.md",
                 "output/reports/flybody_contact_physics.md",
                 "strict_contact_physics",
                 "BeeSwarm production waggle/collision scenes record actual MuJoCo contacts.",
@@ -1030,7 +1030,7 @@ def _niche_panel(
         evidence=(
             ManuscriptEvidenceLink(
                 "BeeNiche",
-                "manuscript/08_niche_methods.md",
+                "manuscript/07_methods_niche.md",
                 "output/figures/methods/beeniche_methods_comb_thermal.png",
                 "niche_diagnostic",
                 "BeeNiche reports comb, thermal, and forage metrics through deterministic kernels.",

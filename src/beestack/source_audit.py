@@ -24,8 +24,12 @@ EXPECTED_BIB_DOIS: dict[str, str] = {
     "todorov2012mujoco": "10.1109/IROS.2012.6386109",
     "hadjitofi2024currentbiology": "10.1016/j.cub.2024.02.045",
     "wario2015automatic": "10.3389/fevo.2015.00103",
+    "riley2005flightpaths": "10.1038/nature03526",
+    "landgraf2011roboticdance": "10.1371/journal.pone.0021354",
+    "hateren2019neuroethology": "10.3390/insects10100336",
     "wilkinson2016fair": "10.1038/sdata.2016.18",
     "lamprecht2020fairsoftware": "10.3233/DS-190026",
+    "fair4rs2022principles": "10.1038/s41597-022-01710-x",
 }
 
 _FIELD_RE = re.compile(

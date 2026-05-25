@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import Circle, FancyArrowPatch, Rectangle, RegularPolygon
 
+from ..source_refresh import verified_source_refresh_ledger
 from .figure_metadata import write_figure_sidecar
 from .figure_registry import all_figure_narratives
 from .style import PALETTE, apply_panel_style, module_color, style_context
@@ -39,6 +40,22 @@ def generate_analysis_figures(
             _contract_network(fig_dir / "beestack_contract_network.png"),
             _scale_ladder(fig_dir / "beestack_scale_ladder.png"),
             _evidence_ladder(fig_dir / "beestack_evidence_ladder.png"),
+            _first_principles_claim_audit(
+                fig_dir / "beestack_first_principles_claim_audit.png"
+            ),
+            _scholarship_evidence_matrix(
+                fig_dir / "beestack_scholarship_evidence_matrix.png"
+            ),
+            _micro_macro_calibration(
+                records, fig_dir / "beebody_beeswarm_micro_macro_calibration.png"
+            ),
+            _brain_mind_anatomy_policy_map(
+                fig_dir / "beebrain_beemind_anatomy_policy_map.png"
+            ),
+            _niche_adapter_map(records, fig_dir / "beeniche_adapter_niche_map.png"),
+            _validation_readiness_residuals(
+                fig_dir / "beestack_validation_readiness_residuals.png"
+            ),
             _manuscript_figure_claim_map(fig_dir / "manuscript_figure_claim_map.png"),
             _pipeline_overview(fig_dir / "beestack_pipeline_overview.png"),
         ]
@@ -74,6 +91,12 @@ def _analysis_figure_fidelity(filename: str) -> str:
         or "contract" in filename
         or "pipeline" in filename
         or "evidence_ladder" in filename
+        or "first_principles" in filename
+        or "scholarship" in filename
+        or "micro_macro" in filename
+        or "anatomy_policy" in filename
+        or "adapter_niche" in filename
+        or "validation_readiness" in filename
         or "claim_map" in filename
     ):
         return "architecture schematic"
@@ -701,6 +724,10 @@ def _source_class(source_data: str) -> str:
     lowered = source_data.lower()
     if "empirical" in lowered or "brain_data" in lowered:
         return "empirical registry"
+    if "source refresh" in lowered or "bibliography" in lowered:
+        return "source ledger"
+    if "beehave" in lowered or "adapter" in lowered:
+        return "adapter registry"
     if "methods" in lowered:
         return "methods analysis"
     if "synthesis" in lowered or "research" in lowered:
@@ -725,8 +752,20 @@ def _claim_label(claim_tier: str) -> str:
         "strict_small_scene_not_colony_dynamics": "strict scene only",
         "fidelity_boundary": "fidelity boundary",
         "manuscript_figure_provenance_map": "figure provenance",
+        "first_principles_claim_boundary": "claim boundary",
+        "integrated_run_witness": "run witness",
+        "contract_coverage_witness": "contract coverage",
+        "methods_provenance_diagnostic": "methods provenance",
+        "research_scorecard_diagnostic": "research scorecard",
+        "reduced_sensitivity_diagnostic": "sensitivity witness",
+        "research_evidence_network": "evidence network",
         "empirical_availability_diagnostic": "empirical availability",
         "cross_stack_synthesis_diagnostic": "synthesis diagnostic",
+        "scholarship_evidence_matrix": "source matrix",
+        "micro_macro_calibration_boundary": "micro/macro boundary",
+        "neurocognitive_mapping_diagnostic": "brain/mind map",
+        "adapter_boundary_diagnostic": "adapter boundary",
+        "validation_readiness_boundary": "validation boundary",
     }
     return labels.get(claim_tier, textwrap.shorten(claim_tier.replace("_", " "), width=24))
 
@@ -737,6 +776,12 @@ def _claim_color(claim_tier: str) -> str:
         return module_color("BeeBody")
     if "empirical" in lowered:
         return module_color("BeeBrain")
+    if "adapter" in lowered or "niche" in lowered:
+        return module_color("BeeNiche")
+    if "validation" in lowered or "residual" in lowered:
+        return PALETTE[6]
+    if "scholarship" in lowered or "source" in lowered:
+        return PALETTE[5]
     if "synthesis" in lowered or "map" in lowered:
         return PALETTE[5]
     if "blocked" in lowered or "digital" in lowered:
@@ -779,6 +824,23 @@ def _short_boundary(text: str) -> str:
             "support a complete multimodal empirical assimilation pipeline",
             "no full assimilation",
         ),
+        ("replace direct DOI/source verification or add empirical data", "no new empirical data"),
+        (
+            "calibrate colony-scale recruitment or make small-scene contacts a population model",
+            "no colony calibration",
+        ),
+        (
+            "support connectome-scale, calcium-validated, or learned generative dynamics",
+            "no learned neural dynamics",
+        ),
+        (
+            "validate full ecology, real-time hive control, or thermodynamic colony dynamics",
+            "no hive-control validation",
+        ),
+        (
+            "provide held-out residuals, uncertainty quantification, or digital-twin readiness",
+            "residuals still blocked",
+        ),
         ("replace absent calcium payloads with synthetic traces", "no synthetic calcium traces"),
         ("make BeeStack digital-twin ready", "not digital-twin ready"),
     )
@@ -786,6 +848,578 @@ def _short_boundary(text: str) -> str:
         if cleaned == needle:
             return replacement
     return textwrap.shorten(cleaned, width=32, placeholder="...")
+
+
+def _first_principles_claim_audit(path: Path) -> Path:
+    rows = [
+        (
+            "Hard constraint",
+            "Every present-tense claim needs generated evidence.",
+            "tokens, JSON, reports, sidecars",
+            "no manuscript-only metrics",
+            "#111827",
+        ),
+        (
+            "Hard constraint",
+            "Public data can be absent or unparseable.",
+            "source registry + blockers",
+            "no synthetic empirical traces",
+            module_color("BeeBrain"),
+        ),
+        (
+            "Hard constraint",
+            "Visual proof is bounded by backend physics.",
+            "FlyBody/MuJoCo + sidecars",
+            "no calibration by appearance",
+            module_color("BeeBody"),
+        ),
+        (
+            "Soft choice",
+            "Reduced kernels stay useful when bounded.",
+            "finite diagnostics + sweeps",
+            "no hidden biological realism",
+            module_color("BeeMind"),
+        ),
+        (
+            "Blocked claim",
+            "Digital-twin language requires assimilation and residuals.",
+            "readiness review",
+            "not ready until measured",
+            "#C43C39",
+        ),
+    ]
+    fig, ax = plt.subplots(figsize=(12.4, 5.8))
+    ax.axis("off")
+    columns = (
+        ("Constraint class", 0.055),
+        ("First-principles statement", 0.235),
+        ("Current evidence surface", 0.585),
+        ("Manuscript boundary", 0.795),
+    )
+    for title, x in columns:
+        ax.text(
+            x,
+            0.88,
+            title,
+            transform=ax.transAxes,
+            va="center",
+            fontsize=9,
+            color="#111827",
+            weight="bold",
+        )
+    for index, (klass, statement, evidence, boundary, color) in enumerate(rows):
+        y = 0.765 - index * 0.135
+        ax.add_patch(
+            Rectangle(
+                (0.035, y - 0.048),
+                0.93,
+                0.096,
+                transform=ax.transAxes,
+                facecolor="#F8FAFC" if index % 2 == 0 else "#FFFFFF",
+                edgecolor="#CBD5E1",
+                lw=0.8,
+            )
+        )
+        ax.add_patch(
+            Rectangle(
+                (0.035, y - 0.048),
+                0.012,
+                0.096,
+                transform=ax.transAxes,
+                facecolor=color,
+                edgecolor=color,
+                lw=0,
+            )
+        )
+        values = (klass, statement, evidence, boundary)
+        for value, (_, x) in zip(values, columns, strict=True):
+            ax.text(
+                x,
+                y,
+                textwrap.fill(value, width=36 if x == 0.235 else 24),
+                transform=ax.transAxes,
+                va="center",
+                fontsize=8.2,
+                color="#111827",
+            )
+    ax.text(
+        0.5,
+        0.09,
+        "Reading rule: hard constraints are non-negotiable; soft choices can be replaced only by stronger evidence at the same public contracts.",
+        transform=ax.transAxes,
+        ha="center",
+        fontsize=9,
+        color="#334155",
+    )
+    ax.set_title("BeeStack first-principles claim audit")
+    fig.tight_layout()
+    fig.savefig(path, dpi=180)
+    plt.close(fig)
+    return path
+
+
+def _scholarship_evidence_matrix(path: Path) -> Path:
+    records = verified_source_refresh_ledger()
+    fig_height = max(5.8, 0.42 * len(records) + 2.2)
+    fig, ax = plt.subplots(figsize=(13.4, fig_height))
+    ax.axis("off")
+    columns = (
+        ("Source", 0.045),
+        ("DOI", 0.265),
+        ("Tier", 0.465),
+        ("Sections", 0.610),
+        ("Figures", 0.735),
+        ("Availability", 0.855),
+    )
+    for title, x in columns:
+        ax.text(x, 0.895, title, transform=ax.transAxes, fontsize=9, weight="bold")
+    for index, record in enumerate(records):
+        y = 0.825 - index * (0.70 / max(1, len(records) - 1))
+        color = _claim_color(record.claim_tier)
+        ax.add_patch(
+            Rectangle(
+                (0.025, y - 0.030),
+                0.945,
+                0.057,
+                transform=ax.transAxes,
+                facecolor="#F8FAFC" if index % 2 == 0 else "#FFFFFF",
+                edgecolor="#CBD5E1",
+                lw=0.55,
+            )
+        )
+        ax.add_patch(
+            Rectangle(
+                (0.456, y - 0.020),
+                0.128,
+                0.036,
+                transform=ax.transAxes,
+                facecolor=color,
+                edgecolor="#111827",
+                lw=0.35,
+                alpha=0.92,
+            )
+        )
+        values = (
+            textwrap.shorten(record.citation_key, width=28, placeholder="..."),
+            textwrap.shorten(record.doi, width=28, placeholder="..."),
+            record.claim_tier.replace("_", " "),
+            f"{len(record.section_targets)} mapped",
+            f"{len(record.figure_targets)} mapped",
+            record.availability_status.replace("_", " "),
+        )
+        for value, (_, x) in zip(values, columns, strict=True):
+            ax.text(
+                x,
+                y,
+                textwrap.fill(value, width=23 if x == 0.855 else 19),
+                transform=ax.transAxes,
+                va="center",
+                fontsize=7.2,
+                color="white" if x == 0.465 else "#111827",
+            )
+    badges = (
+        f"{len(records)} verified sources",
+        "Perplexity discovery only",
+        "DOI/source enforced",
+        "availability recorded",
+    )
+    for index, badge in enumerate(badges):
+        x = 0.15 + index * 0.185
+        ax.add_patch(
+            Rectangle(
+                (x, 0.075),
+                0.155,
+                0.044,
+                transform=ax.transAxes,
+                facecolor="#EEF2FF",
+                edgecolor="#A5B4FC",
+                lw=0.7,
+            )
+        )
+        ax.text(
+            x + 0.0775,
+            0.097,
+            badge,
+            transform=ax.transAxes,
+            ha="center",
+            va="center",
+            fontsize=7.0,
+            color="#312E81",
+            weight="bold",
+        )
+    ax.text(
+        0.5,
+        0.035,
+        "Reading rule: a source enters manuscript claims only after direct DOI/source verification.",
+        transform=ax.transAxes,
+        ha="center",
+        fontsize=8.6,
+        color="#334155",
+    )
+    ax.set_title("BeeStack scholarship evidence matrix")
+    fig.tight_layout()
+    fig.savefig(path, dpi=180)
+    plt.close(fig)
+    return path
+
+
+def _micro_macro_calibration(records: list[dict[str, Any]], path: Path) -> Path:
+    recruited = _numeric_series(records, "recruited_followers")
+    pheromone = _numeric_series(records, "mean_pheromone")
+    mean_recruited = float(np.mean(recruited))
+    mean_pheromone = float(np.mean(pheromone))
+    blocks = [
+        (
+            "Strict micro scene",
+            "FlyBody/MuJoCo body plan\ncontact metrics\nrender sidecars",
+            module_color("BeeBody"),
+        ),
+        (
+            "Waggle evidence anchors",
+            "Riley flight paths\nLandgraf dance motion\nfollower neuroethology",
+            "#0F766E",
+        ),
+        (
+            "Reduced macro summaries",
+            f"BeeSwarm followers mean {mean_recruited:.1f}\n"
+            f"pheromone mean {mean_pheromone:.2f}\nBEEHAVE-compatible fields",
+            module_color("BeeSwarm"),
+        ),
+        (
+            "Blocked calibration",
+            "no held-out recruitment residuals\nno colony-scale fit\nno causal validation",
+            "#C43C39",
+        ),
+    ]
+    fig, ax = plt.subplots(figsize=(12.6, 5.4))
+    ax.axis("off")
+    x_positions = (0.07, 0.32, 0.57, 0.82)
+    for index, ((title, detail, color), x) in enumerate(zip(blocks, x_positions, strict=True)):
+        ax.add_patch(
+            Rectangle(
+                (x, 0.42),
+                0.17,
+                0.27,
+                transform=ax.transAxes,
+                facecolor=color,
+                edgecolor="#111827",
+                lw=1.0,
+                alpha=0.92,
+            )
+        )
+        ax.text(
+            x + 0.085,
+            0.635,
+            title,
+            transform=ax.transAxes,
+            ha="center",
+            va="center",
+            fontsize=9.0,
+            color="white",
+            weight="bold",
+        )
+        ax.text(
+            x + 0.085,
+            0.515,
+            detail,
+            transform=ax.transAxes,
+            ha="center",
+            va="center",
+            fontsize=7.4,
+            color="white",
+        )
+        if index < len(blocks) - 1:
+            ax.add_patch(
+                FancyArrowPatch(
+                    (x + 0.17, 0.555),
+                    (x_positions[index + 1], 0.555),
+                    transform=ax.transAxes,
+                    arrowstyle="->",
+                    mutation_scale=15,
+                    lw=1.4,
+                    color="#334155",
+                )
+            )
+    rows = (
+        ("Allowed comparison", "schema and units can be mapped across layers"),
+        ("Current evidence", "small-scene metrics and deterministic reduced swarm traces"),
+        ("Not yet evidence", "external colony calibration, prediction intervals, residual panels"),
+    )
+    for index, (label, detail) in enumerate(rows):
+        y = 0.255 - index * 0.070
+        ax.text(0.12, y, label, transform=ax.transAxes, fontsize=8.4, weight="bold")
+        ax.text(0.31, y, detail, transform=ax.transAxes, fontsize=8.2, color="#334155")
+    ax.set_title("BeeBody to BeeSwarm micro-to-macro calibration boundary")
+    fig.tight_layout()
+    fig.savefig(path, dpi=180)
+    plt.close(fig)
+    return path
+
+
+def _brain_mind_anatomy_policy_map(path: Path) -> Path:
+    rows = [
+        ("Antennal lobe", "odor channels", "Observation likelihood", module_color("BeeBrain")),
+        ("Mushroom body", "learning/memory anchor", "Preferences + expected value", "#2563EB"),
+        ("Central complex", "orientation/action anchor", "Policy transition terms", "#7C3AED"),
+        ("Waggle followers", "spatial-information anchor", "Contextual policy prior", "#0F766E"),
+    ]
+    fig, ax = plt.subplots(figsize=(12.2, 5.8))
+    ax.axis("off")
+    headers = ("Scholarly anchor", "Data role", "BeeMind contract")
+    for x, header in zip((0.12, 0.43, 0.72), headers, strict=True):
+        ax.text(x, 0.84, header, transform=ax.transAxes, fontsize=9.5, weight="bold")
+    for index, (anchor, role, contract, color) in enumerate(rows):
+        y = 0.72 - index * 0.145
+        for x, text, width in (
+            (0.08, anchor, 0.20),
+            (0.38, role, 0.21),
+            (0.68, contract, 0.24),
+        ):
+            ax.add_patch(
+                Rectangle(
+                    (x, y - 0.040),
+                    width,
+                    0.080,
+                    transform=ax.transAxes,
+                    facecolor=color if x == 0.08 else "#F8FAFC",
+                    edgecolor="#CBD5E1",
+                    lw=0.8,
+                )
+            )
+            ax.text(
+                x + width / 2,
+                y,
+                textwrap.fill(text, width=23),
+                transform=ax.transAxes,
+                ha="center",
+                va="center",
+                fontsize=8.0,
+                color="white" if x == 0.08 else "#111827",
+                weight="bold" if x == 0.08 else "normal",
+            )
+        ax.add_patch(
+            FancyArrowPatch(
+                (0.28, y),
+                (0.38, y),
+                transform=ax.transAxes,
+                arrowstyle="->",
+                mutation_scale=11,
+                lw=1.0,
+                color="#475569",
+            )
+        )
+        ax.add_patch(
+            FancyArrowPatch(
+                (0.59, y),
+                (0.68, y),
+                transform=ax.transAxes,
+                arrowstyle="->",
+                mutation_scale=11,
+                lw=1.0,
+                color="#475569",
+            )
+        )
+    ax.add_patch(
+        Rectangle(
+            (0.19, 0.075),
+            0.62,
+            0.080,
+            transform=ax.transAxes,
+            facecolor="#FEF2F2",
+            edgecolor="#FCA5A5",
+            lw=0.8,
+        )
+    )
+    ax.text(
+        0.50,
+        0.116,
+        "Blocked claim: no connectome-scale assimilation, calcium-validated dynamics, or learned generative model.",
+        transform=ax.transAxes,
+        ha="center",
+        va="center",
+        fontsize=8.4,
+        color="#991B1B",
+        weight="bold",
+    )
+    ax.set_title("BeeBrain anatomy-data-to-BeeMind belief-policy mapping")
+    fig.tight_layout()
+    fig.savefig(path, dpi=180)
+    plt.close(fig)
+    return path
+
+
+def _niche_adapter_map(records: list[dict[str, Any]], path: Path) -> Path:
+    comb = _numeric_series(records, "comb_fraction")
+    thermal = _numeric_series(records, "brood_temperature_error_c")
+    final_comb = comb[-1]
+    max_thermal = max(abs(value) for value in thermal)
+    nodes = {
+        "CombGrid": (0.50, 0.58, f"comb final {final_comb:.2f}", module_color("BeeNiche")),
+        "Thermal field": (0.23, 0.62, f"max error {max_thermal:.2f} C", "#DC2626"),
+        "Forage map": (0.23, 0.30, "landscape summaries", "#0F766E"),
+        "BEEHAVE adapter": (0.77, 0.62, "colony summaries", "#F59E0B"),
+        "Hiveopolis boundary": (0.77, 0.30, "interface target", "#7C3AED"),
+    }
+    fig, ax = plt.subplots(figsize=(11.4, 5.8))
+    ax.axis("off")
+    for name, (x, y, detail, color) in nodes.items():
+        ax.add_patch(
+            Rectangle(
+                (x - 0.115, y - 0.065),
+                0.23,
+                0.13,
+                transform=ax.transAxes,
+                facecolor=color,
+                edgecolor="#111827",
+                lw=1.0,
+                alpha=0.92,
+            )
+        )
+        ax.text(
+            x,
+            y + 0.024,
+            name,
+            transform=ax.transAxes,
+            ha="center",
+            va="center",
+            fontsize=9.0,
+            color="white",
+            weight="bold",
+        )
+        ax.text(
+            x,
+            y - 0.030,
+            detail,
+            transform=ax.transAxes,
+            ha="center",
+            va="center",
+            fontsize=7.5,
+            color="white",
+        )
+    arrows = (
+        ("Thermal field", "CombGrid", "brood context"),
+        ("Forage map", "CombGrid", "resource context"),
+        ("CombGrid", "BEEHAVE adapter", "summary fields"),
+        ("CombGrid", "Hiveopolis boundary", "not real-time control"),
+    )
+    for source, target, label in arrows:
+        sx, sy, *_ = nodes[source]
+        tx, ty, *_ = nodes[target]
+        ax.add_patch(
+            FancyArrowPatch(
+                (sx, sy),
+                (tx, ty),
+                transform=ax.transAxes,
+                arrowstyle="->",
+                mutation_scale=13,
+                lw=1.2,
+                color="#334155",
+                shrinkA=52,
+                shrinkB=52,
+            )
+        )
+        ax.text(
+            (sx + tx) / 2,
+            (sy + ty) / 2 + 0.028,
+            label,
+            transform=ax.transAxes,
+            ha="center",
+            fontsize=7.1,
+            color="#334155",
+        )
+    ax.text(
+        0.5,
+        0.105,
+        "Reading rule: adapters expose compatible summaries; they are not full ecology or hive-control validation.",
+        transform=ax.transAxes,
+        ha="center",
+        fontsize=8.7,
+        color="#334155",
+    )
+    ax.set_title("BeeNiche BEEHAVE/Hiveopolis adapter and comb-thermal-forage map")
+    fig.tight_layout()
+    fig.savefig(path, dpi=180)
+    plt.close(fig)
+    return path
+
+
+def _validation_readiness_residuals(path: Path) -> Path:
+    rows = [
+        ("Implemented", "uv/pytest/ruff gates", "local verification", "#0F766E"),
+        ("Implemented", "figure sidecars", "caption + DOI/source metadata", "#0F766E"),
+        ("Implemented", "source audit", "bibliography DOI contract", "#0F766E"),
+        ("Implemented", "availability records", "blocked empirical payloads explicit", "#0F766E"),
+        ("Blocked", "held-out residuals", "no external validation panel", "#C43C39"),
+        ("Blocked", "uncertainty quantification", "no posterior predictive interval", "#C43C39"),
+        ("Blocked", "longitudinal assimilation", "no living-colony data stream", "#C43C39"),
+        ("Blocked", "digital-twin governance", "readiness target only", "#C43C39"),
+    ]
+    fig, ax = plt.subplots(figsize=(12.4, 6.0))
+    ax.axis("off")
+    columns = (("Status", 0.09), ("Evidence or blocker", 0.28), ("Current interpretation", 0.58))
+    for header, x in columns:
+        ax.text(x, 0.86, header, transform=ax.transAxes, fontsize=9.5, weight="bold")
+    for index, (status, item, interpretation, color) in enumerate(rows):
+        y = 0.77 - index * 0.078
+        ax.add_patch(
+            Rectangle(
+                (0.055, y - 0.032),
+                0.89,
+                0.060,
+                transform=ax.transAxes,
+                facecolor="#F8FAFC" if index % 2 == 0 else "#FFFFFF",
+                edgecolor="#CBD5E1",
+                lw=0.55,
+            )
+        )
+        ax.add_patch(
+            Rectangle(
+                (0.080, y - 0.021),
+                0.130,
+                0.040,
+                transform=ax.transAxes,
+                facecolor=color,
+                edgecolor="#111827",
+                lw=0.4,
+                alpha=0.92,
+            )
+        )
+        ax.text(
+            0.145,
+            y,
+            status,
+            transform=ax.transAxes,
+            ha="center",
+            va="center",
+            fontsize=7.6,
+            color="white",
+            weight="bold",
+        )
+        ax.text(0.28, y, item, transform=ax.transAxes, va="center", fontsize=8.1)
+        ax.text(
+            0.58,
+            y,
+            interpretation,
+            transform=ax.transAxes,
+            va="center",
+            fontsize=8.1,
+            color="#334155",
+        )
+    ax.text(
+        0.50,
+        0.065,
+        "No residual bars are drawn because held-out validation residuals are not yet generated.",
+        transform=ax.transAxes,
+        ha="center",
+        fontsize=8.8,
+        color="#991B1B",
+        weight="bold",
+    )
+    ax.set_title("BeeStack validation readiness and explicitly blocked residual evidence")
+    fig.tight_layout()
+    fig.savefig(path, dpi=180)
+    plt.close(fig)
+    return path
 
 
 def _pipeline_overview(path: Path) -> Path:

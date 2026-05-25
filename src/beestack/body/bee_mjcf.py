@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Any
 
 from ..config import BeeStackConfig
+from ..utils import project_relative_payload
 from .morphology import bee_body_calibration_summary
 
 
@@ -31,7 +32,7 @@ class BeeBodyPlanArtifact:
     calibration_summary: dict[str, Any] | None = None
 
     def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+        return project_relative_payload(asdict(self))
 
 
 def locate_flybody_body_plan(fork_path: Path | None = None) -> Path:

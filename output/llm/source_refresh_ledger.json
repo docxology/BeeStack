@@ -1,0 +1,216 @@
+{
+  "direct_verification_required": true,
+  "perplexity_discovery_candidates": [
+    {
+      "availability_status": "official_page_seen_by_discovery; raw_payload_not_assessed",
+      "candidate_key": "pnas2026waggleaudience",
+      "claim_tier": "candidate_scholarship_anchor",
+      "direct_verification_status": "discovery_only_not_promoted",
+      "doi_or_url": "10.1073/pnas.2518687123",
+      "figure_targets": "output/figures/beebody_beeswarm_micro_macro_calibration.png",
+      "notes": "Perplexity surfaced a 2026 PNAS audience-response waggle source; not cited until direct verification and bibliography entry are added.",
+      "section_targets": "manuscript/01_scholarship_and_related_work.md",
+      "title": "The audience shapes the information content of the honey bee waggle dance"
+    },
+    {
+      "availability_status": "official_article_page; code_data_payload_not_assessed",
+      "candidate_key": "biodt_honeybee_prototype",
+      "claim_tier": "candidate_digital_twin_governance_anchor",
+      "direct_verification_status": "discovery_only_not_promoted",
+      "doi_or_url": "https://riojournal.com/article/125167/",
+      "figure_targets": "output/figures/beestack_validation_readiness_residuals.png",
+      "notes": "Perplexity surfaced a BioDT honeybee prototype page; kept as a candidate until direct source, license, and data/code availability are checked.",
+      "section_targets": "manuscript/14_roadmap.md; manuscript/16_ethics_governance.md",
+      "title": "Prototype Biodiversity Digital Twin: honey bees in agricultural landscapes"
+    },
+    {
+      "availability_status": "official_project_page; empirical_payload_not_assessed",
+      "candidate_key": "hiveopolis_project_documentation",
+      "claim_tier": "candidate_adapter_boundary_anchor",
+      "direct_verification_status": "discovery_only_not_promoted",
+      "doi_or_url": "https://cordis.europa.eu/project/id/824069",
+      "figure_targets": "output/figures/beeniche_adapter_niche_map.png",
+      "notes": "Perplexity surfaced CORDIS/Hiveopolis documentation; current manuscript uses existing Hiveopolis citation and treats real-time coupling as blocked.",
+      "section_targets": "manuscript/07_methods_niche.md; manuscript/16_ethics_governance.md",
+      "title": "Hiveopolis robotic hive and waggle-interface documentation"
+    },
+    {
+      "availability_status": "PubMed record surfaced; DOI/license not promoted",
+      "candidate_key": "vvug_digital_twin_survey",
+      "claim_tier": "candidate_validation_anchor",
+      "direct_verification_status": "discovery_only_not_promoted",
+      "doi_or_url": "https://pubmed.ncbi.nlm.nih.gov/39825103/",
+      "figure_targets": "output/figures/beestack_validation_readiness_residuals.png",
+      "notes": "Perplexity surfaced a VVUQ digital-twin survey; current validation claims remain anchored to existing directly verified verification and FAIR sources.",
+      "section_targets": "manuscript/08_validation_and_figures.md; manuscript/13_limitations.md",
+      "title": "Survey and perspective on verification, validation, and uncertainty quantification for digital twins"
+    }
+  ],
+  "records": [
+    {
+      "authors": "Vaxenburg et al.",
+      "availability_status": "scholarly_open_metadata",
+      "citation_key": "vaxenburg2025flybody",
+      "claim_tier": "method_anchor",
+      "direct_verification_status": "verified",
+      "discovery_channel": "plan anchor and direct Nature verification",
+      "doi": "10.1038/s41586-025-09029-4",
+      "figure_targets": [
+        "output/figures/beebody_beeswarm_micro_macro_calibration.png"
+      ],
+      "notes": "Anchors FlyBody/MuJoCo body and small-scene fidelity language.",
+      "section_targets": [
+        "manuscript/05_methods_body_swarm.md",
+        "manuscript/08_validation_and_figures.md"
+      ],
+      "source_url": "https://doi.org/10.1038/s41586-025-09029-4",
+      "title": "Whole-body physics simulation of fruit fly locomotion",
+      "year": 2025
+    },
+    {
+      "authors": "Becher et al.",
+      "availability_status": "scholarly_open_metadata",
+      "citation_key": "becher2014beehave",
+      "claim_tier": "method_anchor",
+      "direct_verification_status": "verified",
+      "discovery_channel": "plan anchor and direct scholarly verification",
+      "doi": "10.1111/1365-2664.12222",
+      "figure_targets": [
+        "output/figures/beebody_beeswarm_micro_macro_calibration.png",
+        "output/figures/beeniche_adapter_niche_map.png"
+      ],
+      "notes": "Anchors BEEHAVE-compatible colony-summary and adapter claims.",
+      "section_targets": [
+        "manuscript/05_methods_body_swarm.md",
+        "manuscript/07_methods_niche.md",
+        "manuscript/11_research_synthesis.md"
+      ],
+      "source_url": "https://doi.org/10.1111/1365-2664.12222",
+      "title": "BEEHAVE: a systems model of honeybee colony dynamics and foraging to explore multifactorial causes of colony failure",
+      "year": 2014
+    },
+    {
+      "authors": "Barker et al.",
+      "availability_status": "open_access_cc_by",
+      "citation_key": "fair4rs2022principles",
+      "claim_tier": "validation_anchor",
+      "direct_verification_status": "verified",
+      "discovery_channel": "plan anchor and direct Scientific Data verification",
+      "doi": "10.1038/s41597-022-01710-x",
+      "figure_targets": [
+        "output/figures/beestack_scholarship_evidence_matrix.png"
+      ],
+      "notes": "Anchors FAIR software provenance, metadata, licensing, and reuse claims.",
+      "section_targets": [
+        "manuscript/03_materials_and_source_provenance.md",
+        "manuscript/15_reproducibility.md",
+        "manuscript/16_ethics_governance.md"
+      ],
+      "source_url": "https://doi.org/10.1038/s41597-022-01710-x",
+      "title": "Introducing the FAIR Principles for research software",
+      "year": 2022
+    },
+    {
+      "authors": "Riley et al.",
+      "availability_status": "scholarly_metadata",
+      "citation_key": "riley2005flightpaths",
+      "claim_tier": "method_anchor",
+      "direct_verification_status": "verified",
+      "discovery_channel": "plan anchor and direct Nature verification",
+      "doi": "10.1038/nature03526",
+      "figure_targets": [
+        "output/figures/beebody_beeswarm_micro_macro_calibration.png"
+      ],
+      "notes": "Anchors waggle-recruited flight-path and recruitment-boundary wording.",
+      "section_targets": [
+        "manuscript/01_scholarship_and_related_work.md",
+        "manuscript/05_methods_body_swarm.md"
+      ],
+      "source_url": "https://doi.org/10.1038/nature03526",
+      "title": "The flight paths of honeybees recruited by the waggle dance",
+      "year": 2005
+    },
+    {
+      "authors": "Landgraf et al.",
+      "availability_status": "open_access_cc_by",
+      "citation_key": "landgraf2011roboticdance",
+      "claim_tier": "method_anchor",
+      "direct_verification_status": "verified",
+      "discovery_channel": "plan anchor and direct PLOS/PubMed verification",
+      "doi": "10.1371/journal.pone.0021354",
+      "figure_targets": [
+        "output/figures/beebody_beeswarm_micro_macro_calibration.png"
+      ],
+      "notes": "Anchors biomimetic dance-motion and robot-mediated hive-interaction context.",
+      "section_targets": [
+        "manuscript/05_methods_body_swarm.md",
+        "manuscript/16_ethics_governance.md"
+      ],
+      "source_url": "https://doi.org/10.1371/journal.pone.0021354",
+      "title": "Analysis of the Waggle Dance Motion of Honeybees for the Design of a Biomimetic Honeybee Robot",
+      "year": 2011
+    },
+    {
+      "authors": "Ai et al.",
+      "availability_status": "open_access",
+      "citation_key": "hateren2019neuroethology",
+      "claim_tier": "scholarship_anchor",
+      "direct_verification_status": "verified",
+      "discovery_channel": "plan anchor and direct MDPI verification",
+      "doi": "10.3390/insects10100336",
+      "figure_targets": [
+        "output/figures/beebrain_beemind_anatomy_policy_map.png"
+      ],
+      "notes": "Anchors follower-interaction and spatial-information language.",
+      "section_targets": [
+        "manuscript/01_scholarship_and_related_work.md",
+        "manuscript/06_methods_brain_mind.md"
+      ],
+      "source_url": "https://doi.org/10.3390/insects10100336",
+      "title": "Neuroethology of the Waggle Dance: How Followers Interact with the Waggle Dancer and Detect Spatial Information",
+      "year": 2019
+    },
+    {
+      "authors": "Oreskes et al.",
+      "availability_status": "scholarly_metadata",
+      "citation_key": "oreskes1994verification",
+      "claim_tier": "validation_anchor",
+      "direct_verification_status": "verified",
+      "discovery_channel": "existing bibliography and validation refresh",
+      "doi": "10.1126/science.263.5147.641",
+      "figure_targets": [
+        "output/figures/beestack_validation_readiness_residuals.png"
+      ],
+      "notes": "Anchors separation of verification, validation, and confirmation.",
+      "section_targets": [
+        "manuscript/08_validation_and_figures.md",
+        "manuscript/13_limitations.md"
+      ],
+      "source_url": "https://doi.org/10.1126/science.263.5147.641",
+      "title": "Verification, Validation, and Confirmation of Numerical Models",
+      "year": 1994
+    },
+    {
+      "authors": "Bjornsson et al.",
+      "availability_status": "open_access",
+      "citation_key": "bjornsson2020digitaltwins",
+      "claim_tier": "scholarship_anchor",
+      "direct_verification_status": "verified",
+      "discovery_channel": "existing bibliography and digital-twin refresh",
+      "doi": "10.1186/s13073-019-0701-3",
+      "figure_targets": [
+        "output/figures/beestack_validation_readiness_residuals.png"
+      ],
+      "notes": "Anchors conservative digital-twin readiness and governance framing.",
+      "section_targets": [
+        "manuscript/14_roadmap.md",
+        "manuscript/16_ethics_governance.md"
+      ],
+      "source_url": "https://doi.org/10.1186/s13073-019-0701-3",
+      "title": "Digital twins to personalize medicine",
+      "year": 2020
+    }
+  ],
+  "research_method": "Perplexity discovery followed by direct scholarly/official verification",
+  "schema": "beestack.source_refresh.v1"
+}

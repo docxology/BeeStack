@@ -2,8 +2,9 @@
 
 The manuscript is written as modular, numbered markdown sections with
 template-style variable tokens. Each section should make one narrow claim:
-scope, architecture, module methods, empirical data, validation, results,
-discussion, limitations, roadmap, or reproducibility. Run:
+scholarship, claim ledger, source provenance, evidence-typed architecture,
+grouped methods, empirical data, validation, results, synthesis, discussion,
+limitations, roadmap, reproducibility, or governance. Run:
 
 ```bash
 uv run python scripts/analysis_pipeline.py

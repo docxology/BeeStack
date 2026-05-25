@@ -10,23 +10,22 @@ configuration-derived statements flow through
 | Section | Role | Evidence Surface |
 | --- | --- | --- |
 | `00_abstract.md` | High-level claim summary | Manuscript variables and research report |
-| `01_introduction.md` | Biological motivation and architecture problem | Literature plus fidelity boundary |
-| `02_scope_and_contributions.md` | Claim ledger and project commitments | Research suite, integrity review, output manifest |
-| `03_system_architecture.md` | Contracts, timing, and module boundaries | `output/data/model_card.json` |
-| `04_body_methods.md` | BeeBody FlyBody and reduced telemetry methods | Body GIFs, MJCF, visual verification |
-| `05_brain_methods.md` | BeeBrain empirical reduced-kernel methods | Empirical reports and data completeness |
-| `06_mind_methods.md` | Policy and belief diagnostics | Methods analysis and simulation records |
-| `07_swarm_methods.md` | Reduced swarm plus strict 3D waggle/collision | Contact physics report and scene XMLs |
-| `08_niche_methods.md` | Comb, thermal, and foraging methods | Niche figures, methods panel, adapter outputs |
-| `09_visualization_and_validation.md` | How figures become evidence | Animation manifest and verifier reports |
+| `01_scholarship_and_related_work.md` | Biological motivation and scholarship anchors | Literature, source-refresh ledger, fidelity boundary |
+| `02_claim_ledger.md` | Claim ledger and project commitments | Research suite, integrity review, output manifest |
+| `03_materials_and_source_provenance.md` | Source tiers, data availability, and generated materials | `output/llm/source_refresh_ledger.json`; source audit |
+| `04_evidence_typed_architecture.md` | Contracts, timing, and module boundaries | `output/data/model_card.json` |
+| `05_methods_body_swarm.md` | BeeBody plus strict/reduced BeeSwarm boundary | Body GIFs, MJCF, contact reports, micro/macro map |
+| `06_methods_brain_mind.md` | BeeBrain empirical surface plus BeeMind policy methods | Empirical reports, data completeness, policy diagnostics |
+| `07_methods_niche.md` | Comb, thermal, forage, and adapter provenance | Niche figures, methods panel, adapter outputs |
+| `08_validation_and_figures.md` | How figures become evidence and residuals stay blocked | Animation manifest, sidecars, verifier reports |
+| `09_empirical_results.md` | BeeBrain data and source completeness | Empirical analysis outputs |
 | `10_integrated_results.md` | Whole-stack reproducibility witness | Run summary and integrated figures |
-| `11_empirical_results.md` | BeeBrain data and source completeness | Empirical analysis outputs |
-| `12_research_suite_results.md` | Scorecards, sweeps, gaps, readiness | Research suite and readiness review |
-| `13_discussion.md` | Scholarly synthesis and interpretation | Literature, fidelity labels, generated reports |
-| `14_limitations.md` | Boundaries on current claims | Known gaps from generated reports |
-| `15_roadmap.md` | Next scientific upgrades | Readiness review priorities |
-| `16_reproducibility.md` | Commands and determinism | CI, uv lock, hydration, audits |
-| `17_ethics_and_data_provenance.md` | Data, model, and use constraints | Source registry and provenance notes |
+| `11_research_synthesis.md` | Scorecards, sweeps, gaps, readiness | Research suite and readiness review |
+| `12_discussion.md` | Scholarly synthesis and interpretation | Literature, fidelity labels, generated reports |
+| `13_limitations.md` | Boundaries on current claims | Known gaps from generated reports |
+| `14_roadmap.md` | Next scientific upgrades | Readiness review priorities |
+| `15_reproducibility.md` | Commands and determinism | CI, uv lock, hydration, audits |
+| `16_ethics_governance.md` | Data, model, use, and governance constraints | Source registry and provenance notes |
 
 ## Claim Writing Rules
 
@@ -81,6 +80,9 @@ the reader-facing evidence contract or a section-level result. The
 `manuscript_figure_claim_map` figure is the registry-derived overview of those
 promoted figures; additional diagnostics should remain in the generated figure
 index, gallery, or reports unless they directly reduce manuscript ambiguity.
+Every promoted raster must have a curated `FigureNarrative`. Generic sidecar
+fallback metadata is acceptable for supporting diagnostics, but not for figures
+inserted into the hydrated manuscript.
 
 ## Hydration Workflow
 

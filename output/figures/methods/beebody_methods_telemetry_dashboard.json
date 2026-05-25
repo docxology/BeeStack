@@ -38,7 +38,7 @@
   "fidelity": "FlyBody-backed render diagnostics plus reduced telemetry",
   "figure_path": "output/figures/methods/beebody_methods_telemetry_dashboard.png",
   "manuscript_label": "fig:body_methods_dashboard",
-  "manuscript_section": "manuscript/04_body_methods.md",
+  "manuscript_section": "manuscript/05_methods_body_swarm.md",
   "priority": "primary",
   "quality": {
     "height_px": 1157,

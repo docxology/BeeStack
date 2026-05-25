@@ -41,7 +41,7 @@ and `output/animations/flybody_scenes/waggle_long/contact_metrics.json`.
 | `output/figures/beebrain_empirical_alignment_timeseries.png` | Matplotlib | Empirical summary | Empirical odor-template alignment records | Empirical analysis report |
 | `output/figures/beeswarm_recruitment_task_allocation.png` | Matplotlib | Reduced swarm summary | BeeSwarm recruitment/task allocation | Analysis pipeline and tests |
 | `output/figures/beeniche_thermal_comb_panel.png` | Matplotlib | Reduced niche summary | Comb and thermal fields | Analysis pipeline and tests |
-| `output/figures/beestack_graphical_abstract.png`, `beestack_contract_network.png`, `beestack_scale_ladder.png`, `beestack_evidence_ladder.png`, `manuscript_figure_claim_map.png`, `beestack_pipeline_overview.png` | Matplotlib | Showcase architecture / evidence boundary | Public contracts, configured modules, claim-tier boundaries, and main-figure provenance | Generated-output tests plus figure sidecar and primary-caption audits |
+| `output/figures/beestack_graphical_abstract.png`, `beestack_contract_network.png`, `beestack_scale_ladder.png`, `beestack_evidence_ladder.png`, `beestack_first_principles_claim_audit.png`, `manuscript_figure_claim_map.png`, `beestack_pipeline_overview.png` | Matplotlib | Showcase architecture / evidence boundary | Public contracts, configured modules, claim-tier boundaries, first-principles claim constraints, and main-figure provenance | Generated-output tests plus figure sidecar and primary-caption audits |
 | `output/figures/empirical/*.png` | Matplotlib | Empirical figure | Downloaded/parsed BeeBrain anatomy and activity records | `analyze_empirical_bee_data.py` and empirical report |
 | `output/figures/empirical/waggle_follower_alignment.png`, `waggle_phase_coupling.png`, `beeswarm_waggle_recruitment_diagnostics.png` | Matplotlib | Empirical waggle figure | Hadjitofi-Webb follower antenna and model-error CSV summaries | Waggle follower analysis report |
 | `output/figures/empirical/brain_data_completeness_matrix.png`, `bee_brain_multimodal_source_map.png` | Matplotlib | Empirical completeness figure | Curated BeeBrain registry, downloaded status, parser status | Brain data completeness JSON |
@@ -55,8 +55,9 @@ figure-design citation metadata, graphical-perception/provenance scholarship,
 WCAG-style contrast checks for text-heavy figures, and a specific statement of
 what the figure does not support. The caption audit requires primary manuscript
 figures to name the backend, source data, validation status, and conservative
-interpretation. Supporting generated figures stay in the gallery and figure
-index without bloating the main manuscript.
+interpretation. Supporting generated figures can stay in the gallery and figure
+index with generic sidecars, but any raster inserted into the manuscript must be
+present in the curated registry.
 
 Regenerate figures with:
 

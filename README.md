@@ -43,6 +43,7 @@ rather than treating the target as a present-tense result.
 | Claim, source, and artifact audit | `docs/research_operations_playbook.md` | `uv run python scripts/audit_documentation.py` |
 | Digital-twin target assessment | `docs/digital_twin_path.md` | `uv run python scripts/assess_digital_twin_readiness.py` |
 | Manuscript editing | `docs/manuscript_development.md` | `uv run python scripts/z_generate_manuscript_variables.py` |
+| Source-refresh ledger | `output/llm/source_refresh_ledger.md` | `uv run python scripts/write_source_refresh_ledger.py` |
 
 ## Quickstart
 
@@ -130,6 +131,9 @@ uv run python scripts/z_generate_manuscript_variables.py
   artifact provenance index with captions, alt text, claim tiers, unsupported
   inference boundaries, sidecar validation status, repo-relative artifact
   paths, and regeneration commands.
+- `output/llm/source_refresh_ledger.json`: Perplexity/web discovery notes after
+  direct scholarly or official verification, with citation keys, DOIs/source
+  URLs, availability state, section targets, figure targets, and claim tiers.
 - `output/data/sensitivity/`: deterministic reduced-kernel sensitivity sweep
   payloads.
 - `output/data/empirical_sources/`: downloaded Dryad and Honeybee Standard Brain
@@ -140,7 +144,9 @@ uv run python scripts/z_generate_manuscript_variables.py
   figures.
 - `output/figures/`: module diagnostics and whole-stack showcase schematics,
   including the BeeStack graphical abstract, contract network, scale ladder,
-  evidence ladder, and pipeline overview.
+  evidence ladder, source-refresh matrix, micro-to-macro calibration map,
+  anatomy-policy map, niche adapter map, validation-readiness panel, and
+  pipeline overview.
 - `output/figures/research/`: science-first scorecard, sensitivity, empirical
   completeness, module diagnostics, and evidence-network figures.
 - `output/figures/methods/`: module methods dashboards for Body, Brain, Mind,

@@ -154,6 +154,35 @@ def test_manuscript_variables_cover_tokens() -> None:
     assert tokens <= set(variables)
 
 
+def test_manuscript_uses_restructured_evidence_typed_arc() -> None:
+    expected_sections = [
+        "00_abstract.md",
+        "01_scholarship_and_related_work.md",
+        "02_claim_ledger.md",
+        "03_materials_and_source_provenance.md",
+        "04_evidence_typed_architecture.md",
+        "05_methods_body_swarm.md",
+        "06_methods_brain_mind.md",
+        "07_methods_niche.md",
+        "08_validation_and_figures.md",
+        "09_empirical_results.md",
+        "10_integrated_results.md",
+        "11_research_synthesis.md",
+        "12_discussion.md",
+        "13_limitations.md",
+        "14_roadmap.md",
+        "15_reproducibility.md",
+        "16_ethics_governance.md",
+        "99_references.md",
+    ]
+
+    actual = [path.name for path in sorted((PROJECT_ROOT / "manuscript").glob("*.md"))]
+    for section in expected_sections:
+        assert section in actual
+    assert "01_introduction.md" not in actual
+    assert "17_ethics_and_data_provenance.md" not in actual
+
+
 def test_analysis_and_manuscript_scripts_generate_expected_outputs() -> None:
     subprocess.run([sys.executable, "scripts/analysis_pipeline.py"], cwd=PROJECT_ROOT, check=True)
     subprocess.run(
@@ -174,7 +203,10 @@ def test_analysis_and_manuscript_scripts_generate_expected_outputs() -> None:
     assert "02_methods.md" not in {
         path.name for path in (PROJECT_ROOT / "output" / "manuscript").glob("*.md")
     }
-    assert (PROJECT_ROOT / "output" / "manuscript" / "12_research_suite_results.md").exists()
+    assert (PROJECT_ROOT / "output" / "manuscript" / "11_research_synthesis.md").exists()
+    assert (
+        PROJECT_ROOT / "output" / "manuscript" / "03_materials_and_source_provenance.md"
+    ).exists()
     assert (PROJECT_ROOT / "output" / "figures" / "module_contract_coverage.png").exists()
     assert (PROJECT_ROOT / "output" / "animations" / "beebrain_neural_anatomy.gif").exists()
     assert (PROJECT_ROOT / "output" / "data" / "animation_manifest.json").exists()

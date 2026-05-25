@@ -38,7 +38,7 @@
   "fidelity": "architecture schematic",
   "figure_path": "output/figures/beestack_graphical_abstract.png",
   "manuscript_label": "fig:beestack_graphical_abstract",
-  "manuscript_section": "manuscript/03_system_architecture.md",
+  "manuscript_section": "manuscript/04_evidence_typed_architecture.md",
   "priority": "primary",
   "quality": {
     "height_px": 848,

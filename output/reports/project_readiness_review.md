@@ -34,7 +34,6 @@
 
 ## Methods Analysis Gaps
 
-- dryad-paoli-2024-al-calcium cataloged but no archive or file-level payload is local
 - Paoli MATLAB calcium traces are not yet local or parseable
 - Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.
 - Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset.
@@ -42,6 +41,7 @@
 - The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics.
 - No learned transition model or recursive social-belief inference yet.
 - Expected free energy terms are transparent hand-calibrated witnesses.
+- Large-N colony dynamics are summarized by configured scaling rather than simulated at full population by default.
 
 ## Research Known Gaps
 

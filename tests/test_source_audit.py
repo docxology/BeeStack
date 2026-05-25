@@ -3,6 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from beestack.source_audit import (
+    EXPECTED_BIB_DOIS,
     audit_sources,
     extract_pandoc_citation_keys,
     parse_bibtex_entries,
@@ -82,6 +83,29 @@ def test_project_source_audit_passes_current_registry_and_claim_contracts() -> N
     assert not audit.figure_registry_source_dois_missing
     assert not audit.missing_required_bib_fields
     assert not audit.unconservative_digital_twin_claims
+
+
+def test_verified_scholarship_refresh_sources_are_required_and_section_mapped() -> None:
+    from beestack.source_refresh import verified_source_refresh_ledger
+
+    required = {
+        "fair4rs2022principles": "10.1038/s41597-022-01710-x",
+        "riley2005flightpaths": "10.1038/nature03526",
+        "landgraf2011roboticdance": "10.1371/journal.pone.0021354",
+        "hateren2019neuroethology": "10.3390/insects10100336",
+    }
+
+    assert required.items() <= EXPECTED_BIB_DOIS.items()
+    ledger = verified_source_refresh_ledger()
+    ledger_by_key = {row.citation_key: row for row in ledger}
+    assert required.keys() <= ledger_by_key.keys()
+    for key, doi in required.items():
+        row = ledger_by_key[key]
+        assert row.direct_verification_status == "verified"
+        assert row.doi == doi
+        assert row.section_targets
+        assert row.figure_targets
+        assert row.claim_tier in {"scholarship_anchor", "method_anchor", "validation_anchor"}
 
 
 def test_source_audit_flags_figure_registry_keys_and_dois_missing_from_bib(

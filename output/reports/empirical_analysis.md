@@ -55,7 +55,7 @@
 
 ## Brain Data Completeness
 
-- Curated datasets `10`; downloaded `6`; parseable `6`; parseable fraction `0.600`; source-verified `10`; target satisfied `True`.
+- Curated datasets `10`; downloaded `7`; parseable `6`; parseable fraction `0.600`; source-verified `10`; target satisfied `True`.
 
 ## Archive Caveats
 
@@ -63,7 +63,6 @@
 
 ## Known Gaps
 
-- dryad-paoli-2024-al-calcium cataloged but no archive or file-level payload is local.
 - Paoli MATLAB calcium traces are not yet local or parseable.
 
 ## Figures

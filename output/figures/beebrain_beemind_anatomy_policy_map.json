@@ -1,0 +1,71 @@
+{
+  "accessibility_checks": {
+    "background": "#FFFFFF",
+    "contrast_ratio": 17.73971700407407,
+    "foreground": "#111827",
+    "large_text_passed": true,
+    "large_text_threshold": 3.0,
+    "normal_text_passed": true,
+    "normal_text_threshold": 4.5,
+    "standard": "WCAG 2.1 AA contrast thresholds"
+  },
+  "alt_text": "Diagram mapping BeeBrain anatomy and waggle neuroethology anchors into BeeMind belief, preference, and policy terms.",
+  "artifact_kind": "figure",
+  "backend": "Matplotlib",
+  "caption": "Anatomy-to-policy map linking antennal-lobe, mushroom-body, central-complex, and waggle-follower anchors to BeeMind belief and policy contracts.",
+  "citation_keys": [
+    "brandt2005standardbrain",
+    "rybak2010digital",
+    "galizia1999glomerular",
+    "hateren2019neuroethology",
+    "friston2010free",
+    "parr2017working"
+  ],
+  "claim_tier": "neurocognitive_mapping_diagnostic",
+  "design_citation_keys": [
+    "rougier2014figures",
+    "cleveland1984graphical",
+    "crameri2020colour",
+    "w3c2023wcag21",
+    "wilkinson2016fair",
+    "heer2012interactive",
+    "ragan2016provenance"
+  ],
+  "design_source_dois": [
+    "10.1371/journal.pcbi.1003833",
+    "10.1080/01621459.1984.10478080",
+    "10.1038/s41467-020-19160-7",
+    "10.1038/sdata.2016.18",
+    "10.1145/2133806.2133821",
+    "10.1109/TVCG.2015.2467551"
+  ],
+  "fidelity": "architecture schematic",
+  "figure_path": "output/figures/beebrain_beemind_anatomy_policy_map.png",
+  "manuscript_label": "fig:brain_mind_anatomy_policy",
+  "manuscript_section": "manuscript/06_methods_brain_mind.md",
+  "priority": "primary",
+  "quality": {
+    "height_px": 1028,
+    "max_intensity": 255,
+    "mean_intensity": 241.23060543319173,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 43.83254256550523,
+    "width_px": 2180
+  },
+  "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "source refresh ledger, BeeBrain source registry, and active-inference methods records",
+  "source_dois": [
+    "10.1002/cne.20644",
+    "10.3389/fnsys.2010.00030",
+    "10.1038/8144",
+    "10.3390/insects10100336",
+    "10.1038/nrn2787",
+    "10.1038/s41598-017-15249-0"
+  ],
+  "title": "Beebrain Beemind Anatomy Policy Map",
+  "unsupported_inference": "Does not support connectome-scale, calcium-validated, or learned generative dynamics.",
+  "validation_status": "nonblank quality sidecar generated"
+}

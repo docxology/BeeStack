@@ -1,0 +1,65 @@
+{
+  "accessibility_checks": {
+    "background": "#FFFFFF",
+    "contrast_ratio": 17.73971700407407,
+    "foreground": "#111827",
+    "large_text_passed": true,
+    "large_text_threshold": 3.0,
+    "normal_text_passed": true,
+    "normal_text_threshold": 4.5,
+    "standard": "WCAG 2.1 AA contrast thresholds"
+  },
+  "alt_text": "Matrix of verified scholarship sources with DOI status, target sections, target figures, and claim-tier categories.",
+  "artifact_kind": "figure",
+  "backend": "Matplotlib",
+  "caption": "Scholarship evidence matrix mapping directly verified sources to manuscript sections, figure targets, DOI-bearing source records, and claim tiers.",
+  "citation_keys": [
+    "fair4rs2022principles",
+    "wilkinson2016fair",
+    "lamprecht2020fairsoftware"
+  ],
+  "claim_tier": "scholarship_evidence_matrix",
+  "design_citation_keys": [
+    "rougier2014figures",
+    "cleveland1984graphical",
+    "crameri2020colour",
+    "w3c2023wcag21",
+    "wilkinson2016fair",
+    "heer2012interactive",
+    "ragan2016provenance"
+  ],
+  "design_source_dois": [
+    "10.1371/journal.pcbi.1003833",
+    "10.1080/01621459.1984.10478080",
+    "10.1038/s41467-020-19160-7",
+    "10.1038/sdata.2016.18",
+    "10.1145/2133806.2133821",
+    "10.1109/TVCG.2015.2467551"
+  ],
+  "fidelity": "architecture schematic",
+  "figure_path": "output/figures/beestack_scholarship_evidence_matrix.png",
+  "manuscript_label": "fig:scholarship_evidence_matrix",
+  "manuscript_section": "manuscript/03_materials_and_source_provenance.md",
+  "priority": "primary",
+  "quality": {
+    "height_px": 1028,
+    "max_intensity": 255,
+    "mean_intensity": 244.26947758261176,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 37.0092063038372,
+    "width_px": 2396
+  },
+  "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "source refresh ledger, bibliography, source audit, and figure registry",
+  "source_dois": [
+    "10.1038/s41597-022-01710-x",
+    "10.1038/sdata.2016.18",
+    "10.3233/DS-190026"
+  ],
+  "title": "Beestack Scholarship Evidence Matrix",
+  "unsupported_inference": "Does not replace direct DOI/source verification or add empirical data.",
+  "validation_status": "nonblank quality sidecar generated"
+}

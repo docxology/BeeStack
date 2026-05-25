@@ -11,7 +11,11 @@ from PIL import Image
 
 import beestack.body.flybody_adapter as flybody_adapter_module
 from beestack.body import (
+    BeeBodyPlanArtifact,
     FlyBodyBeeBackend,
+    FlyBodyContactMetrics,
+    FlyBodySceneArtifact,
+    FlyBodySceneRenderConfig,
     FlyBodyUnavailableError,
     action_to_flybody_action,
     action_to_flybody_named_action,
@@ -89,6 +93,83 @@ def test_source_and_project_directories_have_readme_and_agents() -> None:
     for directory in required_dirs:
         assert (directory / "README.md").exists(), directory
         assert (directory / "AGENTS.md").exists(), directory
+
+
+def test_body_and_scene_artifact_dicts_use_repo_relative_paths(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.chdir(tmp_path)
+    body_plan = BeeBodyPlanArtifact(
+        xml_path=str(tmp_path / "output" / "animations" / "bee" / "assets" / "bee.xml"),
+        source_xml_path=str(tmp_path / ".venv" / "lib" / "flybody" / "fruitfly.xml"),
+        asset_dir=str(tmp_path / "output" / "animations" / "bee" / "assets"),
+        manifest_path=str(tmp_path / "output" / "animations" / "bee" / "manifest.json"),
+        patch_count=1,
+        patches=("patched",),
+        calibration_summary={"wing_stroke_hz": 230.0},
+    )
+
+    body_payload = body_plan.as_dict()
+    assert body_payload["xml_path"] == "output/animations/bee/assets/bee.xml"
+    assert body_payload["manifest_path"] == "output/animations/bee/manifest.json"
+    assert body_payload["source_xml_path"] == ".venv/lib/flybody/fruitfly.xml"
+
+    metrics = FlyBodyContactMetrics(
+        scene_name="collision",
+        bee_count=2,
+        frame_count=3,
+        frames_with_any_contacts=1,
+        frames_with_bee_bee_contacts=1,
+        frames_with_floor_contacts=1,
+        bee_bee_contact_count=1,
+        floor_contact_count=1,
+        bee_bee_contact_pairs=("bee_00__thorax:bee_01__thorax",),
+        contact_frame_indices=(1,),
+        bee_bee_contact_frame_indices=(1,),
+        floor_contact_frame_indices=(1,),
+        min_contact_distance=0.0,
+        sample_contact_geoms=("bee_00__thorax",),
+        passed=True,
+    )
+    config = FlyBodySceneRenderConfig(
+        scene_name="collision",
+        bee_count=2,
+        frames=3,
+        fps=8,
+        width=320,
+        height=240,
+        substeps=1,
+        initial_speed_m_s=0.1,
+        scene_radius_m=0.2,
+        altitude_m=0.05,
+        min_actual_contact_pairs=1,
+        waggle_amplitude_m=0.03,
+        waggle_loop_radius_m=0.08,
+        waggle_run_frequency_hz=13.0,
+        follower_spacing_m=0.11,
+        follower_orientation_gain=0.65,
+        antennal_sampling_gain=0.75,
+        stop_signal_sensitivity=0.5,
+    )
+    scene = FlyBodySceneArtifact(
+        scene_name="collision",
+        gif_path=str(tmp_path / "output" / "animations" / "collision.gif"),
+        contact_sheet_path=str(tmp_path / "output" / "animations" / "collision_sheet.png"),
+        scene_xml_path=str(tmp_path / "output" / "animations" / "scene.xml"),
+        body_plan_xml_path=body_plan.xml_path,
+        body_plan_manifest_path=body_plan.manifest_path,
+        contact_report_path=str(tmp_path / "output" / "animations" / "contact_metrics.json"),
+        frames=3,
+        fps=8,
+        render_backend="mujoco",
+        metrics=metrics,
+        config=config,
+    )
+
+    scene_payload = scene.as_dict()
+    assert scene_payload["gif_path"] == "output/animations/collision.gif"
+    assert scene_payload["body_plan_xml_path"] == "output/animations/bee/assets/bee.xml"
+    assert scene_payload["contact_report_path"] == "output/animations/contact_metrics.json"
 
 
 def test_flybody_modification_plan_and_fallback_backend(
@@ -386,10 +467,15 @@ def test_swarm_niche_visualization_extra_methods(tmp_path: Path) -> None:
     paths = generate_analysis_figures(
         records, ["BeeBody", "BeeBrain", "BeeMind", "BeeSwarm", "BeeNiche"], tmp_path
     )
-    assert len(paths) == 14
+    assert len(paths) == 20
     assert all(path.exists() for path in paths)
     assert (tmp_path / "beestack_graphical_abstract.png").exists()
     assert (tmp_path / "beestack_evidence_ladder.png").exists()
+    assert (tmp_path / "beestack_scholarship_evidence_matrix.png").exists()
+    assert (tmp_path / "beebody_beeswarm_micro_macro_calibration.png").exists()
+    assert (tmp_path / "beebrain_beemind_anatomy_policy_map.png").exists()
+    assert (tmp_path / "beeniche_adapter_niche_map.png").exists()
+    assert (tmp_path / "beestack_validation_readiness_residuals.png").exists()
     assert (tmp_path / "manuscript_figure_claim_map.png").exists()
     assert (tmp_path / "beestack_contract_network.png").exists()
     assert (tmp_path / "beeswarm_recruitment_task_allocation.png").exists()

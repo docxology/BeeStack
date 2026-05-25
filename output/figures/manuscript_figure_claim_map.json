@@ -38,19 +38,19 @@
   "fidelity": "architecture schematic",
   "figure_path": "output/figures/manuscript_figure_claim_map.png",
   "manuscript_label": "fig:manuscript_figure_claim_map",
-  "manuscript_section": "manuscript/09_visualization_and_validation.md",
+  "manuscript_section": "manuscript/08_validation_and_figures.md",
   "metrics": {
-    "primary_figure_count": 11
+    "primary_figure_count": 25
   },
   "priority": "primary",
   "quality": {
-    "height_px": 1417,
+    "height_px": 2828,
     "max_intensity": 255,
-    "mean_intensity": 239.156160664091,
+    "mean_intensity": 236.8446527461463,
     "min_intensity": 24,
     "mode": "RGBA",
     "nonzero_histogram_bins": 232,
-    "std_intensity": 43.89121792675052,
+    "std_intensity": 46.29943349813369,
     "width_px": 2360
   },
   "regeneration_command": "uv run python scripts/analysis_pipeline.py",

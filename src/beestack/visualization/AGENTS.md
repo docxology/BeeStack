@@ -10,5 +10,8 @@
 - Use `style.py` for shared colors and panel treatment. Use
   `figure_registry.py` for curated manuscript-facing figure narratives instead
   of hard-coding caption metadata in individual plot functions.
+- If a raster is inserted into `manuscript/`, add or update its
+  `FigureNarrative` and keep the hydrated caption/label aligned with the
+  sidecar.
 - Schematic figures are acceptable only when labeled as schematic or reduced;
   do not let diagnostic art stand in for FlyBody/MuJoCo or empirical evidence.
