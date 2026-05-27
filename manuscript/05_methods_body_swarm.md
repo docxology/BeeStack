@@ -1,4 +1,4 @@
-# BeeBody and BeeSwarm Methods
+# BeeBody and BeeSwarm Methods {#sec:methods_body_swarm}
 
 BeeBody owns the morphology, physics, sensors, actions, and energetics of
 an individual worker, and is the most stringent fidelity boundary in the
@@ -50,6 +50,17 @@ The latest verification run reports a BeeBody visual score of
 on the rendered GIF, not biomechanical scores; they certify that the
 output *looks like a bee*, not that it *moves like one*.
 
+[@fig:beebody_flybody_morphology] and [@fig:beebody_flybody_flight] show
+eight evenly sampled frames from the single-nestmate FlyBody renders —
+tripod walking and wing-beat flight on the same `apis_mellifera_worker`
+MJCF. Each contact sheet is the print-facing witness for the full GIF
+under `output/animations/`; the sidecar records backend, frame count,
+and verification scores so the still and the animation cannot drift apart.
+
+![FlyBody/MuJoCo beebody flybody tripod walking render shows Eight-frame contact sheet from the FlyBody walk_imitation rollout on the generated apis_mellifera_worker MJCF, showing tripod gait, corbiculae, hindwing coupling, and honeybee visual cues. Generated from animation manifest, bee visual verification, and apis_mellifera_worker MJCF. Sidecar validation checks raster, source routing, and registered claim tier. Does not calibrate honeybee walking biomechanics or prove field-scale locomotion.](../figures/renders/beebody_flybody_morphology_contact_sheet.png){#fig:beebody_flybody_morphology width=98%}
+
+![FlyBody/MuJoCo beebody flybody wing-beat flight render shows Eight-frame contact sheet from FlightImitationWBPG and WingBeatPatternGenerator on the same honeybee MJCF, showing coupled forewing/hindwing surfaces and wing-beat flight posture. Generated from animation manifest, bee visual verification, and apis_mellifera_worker MJCF. Sidecar validation checks raster, source routing, and registered claim tier. Does not calibrate honeybee aerodynamics or hovering power against measured loads.](../figures/renders/beebody_flybody_flight_contact_sheet.png){#fig:beebody_flybody_flight width=98%}
+
 The methods layer now also records a conservative honeybee calibration
 scorecard. The current morphology score is
 {{METHODS_BODY_MORPHOLOGY_SCORE}}, with an inertia-rescaling witness of
@@ -65,23 +76,29 @@ visual frames (downsampled from the configured per-eye ommatidia to a
 compressed tensor), olfactory channels (one per glomerulus, with
 log-domain projection), mechanosensory state (proprioception, antennal
 contact, leg-load), and a thermosensory scalar. Sensor noise levels —
-$\sigma_\text{visual} = 0.02$, $\sigma_\text{olfactory} = 0.03$,
-$\sigma_\text{mechano} = 0.01$ — are documented in `config.yaml` so that
+$\sigma_\text{visual} = {{SENSOR_NOISE_VISUAL}}$,
+$\sigma_\text{olfactory} = {{SENSOR_NOISE_OLFACTORY}}$,
+$\sigma_\text{mechano} = {{SENSOR_NOISE_MECHANOSENSORY}}$ — are documented in `config.yaml` so that
 sensitivity sweeps can perturb them without code edits.
 
 ## Actions and energetics
 
 Actions are unpacked from a {{FLYBODY_ACTION_DIM}}-dimensional vector
-into leg torques (4 DOF/leg, 6 legs), wing kinematics (3 DOF/wing,
+into leg torques ({{BODY_LEG_DOF_PER_LEG}} DOF/leg, {{BODY_LEG_COUNT}} legs), wing kinematics ({{BODY_WING_DOF_PER_WING}} DOF/wing,
 coupled hamuli at the wing root), antennal pose, and mandible state.
 Energy accounting is multiplicative and reference-anchored, not a
 fitted aerodynamic model: hovering wing power is pinned to a fixed
-~58 mW worker reference (≈80 mg body mass, ≈230 Hz stroke) and scaled
+~{{WING_POWER_REFERENCE_MW}} mW worker reference (≈{{WING_POWER_REFERENCE_MASS_MG}} mg body mass, ≈{{WING_POWER_REFERENCE_STROKE_HZ}} Hz stroke) and scaled
 by dimensionless terms — a mass$^{0.75}$ allometric factor, a *linear*
 stroke-frequency ratio, and load/wing-wear penalties. Leg power scales
 with foot-strike load and resting metabolic rate is a floor. The integrated run reports a mean wing power of
 {{MEAN_WING_POWER_MW}} mW and a final body-frame energy budget of
 {{FINAL_ENERGY_J}} J after {{SIMULATION_STEPS}} control steps.
+
+[@fig:body_motion_power_phase] links COM-speed proxy, wing-power trace,
+and stroke-phase diagnostics from the same integrated run.
+
+![Matplotlib beebody motion, wing power, and phase witness shows Integrated-run witness linking COM-speed proxy, wing-power trace, and stroke-phase diagnostics for the reduced BeeBody energetics kernel. Generated from output/data/simulation_records.json and methods analysis. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate measured honeybee metabolic rates or aerodynamic coefficients.](../figures/beebody_motion_power_phase.png){#fig:body_motion_power_phase}
 
 ## Methods telemetry panel
 
@@ -92,7 +109,9 @@ energy budget change, configured wing-beat frequency, and morphology
 cue scores in
 `output/figures/methods/beebody_methods_telemetry_dashboard.png`.
 
-![Matplotlib/pandas BeeBody methods dashboard generated from MethodsAnalysisReport and simulation records; sidecar validation checks a nonblank raster, and the figure supports telemetry and fidelity-boundary claims rather than calibrated honeybee biomechanics.](../figures/methods/beebody_methods_telemetry_dashboard.png){#fig:body_methods_dashboard}
+[@fig:body_methods_dashboard] plots the Body telemetry witness panel.
+
+![Matplotlib/pandas/NetworkX beebody methods telemetry dashboard shows BeeBody methods dashboard showing reduced telemetry, energy, wing-power, and morphology cues beside the FlyBody-backed fidelity boundary. Generated from MethodsAnalysisReport and simulation records. Sidecar validation checks raster, source routing, and registered claim tier. Does not calibrate honeybee biomechanics or aerodynamics.](../figures/methods/beebody_methods_telemetry_dashboard.png){#fig:body_methods_dashboard}
 
 ## Fidelity boundary
 
@@ -118,7 +137,9 @@ the target class of colony-level summaries [@becher2014beehave]. The
 current stack maps these surfaces into a shared schema, but it does not
 fit recruitment residuals against external colony traces.
 
-![Matplotlib calibration-boundary map generated from source-refresh records, FlyBody scene metrics, simulation records, and BEEHAVE anchors; sidecar validation checks the raster, and the figure separates strict small-scene evidence from reduced colony summaries rather than calibrating colony recruitment.](../figures/beebody_beeswarm_micro_macro_calibration.png){#fig:body_swarm_micro_macro}
+[@fig:body_swarm_micro_macro] maps the micro-to-macro calibration boundary across body, swarm, and colony anchors.
+
+![Matplotlib beebody and beeswarm micro-to-macro calibration map shows Calibration-boundary map connecting strict BeeBody/FlyBody scene metrics, waggle-motion anchors, and reduced BeeSwarm or BEEHAVE-compatible colony summaries. Generated from FlyBody scene metrics, simulation records, BEEHAVE anchor, and source refresh ledger. Sidecar validation checks raster, source routing, and registered claim tier. Does not calibrate colony-scale recruitment or make small-scene contacts a population model.](../figures/beebody_beeswarm_micro_macro_calibration.png){#fig:body_swarm_micro_macro}
 
 ## BeeSwarm reduced communication kernel
 
@@ -169,6 +190,27 @@ and the current methods report records
 error, {{METHODS_SWARM_WAGGLE_ORIENTATION_CONFIDENCE}} confidence, and
 a waggle-phase coupling score of {{METHODS_SWARM_WAGGLE_PHASE_COUPLING}}.
 
+The figures below are contact-sheet witnesses for the strict MuJoCo scenes:
+ten prefixed BeeBody models in collision, a configured waggle with floor
+contacts, and the long phase-aware rollout referenced in
+[@sec:discussion]. GIF paths, scene XML, and contact JSON remain in
+`output/animations/flybody_scenes/`.
+
+[@fig:beeswarm_10_beebody_collision] shows bee-bee contact structure in the
+ten-model collision scene.
+
+![FlyBody/MuJoCo beeswarm ten-beebody collision scene shows Eight-frame contact sheet from a strict MuJoCo scene with ten prefixed BeeBody MJCF copies, recording bee-bee contact pairs and collision-proxy distances. Generated from animation manifest, flybody_scenes/collision contact report, and scene XML. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate colony-scale collision dynamics or integrated flight physics.](../figures/renders/beeswarm_10_beebody_collision_contact_sheet.png){#fig:beeswarm_10_beebody_collision width=98%}
+
+[@fig:beeswarm_waggle_dance_configured] shows the configured dancer and
+follower BeeBody models on the comb floor.
+
+![FlyBody/MuJoCo beeswarm configured waggle dance scene shows Eight-frame contact sheet from a strict MuJoCo waggle scene with one dancer and follower BeeBody models on a comb floor, with floor/body contacts recorded. Generated from animation manifest, flybody_scenes/waggle contact report, and decoded dance settings. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate recruitment outcomes against field colony traces.](../figures/renders/beeswarm_waggle_dance_configured_contact_sheet.png){#fig:beeswarm_waggle_dance_configured width=98%}
+
+[@fig:beeswarm_waggle_dance_long] samples the long waggle rollout with
+follower-orientation diagnostics across the full dance.
+
+![FlyBody/MuJoCo beeswarm long waggle dance scenario shows Eight-frame contact sheet from the long configured waggle rollout with phase-aware runs, follower-orientation diagnostics, and contact-graph evidence across the full dance. Generated from animation manifest, flybody_scenes/waggle_long contact report, and follower-orientation diagnostics. Sidecar validation checks raster, source routing, and registered claim tier. Does not prove colony-scale dance-language use or calibrated follower kinematics.](../figures/renders/beeswarm_waggle_dance_long_contact_sheet.png){#fig:beeswarm_waggle_dance_long width=98%}
+
 ## Recruitment diagnostics and methods panel
 
 Recruitment diagnostics combine decoded dance confidence, empirical
@@ -182,7 +224,9 @@ fraction across the colony. This supports a reduced diagnostic claim
 about the local recruitment kernel, not a validation claim about
 BEEHAVE-scale colony dynamics.
 
-![Matplotlib/pandas BeeSwarm contact and recruitment dashboard generated from MethodsAnalysisReport, animation manifest, and simulation records; sidecar validation checks the raster, and the figure separates strict small-scene contact evidence from reduced colony-scale recruitment summaries rather than validating colony-scale recruitment dynamics.](../figures/methods/beeswarm_methods_contact_recruitment.png){#fig:swarm_methods_contact}
+[@fig:swarm_methods_contact] summarizes contact and recruitment diagnostics from the methods-analysis pass.
+
+![Matplotlib/pandas/NetworkX beeswarm contact and recruitment diagnostics shows BeeSwarm dashboard separating strict small-scene contact physics from reduced recruitment and BEEHAVE-compatible colony summaries. Generated from MethodsAnalysisReport, animation manifest, and simulation records. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate colony-scale recruitment dynamics.](../figures/methods/beeswarm_methods_contact_recruitment.png){#fig:swarm_methods_contact}
 
 ## Body-swarm fidelity boundary
 

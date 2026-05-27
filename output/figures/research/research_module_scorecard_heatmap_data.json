@@ -1,0 +1,237 @@
+{
+  "chart_type": "schematic",
+  "figure_path": "output/figures/research/research_module_scorecard_heatmap.png",
+  "nodes": [
+    {
+      "evidence": [
+        "FlyBody walking and flight GIFs with MJCF cue scoring."
+      ],
+      "fidelity_level": "FlyBody render path plus reduced closed-loop telemetry",
+      "known_gaps": [
+        "Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.",
+        "Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset."
+      ],
+      "metrics": {
+        "bee_silhouette_score": 1.0,
+        "bee_visual_score": 0.9804109700520833,
+        "body_mass_mg": 80.0,
+        "contact_proxy_count": 3.0,
+        "inertia_rescaling_score": 0.82,
+        "morphology_score": 1.0,
+        "real_flybody_animation_count": 3.0,
+        "wing_stroke_hz": 230.0
+      },
+      "module": "BeeBody",
+      "validation_fraction": 1.0,
+      "validations": [
+        {
+          "detail": "BeeBody GIFs remain visually bee-like",
+          "name": "bee_visual_signature",
+          "passed": true,
+          "threshold": ">= 0.8",
+          "value": 0.9804109700520833
+        },
+        {
+          "detail": "Configured worker wingbeat remains honeybee-like",
+          "name": "wingbeat_frequency",
+          "passed": true,
+          "threshold": "180..260 Hz",
+          "value": 230.0
+        },
+        {
+          "detail": "Generated BeeBody carries finite honeybee calibration targets",
+          "name": "bee_body_calibration_score",
+          "passed": true,
+          "threshold": ">= 0.85",
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "evidence": [
+        "Curated public honeybee anatomy/activity loaders and template-bank integration."
+      ],
+      "fidelity_level": "empirical reduced AL-MB-CX kernel",
+      "known_gaps": [
+        "No heavyweight spiking simulator is required in the default path.",
+        "The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics."
+      ],
+      "metrics": {
+        "anatomy_inventory_count": 7.0,
+        "brain_data_parseable_fraction": 0.8,
+        "empirical_panel_count": 48.0,
+        "mean_odor_separability": 0.6511059958748602,
+        "registered_dataset_count": 10.0,
+        "source_verified_fraction": 1.0,
+        "template_count": 24.0,
+        "waggle_follower_confidence": 0.28875178634201437
+      },
+      "module": "BeeBrain",
+      "validation_fraction": 1.0,
+      "validations": [
+        {
+          "detail": "Empirical templates are available for stack integration",
+          "name": "template_bank",
+          "passed": true,
+          "threshold": ">= 2",
+          "value": 24.0
+        },
+        {
+          "detail": "Honeybee Standard Brain assets are inventoried when local",
+          "name": "anatomy_inventory",
+          "passed": true,
+          "threshold": "> 0",
+          "value": 7
+        },
+        {
+          "detail": "Hadjitofi-Webb waggle-following data is parsed or explicitly gapped",
+          "name": "waggle_follower_source",
+          "passed": true,
+          "threshold": "present or declared gap",
+          "value": true
+        },
+        {
+          "detail": "Curated BeeBrain sources are parseable or source-verified blockers",
+          "name": "brain_parseability_target",
+          "passed": true,
+          "threshold": ">= 0.8 or all blockers source-verified",
+          "value": 0.8
+        }
+      ]
+    },
+    {
+      "evidence": [
+        "Expected-free-energy policy diagnostics and deterministic policy selection."
+      ],
+      "fidelity_level": "bounded active-inference-style policy kernel",
+      "known_gaps": [
+        "No learned transition model or recursive social-belief inference yet.",
+        "Expected free energy terms are transparent hand-calibrated witnesses."
+      ],
+      "metrics": {
+        "branching_factor": 4.0,
+        "final_empirical_alignment": 0.0,
+        "final_energy_j": 23.999143213986002,
+        "policy_horizon": 10.0,
+        "risk_sensitivity": 0.5
+      },
+      "module": "BeeMind",
+      "validation_fraction": 1.0,
+      "validations": [
+        {
+          "detail": "Policy search remains tractable",
+          "name": "policy_horizon",
+          "passed": true,
+          "threshold": "<= 15",
+          "value": 10
+        },
+        {
+          "detail": "Selected policies preserve finite body energy",
+          "name": "finite_energy",
+          "passed": true,
+          "threshold": "finite",
+          "value": 23.999143213986002
+        }
+      ]
+    },
+    {
+      "evidence": [
+        "Strict FlyBody/MuJoCo contact scenes plus reduced communication kernel."
+      ],
+      "fidelity_level": "reduced communication kernel plus strict FlyBody/MuJoCo BeeBody waggle/collision scenes",
+      "known_gaps": [
+        "Large-N colony dynamics are summarized by configured scaling rather than simulated at full population by default.",
+        "Strict visual scenes prove small-scene contacts, not full BEEHAVE-scale population dynamics.",
+        "Trophallaxis, brood demography, and external weather-forage runtime coupling remain adapter targets."
+      ],
+      "metrics": {
+        "agent_count": 50.0,
+        "bee_bee_contact_count": 1382.0,
+        "floor_contact_count": 116.0,
+        "represented_colony_size": 20000.0,
+        "strict_scene_count": 3.0,
+        "total_recruited_followers": 168.0,
+        "waggle_follower_orientation_confidence": 0.7878249999999999,
+        "waggle_follower_orientation_error_deg": 19.095750000000013,
+        "waggle_phase_coupling_score": 9.148365930103435e-17
+      },
+      "module": "BeeSwarm",
+      "validation_fraction": 1.0,
+      "validations": [
+        {
+          "detail": "Production waggle/collision scenes are MuJoCo contact-backed",
+          "name": "strict_contact_scenes",
+          "passed": true,
+          "threshold": "passed",
+          "value": 3
+        },
+        {
+          "detail": "Represented colony covers simulated agents",
+          "name": "represented_colony_size",
+          "passed": true,
+          "threshold": ">= agent_count",
+          "value": 20000
+        },
+        {
+          "detail": "Configured waggle scene followers orient toward the dancer",
+          "name": "waggle_orientation_error_target",
+          "passed": true,
+          "threshold": "< 35.0",
+          "value": 19.095750000000013
+        },
+        {
+          "detail": "Configured waggle scene exceeds follower orientation-confidence target",
+          "name": "waggle_orientation_confidence_target",
+          "passed": true,
+          "threshold": "> 0.65",
+          "value": 0.7878249999999999
+        }
+      ]
+    },
+    {
+      "evidence": [
+        "Voxel comb, brood thermal field, and adapter-schema metrics."
+      ],
+      "fidelity_level": "voxel comb and thermal kernel with adapter schemas",
+      "known_gaps": [
+        "No external Hiveopolis or BEEHAVE engine is required in the default path.",
+        "External nectar landscape calibration and brood demography remain future adapter layers."
+      ],
+      "metrics": {
+        "brood_temperature_target_c": 34.0,
+        "comb_voxels": 864.0,
+        "final_brood_temperature_error_c": 2.4240946882584566,
+        "final_comb_fraction": 0.08333333333333333,
+        "foraging_radius_midpoint_km": 2.0,
+        "thermoregulation_gain": 0.24
+      },
+      "module": "BeeNiche",
+      "validation_fraction": 1.0,
+      "validations": [
+        {
+          "detail": "Configured brood target sits inside target band",
+          "name": "brood_temperature_band",
+          "passed": true,
+          "threshold": "within band",
+          "value": 34.0
+        },
+        {
+          "detail": "Comb occupancy witness stays nonnegative",
+          "name": "comb_fraction",
+          "passed": true,
+          "threshold": ">= 0",
+          "value": 0.08333333333333333
+        },
+        {
+          "detail": "Thermoregulated reduced Niche run reaches brood-temperature tolerance",
+          "name": "brood_temperature_calibrated_error",
+          "passed": true,
+          "threshold": "< 3 C",
+          "value": 2.4240946882584566
+        }
+      ]
+    }
+  ],
+  "schema": "beestack.figure_data.v1",
+  "title": "Research module scorecard heatmap"
+}

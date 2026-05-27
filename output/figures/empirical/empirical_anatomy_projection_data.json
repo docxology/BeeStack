@@ -1,0 +1,88 @@
+{
+  "chart_type": "schematic",
+  "edges": [
+    {
+      "kind": "structural_tract",
+      "source": "neuropil:antennal_lobe",
+      "target": "neuropil:mushroom_body",
+      "x0": 1313.2514546419147,
+      "x1": 1268.9951040051878,
+      "y0": 753.2620106621507,
+      "y1": 714.8011850087925
+    },
+    {
+      "kind": "structural_tract",
+      "source": "tract:tract:alf1-al-mb",
+      "target": "neuropil:mushroom_body",
+      "x0": 1268.9951040051878,
+      "x1": 1268.9951040051878,
+      "y0": 714.8011850087925,
+      "y1": 714.8011850087925
+    },
+    {
+      "kind": "structural_tract",
+      "source": "neuropil:antennal_lobe",
+      "target": "neuropil:central_complex",
+      "x0": 1313.2514546419147,
+      "x1": 1529.771943536111,
+      "y0": 753.2620106621507,
+      "y1": 610.0156184026691
+    },
+    {
+      "kind": "structural_tract",
+      "source": "tract:tract:act-antennocerebralis",
+      "target": "neuropil:central_complex",
+      "x0": 1529.771943536111,
+      "x1": 1529.771943536111,
+      "y0": 610.0156184026691,
+      "y1": 610.0156184026691
+    },
+    {
+      "kind": "structural_tract",
+      "source": "neuropil:mushroom_body",
+      "target": "neuropil:central_complex",
+      "x0": 1268.9951040051878,
+      "x1": 1529.771943536111,
+      "y0": 714.8011850087925,
+      "y1": 610.0156184026691
+    },
+    {
+      "kind": "structural_tract",
+      "source": "tract:tract:pe1-pn-mb-intrinsic",
+      "target": "neuropil:central_complex",
+      "x0": 1529.771943536111,
+      "x1": 1529.771943536111,
+      "y0": 610.0156184026691,
+      "y1": 610.0156184026691
+    }
+  ],
+  "figure_path": "output/figures/empirical/empirical_anatomy_projection.png",
+  "nodes": [
+    {
+      "label": "ACT_Standard",
+      "vertex_count": 62447,
+      "x": 1574.0282941728378,
+      "y": 648.4764440560274
+    },
+    {
+      "label": "ALF1_Standard",
+      "vertex_count": 60124,
+      "x": 1052.4746151109916,
+      "y": 858.0475772682739
+    },
+    {
+      "label": "Atlas_Pe1_PNII",
+      "vertex_count": 83263,
+      "x": 1485.515592899384,
+      "y": 571.554792749311
+    },
+    {
+      "label": "VRML",
+      "vertex_count": 22685,
+      "x": 1379.094084431482,
+      "y": 521.9546251151869
+    }
+  ],
+  "schema": "beestack.figure_data.v1",
+  "title": "Honeybee Standard Brain VRML geometry projection"
+}

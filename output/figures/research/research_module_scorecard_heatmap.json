@@ -12,7 +12,7 @@
   "alt_text": "Heatmap of module-level research scorecard quantities.",
   "artifact_kind": "figure",
   "backend": "Matplotlib/pandas/NetworkX",
-  "caption": "Research scorecard heatmap summarizing validation fraction, metrics, evidence, gaps, and visual artifacts by module.",
+  "caption": "Matplotlib/pandas/NetworkX beestack research module scorecard heatmap shows Research scorecard heatmap summarizing validation fraction, metrics, evidence, gaps, and visual artifacts by module. Generated from ResearchSuiteReport scorecards and visual inventory. Sidecar validation checks raster, source routing, and registered claim tier. Does not support biological predictive validity.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
@@ -39,16 +39,17 @@
   "figure_path": "output/figures/research/research_module_scorecard_heatmap.png",
   "manuscript_label": "fig:research_scorecard",
   "manuscript_section": "manuscript/11_research_synthesis.md",
+  "plot_data_path": "output/figures/research/research_module_scorecard_heatmap_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 986,
+    "height_px": 984,
     "max_intensity": 255,
-    "mean_intensity": 186.13569623425718,
+    "mean_intensity": 184.19749527549754,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 78.9698518036263,
-    "width_px": 1651
+    "std_intensity": 79.48665687218858,
+    "width_px": 1652
   },
   "regeneration_command": "uv run python scripts/run_research_suite.py",
   "schema": "beestack.figure.v1",
@@ -59,5 +60,17 @@
   ],
   "title": "Research Module Scorecard Heatmap",
   "unsupported_inference": "Does not support biological predictive validity.",
-  "validation_status": "nonblank image and quality sidecar passed"
+  "validation_status": "nonblank image, quality sidecar, and plot data passed",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.679,
+    "figure_role": "dashboard",
+    "height_px": 984,
+    "label_density": "moderate",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 1652,
+    "min_dimension_px": 984,
+    "readability_status": "pass",
+    "width_px": 1652
+  }
 }

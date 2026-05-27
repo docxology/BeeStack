@@ -19,15 +19,16 @@
   "figure_path": "output/figures/research/research_visualization_inventory.png",
   "manuscript_label": "fig:research_visualization_inventory",
   "manuscript_section": "output/reports/manuscript_figure_index.md",
+  "plot_data_path": "output/figures/research/research_visualization_inventory_data.json",
   "priority": "indexed",
   "quality": {
     "height_px": 831,
     "max_intensity": 255,
-    "mean_intensity": 240.4734936606371,
+    "mean_intensity": 240.71865811184733,
     "min_intensity": 24,
     "mode": "RGBA",
     "nonzero_histogram_bins": 232,
-    "std_intensity": 40.31579046165995,
+    "std_intensity": 40.06464932705866,
     "width_px": 1513
   },
   "regeneration_command": "uv run python scripts/run_research_suite.py",
@@ -36,5 +37,17 @@
   "source_dois": [],
   "title": "Research Visualization Inventory",
   "unsupported_inference": "Does not support claims beyond the generated artifact and stated fidelity tier.",
-  "validation_status": "nonblank image and quality sidecar passed"
+  "validation_status": "nonblank image, quality sidecar, and plot data passed",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.821,
+    "figure_role": "overview",
+    "height_px": 831,
+    "label_density": "moderate",
+    "manuscript_use": "indexed_gallery",
+    "max_dimension_px": 1513,
+    "min_dimension_px": 831,
+    "readability_status": "gallery",
+    "width_px": 1513
+  }
 }

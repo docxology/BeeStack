@@ -1,0 +1,35 @@
+{
+  "chart_type": "bar",
+  "figure_path": "output/figures/methods/beeswarm_methods_contact_recruitment.png",
+  "labels": [
+    "final_mean_pheromone",
+    "waggle_phase_coupling_score",
+    "waggle_follower_orientation_confidence",
+    "strict_contact_scene_count",
+    "mean_recruited_followers",
+    "contact_graph_edge_count",
+    "unique_bee_contact_pair_count",
+    "waggle_follower_orientation_error_deg",
+    "agent_count",
+    "total_recruited_followers",
+    "represented_colony_size"
+  ],
+  "module": "BeeSwarm",
+  "orientation": "horizontal",
+  "schema": "beestack.figure_data.v1",
+  "title": "beeswarm methods contact recruitment",
+  "validation_fraction": 1.0,
+  "values": [
+    0.0,
+    9.148365930103435e-17,
+    0.7878249999999999,
+    3.0,
+    7.0,
+    10.0,
+    15.0,
+    19.095750000000013,
+    50.0,
+    168.0,
+    20000.0
+  ]
+}

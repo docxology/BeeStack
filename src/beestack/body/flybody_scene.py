@@ -27,6 +27,7 @@ from .flybody_adapter import (
     bee_walk_cycle_action,
     validate_rendered_frames,
 )
+from .flybody_scene_signpost import _write_scene_readmes
 
 SceneKind = Literal["collision", "waggle", "waggle_long"]
 
@@ -806,16 +807,9 @@ def _save_frames_as_gif(frames: list[np.ndarray], path: Path, fps: int) -> None:
 
 
 def _save_contact_sheet(frames: list[np.ndarray], path: Path, columns: int = 4) -> None:
-    sample_count = min(8, len(frames))
-    indices = np.linspace(0, len(frames) - 1, sample_count, dtype=int)
-    images = [
-        Image.fromarray(frames[index][:, :, :3], mode="RGB").resize((240, 180)) for index in indices
-    ]
-    rows = int(np.ceil(sample_count / columns))
-    sheet = Image.new("RGB", (columns * 240, rows * 180), color=(255, 255, 255))
-    for index, image in enumerate(images):
-        sheet.paste(image, ((index % columns) * 240, (index // columns) * 180))
-    sheet.save(path)
+    from ..visualization.figure_output import save_annotated_contact_sheet
+
+    save_annotated_contact_sheet(frames, path, columns=columns)
 
 
 def _bee_prefix(index: int) -> str:
@@ -950,81 +944,3 @@ def _phase_error_coupling(phases: list[float], errors: list[float]) -> float:
     if float(np.std(phase_signal)) == 0.0 or float(np.std(error_signal)) == 0.0:
         return 0.0
     return float(abs(np.corrcoef(phase_signal, error_signal)[0, 1]))
-
-
-def _write_scene_readmes(scene_dir: Path, scene_name: str) -> None:
-    scene_dir.mkdir(parents=True, exist_ok=True)
-    parent = scene_dir.parent
-    parent.mkdir(parents=True, exist_ok=True)
-    _write_generated_signpost(
-        parent,
-        readme_title="Strict FlyBody Scene Outputs",
-        agent_title="output/animations/flybody_scenes",
-        purpose=(
-            "Generated strict BeeBody 3D MuJoCo scenes for collision and waggle-dance validation."
-        ),
-        scope="Regeneratable strict-scene XMLs, contact metrics, body-plan assets, and local signposts.",
-        canonical_source="src/beestack/body/flybody_scene.py and scripts/generate_animations.py",
-        regenerate="uv run python scripts/generate_animations.py",
-        agent_guidance=(
-            "Generated strict FlyBody/MuJoCo scene area. Preserve contact metrics, "
-            "body-plan provenance, and backend/fidelity wording; change scene logic "
-            "in source helpers and regenerate through the animation scripts."
-        ),
-    )
-    _write_generated_signpost(
-        scene_dir,
-        readme_title=f"Strict FlyBody Scene: {scene_name}",
-        agent_title=f"output/animations/flybody_scenes/{scene_name}",
-        purpose="Generated strict BeeBody 3D MuJoCo scene assets and contact telemetry.",
-        scope="Regeneratable strict-scene output for visual and contact validation.",
-        canonical_source="src/beestack/body/flybody_scene.py",
-        regenerate="uv run python scripts/generate_animations.py",
-        agent_guidance=(
-            "Generated strict FlyBody/MuJoCo scene area. Preserve contact metrics, "
-            "body-plan provenance, and backend/fidelity wording; change scene logic "
-            "in source helpers and regenerate through the animation scripts."
-        ),
-    )
-
-
-def _write_generated_signpost(
-    directory: Path,
-    *,
-    readme_title: str,
-    agent_title: str,
-    purpose: str,
-    scope: str,
-    canonical_source: str,
-    regenerate: str,
-    agent_guidance: str,
-) -> None:
-    (directory / "README.md").write_text(
-        "\n".join(
-            [
-                f"# {readme_title}",
-                "",
-                purpose,
-                "",
-                f"- Scope: {scope}",
-                f"- Regenerate: {regenerate}",
-                f"- Canonical source: {canonical_source}",
-                "",
-            ]
-        ),
-        encoding="utf-8",
-    )
-    (directory / "AGENTS.md").write_text(
-        "\n".join(
-            [
-                f"# {agent_title}",
-                "",
-                agent_guidance,
-                "",
-                f"- Canonical source: {canonical_source}",
-                f"- Regeneration command: {regenerate}",
-                "",
-            ]
-        ),
-        encoding="utf-8",
-    )

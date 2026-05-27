@@ -1,0 +1,74 @@
+{
+  "accessibility_checks": {
+    "background": "#FFFFFF",
+    "contrast_ratio": 17.73971700407407,
+    "foreground": "#111827",
+    "large_text_passed": true,
+    "large_text_threshold": 3.0,
+    "normal_text_passed": true,
+    "normal_text_threshold": 4.5,
+    "standard": "WCAG 2.1 AA contrast thresholds"
+  },
+  "alt_text": "Heatmap of neuropil counts by BeeBrain module.",
+  "artifact_kind": "figure",
+  "backend": "matplotlib/networkx connectome renderer",
+  "caption": "Matplotlib connectome neuropil module map shows Heatmap of neuropil abbreviation counts mapped onto BeeBrain module targets. Generated from output/data/bee_brain_connectome.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not infer functional connectivity.",
+  "citation_keys": [
+    "brandt2005standardbrain"
+  ],
+  "claim_tier": "structural_projectome_witness",
+  "design_citation_keys": [
+    "rougier2014figures",
+    "cleveland1984graphical",
+    "crameri2020colour",
+    "w3c2023wcag21",
+    "wilkinson2016fair",
+    "heer2012interactive",
+    "ragan2016provenance"
+  ],
+  "design_source_dois": [
+    "10.1371/journal.pcbi.1003833",
+    "10.1080/01621459.1984.10478080",
+    "10.1038/s41467-020-19160-7",
+    "10.1038/sdata.2016.18",
+    "10.1145/2133806.2133821",
+    "10.1109/TVCG.2015.2467551"
+  ],
+  "fidelity": "Honeybee Standard Brain structural projectome diagnostic",
+  "figure_path": "output/figures/empirical/connectome_neuropil_module_map.png",
+  "manuscript_label": "fig:connectome_neuropil_module_map",
+  "manuscript_section": "manuscript/09_empirical_results.md",
+  "plot_data_path": "output/figures/empirical/connectome_neuropil_module_map_data.json",
+  "priority": "supporting",
+  "quality": {
+    "height_px": 626,
+    "max_intensity": 255,
+    "mean_intensity": 212.8361145583045,
+    "min_intensity": 24,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 232,
+    "std_intensity": 78.04272887974922,
+    "width_px": 1089
+  },
+  "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "output/data/bee_brain_connectome.json",
+  "source_dois": [
+    "10.1002/cne.20644"
+  ],
+  "title": "Connectome Neuropil Module Map",
+  "unsupported_inference": "Does not infer functional connectivity.",
+  "validation_status": "structural connectome tier witness with plot data",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.74,
+    "figure_role": "overview",
+    "height_px": 626,
+    "label_density": "compact",
+    "manuscript_use": "supporting_gallery",
+    "max_dimension_px": 1089,
+    "min_dimension_px": 626,
+    "readability_status": "gallery",
+    "width_px": 1089
+  }
+}

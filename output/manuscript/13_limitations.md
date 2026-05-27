@@ -1,12 +1,12 @@
-# Limitations
+# Limitations {#sec:limitations}
 
 BeeStack v0 should be read as *executable architecture*. Its strongest
 claim is not biological prediction, but disciplined integration: each
 module can be run, tested, visualized, audited, and replaced behind
 explicit contracts. The honest framing of the limitations is therefore
 *per module*, with each module's limit pinned to the fidelity tier
-declared in "Scope and Contributions" and the scorecards summarized in
-"Research-Suite Results."
+declared in [@sec:architecture] and the scorecards summarized in
+[@sec:research_synthesis].
 
 ## BeeBody: calibration
 
@@ -34,7 +34,7 @@ can acquire, parse, summarize, and integrate real honey-bee anatomy
 and activity sources — currently 48 panels,
 7 inventories, 1
 antennal summaries, and 24 templates with
-parseable fraction 0.600. But the default
+parseable fraction 0.800. But the default
 neural model remains a reduced AL–MB–CX and dance-decoding kernel.
 It does not claim connectome-level dynamics, a heavyweight spiking
 simulator, or learned synaptic plasticity. The most concrete gap is
@@ -93,6 +93,31 @@ the following remain explicit gaps:
 - 3D pollen storage with depletion kinetics,
 - live Hiveopolis or BEEHAVE runtime coupling
   [@narsicht2020hiveopolis; @becher2014beehave].
+
+## Colony-health stressors not modeled in v0
+
+BeeStack v0 does not represent the following field drivers as typed state
+variables. Each item cites the scholarship context and points to
+[@sec:roadmap] for the intended integration surface.
+
+- ***Varroa destructor* and treatment resistance** — amitraz resistance
+  and meta-analytic treatment efficacy [@scientificreports2026amitraz;
+  @scitotenv2024varroameta]; roadmap colony ledger and driver ingestion.
+- **Viral titers (DWV and related)** — epidemiology and overwintering
+  risk [@wilfert2022dwv; @highfield2009dwv]; not modeled in BeeBrain or
+  BeeNiche kernels.
+- **Microsporidian and gut pathogens** — microbiome interactions and social
+  immunity [@kwong2016gutmicrobiome; @brown2021royaljelly]; roadmap axis 1
+  omics/microbiome state.
+- **Pesticide burden in hive matrices** — residue surveys and landscape
+  exposure [@glinski2024hivematrices; @hisamoto2024landscape]; BeeNiche
+  driver stubs in roadmap item 11.
+- **Commercial colony-loss statistics** — national surveys and triage
+  reports [@aurell2024survey; @scitotenv2025triage]; assimilation targets
+  in roadmap axis 7, not present-tense model outputs.
+- **Managed-population genetic diversity** — demographic history and
+  bottleneck literature [@chen2016genomic; @cridland2017demography]; no
+  apiary-genetics state in v0.
 
 ## Stack-wide limitations
 

@@ -4,11 +4,11 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 
 - Overall validation fraction: `1.000`
 - Module scorecards: `5`
-- Visualization artifacts: `74`
+- Visualization artifacts: `87`
 - Empirical registry/evidence rows: `5`
-- Parsed empirical evidence rows: `3`
-- Local empirical records represented: `139`
-- Empirical availability states: `generated=1, missing_optional=0, network_gated_absent=1, parsed=3, registered_absent=0`
+- Parsed empirical evidence rows: `4`
+- Local empirical records represented: `140`
+- Empirical availability states: `generated=1, missing_optional=0, network_gated_absent=0, parsed=4, registered_absent=0`
 - Sensitivity sweeps: `3`
 
 ## Module Scorecards
@@ -25,7 +25,7 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 
 - Fidelity: `empirical reduced AL-MB-CX kernel`
 - Validation fraction: `1.000`
-- Metrics: `anatomy_inventory_count=7`, `brain_data_parseable_fraction=0.6`, `empirical_panel_count=48`, `mean_odor_separability=0.651`, `registered_dataset_count=10`, `source_verified_fraction=1`, `template_count=24`, `waggle_follower_confidence=0.289`
+- Metrics: `anatomy_inventory_count=7`, `brain_data_parseable_fraction=0.8`, `empirical_panel_count=48`, `mean_odor_separability=0.651`, `registered_dataset_count=10`, `source_verified_fraction=1`, `template_count=24`, `waggle_follower_confidence=0.289`
 - Evidence: Curated public honeybee anatomy/activity loaders and template-bank integration.
 - Known gaps: No heavyweight spiking simulator is required in the default path.; The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics.
 
@@ -102,6 +102,9 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 - `output/figures/empirical/bee_brain_multimodal_source_map.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/empirical/beeswarm_waggle_recruitment_diagnostics.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/empirical/brain_data_completeness_matrix.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/empirical/connectome_completeness_tiers.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/empirical/connectome_neuropil_module_map.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/empirical/connectome_structural_graph.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/empirical/empirical_activity_summary.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/empirical/empirical_anatomy_assets.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/empirical/empirical_anatomy_projection.png`: figure, research_diagnostic, nonblank_static_figure
@@ -112,31 +115,41 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 - `output/figures/empirical/empirical_stack_alignment.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/empirical/waggle_follower_alignment.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/empirical/waggle_phase_coupling.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/manuscript_figure_claim_detail.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/manuscript_figure_claim_map.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/methods/beebody_methods_telemetry_dashboard.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/methods/beebrain_methods_empirical_completeness.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/methods/beemind_methods_policy_landscape.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/methods/beeniche_methods_comb_thermal.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/methods/beeswarm_methods_contact_recruitment.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/methods/methods_dashboard_detail.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/methods/methods_manuscript_evidence_index.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/methods/methods_repo_dashboard.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/module_contract_coverage.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/renders/beebody_flybody_flight_contact_sheet.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/renders/beebody_flybody_morphology_contact_sheet.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/renders/beeswarm_10_beebody_collision_contact_sheet.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/renders/beeswarm_waggle_dance_configured_contact_sheet.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/renders/beeswarm_waggle_dance_long_contact_sheet.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/research/beebody_method_diagnostics.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/research/beebrain_empirical_evidence_map.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/research/beemind_policy_sensitivity.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/research/beeniche_thermal_comb_scorecard.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/research/beeswarm_contact_recruitment_scorecard.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/research/research_empirical_completeness.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/research_evidence_detail.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/research/research_fidelity_evidence_network.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/research/research_module_scorecard_heatmap.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/research/research_sensitivity_sweeps.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/research/research_validation_scorecard.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/research/research_visualization_inventory.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/research/stack_synthesis_dashboard.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/stack_synthesis_findings_detail.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/research/research_module_scorecard_heatmap.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/research/research_validation_scorecard.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/research/research_sensitivity_sweeps.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/research/research_fidelity_evidence_network.png`: figure, research_diagnostic, nonblank_static_figure
+- `output/figures/research/research_evidence_detail.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/research/research_visualization_inventory.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/research/research_empirical_completeness.png`: figure, research_diagnostic, nonblank_static_figure
 - `output/figures/research/beebody_method_diagnostics.png`: figure, research_diagnostic, nonblank_static_figure
@@ -150,7 +163,7 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 ## Empirical Evidence
 
 - `empirical-panels`: workbook/CSV odor response panels, status `parsed`, completeness `1.000`, records `48`
-- `calcium-datasets`: Paoli-style calcium traces, status `network_gated_absent`, completeness `0.000`, records `0`, gap `network gated absent; below configured completeness threshold`
+- `calcium-datasets`: Paoli-style calcium traces, status `parsed`, completeness `0.125`, records `1`, gap `below configured completeness threshold`
 - `honeybee-standard-brain`: atlas/VRML/TIFF anatomy assets, status `parsed`, completeness `0.800`, records `8`
 - `template-bank`: glomerulus-length empirical templates, status `generated`, completeness `1.000`, records `24`
 - `figshare-hadjitofi-2024-waggle-following`: waggle follower antennal-position CSVs, status `parsed`, completeness `0.289`, records `59`, gap `below configured completeness threshold`

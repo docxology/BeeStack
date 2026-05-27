@@ -1,0 +1,44 @@
+{
+  "chart_type": "schematic",
+  "edges": [
+    {
+      "source": "micro",
+      "target": "waggle"
+    },
+    {
+      "source": "waggle",
+      "target": "macro"
+    },
+    {
+      "source": "macro",
+      "target": "blocked"
+    }
+  ],
+  "figure_path": "output/figures/beebody_beeswarm_micro_macro_calibration.png",
+  "nodes": [
+    {
+      "id": "micro",
+      "label": "Strict micro scene"
+    },
+    {
+      "id": "waggle",
+      "label": "Waggle evidence anchors"
+    },
+    {
+      "id": "macro",
+      "label": "Reduced macro summaries"
+    },
+    {
+      "id": "blocked",
+      "label": "Blocked calibration"
+    }
+  ],
+  "rows": [
+    {
+      "mean_pheromone": 0.0,
+      "mean_recruited_followers": 7.0
+    }
+  ],
+  "schema": "beestack.figure_data.v1",
+  "title": "BeeBody to BeeSwarm micro-to-macro calibration boundary"
+}

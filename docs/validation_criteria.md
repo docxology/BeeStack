@@ -134,7 +134,12 @@ uv run python scripts/verify_generated_reports.py
   not be captioned as positive support. Sidecar labels/captions must agree with
   hydrated manuscript callouts, primary manuscript captions must name backend,
   source data, validation, and conservative interpretation, and generated
-  project-local paths must not leak checkout-specific absolute prefixes.
+  project-local paths must not leak checkout-specific absolute prefixes. Sidecar
+  `caption` fields use the same long contract text as manuscript alt-text
+  (`FigureNarrative.manuscript_contract_caption()`).
+- `tests/test_manuscript_quality_guards.py` guards primary figure markdown against
+  registry drift, bans machine-flag literals in captions, and scans H2 sentence
+  case (with roadmap/reference allowlists).
 - `StackSynthesisReview` must include five module synthesis panels, finite
   simulation telemetry statistics, artifact/signposting/scholarship gates, and
   a nonblank `output/figures/research/stack_synthesis_dashboard.png` figure.
@@ -150,9 +155,10 @@ The documentation audit checks command references, source links, generated
 output paths, fidelity language, unresolved manuscript variables, Pandoc
 citation keys, required BibTeX DOI/source URL metadata, bibliography coverage
 for dataset-registry DOIs, manuscript figure references, figure sidecars,
-curated figure insertion, and conservative digital-twin wording. The manuscript
-generation step must leave no unresolved `{{TOKEN}}` variables in
-`output/manuscript/`.
+curated figure insertion, and conservative digital-twin wording. Run
+`tests/test_manuscript_quality_guards.py` after manuscript heading or primary
+figure edits. The manuscript generation step must leave no unresolved
+`{{TOKEN}}` variables in `output/manuscript/`.
 
 ## External Research And Digital-Twin Boundaries
 

@@ -1,4 +1,4 @@
-# Research Synthesis
+# Research Synthesis {#sec:research_synthesis}
 
 The research suite is BeeStack's *cross-module evidence consolidator*.
 It assembles fidelity-labelled scorecards, empirical-evidence rows,
@@ -13,16 +13,29 @@ The research suite writes
 `output/reports/beestack_research_report.json`, and
 `output/data/research_suite_report.json`. It reports five module
 scorecards, 5 empirical evidence records,
-74 visualization artifacts,
+87 visualization artifacts,
 3 deterministic sensitivity sweeps, and
 11 known gaps. The overall validation
-fraction is 1.000.
+fraction is 1.000. The scorecard heatmap,
+sensitivity sweeps, evidence network overview, and evidence detail table below
+are Matplotlib/pandas or NetworkX diagnostics from the typed research report;
+each sidecar states what the figure does not prove.
 
-![Matplotlib/pandas research scorecard heatmap generated from ResearchSuiteReport scorecards and visual inventory; sidecar validation checks the raster, and the figure supports deterministic validation coverage rather than biological predictive validity.](../figures/research/research_module_scorecard_heatmap.png){#fig:research_scorecard}
+[@fig:research_scorecard] heatmaps module scorecards from the research suite.
 
-![Matplotlib/pandas sensitivity sweep panel generated from deterministic reduced-kernel sweeps; sidecar validation checks the raster, and the figure supports local parameter sensitivity rather than external scenario validation.](../figures/research/research_sensitivity_sweeps.png){#fig:research_sweeps}
+![Matplotlib/pandas/NetworkX beestack research module scorecard heatmap shows Research scorecard heatmap summarizing validation fraction, metrics, evidence, gaps, and visual artifacts by module. Generated from ResearchSuiteReport scorecards and visual inventory. Sidecar validation checks raster, source routing, and registered claim tier. Does not support biological predictive validity.](../figures/research/research_module_scorecard_heatmap.png){#fig:research_scorecard}
 
-![Matplotlib/NetworkX fidelity and evidence network generated from ResearchSuiteReport evidence records; sidecar validation checks the raster, and the figure supports evidence provenance rather than empirical completeness.](../figures/research/research_fidelity_evidence_network.png){#fig:research_network}
+[@fig:research_sweeps] plots deterministic sensitivity sweeps.
+
+![Matplotlib/pandas/NetworkX beestack research sensitivity sweeps shows Deterministic sensitivity-sweep panel showing reduced-kernel response under controlled one-parameter perturbations. Generated from ResearchSuiteReport sensitivity sweeps. Sidecar validation checks raster, source routing, and registered claim tier. Does not replace Bayesian calibration or external scenario validation.](../figures/research/research_sensitivity_sweeps.png){#fig:research_sweeps}
+
+[@fig:research_network] links fidelity evidence records in a network view.
+
+![Matplotlib/NetworkX beestack fidelity evidence network shows Evidence network linking module scorecards, empirical BeeBrain records, and provenance nodes from the research suite. Generated from ResearchSuiteReport evidence records. Sidecar validation checks raster, source routing, and registered claim tier. Does not make empirical coverage complete.](../figures/research/research_fidelity_evidence_network.png){#fig:research_network}
+
+[@fig:research_evidence_detail] expands the network into scorecard and empirical rows so source status and integration targets remain readable.
+
+![Matplotlib/pandas/NetworkX beestack research evidence detail shows Split companion table listing research scorecard evidence, empirical source rows, availability states, and integration targets. Generated from ResearchSuiteReport evidence records and empirical availability rows. Sidecar validation checks raster, source routing, and registered claim tier. Does not make empirical coverage complete.](../figures/research/research_evidence_detail.png){#fig:research_evidence_detail width=98%}
 
 ## Stack-synthesis review
 
@@ -32,19 +45,27 @@ manifest, documentation audit, readiness review, and bibliography. It
 writes `output/reports/stack_synthesis_review.md`,
 `output/reports/stack_synthesis_review.json`, and
 `output/data/stack_synthesis_review.json`, plus
-1 figure(s) including
-`output/figures/research/stack_synthesis_dashboard.png`.
+2 figure(s), including
+`output/figures/research/stack_synthesis_dashboard.png` and the split
+findings companion.
 
 The latest synthesis reports validation fraction
 1.000, synthesized readiness fraction
 0.932, artifact coverage
 1.000, and
-56 bibliography anchors. The
-integrated run improved brood-temperature error by
+95 bibliography anchors. The digital-twin
+readiness gate remains `False` in the generated readiness
+review. The integrated run improved brood-temperature error by
 4.415 °C. The top
 synthesis finding is: **Weakest synthesized module is BeeSwarm (readiness 0.925; gaps 3).**
 
-![Matplotlib/pandas cross-stack synthesis dashboard generated from StackSynthesisReview; sidecar validation checks the raster, and the figure supports readiness/gap synthesis rather than digital-twin readiness while preserving DIGITAL_TWIN_READY=False.](../figures/research/stack_synthesis_dashboard.png){#fig:stack_synthesis_dashboard}
+[@fig:stack_synthesis_dashboard] summarizes cross-stack synthesis metrics and readiness fractions.
+
+![Matplotlib/pandas/NetworkX beestack cross-stack synthesis dashboard shows Cross-stack synthesis dashboard summarizing validation fractions, readiness, artifacts, explicit gaps, and scholarship anchors. Generated from output/reports/stack_synthesis_review.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not make BeeStack digital-twin ready.](../figures/research/stack_synthesis_dashboard.png){#fig:stack_synthesis_dashboard}
+
+[@fig:stack_synthesis_findings_detail] keeps the prioritized synthesis findings visible next to module readiness scores.
+
+![Matplotlib/pandas/NetworkX beestack synthesis findings detail shows Split companion panel showing module readiness scores beside prioritized cross-stack findings. Generated from output/reports/stack_synthesis_review.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not make BeeStack digital-twin ready.](../figures/research/stack_synthesis_findings_detail.png){#fig:stack_synthesis_findings_detail width=98%}
 
 ## Module scorecards
 
@@ -92,7 +113,7 @@ structurally insensitive under the current reduced kernel
 The readiness review writes
 `output/reports/project_readiness_review.md` and
 `output/reports/project_readiness_review.json`. It currently reports
-strict signposting coverage for 61
+strict signposting coverage for 71
 directories and keeps the next-improvement backlog tied to the
 research-suite gaps. The top prioritized improvement is
 **BeeBrain calcium acquisition completion (P27)**.
@@ -113,10 +134,10 @@ The methods-analysis report writes
 `output/data/manuscript_figure_index.json`. It reports
 5 module methods panels,
 3 scenario-sweep panels,
-44 linked visualization records, and an
+52 linked visualization records, and an
 overall methods validation fraction of 1.000.
 Its `all_validations_passed` flag is True,
-and its highest-priority visible gap is **Paoli MATLAB calcium traces are not yet local or parseable**.
+and its highest-priority visible gap is **Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.**.
 
 ## What "validation fraction" means
 

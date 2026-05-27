@@ -4,11 +4,11 @@ task: "Project ISA — BeeStack evidence-typed scaffold for whole-colony honeybe
 effort: E5
 effort_source: classifier
 phase: complete
-progress: 111/111
+progress: 119/119
 mode: autonomous
 started: 2026-05-16T01:39:08Z
-updated: 2026-05-16T06:05:00Z
-iteration: 5
+updated: 2026-05-25T12:00:00Z
+iteration: 9
 ---
 
 # BeeStack — Ideal State Artifact
@@ -16,18 +16,15 @@ iteration: 5
 ## Problem
 
 BeeStack is a five-layer (Body→Brain→Mind→Swarm→Niche) honeybee
-evidence-typed simulation scaffold living in `projects_in_progress/`. It has 61 source
-modules, 11 test files, 15 orchestration scripts, 22 manuscript sections, and 23
-docs, but is at "Initial commit" with everything untracked. The project defines
-explicit acceptance gates (coverage ≥92%, morphology ≥0.85, waggle error <35°,
-brain parseable fraction at the configured gate (0.5 in `config.yaml`; 0.800 as
-an improvement target), thermal error <3°C, zero unresolved manuscript
-variables, clean documentation audit) yet none have been freshly verified end to
-end. The manuscript ships with 16 sections containing unresolved `{{VARIABLE}}`
-tokens. A comprehensive review must establish empirical ground truth across every
-method, test, orchestration script, validation gate, config surface, doc, and
-the manuscript — then apply every defensible improvement, addition, refactor, and
-betterment so the project fulfils its stated goals perfectly and extensively.
+evidence-typed simulation scaffold in `projects/passive/BeeStack/` (symlinked
+from `projects_in_progress/` for template discovery). The checkout ships
+90 Python modules under `src/beestack/`, 25 test files, 18 orchestration
+scripts, 18 numbered manuscript sections plus `preamble.md` and
+`99_references.md`, and 24 docs under `docs/`. Acceptance gates (coverage
+≥92%, morphology ≥0.85, waggle error <35°, brain parseable fraction at the
+configured gate, thermal error <3°C, zero unresolved manuscript variables,
+clean documentation audit) are tracked in this ISA and verified by the
+commands in root `AGENTS.md`.
 
 ## Vision
 
@@ -48,8 +45,8 @@ beyond what the existing kernels implement. Not changing the five-layer
 architecture or the strict-FlyBody/MuJoCo vs reduced-kernel fidelity contract.
 Not downloading or re-deriving large external empirical archives beyond what the
 existing fetcher handles (network-gated; declared blockers acceptable). Not
-moving BeeStack out of `projects_in_progress/` into the template's discovered
-`projects/`. Not adding mocks to tests. Not introducing new heavyweight
+moving BeeStack out of the private lifecycle repo into the public template
+exemplar set under `projects/`. Not adding mocks to tests. Not introducing new heavyweight
 dependencies. Not rewriting the manuscript's scientific thesis — only completing,
 correcting, hydrating, and tightening it.
 
@@ -74,8 +71,10 @@ correcting, hydrating, and tightening it.
 
 - Python ≥3.11, `uv`-managed; dependencies pinned in `uv.lock` (must satisfy
   `uv lock --check`).
-- Source modules must not import infrastructure, write files, print, or perform
-  network access (enforced by architecture; verify in review).
+- Source modules must not import infrastructure, perform network access, or print
+  (enforced by architecture; verify in review). Domain logic stays side-effect free;
+  sanctioned artifact I/O lives only in `visualization/` adapters and
+  `body/flybody_scene_signpost.py` (see root `AGENTS.md` rule 1).
 - Coverage gate is hard: `pytest --cov=src` ≥ 92.00% (`pyproject.toml`
   `fail_under = 92`), branch coverage on, `__init__.py`/`cli.py` omitted.
 - Ruff lint (`E,F,I,UP,B,SIM`, line-length 100, E501 ignored) and
@@ -84,7 +83,8 @@ correcting, hydrating, and tightening it.
   may be environment-limited — such cases use `[DEFERRED-VERIFY]` with a
   documented blocker, never a silent skip.
 - No mocks in tests (real numerical examples, deterministic seeds).
-- BeeStack retains its own git repo inside `projects_in_progress/BeeStack/`.
+- BeeStack retains its own git repo under `projects/passive/BeeStack/` in the
+  private lifecycle checkout (symlinked into template discovery).
 
 ## Goal
 
@@ -172,8 +172,8 @@ as the project's living system of record.
 - [x] ISC-62: `scripts/signpost_project_tree.py --check` reports complete signposting (or regenerates)
 - [x] ISC-63: `scripts/audit_documentation.py` runs, writes `output/reports/documentation_audit.md`
 - [x] ISC-64: `scripts/z_generate_manuscript_variables.py` runs, writes `output/data/manuscript_variables.json` + hydrated `output/manuscript/`
-- [x] ISC-65: Every script is a thin orchestrator (no domain algorithm defined in script body — review audit)
-- [x] ISC-66: `*_io.py` helper scripts contain only I/O glue, delegate computation to `src/`
+- [x] ISC-65: Every script is a thin orchestrator (no domain algorithm defined in script body — review audit) — **closed 2026-05-25:** `scripts/analyze_empirical_bee_data.py` (40 lines) and `scripts/signpost_project_tree.py` (42 lines) delegate to `src/`; empirical ingest in `brain/empirical_ingest.py`
+- [x] ISC-66: `*_io.py` helper scripts contain only I/O glue, delegate computation to `src/` — **closed 2026-05-25:** `methods_analysis_io.py` single-pass assembly via `with_artifacts`; signpost removed from `*_io.py` helpers
 - [x] ISC-67: Each script prints output artifact paths to stdout for manifest collection
 - [x] ISC-68: Anti: No script silently swallows an exception that hides a real failure
 
@@ -223,6 +223,23 @@ as the project's living system of record.
 - [x] ISC-103: Anti: brand rename changed no computed value — `wing_power_mw(80,230)`=58.0 unchanged; regen deterministic (24 steps/12 figures/9 animations); manuscript hydration byte-clean (0 tokens/0 N/A/85 vars)
 - [x] ISC-104: `parse_tabular_odor_response_rows` fails loud (raises `ValueError`) on a present-but-unparseable/non-finite response cell and skips only documented absent sentinels (None/""/"NA") — regression test `test_parse_tabular_skips_absent_but_fails_loud_on_corruption` locks the no-silent-failure invariant after the external type-hardening pass silently regressed it
 
+### J. Structural Maintainability (thermo-nuclear)
+
+Thermo-nuclear code-quality review (2026-05-25). Report:
+[`output/reports/thermo_nuclear_code_quality_review.md`](output/reports/thermo_nuclear_code_quality_review.md).
+All criteria below were **open** after the read-only audit; **119/119** pass after
+2026-05-25 structural remediation (including ISC-106 script gate and ISC-112 lazy
+export barrel).
+
+- [x] ISC-105: No `src/` Python module exceeds 1000 lines — split `figures.py`, `methods.py`, `empirical_ingest.py`, `flybody_scene.py` into focused submodules (2026-05-25)
+- [x] ISC-106: No `scripts/*.py` exceeds 250 lines (template script gate) — fetch logic → `brain/empirical_fetch.py`; manifest/verification → `visualization/animation_manifest.py`, `bee_render_verification.py`; scripts at 52/43/171/101 lines (2026-05-25)
+- [x] ISC-107: No script imported as a library from other scripts or tests — signpost/readiness logic in `src/beestack/documentation_signpost.py`; `finalize_project_outputs` is the canonical hook
+- [x] ISC-108: Empirical ingest/parsers live in `src/beestack/brain/` — `brain/empirical_ingest.py` + `empirical_ingest_reports.py`; script is 40-line wrapper
+- [x] ISC-109: Figure builders split by domain — `figures.py` orchestrator (100 lines) + `figures_*` submodules (≤480 lines each)
+- [x] ISC-110: Methods evidence assembly is single-pass — `methods_analysis_io.py` calls `assemble_methods_analysis_report` once + `with_artifacts`
+- [x] ISC-111: Post-pipeline signpost/readiness hook centralized — `finalize_project_outputs(project_root)` in `documentation_signpost.py`
+- [x] ISC-112: Root `beestack/__init__.py` public surface ≤150 lines — lazy `__getattr__` + `_public_exports.py` map; `__init__.py` is 15 lines (2026-05-25)
+
 ## Test Strategy
 
 | isc | type | check | threshold | tool |
@@ -239,6 +256,7 @@ as the project's living system of record.
 | ISC-80..84 | static | yaml parse; key cross-ref; gitignore review | consistent | Read/Bash |
 | ISC-85..91 | inspection | command spot-run; symbol diff vs docs | match | Bash/Read |
 | ISC-92..96 | command | hydrate; grep residual tokens; path existence | zero tokens | Bash/Grep |
+| ISC-105..112 | static+command | line-count probes; import grep; methods_io assembly count | thresholds per criterion | Bash/Grep/Read |
 
 ## Features
 
@@ -255,6 +273,15 @@ as the project's living system of record.
 | manuscript-complete | Hydrate variables, fix references/figures | ISC-92..96 | validation-gates,config-consistency | no |
 
 ## Decisions
+
+- 2026-05-25T12:00:00Z — Iteration 6 (thermo-nuclear structural review). Read-only
+  maintainability audit per cursor-team-kit `thermo-nuclear-code-quality-review`.
+  Verdict **FAIL**: four files >1k lines, script-as-library signpost hub, fat
+  empirical orchestrator, triple-pass methods I/O. Report at
+  `output/reports/thermo_nuclear_code_quality_review.md`. Re-opened ISC-65/66;
+  added ISC-105..112 (section J). Functional gates (ISC-1..104) remain satisfied;
+  structural criteria are open until code-judo remediation lands in the private
+  BeeStack repo.
 
 - 2026-05-16T05:40:00Z — Iteration 5 (classifier E4). A further external pass
   changed 31 files since 76dc7df (type-annotation hardening + a new honest
@@ -418,6 +445,39 @@ as the project's living system of record.
   → full suite + Cato (E5) + determinism double-run.
 
 ## Changelog
+
+- **2026-05-25 (iteration 9, documentation and manuscript pass):** Paper-wide
+  manuscript title normalization, registry-backed figure captions via
+  `manuscript_image_markdown()`, scholarship cross-reference in section 01,
+  technical-doc contract sync (ISA paths/counts, AGENTS I/O doctrine,
+  `manuscript_development.md` title guide), manuscript-quality guard tests in
+  `tests/test_manuscript_quality_guards.py`, and unified sidecar/manuscript
+  captions via `FigureNarrative.manuscript_contract_caption()`.
+  **146/146 tests pass** with documentation audit green.
+
+- **2026-05-25 (iteration 8, thermo-nuclear completion):** Closed ISC-106 and
+  ISC-112. Fetch logic → `brain/empirical_fetch.py`; animation manifest and bee
+  render verification → `visualization/animation_manifest.py` and
+  `bee_render_verification.py`; lazy package exports via `_public_exports.py`
+  (15-line `__init__.py`). All scripts ≤171 lines. **141/141 tests pass.**
+  Progress **119/119**. Report verdict **PASS**.
+
+- **2026-05-25 (iteration 7, thermo-nuclear remediation):** Structural refactor
+  landed in `src/` and scripts. Moved signpost/readiness to
+  `documentation_signpost.py` + `finalize_project_outputs`; empirical ingest to
+  `brain/empirical_ingest.py`; split `figures.py` and `methods.py` into submodules;
+  single-pass `methods_analysis_io.py`; removed `write_source_refresh_ledger`
+  file I/O from `source_refresh.py`. **141/141 tests pass.** Closed ISC-65/66 and
+  ISC-105/107–111. Progress **117/119** (ISC-106 partial, ISC-112 open).
+  Updated report: `output/reports/thermo_nuclear_code_quality_review.md`.
+
+- **2026-05-25 (iteration 6, thermo-nuclear review):** Read-only maintainability
+  audit. Functional gates unchanged (ISC-1..104 pass). Structural verdict
+  **FAIL**: four files >1k lines; `signpost_project_tree` imported as library
+  from 10 modules; empirical ingest and signpost logic stranded in scripts;
+  triple-pass methods assembly. Report:
+  `output/reports/thermo_nuclear_code_quality_review.md`. Re-opened ISC-65/66;
+  added ISC-105..112 (section J). Progress 111/119.
 
 - **conjectured** (2026-05-16, iteration 5): once the gates passed at
   iteration 4, subsequent external type-hardening edits would be behaviour-

@@ -86,9 +86,7 @@ def test_generated_report_audit_flags_stale_tests_and_unsupported_claims(
         "missing manuscript evidence citation_keys" in claim
         for claim in audit.unsupported_report_claims
     )
-    assert any(
-        "malformed source DOI" in claim for claim in audit.unsupported_report_claims
-    )
+    assert any("malformed source DOI" in claim for claim in audit.unsupported_report_claims)
     assert any(
         "marked parsed with zero local records" in claim
         for claim in audit.unsupported_report_claims

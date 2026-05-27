@@ -12,7 +12,7 @@
   "alt_text": "Comb, thermal, forage, BEEHAVE, and Hiveopolis adapter nodes connected through explicit current and blocked interfaces.",
   "artifact_kind": "figure",
   "backend": "Matplotlib",
-  "caption": "Adapter map placing BEEHAVE-compatible colony summaries beside comb, thermal, and forage fields without claiming full hive ecology.",
+  "caption": "Matplotlib beeniche adapter and niche map shows Adapter map placing BEEHAVE-compatible colony summaries beside comb, thermal, and forage fields without claiming full hive ecology. Generated from source refresh ledger, niche methods records, simulation records, and adapter notes. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate full ecology, real-time hive control, or thermodynamic colony dynamics.",
   "citation_keys": [
     "becher2014beehave",
     "narsicht2020hiveopolis",
@@ -41,6 +41,7 @@
   "figure_path": "output/figures/beeniche_adapter_niche_map.png",
   "manuscript_label": "fig:niche_adapter_map",
   "manuscript_section": "manuscript/07_methods_niche.md",
+  "plot_data_path": "output/figures/beeniche_adapter_niche_map_data.json",
   "priority": "primary",
   "quality": {
     "height_px": 1028,
@@ -60,5 +61,17 @@
   ],
   "title": "Beeniche Adapter Niche Map",
   "unsupported_inference": "Does not validate full ecology, real-time hive control, or thermodynamic colony dynamics.",
-  "validation_status": "nonblank quality sidecar generated"
+  "validation_status": "nonblank quality sidecar and plot data generated",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.981,
+    "figure_role": "overview",
+    "height_px": 1028,
+    "label_density": "moderate",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 2036,
+    "min_dimension_px": 1028,
+    "readability_status": "pass",
+    "width_px": 2036
+  }
 }

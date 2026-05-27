@@ -1,4 +1,4 @@
-# Discussion
+# Discussion {#sec:discussion}
 
 BeeStack's main result is not a completed digital honey bee. It is a
 working argument about how such a model should be built: body, brain,
@@ -44,7 +44,10 @@ bee can visibly do.
 
 The project now has FlyBody/MuJoCo-backed render and contact artifacts
 for Body walking, Body flight, multi-BeeBody collision, and the
-configured waggle-dance scene. Those artifacts justify a narrow claim:
+configured and long waggle-dance scenes ([@fig:beebody_flybody_morphology];
+[@fig:beebody_flybody_flight]; [@fig:beeswarm_10_beebody_collision];
+[@fig:beeswarm_waggle_dance_configured]; [@fig:beeswarm_waggle_dance_long]).
+Those artifacts justify a narrow claim:
 the animations and contact reports are generated through a BeeBody
 MJCF/FlyBody/MuJoCo path with render and contact verification. They do
 not yet justify a broader kinetics claim. Segmental masses, aerodynamic
@@ -75,6 +78,24 @@ that is registered but unavailable locally is not converted into a
 synthetic number. It appears as a gap in the source completeness matrix,
 methods-analysis report, and roadmap.
 
+## Field crisis vs scaffold fidelity
+
+Recent U.S. colony-loss surveys and beekeeper triage reports document
+compound stressors—*Varroa*, viral co-infections, treatment resistance,
+and genetic bottlenecks in managed stocks
+[@aurell2024survey; @scitotenv2025triage; @scientificreports2026amitraz;
+@chen2016genomic]. Those findings explain why BeeStack prioritizes a
+conserving colony-state ledger, driver ingestion, and assimilation
+surfaces on the roadmap [@sec:roadmap] rather than cosmetic neural detail.
+
+BeeStack is not competing with BEEHAVE [@becher2014beehave] or COLOSS
+survey infrastructure [@colossbeebook] as a colony-health forecaster in
+v0. Its contribution is narrower: typed contracts, empirical
+traceability where datasets exist, and explicit blockers everywhere else.
+Pollination economics and production statistics motivate the societal
+stakes [@pollination2016value] without turning BeeStack into an
+agricultural decision-support product.
+
 ## Reduced kernels are useful when their boundaries are explicit
 
 BeeMind, the broad BeeSwarm kernels, and BeeNiche are not calibrated
@@ -104,12 +125,16 @@ figures, some are reduced-kernel diagnostics, and some are schematic
 signposts. This taxonomy prevents an attractive figure from silently
 changing the claim it supports.
 
-The long multi-BeeBody waggle animation is the clearest example. It is
-valuable because it connects a configured dance path, BeeBody model
-copies, MuJoCo stepping, follower orientation diagnostics, contact
-records, frame dynamics, and a stable artifact path. It is not valuable
-because it "looks like a colony" in a general cinematic sense. The
-contact report and manifest define what the animation proves.
+The long multi-BeeBody waggle animation ([@fig:beeswarm_waggle_dance_long])
+is the clearest example. It is valuable because it connects a configured
+dance path, BeeBody model copies, MuJoCo stepping, follower orientation
+diagnostics, contact records, frame dynamics, and a stable artifact path.
+The single-nestmate walking and flight contact sheets
+([@fig:beebody_flybody_morphology]; [@fig:beebody_flybody_flight]) anchor
+the same claim at the individual-worker scale before the scene composes
+multiple prefixed MJCF copies. None of these figures is valuable because
+it "looks like a colony" in a general cinematic sense. The contact report
+and manifest define what each animation proves.
 
 ## Future colony-coupling implications
 

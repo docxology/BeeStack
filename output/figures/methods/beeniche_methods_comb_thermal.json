@@ -12,7 +12,7 @@
   "alt_text": "BeeNiche methods panel with comb, thermal, and forage-context diagnostics.",
   "artifact_kind": "figure",
   "backend": "Matplotlib/pandas",
-  "caption": "BeeNiche methods panel showing comb occupancy, brood thermal error, foraging-radius context, and deterministic niche-kernel validation.",
+  "caption": "Matplotlib/pandas/NetworkX beeniche comb and thermal diagnostics shows BeeNiche methods panel showing comb occupancy, brood thermal error, foraging-radius context, and deterministic niche-kernel validation. Generated from MethodsAnalysisReport and simulation records. Sidecar validation checks raster, source routing, and registered claim tier. Does not support a full ecology or hive thermodynamics engine.",
   "citation_keys": [
     "kronenberg1982colonial",
     "johnson2009self",
@@ -40,6 +40,7 @@
   "figure_path": "output/figures/methods/beeniche_methods_comb_thermal.png",
   "manuscript_label": "fig:niche_methods_comb_thermal",
   "manuscript_section": "manuscript/07_methods_niche.md",
+  "plot_data_path": "output/figures/methods/beeniche_methods_comb_thermal_data.json",
   "priority": "primary",
   "quality": {
     "height_px": 840,
@@ -59,5 +60,17 @@
   ],
   "title": "Beeniche Methods Comb Thermal",
   "unsupported_inference": "Does not support a full ecology or hive thermodynamics engine.",
-  "validation_status": "nonblank image and quality sidecar passed"
+  "validation_status": "nonblank image, quality sidecar, and plot data passed",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 2.125,
+    "figure_role": "overview",
+    "height_px": 840,
+    "label_density": "moderate",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 1785,
+    "min_dimension_px": 840,
+    "readability_status": "pass",
+    "width_px": 1785
+  }
 }

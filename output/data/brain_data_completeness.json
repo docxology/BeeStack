@@ -1,7 +1,29 @@
 {
+  "connectome_tiers": {
+    "functional": {
+      "available": false,
+      "blocker": "VAR_connectivity matrix not public; authors provide data on request",
+      "coverage": 0.0,
+      "edge_count": 0,
+      "tier": "unavailable"
+    },
+    "structural": {
+      "available": true,
+      "coverage": 1.0,
+      "edge_count": 6,
+      "tier": "structural_projectome"
+    },
+    "synaptic": {
+      "available": false,
+      "blocker": "no public whole-brain Apis mellifera synaptic connectome",
+      "coverage": 0.0,
+      "edge_count": 0,
+      "tier": "synaptic_unavailable"
+    }
+  },
   "dataset_count": 10,
-  "downloaded_dataset_count": 7,
-  "downloaded_fraction": 0.7,
+  "downloaded_dataset_count": 8,
+  "downloaded_fraction": 0.8,
   "modality_counts": {
     "3d": 1,
     "brain": 1,
@@ -88,54 +110,29 @@
   },
   "parseability_target": 0.8,
   "parseability_target_satisfied": true,
-  "parseable_dataset_count": 6,
-  "parseable_fraction": 0.6,
-  "source_gaps": [
-    {
-      "dataset_id": "dryad-paoli-2024-al-calcium",
-      "detail": "local payload exists but no parser emitted a BeeStack analysis record",
-      "remediation": "inspect file inventory and add a targeted parser or mark out of scope",
-      "severity": "low"
-    },
-    {
-      "dataset_id": "galizia-1999-glomerular-code",
-      "detail": "curated source is registered but no local payload is present",
-      "remediation": "run scripts/fetch_empirical_bee_data.py for full downloads",
-      "severity": "medium"
-    },
-    {
-      "dataset_id": "szyszka-2023-granger-al-network",
-      "detail": "curated source is registered but no local payload is present",
-      "remediation": "run scripts/fetch_empirical_bee_data.py for full downloads",
-      "severity": "medium"
-    },
-    {
-      "dataset_id": "kaneko-2016-kenyon-subtypes",
-      "detail": "curated source is registered but no local payload is present",
-      "remediation": "run scripts/fetch_empirical_bee_data.py for full downloads",
-      "severity": "medium"
-    }
-  ],
+  "parseable_dataset_count": 8,
+  "parseable_fraction": 0.8,
+  "source_gaps": [],
   "source_statuses": [
     {
-      "blocker": "local_payload_not_parseable",
+      "blocker": "",
       "dataset_id": "dryad-paoli-2024-al-calcium",
       "doi": "10.5061/dryad.qbzkh18sc",
       "downloaded": true,
-      "parseable": false,
-      "parser_status": "download_blocked:401 Unauthorized",
-      "remediation": "inspect file inventory and add a targeted parser or mark out of scope",
+      "parseable": true,
+      "parser_status": "parsed",
+      "remediation": "none",
       "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.qbzkh18sc",
       "source_verified": true
     },
     {
-      "blocker": "no_local_payload",
+      "blocker": "citation_anchor_only",
       "dataset_id": "galizia-1999-glomerular-code",
       "doi": "10.1038/8144",
       "downloaded": false,
       "parseable": false,
-      "parser_status": "source_verified_waiting_for_payload",
-      "remediation": "run scripts/fetch_empirical_bee_data.py for full downloads",
+      "parser_status": "citation_anchor_only:no_machine_readable_supplementary_payload",
+      "remediation": "publisher supplementary data not registered for automated fetch; manuscript citation anchor only",
       "source_url": "https://www.nature.com/articles/nn0599_473",
       "source_verified": true
     },
@@ -151,24 +148,24 @@
       "source_verified": true
     },
     {
-      "blocker": "no_local_payload",
+      "blocker": "",
       "dataset_id": "szyszka-2023-granger-al-network",
       "doi": "10.3390/insects14060539",
-      "downloaded": false,
-      "parseable": false,
-      "parser_status": "source_verified_waiting_for_payload",
-      "remediation": "run scripts/fetch_empirical_bee_data.py for full downloads",
+      "downloaded": true,
+      "parseable": true,
+      "parser_status": "parsed",
+      "remediation": "none",
       "source_url": "https://www.mdpi.com/2075-4450/14/6/539",
       "source_verified": true
     },
     {
-      "blocker": "no_local_payload",
+      "blocker": "citation_anchor_only",
       "dataset_id": "kaneko-2016-kenyon-subtypes",
       "doi": "10.1186/s40851-016-0051-6",
       "downloaded": false,
       "parseable": false,
-      "parser_status": "source_verified_waiting_for_payload",
-      "remediation": "run scripts/fetch_empirical_bee_data.py for full downloads",
+      "parser_status": "citation_anchor_only:no_machine_readable_supplementary_payload",
+      "remediation": "publisher supplementary data not registered for automated fetch; manuscript citation anchor only",
       "source_url": "https://zoologicalletters.biomedcentral.com/articles/10.1186/s40851-016-0051-6",
       "source_verified": true
     },
@@ -228,7 +225,7 @@
       "source_verified": true
     }
   ],
-  "source_verified_blocked_count": 4,
+  "source_verified_blocked_count": 2,
   "source_verified_dataset_count": 10,
   "source_verified_fraction": 1.0
 }

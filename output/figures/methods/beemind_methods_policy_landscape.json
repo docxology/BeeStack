@@ -12,7 +12,7 @@
   "alt_text": "BeeMind policy diagnostics with finite policy metrics and validation status.",
   "artifact_kind": "figure",
   "backend": "Matplotlib/pandas",
-  "caption": "BeeMind policy landscape showing finite expected-free-energy terms, candidate-policy margin, and deterministic action-contract outputs.",
+  "caption": "Matplotlib/pandas/NetworkX beemind policy landscape shows BeeMind policy landscape showing finite expected-free-energy terms, candidate-policy margin, and deterministic action-contract outputs. Generated from MethodsAnalysisReport and policy-selection diagnostics. Sidecar validation checks raster, source routing, and registered claim tier. Does not support a learned or biologically calibrated generative model.",
   "citation_keys": [
     "friston2010free",
     "parr2017working"
@@ -39,16 +39,17 @@
   "figure_path": "output/figures/methods/beemind_methods_policy_landscape.png",
   "manuscript_label": "fig:mind_methods_policy",
   "manuscript_section": "manuscript/06_methods_brain_mind.md",
+  "plot_data_path": "output/figures/methods/beemind_methods_policy_landscape_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 1050,
+    "height_px": 977,
     "max_intensity": 255,
-    "mean_intensity": 243.79442661830356,
+    "mean_intensity": 236.8920849429909,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 40.93501073972103,
-    "width_px": 2048
+    "std_intensity": 47.56960513212024,
+    "width_px": 1963
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
   "schema": "beestack.figure.v1",
@@ -59,5 +60,17 @@
   ],
   "title": "Beemind Methods Policy Landscape",
   "unsupported_inference": "Does not support a learned or biologically calibrated generative model.",
-  "validation_status": "nonblank image and quality sidecar passed"
+  "validation_status": "nonblank image, quality sidecar, and plot data passed",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 2.009,
+    "figure_role": "overview",
+    "height_px": 977,
+    "label_density": "moderate",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 1963,
+    "min_dimension_px": 977,
+    "readability_status": "pass",
+    "width_px": 1963
+  }
 }

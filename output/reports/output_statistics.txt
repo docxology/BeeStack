@@ -1,0 +1,38 @@
+
+OUTPUT STATISTICS REPORT
+============================================================
+
+Output Directory: /Users/4d/Documents/GitHub/projects/passive/BeeStack/output
+
+Total Files: 424
+Total Size: 213.02 MB
+
+Files by Category:
+  • pdf: 12 files (5.27 MB)
+  • web: 22 files (0.56 MB)
+  • slides: 145 files (6.63 MB)
+  • figures: 124 files (6.03 MB)
+  • data: 81 files (194.17 MB)
+  • reports: 30 files (0.33 MB)
+  • simulations: 2 files (0.00 MB)
+  • llm: 5 files (0.02 MB)
+  • logs: 3 files (0.00 MB)
+
+Largest Files:
+  • dryad-jernigan-2026-antennal-movement.zip: 160.61 MB (data)
+  • HBSGrey.zip: 7.65 MB (data)
+  • VRML.zip: 5.69 MB (data)
+  • BeeStack_combined.pdf: 4.80 MB (pdf)
+  • 05_methods_body_swarm_slides.pdf: 1.89 MB (slides)
+
+File Types:
+  • .json: 91 file(s)
+  • .md: 68 file(s)
+  • .png: 57 file(s)
+  • .csv: 23 file(s)
+  • .log: 21 file(s)
+  • .tex: 20 file(s)
+  • .html: 20 file(s)
+  • .aux: 19 file(s)
+  • .pdf: 19 file(s)
+  • .toc: 19 file(s)

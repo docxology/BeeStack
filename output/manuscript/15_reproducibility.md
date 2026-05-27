@@ -1,4 +1,4 @@
-# Reproducibility
+# Reproducibility {#sec:reproducibility}
 
 Reproducibility in BeeStack is a *property of the pipeline*, not a
 property of any individual artifact. The run is manifest-driven by
@@ -15,6 +15,13 @@ uv run pytest --cov=src --cov-report=term-missing
 This produces the unit and integration test suite report plus a
 per-file coverage trace. The coverage gate is configured at 92% in
 `pyproject.toml` (`[tool.coverage.report] fail_under = 92`).
+
+## Publication metadata
+
+`manuscript/config.yaml` leaves `publication.doi` empty while BeeStack
+remains a scaffold checkout. When a Zenodo or journal DOI is minted,
+populate that field and regenerate hydration so the abstract and
+reproducibility sections pick up the stable identifier automatically.
 
 ## Full regeneration
 
@@ -117,7 +124,7 @@ audit, generated-report audit, signposting check, and manuscript hydration.
 A failed generated artifact, source-audit, or documentation gate produces a
 CI failure even if all tests pass.
 
-## Full Snapshot policy
+## Full snapshot policy
 
 Generated reports, figures, production GIFs, manifests, and
 lightweight JSON/Markdown outputs are tracked as a Full Snapshot so a

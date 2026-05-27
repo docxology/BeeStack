@@ -1,0 +1,21 @@
+{
+  "chart_type": "coverage",
+  "figure_path": "output/figures/module_contract_coverage.png",
+  "labels": [
+    "BeeBody",
+    "BeeBrain",
+    "BeeMind",
+    "BeeSwarm",
+    "BeeNiche"
+  ],
+  "orientation": "horizontal",
+  "schema": "beestack.figure_data.v1",
+  "title": "Module contract coverage",
+  "values": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ]
+}

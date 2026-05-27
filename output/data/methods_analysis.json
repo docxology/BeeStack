@@ -9,6 +9,7 @@
   },
   "figure_paths": [
     "output/figures/methods/methods_repo_dashboard.png",
+    "output/figures/methods/methods_dashboard_detail.png",
     "output/figures/methods/beebody_methods_telemetry_dashboard.png",
     "output/figures/methods/beebrain_methods_empirical_completeness.png",
     "output/figures/methods/beemind_methods_policy_landscape.png",
@@ -290,7 +291,7 @@
       },
       "visualization_panel": {
         "animation_count": 3,
-        "artifact_count": 8,
+        "artifact_count": 11,
         "artifact_paths": [
           "output/animations/beebody_flybody_morphology.gif",
           "output/animations/beebody_flybody_flight.gif",
@@ -299,12 +300,18 @@
           "output/figures/beebody_motion_power_phase.png",
           "output/figures/body_energy_timeseries.png",
           "output/figures/methods/beebody_methods_telemetry_dashboard.png",
+          "output/figures/renders/beebody_flybody_flight_contact_sheet.png",
+          "output/figures/renders/beebody_flybody_morphology_contact_sheet.png",
+          "output/figures/renders/beeswarm_10_beebody_collision_contact_sheet.png",
           "output/figures/research/beebody_method_diagnostics.png"
         ],
         "backends": [
           "flybody.walk_imitation+rollout_and_render",
           "flybody.flight_imitation.WingBeatPatternGenerator+rollout_and_render",
           "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
           "matplotlib/networkx/scikit-image",
           "matplotlib/networkx/scikit-image",
           "matplotlib/networkx/scikit-image",
@@ -319,14 +326,20 @@
           "research_diagnostic",
           "research_diagnostic",
           "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic",
           "research_diagnostic"
         ],
-        "figure_count": 5,
+        "figure_count": 8,
         "module": "BeeBody",
         "validation_statuses": [
           "verified",
           "verified",
           "verified",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
           "nonblank_static_figure",
           "nonblank_static_figure",
           "nonblank_static_figure",
@@ -412,12 +425,12 @@
       ],
       "quantitative_metrics": {
         "anatomy_inventory_count": 7.0,
-        "brain_data_parseable_fraction": 0.6,
+        "brain_data_parseable_fraction": 0.8,
         "brain_source_verified_fraction": 1.0,
-        "calcium_dataset_count": 0.0,
+        "calcium_dataset_count": 1.0,
         "empirical_panel_count": 48.0,
         "enabled_dataset_count": 10.0,
-        "mean_odor_separability": 0.6511059958748603,
+        "mean_odor_separability": 0.6511059958748602,
         "neuropil_count": 22.0,
         "region_response_class_count": 6.0,
         "template_count": 24.0,
@@ -452,7 +465,7 @@
             "name": "brain_parseability_target",
             "passed": true,
             "threshold": ">= 0.8 or all blockers source-verified",
-            "value": 0.6
+            "value": 0.8
           },
           {
             "detail": "empirical panels present",
@@ -480,7 +493,7 @@
             "name": "calcium_gap_declared",
             "passed": true,
             "threshold": "present or declared gap",
-            "value": 0.0
+            "value": 1.0
           },
           {
             "detail": "waggle gap declared",
@@ -494,7 +507,7 @@
             "name": "parseability_target_satisfied",
             "passed": true,
             "threshold": ">= 0.8 or source-verified blockers",
-            "value": 0.6
+            "value": 0.8
           }
         ],
         "failed_checks": [],
@@ -505,7 +518,7 @@
       },
       "visualization_panel": {
         "animation_count": 1,
-        "artifact_count": 19,
+        "artifact_count": 22,
         "artifact_paths": [
           "output/animations/beebrain_neural_anatomy.gif",
           "output/figures/beebrain_beemind_anatomy_policy_map.png",
@@ -513,6 +526,9 @@
           "output/figures/empirical/bee_brain_multimodal_source_map.png",
           "output/figures/empirical/beeswarm_waggle_recruitment_diagnostics.png",
           "output/figures/empirical/brain_data_completeness_matrix.png",
+          "output/figures/empirical/connectome_completeness_tiers.png",
+          "output/figures/empirical/connectome_neuropil_module_map.png",
+          "output/figures/empirical/connectome_structural_graph.png",
           "output/figures/empirical/empirical_activity_summary.png",
           "output/figures/empirical/empirical_anatomy_assets.png",
           "output/figures/empirical/empirical_anatomy_projection.png",
@@ -529,6 +545,9 @@
         ],
         "backends": [
           "matplotlib.funcanimation",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
           "matplotlib/networkx/scikit-image",
           "matplotlib/networkx/scikit-image",
           "matplotlib/networkx/scikit-image",
@@ -567,12 +586,18 @@
           "research_diagnostic",
           "research_diagnostic",
           "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic",
           "research_diagnostic"
         ],
-        "figure_count": 18,
+        "figure_count": 21,
         "module": "BeeBrain",
         "validation_statuses": [
           "verified",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
           "nonblank_static_figure",
           "nonblank_static_figure",
           "nonblank_static_figure",
@@ -856,13 +881,15 @@
       },
       "visualization_panel": {
         "animation_count": 4,
-        "artifact_count": 7,
+        "artifact_count": 9,
         "artifact_paths": [
           "output/animations/beeswarm_dance_pheromone.gif",
           "output/animations/beeswarm_waggle_dance_configured.gif",
           "output/animations/beeswarm_waggle_dance_long.gif",
           "output/figures/beeswarm_recruitment_task_allocation.png",
           "output/figures/methods/beeswarm_methods_contact_recruitment.png",
+          "output/figures/renders/beeswarm_waggle_dance_configured_contact_sheet.png",
+          "output/figures/renders/beeswarm_waggle_dance_long_contact_sheet.png",
           "output/figures/research/beeswarm_contact_recruitment_scorecard.png",
           "output/animations/beeswarm_10_beebody_collision.gif"
         ],
@@ -870,6 +897,8 @@
           "matplotlib.funcanimation",
           "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer",
           "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer",
+          "matplotlib/networkx/scikit-image",
+          "matplotlib/networkx/scikit-image",
           "matplotlib/networkx/scikit-image",
           "matplotlib/networkx/scikit-image",
           "matplotlib/networkx/scikit-image",
@@ -882,14 +911,18 @@
           "research_diagnostic",
           "research_diagnostic",
           "research_diagnostic",
+          "research_diagnostic",
+          "research_diagnostic",
           "real_flybody_3d_contact_physics"
         ],
-        "figure_count": 3,
+        "figure_count": 5,
         "module": "BeeSwarm",
         "validation_statuses": [
           "verified",
           "verified",
           "verified",
+          "nonblank_static_figure",
+          "nonblank_static_figure",
           "nonblank_static_figure",
           "nonblank_static_figure",
           "nonblank_static_figure",
@@ -1294,14 +1327,14 @@
   "summary": "Science-first per-module methods panels connecting quantitative diagnostics, validation scorecards, visualization provenance, and manuscript evidence availability.",
   "title": "BeeStack Methods Analysis",
   "top_validation_gaps": [
-    "Paoli MATLAB calcium traces are not yet local or parseable",
     "Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.",
     "Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset.",
     "No heavyweight spiking simulator is required in the default path.",
     "The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics.",
     "No learned transition model or recursive social-belief inference yet.",
     "Expected free energy terms are transparent hand-calibrated witnesses.",
-    "Large-N colony dynamics are summarized by configured scaling rather than simulated at full population by default."
+    "Large-N colony dynamics are summarized by configured scaling rather than simulated at full population by default.",
+    "Strict visual scenes prove small-scene contacts, not full BEEHAVE-scale population dynamics."
   ],
-  "visualization_count": 44
+  "visualization_count": 52
 }

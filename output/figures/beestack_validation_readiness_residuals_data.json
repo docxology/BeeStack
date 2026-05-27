@@ -1,0 +1,17 @@
+{
+  "annotations": [
+    "Validation-readiness panel separating implemented verification checks from blocked held-out residual, uncertainty, assimilation, and governance evidence.",
+    "claim_tier=validation_readiness_boundary",
+    "source_data=source refresh ledger, readiness review, generated reports, and figure sidecars"
+  ],
+  "chart_type": "schematic",
+  "figure_path": "output/figures/beestack_validation_readiness_residuals.png",
+  "nodes": [
+    {
+      "id": "fig:validation_readiness_residuals",
+      "label": "BeeStack validation readiness and residual blockers"
+    }
+  ],
+  "schema": "beestack.figure_data.v1",
+  "title": "BeeStack validation readiness and residual blockers"
+}

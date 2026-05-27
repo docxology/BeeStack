@@ -12,7 +12,7 @@
   "alt_text": "Flow diagram from strict body-scene metrics through waggle evidence to reduced swarm and BEEHAVE-compatible summaries.",
   "artifact_kind": "figure",
   "backend": "Matplotlib",
-  "caption": "Calibration-boundary map connecting strict BeeBody/FlyBody scene metrics, waggle-motion anchors, and reduced BeeSwarm or BEEHAVE-compatible colony summaries.",
+  "caption": "Matplotlib beebody and beeswarm micro-to-macro calibration map shows Calibration-boundary map connecting strict BeeBody/FlyBody scene metrics, waggle-motion anchors, and reduced BeeSwarm or BEEHAVE-compatible colony summaries. Generated from FlyBody scene metrics, simulation records, BEEHAVE anchor, and source refresh ledger. Sidecar validation checks raster, source routing, and registered claim tier. Does not calibrate colony-scale recruitment or make small-scene contacts a population model.",
   "citation_keys": [
     "vaxenburg2025flybody",
     "todorov2012mujoco",
@@ -42,6 +42,7 @@
   "figure_path": "output/figures/beebody_beeswarm_micro_macro_calibration.png",
   "manuscript_label": "fig:body_swarm_micro_macro",
   "manuscript_section": "manuscript/05_methods_body_swarm.md",
+  "plot_data_path": "output/figures/beebody_beeswarm_micro_macro_calibration_data.json",
   "priority": "primary",
   "quality": {
     "height_px": 956,
@@ -65,5 +66,17 @@
   ],
   "title": "Beebody Beeswarm Micro Macro Calibration",
   "unsupported_inference": "Does not calibrate colony-scale recruitment or make small-scene contacts a population model.",
-  "validation_status": "nonblank quality sidecar generated"
+  "validation_status": "nonblank quality sidecar and plot data generated",
+  "visual_quality": {
+    "aspect_class": "wide",
+    "aspect_ratio": 2.356,
+    "figure_role": "overview",
+    "height_px": 956,
+    "label_density": "moderate",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 2252,
+    "min_dimension_px": 956,
+    "readability_status": "pass",
+    "width_px": 2252
+  }
 }

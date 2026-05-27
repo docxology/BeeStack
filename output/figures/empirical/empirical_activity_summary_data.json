@@ -1,0 +1,21 @@
+{
+  "chart_type": "bar",
+  "figure_path": "output/figures/empirical/empirical_activity_summary.png",
+  "labels": [
+    "Odor separability",
+    "Calcium inhibitory fraction",
+    "Calcium excitatory fraction",
+    "Aftersmell response",
+    "Antennal movement drive"
+  ],
+  "orientation": "horizontal",
+  "schema": "beestack.figure_data.v1",
+  "title": "BeeBrain empirical activity summary",
+  "values": [
+    0.6511059958748602,
+    0.34285714285714286,
+    0.08571428571428572,
+    0.1701999114182084,
+    0.20909014051467958
+  ]
+}

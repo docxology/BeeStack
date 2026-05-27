@@ -2,8 +2,8 @@
   "empirical_availability_counts": {
     "generated": 1,
     "missing_optional": 0,
-    "network_gated_absent": 1,
-    "parsed": 3,
+    "network_gated_absent": 0,
+    "parsed": 4,
     "registered_absent": 0
   },
   "empirical_evidence": [
@@ -17,12 +17,12 @@
       "modality": "workbook/CSV odor response panels"
     },
     {
-      "availability_status": "network_gated_absent",
-      "completeness_fraction": 0.0,
+      "availability_status": "parsed",
+      "completeness_fraction": 0.125,
       "dataset_id": "calcium-datasets",
       "integration_target": "BeeBrain calcium summaries",
-      "known_gap": "network gated absent; below configured completeness threshold",
-      "local_records": 0,
+      "known_gap": "below configured completeness threshold",
+      "local_records": 1,
       "modality": "Paoli-style calcium traces"
     },
     {
@@ -66,7 +66,7 @@
     "No external Hiveopolis or BEEHAVE engine is required in the default path.",
     "External nectar landscape calibration and brood demography remain future adapter layers."
   ],
-  "local_empirical_record_count": 139,
+  "local_empirical_record_count": 140,
   "module_scorecards": [
     {
       "evidence": [
@@ -124,9 +124,9 @@
       ],
       "metrics": {
         "anatomy_inventory_count": 7.0,
-        "brain_data_parseable_fraction": 0.6,
+        "brain_data_parseable_fraction": 0.8,
         "empirical_panel_count": 48.0,
-        "mean_odor_separability": 0.6511059958748603,
+        "mean_odor_separability": 0.6511059958748602,
         "registered_dataset_count": 10.0,
         "source_verified_fraction": 1.0,
         "template_count": 24.0,
@@ -161,7 +161,7 @@
           "name": "brain_parseability_target",
           "passed": true,
           "threshold": ">= 0.8 or all blockers source-verified",
-          "value": 0.6
+          "value": 0.8
         }
       ]
     },
@@ -299,7 +299,7 @@
     }
   ],
   "overall_validation_fraction": 1.0,
-  "parsed_empirical_evidence_count": 3,
+  "parsed_empirical_evidence_count": 4,
   "sensitivity_sweeps": [
     {
       "interpretation": "mind.energy_threshold sweep is insensitive under the current reduced kernel; recruitment and comb fraction ranges both stayed at 0.",
@@ -702,6 +702,33 @@
       "artifact_type": "figure",
       "backend": "matplotlib/networkx/scikit-image",
       "fidelity_level": "research_diagnostic",
+      "path": "output/figures/empirical/connectome_completeness_tiers.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "output/figures/empirical/connectome_neuropil_module_map.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "output/figures/empirical/connectome_structural_graph.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
       "path": "output/figures/empirical/empirical_activity_summary.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",
       "source_data": "research_suite_report",
@@ -792,6 +819,15 @@
       "artifact_type": "figure",
       "backend": "matplotlib/networkx/scikit-image",
       "fidelity_level": "research_diagnostic",
+      "path": "output/figures/manuscript_figure_claim_detail.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
       "path": "output/figures/manuscript_figure_claim_map.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",
       "source_data": "research_suite_report",
@@ -846,6 +882,15 @@
       "artifact_type": "figure",
       "backend": "matplotlib/networkx/scikit-image",
       "fidelity_level": "research_diagnostic",
+      "path": "output/figures/methods/methods_dashboard_detail.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
       "path": "output/figures/methods/methods_manuscript_evidence_index.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",
       "source_data": "research_suite_report",
@@ -865,6 +910,51 @@
       "backend": "matplotlib/networkx/scikit-image",
       "fidelity_level": "research_diagnostic",
       "path": "output/figures/module_contract_coverage.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "output/figures/renders/beebody_flybody_flight_contact_sheet.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "output/figures/renders/beebody_flybody_morphology_contact_sheet.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "output/figures/renders/beeswarm_10_beebody_collision_contact_sheet.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "output/figures/renders/beeswarm_waggle_dance_configured_contact_sheet.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "output/figures/renders/beeswarm_waggle_dance_long_contact_sheet.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",
       "source_data": "research_suite_report",
       "validation_status": "nonblank_static_figure"
@@ -927,6 +1017,15 @@
       "artifact_type": "figure",
       "backend": "matplotlib/networkx/scikit-image",
       "fidelity_level": "research_diagnostic",
+      "path": "output/figures/research/research_evidence_detail.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
       "path": "output/figures/research/research_fidelity_evidence_network.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",
       "source_data": "research_suite_report",
@@ -981,6 +1080,15 @@
       "artifact_type": "figure",
       "backend": "matplotlib/networkx/scikit-image",
       "fidelity_level": "research_diagnostic",
+      "path": "output/figures/research/stack_synthesis_findings_detail.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
       "path": "output/figures/research/research_module_scorecard_heatmap.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",
       "source_data": "research_suite_report",
@@ -1009,6 +1117,15 @@
       "backend": "matplotlib/networkx/scikit-image",
       "fidelity_level": "research_diagnostic",
       "path": "output/figures/research/research_fidelity_evidence_network.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "research_suite_report",
+      "validation_status": "nonblank_static_figure"
+    },
+    {
+      "artifact_type": "figure",
+      "backend": "matplotlib/networkx/scikit-image",
+      "fidelity_level": "research_diagnostic",
+      "path": "output/figures/research/research_evidence_detail.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",
       "source_data": "research_suite_report",
       "validation_status": "nonblank_static_figure"

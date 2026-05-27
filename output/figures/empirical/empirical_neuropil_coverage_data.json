@@ -1,0 +1,21 @@
+{
+  "chart_type": "bar",
+  "figure_path": "output/figures/empirical/empirical_neuropil_coverage.png",
+  "labels": [
+    "mushroom_body",
+    "optic_lobe",
+    "antennal_lobe",
+    "neuropil",
+    "central_complex"
+  ],
+  "orientation": "horizontal",
+  "schema": "beestack.figure_data.v1",
+  "title": "Honeybee Standard Brain neuropil abbreviation coverage",
+  "values": [
+    14.0,
+    4.0,
+    2.0,
+    1.0,
+    1.0
+  ]
+}

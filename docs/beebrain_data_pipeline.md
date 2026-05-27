@@ -59,6 +59,11 @@ The activity pipeline covers all curated BeeBrain activity datasets:
   The paired Current Biology article DOI is `10.1016/j.cub.2024.02.045` and
   supports follower antennal-positioning interpretation, not colony-scale
   recruitment validation.
+- Szyszka 2023 MDPI supplementary zip (Table S1 Wilcoxon template tests via
+  `mdpi-res.com`; VAR connectivity matrix not on public deposit).
+
+Citation anchors without registered download URLs: Galizia 1999 glomerular maps,
+Kaneko 2016 Kenyon subtypes.
 
 Parsed activity artifacts include:
 
@@ -68,6 +73,7 @@ Parsed activity artifacts include:
 - `EmpiricalWaggleFollowerDataset`
 - `WaggleFollowerTrack`
 - `WaggleFollowerSummary`
+- `SzyszkaGrangerSupplementSummary`
 - `BeeBrainDataCompletenessPanel`
 - `BeeBrainSourceGap`
 - `BeeBrainSourceStatus`
@@ -84,6 +90,7 @@ Parsed activity artifacts include:
 - `output/data/bee_brain_end_to_end_report.json`
 - `output/data/waggle_follower_analysis.json`
 - `output/data/brain_data_completeness.json`
+- `output/data/bee_brain_connectome.json`
 - `output/reports/empirical_analysis.md`
 - `output/reports/waggle_follower_analysis.md`
 - `output/figures/empirical/empirical_panel_heatmap.png`
@@ -99,6 +106,41 @@ Parsed activity artifacts include:
 - `output/figures/empirical/beeswarm_waggle_recruitment_diagnostics.png`
 - `output/figures/empirical/brain_data_completeness_matrix.png`
 - `output/figures/empirical/bee_brain_multimodal_source_map.png`
+- `output/figures/empirical/connectome_structural_graph.png`
+- `output/figures/empirical/connectome_neuropil_module_map.png`
+- `output/figures/empirical/connectome_completeness_tiers.png`
+
+## Dryad authentication
+
+Some Dryad file endpoints return HTTP 401 without bearer authentication.
+Export a Dryad API token **or** OAuth client credentials before running
+`scripts/fetch_empirical_bee_data.py` when Paoli calcium `.mat` archives
+must be refreshed:
+
+```bash
+export DRYAD_CLIENT_ID=your_app_id
+export DRYAD_CLIENT_SECRET=your_secret
+# optional direct token instead:
+export DRYAD_API_TOKEN=your_bearer_token
+```
+
+Large datasets cannot use version zip downloads (HTTP 405); the fetcher
+downloads individual files and follows Dryad's S3 presigned redirects
+without forwarding Bearer auth to AWS. Figshare ndownloader redirects to
+`pfigshare` S3 hosts; Dryad bearer tokens are attached only to
+`datadryad.org` URLs. Without credentials, fetch records
+`download_blocked:401` and completeness reports the blocker instead of
+implying a parse failure.
+
+## External repository targets (not in this pipeline)
+
+Scholarship refresh records community resources that BeeStack may register
+later—Hymenoptera Genome Database / HymenopteraMine (`10.1093/nar/gkab1018`),
+BeeBiome (`10.1186/s12859-025-06229-7`), and the HAv3.1 reference genome
+(`10.1186/s12864-019-5639-3`)—in
+`output/data/external_dataset_registry.json`. They are **not** stages in
+`fetch_empirical_bee_data.py` until each source passes the same registration,
+license, parser, and audit contract as existing Dryad and Figshare deposits.
 
 ## Fidelity Notes
 

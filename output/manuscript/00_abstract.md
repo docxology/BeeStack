@@ -1,4 +1,4 @@
-# Abstract
+# Abstract {#sec:abstract}
 
 BeeStack is an executable research scaffold for whole-colony simulation
 of the Western honey bee, *Apis mellifera*. It converts a five-layer
@@ -26,6 +26,11 @@ inventories, response panels, and dance-decoding templates; while BeeMind,
 the non-visual swarm communication kernel, and BeeNiche remain reduced
 deterministic kernels with explicit contracts and labeled gaps.
 
+Field-scale colony-health stressors—mites, viruses, pesticides, and
+survey-documented losses—motivate the roadmap's colony ledger and assimilation
+surfaces [@sec:roadmap], but BeeStack v0 does not model those drivers as
+typed state.
+
 The stack is seeded with `20260513`, runs a 100 Hz
 observation–action boundary on top of a 0.5 ms physics step,
 and hydrates this manuscript from variables generated at run time. The
@@ -38,13 +43,13 @@ stroke. The empirical run currently integrates 48
 response panels, 7 anatomy inventories,
 1 antennal-movement summaries, and
 24 odor templates, with a parseable-source
-fraction of 0.600. The research suite reports
-74 visualization artifacts,
+fraction of 0.800. The research suite reports
+87 visualization artifacts,
 3 deterministic sensitivity sweeps,
 5 empirical evidence records, and an overall
 validation fraction of 1.000. The methods-analysis
 pass adds 5 module dashboards,
-7 static methods figures, and
+8 static methods figures, and
 6 manuscript-evidence cross-links.
 
 BeeStack does not claim to be a finished biological simulator. Its

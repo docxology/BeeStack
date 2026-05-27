@@ -12,7 +12,7 @@
   "alt_text": "BeeSwarm methods panel with contact metrics and reduced recruitment traces.",
   "artifact_kind": "figure",
   "backend": "Matplotlib/pandas",
-  "caption": "BeeSwarm dashboard separating strict small-scene contact physics from reduced recruitment and BEEHAVE-compatible colony summaries.",
+  "caption": "Matplotlib/pandas/NetworkX beeswarm contact and recruitment diagnostics shows BeeSwarm dashboard separating strict small-scene contact physics from reduced recruitment and BEEHAVE-compatible colony summaries. Generated from MethodsAnalysisReport, animation manifest, and simulation records. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate colony-scale recruitment dynamics.",
   "citation_keys": [
     "todorov2012mujoco",
     "becher2014beehave",
@@ -40,16 +40,17 @@
   "figure_path": "output/figures/methods/beeswarm_methods_contact_recruitment.png",
   "manuscript_label": "fig:swarm_methods_contact",
   "manuscript_section": "manuscript/05_methods_body_swarm.md",
+  "plot_data_path": "output/figures/methods/beeswarm_methods_contact_recruitment_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 1050,
+    "height_px": 977,
     "max_intensity": 255,
-    "mean_intensity": 247.63598919980365,
+    "mean_intensity": 239.82373906683486,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 34.966989792493784,
-    "width_px": 2134
+    "std_intensity": 45.958563239102375,
+    "width_px": 1962
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
   "schema": "beestack.figure.v1",
@@ -61,5 +62,17 @@
   ],
   "title": "Beeswarm Methods Contact Recruitment",
   "unsupported_inference": "Does not validate colony-scale recruitment dynamics.",
-  "validation_status": "nonblank image and quality sidecar passed"
+  "validation_status": "nonblank image, quality sidecar, and plot data passed",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 2.008,
+    "figure_role": "overview",
+    "height_px": 977,
+    "label_density": "moderate",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 1962,
+    "min_dimension_px": 977,
+    "readability_status": "pass",
+    "width_px": 1962
+  }
 }

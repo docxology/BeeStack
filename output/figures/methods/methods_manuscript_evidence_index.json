@@ -12,7 +12,7 @@
   "alt_text": "Grouped bars for module evidence links and visual artifacts with a validation-fraction line.",
   "artifact_kind": "figure",
   "backend": "Matplotlib/pandas",
-  "caption": "Manuscript evidence index comparing evidence-link counts, visual-artifact counts, and validation fractions by BeeStack module.",
+  "caption": "Matplotlib/pandas/NetworkX beestack manuscript evidence index shows Manuscript evidence index comparing evidence-link counts, visual-artifact counts, and validation fractions by BeeStack module. Generated from MethodsAnalysisReport manuscript evidence links. Sidecar validation checks raster, source routing, and registered claim tier. Does not substitute evidence links for absent empirical support.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
@@ -39,15 +39,16 @@
   "figure_path": "output/figures/methods/methods_manuscript_evidence_index.png",
   "manuscript_label": "fig:methods_evidence_index",
   "manuscript_section": "manuscript/08_validation_and_figures.md",
+  "plot_data_path": "output/figures/methods/methods_manuscript_evidence_index_data.json",
   "priority": "primary",
   "quality": {
     "height_px": 884,
     "max_intensity": 255,
-    "mean_intensity": 234.71568649684113,
+    "mean_intensity": 234.72763636024075,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 48.55808994652949,
+    "std_intensity": 48.395180514064336,
     "width_px": 1696
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
@@ -59,5 +60,17 @@
   ],
   "title": "Methods Manuscript Evidence Index",
   "unsupported_inference": "Does not substitute evidence links for absent empirical support.",
-  "validation_status": "nonblank image and quality sidecar passed"
+  "validation_status": "nonblank image, quality sidecar, and plot data passed",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.919,
+    "figure_role": "overview",
+    "height_px": 884,
+    "label_density": "dense",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 1696,
+    "min_dimension_px": 884,
+    "readability_status": "pass",
+    "width_px": 1696
+  }
 }

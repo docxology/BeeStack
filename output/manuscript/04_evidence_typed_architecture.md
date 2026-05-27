@@ -1,4 +1,4 @@
-# Evidence-Typed Architecture
+# Evidence-Typed Architecture {#sec:architecture}
 
 BeeStack is organized around the five biological layers named in the
 project specification [@friedman2026beestack], each implemented as a
@@ -70,7 +70,7 @@ same data contracts before it can enter the closed loop.
 
 The default configuration uses a 100 Hz
 observation–action boundary, 10 Hz policy cadence
-(typical: every tenth control step), and 0.5 ms physics
+(typical: every 10 control steps), and 0.5 ms physics
 step. These are interface and integration choices that keep the layer
 contracts aligned with FlyBody/MuJoCo stepping; they should not be read
 as calibrated honey-bee sensorimotor latency estimates.
@@ -113,15 +113,17 @@ records what level of evidence backs each claim. The animation manifest
 currently contains 9 animations
 (5 FlyBody, 4
 reduced schematic), and the manuscript figure index links
-57 figures and visual artifacts to their
+69 figures and visual artifacts to their
 backend, fidelity tier, validation status, and regeneration command.
 
-![Matplotlib BeeStack graphical abstract generated from module contracts and coverage records; sidecar validation checks the raster output, and the figure supports architecture traceability rather than biological or digital-twin validation.](../figures/beestack_graphical_abstract.png){#fig:beestack_graphical_abstract}
+[@fig:beestack_graphical_abstract] summarizes module coverage and stack contracts at a glance.
+
+![Matplotlib beestack graphical abstract shows Showcase architecture schematic linking BeeBody, BeeBrain, BeeMind, BeeSwarm, and BeeNiche through typed contracts and generated evidence. Generated from module coverage records and stack contract definitions. Sidecar validation checks raster, source routing, and registered claim tier. Does not support a claim of biological or digital-twin validation.](../figures/beestack_graphical_abstract.png){#fig:beestack_graphical_abstract}
 
 ## Module dependencies
 
 The static module-coverage figure (`output/figures/module_contract_coverage.png`,
-see "Integrated Results") renders the dependency surface explicitly so that reviewers can
+see [@sec:integrated_results]) renders the dependency surface explicitly so that reviewers can
 trace the path from a single observation to a single action without
 having to read the code.
 

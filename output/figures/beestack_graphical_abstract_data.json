@@ -1,0 +1,49 @@
+{
+  "annotations": [
+    "Observation -> BrainState -> BeliefState -> BeeAgent/PheromoneField -> CombGrid"
+  ],
+  "chart_type": "schematic",
+  "edges": [
+    {
+      "source": "BeeBody",
+      "target": "BeeBrain"
+    },
+    {
+      "source": "BeeBrain",
+      "target": "BeeMind"
+    },
+    {
+      "source": "BeeMind",
+      "target": "BeeSwarm"
+    },
+    {
+      "source": "BeeSwarm",
+      "target": "BeeNiche"
+    }
+  ],
+  "figure_path": "output/figures/beestack_graphical_abstract.png",
+  "nodes": [
+    {
+      "id": "BeeBody",
+      "label": "BeeBody"
+    },
+    {
+      "id": "BeeBrain",
+      "label": "BeeBrain"
+    },
+    {
+      "id": "BeeMind",
+      "label": "BeeMind"
+    },
+    {
+      "id": "BeeSwarm",
+      "label": "BeeSwarm"
+    },
+    {
+      "id": "BeeNiche",
+      "label": "BeeNiche"
+    }
+  ],
+  "schema": "beestack.figure_data.v1",
+  "title": "BeeStack graphical abstract"
+}

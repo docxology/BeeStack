@@ -1,0 +1,35 @@
+{
+  "chart_type": "bar",
+  "figure_path": "output/figures/empirical/empirical_stack_alignment.png",
+  "labels": [
+    "16ol",
+    "17ol",
+    "26one",
+    "26ol",
+    "18ol",
+    "19ol",
+    "2-butanone",
+    "18ol475nm",
+    "26ol475nm",
+    "17ol475nm",
+    "16ol475nm",
+    "1-butanol"
+  ],
+  "orientation": "horizontal",
+  "schema": "beestack.figure_data.v1",
+  "title": "BeeBrain alignment to empirical templates",
+  "values": [
+    0.9999999578150452,
+    0.9999571697595888,
+    0.9999267276189875,
+    0.9999118773189343,
+    0.9998975142167097,
+    0.99980719619974,
+    0.9647104017355654,
+    0.9555064559349361,
+    0.9523683727173862,
+    0.946381032301122,
+    0.9366249585556942,
+    0.8946365288811207
+  ]
+}

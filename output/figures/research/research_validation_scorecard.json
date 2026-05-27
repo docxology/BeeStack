@@ -19,6 +19,7 @@
   "figure_path": "output/figures/research/research_validation_scorecard.png",
   "manuscript_label": "fig:research_validation_scorecard",
   "manuscript_section": "output/reports/manuscript_figure_index.md",
+  "plot_data_path": "output/figures/research/research_validation_scorecard_data.json",
   "priority": "indexed",
   "quality": {
     "height_px": 748,
@@ -36,5 +37,17 @@
   "source_dois": [],
   "title": "Research Validation Scorecard",
   "unsupported_inference": "Does not support claims beyond the generated artifact and stated fidelity tier.",
-  "validation_status": "nonblank image and quality sidecar passed"
+  "validation_status": "nonblank image, quality sidecar, and plot data passed",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.795,
+    "figure_role": "dashboard",
+    "height_px": 748,
+    "label_density": "moderate",
+    "manuscript_use": "indexed_gallery",
+    "max_dimension_px": 1343,
+    "min_dimension_px": 748,
+    "readability_status": "gallery",
+    "width_px": 1343
+  }
 }

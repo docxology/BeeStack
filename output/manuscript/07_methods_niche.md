@@ -1,4 +1,4 @@
-# BeeNiche Methods and Adapter Provenance
+# BeeNiche Methods and Adapter Provenance {#sec:methods_niche}
 
 BeeNiche models the *constructed environment* of the colony. It owns a
 comb grid with 864 voxels (default $18 \times 12 \times 4$),
@@ -49,6 +49,21 @@ Landscape state is read-only from BeeBody and BeeBrain (it feeds the
 forager observation channel) but writable from BeeSwarm (depletion
 through recruited foraging).
 
+## Planned driver and forage data surfaces
+
+BeeNiche v0 uses deterministic seasonal/weather witnesses rather than
+external observations. The scholarship refresh identifies adapter targets
+that should enter only through typed driver ingestion (see [@sec:roadmap]
+step 2): EPA and peer-reviewed hive-matrix pesticide residues
+[@glinski2024hivematrices; @epa2024hivematrices; @hisamoto2024landscape],
+land-use effects on forage nutrition [@landuse2024nutrition], DNA
+metabarcoding of forage plants [@chege2025forage], and global occurrence
+aggregates such as BeeBDC [@dorey2023beebdc]. BeeNet-style national
+monitoring programmes and USDA production statistics are listed in
+`output/data/external_dataset_registry.json` as unwired metadata. None
+of these sources validate the current comb or thermal kernel until
+parsers, licenses, and held-out residuals are recorded in generated reports.
+
 ## Why BeeNiche matters
 
 BeeNiche is important because it *closes the stack*. Swarm task
@@ -71,7 +86,9 @@ in the current run — no downstream BEEHAVE or Hiveopolis runtime is
 invoked — but the schema is preserved so that coupling can happen
 without breaking BeeStack's internal contracts.
 
-![Matplotlib adapter-boundary map generated from niche methods records, simulation records, BEEHAVE anchors, and Hiveopolis interface notes; sidecar validation checks the raster, and the figure supports adapter-scope claims rather than real-time hive-control or full-ecology validation.](../figures/beeniche_adapter_niche_map.png){#fig:niche_adapter_map}
+[@fig:niche_adapter_map] maps BeeNiche adapter schemas to niche and external-engine anchors.
+
+![Matplotlib beeniche adapter and niche map shows Adapter map placing BEEHAVE-compatible colony summaries beside comb, thermal, and forage fields without claiming full hive ecology. Generated from source refresh ledger, niche methods records, simulation records, and adapter notes. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate full ecology, real-time hive control, or thermodynamic colony dynamics.](../figures/beeniche_adapter_niche_map.png){#fig:niche_adapter_map}
 
 ## Methods-analysis Niche panel
 
@@ -82,7 +99,9 @@ midpoint. The panel is written to
 `output/figures/methods/beeniche_methods_comb_thermal.png` so niche
 claims are anchored to *quantitative traces* rather than to prose alone.
 
-![Matplotlib/pandas BeeNiche comb and thermal dashboard generated from MethodsAnalysisReport and simulation records; sidecar validation checks the raster, and the figure supports deterministic comb/thermal diagnostics rather than a full ecology or hive thermodynamics engine.](../figures/methods/beeniche_methods_comb_thermal.png){#fig:niche_methods_comb_thermal}
+[@fig:niche_methods_comb_thermal] plots comb occupancy and brood-thermal diagnostics.
+
+![Matplotlib/pandas/NetworkX beeniche comb and thermal diagnostics shows BeeNiche methods panel showing comb occupancy, brood thermal error, foraging-radius context, and deterministic niche-kernel validation. Generated from MethodsAnalysisReport and simulation records. Sidecar validation checks raster, source routing, and registered claim tier. Does not support a full ecology or hive thermodynamics engine.](../figures/methods/beeniche_methods_comb_thermal.png){#fig:niche_methods_comb_thermal}
 
 ## Fidelity boundary
 

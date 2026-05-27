@@ -1,0 +1,22 @@
+{
+  "chart_type": "bar",
+  "figure_path": "output/figures/empirical/waggle_follower_alignment.png",
+  "labels": [
+    "Angle-midpoint coupling",
+    "Left/right synchrony",
+    "Decoding improvement",
+    "Follower straightness",
+    "BeeStack confidence"
+  ],
+  "orientation": "horizontal",
+  "schema": "beestack.figure_data.v1",
+  "title": "Waggle follower empirical antennal alignment",
+  "track_count": 59,
+  "values": [
+    0.33386139556393624,
+    0.37419658945174517,
+    0.24776741229159377,
+    0.487850371035793,
+    0.28875178634201437
+  ]
+}

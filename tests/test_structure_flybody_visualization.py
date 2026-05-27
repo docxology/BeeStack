@@ -467,7 +467,7 @@ def test_swarm_niche_visualization_extra_methods(tmp_path: Path) -> None:
     paths = generate_analysis_figures(
         records, ["BeeBody", "BeeBrain", "BeeMind", "BeeSwarm", "BeeNiche"], tmp_path
     )
-    assert len(paths) == 20
+    assert len(paths) == 21
     assert all(path.exists() for path in paths)
     assert (tmp_path / "beestack_graphical_abstract.png").exists()
     assert (tmp_path / "beestack_evidence_ladder.png").exists()
@@ -477,6 +477,7 @@ def test_swarm_niche_visualization_extra_methods(tmp_path: Path) -> None:
     assert (tmp_path / "beeniche_adapter_niche_map.png").exists()
     assert (tmp_path / "beestack_validation_readiness_residuals.png").exists()
     assert (tmp_path / "manuscript_figure_claim_map.png").exists()
+    assert (tmp_path / "manuscript_figure_claim_detail.png").exists()
     assert (tmp_path / "beestack_contract_network.png").exists()
     assert (tmp_path / "beeswarm_recruitment_task_allocation.png").exists()
     panel = parse_tabular_odor_response_rows(

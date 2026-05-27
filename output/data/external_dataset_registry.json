@@ -1,0 +1,85 @@
+{
+  "records": [
+    {
+      "blocker": "Not registered in empirical_brain_datasets or BeeNiche driver parsers.",
+      "name": "BeeBiome data portal",
+      "official_doi": "10.1186/s12859-025-06229-7",
+      "official_url": "https://www.beebiome.org",
+      "resource_id": "beebiome_portal",
+      "resource_type": "microbiome_sra_index",
+      "target_module": "BeeNiche/colony_ledger",
+      "wired_in_beestack": false
+    },
+    {
+      "blocker": "Genome annotation not registered alongside HSB empirical anatomy IDs.",
+      "name": "Hymenoptera Genome Database / HymenopteraMine",
+      "official_doi": "10.1093/nar/gkab1018",
+      "official_url": "https://hymenoptera.elsiklab.missouri.edu/",
+      "resource_id": "hymenoptera_genome_database",
+      "resource_type": "genomics_annotation",
+      "target_module": "BeeBrain",
+      "wired_in_beestack": false
+    },
+    {
+      "blocker": "Forage/landscape adapters use synthetic witnesses only.",
+      "name": "BeeBDC global bee occurrence dataset",
+      "official_doi": "10.1038/s41597-023-02626-w",
+      "official_url": "https://jbdorey.github.io/BeeBDC/",
+      "resource_id": "beebdc_occurrence",
+      "resource_type": "occurrence_aggregation",
+      "target_module": "BeeNiche",
+      "wired_in_beestack": false
+    },
+    {
+      "blocker": "No genome-fetch stage in empirical pipeline.",
+      "name": "NCBI Apis mellifera HAv3.1 reference genome",
+      "official_doi": "10.1186/s12864-019-5639-3",
+      "official_url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_003254395.2/",
+      "resource_id": "ncbi_amel_hav31",
+      "resource_type": "reference_genome",
+      "target_module": "BeeBrain",
+      "wired_in_beestack": false
+    },
+    {
+      "blocker": "Survey microdata not ingested; scholarly continuity via @aurell2024survey only.",
+      "name": "U.S. Beekeeping Survey (Auburn / Apiary Inspectors of America)",
+      "official_doi": "",
+      "official_url": "https://apiaryinspectors.org/US-beekeeping-survey-24-25",
+      "resource_id": "auburn_aia_survey",
+      "resource_type": "colony_loss_survey",
+      "target_module": "colony_ledger/assimilation",
+      "wired_in_beestack": false
+    },
+    {
+      "blocker": "No NASS parser or assimilation surface in v0.",
+      "name": "USDA NASS honey production statistics",
+      "official_doi": "",
+      "official_url": "https://esmis.nal.usda.gov/publication/honey",
+      "resource_id": "usda_nass_honey",
+      "resource_type": "agricultural_statistics",
+      "target_module": "colony_ledger",
+      "wired_in_beestack": false
+    },
+    {
+      "blocker": "Pesticide burden not a typed BeeNiche state variable in v0.",
+      "name": "EPA pesticide residue concentrations in hive matrices",
+      "official_doi": "10.23719/1523343",
+      "official_url": "https://catalog.data.gov/dataset/pesticide-residue-concentration-in-honey-bee-hive-matrices",
+      "resource_id": "epa_hive_matrices",
+      "resource_type": "pesticide_residue_dataset",
+      "target_module": "BeeNiche",
+      "wired_in_beestack": false
+    },
+    {
+      "blocker": "Methods panels not yet mapped chapter-by-chapter to BEEBOOK volumes.",
+      "name": "COLOSS BEEBOOK standard methods",
+      "official_doi": "",
+      "official_url": "https://coloss.org/activities/beebook/",
+      "resource_id": "coloss_beebook",
+      "resource_type": "methods_manual",
+      "target_module": "methods/validation",
+      "wired_in_beestack": false
+    }
+  ],
+  "schema": "beestack.external_dataset_registry.v1"
+}

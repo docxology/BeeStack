@@ -12,7 +12,7 @@
   "alt_text": "Tiered evidence ladder with current BeeStack capabilities and blocked claims.",
   "artifact_kind": "figure",
   "backend": "Matplotlib",
-  "caption": "Visual evidence contract separating backend, claim tier, validation status, source data, and unsupported inference for current BeeStack figures.",
+  "caption": "Matplotlib beestack evidence ladder shows Visual evidence contract separating backend, claim tier, validation status, source data, and unsupported inference for current BeeStack figures. Generated from methods analysis, readiness review, and generated artifact manifests. Sidecar validation checks raster, source routing, and registered claim tier. Does not remove the assimilation, residual, uncertainty, or governance gaps.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
@@ -39,6 +39,7 @@
   "figure_path": "output/figures/beestack_evidence_ladder.png",
   "manuscript_label": "fig:beestack_evidence_ladder",
   "manuscript_section": "manuscript/08_validation_and_figures.md",
+  "plot_data_path": "output/figures/beestack_evidence_ladder_data.json",
   "priority": "primary",
   "quality": {
     "height_px": 1028,
@@ -59,5 +60,17 @@
   ],
   "title": "Beestack Evidence Ladder",
   "unsupported_inference": "Does not remove the assimilation, residual, uncertainty, or governance gaps.",
-  "validation_status": "nonblank quality sidecar generated"
+  "validation_status": "nonblank quality sidecar and plot data generated",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 2.121,
+    "figure_role": "overview",
+    "height_px": 1028,
+    "label_density": "dense",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 2180,
+    "min_dimension_px": 1028,
+    "readability_status": "pass",
+    "width_px": 2180
+  }
 }

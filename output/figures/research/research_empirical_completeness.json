@@ -19,16 +19,17 @@
   "figure_path": "output/figures/research/research_empirical_completeness.png",
   "manuscript_label": "fig:research_empirical_completeness",
   "manuscript_section": "output/reports/manuscript_figure_index.md",
+  "plot_data_path": "output/figures/research/research_empirical_completeness_data.json",
   "priority": "indexed",
   "quality": {
-    "height_px": 831,
+    "height_px": 849,
     "max_intensity": 255,
-    "mean_intensity": 210.58206836473698,
+    "mean_intensity": 212.7915612795239,
     "min_intensity": 24,
     "mode": "RGBA",
     "nonzero_histogram_bins": 232,
-    "std_intensity": 72.74975119014688,
-    "width_px": 1514
+    "std_intensity": 71.53573831835935,
+    "width_px": 1520
   },
   "regeneration_command": "uv run python scripts/run_research_suite.py",
   "schema": "beestack.figure.v1",
@@ -36,5 +37,17 @@
   "source_dois": [],
   "title": "Research Empirical Completeness",
   "unsupported_inference": "Does not support claims beyond the generated artifact and stated fidelity tier.",
-  "validation_status": "nonblank image and quality sidecar passed"
+  "validation_status": "nonblank image, quality sidecar, and plot data passed",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.79,
+    "figure_role": "overview",
+    "height_px": 849,
+    "label_density": "moderate",
+    "manuscript_use": "indexed_gallery",
+    "max_dimension_px": 1520,
+    "min_dimension_px": 849,
+    "readability_status": "gallery",
+    "width_px": 1520
+  }
 }

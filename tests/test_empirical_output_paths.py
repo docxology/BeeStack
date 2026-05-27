@@ -1,9 +1,6 @@
 from __future__ import annotations
 
-import importlib.util
-import sys
 from pathlib import Path
-from types import ModuleType
 from typing import Any
 
 from beestack.brain import (
@@ -16,21 +13,7 @@ from beestack.brain.empirical_data import (
     WaggleFollowerSummary,
     WaggleFollowerTrack,
 )
-
-
-def _analysis_script() -> ModuleType:
-    project_root = Path(__file__).resolve().parents[1]
-    scripts_dir = project_root / "scripts"
-    if str(scripts_dir) not in sys.path:
-        sys.path.insert(0, str(scripts_dir))
-    spec = importlib.util.spec_from_file_location(
-        "analyze_empirical_bee_data_for_tests",
-        scripts_dir / "analyze_empirical_bee_data.py",
-    )
-    assert spec is not None and spec.loader is not None
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
+from beestack.brain.empirical_ingest import _markdown_report, _waggle_markdown
 
 
 def _activity_summary() -> BeeBrainActivitySummary:
@@ -120,9 +103,7 @@ def test_bee_brain_end_to_end_report_normalizes_project_local_paths() -> None:
         anatomy=_anatomy_summary(),
         activity=_activity_summary(),
         dataset_ids=("fixture",),
-        figure_paths=(
-            str(project_root / "output" / "figures" / "empirical" / "panel.png"),
-        ),
+        figure_paths=(str(project_root / "output" / "figures" / "empirical" / "panel.png"),),
         archive_status=(),
         anatomy_downloads=(
             {
@@ -150,10 +131,10 @@ def test_bee_brain_end_to_end_report_normalizes_project_local_paths() -> None:
 
 def test_empirical_markdown_reports_repo_relative_figure_paths() -> None:
     project_root = Path(__file__).resolve().parents[1]
-    module = _analysis_script()
-    markdown = module._markdown_report(
+    markdown = _markdown_report(
         _minimal_empirical_report(),
         [project_root / "output" / "figures" / "empirical" / "panel.png"],
+        project_root,
     )
 
     assert str(project_root) not in markdown
@@ -162,7 +143,6 @@ def test_empirical_markdown_reports_repo_relative_figure_paths() -> None:
 
 def test_waggle_markdown_reports_repo_relative_source_files() -> None:
     project_root = Path(__file__).resolve().parents[1]
-    module = _analysis_script()
     source_file = (
         project_root
         / "output"
@@ -228,7 +208,7 @@ def test_waggle_markdown_reports_repo_relative_source_files() -> None:
                 "parseability_target_satisfied": False,
             }
 
-    markdown = module._waggle_markdown(dataset, Completeness())
+    markdown = _waggle_markdown(dataset, Completeness(), project_root)
 
     assert str(project_root) not in markdown
     assert (

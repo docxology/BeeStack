@@ -1,7 +1,7 @@
-# output/figures/empirical
+# Empirical Figure Gallery
 
-Generated static figures for analysis, empirical data, and research reports.
+BeeBrain empirical availability, source-completeness, waggle/follower, atlas, and structural-projectome figures generated from local analysis reports.
 
-- Scope: Regeneratable output artifacts.
-- Regenerate: uv run python scripts/analysis_pipeline.py
-- Canonical source: scripts/analysis_pipeline.py or scripts/analyze_empirical_bee_data.py
+- Scope: Manuscript-primary and supporting empirical figures plus sidecars and *_data.json plot-data files. Boundaries must keep absent calcium, functional, and synaptic evidence visible.
+- Regenerate: uv run python scripts/analyze_empirical_bee_data.py
+- Canonical source: scripts/analyze_empirical_bee_data.py and src/beestack/visualization/empirical_figures.py

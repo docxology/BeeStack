@@ -2,33 +2,18 @@
 
 from __future__ import annotations
 
-import json
 import re
 from pathlib import Path
-from typing import Any
 
 from beestack import (
     BeeStackConfig,
     assemble_stack_synthesis_review,
     stack_synthesis_markdown,
 )
-from beestack.utils import project_relative_path, project_relative_payload
+from beestack.utils import project_relative_path, read_json, write_json
 from beestack.visualization import generate_stack_synthesis_figures
-from signpost_project_tree import write_project_readiness_review, write_signposts
 
 BIB_KEY_RE = re.compile(r"@\w+\{([^,]+),")
-
-
-def write_json(path: Path, payload: Any, project_root: Path | None = None) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    normalized = project_relative_payload(payload, project_root)
-    path.write_text(json.dumps(normalized, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-
-
-def read_json(path: Path, default: Any | None = None) -> Any:
-    if not path.exists():
-        return {} if default is None else default
-    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def bibliography_keys(project_root: Path) -> tuple[str, ...]:
@@ -73,10 +58,8 @@ def write_stack_synthesis_outputs(
     report_json = reports_dir / "stack_synthesis_review.json"
     report_md = reports_dir / "stack_synthesis_review.md"
     payload = review.as_dict()
-    write_json(data_path, payload, project_root)
-    write_json(report_json, payload, project_root)
+    write_json(data_path, payload, project_root=project_root)
+    write_json(report_json, payload, project_root=project_root)
     report_md.parent.mkdir(parents=True, exist_ok=True)
     report_md.write_text(stack_synthesis_markdown(review), encoding="utf-8")
-    write_signposts(project_root)
-    write_project_readiness_review(project_root)
     return report_json, report_md

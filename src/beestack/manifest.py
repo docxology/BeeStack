@@ -9,6 +9,7 @@ from .body import build_flybody_modification_plan
 from .brain import empirical_anatomy_datasets, empirical_brain_datasets, empirical_brain_profile
 from .config import BeeStackConfig
 from .contracts import stack_contracts
+from .version import PACKAGE_VERSION
 
 
 @dataclass(frozen=True)
@@ -109,7 +110,7 @@ def model_card(cfg: BeeStackConfig) -> dict[str, Any]:
     modules = module_coverage(cfg)
     return {
         "name": "BeeStack",
-        "version": "0.1.0",
+        "version": PACKAGE_VERSION,
         "purpose": "Evidence-typed scaffold for whole-colony honeybee simulation",
         "seed": cfg.seed,
         "modules": [module.as_dict() for module in modules],

@@ -19,16 +19,17 @@
   "figure_path": "output/figures/research/beebody_method_diagnostics.png",
   "manuscript_label": "fig:beebody_method_diagnostics",
   "manuscript_section": "output/reports/manuscript_figure_index.md",
+  "plot_data_path": "output/figures/research/beebody_method_diagnostics_data.json",
   "priority": "indexed",
   "quality": {
     "height_px": 799,
     "max_intensity": 255,
-    "mean_intensity": 243.4206673084468,
+    "mean_intensity": 243.3722687213183,
     "min_intensity": 24,
     "mode": "RGBA",
     "nonzero_histogram_bins": 232,
-    "std_intensity": 37.013951614079765,
-    "width_px": 1343
+    "std_intensity": 37.03789902829535,
+    "width_px": 1344
   },
   "regeneration_command": "uv run python scripts/run_research_suite.py",
   "schema": "beestack.figure.v1",
@@ -36,5 +37,17 @@
   "source_dois": [],
   "title": "Beebody Method Diagnostics",
   "unsupported_inference": "Does not support claims beyond the generated artifact and stated fidelity tier.",
-  "validation_status": "nonblank image and quality sidecar passed"
+  "validation_status": "nonblank image, quality sidecar, and plot data passed",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.682,
+    "figure_role": "overview",
+    "height_px": 799,
+    "label_density": "moderate",
+    "manuscript_use": "indexed_gallery",
+    "max_dimension_px": 1344,
+    "min_dimension_px": 799,
+    "readability_status": "gallery",
+    "width_px": 1344
+  }
 }

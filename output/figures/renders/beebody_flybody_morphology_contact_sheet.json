@@ -1,0 +1,76 @@
+{
+  "accessibility_checks": {
+    "background": "#FFFFFF",
+    "contrast_ratio": 17.73971700407407,
+    "foreground": "#111827",
+    "large_text_passed": true,
+    "large_text_threshold": 3.0,
+    "normal_text_passed": true,
+    "normal_text_threshold": 4.5,
+    "standard": "WCAG 2.1 AA contrast thresholds"
+  },
+  "alt_text": "Contact sheet of eight FlyBody-rendered walking frames for a single nestmate honeybee body plan.",
+  "artifact_kind": "figure",
+  "backend": "FlyBody/MuJoCo",
+  "caption": "FlyBody/MuJoCo beebody flybody tripod walking render shows Eight-frame contact sheet from the FlyBody walk_imitation rollout on the generated apis_mellifera_worker MJCF, showing tripod gait, corbiculae, hindwing coupling, and honeybee visual cues. Generated from animation manifest, bee visual verification, and apis_mellifera_worker MJCF. Sidecar validation checks raster, source routing, and registered claim tier. Does not calibrate honeybee walking biomechanics or prove field-scale locomotion.",
+  "citation_keys": [
+    "vaxenburg2025flybody",
+    "todorov2012mujoco"
+  ],
+  "claim_tier": "strict_flybody_render",
+  "design_citation_keys": [
+    "rougier2014figures",
+    "cleveland1984graphical",
+    "crameri2020colour",
+    "w3c2023wcag21",
+    "wilkinson2016fair",
+    "heer2012interactive",
+    "ragan2016provenance"
+  ],
+  "design_source_dois": [
+    "10.1371/journal.pcbi.1003833",
+    "10.1080/01621459.1984.10478080",
+    "10.1038/s41467-020-19160-7",
+    "10.1038/sdata.2016.18",
+    "10.1145/2133806.2133821",
+    "10.1109/TVCG.2015.2467551"
+  ],
+  "fidelity": "real_flybody_3d contact sheet",
+  "figure_path": "output/figures/renders/beebody_flybody_morphology_contact_sheet.png",
+  "manuscript_label": "fig:beebody_flybody_morphology",
+  "manuscript_section": "manuscript/05_methods_body_swarm.md",
+  "plot_data_path": "output/figures/renders/beebody_flybody_morphology_contact_sheet_data.json",
+  "priority": "primary",
+  "quality": {
+    "height_px": 608,
+    "max_intensity": 255,
+    "mean_intensity": 81.1496824744152,
+    "min_intensity": 0,
+    "mode": "RGB",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 68.65888122168701,
+    "width_px": 1440
+  },
+  "regeneration_command": "uv run python scripts/generate_animations.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "animation manifest, bee visual verification, and apis_mellifera_worker MJCF",
+  "source_dois": [
+    "10.1038/s41586-025-09029-4",
+    "10.1109/IROS.2012.6386109"
+  ],
+  "title": "beebody flybody morphology contact sheet",
+  "unsupported_inference": "Does not calibrate honeybee walking biomechanics or prove field-scale locomotion.",
+  "validation_status": "nonblank contact sheet with plot data",
+  "visual_quality": {
+    "aspect_class": "contact_sheet",
+    "aspect_ratio": 2.368,
+    "figure_role": "contact_sheet",
+    "height_px": 608,
+    "label_density": "frame_strip",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 1440,
+    "min_dimension_px": 608,
+    "readability_status": "pass",
+    "width_px": 1440
+  }
+}

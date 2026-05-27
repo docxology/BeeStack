@@ -1,0 +1,27 @@
+{
+  "asset_count": 8,
+  "chart_type": "bar",
+  "downloaded_asset_count": 8,
+  "figure_path": "output/figures/empirical/empirical_anatomy_assets.png",
+  "labels": [
+    "VRML.zip",
+    "Atlas_Pe1_PNII.zip",
+    "HBSGrey.zip",
+    "ALF1_Standard.zip",
+    "ACT_Standard.zip",
+    "HBSConfocal.zip",
+    "HBSLabels.zip"
+  ],
+  "orientation": "horizontal",
+  "schema": "beestack.figure_data.v1",
+  "title": "Honeybee Standard Brain atlas assets",
+  "values": [
+    15.173422,
+    13.552411,
+    8.128062,
+    7.185403,
+    6.016068,
+    1.474844,
+    0.513114
+  ]
+}

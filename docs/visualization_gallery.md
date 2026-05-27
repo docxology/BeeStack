@@ -41,12 +41,12 @@ and `output/animations/flybody_scenes/waggle_long/contact_metrics.json`.
 | `output/figures/beebrain_empirical_alignment_timeseries.png` | Matplotlib | Empirical summary | Empirical odor-template alignment records | Empirical analysis report |
 | `output/figures/beeswarm_recruitment_task_allocation.png` | Matplotlib | Reduced swarm summary | BeeSwarm recruitment/task allocation | Analysis pipeline and tests |
 | `output/figures/beeniche_thermal_comb_panel.png` | Matplotlib | Reduced niche summary | Comb and thermal fields | Analysis pipeline and tests |
-| `output/figures/beestack_graphical_abstract.png`, `beestack_contract_network.png`, `beestack_scale_ladder.png`, `beestack_evidence_ladder.png`, `beestack_first_principles_claim_audit.png`, `manuscript_figure_claim_map.png`, `beestack_pipeline_overview.png` | Matplotlib | Showcase architecture / evidence boundary | Public contracts, configured modules, claim-tier boundaries, first-principles claim constraints, and main-figure provenance | Generated-output tests plus figure sidecar and primary-caption audits |
+| `output/figures/beestack_graphical_abstract.png`, `beestack_contract_network.png`, `beestack_scale_ladder.png`, `beestack_evidence_ladder.png`, `beestack_first_principles_claim_audit.png`, `manuscript_figure_claim_map.png`, `manuscript_figure_claim_detail.png`, `beestack_pipeline_overview.png` | Matplotlib | Showcase architecture / evidence boundary | Public contracts, configured modules, claim-tier boundaries, first-principles claim constraints, overview/detail figure provenance, and main-figure routing | Generated-output tests plus figure sidecar, visual-quality, and primary-caption audits |
 | `output/figures/empirical/*.png` | Matplotlib | Empirical figure | Downloaded/parsed BeeBrain anatomy and activity records | `analyze_empirical_bee_data.py` and empirical report |
 | `output/figures/empirical/waggle_follower_alignment.png`, `waggle_phase_coupling.png`, `beeswarm_waggle_recruitment_diagnostics.png` | Matplotlib | Empirical waggle figure | Hadjitofi-Webb follower antenna and model-error CSV summaries | Waggle follower analysis report |
 | `output/figures/empirical/brain_data_completeness_matrix.png`, `bee_brain_multimodal_source_map.png` | Matplotlib | Empirical completeness figure | Curated BeeBrain registry, downloaded status, parser status | Brain data completeness JSON |
-| `output/figures/research/*.png` plus sidecar `.json` files | Matplotlib, pandas, NetworkX, scikit-image | Research diagnostic | `ResearchSuiteReport` scorecards, evidence, sweeps, and visual inventory | Nonblank image validation, image-quality sidecar, and research-suite tests |
-| `output/figures/research/stack_synthesis_dashboard.png` | Matplotlib, pandas, scikit-image | Cross-stack synthesis diagnostic | `StackSynthesisReview` module readiness, telemetry, artifacts, signposting, and scholarship statistics | Nonblank image validation and synthesis tests |
+| `output/figures/research/*.png` plus sidecar `.json` files | Matplotlib, pandas, NetworkX, scikit-image | Research diagnostic | `ResearchSuiteReport` scorecards, evidence, sweeps, visual inventory, overview networks, and split evidence-detail panels | Nonblank image validation, image-quality sidecar, visual-quality report, and research-suite tests |
+| `output/figures/research/stack_synthesis_dashboard.png`, `stack_synthesis_findings_detail.png` | Matplotlib, pandas, scikit-image | Cross-stack synthesis diagnostic | `StackSynthesisReview` module readiness, telemetry, artifacts, signposting, scholarship statistics, and prioritized findings | Nonblank image validation, visual-quality sidecar, and synthesis tests |
 | `output/figures/methods/*.png` plus sidecar `.json` files | Matplotlib, pandas, scikit-image | Methods diagnostic | `MethodsAnalysisReport` module panels, validation panels, scenario sweeps, and manuscript evidence links | Nonblank image validation, image-quality sidecar, and methods-analysis tests |
 
 Curated manuscript figures are registered with caption, alt text, intended
@@ -67,6 +67,12 @@ uv run python scripts/analyze_empirical_bee_data.py
 uv run python scripts/run_methods_analysis.py
 uv run python scripts/run_research_suite.py
 ```
+
+The generated visual QA report at `output/reports/visual_quality_report.md`
+classifies manuscript-primary figures as overview, detail, dashboard, or
+contact sheet; records dimensions, caption length, label density, split-group
+membership, and readability status; and keeps `_data.json` plot-data files
+separate from narrative sidecars.
 
 ## Diagnostics And Reports
 

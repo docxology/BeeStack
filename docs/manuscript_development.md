@@ -12,7 +12,7 @@ configuration-derived statements flow through
 | `00_abstract.md` | High-level claim summary | Manuscript variables and research report |
 | `01_scholarship_and_related_work.md` | Biological motivation and scholarship anchors | Literature, source-refresh ledger, fidelity boundary |
 | `02_claim_ledger.md` | Claim ledger and project commitments | Research suite, integrity review, output manifest |
-| `03_materials_and_source_provenance.md` | Source tiers, data availability, and generated materials | `output/llm/source_refresh_ledger.json`; source audit |
+| `03_materials_and_source_provenance.md` | Source tiers, data availability, and generated materials | `output/llm/source_refresh_ledger.json`; `output/data/external_dataset_registry.json`; source audit |
 | `04_evidence_typed_architecture.md` | Contracts, timing, and module boundaries | `output/data/model_card.json` |
 | `05_methods_body_swarm.md` | BeeBody plus strict/reduced BeeSwarm boundary | Body GIFs, MJCF, contact reports, micro/macro map |
 | `06_methods_brain_mind.md` | BeeBrain empirical surface plus BeeMind policy methods | Empirical reports, data completeness, policy diagnostics |
@@ -117,3 +117,18 @@ unresolved placeholders.
   language.
 - Reproducibility commands match `pyproject.toml`, `uv.lock`, and current
   script names.
+
+## Section title style guide
+
+- **H1:** Descriptive topic title aligned with the filename slug; no numeric
+  prefix (for example file `04_evidence_typed_architecture.md` →
+  `# Evidence-Typed Architecture`).
+- **H2:** Sentence case by default (`## Source tiers`, `## Run summary`).
+  Preserve module names, acronyms, and citation keys (`BeeBody`, `MuJoCo`,
+  `BEEHAVE`).
+- **Numbered roadmap H2s:** `14_roadmap.md` keeps `## 1. …` through `## 9. …`
+  as the only numbered section headings.
+- **References grouping:** `99_references.md` may use bibliographic group
+  headings in title case (`## Brain anatomy and activity`).
+- **Specificity:** Prefer concrete H2 titles tied to the subsection content
+  (`## Empirical analysis reports` rather than `## Reports written`).

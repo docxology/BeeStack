@@ -1,0 +1,38 @@
+{
+  "chart_type": "schematic",
+  "figure_path": "output/figures/methods/methods_manuscript_evidence_index.png",
+  "nodes": [
+    {
+      "evidence_links": 1,
+      "module": "BeeBody",
+      "validation_fraction": 1.0,
+      "visual_artifacts": 11
+    },
+    {
+      "evidence_links": 2,
+      "module": "BeeBrain",
+      "validation_fraction": 1.0,
+      "visual_artifacts": 22
+    },
+    {
+      "evidence_links": 1,
+      "module": "BeeMind",
+      "validation_fraction": 1.0,
+      "visual_artifacts": 4
+    },
+    {
+      "evidence_links": 1,
+      "module": "BeeSwarm",
+      "validation_fraction": 1.0,
+      "visual_artifacts": 9
+    },
+    {
+      "evidence_links": 1,
+      "module": "BeeNiche",
+      "validation_fraction": 1.0,
+      "visual_artifacts": 6
+    }
+  ],
+  "schema": "beestack.figure_data.v1",
+  "title": "Manuscript evidence index by module"
+}

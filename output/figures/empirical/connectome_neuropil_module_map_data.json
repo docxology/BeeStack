@@ -1,0 +1,26 @@
+{
+  "chart_type": "heatmap",
+  "column_labels": [
+    "antennal_lobe",
+    "central_complex",
+    "mushroom_body",
+    "neuropil",
+    "optic_lobe"
+  ],
+  "figure_path": "output/figures/empirical/connectome_neuropil_module_map.png",
+  "matrix": [
+    [
+      3,
+      2,
+      15,
+      2,
+      5
+    ]
+  ],
+  "row_labels": [
+    "neuropil_count"
+  ],
+  "schema": "beestack.figure_data.v1",
+  "title": "Neuropil module map",
+  "value_label": "abbreviation_count"
+}

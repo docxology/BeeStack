@@ -78,6 +78,8 @@ from .pipeline import process_observation
 from .state import BrainState, DanceVector, SparseCode
 from .vision import color_opponency, optic_flow_magnitude
 from .waggle import (
+    JOHNSTON_EVENT_MIN_AMPLITUDE,
+    JOHNSTON_EVENT_MIN_FREQUENCY_HZ,
     FollowerOrientationDiagnostics,
     WaggleDanceKinematics,
     WaggleDecodingDiagnostics,
@@ -113,6 +115,8 @@ __all__ = [
     "EmpiricalTemplateBank",
     "GlomerularResponseSummary",
     "FollowerOrientationDiagnostics",
+    "JOHNSTON_EVENT_MIN_AMPLITUDE",
+    "JOHNSTON_EVENT_MIN_FREQUENCY_HZ",
     "NeuropilAbbreviation",
     "SparseCode",
     "WaggleDanceKinematics",

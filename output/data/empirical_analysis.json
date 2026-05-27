@@ -1,18 +1,18 @@
 {
   "activity_summary": {
-    "aftersmell_response_mean": 0.17019991141820834,
-    "all_quality_checks_passed": true,
+    "aftersmell_response_mean": 0.1701999114182084,
+    "all_quality_checks_passed": false,
     "antennal_active_sensing_drive": {
       "left_right_synchrony": 0.4448599787672444,
       "odor_on_fraction": 0.7772061549870226,
       "theta_derivative_drive": 0.20909014051467958
     },
     "antennal_movement_summary_count": 1,
-    "calcium_dataset_count": 0,
-    "calcium_excitatory_fraction": 0.0,
-    "calcium_inhibitory_fraction": 0.0,
-    "calcium_mean_latency_s": 0.0,
-    "mean_odor_separability": 0.6511059958748603,
+    "calcium_dataset_count": 1,
+    "calcium_excitatory_fraction": 0.08571428571428572,
+    "calcium_inhibitory_fraction": 0.34285714285714286,
+    "calcium_mean_latency_s": 1.2238801231807892,
+    "mean_odor_separability": 0.6511059958748602,
     "neuromodulatory_defence_summary": {
       "mean_abs_response": 3.4486151589790097,
       "panel_count": 7,
@@ -50,7 +50,7 @@
       "mushroom_body": 0.14088381916426101,
       "neuromodulation": 3.4486151589790097,
       "odorant_receptors": 4.5489696947769085,
-      "whole_brain_or_other": 4.300378466267598
+      "whole_brain_or_other": 4.300378466267597
     },
     "template_count": 24,
     "waggle_follower_summary": {
@@ -78,7 +78,7 @@
       "track_count": 59
     }
   },
-  "all_quality_checks_passed": true,
+  "all_quality_checks_passed": false,
   "anatomy_downloads": [
     {
       "asset_id": "hsb-gray-tiff",
@@ -91,7 +91,7 @@
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/HBSGrey.zip",
       "sha256": "95ca205aae95639d44a3a3ff43838f9f30e2c578ae8362206eba47dcfc81f642",
       "size_bytes": 8026083,
-      "skipped_existing": true,
+      "skipped_existing": false,
       "title": "Average gray-value TIFF images of the Honeybee Standard Brain",
       "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/HBSGrey.zip"
     },
@@ -106,7 +106,7 @@
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/HBSConfocal.zip",
       "sha256": "6f7216f5eba3ae981549eeb34b7bc81f12f1fceb0a4bcfed993148351e14a90d",
       "size_bytes": 1379635,
-      "skipped_existing": true,
+      "skipped_existing": false,
       "title": "Average gray-value JPG images of the Honeybee Standard Brain",
       "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/HBSConfocal.zip"
     },
@@ -121,7 +121,7 @@
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/HBSLabels.zip",
       "sha256": "bd4842913b49ccac5febcaaf5d68cbc37b71fa4039735658d06fc49f9892a966",
       "size_bytes": 421327,
-      "skipped_existing": true,
+      "skipped_existing": false,
       "title": "Label-field TIFF dataset of the Honeybee Standard Brain",
       "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/HBSLabels.zip"
     },
@@ -136,7 +136,7 @@
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/VRML.zip",
       "sha256": "25dd3d25d07cdf7a9319fc469cf1d86d75f5a44922e97d26160d4166e46dab5b",
       "size_bytes": 5965616,
-      "skipped_existing": true,
+      "skipped_existing": false,
       "title": "VRML Honeybee Atlas with olfactory-path neurons",
       "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/VRML.zip"
     },
@@ -151,7 +151,7 @@
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/ACT_Standard.zip",
       "sha256": "e87bc041afb6b4c2ee53e3a35d1c8b322a33aee218dd0243b0115206e613ab8e",
       "size_bytes": 2070538,
-      "skipped_existing": true,
+      "skipped_existing": false,
       "title": "VRML atlas with antennocerebralis tracts",
       "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/ACT_Standard.zip"
     },
@@ -166,7 +166,7 @@
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/ALF1_Standard.zip",
       "sha256": "6ece5a2d89612cda28ed7df626548a71383dee9dae15375316dd574c7ab420aa",
       "size_bytes": 2251043,
-      "skipped_existing": true,
+      "skipped_existing": false,
       "title": "VRML atlas with ALF-1 neuron connecting AL and MB",
       "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/ALF1_Standard.zip"
     },
@@ -181,7 +181,7 @@
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/Atlas_Pe1_PNII.zip",
       "sha256": "ab20443e5bc815a2953ae36b50af01aaeac56450dd39d41c8069b629af4c91f9",
       "size_bytes": 4033983,
-      "skipped_existing": true,
+      "skipped_existing": false,
       "title": "VRML atlas with MB intrinsic, Pe1, MB extrinsic, and PN neurons",
       "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/Atlas_Pe1_PNII.zip"
     },
@@ -194,9 +194,9 @@
       "error": null,
       "expected_size_bytes": 0,
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/neuropil_abbreviations.html",
-      "sha256": "c64d9940d5fbd0aa37c0199aac25f08f5d6c2cdca847567707cd60c5bf614246",
+      "sha256": "6663681566682ea707d882c53d5ee812a06b6cbea750eab6b9f6a71e20f1c057",
       "size_bytes": 28375,
-      "skipped_existing": true,
+      "skipped_existing": false,
       "title": "Honeybee Standard Brain neuropil abbreviation table",
       "url": "https://www.bcp.fu-berlin.de/en/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/abbreviations/index.html"
     }
@@ -477,7 +477,7 @@
   "archive_status": [
     {
       "archive_downloaded": false,
-      "archive_error": "405 Method Not Allowed",
+      "archive_error": "429 Too Many Requests",
       "archive_sha256": null,
       "archive_size_bytes": 0,
       "archive_skipped_existing": false,
@@ -485,9 +485,10 @@
       "dataset_id": "dryad-paoli-2024-al-calcium",
       "doi": "10.5061/dryad.qbzkh18sc",
       "downloaded_file_paths": [
+        "output/data/empirical_sources/dryad-paoli-2024-al-calcium/files/calcium_imaging_database.mat.zip",
         "output/data/empirical_sources/dryad-paoli-2024-al-calcium/files/README.md"
       ],
-      "file_downloaded_count": 1,
+      "file_downloaded_count": 2,
       "full_download_requested": true,
       "license": "See source repository or publisher terms.",
       "local_archive": null,
@@ -496,82 +497,124 @@
       "title": "Honey bee antennal lobe calcium imaging"
     },
     {
-      "archive_downloaded": true,
-      "archive_error": null,
-      "archive_sha256": "235742d0610d92fa364d23c017b14cb745d40900dd7306aafb03cc527f7ba131",
-      "archive_size_bytes": 969832,
-      "archive_skipped_existing": true,
+      "archive_downloaded": false,
+      "archive_error": "429 Too Many Requests",
+      "archive_sha256": null,
+      "archive_size_bytes": 0,
+      "archive_skipped_existing": false,
       "cataloged_file_count": 9,
       "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
       "doi": "10.5061/dryad.83bk3j9tt",
-      "downloaded_file_paths": [],
-      "file_downloaded_count": 0,
+      "downloaded_file_paths": [
+        "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/README.txt",
+        "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S1_Data.xlsx",
+        "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S2_Data.xlsx",
+        "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S3_Data.xlsx",
+        "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S4_Data.xlsx",
+        "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S5_Data.xlsx",
+        "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S6_Data.xlsx",
+        "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S7_Data.xlsx",
+        "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S8_Data.xlsx"
+      ],
+      "file_downloaded_count": 9,
       "full_download_requested": true,
       "license": "See source repository or publisher terms.",
-      "local_archive": "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/dryad-carcaud-2022-multisite-gcamp.zip",
+      "local_archive": null,
       "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.83bk3j9tt",
       "storage_size": 1242065,
       "title": "Multisite imaging of neural activity using GCaMP6f in the honey bee"
     },
     {
-      "archive_downloaded": true,
-      "archive_error": null,
-      "archive_sha256": "b07bbc53280d27db1c22931ec5fa6bf99c3b716777a30c426cdcb9de1208e689",
-      "archive_size_bytes": 56176,
-      "archive_skipped_existing": true,
+      "archive_downloaded": false,
+      "archive_error": "429 Too Many Requests",
+      "archive_sha256": null,
+      "archive_size_bytes": 0,
+      "archive_skipped_existing": false,
       "cataloged_file_count": 2,
       "dataset_id": "dryad-andreu-2025-alarm-odorant-receptors",
       "doi": "10.5061/dryad.rv15dv4k2",
-      "downloaded_file_paths": [],
-      "file_downloaded_count": 0,
+      "downloaded_file_paths": [
+        "output/data/empirical_sources/dryad-andreu-2025-alarm-odorant-receptors/files/README.md",
+        "output/data/empirical_sources/dryad-andreu-2025-alarm-odorant-receptors/files/Suppdata_AmOR.zip"
+      ],
+      "file_downloaded_count": 2,
       "full_download_requested": true,
       "license": "See source repository or publisher terms.",
-      "local_archive": "output/data/empirical_sources/dryad-andreu-2025-alarm-odorant-receptors/dryad-andreu-2025-alarm-odorant-receptors.zip",
+      "local_archive": null,
       "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.rv15dv4k2",
       "storage_size": 55827,
       "title": "Identification of two odorant receptors tuned to alarm pheromone in Apis mellifera"
     },
     {
-      "archive_downloaded": true,
-      "archive_error": null,
-      "archive_sha256": "a1cfa40aebfa38164cd717c9a43e39e15c109a19cb29d0f38f96af60669191f1",
-      "archive_size_bytes": 168414579,
-      "archive_skipped_existing": true,
+      "archive_downloaded": false,
+      "archive_error": "429 Too Many Requests",
+      "archive_sha256": null,
+      "archive_size_bytes": 0,
+      "archive_skipped_existing": false,
       "cataloged_file_count": 2,
       "dataset_id": "dryad-jernigan-2026-antennal-movement",
       "doi": "10.5061/dryad.qjq2bvqw6",
-      "downloaded_file_paths": [],
-      "file_downloaded_count": 0,
+      "downloaded_file_paths": [
+        "output/data/empirical_sources/dryad-jernigan-2026-antennal-movement/files/Jernigan_etal_2026_JEB_activesensing_plumestructure_antennal_data.csv",
+        "output/data/empirical_sources/dryad-jernigan-2026-antennal-movement/files/README.md"
+      ],
+      "file_downloaded_count": 2,
       "full_download_requested": true,
       "license": "See source repository or publisher terms.",
-      "local_archive": "output/data/empirical_sources/dryad-jernigan-2026-antennal-movement/dryad-jernigan-2026-antennal-movement.zip",
+      "local_archive": null,
       "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.qjq2bvqw6",
       "storage_size": 168389956,
       "title": "Antennal movement responses to different plume structures in Apis mellifera"
     },
     {
-      "archive_downloaded": true,
-      "archive_error": null,
-      "archive_sha256": "54c150375a3dfa7b5fb1d803261352e76cf9d1da3d7b4dc4277ea315609f3daa",
-      "archive_size_bytes": 97376,
-      "archive_skipped_existing": true,
+      "archive_downloaded": false,
+      "archive_error": "429 Too Many Requests",
+      "archive_sha256": null,
+      "archive_size_bytes": 0,
+      "archive_skipped_existing": false,
       "cataloged_file_count": 3,
       "dataset_id": "dryad-nouvian-2017-biogenic-amines",
       "doi": "10.5061/dryad.rj10c",
-      "downloaded_file_paths": [],
-      "file_downloaded_count": 0,
+      "downloaded_file_paths": [
+        "output/data/empirical_sources/dryad-nouvian-2017-biogenic-amines/files/Data colonies.xlsx",
+        "output/data/empirical_sources/dryad-nouvian-2017-biogenic-amines/files/Data individuals.xlsx",
+        "output/data/empirical_sources/dryad-nouvian-2017-biogenic-amines/files/Data pharmaco.xlsx"
+      ],
+      "file_downloaded_count": 3,
       "full_download_requested": true,
       "license": "See source repository or publisher terms.",
-      "local_archive": "output/data/empirical_sources/dryad-nouvian-2017-biogenic-amines/dryad-nouvian-2017-biogenic-amines.zip",
+      "local_archive": null,
       "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.rj10c",
       "storage_size": 117640,
       "title": "Cooperative defence operates by social modulation of biogenic amine levels in the honeybee brain"
     }
   ],
   "brain_data_completeness": {
+    "connectome_tiers": {
+      "functional": {
+        "available": false,
+        "blocker": "VAR_connectivity matrix not public; authors provide data on request",
+        "coverage": 0.0,
+        "edge_count": 0,
+        "tier": "unavailable"
+      },
+      "structural": {
+        "available": true,
+        "coverage": 1.0,
+        "edge_count": 6,
+        "tier": "structural_projectome"
+      },
+      "synaptic": {
+        "available": false,
+        "blocker": "no public whole-brain Apis mellifera synaptic connectome",
+        "coverage": 0.0,
+        "edge_count": 0,
+        "tier": "synaptic_unavailable"
+      }
+    },
     "dataset_count": 10,
-    "downloaded_dataset_count": 7,
-    "downloaded_fraction": 0.7,
+    "downloaded_dataset_count": 8,
+    "downloaded_fraction": 0.8,
     "modality_counts": {
       "3d": 1,
       "brain": 1,
@@ -658,54 +701,29 @@
     },
     "parseability_target": 0.8,
     "parseability_target_satisfied": true,
-    "parseable_dataset_count": 6,
-    "parseable_fraction": 0.6,
-    "source_gaps": [
-      {
-        "dataset_id": "dryad-paoli-2024-al-calcium",
-        "detail": "local payload exists but no parser emitted a BeeStack analysis record",
-        "remediation": "inspect file inventory and add a targeted parser or mark out of scope",
-        "severity": "low"
-      },
-      {
-        "dataset_id": "galizia-1999-glomerular-code",
-        "detail": "curated source is registered but no local payload is present",
-        "remediation": "run scripts/fetch_empirical_bee_data.py for full downloads",
-        "severity": "medium"
-      },
-      {
-        "dataset_id": "szyszka-2023-granger-al-network",
-        "detail": "curated source is registered but no local payload is present",
-        "remediation": "run scripts/fetch_empirical_bee_data.py for full downloads",
-        "severity": "medium"
-      },
-      {
-        "dataset_id": "kaneko-2016-kenyon-subtypes",
-        "detail": "curated source is registered but no local payload is present",
-        "remediation": "run scripts/fetch_empirical_bee_data.py for full downloads",
-        "severity": "medium"
-      }
-    ],
+    "parseable_dataset_count": 8,
+    "parseable_fraction": 0.8,
+    "source_gaps": [],
     "source_statuses": [
       {
-        "blocker": "local_payload_not_parseable",
+        "blocker": "",
         "dataset_id": "dryad-paoli-2024-al-calcium",
         "doi": "10.5061/dryad.qbzkh18sc",
         "downloaded": true,
-        "parseable": false,
-        "parser_status": "download_blocked:401 Unauthorized",
-        "remediation": "inspect file inventory and add a targeted parser or mark out of scope",
+        "parseable": true,
+        "parser_status": "parsed",
+        "remediation": "none",
         "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.qbzkh18sc",
         "source_verified": true
       },
       {
-        "blocker": "no_local_payload",
+        "blocker": "citation_anchor_only",
         "dataset_id": "galizia-1999-glomerular-code",
         "doi": "10.1038/8144",
         "downloaded": false,
         "parseable": false,
-        "parser_status": "source_verified_waiting_for_payload",
-        "remediation": "run scripts/fetch_empirical_bee_data.py for full downloads",
+        "parser_status": "citation_anchor_only:no_machine_readable_supplementary_payload",
+        "remediation": "publisher supplementary data not registered for automated fetch; manuscript citation anchor only",
         "source_url": "https://www.nature.com/articles/nn0599_473",
         "source_verified": true
       },
@@ -721,24 +739,24 @@
         "source_verified": true
       },
       {
-        "blocker": "no_local_payload",
+        "blocker": "",
         "dataset_id": "szyszka-2023-granger-al-network",
         "doi": "10.3390/insects14060539",
-        "downloaded": false,
-        "parseable": false,
-        "parser_status": "source_verified_waiting_for_payload",
-        "remediation": "run scripts/fetch_empirical_bee_data.py for full downloads",
+        "downloaded": true,
+        "parseable": true,
+        "parser_status": "parsed",
+        "remediation": "none",
         "source_url": "https://www.mdpi.com/2075-4450/14/6/539",
         "source_verified": true
       },
       {
-        "blocker": "no_local_payload",
+        "blocker": "citation_anchor_only",
         "dataset_id": "kaneko-2016-kenyon-subtypes",
         "doi": "10.1186/s40851-016-0051-6",
         "downloaded": false,
         "parseable": false,
-        "parser_status": "source_verified_waiting_for_payload",
-        "remediation": "run scripts/fetch_empirical_bee_data.py for full downloads",
+        "parser_status": "citation_anchor_only:no_machine_readable_supplementary_payload",
+        "remediation": "publisher supplementary data not registered for automated fetch; manuscript citation anchor only",
         "source_url": "https://zoologicalletters.biomedcentral.com/articles/10.1186/s40851-016-0051-6",
         "source_verified": true
       },
@@ -798,13 +816,936 @@
         "source_verified": true
       }
     ],
-    "source_verified_blocked_count": 4,
+    "source_verified_blocked_count": 2,
     "source_verified_dataset_count": 10,
     "source_verified_fraction": 1.0
   },
-  "calcium_dataset_count": 0,
-  "calcium_datasets": [],
-  "calcium_summaries": [],
+  "calcium_dataset_count": 1,
+  "calcium_datasets": [
+    {
+      "acquisition_hz": 127.6502236367259,
+      "dataset_id": "dryad-paoli-2024-al-calcium",
+      "glomerulus_count": 35,
+      "odor_labels": [
+        "odor_0",
+        "odor_1",
+        "odor_2"
+      ],
+      "shape": [
+        8,
+        3,
+        20,
+        2937,
+        35
+      ],
+      "source_variables": [
+        "db.bee",
+        "db.fs",
+        "db.odors",
+        "db.gls",
+        "db.xy",
+        "calcium_imaging_database.mat.zip/calcium_imaging_database.mat"
+      ]
+    }
+  ],
+  "calcium_summaries": [
+    {
+      "excitatory_fraction": 0.08571428571428572,
+      "inhibitory_fraction": 0.34285714285714286,
+      "mean_response": [
+        16.00191563362535,
+        0.24055933591515838,
+        3.137476279670276,
+        0.7889480430804507,
+        2.190109333574871,
+        0.47014076163420804,
+        -5.399597799958902,
+        2.386702350927569,
+        3.400765416980511,
+        1.6304142310199379,
+        1.9126449680573687,
+        -18.14643604651162,
+        0.7166459903097151,
+        0.8320265797869184,
+        -0.1975738163152867,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN
+      ],
+      "peak_latency_s": [
+        1.5824492448588483,
+        1.2612590515954187,
+        1.7626291093724795,
+        1.9898124168027103,
+        1.308262494512018,
+        1.3709337517341507,
+        1.182919980067753,
+        1.6686222235392807,
+        1.7391273879141798,
+        1.864469902358445,
+        1.2690929587481852,
+        1.3944354731924504,
+        1.5354458019422488,
+        1.0105740227068882,
+        1.8409681809001452,
+        1.0027401155541216,
+        1.0027401155541216,
+        1.0027401155541216,
+        1.0027401155541216,
+        1.0027401155541216,
+        1.0027401155541216,
+        1.0027401155541216,
+        1.0027401155541216,
+        1.0027401155541216,
+        1.0027401155541216,
+        1.0027401155541216,
+        1.0027401155541216,
+        1.0027401155541216,
+        1.0027401155541216,
+        1.0027401155541216,
+        1.0027401155541216,
+        1.0027401155541216,
+        1.0027401155541216,
+        1.0027401155541216,
+        1.0027401155541216
+      ],
+      "source_dataset_id": "dryad-paoli-2024-al-calcium"
+    }
+  ],
+  "connectome": {
+    "completeness": {
+      "functional_coverage": 0.0,
+      "neuropil_node_fraction": 0.55,
+      "structural_coverage": 1.0,
+      "synaptic_coverage": 0.0
+    },
+    "edge_count": 6,
+    "edges": [
+      {
+        "edge_kind": "structural_tract",
+        "evidence": "ALF1 projection neuron geometry (Honeybee Standard Brain ALF1_Standard.zip)",
+        "source_id": "neuropil:antennal_lobe",
+        "target_id": "neuropil:mushroom_body",
+        "weight": null
+      },
+      {
+        "edge_kind": "structural_tract",
+        "evidence": "ALF1 projection neuron geometry (Honeybee Standard Brain ALF1_Standard.zip) (tract node)",
+        "source_id": "tract:tract:alf1-al-mb",
+        "target_id": "neuropil:mushroom_body",
+        "weight": null
+      },
+      {
+        "edge_kind": "structural_tract",
+        "evidence": "Antennocerebralis tract bundle (Honeybee Standard Brain ACT_Standard.zip)",
+        "source_id": "neuropil:antennal_lobe",
+        "target_id": "neuropil:central_complex",
+        "weight": null
+      },
+      {
+        "edge_kind": "structural_tract",
+        "evidence": "Antennocerebralis tract bundle (Honeybee Standard Brain ACT_Standard.zip) (tract node)",
+        "source_id": "tract:tract:act-antennocerebralis",
+        "target_id": "neuropil:central_complex",
+        "weight": null
+      },
+      {
+        "edge_kind": "structural_tract",
+        "evidence": "Pe1/Pn mushroom-body intrinsic and projection context (Atlas_Pe1_PNII.zip)",
+        "source_id": "neuropil:mushroom_body",
+        "target_id": "neuropil:central_complex",
+        "weight": null
+      },
+      {
+        "edge_kind": "structural_tract",
+        "evidence": "Pe1/Pn mushroom-body intrinsic and projection context (Atlas_Pe1_PNII.zip) (tract node)",
+        "source_id": "tract:tract:pe1-pn-mb-intrinsic",
+        "target_id": "neuropil:central_complex",
+        "weight": null
+      }
+    ],
+    "node_count": 95,
+    "nodes": [
+      {
+        "kind": "neuron",
+        "label": "hideOrShow_24",
+        "module_target": "antennal_lobe",
+        "node_id": "neuron:hsb-vrml-act:hideorshow_24",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "hideOrShow_25",
+        "module_target": "antennal_lobe",
+        "node_id": "neuron:hsb-vrml-act:hideorshow_25",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "hideOrShow_26",
+        "module_target": "antennal_lobe",
+        "node_id": "neuron:hsb-vrml-act:hideorshow_26",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "hideOrShow_27",
+        "module_target": "antennal_lobe",
+        "node_id": "neuron:hsb-vrml-act:hideorshow_27",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "hideOrShow_28",
+        "module_target": "antennal_lobe",
+        "node_id": "neuron:hsb-vrml-act:hideorshow_28",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "hideShowObject_24",
+        "module_target": "antennal_lobe",
+        "node_id": "neuron:hsb-vrml-act:hideshowobject_24",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "hideShowObject_25",
+        "module_target": "antennal_lobe",
+        "node_id": "neuron:hsb-vrml-act:hideshowobject_25",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "hideShowObject_26",
+        "module_target": "antennal_lobe",
+        "node_id": "neuron:hsb-vrml-act:hideshowobject_26",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "hideShowObject_27",
+        "module_target": "antennal_lobe",
+        "node_id": "neuron:hsb-vrml-act:hideshowobject_27",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "hideShowObject_28",
+        "module_target": "antennal_lobe",
+        "node_id": "neuron:hsb-vrml-act:hideshowobject_28",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "mouseClickOnSurface_24",
+        "module_target": "antennal_lobe",
+        "node_id": "neuron:hsb-vrml-act:mouseclickonsurface_24",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "mouseClickOnSurface_25",
+        "module_target": "antennal_lobe",
+        "node_id": "neuron:hsb-vrml-act:mouseclickonsurface_25",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "mouseClickOnSurface_26",
+        "module_target": "antennal_lobe",
+        "node_id": "neuron:hsb-vrml-act:mouseclickonsurface_26",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "mouseClickOnSurface_27",
+        "module_target": "antennal_lobe",
+        "node_id": "neuron:hsb-vrml-act:mouseclickonsurface_27",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "mouseClickOnSurface_28",
+        "module_target": "antennal_lobe",
+        "node_id": "neuron:hsb-vrml-act:mouseclickonsurface_28",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "Navigator_Info",
+        "module_target": "antennal_lobe",
+        "node_id": "neuron:hsb-vrml-act:navigator_info",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "Object",
+        "module_target": "antennal_lobe",
+        "node_id": "neuron:hsb-vrml-act:object",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "toggeldObject_24",
+        "module_target": "antennal_lobe",
+        "node_id": "neuron:hsb-vrml-act:toggeldobject_24",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "toggeldObject_25",
+        "module_target": "antennal_lobe",
+        "node_id": "neuron:hsb-vrml-act:toggeldobject_25",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "toggeldObject_26",
+        "module_target": "antennal_lobe",
+        "node_id": "neuron:hsb-vrml-act:toggeldobject_26",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "toggeldObject_27",
+        "module_target": "antennal_lobe",
+        "node_id": "neuron:hsb-vrml-act:toggeldobject_27",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "toggeldObject_28",
+        "module_target": "antennal_lobe",
+        "node_id": "neuron:hsb-vrml-act:toggeldobject_28",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "viewFrom",
+        "module_target": "antennal_lobe",
+        "node_id": "neuron:hsb-vrml-act:viewfrom",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "hideOrShow_21",
+        "module_target": "mushroom_body",
+        "node_id": "neuron:hsb-vrml-alf1:hideorshow_21",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ALF1_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "hideShowObject_21",
+        "module_target": "mushroom_body",
+        "node_id": "neuron:hsb-vrml-alf1:hideshowobject_21",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ALF1_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "mouseClickOnSurface_21",
+        "module_target": "mushroom_body",
+        "node_id": "neuron:hsb-vrml-alf1:mouseclickonsurface_21",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ALF1_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "Navigator_Info",
+        "module_target": "mushroom_body",
+        "node_id": "neuron:hsb-vrml-alf1:navigator_info",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ALF1_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "Object",
+        "module_target": "mushroom_body",
+        "node_id": "neuron:hsb-vrml-alf1:object",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ALF1_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "toggeldObject_21",
+        "module_target": "mushroom_body",
+        "node_id": "neuron:hsb-vrml-alf1:toggeldobject_21",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ALF1_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "viewFrom",
+        "module_target": "mushroom_body",
+        "node_id": "neuron:hsb-vrml-alf1:viewfrom",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ALF1_Standard.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "DragSensorX",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:dragsensorx",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "DragSensorY",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:dragsensory",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "DragSensorZ",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:dragsensorz",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "hideOrShow_25",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:hideorshow_25",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "hideShowObject_25",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:hideshowobject_25",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "imageBoundingBox",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:imageboundingbox",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "mouseClickOnSurface_25",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:mouseclickonsurface_25",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "Navigator_Info",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:navigator_info",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "Object",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:object",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "setXSliceNumber",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:setxslicenumber",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "setYSliceNumber",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:setyslicenumber",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "setZSliceNumber",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:setzslicenumber",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "toggeldObject_25",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:toggeldobject_25",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "toSeletedXSlice",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:toseletedxslice",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "toSeletedYSlice",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:toseletedyslice",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "toSeletedZSlice",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:toseletedzslice",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "viewFrom",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:viewfrom",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "X_axis",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:x_axis",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "X_SlicerCoords",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:x_slicercoords",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "xSlicer",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:xslicer",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "Y_axis",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:y_axis",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "Y_SlicerCoords",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:y_slicercoords",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "Z_axis",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:z_axis",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "Z_SlicerCoords",
+        "module_target": "whole_brain",
+        "node_id": "neuron:hsb-vrml-atlas:z_slicercoords",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "hideOrShow_20",
+        "module_target": "mushroom_body",
+        "node_id": "neuron:hsb-vrml-pe1-pn:hideorshow_20",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "Atlas_Pe1_PNII.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "hideShowObject_20",
+        "module_target": "mushroom_body",
+        "node_id": "neuron:hsb-vrml-pe1-pn:hideshowobject_20",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "Atlas_Pe1_PNII.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "mouseClickOnSurface_20",
+        "module_target": "mushroom_body",
+        "node_id": "neuron:hsb-vrml-pe1-pn:mouseclickonsurface_20",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "Atlas_Pe1_PNII.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "Navigator_Info",
+        "module_target": "mushroom_body",
+        "node_id": "neuron:hsb-vrml-pe1-pn:navigator_info",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "Atlas_Pe1_PNII.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "Object",
+        "module_target": "mushroom_body",
+        "node_id": "neuron:hsb-vrml-pe1-pn:object",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "Atlas_Pe1_PNII.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "toggeldObject_20",
+        "module_target": "mushroom_body",
+        "node_id": "neuron:hsb-vrml-pe1-pn:toggeldobject_20",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "Atlas_Pe1_PNII.zip"
+      },
+      {
+        "kind": "neuron",
+        "label": "viewFrom",
+        "module_target": "mushroom_body",
+        "node_id": "neuron:hsb-vrml-pe1-pn:viewfrom",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "Atlas_Pe1_PNII.zip"
+      },
+      {
+        "kind": "neuropil",
+        "label": "antennal lobe",
+        "module_target": "antennal_lobe",
+        "node_id": "neuropil:antennal_lobe",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "Central Body",
+        "module_target": "central_complex",
+        "node_id": "neuropil:cb",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "central complex",
+        "module_target": "central_complex",
+        "node_id": "neuropil:central_complex",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "left Antennal Lobe",
+        "module_target": "antennal_lobe",
+        "node_id": "neuropil:l-al",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "left lateral Basal Ring",
+        "module_target": "mushroom_body",
+        "node_id": "neuropil:l-latbr",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "left lateral Collar",
+        "module_target": "mushroom_body",
+        "node_id": "neuropil:l-latcollar",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "left lateral Lip",
+        "module_target": "mushroom_body",
+        "node_id": "neuropil:l-latlip",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "left Lobula",
+        "module_target": "optic_lobe",
+        "node_id": "neuropil:l-lob",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "left Medulla",
+        "module_target": "optic_lobe",
+        "node_id": "neuropil:l-med",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "left medial Basal Ring",
+        "module_target": "mushroom_body",
+        "node_id": "neuropil:l-medbr",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "left medial Collar",
+        "module_target": "mushroom_body",
+        "node_id": "neuropil:l-medcollar",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "left medial Lip",
+        "module_target": "mushroom_body",
+        "node_id": "neuropil:l-medlip",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "left ventral Mushroom Body",
+        "module_target": "mushroom_body",
+        "node_id": "neuropil:l-vmb",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "mushroom body",
+        "module_target": "mushroom_body",
+        "node_id": "neuropil:mushroom_body",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "neuropil",
+        "module_target": "neuropil",
+        "node_id": "neuropil:neuropil",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "optic lobe",
+        "module_target": "optic_lobe",
+        "node_id": "neuropil:optic_lobe",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "Protocerebral Lobes and Suboesophageal Ganglion",
+        "module_target": "neuropil",
+        "node_id": "neuropil:pl-sog",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "right Antennal Lobe",
+        "module_target": "antennal_lobe",
+        "node_id": "neuropil:r-al",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "right lateral Basal Ring",
+        "module_target": "mushroom_body",
+        "node_id": "neuropil:r-latbr",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "right lateral Collar",
+        "module_target": "mushroom_body",
+        "node_id": "neuropil:r-latcollar",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "right lateral Lip",
+        "module_target": "mushroom_body",
+        "node_id": "neuropil:r-latlip",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "right Lobula",
+        "module_target": "optic_lobe",
+        "node_id": "neuropil:r-lob",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "right Medulla",
+        "module_target": "optic_lobe",
+        "node_id": "neuropil:r-med",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "right medial Basal Ring",
+        "module_target": "mushroom_body",
+        "node_id": "neuropil:r-medbr",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "right medial Collar",
+        "module_target": "mushroom_body",
+        "node_id": "neuropil:r-medcollar",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "right medial Lip",
+        "module_target": "mushroom_body",
+        "node_id": "neuropil:r-medlip",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "neuropil",
+        "label": "right ventral Mushroom Body",
+        "module_target": "mushroom_body",
+        "node_id": "neuropil:r-vmb",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "neuropil_abbreviations.html"
+      },
+      {
+        "kind": "tract",
+        "label": "VRML atlas with antennocerebralis tracts tract bundle",
+        "module_target": "antennal_lobe",
+        "node_id": "tract:hsb-vrml-act",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ACT_Standard.zip"
+      },
+      {
+        "kind": "tract",
+        "label": "VRML atlas with ALF-1 neuron connecting AL and MB tract bundle",
+        "module_target": "mushroom_body",
+        "node_id": "tract:hsb-vrml-alf1",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "ALF1_Standard.zip"
+      },
+      {
+        "kind": "tract",
+        "label": "VRML Honeybee Atlas with olfactory-path neurons tract bundle",
+        "module_target": "whole_brain",
+        "node_id": "tract:hsb-vrml-atlas",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "VRML.zip"
+      },
+      {
+        "kind": "tract",
+        "label": "VRML atlas with MB intrinsic, Pe1, MB extrinsic, and PN neurons tract bundle",
+        "module_target": "mushroom_body",
+        "node_id": "tract:hsb-vrml-pe1-pn",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "Atlas_Pe1_PNII.zip"
+      },
+      {
+        "kind": "tract",
+        "label": "tract:act antennocerebralis",
+        "module_target": "antennal_lobe",
+        "node_id": "tract:tract:act-antennocerebralis",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "pathway_semantics"
+      },
+      {
+        "kind": "tract",
+        "label": "tract:alf1 al mb",
+        "module_target": "antennal_lobe",
+        "node_id": "tract:tract:alf1-al-mb",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "pathway_semantics"
+      },
+      {
+        "kind": "tract",
+        "label": "tract:pe1 pn mb intrinsic",
+        "module_target": "mushroom_body",
+        "node_id": "tract:tract:pe1-pn-mb-intrinsic",
+        "provenance_doi": "10.1002/cne.20644",
+        "source_asset": "pathway_semantics"
+      }
+    ],
+    "tier": "structural_projectome"
+  },
   "empirical_antennal_vibration": [
     0.2940877942985068,
     223.52702354388055
@@ -812,19 +1753,19 @@
   "empirical_drive_label": "16ol",
   "end_to_end_report": {
     "activity": {
-      "aftersmell_response_mean": 0.17019991141820834,
-      "all_quality_checks_passed": true,
+      "aftersmell_response_mean": 0.1701999114182084,
+      "all_quality_checks_passed": false,
       "antennal_active_sensing_drive": {
         "left_right_synchrony": 0.4448599787672444,
         "odor_on_fraction": 0.7772061549870226,
         "theta_derivative_drive": 0.20909014051467958
       },
       "antennal_movement_summary_count": 1,
-      "calcium_dataset_count": 0,
-      "calcium_excitatory_fraction": 0.0,
-      "calcium_inhibitory_fraction": 0.0,
-      "calcium_mean_latency_s": 0.0,
-      "mean_odor_separability": 0.6511059958748603,
+      "calcium_dataset_count": 1,
+      "calcium_excitatory_fraction": 0.08571428571428572,
+      "calcium_inhibitory_fraction": 0.34285714285714286,
+      "calcium_mean_latency_s": 1.2238801231807892,
+      "mean_odor_separability": 0.6511059958748602,
       "neuromodulatory_defence_summary": {
         "mean_abs_response": 3.4486151589790097,
         "panel_count": 7,
@@ -862,7 +1803,7 @@
         "mushroom_body": 0.14088381916426101,
         "neuromodulation": 3.4486151589790097,
         "odorant_receptors": 4.5489696947769085,
-        "whole_brain_or_other": 4.300378466267598
+        "whole_brain_or_other": 4.300378466267597
       },
       "template_count": 24,
       "waggle_follower_summary": {
@@ -917,7 +1858,7 @@
         "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/HBSGrey.zip",
         "sha256": "95ca205aae95639d44a3a3ff43838f9f30e2c578ae8362206eba47dcfc81f642",
         "size_bytes": 8026083,
-        "skipped_existing": true,
+        "skipped_existing": false,
         "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/HBSGrey.zip"
       },
       {
@@ -928,7 +1869,7 @@
         "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/HBSConfocal.zip",
         "sha256": "6f7216f5eba3ae981549eeb34b7bc81f12f1fceb0a4bcfed993148351e14a90d",
         "size_bytes": 1379635,
-        "skipped_existing": true,
+        "skipped_existing": false,
         "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/HBSConfocal.zip"
       },
       {
@@ -939,7 +1880,7 @@
         "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/HBSLabels.zip",
         "sha256": "bd4842913b49ccac5febcaaf5d68cbc37b71fa4039735658d06fc49f9892a966",
         "size_bytes": 421327,
-        "skipped_existing": true,
+        "skipped_existing": false,
         "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/HBSLabels.zip"
       },
       {
@@ -950,7 +1891,7 @@
         "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/VRML.zip",
         "sha256": "25dd3d25d07cdf7a9319fc469cf1d86d75f5a44922e97d26160d4166e46dab5b",
         "size_bytes": 5965616,
-        "skipped_existing": true,
+        "skipped_existing": false,
         "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/VRML.zip"
       },
       {
@@ -961,7 +1902,7 @@
         "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/ACT_Standard.zip",
         "sha256": "e87bc041afb6b4c2ee53e3a35d1c8b322a33aee218dd0243b0115206e613ab8e",
         "size_bytes": 2070538,
-        "skipped_existing": true,
+        "skipped_existing": false,
         "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/ACT_Standard.zip"
       },
       {
@@ -972,7 +1913,7 @@
         "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/ALF1_Standard.zip",
         "sha256": "6ece5a2d89612cda28ed7df626548a71383dee9dae15375316dd574c7ab420aa",
         "size_bytes": 2251043,
-        "skipped_existing": true,
+        "skipped_existing": false,
         "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/ALF1_Standard.zip"
       },
       {
@@ -983,7 +1924,7 @@
         "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/Atlas_Pe1_PNII.zip",
         "sha256": "ab20443e5bc815a2953ae36b50af01aaeac56450dd39d41c8069b629af4c91f9",
         "size_bytes": 4033983,
-        "skipped_existing": true,
+        "skipped_existing": false,
         "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/Atlas_Pe1_PNII.zip"
       },
       {
@@ -992,16 +1933,16 @@
         "downloaded": true,
         "error": null,
         "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/neuropil_abbreviations.html",
-        "sha256": "c64d9940d5fbd0aa37c0199aac25f08f5d6c2cdca847567707cd60c5bf614246",
+        "sha256": "6663681566682ea707d882c53d5ee812a06b6cbea750eab6b9f6a71e20f1c057",
         "size_bytes": 28375,
-        "skipped_existing": true,
+        "skipped_existing": false,
         "url": "https://www.bcp.fu-berlin.de/en/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/abbreviations/index.html"
       }
     ],
     "archive_status": [
       {
         "archive_downloaded": false,
-        "archive_error": "405 Method Not Allowed",
+        "archive_error": "429 Too Many Requests",
         "archive_sha256": null,
         "archive_size_bytes": 0,
         "archive_skipped_existing": false,
@@ -1009,9 +1950,10 @@
         "dataset_id": "dryad-paoli-2024-al-calcium",
         "doi": "10.5061/dryad.qbzkh18sc",
         "downloaded_file_paths": [
+          "output/data/empirical_sources/dryad-paoli-2024-al-calcium/files/calcium_imaging_database.mat.zip",
           "output/data/empirical_sources/dryad-paoli-2024-al-calcium/files/README.md"
         ],
-        "file_downloaded_count": 1,
+        "file_downloaded_count": 2,
         "full_download_requested": true,
         "license": "See source repository or publisher terms.",
         "local_archive": null,
@@ -1020,73 +1962,93 @@
         "title": "Honey bee antennal lobe calcium imaging"
       },
       {
-        "archive_downloaded": true,
-        "archive_error": null,
-        "archive_sha256": "235742d0610d92fa364d23c017b14cb745d40900dd7306aafb03cc527f7ba131",
-        "archive_size_bytes": 969832,
-        "archive_skipped_existing": true,
+        "archive_downloaded": false,
+        "archive_error": "429 Too Many Requests",
+        "archive_sha256": null,
+        "archive_size_bytes": 0,
+        "archive_skipped_existing": false,
         "cataloged_file_count": 9,
         "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
         "doi": "10.5061/dryad.83bk3j9tt",
-        "downloaded_file_paths": [],
-        "file_downloaded_count": 0,
+        "downloaded_file_paths": [
+          "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/README.txt",
+          "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S1_Data.xlsx",
+          "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S2_Data.xlsx",
+          "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S3_Data.xlsx",
+          "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S4_Data.xlsx",
+          "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S5_Data.xlsx",
+          "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S6_Data.xlsx",
+          "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S7_Data.xlsx",
+          "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S8_Data.xlsx"
+        ],
+        "file_downloaded_count": 9,
         "full_download_requested": true,
         "license": "See source repository or publisher terms.",
-        "local_archive": "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/dryad-carcaud-2022-multisite-gcamp.zip",
+        "local_archive": null,
         "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.83bk3j9tt",
         "storage_size": 1242065,
         "title": "Multisite imaging of neural activity using GCaMP6f in the honey bee"
       },
       {
-        "archive_downloaded": true,
-        "archive_error": null,
-        "archive_sha256": "b07bbc53280d27db1c22931ec5fa6bf99c3b716777a30c426cdcb9de1208e689",
-        "archive_size_bytes": 56176,
-        "archive_skipped_existing": true,
+        "archive_downloaded": false,
+        "archive_error": "429 Too Many Requests",
+        "archive_sha256": null,
+        "archive_size_bytes": 0,
+        "archive_skipped_existing": false,
         "cataloged_file_count": 2,
         "dataset_id": "dryad-andreu-2025-alarm-odorant-receptors",
         "doi": "10.5061/dryad.rv15dv4k2",
-        "downloaded_file_paths": [],
-        "file_downloaded_count": 0,
+        "downloaded_file_paths": [
+          "output/data/empirical_sources/dryad-andreu-2025-alarm-odorant-receptors/files/README.md",
+          "output/data/empirical_sources/dryad-andreu-2025-alarm-odorant-receptors/files/Suppdata_AmOR.zip"
+        ],
+        "file_downloaded_count": 2,
         "full_download_requested": true,
         "license": "See source repository or publisher terms.",
-        "local_archive": "output/data/empirical_sources/dryad-andreu-2025-alarm-odorant-receptors/dryad-andreu-2025-alarm-odorant-receptors.zip",
+        "local_archive": null,
         "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.rv15dv4k2",
         "storage_size": 55827,
         "title": "Identification of two odorant receptors tuned to alarm pheromone in Apis mellifera"
       },
       {
-        "archive_downloaded": true,
-        "archive_error": null,
-        "archive_sha256": "a1cfa40aebfa38164cd717c9a43e39e15c109a19cb29d0f38f96af60669191f1",
-        "archive_size_bytes": 168414579,
-        "archive_skipped_existing": true,
+        "archive_downloaded": false,
+        "archive_error": "429 Too Many Requests",
+        "archive_sha256": null,
+        "archive_size_bytes": 0,
+        "archive_skipped_existing": false,
         "cataloged_file_count": 2,
         "dataset_id": "dryad-jernigan-2026-antennal-movement",
         "doi": "10.5061/dryad.qjq2bvqw6",
-        "downloaded_file_paths": [],
-        "file_downloaded_count": 0,
+        "downloaded_file_paths": [
+          "output/data/empirical_sources/dryad-jernigan-2026-antennal-movement/files/Jernigan_etal_2026_JEB_activesensing_plumestructure_antennal_data.csv",
+          "output/data/empirical_sources/dryad-jernigan-2026-antennal-movement/files/README.md"
+        ],
+        "file_downloaded_count": 2,
         "full_download_requested": true,
         "license": "See source repository or publisher terms.",
-        "local_archive": "output/data/empirical_sources/dryad-jernigan-2026-antennal-movement/dryad-jernigan-2026-antennal-movement.zip",
+        "local_archive": null,
         "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.qjq2bvqw6",
         "storage_size": 168389956,
         "title": "Antennal movement responses to different plume structures in Apis mellifera"
       },
       {
-        "archive_downloaded": true,
-        "archive_error": null,
-        "archive_sha256": "54c150375a3dfa7b5fb1d803261352e76cf9d1da3d7b4dc4277ea315609f3daa",
-        "archive_size_bytes": 97376,
-        "archive_skipped_existing": true,
+        "archive_downloaded": false,
+        "archive_error": "429 Too Many Requests",
+        "archive_sha256": null,
+        "archive_size_bytes": 0,
+        "archive_skipped_existing": false,
         "cataloged_file_count": 3,
         "dataset_id": "dryad-nouvian-2017-biogenic-amines",
         "doi": "10.5061/dryad.rj10c",
-        "downloaded_file_paths": [],
-        "file_downloaded_count": 0,
+        "downloaded_file_paths": [
+          "output/data/empirical_sources/dryad-nouvian-2017-biogenic-amines/files/Data colonies.xlsx",
+          "output/data/empirical_sources/dryad-nouvian-2017-biogenic-amines/files/Data individuals.xlsx",
+          "output/data/empirical_sources/dryad-nouvian-2017-biogenic-amines/files/Data pharmaco.xlsx"
+        ],
+        "file_downloaded_count": 3,
         "full_download_requested": true,
         "license": "See source repository or publisher terms.",
-        "local_archive": "output/data/empirical_sources/dryad-nouvian-2017-biogenic-amines/dryad-nouvian-2017-biogenic-amines.zip",
+        "local_archive": null,
         "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.rj10c",
         "storage_size": 117640,
         "title": "Cooperative defence operates by social modulation of biogenic amine levels in the honeybee brain"
@@ -1112,13 +2074,9 @@
       "output/figures/empirical/brain_data_completeness_matrix.png",
       "output/figures/empirical/bee_brain_multimodal_source_map.png"
     ],
-    "known_gaps": [
-      "Paoli MATLAB calcium traces are not yet local or parseable"
-    ]
+    "known_gaps": []
   },
-  "known_gaps": [
-    "Paoli MATLAB calcium traces are not yet local or parseable"
-  ],
+  "known_gaps": [],
   "neuropil_abbreviations": [
     {
       "abbreviation": "PL-SOG",
@@ -1262,7 +2220,7 @@
       "mean_abs_response": 0.011995869921296297,
       "mean_response": 0.010844491078703703,
       "mean_sparseness": 0.5968021473215621,
-      "modality": "Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx:A.Pheromonal blend dF-F0:receptor_response",
+      "modality": "Annex1b_Suppdata_AmOr136.xlsx:A.Pheromonal blend dF-F0:receptor_response",
       "quality_checks": [
         {
           "detail": "panel has at least one response channel",
@@ -1327,7 +2285,7 @@
       "mean_abs_response": 0.005182424916666666,
       "mean_response": 0.00348854625,
       "mean_sparseness": 0.5039981380655202,
-      "modality": "Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx:B.Individual compounds dF-F0:receptor_response",
+      "modality": "Annex1b_Suppdata_AmOr136.xlsx:B.Individual compounds dF-F0:receptor_response",
       "quality_checks": [
         {
           "detail": "panel has at least one response channel",
@@ -1392,7 +2350,7 @@
       "mean_abs_response": 3.8963250823099984,
       "mean_response": 0.7508311732159516,
       "mean_sparseness": 0.4373683245691563,
-      "modality": "Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx:C.Specificity (spike-s):receptor_response",
+      "modality": "Annex1b_Suppdata_AmOr136.xlsx:C.Specificity (spike-s):receptor_response",
       "quality_checks": [
         {
           "detail": "panel has at least one response channel",
@@ -1457,7 +2415,7 @@
       "mean_abs_response": 10.125113868397362,
       "mean_response": 8.469434871049366,
       "mean_sparseness": 0.39505242507510413,
-      "modality": "Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx:D.Specificity-Acetate (spike-s):receptor_response",
+      "modality": "Annex1b_Suppdata_AmOr136.xlsx:D.Specificity-Acetate (spike-s):receptor_response",
       "quality_checks": [
         {
           "detail": "panel has at least one response channel",
@@ -1522,7 +2480,7 @@
       "mean_abs_response": 12.183203270159789,
       "mean_response": 11.484578223708656,
       "mean_sparseness": 0.5041267739588325,
-      "modality": "Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx:E.Sensitivity (spike-s):receptor_response",
+      "modality": "Annex1b_Suppdata_AmOr136.xlsx:E.Sensitivity (spike-s):receptor_response",
       "quality_checks": [
         {
           "detail": "panel has at least one response channel",
@@ -1587,7 +2545,7 @@
       "mean_abs_response": 0.016200222801874997,
       "mean_response": 0.014814062614374998,
       "mean_sparseness": 0.4791552351509642,
-      "modality": "Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx:A.Pheromonal blend dF-F0:receptor_response",
+      "modality": "Annex1a_Suppdata_AmOr109.xlsx:A.Pheromonal blend dF-F0:receptor_response",
       "quality_checks": [
         {
           "detail": "panel has at least one response channel",
@@ -1652,7 +2610,7 @@
       "mean_abs_response": 0.020527582114999998,
       "mean_response": 0.01904751002166667,
       "mean_sparseness": 0.4667463037675184,
-      "modality": "Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx:B.Individual compounds dF-F0:receptor_response",
+      "modality": "Annex1a_Suppdata_AmOr109.xlsx:B.Individual compounds dF-F0:receptor_response",
       "quality_checks": [
         {
           "detail": "panel has at least one response channel",
@@ -1717,7 +2675,7 @@
       "mean_abs_response": 5.327020202188636,
       "mean_response": 3.2032828284522727,
       "mean_sparseness": 0.4840499830678215,
-      "modality": "Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx:C.Specificity (spike-s):receptor_response",
+      "modality": "Annex1a_Suppdata_AmOr109.xlsx:C.Specificity (spike-s):receptor_response",
       "quality_checks": [
         {
           "detail": "panel has at least one response channel",
@@ -1782,7 +2740,7 @@
       "mean_abs_response": 9.355158730181548,
       "mean_response": 8.650793650818452,
       "mean_sparseness": 0.5635745829813792,
-      "modality": "Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx:D.Specificity-Acetate (spike-s):receptor_response",
+      "modality": "Annex1a_Suppdata_AmOr109.xlsx:D.Specificity-Acetate (spike-s):receptor_response",
       "quality_checks": [
         {
           "detail": "panel has at least one response channel",
@@ -1837,136 +2795,6 @@
         [
           "Ethyl acetate",
           12.9166666664375
-        ]
-      ]
-    },
-    {
-      "channel_count": 8,
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "finite_fraction": 1.0,
-      "mean_abs_response": 0.04128020631558494,
-      "mean_response": 0.04037104578685495,
-      "mean_sparseness": 0.3024218335686103,
-      "modality": "S2_Data.xlsx:intensity LH:regional_intensity",
-      "quality_checks": [
-        {
-          "detail": "panel has at least one response channel",
-          "name": "channels_present",
-          "passed": true,
-          "threshold": 1,
-          "value": 8
-        },
-        {
-          "detail": "panel has at least two stimuli",
-          "name": "stimuli_present",
-          "passed": true,
-          "threshold": 2,
-          "value": 17
-        },
-        {
-          "detail": "numeric responses are finite",
-          "name": "finite_values",
-          "passed": true,
-          "threshold": 0.95,
-          "value": 1.0
-        },
-        {
-          "detail": "responses vary across channels or stimuli",
-          "name": "nonzero_signal",
-          "passed": true,
-          "threshold": "> 0",
-          "value": 0.028057302566216337
-        }
-      ],
-      "response_max": 0.09837268871925361,
-      "response_min": -0.02620340661517132,
-      "response_std": 0.028057302566216337,
-      "stimulus_count": 17,
-      "top_stimuli": [
-        [
-          "8al",
-          0.05275479542363113
-        ],
-        [
-          "7al",
-          0.05233564698976283
-        ],
-        [
-          "6al",
-          0.05013127540072613
-        ],
-        [
-          "27one",
-          0.04693270883474227
-        ],
-        [
-          "17ol",
-          0.04573286854558191
-        ]
-      ]
-    },
-    {
-      "channel_count": 8,
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "finite_fraction": 1.0,
-      "mean_abs_response": 0.05042353670105821,
-      "mean_response": 0.05042353670105821,
-      "mean_sparseness": 0.021348122013879485,
-      "modality": "S2_Data.xlsx:Euclidian distances LH:generic_numeric_response",
-      "quality_checks": [
-        {
-          "detail": "panel has at least one response channel",
-          "name": "channels_present",
-          "passed": true,
-          "threshold": 1,
-          "value": 8
-        },
-        {
-          "detail": "panel has at least two stimuli",
-          "name": "stimuli_present",
-          "passed": true,
-          "threshold": 2,
-          "value": 15
-        },
-        {
-          "detail": "numeric responses are finite",
-          "name": "finite_values",
-          "passed": true,
-          "threshold": 0.95,
-          "value": 1.0
-        },
-        {
-          "detail": "responses vary across channels or stimuli",
-          "name": "nonzero_signal",
-          "passed": true,
-          "threshold": "> 0",
-          "value": 0.007162077118494321
-        }
-      ],
-      "response_max": 0.0711632181818182,
-      "response_min": 0.03824896666666667,
-      "response_std": 0.007162077118494321,
-      "stimulus_count": 15,
-      "top_stimuli": [
-        [
-          "19ol",
-          0.05315716354166666
-        ],
-        [
-          "8al",
-          0.0525915
-        ],
-        [
-          "26ol",
-          0.0524820875
-        ],
-        [
-          "29ol",
-          0.051634217499999996
-        ],
-        [
-          "18ol",
-          0.051558687500000006
         ]
       ]
     },
@@ -2101,6 +2929,136 @@
       ]
     },
     {
+      "channel_count": 8,
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "finite_fraction": 1.0,
+      "mean_abs_response": 0.04128020631558494,
+      "mean_response": 0.04037104578685495,
+      "mean_sparseness": 0.3024218335686103,
+      "modality": "S2_Data.xlsx:intensity LH:regional_intensity",
+      "quality_checks": [
+        {
+          "detail": "panel has at least one response channel",
+          "name": "channels_present",
+          "passed": true,
+          "threshold": 1,
+          "value": 8
+        },
+        {
+          "detail": "panel has at least two stimuli",
+          "name": "stimuli_present",
+          "passed": true,
+          "threshold": 2,
+          "value": 17
+        },
+        {
+          "detail": "numeric responses are finite",
+          "name": "finite_values",
+          "passed": true,
+          "threshold": 0.95,
+          "value": 1.0
+        },
+        {
+          "detail": "responses vary across channels or stimuli",
+          "name": "nonzero_signal",
+          "passed": true,
+          "threshold": "> 0",
+          "value": 0.028057302566216337
+        }
+      ],
+      "response_max": 0.09837268871925361,
+      "response_min": -0.02620340661517132,
+      "response_std": 0.028057302566216337,
+      "stimulus_count": 17,
+      "top_stimuli": [
+        [
+          "8al",
+          0.05275479542363113
+        ],
+        [
+          "7al",
+          0.05233564698976283
+        ],
+        [
+          "6al",
+          0.05013127540072613
+        ],
+        [
+          "27one",
+          0.04693270883474227
+        ],
+        [
+          "17ol",
+          0.04573286854558191
+        ]
+      ]
+    },
+    {
+      "channel_count": 8,
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "finite_fraction": 1.0,
+      "mean_abs_response": 0.05042353670105821,
+      "mean_response": 0.05042353670105821,
+      "mean_sparseness": 0.021348122013879485,
+      "modality": "S2_Data.xlsx:Euclidian distances LH:generic_numeric_response",
+      "quality_checks": [
+        {
+          "detail": "panel has at least one response channel",
+          "name": "channels_present",
+          "passed": true,
+          "threshold": 1,
+          "value": 8
+        },
+        {
+          "detail": "panel has at least two stimuli",
+          "name": "stimuli_present",
+          "passed": true,
+          "threshold": 2,
+          "value": 15
+        },
+        {
+          "detail": "numeric responses are finite",
+          "name": "finite_values",
+          "passed": true,
+          "threshold": 0.95,
+          "value": 1.0
+        },
+        {
+          "detail": "responses vary across channels or stimuli",
+          "name": "nonzero_signal",
+          "passed": true,
+          "threshold": "> 0",
+          "value": 0.007162077118494321
+        }
+      ],
+      "response_max": 0.0711632181818182,
+      "response_min": 0.03824896666666667,
+      "response_std": 0.007162077118494321,
+      "stimulus_count": 15,
+      "top_stimuli": [
+        [
+          "19ol",
+          0.05315716354166666
+        ],
+        [
+          "8al",
+          0.0525915
+        ],
+        [
+          "26ol",
+          0.0524820875
+        ],
+        [
+          "29ol",
+          0.051634217499999996
+        ],
+        [
+          "18ol",
+          0.051558687500000006
+        ]
+      ]
+    },
+    {
       "channel_count": 7,
       "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
       "finite_fraction": 1.0,
@@ -2162,6 +3120,71 @@
         [
           "26one",
           0.13578213673218462
+        ]
+      ]
+    },
+    {
+      "channel_count": 7,
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "finite_fraction": 1.0,
+      "mean_abs_response": 0.02335998478554375,
+      "mean_response": 0.022417227016034293,
+      "mean_sparseness": 0.24956025348508878,
+      "modality": "S4_Data.xlsx:intensity:regional_intensity",
+      "quality_checks": [
+        {
+          "detail": "panel has at least one response channel",
+          "name": "channels_present",
+          "passed": true,
+          "threshold": 1,
+          "value": 7
+        },
+        {
+          "detail": "panel has at least two stimuli",
+          "name": "stimuli_present",
+          "passed": true,
+          "threshold": 2,
+          "value": 14
+        },
+        {
+          "detail": "numeric responses are finite",
+          "name": "finite_values",
+          "passed": true,
+          "threshold": 0.95,
+          "value": 1.0
+        },
+        {
+          "detail": "responses vary across channels or stimuli",
+          "name": "nonzero_signal",
+          "passed": true,
+          "threshold": "> 0",
+          "value": 0.01626510038136214
+        }
+      ],
+      "response_max": 0.06576401179941004,
+      "response_min": -0.02565090491970431,
+      "response_std": 0.01626510038136214,
+      "stimulus_count": 14,
+      "top_stimuli": [
+        [
+          "ipa",
+          0.03996294700617737
+        ],
+        [
+          "ocimene",
+          0.034748107076595355
+        ],
+        [
+          "qmp",
+          0.03397742080860789
+        ],
+        [
+          "9hda",
+          0.029331102060629586
+        ],
+        [
+          "epalmi",
+          0.02645306399145843
         ]
       ]
     },
@@ -2884,461 +3907,6 @@
       "channel_count": 1,
       "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
       "finite_fraction": 1.0,
-      "mean_abs_response": 0.386042,
-      "mean_response": 0.386042,
-      "mean_sparseness": 0.0,
-      "modality": "S7_Data.xlsx:HB1:timecourse_peak",
-      "quality_checks": [
-        {
-          "detail": "panel has at least one response channel",
-          "name": "channels_present",
-          "passed": true,
-          "threshold": 1,
-          "value": 1
-        },
-        {
-          "detail": "panel has at least two stimuli",
-          "name": "stimuli_present",
-          "passed": true,
-          "threshold": 2,
-          "value": 6
-        },
-        {
-          "detail": "numeric responses are finite",
-          "name": "finite_values",
-          "passed": true,
-          "threshold": 0.95,
-          "value": 1.0
-        },
-        {
-          "detail": "responses vary across channels or stimuli",
-          "name": "nonzero_signal",
-          "passed": true,
-          "threshold": "> 0",
-          "value": 0.03185531388429044
-        }
-      ],
-      "response_max": 0.43808,
-      "response_min": 0.34871,
-      "response_std": 0.03185531388429044,
-      "stimulus_count": 6,
-      "top_stimuli": [
-        [
-          "7al",
-          0.43808
-        ],
-        [
-          "16ol",
-          0.406474
-        ],
-        [
-          "8al",
-          0.402112
-        ],
-        [
-          "27one",
-          0.360654
-        ],
-        [
-          "26one",
-          0.360222
-        ]
-      ]
-    },
-    {
-      "channel_count": 1,
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "finite_fraction": 1.0,
-      "mean_abs_response": 0.10371066666666667,
-      "mean_response": 0.10371066666666667,
-      "mean_sparseness": 0.0,
-      "modality": "S7_Data.xlsx:HB2:timecourse_peak",
-      "quality_checks": [
-        {
-          "detail": "panel has at least one response channel",
-          "name": "channels_present",
-          "passed": true,
-          "threshold": 1,
-          "value": 1
-        },
-        {
-          "detail": "panel has at least two stimuli",
-          "name": "stimuli_present",
-          "passed": true,
-          "threshold": 2,
-          "value": 6
-        },
-        {
-          "detail": "numeric responses are finite",
-          "name": "finite_values",
-          "passed": true,
-          "threshold": 0.95,
-          "value": 1.0
-        },
-        {
-          "detail": "responses vary across channels or stimuli",
-          "name": "nonzero_signal",
-          "passed": true,
-          "threshold": "> 0",
-          "value": 0.011004994270885478
-        }
-      ],
-      "response_max": 0.115508,
-      "response_min": 0.0829048,
-      "response_std": 0.011004994270885478,
-      "stimulus_count": 6,
-      "top_stimuli": [
-        [
-          "26one",
-          0.115508
-        ],
-        [
-          "27one",
-          0.114128
-        ],
-        [
-          "8al",
-          0.108513
-        ],
-        [
-          "16ol",
-          0.10197
-        ],
-        [
-          "7al",
-          0.0992402
-        ]
-      ]
-    },
-    {
-      "channel_count": 1,
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "finite_fraction": 1.0,
-      "mean_abs_response": 0.09972133333333333,
-      "mean_response": 0.09972133333333333,
-      "mean_sparseness": 0.0,
-      "modality": "S7_Data.xlsx:HB3:timecourse_peak",
-      "quality_checks": [
-        {
-          "detail": "panel has at least one response channel",
-          "name": "channels_present",
-          "passed": true,
-          "threshold": 1,
-          "value": 1
-        },
-        {
-          "detail": "panel has at least two stimuli",
-          "name": "stimuli_present",
-          "passed": true,
-          "threshold": 2,
-          "value": 6
-        },
-        {
-          "detail": "numeric responses are finite",
-          "name": "finite_values",
-          "passed": true,
-          "threshold": 0.95,
-          "value": 1.0
-        },
-        {
-          "detail": "responses vary across channels or stimuli",
-          "name": "nonzero_signal",
-          "passed": true,
-          "threshold": "> 0",
-          "value": 0.009024635894902105
-        }
-      ],
-      "response_max": 0.111512,
-      "response_min": 0.0847108,
-      "response_std": 0.009024635894902105,
-      "stimulus_count": 6,
-      "top_stimuli": [
-        [
-          "7al",
-          0.111512
-        ],
-        [
-          "16ol",
-          0.106454
-        ],
-        [
-          "8al",
-          0.105027
-        ],
-        [
-          "26one",
-          0.0977582
-        ],
-        [
-          "27one",
-          0.092866
-        ]
-      ]
-    },
-    {
-      "channel_count": 1,
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "finite_fraction": 1.0,
-      "mean_abs_response": 0.271407,
-      "mean_response": 0.271407,
-      "mean_sparseness": 0.0,
-      "modality": "S7_Data.xlsx:HB4:timecourse_peak",
-      "quality_checks": [
-        {
-          "detail": "panel has at least one response channel",
-          "name": "channels_present",
-          "passed": true,
-          "threshold": 1,
-          "value": 1
-        },
-        {
-          "detail": "panel has at least two stimuli",
-          "name": "stimuli_present",
-          "passed": true,
-          "threshold": 2,
-          "value": 6
-        },
-        {
-          "detail": "numeric responses are finite",
-          "name": "finite_values",
-          "passed": true,
-          "threshold": 0.95,
-          "value": 1.0
-        },
-        {
-          "detail": "responses vary across channels or stimuli",
-          "name": "nonzero_signal",
-          "passed": true,
-          "threshold": "> 0",
-          "value": 0.020546527143696737
-        }
-      ],
-      "response_max": 0.294322,
-      "response_min": 0.233727,
-      "response_std": 0.020546527143696737,
-      "stimulus_count": 6,
-      "top_stimuli": [
-        [
-          "26one",
-          0.294322
-        ],
-        [
-          "27one",
-          0.291623
-        ],
-        [
-          "16ol",
-          0.276223
-        ],
-        [
-          "8al",
-          0.273467
-        ],
-        [
-          "7al",
-          0.25908
-        ]
-      ]
-    },
-    {
-      "channel_count": 1,
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "finite_fraction": 1.0,
-      "mean_abs_response": 0.127208,
-      "mean_response": 0.127208,
-      "mean_sparseness": 0.0,
-      "modality": "S7_Data.xlsx:HB5:timecourse_peak",
-      "quality_checks": [
-        {
-          "detail": "panel has at least one response channel",
-          "name": "channels_present",
-          "passed": true,
-          "threshold": 1,
-          "value": 1
-        },
-        {
-          "detail": "panel has at least two stimuli",
-          "name": "stimuli_present",
-          "passed": true,
-          "threshold": 2,
-          "value": 6
-        },
-        {
-          "detail": "numeric responses are finite",
-          "name": "finite_values",
-          "passed": true,
-          "threshold": 0.95,
-          "value": 1.0
-        },
-        {
-          "detail": "responses vary across channels or stimuli",
-          "name": "nonzero_signal",
-          "passed": true,
-          "threshold": "> 0",
-          "value": 0.025324186890533458
-        }
-      ],
-      "response_max": 0.179672,
-      "response_min": 0.105732,
-      "response_std": 0.025324186890533458,
-      "stimulus_count": 6,
-      "top_stimuli": [
-        [
-          "7al",
-          0.179672
-        ],
-        [
-          "26one",
-          0.135372
-        ],
-        [
-          "16ol",
-          0.118052
-        ],
-        [
-          "air",
-          0.116323
-        ],
-        [
-          "8al",
-          0.108097
-        ]
-      ]
-    },
-    {
-      "channel_count": 1,
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "finite_fraction": 1.0,
-      "mean_abs_response": 0.1457283,
-      "mean_response": 0.1457283,
-      "mean_sparseness": 0.0,
-      "modality": "S7_Data.xlsx:HB6:timecourse_peak",
-      "quality_checks": [
-        {
-          "detail": "panel has at least one response channel",
-          "name": "channels_present",
-          "passed": true,
-          "threshold": 1,
-          "value": 1
-        },
-        {
-          "detail": "panel has at least two stimuli",
-          "name": "stimuli_present",
-          "passed": true,
-          "threshold": 2,
-          "value": 6
-        },
-        {
-          "detail": "numeric responses are finite",
-          "name": "finite_values",
-          "passed": true,
-          "threshold": 0.95,
-          "value": 1.0
-        },
-        {
-          "detail": "responses vary across channels or stimuli",
-          "name": "nonzero_signal",
-          "passed": true,
-          "threshold": "> 0",
-          "value": 0.03233337218081859
-        }
-      ],
-      "response_max": 0.184326,
-      "response_min": 0.0845278,
-      "response_std": 0.03233337218081859,
-      "stimulus_count": 6,
-      "top_stimuli": [
-        [
-          "27one",
-          0.184326
-        ],
-        [
-          "8al",
-          0.173434
-        ],
-        [
-          "7al",
-          0.15229
-        ],
-        [
-          "16ol",
-          0.148804
-        ],
-        [
-          "26one",
-          0.130988
-        ]
-      ]
-    },
-    {
-      "channel_count": 16,
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "finite_fraction": 1.0,
-      "mean_abs_response": 111.83186081898438,
-      "mean_response": 111.83186081898438,
-      "mean_sparseness": 0.11520812199669454,
-      "modality": "S8_Data.xlsx:Feuil1:generic_numeric_response",
-      "quality_checks": [
-        {
-          "detail": "panel has at least one response channel",
-          "name": "channels_present",
-          "passed": true,
-          "threshold": 1,
-          "value": 16
-        },
-        {
-          "detail": "panel has at least two stimuli",
-          "name": "stimuli_present",
-          "passed": true,
-          "threshold": 2,
-          "value": 16
-        },
-        {
-          "detail": "numeric responses are finite",
-          "name": "finite_values",
-          "passed": true,
-          "threshold": 0.95,
-          "value": 1.0
-        },
-        {
-          "detail": "responses vary across channels or stimuli",
-          "name": "nonzero_signal",
-          "passed": true,
-          "threshold": "> 0",
-          "value": 40.52718113972228
-        }
-      ],
-      "response_max": 184.0720104,
-      "response_min": 0.0,
-      "response_std": 40.52718113972228,
-      "stimulus_count": 16,
-      "top_stimuli": [
-        [
-          "26one",
-          135.966697021875
-        ],
-        [
-          "7al",
-          121.36760172875
-        ],
-        [
-          "19ol",
-          121.0296954025
-        ],
-        [
-          "26ol",
-          120.69894983812499
-        ],
-        [
-          "29one",
-          120.68666523812502
-        ]
-      ]
-    },
-    {
-      "channel_count": 1,
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "finite_fraction": 1.0,
       "mean_abs_response": 0.040880587058823525,
       "mean_response": 0.040880587058823525,
       "mean_sparseness": 0.0,
@@ -3856,27 +4424,27 @@
       ]
     },
     {
-      "channel_count": 7,
+      "channel_count": 1,
       "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
       "finite_fraction": 1.0,
-      "mean_abs_response": 0.02335998478554375,
-      "mean_response": 0.022417227016034293,
-      "mean_sparseness": 0.24956025348508878,
-      "modality": "S4_Data.xlsx:intensity:regional_intensity",
+      "mean_abs_response": 0.386042,
+      "mean_response": 0.386042,
+      "mean_sparseness": 0.0,
+      "modality": "S7_Data.xlsx:HB1:timecourse_peak",
       "quality_checks": [
         {
           "detail": "panel has at least one response channel",
           "name": "channels_present",
           "passed": true,
           "threshold": 1,
-          "value": 7
+          "value": 1
         },
         {
           "detail": "panel has at least two stimuli",
           "name": "stimuli_present",
           "passed": true,
           "threshold": 2,
-          "value": 14
+          "value": 6
         },
         {
           "detail": "numeric responses are finite",
@@ -3890,33 +4458,423 @@
           "name": "nonzero_signal",
           "passed": true,
           "threshold": "> 0",
-          "value": 0.01626510038136214
+          "value": 0.03185531388429044
         }
       ],
-      "response_max": 0.06576401179941004,
-      "response_min": -0.02565090491970431,
-      "response_std": 0.01626510038136214,
-      "stimulus_count": 14,
+      "response_max": 0.43808,
+      "response_min": 0.34871,
+      "response_std": 0.03185531388429044,
+      "stimulus_count": 6,
       "top_stimuli": [
         [
-          "ipa",
-          0.03996294700617737
+          "7al",
+          0.43808
         ],
         [
-          "ocimene",
-          0.034748107076595355
+          "16ol",
+          0.406474
         ],
         [
-          "qmp",
-          0.03397742080860789
+          "8al",
+          0.402112
         ],
         [
-          "9hda",
-          0.029331102060629586
+          "27one",
+          0.360654
         ],
         [
-          "epalmi",
-          0.02645306399145843
+          "26one",
+          0.360222
+        ]
+      ]
+    },
+    {
+      "channel_count": 1,
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "finite_fraction": 1.0,
+      "mean_abs_response": 0.10371066666666667,
+      "mean_response": 0.10371066666666667,
+      "mean_sparseness": 0.0,
+      "modality": "S7_Data.xlsx:HB2:timecourse_peak",
+      "quality_checks": [
+        {
+          "detail": "panel has at least one response channel",
+          "name": "channels_present",
+          "passed": true,
+          "threshold": 1,
+          "value": 1
+        },
+        {
+          "detail": "panel has at least two stimuli",
+          "name": "stimuli_present",
+          "passed": true,
+          "threshold": 2,
+          "value": 6
+        },
+        {
+          "detail": "numeric responses are finite",
+          "name": "finite_values",
+          "passed": true,
+          "threshold": 0.95,
+          "value": 1.0
+        },
+        {
+          "detail": "responses vary across channels or stimuli",
+          "name": "nonzero_signal",
+          "passed": true,
+          "threshold": "> 0",
+          "value": 0.011004994270885478
+        }
+      ],
+      "response_max": 0.115508,
+      "response_min": 0.0829048,
+      "response_std": 0.011004994270885478,
+      "stimulus_count": 6,
+      "top_stimuli": [
+        [
+          "26one",
+          0.115508
+        ],
+        [
+          "27one",
+          0.114128
+        ],
+        [
+          "8al",
+          0.108513
+        ],
+        [
+          "16ol",
+          0.10197
+        ],
+        [
+          "7al",
+          0.0992402
+        ]
+      ]
+    },
+    {
+      "channel_count": 1,
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "finite_fraction": 1.0,
+      "mean_abs_response": 0.09972133333333333,
+      "mean_response": 0.09972133333333333,
+      "mean_sparseness": 0.0,
+      "modality": "S7_Data.xlsx:HB3:timecourse_peak",
+      "quality_checks": [
+        {
+          "detail": "panel has at least one response channel",
+          "name": "channels_present",
+          "passed": true,
+          "threshold": 1,
+          "value": 1
+        },
+        {
+          "detail": "panel has at least two stimuli",
+          "name": "stimuli_present",
+          "passed": true,
+          "threshold": 2,
+          "value": 6
+        },
+        {
+          "detail": "numeric responses are finite",
+          "name": "finite_values",
+          "passed": true,
+          "threshold": 0.95,
+          "value": 1.0
+        },
+        {
+          "detail": "responses vary across channels or stimuli",
+          "name": "nonzero_signal",
+          "passed": true,
+          "threshold": "> 0",
+          "value": 0.009024635894902105
+        }
+      ],
+      "response_max": 0.111512,
+      "response_min": 0.0847108,
+      "response_std": 0.009024635894902105,
+      "stimulus_count": 6,
+      "top_stimuli": [
+        [
+          "7al",
+          0.111512
+        ],
+        [
+          "16ol",
+          0.106454
+        ],
+        [
+          "8al",
+          0.105027
+        ],
+        [
+          "26one",
+          0.0977582
+        ],
+        [
+          "27one",
+          0.092866
+        ]
+      ]
+    },
+    {
+      "channel_count": 1,
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "finite_fraction": 1.0,
+      "mean_abs_response": 0.271407,
+      "mean_response": 0.271407,
+      "mean_sparseness": 0.0,
+      "modality": "S7_Data.xlsx:HB4:timecourse_peak",
+      "quality_checks": [
+        {
+          "detail": "panel has at least one response channel",
+          "name": "channels_present",
+          "passed": true,
+          "threshold": 1,
+          "value": 1
+        },
+        {
+          "detail": "panel has at least two stimuli",
+          "name": "stimuli_present",
+          "passed": true,
+          "threshold": 2,
+          "value": 6
+        },
+        {
+          "detail": "numeric responses are finite",
+          "name": "finite_values",
+          "passed": true,
+          "threshold": 0.95,
+          "value": 1.0
+        },
+        {
+          "detail": "responses vary across channels or stimuli",
+          "name": "nonzero_signal",
+          "passed": true,
+          "threshold": "> 0",
+          "value": 0.020546527143696737
+        }
+      ],
+      "response_max": 0.294322,
+      "response_min": 0.233727,
+      "response_std": 0.020546527143696737,
+      "stimulus_count": 6,
+      "top_stimuli": [
+        [
+          "26one",
+          0.294322
+        ],
+        [
+          "27one",
+          0.291623
+        ],
+        [
+          "16ol",
+          0.276223
+        ],
+        [
+          "8al",
+          0.273467
+        ],
+        [
+          "7al",
+          0.25908
+        ]
+      ]
+    },
+    {
+      "channel_count": 1,
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "finite_fraction": 1.0,
+      "mean_abs_response": 0.127208,
+      "mean_response": 0.127208,
+      "mean_sparseness": 0.0,
+      "modality": "S7_Data.xlsx:HB5:timecourse_peak",
+      "quality_checks": [
+        {
+          "detail": "panel has at least one response channel",
+          "name": "channels_present",
+          "passed": true,
+          "threshold": 1,
+          "value": 1
+        },
+        {
+          "detail": "panel has at least two stimuli",
+          "name": "stimuli_present",
+          "passed": true,
+          "threshold": 2,
+          "value": 6
+        },
+        {
+          "detail": "numeric responses are finite",
+          "name": "finite_values",
+          "passed": true,
+          "threshold": 0.95,
+          "value": 1.0
+        },
+        {
+          "detail": "responses vary across channels or stimuli",
+          "name": "nonzero_signal",
+          "passed": true,
+          "threshold": "> 0",
+          "value": 0.025324186890533458
+        }
+      ],
+      "response_max": 0.179672,
+      "response_min": 0.105732,
+      "response_std": 0.025324186890533458,
+      "stimulus_count": 6,
+      "top_stimuli": [
+        [
+          "7al",
+          0.179672
+        ],
+        [
+          "26one",
+          0.135372
+        ],
+        [
+          "16ol",
+          0.118052
+        ],
+        [
+          "air",
+          0.116323
+        ],
+        [
+          "8al",
+          0.108097
+        ]
+      ]
+    },
+    {
+      "channel_count": 1,
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "finite_fraction": 1.0,
+      "mean_abs_response": 0.1457283,
+      "mean_response": 0.1457283,
+      "mean_sparseness": 0.0,
+      "modality": "S7_Data.xlsx:HB6:timecourse_peak",
+      "quality_checks": [
+        {
+          "detail": "panel has at least one response channel",
+          "name": "channels_present",
+          "passed": true,
+          "threshold": 1,
+          "value": 1
+        },
+        {
+          "detail": "panel has at least two stimuli",
+          "name": "stimuli_present",
+          "passed": true,
+          "threshold": 2,
+          "value": 6
+        },
+        {
+          "detail": "numeric responses are finite",
+          "name": "finite_values",
+          "passed": true,
+          "threshold": 0.95,
+          "value": 1.0
+        },
+        {
+          "detail": "responses vary across channels or stimuli",
+          "name": "nonzero_signal",
+          "passed": true,
+          "threshold": "> 0",
+          "value": 0.03233337218081859
+        }
+      ],
+      "response_max": 0.184326,
+      "response_min": 0.0845278,
+      "response_std": 0.03233337218081859,
+      "stimulus_count": 6,
+      "top_stimuli": [
+        [
+          "27one",
+          0.184326
+        ],
+        [
+          "8al",
+          0.173434
+        ],
+        [
+          "7al",
+          0.15229
+        ],
+        [
+          "16ol",
+          0.148804
+        ],
+        [
+          "26one",
+          0.130988
+        ]
+      ]
+    },
+    {
+      "channel_count": 16,
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "finite_fraction": 1.0,
+      "mean_abs_response": 111.83186081898438,
+      "mean_response": 111.83186081898438,
+      "mean_sparseness": 0.11520812199669454,
+      "modality": "S8_Data.xlsx:Feuil1:generic_numeric_response",
+      "quality_checks": [
+        {
+          "detail": "panel has at least one response channel",
+          "name": "channels_present",
+          "passed": true,
+          "threshold": 1,
+          "value": 16
+        },
+        {
+          "detail": "panel has at least two stimuli",
+          "name": "stimuli_present",
+          "passed": true,
+          "threshold": 2,
+          "value": 16
+        },
+        {
+          "detail": "numeric responses are finite",
+          "name": "finite_values",
+          "passed": true,
+          "threshold": 0.95,
+          "value": 1.0
+        },
+        {
+          "detail": "responses vary across channels or stimuli",
+          "name": "nonzero_signal",
+          "passed": true,
+          "threshold": "> 0",
+          "value": 40.52718113972228
+        }
+      ],
+      "response_max": 184.0720104,
+      "response_min": 0.0,
+      "response_std": 40.52718113972228,
+      "stimulus_count": 16,
+      "top_stimuli": [
+        [
+          "26one",
+          135.966697021875
+        ],
+        [
+          "7al",
+          121.36760172875
+        ],
+        [
+          "19ol",
+          121.0296954025
+        ],
+        [
+          "26ol",
+          120.69894983812499
+        ],
+        [
+          "29one",
+          120.68666523812502
         ]
       ]
     },
@@ -4388,7 +5346,7 @@
         "AmOR136:i9"
       ],
       "dataset_id": "dryad-andreu-2025-alarm-odorant-receptors",
-      "modality": "Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx:A.Pheromonal blend dF-F0:receptor_response",
+      "modality": "Annex1b_Suppdata_AmOr136.xlsx:A.Pheromonal blend dF-F0:receptor_response",
       "shape": [
         27,
         8
@@ -4426,7 +5384,7 @@
         "AmOR136:i9"
       ],
       "dataset_id": "dryad-andreu-2025-alarm-odorant-receptors",
-      "modality": "Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx:B.Individual compounds dF-F0:receptor_response",
+      "modality": "Annex1b_Suppdata_AmOr136.xlsx:B.Individual compounds dF-F0:receptor_response",
       "shape": [
         12,
         9
@@ -4465,7 +5423,7 @@
         "AmOR136:i9"
       ],
       "dataset_id": "dryad-andreu-2025-alarm-odorant-receptors",
-      "modality": "Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx:C.Specificity (spike-s):receptor_response",
+      "modality": "Annex1b_Suppdata_AmOr136.xlsx:C.Specificity (spike-s):receptor_response",
       "shape": [
         12,
         43
@@ -4538,7 +5496,7 @@
         "AmOR136:i9"
       ],
       "dataset_id": "dryad-andreu-2025-alarm-odorant-receptors",
-      "modality": "Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx:D.Specificity-Acetate (spike-s):receptor_response",
+      "modality": "Annex1b_Suppdata_AmOr136.xlsx:D.Specificity-Acetate (spike-s):receptor_response",
       "shape": [
         12,
         20
@@ -4589,7 +5547,7 @@
         "AmOR136:i9"
       ],
       "dataset_id": "dryad-andreu-2025-alarm-odorant-receptors",
-      "modality": "Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx:E.Sensitivity (spike-s):receptor_response",
+      "modality": "Annex1b_Suppdata_AmOr136.xlsx:E.Sensitivity (spike-s):receptor_response",
       "shape": [
         13,
         23
@@ -4650,7 +5608,7 @@
         "AmOR109:i9"
       ],
       "dataset_id": "dryad-andreu-2025-alarm-odorant-receptors",
-      "modality": "Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx:A.Pheromonal blend dF-F0:receptor_response",
+      "modality": "Annex1a_Suppdata_AmOr109.xlsx:A.Pheromonal blend dF-F0:receptor_response",
       "shape": [
         20,
         8
@@ -4696,7 +5654,7 @@
         "AmOR109:i9"
       ],
       "dataset_id": "dryad-andreu-2025-alarm-odorant-receptors",
-      "modality": "Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx:B.Individual compounds dF-F0:receptor_response",
+      "modality": "Annex1a_Suppdata_AmOr109.xlsx:B.Individual compounds dF-F0:receptor_response",
       "shape": [
         20,
         30
@@ -4754,7 +5712,7 @@
         "AmOR109:i9"
       ],
       "dataset_id": "dryad-andreu-2025-alarm-odorant-receptors",
-      "modality": "Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx:C.Specificity (spike-s):receptor_response",
+      "modality": "Annex1a_Suppdata_AmOr109.xlsx:C.Specificity (spike-s):receptor_response",
       "shape": [
         10,
         44
@@ -4832,7 +5790,7 @@
         "AmOR109:i9"
       ],
       "dataset_id": "dryad-andreu-2025-alarm-odorant-receptors",
-      "modality": "Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx:D.Specificity-Acetate (spike-s):receptor_response",
+      "modality": "Annex1a_Suppdata_AmOr109.xlsx:D.Specificity-Acetate (spike-s):receptor_response",
       "shape": [
         16,
         21
@@ -4866,90 +5824,6 @@
         "Phenethyl acetate"
       ],
       "units": "spikes/s"
-    },
-    {
-      "channel_labels": [
-        "HB1",
-        "HB2",
-        "HB3",
-        "HB4",
-        "HB5",
-        "HB6",
-        "HB7",
-        "HB8"
-      ],
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "modality": "S2_Data.xlsx:intensity LH:regional_intensity",
-      "shape": [
-        8,
-        17
-      ],
-      "source_variables": [
-        "stimulus",
-        "response",
-        "channel"
-      ],
-      "stimulus_labels": [
-        "16ol",
-        "17ol",
-        "18ol",
-        "19ol",
-        "26ol",
-        "26one",
-        "27ol",
-        "27one",
-        "28ol",
-        "28one",
-        "29ol",
-        "29one",
-        "6al",
-        "7al",
-        "8al",
-        "9al",
-        "air"
-      ],
-      "units": "normalized fluorescence"
-    },
-    {
-      "channel_labels": [
-        "Euclidian distances LH:HB1",
-        "Euclidian distances LH:HB2",
-        "Euclidian distances LH:HB3",
-        "Euclidian distances LH:HB4",
-        "Euclidian distances LH:HB5",
-        "Euclidian distances LH:HB6",
-        "Euclidian distances LH:HB7",
-        "Euclidian distances LH:HB8"
-      ],
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "modality": "S2_Data.xlsx:Euclidian distances LH:generic_numeric_response",
-      "shape": [
-        8,
-        15
-      ],
-      "source_variables": [
-        "stimulus",
-        "response",
-        "channel"
-      ],
-      "stimulus_labels": [
-        "16ol",
-        "17ol",
-        "18ol",
-        "19ol",
-        "26ol",
-        "26one",
-        "27ol",
-        "27one",
-        "28ol",
-        "28one",
-        "29ol",
-        "29one",
-        "6al",
-        "7al",
-        "8al"
-      ],
-      "units": "euclidean distance"
     },
     {
       "channel_labels": [
@@ -5049,6 +5923,90 @@
         "HB4",
         "HB5",
         "HB6",
+        "HB7",
+        "HB8"
+      ],
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "modality": "S2_Data.xlsx:intensity LH:regional_intensity",
+      "shape": [
+        8,
+        17
+      ],
+      "source_variables": [
+        "stimulus",
+        "response",
+        "channel"
+      ],
+      "stimulus_labels": [
+        "16ol",
+        "17ol",
+        "18ol",
+        "19ol",
+        "26ol",
+        "26one",
+        "27ol",
+        "27one",
+        "28ol",
+        "28one",
+        "29ol",
+        "29one",
+        "6al",
+        "7al",
+        "8al",
+        "9al",
+        "air"
+      ],
+      "units": "normalized fluorescence"
+    },
+    {
+      "channel_labels": [
+        "Euclidian distances LH:HB1",
+        "Euclidian distances LH:HB2",
+        "Euclidian distances LH:HB3",
+        "Euclidian distances LH:HB4",
+        "Euclidian distances LH:HB5",
+        "Euclidian distances LH:HB6",
+        "Euclidian distances LH:HB7",
+        "Euclidian distances LH:HB8"
+      ],
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "modality": "S2_Data.xlsx:Euclidian distances LH:generic_numeric_response",
+      "shape": [
+        8,
+        15
+      ],
+      "source_variables": [
+        "stimulus",
+        "response",
+        "channel"
+      ],
+      "stimulus_labels": [
+        "16ol",
+        "17ol",
+        "18ol",
+        "19ol",
+        "26ol",
+        "26one",
+        "27ol",
+        "27one",
+        "28ol",
+        "28one",
+        "29ol",
+        "29one",
+        "6al",
+        "7al",
+        "8al"
+      ],
+      "units": "euclidean distance"
+    },
+    {
+      "channel_labels": [
+        "HB1",
+        "HB2",
+        "HB3",
+        "HB4",
+        "HB5",
+        "HB6",
         "HB7"
       ],
       "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
@@ -5069,6 +6027,45 @@
         "7al",
         "8al",
         "air"
+      ],
+      "units": "normalized fluorescence"
+    },
+    {
+      "channel_labels": [
+        "HB1",
+        "HB2",
+        "HB3",
+        "HB4",
+        "HB5",
+        "HB6",
+        "HB7"
+      ],
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "modality": "S4_Data.xlsx:intensity:regional_intensity",
+      "shape": [
+        7,
+        14
+      ],
+      "source_variables": [
+        "stimulus",
+        "response",
+        "channel"
+      ],
+      "stimulus_labels": [
+        "9hda",
+        "9oda",
+        "air",
+        "eole",
+        "epalmi",
+        "hob",
+        "hva",
+        "ipa",
+        "iso",
+        "mlino",
+        "mole",
+        "mpalmi",
+        "ocimene",
+        "qmp"
       ],
       "units": "normalized fluorescence"
     },
@@ -5473,206 +6470,6 @@
         "timecourse:HB1"
       ],
       "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "modality": "S7_Data.xlsx:HB1:timecourse_peak",
-      "shape": [
-        1,
-        6
-      ],
-      "source_variables": [
-        "stimulus",
-        "response",
-        "channel"
-      ],
-      "stimulus_labels": [
-        "16ol",
-        "26one",
-        "27one",
-        "7al",
-        "8al",
-        "air"
-      ],
-      "units": "normalized fluorescence"
-    },
-    {
-      "channel_labels": [
-        "timecourse:HB2"
-      ],
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "modality": "S7_Data.xlsx:HB2:timecourse_peak",
-      "shape": [
-        1,
-        6
-      ],
-      "source_variables": [
-        "stimulus",
-        "response",
-        "channel"
-      ],
-      "stimulus_labels": [
-        "16ol",
-        "26one",
-        "27one",
-        "7al",
-        "8al",
-        "air"
-      ],
-      "units": "normalized fluorescence"
-    },
-    {
-      "channel_labels": [
-        "timecourse:HB3"
-      ],
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "modality": "S7_Data.xlsx:HB3:timecourse_peak",
-      "shape": [
-        1,
-        6
-      ],
-      "source_variables": [
-        "stimulus",
-        "response",
-        "channel"
-      ],
-      "stimulus_labels": [
-        "16ol",
-        "26one",
-        "27one",
-        "7al",
-        "8al",
-        "air"
-      ],
-      "units": "normalized fluorescence"
-    },
-    {
-      "channel_labels": [
-        "timecourse:HB4"
-      ],
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "modality": "S7_Data.xlsx:HB4:timecourse_peak",
-      "shape": [
-        1,
-        6
-      ],
-      "source_variables": [
-        "stimulus",
-        "response",
-        "channel"
-      ],
-      "stimulus_labels": [
-        "16ol",
-        "26one",
-        "27one",
-        "7al",
-        "8al",
-        "air"
-      ],
-      "units": "normalized fluorescence"
-    },
-    {
-      "channel_labels": [
-        "timecourse:HB5"
-      ],
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "modality": "S7_Data.xlsx:HB5:timecourse_peak",
-      "shape": [
-        1,
-        6
-      ],
-      "source_variables": [
-        "stimulus",
-        "response",
-        "channel"
-      ],
-      "stimulus_labels": [
-        "16ol",
-        "26one",
-        "27one",
-        "7al",
-        "8al",
-        "air"
-      ],
-      "units": "normalized fluorescence"
-    },
-    {
-      "channel_labels": [
-        "timecourse:HB6"
-      ],
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "modality": "S7_Data.xlsx:HB6:timecourse_peak",
-      "shape": [
-        1,
-        6
-      ],
-      "source_variables": [
-        "stimulus",
-        "response",
-        "channel"
-      ],
-      "stimulus_labels": [
-        "16ol",
-        "26one",
-        "27one",
-        "7al",
-        "8al",
-        "air"
-      ],
-      "units": "normalized fluorescence"
-    },
-    {
-      "channel_labels": [
-        "Feuil1:16ol",
-        "Feuil1:17ol",
-        "Feuil1:18ol",
-        "Feuil1:19ol",
-        "Feuil1:26ol",
-        "Feuil1:26one",
-        "Feuil1:27ol",
-        "Feuil1:27one",
-        "Feuil1:28ol",
-        "Feuil1:28one",
-        "Feuil1:29ol",
-        "Feuil1:29one",
-        "Feuil1:6al",
-        "Feuil1:7al",
-        "Feuil1:8al",
-        "Feuil1:9al"
-      ],
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "modality": "S8_Data.xlsx:Feuil1:generic_numeric_response",
-      "shape": [
-        16,
-        16
-      ],
-      "source_variables": [
-        "stimulus",
-        "response",
-        "channel"
-      ],
-      "stimulus_labels": [
-        "16ol",
-        "17ol",
-        "18ol",
-        "19ol",
-        "26ol",
-        "26one",
-        "27ol",
-        "27one",
-        "28ol",
-        "28one",
-        "29ol",
-        "29one",
-        "6al",
-        "7al",
-        "8al",
-        "9al"
-      ],
-      "units": "normalized fluorescence"
-    },
-    {
-      "channel_labels": [
-        "timecourse:HB1"
-      ],
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
       "modality": "S6_Data.xlsx:HB1:timecourse_peak",
       "shape": [
         1,
@@ -5958,19 +6755,13 @@
     },
     {
       "channel_labels": [
-        "HB1",
-        "HB2",
-        "HB3",
-        "HB4",
-        "HB5",
-        "HB6",
-        "HB7"
+        "timecourse:HB1"
       ],
       "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "modality": "S4_Data.xlsx:intensity:regional_intensity",
+      "modality": "S7_Data.xlsx:HB1:timecourse_peak",
       "shape": [
-        7,
-        14
+        1,
+        6
       ],
       "source_variables": [
         "stimulus",
@@ -5978,20 +6769,187 @@
         "channel"
       ],
       "stimulus_labels": [
-        "9hda",
-        "9oda",
-        "air",
-        "eole",
-        "epalmi",
-        "hob",
-        "hva",
-        "ipa",
-        "iso",
-        "mlino",
-        "mole",
-        "mpalmi",
-        "ocimene",
-        "qmp"
+        "16ol",
+        "26one",
+        "27one",
+        "7al",
+        "8al",
+        "air"
+      ],
+      "units": "normalized fluorescence"
+    },
+    {
+      "channel_labels": [
+        "timecourse:HB2"
+      ],
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "modality": "S7_Data.xlsx:HB2:timecourse_peak",
+      "shape": [
+        1,
+        6
+      ],
+      "source_variables": [
+        "stimulus",
+        "response",
+        "channel"
+      ],
+      "stimulus_labels": [
+        "16ol",
+        "26one",
+        "27one",
+        "7al",
+        "8al",
+        "air"
+      ],
+      "units": "normalized fluorescence"
+    },
+    {
+      "channel_labels": [
+        "timecourse:HB3"
+      ],
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "modality": "S7_Data.xlsx:HB3:timecourse_peak",
+      "shape": [
+        1,
+        6
+      ],
+      "source_variables": [
+        "stimulus",
+        "response",
+        "channel"
+      ],
+      "stimulus_labels": [
+        "16ol",
+        "26one",
+        "27one",
+        "7al",
+        "8al",
+        "air"
+      ],
+      "units": "normalized fluorescence"
+    },
+    {
+      "channel_labels": [
+        "timecourse:HB4"
+      ],
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "modality": "S7_Data.xlsx:HB4:timecourse_peak",
+      "shape": [
+        1,
+        6
+      ],
+      "source_variables": [
+        "stimulus",
+        "response",
+        "channel"
+      ],
+      "stimulus_labels": [
+        "16ol",
+        "26one",
+        "27one",
+        "7al",
+        "8al",
+        "air"
+      ],
+      "units": "normalized fluorescence"
+    },
+    {
+      "channel_labels": [
+        "timecourse:HB5"
+      ],
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "modality": "S7_Data.xlsx:HB5:timecourse_peak",
+      "shape": [
+        1,
+        6
+      ],
+      "source_variables": [
+        "stimulus",
+        "response",
+        "channel"
+      ],
+      "stimulus_labels": [
+        "16ol",
+        "26one",
+        "27one",
+        "7al",
+        "8al",
+        "air"
+      ],
+      "units": "normalized fluorescence"
+    },
+    {
+      "channel_labels": [
+        "timecourse:HB6"
+      ],
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "modality": "S7_Data.xlsx:HB6:timecourse_peak",
+      "shape": [
+        1,
+        6
+      ],
+      "source_variables": [
+        "stimulus",
+        "response",
+        "channel"
+      ],
+      "stimulus_labels": [
+        "16ol",
+        "26one",
+        "27one",
+        "7al",
+        "8al",
+        "air"
+      ],
+      "units": "normalized fluorescence"
+    },
+    {
+      "channel_labels": [
+        "Feuil1:16ol",
+        "Feuil1:17ol",
+        "Feuil1:18ol",
+        "Feuil1:19ol",
+        "Feuil1:26ol",
+        "Feuil1:26one",
+        "Feuil1:27ol",
+        "Feuil1:27one",
+        "Feuil1:28ol",
+        "Feuil1:28one",
+        "Feuil1:29ol",
+        "Feuil1:29one",
+        "Feuil1:6al",
+        "Feuil1:7al",
+        "Feuil1:8al",
+        "Feuil1:9al"
+      ],
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "modality": "S8_Data.xlsx:Feuil1:generic_numeric_response",
+      "shape": [
+        16,
+        16
+      ],
+      "source_variables": [
+        "stimulus",
+        "response",
+        "channel"
+      ],
+      "stimulus_labels": [
+        "16ol",
+        "17ol",
+        "18ol",
+        "19ol",
+        "26ol",
+        "26one",
+        "27ol",
+        "27one",
+        "28ol",
+        "28one",
+        "29ol",
+        "29one",
+        "6al",
+        "7al",
+        "8al",
+        "9al"
       ],
       "units": "normalized fluorescence"
     },
@@ -6226,16 +7184,16 @@
     "1-butanol": 0.8946365288811207,
     "1-hexadecanol": 0.6796690026571283,
     "1-octanol": -0.551073826362886,
-    "1-octen-3-ol": -0.6155777279259644,
+    "1-octen-3-ol": -0.6155777279259645,
     "10-hda": 0.6884071835019652,
     "16ol": 0.9999999578150452,
     "16ol475nm": 0.9366249585556942,
-    "17ol": 0.9999571697595886,
+    "17ol": 0.9999571697595888,
     "17ol475nm": 0.946381032301122,
-    "18ol": 0.9998975142167095,
+    "18ol": 0.9998975142167097,
     "18ol475nm": 0.9555064559349361,
     "19ol": 0.99980719619974,
-    "19ol475nm": 0.8610961882726395,
+    "19ol475nm": 0.8610961882726396,
     "2-butanone": 0.9647104017355654,
     "2-heptanone": 0.8211655758026201,
     "2-hexanone": 0.8717249302111123,
@@ -6243,9 +7201,363 @@
     "2-nonanol": 0.7445803340794233,
     "2-nonanone": 0.24271567542615857,
     "2-oxooctanoic": -0.36574148905667486,
-    "26ol": 0.999911877318934,
+    "26ol": 0.9999118773189343,
     "26ol475nm": 0.9523683727173862,
     "26one": 0.9999267276189875
+  },
+  "szyszka_granger_supplement": {
+    "dataset_id": "szyszka-2023-granger-al-network",
+    "odor_labels": [
+      "1HEX",
+      "3HEX",
+      "1NON",
+      "ISOA",
+      "ACPH",
+      "BZDA"
+    ],
+    "rows": [
+      {
+        "condition_index": 0,
+        "fdr_p": 0.0004,
+        "odor": "1HEX",
+        "original_p": 0.0001,
+        "signed_rank_w": 119
+      },
+      {
+        "condition_index": 1,
+        "fdr_p": 0.02,
+        "odor": "1HEX",
+        "original_p": 0.013,
+        "signed_rank_w": 103
+      },
+      {
+        "condition_index": 2,
+        "fdr_p": 0.72,
+        "odor": "1HEX",
+        "original_p": 0.72,
+        "signed_rank_w": 52
+      },
+      {
+        "condition_index": 3,
+        "fdr_p": 0.001,
+        "odor": "1HEX",
+        "original_p": 0.0016,
+        "signed_rank_w": 110
+      },
+      {
+        "condition_index": 4,
+        "fdr_p": 0.32,
+        "odor": "1HEX",
+        "original_p": 0.16,
+        "signed_rank_w": 84
+      },
+      {
+        "condition_index": 5,
+        "fdr_p": 0.24,
+        "odor": "1HEX",
+        "original_p": 0.078,
+        "signed_rank_w": 29
+      },
+      {
+        "condition_index": 6,
+        "fdr_p": 0.0002,
+        "odor": "1HEX",
+        "original_p": 0.0002,
+        "signed_rank_w": 118
+      },
+      {
+        "condition_index": 7,
+        "fdr_p": 0.11,
+        "odor": "1HEX",
+        "original_p": 0.07,
+        "signed_rank_w": 92
+      },
+      {
+        "condition_index": 0,
+        "fdr_p": 0.0032,
+        "odor": "3HEX",
+        "original_p": 0.0016,
+        "signed_rank_w": 99
+      },
+      {
+        "condition_index": 1,
+        "fdr_p": 0.0044,
+        "odor": "3HEX",
+        "original_p": 0.0022,
+        "signed_rank_w": 98
+      },
+      {
+        "condition_index": 2,
+        "fdr_p": 0.59,
+        "odor": "3HEX",
+        "original_p": 0.3,
+        "signed_rank_w": 53
+      },
+      {
+        "condition_index": 3,
+        "fdr_p": 0.54,
+        "odor": "3HEX",
+        "original_p": 0.45,
+        "signed_rank_w": 75
+      },
+      {
+        "condition_index": 4,
+        "fdr_p": 0.54,
+        "odor": "3HEX",
+        "original_p": 0.45,
+        "signed_rank_w": 75
+      },
+      {
+        "condition_index": 5,
+        "fdr_p": 0.04,
+        "odor": "3HEX",
+        "original_p": 0.0065,
+        "signed_rank_w": 15
+      },
+      {
+        "condition_index": 6,
+        "fdr_p": 0.0002,
+        "odor": "3HEX",
+        "original_p": 0.0001,
+        "signed_rank_w": 119
+      },
+      {
+        "condition_index": 7,
+        "fdr_p": 0.0015,
+        "odor": "3HEX",
+        "original_p": 0.0005,
+        "signed_rank_w": 114
+      },
+      {
+        "condition_index": 0,
+        "fdr_p": 0.005,
+        "odor": "1NON",
+        "original_p": 0.0034,
+        "signed_rank_w": 109
+      },
+      {
+        "condition_index": 1,
+        "fdr_p": 0.0015,
+        "odor": "1NON",
+        "original_p": 0.0005,
+        "signed_rank_w": 78
+      },
+      {
+        "condition_index": 2,
+        "fdr_p": 0.64,
+        "odor": "1NON",
+        "original_p": 0.54,
+        "signed_rank_w": 42
+      },
+      {
+        "condition_index": 3,
+        "fdr_p": 0.012,
+        "odor": "1NON",
+        "original_p": 0.0056,
+        "signed_rank_w": 105
+      },
+      {
+        "condition_index": 4,
+        "fdr_p": 0.21,
+        "odor": "1NON",
+        "original_p": 0.07,
+        "signed_rank_w": 92
+      },
+      {
+        "condition_index": 5,
+        "fdr_p": 0.38,
+        "odor": "1NON",
+        "original_p": 0.32,
+        "signed_rank_w": 42
+      },
+      {
+        "condition_index": 6,
+        "fdr_p": 0.0002,
+        "odor": "1NON",
+        "original_p": 0.0001,
+        "signed_rank_w": 105
+      },
+      {
+        "condition_index": 7,
+        "fdr_p": 0.0007,
+        "odor": "1NON",
+        "original_p": 0.0001,
+        "signed_rank_w": 119
+      },
+      {
+        "condition_index": 0,
+        "fdr_p": 0.0004,
+        "odor": "ISOA",
+        "original_p": 0.0001,
+        "signed_rank_w": 120
+      },
+      {
+        "condition_index": 1,
+        "fdr_p": 0.0015,
+        "odor": "ISOA",
+        "original_p": 0.0004,
+        "signed_rank_w": 103
+      },
+      {
+        "condition_index": 2,
+        "fdr_p": 0.59,
+        "odor": "ISOA",
+        "original_p": 0.12,
+        "signed_rank_w": 78
+      },
+      {
+        "condition_index": 3,
+        "fdr_p": 0.012,
+        "odor": "ISOA",
+        "original_p": 0.0056,
+        "signed_rank_w": 105
+      },
+      {
+        "condition_index": 4,
+        "fdr_p": 0.1,
+        "odor": "ISOA",
+        "original_p": 0.016,
+        "signed_rank_w": 99
+      },
+      {
+        "condition_index": 5,
+        "fdr_p": 0.45,
+        "odor": "ISOA",
+        "original_p": 0.45,
+        "signed_rank_w": 75
+      },
+      {
+        "condition_index": 6,
+        "fdr_p": 0.0002,
+        "odor": "ISOA",
+        "original_p": 0.0001,
+        "signed_rank_w": 120
+      },
+      {
+        "condition_index": 7,
+        "fdr_p": 0.012,
+        "odor": "ISOA",
+        "original_p": 0.0056,
+        "signed_rank_w": 105
+      },
+      {
+        "condition_index": 0,
+        "fdr_p": 0.018,
+        "odor": "ACPH",
+        "original_p": 0.018,
+        "signed_rank_w": 101
+      },
+      {
+        "condition_index": 1,
+        "fdr_p": 0.33,
+        "odor": "ACPH",
+        "original_p": 0.28,
+        "signed_rank_w": 71
+      },
+      {
+        "condition_index": 2,
+        "fdr_p": 0.64,
+        "odor": "ACPH",
+        "original_p": 0.52,
+        "signed_rank_w": 42
+      },
+      {
+        "condition_index": 3,
+        "fdr_p": 0.47,
+        "odor": "ACPH",
+        "original_p": 0.32,
+        "signed_rank_w": 42
+      },
+      {
+        "condition_index": 4,
+        "fdr_p": 0.47,
+        "odor": "ACPH",
+        "original_p": 0.32,
+        "signed_rank_w": 42
+      },
+      {
+        "condition_index": 5,
+        "fdr_p": 0.32,
+        "odor": "ACPH",
+        "original_p": 0.16,
+        "signed_rank_w": 84
+      },
+      {
+        "condition_index": 6,
+        "fdr_p": 0.001,
+        "odor": "ACPH",
+        "original_p": 0.001,
+        "signed_rank_w": 101
+      },
+      {
+        "condition_index": 7,
+        "fdr_p": 0.2,
+        "odor": "ACPH",
+        "original_p": 0.16,
+        "signed_rank_w": 84
+      },
+      {
+        "condition_index": 0,
+        "fdr_p": 0.013,
+        "odor": "BZDA",
+        "original_p": 0.011,
+        "signed_rank_w": 92
+      },
+      {
+        "condition_index": 1,
+        "fdr_p": 0.99,
+        "odor": "BZDA",
+        "original_p": 0.99,
+        "signed_rank_w": 61
+      },
+      {
+        "condition_index": 2,
+        "fdr_p": 0.59,
+        "odor": "BZDA",
+        "original_p": 0.22,
+        "signed_rank_w": 27
+      },
+      {
+        "condition_index": 3,
+        "fdr_p": 0.56,
+        "odor": "BZDA",
+        "original_p": 0.56,
+        "signed_rank_w": 55
+      },
+      {
+        "condition_index": 4,
+        "fdr_p": 0.68,
+        "odor": "BZDA",
+        "original_p": 0.68,
+        "signed_rank_w": 60
+      },
+      {
+        "condition_index": 5,
+        "fdr_p": 0.38,
+        "odor": "BZDA",
+        "original_p": 0.32,
+        "signed_rank_w": 42
+      },
+      {
+        "condition_index": 6,
+        "fdr_p": 0.0002,
+        "odor": "BZDA",
+        "original_p": 0.0001,
+        "signed_rank_w": 105
+      },
+      {
+        "condition_index": 7,
+        "fdr_p": 0.71,
+        "odor": "BZDA",
+        "original_p": 0.71,
+        "signed_rank_w": 54
+      }
+    ],
+    "source_files": [
+      "output/data/empirical_sources/szyszka-2023-granger-al-network/supplementary/insects-14-00539-s001.zip"
+    ],
+    "table_s1_row_count": 48,
+    "var_connectivity_available": false
   },
   "template_alignment_matrix": {
     "(e)-2-hexenal": {
@@ -6257,11 +7569,11 @@
       "10-hda": -0.21323045961784076,
       "16ol": -0.22456207487695393,
       "16ol475nm": -0.2933887722303127,
-      "17ol": -0.22454608806856963,
+      "17ol": -0.2245460880685697,
       "17ol475nm": -0.26955094462793944,
-      "18ol": -0.22332264435174426,
+      "18ol": -0.22332264435174431,
       "18ol475nm": -0.2533546728064642,
-      "19ol": -0.22238480069529268,
+      "19ol": -0.22238480069529262,
       "19ol475nm": -0.3306959690644093,
       "2-butanone": -0.28301934707484744,
       "2-heptanone": -0.23300663854788492,
@@ -6270,7 +7582,7 @@
       "2-nonanol": 0.13705663318832478,
       "2-nonanone": 0.2197508847502312,
       "2-oxooctanoic": -0.12805214006396617,
-      "26ol": -0.22415652320859816,
+      "26ol": -0.22415652320859822,
       "26ol475nm": -0.31413157022919813,
       "26one": -0.22598962029412853
     },
@@ -6285,7 +7597,7 @@
       "16ol475nm": 0.7923189281429655,
       "17ol": 0.8951819511431881,
       "17ol475nm": 0.8377660555711628,
-      "18ol": 0.8952094703902369,
+      "18ol": 0.8952094703902371,
       "18ol475nm": 0.8535814854231383,
       "19ol": 0.8953185927743721,
       "19ol475nm": 0.7207913457091614,
@@ -6296,7 +7608,7 @@
       "2-nonanol": 0.6762877965962226,
       "2-nonanone": 0.4125093819297401,
       "2-oxooctanoic": -0.2650942399299401,
-      "26ol": 0.8935405890160257,
+      "26ol": 0.8935405890160256,
       "26ol475nm": 0.8034427433434017,
       "26one": 0.8928745282624827
     },
@@ -6309,9 +7621,9 @@
       "10-hda": 0.7602932982093675,
       "16ol": 0.6796404802339195,
       "16ol475nm": 0.6642716496120401,
-      "17ol": 0.6796578474726397,
+      "17ol": 0.6796578474726399,
       "17ol475nm": 0.7166268194511282,
-      "18ol": 0.6775495640906822,
+      "18ol": 0.6775495640906823,
       "18ol475nm": 0.7102190332713457,
       "19ol": 0.6759296173099235,
       "19ol475nm": 0.6144690386923539,
@@ -6322,7 +7634,7 @@
       "2-nonanol": 0.8748622760010767,
       "2-nonanone": 0.08118757994686962,
       "2-oxooctanoic": -0.34457457917802825,
-      "26ol": 0.6848402844702804,
+      "26ol": 0.6848402844702803,
       "26ol475nm": 0.6880097600601885,
       "26one": 0.6803330612099616
     },
@@ -6335,11 +7647,11 @@
       "10-hda": -0.45940373621026726,
       "16ol": -0.5510674676887923,
       "16ol475nm": -0.5706087569245425,
-      "17ol": -0.5517767456023338,
+      "17ol": -0.5517767456023339,
       "17ol475nm": -0.5935319011450713,
-      "18ol": -0.5488031370935881,
+      "18ol": -0.5488031370935882,
       "18ol475nm": -0.5961260152469757,
-      "19ol": -0.5484017493921027,
+      "19ol": -0.5484017493921026,
       "19ol475nm": -0.651329494321086,
       "2-butanone": -0.6112030085816721,
       "2-heptanone": -0.6167156348194676,
@@ -6361,11 +7673,11 @@
       "10-hda": -0.686693061678648,
       "16ol": -0.6155757558615295,
       "16ol475nm": -0.7121229306679014,
-      "17ol": -0.6142292016564135,
+      "17ol": -0.6142292016564136,
       "17ol475nm": -0.6928329948473803,
-      "18ol": -0.6146172527980616,
+      "18ol": -0.6146172527980617,
       "18ol475nm": -0.6660908031990614,
-      "19ol": -0.6151291438519256,
+      "19ol": -0.6151291438519255,
       "19ol475nm": -0.6330926905045757,
       "2-butanone": -0.6035020800183262,
       "2-heptanone": -0.3183039365659458,
@@ -6387,9 +7699,9 @@
       "10-hda": 0.9999999999999999,
       "16ol": 0.6883950538384216,
       "16ol475nm": 0.6588729717480505,
-      "17ol": 0.687665148713431,
+      "17ol": 0.6876651487134312,
       "17ol475nm": 0.696866457735286,
-      "18ol": 0.6824052709805669,
+      "18ol": 0.682405270980567,
       "18ol475nm": 0.6690732137562558,
       "19ol": 0.6799496053850829,
       "19ol475nm": 0.5738592575774295,
@@ -6413,11 +7725,11 @@
       "10-hda": 0.6883950538384216,
       "16ol": 0.9999999999999998,
       "16ol475nm": 0.9366350488946605,
-      "17ol": 0.9999576850469423,
+      "17ol": 0.9999576850469424,
       "17ol475nm": 0.9463851398180612,
-      "18ol": 0.9998983276964032,
+      "18ol": 0.9998983276964033,
       "18ol475nm": 0.9555151455942148,
-      "19ol": 0.9998082738081308,
+      "19ol": 0.999808273808131,
       "19ol475nm": 0.8611061833935795,
       "2-butanone": 0.9646978525929911,
       "2-heptanone": 0.8211530209708432,
@@ -6439,7 +7751,7 @@
       "10-hda": 0.6588729717480505,
       "16ol": 0.9366350488946605,
       "16ol475nm": 1.0,
-      "17ol": 0.9375672627047695,
+      "17ol": 0.9375672627047696,
       "17ol475nm": 0.9844746421653092,
       "18ol": 0.9377189314960315,
       "18ol475nm": 0.9852312865501366,
@@ -6457,29 +7769,29 @@
       "26one": 0.9385281967861446
     },
     "17ol": {
-      "(e)-2-hexenal": -0.22454608806856963,
+      "(e)-2-hexenal": -0.2245460880685697,
       "1-butanol": 0.8951819511431881,
-      "1-hexadecanol": 0.6796578474726397,
-      "1-octanol": -0.5517767456023338,
-      "1-octen-3-ol": -0.6142292016564135,
-      "10-hda": 0.687665148713431,
-      "16ol": 0.9999576850469423,
-      "16ol475nm": 0.9375672627047695,
-      "17ol": 0.9999999999999998,
+      "1-hexadecanol": 0.6796578474726399,
+      "1-octanol": -0.5517767456023339,
+      "1-octen-3-ol": -0.6142292016564136,
+      "10-hda": 0.6876651487134312,
+      "16ol": 0.9999576850469424,
+      "16ol475nm": 0.9375672627047696,
+      "17ol": 1.0,
       "17ol475nm": 0.9468998754646383,
-      "18ol": 0.9999431917139706,
-      "18ol475nm": 0.9562916148095403,
-      "19ol": 0.9998679356222911,
-      "19ol475nm": 0.8613159554190017,
-      "2-butanone": 0.9656403176208258,
-      "2-heptanone": 0.8213698603237076,
-      "2-hexanone": 0.8724750281605896,
-      "2-isobutyl-3-metoxyprazine": -0.42829538521699684,
+      "18ol": 0.999943191713971,
+      "18ol475nm": 0.9562916148095405,
+      "19ol": 0.9998679356222913,
+      "19ol475nm": 0.8613159554190019,
+      "2-butanone": 0.9656403176208259,
+      "2-heptanone": 0.8213698603237077,
+      "2-hexanone": 0.8724750281605899,
+      "2-isobutyl-3-metoxyprazine": -0.4282953852169969,
       "2-nonanol": 0.7430759652752884,
       "2-nonanone": 0.24365353826267466,
-      "2-oxooctanoic": -0.362854617384433,
+      "2-oxooctanoic": -0.36285461738443303,
       "26ol": 0.9999463429114225,
-      "26ol475nm": 0.9525691238074422,
+      "26ol475nm": 0.9525691238074424,
       "26one": 0.99989821546466
     },
     "17ol475nm": {
@@ -6509,30 +7821,30 @@
       "26one": 0.9481406021147774
     },
     "18ol": {
-      "(e)-2-hexenal": -0.22332264435174426,
-      "1-butanol": 0.8952094703902369,
-      "1-hexadecanol": 0.6775495640906822,
-      "1-octanol": -0.5488031370935881,
-      "1-octen-3-ol": -0.6146172527980616,
-      "10-hda": 0.6824052709805669,
-      "16ol": 0.9998983276964032,
+      "(e)-2-hexenal": -0.22332264435174431,
+      "1-butanol": 0.8952094703902371,
+      "1-hexadecanol": 0.6775495640906823,
+      "1-octanol": -0.5488031370935882,
+      "1-octen-3-ol": -0.6146172527980617,
+      "10-hda": 0.682405270980567,
+      "16ol": 0.9998983276964033,
       "16ol475nm": 0.9377189314960315,
-      "17ol": 0.9999431917139706,
+      "17ol": 0.999943191713971,
       "17ol475nm": 0.9464280081774535,
-      "18ol": 1.0,
-      "18ol475nm": 0.9561628293945744,
-      "19ol": 0.999952223491243,
-      "19ol475nm": 0.8622186153669068,
-      "2-butanone": 0.9654663913055102,
-      "2-heptanone": 0.816596077069598,
-      "2-hexanone": 0.8708000178695591,
-      "2-isobutyl-3-metoxyprazine": -0.4252971215477717,
-      "2-nonanol": 0.7426185524088327,
-      "2-nonanone": 0.23971008840453542,
-      "2-oxooctanoic": -0.3588256112831135,
-      "26ol": 0.999885666533902,
-      "26ol475nm": 0.951936163996007,
-      "26one": 0.9998867997341057
+      "18ol": 1.0000000000000002,
+      "18ol475nm": 0.9561628293945746,
+      "19ol": 0.9999522234912432,
+      "19ol475nm": 0.8622186153669069,
+      "2-butanone": 0.9654663913055103,
+      "2-heptanone": 0.8165960770695981,
+      "2-hexanone": 0.8708000178695592,
+      "2-isobutyl-3-metoxyprazine": -0.4252971215477718,
+      "2-nonanol": 0.7426185524088329,
+      "2-nonanone": 0.2397100884045355,
+      "2-oxooctanoic": -0.3588256112831136,
+      "26ol": 0.9998856665339022,
+      "26ol475nm": 0.9519361639960071,
+      "26one": 0.9998867997341059
     },
     "18ol475nm": {
       "(e)-2-hexenal": -0.2533546728064642,
@@ -6543,9 +7855,9 @@
       "10-hda": 0.6690732137562558,
       "16ol": 0.9555151455942148,
       "16ol475nm": 0.9852312865501366,
-      "17ol": 0.9562916148095403,
+      "17ol": 0.9562916148095405,
       "17ol475nm": 0.9957131942740985,
-      "18ol": 0.9561628293945744,
+      "18ol": 0.9561628293945746,
       "18ol475nm": 1.0000000000000002,
       "19ol": 0.9567452291341386,
       "19ol475nm": 0.9328348033787458,
@@ -6561,21 +7873,21 @@
       "26one": 0.9569706376788516
     },
     "19ol": {
-      "(e)-2-hexenal": -0.22238480069529268,
+      "(e)-2-hexenal": -0.22238480069529262,
       "1-butanol": 0.8953185927743721,
       "1-hexadecanol": 0.6759296173099235,
-      "1-octanol": -0.5484017493921027,
-      "1-octen-3-ol": -0.6151291438519256,
+      "1-octanol": -0.5484017493921026,
+      "1-octen-3-ol": -0.6151291438519255,
       "10-hda": 0.6799496053850829,
-      "16ol": 0.9998082738081308,
+      "16ol": 0.999808273808131,
       "16ol475nm": 0.9382090569815347,
-      "17ol": 0.9998679356222911,
+      "17ol": 0.9998679356222913,
       "17ol475nm": 0.9468485308262194,
-      "18ol": 0.999952223491243,
+      "18ol": 0.9999522234912432,
       "18ol475nm": 0.9567452291341386,
       "19ol": 1.0,
       "19ol475nm": 0.8621688560252985,
-      "2-butanone": 0.9662252324308419,
+      "2-butanone": 0.9662252324308416,
       "2-heptanone": 0.8158921406247768,
       "2-hexanone": 0.8704982954165844,
       "2-isobutyl-3-metoxyprazine": -0.42475687047235544,
@@ -6583,7 +7895,7 @@
       "2-nonanone": 0.23942293964983302,
       "2-oxooctanoic": -0.35542441219446474,
       "26ol": 0.9998162196403112,
-      "26ol475nm": 0.9524021449061641,
+      "26ol475nm": 0.9524021449061644,
       "26one": 0.999839255818159
     },
     "19ol475nm": {
@@ -6595,9 +7907,9 @@
       "10-hda": 0.5738592575774295,
       "16ol": 0.8611061833935795,
       "16ol475nm": 0.918048776188838,
-      "17ol": 0.8613159554190017,
+      "17ol": 0.8613159554190019,
       "17ol475nm": 0.9296254964729177,
-      "18ol": 0.8622186153669068,
+      "18ol": 0.8622186153669069,
       "18ol475nm": 0.9328348033787458,
       "19ol": 0.8621688560252985,
       "19ol475nm": 1.0,
@@ -6621,11 +7933,11 @@
       "10-hda": 0.6910972955761269,
       "16ol": 0.9646978525929911,
       "16ol475nm": 0.9171847748293456,
-      "17ol": 0.9656403176208258,
+      "17ol": 0.9656403176208259,
       "17ol475nm": 0.9405846654170318,
-      "18ol": 0.9654663913055102,
+      "18ol": 0.9654663913055103,
       "18ol475nm": 0.9436889476998209,
-      "19ol": 0.9662252324308419,
+      "19ol": 0.9662252324308416,
       "19ol475nm": 0.8738121470811122,
       "2-butanone": 1.0,
       "2-heptanone": 0.8019333373408215,
@@ -6647,9 +7959,9 @@
       "10-hda": 0.7363236884179195,
       "16ol": 0.8211530209708432,
       "16ol475nm": 0.7302576413718842,
-      "17ol": 0.8213698603237076,
+      "17ol": 0.8213698603237077,
       "17ol475nm": 0.781438585118347,
-      "18ol": 0.816596077069598,
+      "18ol": 0.8165960770695981,
       "18ol475nm": 0.7770312088828201,
       "19ol": 0.8158921406247768,
       "19ol475nm": 0.5946265240359463,
@@ -6660,7 +7972,7 @@
       "2-nonanol": 0.5851964212328451,
       "2-nonanone": 0.5680065487105839,
       "2-oxooctanoic": -0.39638675192687817,
-      "26ol": 0.820731414116987,
+      "26ol": 0.8207314141169872,
       "26ol475nm": 0.7903719923654583,
       "26one": 0.8182580181591043
     },
@@ -6673,9 +7985,9 @@
       "10-hda": 0.6164593643102685,
       "16ol": 0.871735760821657,
       "16ol475nm": 0.8536032704532897,
-      "17ol": 0.8724750281605896,
+      "17ol": 0.8724750281605899,
       "17ol475nm": 0.8624465957256767,
-      "18ol": 0.8708000178695591,
+      "18ol": 0.8708000178695592,
       "18ol475nm": 0.8770307613468089,
       "19ol": 0.8704982954165844,
       "19ol475nm": 0.8165361855331394,
@@ -6699,9 +8011,9 @@
       "10-hda": -0.7385179382145483,
       "16ol": -0.427926882697999,
       "16ol475nm": -0.47480533950003206,
-      "17ol": -0.42829538521699684,
+      "17ol": -0.4282953852169969,
       "17ol475nm": -0.4696708984581488,
-      "18ol": -0.4252971215477717,
+      "18ol": -0.4252971215477718,
       "18ol475nm": -0.45893900528739234,
       "19ol": -0.42475687047235544,
       "19ol475nm": -0.4052971363007551,
@@ -6727,7 +8039,7 @@
       "16ol475nm": 0.6698614300828735,
       "17ol": 0.7430759652752884,
       "17ol475nm": 0.6995083071114572,
-      "18ol": 0.7426185524088327,
+      "18ol": 0.7426185524088329,
       "18ol475nm": 0.699018487122006,
       "19ol": 0.740751982175402,
       "19ol475nm": 0.5777422012992816,
@@ -6753,7 +8065,7 @@
       "16ol475nm": 0.03654126043205232,
       "17ol": 0.24365353826267466,
       "17ol475nm": 0.10529809177009593,
-      "18ol": 0.23971008840453542,
+      "18ol": 0.2397100884045355,
       "18ol475nm": 0.13502334160621637,
       "19ol": 0.23942293964983302,
       "19ol475nm": 0.0131488867550415,
@@ -6777,9 +8089,9 @@
       "10-hda": -0.498094450152702,
       "16ol": -0.3657285959666823,
       "16ol475nm": -0.3598125333591933,
-      "17ol": -0.362854617384433,
+      "17ol": -0.36285461738443303,
       "17ol475nm": -0.3632248960136422,
-      "18ol": -0.3588256112831135,
+      "18ol": -0.3588256112831136,
       "18ol475nm": -0.340275651420242,
       "19ol": -0.35542441219446474,
       "19ol475nm": -0.19496403895728923,
@@ -6795,9 +8107,9 @@
       "26one": -0.3618629669933532
     },
     "26ol": {
-      "(e)-2-hexenal": -0.22415652320859816,
-      "1-butanol": 0.8935405890160257,
-      "1-hexadecanol": 0.6848402844702804,
+      "(e)-2-hexenal": -0.22415652320859822,
+      "1-butanol": 0.8935405890160256,
+      "1-hexadecanol": 0.6848402844702803,
       "1-octanol": -0.5523063254701271,
       "1-octen-3-ol": -0.6192504230606333,
       "10-hda": 0.6920312689523891,
@@ -6805,12 +8117,12 @@
       "16ol475nm": 0.9381142792441323,
       "17ol": 0.9999463429114225,
       "17ol475nm": 0.9478377724963962,
-      "18ol": 0.999885666533902,
+      "18ol": 0.9998856665339022,
       "18ol475nm": 0.9569668963117226,
       "19ol": 0.9998162196403112,
       "19ol475nm": 0.8624692195655435,
       "2-butanone": 0.9666717451343584,
-      "2-heptanone": 0.820731414116987,
+      "2-heptanone": 0.8207314141169872,
       "2-hexanone": 0.8719800833039685,
       "2-isobutyl-3-metoxyprazine": -0.43439835192966186,
       "2-nonanol": 0.7460924013042006,
@@ -6818,7 +8130,7 @@
       "2-oxooctanoic": -0.36129254687231027,
       "26ol": 1.0,
       "26ol475nm": 0.9535328289785336,
-      "26one": 0.9999264015306668
+      "26one": 0.999926401530667
     },
     "26ol475nm": {
       "(e)-2-hexenal": -0.31413157022919813,
@@ -6829,11 +8141,11 @@
       "10-hda": 0.6989082531801192,
       "16ol": 0.9523745119781264,
       "16ol475nm": 0.9808205991494097,
-      "17ol": 0.9525691238074422,
+      "17ol": 0.9525691238074424,
       "17ol475nm": 0.9891035764104805,
-      "18ol": 0.951936163996007,
+      "18ol": 0.9519361639960071,
       "18ol475nm": 0.989317431441944,
-      "19ol": 0.9524021449061641,
+      "19ol": 0.9524021449061644,
       "19ol475nm": 0.9343333913385189,
       "2-butanone": 0.9402004889078998,
       "2-heptanone": 0.7903719923654583,
@@ -6857,7 +8169,7 @@
       "16ol475nm": 0.9385281967861446,
       "17ol": 0.99989821546466,
       "17ol475nm": 0.9481406021147774,
-      "18ol": 0.9998867997341057,
+      "18ol": 0.9998867997341059,
       "18ol475nm": 0.9569706376788516,
       "19ol": 0.999839255818159,
       "19ol475nm": 0.8638120475219146,
@@ -6868,7 +8180,7 @@
       "2-nonanol": 0.7442868610288049,
       "2-nonanone": 0.23647814928535765,
       "2-oxooctanoic": -0.3618629669933532,
-      "26ol": 0.9999264015306668,
+      "26ol": 0.999926401530667,
       "26ol475nm": 0.9539173125294856,
       "26one": 1.0
     }
@@ -6876,25 +8188,25 @@
   "template_count": 24,
   "template_sources": {
     "(e)-2-hexenal": [
-      "dryad-andreu-2025-alarm-odorant-receptors:Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx:C.Specificity (spike-s):receptor_response"
+      "dryad-andreu-2025-alarm-odorant-receptors:Annex1b_Suppdata_AmOr136.xlsx:C.Specificity (spike-s):receptor_response"
     ],
     "1-butanol": [
-      "dryad-andreu-2025-alarm-odorant-receptors:Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx:C.Specificity (spike-s):receptor_response",
-      "dryad-andreu-2025-alarm-odorant-receptors:Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx:C.Specificity (spike-s):receptor_response"
+      "dryad-andreu-2025-alarm-odorant-receptors:Annex1a_Suppdata_AmOr109.xlsx:C.Specificity (spike-s):receptor_response",
+      "dryad-andreu-2025-alarm-odorant-receptors:Annex1b_Suppdata_AmOr136.xlsx:C.Specificity (spike-s):receptor_response"
     ],
     "1-hexadecanol": [
-      "dryad-andreu-2025-alarm-odorant-receptors:Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx:B.Individual compounds dF-F0:receptor_response"
+      "dryad-andreu-2025-alarm-odorant-receptors:Annex1a_Suppdata_AmOr109.xlsx:B.Individual compounds dF-F0:receptor_response"
     ],
     "1-octanol": [
-      "dryad-andreu-2025-alarm-odorant-receptors:Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx:C.Specificity (spike-s):receptor_response",
-      "dryad-andreu-2025-alarm-odorant-receptors:Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx:C.Specificity (spike-s):receptor_response"
+      "dryad-andreu-2025-alarm-odorant-receptors:Annex1a_Suppdata_AmOr109.xlsx:C.Specificity (spike-s):receptor_response",
+      "dryad-andreu-2025-alarm-odorant-receptors:Annex1b_Suppdata_AmOr136.xlsx:C.Specificity (spike-s):receptor_response"
     ],
     "1-octen-3-ol": [
-      "dryad-andreu-2025-alarm-odorant-receptors:Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx:C.Specificity (spike-s):receptor_response",
-      "dryad-andreu-2025-alarm-odorant-receptors:Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx:C.Specificity (spike-s):receptor_response"
+      "dryad-andreu-2025-alarm-odorant-receptors:Annex1a_Suppdata_AmOr109.xlsx:C.Specificity (spike-s):receptor_response",
+      "dryad-andreu-2025-alarm-odorant-receptors:Annex1b_Suppdata_AmOr136.xlsx:C.Specificity (spike-s):receptor_response"
     ],
     "10-hda": [
-      "dryad-andreu-2025-alarm-odorant-receptors:Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx:B.Individual compounds dF-F0:receptor_response"
+      "dryad-andreu-2025-alarm-odorant-receptors:Annex1a_Suppdata_AmOr109.xlsx:B.Individual compounds dF-F0:receptor_response"
     ],
     "16ol": [
       "dryad-carcaud-2022-multisite-gcamp:S1_Data.xlsx:Euclidian distances AL:generic_numeric_response",
@@ -7016,31 +8328,31 @@
       "dryad-carcaud-2022-multisite-gcamp:S1_Data.xlsx:intensity AL:regional_intensity"
     ],
     "2-butanone": [
-      "dryad-andreu-2025-alarm-odorant-receptors:Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx:C.Specificity (spike-s):receptor_response",
-      "dryad-andreu-2025-alarm-odorant-receptors:Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx:C.Specificity (spike-s):receptor_response"
+      "dryad-andreu-2025-alarm-odorant-receptors:Annex1a_Suppdata_AmOr109.xlsx:C.Specificity (spike-s):receptor_response",
+      "dryad-andreu-2025-alarm-odorant-receptors:Annex1b_Suppdata_AmOr136.xlsx:C.Specificity (spike-s):receptor_response"
     ],
     "2-heptanone": [
-      "dryad-andreu-2025-alarm-odorant-receptors:Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx:B.Individual compounds dF-F0:receptor_response",
-      "dryad-andreu-2025-alarm-odorant-receptors:Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx:C.Specificity (spike-s):receptor_response",
-      "dryad-andreu-2025-alarm-odorant-receptors:Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx:B.Individual compounds dF-F0:receptor_response",
-      "dryad-andreu-2025-alarm-odorant-receptors:Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx:C.Specificity (spike-s):receptor_response",
-      "dryad-andreu-2025-alarm-odorant-receptors:Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx:E.Sensitivity (spike-s):receptor_response"
+      "dryad-andreu-2025-alarm-odorant-receptors:Annex1a_Suppdata_AmOr109.xlsx:B.Individual compounds dF-F0:receptor_response",
+      "dryad-andreu-2025-alarm-odorant-receptors:Annex1a_Suppdata_AmOr109.xlsx:C.Specificity (spike-s):receptor_response",
+      "dryad-andreu-2025-alarm-odorant-receptors:Annex1b_Suppdata_AmOr136.xlsx:B.Individual compounds dF-F0:receptor_response",
+      "dryad-andreu-2025-alarm-odorant-receptors:Annex1b_Suppdata_AmOr136.xlsx:C.Specificity (spike-s):receptor_response",
+      "dryad-andreu-2025-alarm-odorant-receptors:Annex1b_Suppdata_AmOr136.xlsx:E.Sensitivity (spike-s):receptor_response"
     ],
     "2-hexanone": [
-      "dryad-andreu-2025-alarm-odorant-receptors:Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx:C.Specificity (spike-s):receptor_response",
-      "dryad-andreu-2025-alarm-odorant-receptors:Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx:C.Specificity (spike-s):receptor_response"
+      "dryad-andreu-2025-alarm-odorant-receptors:Annex1a_Suppdata_AmOr109.xlsx:C.Specificity (spike-s):receptor_response",
+      "dryad-andreu-2025-alarm-odorant-receptors:Annex1b_Suppdata_AmOr136.xlsx:C.Specificity (spike-s):receptor_response"
     ],
     "2-isobutyl-3-metoxyprazine": [
-      "dryad-andreu-2025-alarm-odorant-receptors:Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx:C.Specificity (spike-s):receptor_response"
+      "dryad-andreu-2025-alarm-odorant-receptors:Annex1a_Suppdata_AmOr109.xlsx:C.Specificity (spike-s):receptor_response"
     ],
     "2-nonanol": [
-      "dryad-andreu-2025-alarm-odorant-receptors:Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx:B.Individual compounds dF-F0:receptor_response"
+      "dryad-andreu-2025-alarm-odorant-receptors:Annex1a_Suppdata_AmOr109.xlsx:B.Individual compounds dF-F0:receptor_response"
     ],
     "2-nonanone": [
-      "dryad-andreu-2025-alarm-odorant-receptors:Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx:B.Individual compounds dF-F0:receptor_response"
+      "dryad-andreu-2025-alarm-odorant-receptors:Annex1b_Suppdata_AmOr136.xlsx:B.Individual compounds dF-F0:receptor_response"
     ],
     "2-oxooctanoic": [
-      "dryad-andreu-2025-alarm-odorant-receptors:Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx:C.Specificity (spike-s):receptor_response"
+      "dryad-andreu-2025-alarm-odorant-receptors:Annex1a_Suppdata_AmOr109.xlsx:C.Specificity (spike-s):receptor_response"
     ],
     "26ol": [
       "dryad-carcaud-2022-multisite-gcamp:S1_Data.xlsx:Euclidian distances AL:generic_numeric_response",
@@ -7933,7 +9245,7 @@
       "numeric_cell_count": 197,
       "row_count": 28,
       "sheet": "A.Pheromonal blend dF-F0",
-      "workbook": "Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx"
+      "workbook": "Annex1b_Suppdata_AmOr136.xlsx"
     },
     {
       "column_count": 24,
@@ -7942,7 +9254,7 @@
       "numeric_cell_count": 375,
       "row_count": 25,
       "sheet": "B.Individual compounds dF-F0",
-      "workbook": "Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx"
+      "workbook": "Annex1b_Suppdata_AmOr136.xlsx"
     },
     {
       "column_count": 44,
@@ -7951,7 +9263,7 @@
       "numeric_cell_count": 489,
       "row_count": 13,
       "sheet": "C.Specificity (spike-s)",
-      "workbook": "Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx"
+      "workbook": "Annex1b_Suppdata_AmOr136.xlsx"
     },
     {
       "column_count": 21,
@@ -7960,7 +9272,7 @@
       "numeric_cell_count": 228,
       "row_count": 13,
       "sheet": "D.Specificity-Acetate (spike-s)",
-      "workbook": "Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx"
+      "workbook": "Annex1b_Suppdata_AmOr136.xlsx"
     },
     {
       "column_count": 24,
@@ -7969,7 +9281,7 @@
       "numeric_cell_count": 242,
       "row_count": 14,
       "sheet": "E.Sensitivity (spike-s)",
-      "workbook": "Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx"
+      "workbook": "Annex1b_Suppdata_AmOr136.xlsx"
     },
     {
       "column_count": 9,
@@ -7978,7 +9290,7 @@
       "numeric_cell_count": 160,
       "row_count": 21,
       "sheet": "A.Pheromonal blend dF-F0",
-      "workbook": "Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx"
+      "workbook": "Annex1a_Suppdata_AmOr109.xlsx"
     },
     {
       "column_count": 31,
@@ -7987,7 +9299,7 @@
       "numeric_cell_count": 573,
       "row_count": 21,
       "sheet": "B.Individual compounds dF-F0",
-      "workbook": "Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx"
+      "workbook": "Annex1a_Suppdata_AmOr109.xlsx"
     },
     {
       "column_count": 45,
@@ -7996,7 +9308,7 @@
       "numeric_cell_count": 400,
       "row_count": 11,
       "sheet": "C.Specificity (spike-s)",
-      "workbook": "Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx"
+      "workbook": "Annex1a_Suppdata_AmOr109.xlsx"
     },
     {
       "column_count": 22,
@@ -8005,25 +9317,7 @@
       "numeric_cell_count": 223,
       "row_count": 17,
       "sheet": "D.Specificity-Acetate (spike-s)",
-      "workbook": "Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109.xlsx"
-    },
-    {
-      "column_count": 9,
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "finite_numeric_fraction": 0.8395061728395061,
-      "numeric_cell_count": 136,
-      "row_count": 18,
-      "sheet": "intensity LH",
-      "workbook": "S2_Data.xlsx"
-    },
-    {
-      "column_count": 10,
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "finite_numeric_fraction": 0.7933884297520661,
-      "numeric_cell_count": 960,
-      "row_count": 121,
-      "sheet": "Euclidian distances LH",
-      "workbook": "S2_Data.xlsx"
+      "workbook": "Annex1a_Suppdata_AmOr109.xlsx"
     },
     {
       "column_count": 12,
@@ -8044,6 +9338,24 @@
       "workbook": "S1_Data.xlsx"
     },
     {
+      "column_count": 9,
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "finite_numeric_fraction": 0.8395061728395061,
+      "numeric_cell_count": 136,
+      "row_count": 18,
+      "sheet": "intensity LH",
+      "workbook": "S2_Data.xlsx"
+    },
+    {
+      "column_count": 10,
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "finite_numeric_fraction": 0.7933884297520661,
+      "numeric_cell_count": 960,
+      "row_count": 121,
+      "sheet": "Euclidian distances LH",
+      "workbook": "S2_Data.xlsx"
+    },
+    {
       "column_count": 8,
       "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
       "finite_numeric_fraction": 0.75,
@@ -8051,6 +9363,15 @@
       "row_count": 7,
       "sheet": "intensity MB",
       "workbook": "S3_Data.xlsx"
+    },
+    {
+      "column_count": 8,
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "finite_numeric_fraction": 0.8083333333333333,
+      "numeric_cell_count": 97,
+      "row_count": 15,
+      "sheet": "intensity",
+      "workbook": "S4_Data.xlsx"
     },
     {
       "column_count": 18,
@@ -8152,69 +9473,6 @@
       "workbook": "S5_Data.xlsx"
     },
     {
-      "column_count": 7,
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "finite_numeric_fraction": 0.9900990099009901,
-      "numeric_cell_count": 700,
-      "row_count": 101,
-      "sheet": "HB1",
-      "workbook": "S7_Data.xlsx"
-    },
-    {
-      "column_count": 7,
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "finite_numeric_fraction": 0.9900990099009901,
-      "numeric_cell_count": 700,
-      "row_count": 101,
-      "sheet": "HB2",
-      "workbook": "S7_Data.xlsx"
-    },
-    {
-      "column_count": 7,
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "finite_numeric_fraction": 0.9900990099009901,
-      "numeric_cell_count": 700,
-      "row_count": 101,
-      "sheet": "HB3",
-      "workbook": "S7_Data.xlsx"
-    },
-    {
-      "column_count": 7,
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "finite_numeric_fraction": 0.9900990099009901,
-      "numeric_cell_count": 700,
-      "row_count": 101,
-      "sheet": "HB4",
-      "workbook": "S7_Data.xlsx"
-    },
-    {
-      "column_count": 7,
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "finite_numeric_fraction": 0.9900990099009901,
-      "numeric_cell_count": 700,
-      "row_count": 101,
-      "sheet": "HB5",
-      "workbook": "S7_Data.xlsx"
-    },
-    {
-      "column_count": 7,
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "finite_numeric_fraction": 0.9900990099009901,
-      "numeric_cell_count": 700,
-      "row_count": 101,
-      "sheet": "HB6",
-      "workbook": "S7_Data.xlsx"
-    },
-    {
-      "column_count": 17,
-      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "finite_numeric_fraction": 0.8366013071895425,
-      "numeric_cell_count": 256,
-      "row_count": 18,
-      "sheet": "Feuil1",
-      "workbook": "S8_Data.xlsx"
-    },
-    {
       "column_count": 18,
       "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
       "finite_numeric_fraction": 0.9900990099009901,
@@ -8287,13 +9545,67 @@
       "workbook": "S6_Data.xlsx"
     },
     {
-      "column_count": 8,
+      "column_count": 7,
       "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
-      "finite_numeric_fraction": 0.8083333333333333,
-      "numeric_cell_count": 97,
-      "row_count": 15,
-      "sheet": "intensity",
-      "workbook": "S4_Data.xlsx"
+      "finite_numeric_fraction": 0.9900990099009901,
+      "numeric_cell_count": 700,
+      "row_count": 101,
+      "sheet": "HB1",
+      "workbook": "S7_Data.xlsx"
+    },
+    {
+      "column_count": 7,
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "finite_numeric_fraction": 0.9900990099009901,
+      "numeric_cell_count": 700,
+      "row_count": 101,
+      "sheet": "HB2",
+      "workbook": "S7_Data.xlsx"
+    },
+    {
+      "column_count": 7,
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "finite_numeric_fraction": 0.9900990099009901,
+      "numeric_cell_count": 700,
+      "row_count": 101,
+      "sheet": "HB3",
+      "workbook": "S7_Data.xlsx"
+    },
+    {
+      "column_count": 7,
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "finite_numeric_fraction": 0.9900990099009901,
+      "numeric_cell_count": 700,
+      "row_count": 101,
+      "sheet": "HB4",
+      "workbook": "S7_Data.xlsx"
+    },
+    {
+      "column_count": 7,
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "finite_numeric_fraction": 0.9900990099009901,
+      "numeric_cell_count": 700,
+      "row_count": 101,
+      "sheet": "HB5",
+      "workbook": "S7_Data.xlsx"
+    },
+    {
+      "column_count": 7,
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "finite_numeric_fraction": 0.9900990099009901,
+      "numeric_cell_count": 700,
+      "row_count": 101,
+      "sheet": "HB6",
+      "workbook": "S7_Data.xlsx"
+    },
+    {
+      "column_count": 17,
+      "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
+      "finite_numeric_fraction": 0.8366013071895425,
+      "numeric_cell_count": 256,
+      "row_count": 18,
+      "sheet": "Feuil1",
+      "workbook": "S8_Data.xlsx"
     },
     {
       "column_count": 10,

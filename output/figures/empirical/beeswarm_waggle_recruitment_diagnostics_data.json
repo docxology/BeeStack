@@ -1,0 +1,19 @@
+{
+  "chart_type": "bar",
+  "confidence_score": 0.28875178634201437,
+  "decoding_improvement_fraction": 0.24776741229159377,
+  "figure_path": "output/figures/empirical/beeswarm_waggle_recruitment_diagnostics.png",
+  "labels": [
+    "No antennae",
+    "All model rows",
+    "Both antennae"
+  ],
+  "orientation": "vertical",
+  "schema": "beestack.figure_data.v1",
+  "title": "BeeSwarm waggle recruitment decoding error inputs",
+  "values": [
+    79.99983885415868,
+    63.662946226908595,
+    60.178485797519286
+  ]
+}

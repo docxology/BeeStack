@@ -1,0 +1,74 @@
+{
+  "accessibility_checks": {
+    "background": "#FFFFFF",
+    "contrast_ratio": 17.73971700407407,
+    "foreground": "#111827",
+    "large_text_passed": true,
+    "large_text_threshold": 3.0,
+    "normal_text_passed": true,
+    "normal_text_threshold": 4.5,
+    "standard": "WCAG 2.1 AA contrast thresholds"
+  },
+  "alt_text": "Directed graph of BeeBrain structural connectome nodes and tract edges.",
+  "artifact_kind": "figure",
+  "backend": "matplotlib/networkx connectome renderer",
+  "caption": "Matplotlib beebrain structural projectome graph shows Network layout of Honeybee Standard Brain neuropils, named neuron/tract nodes, and documented structural tract edges. Generated from output/data/bee_brain_connectome.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not claim synaptic adjacency or functional Granger completeness.",
+  "citation_keys": [
+    "brandt2005standardbrain"
+  ],
+  "claim_tier": "structural_projectome_witness",
+  "design_citation_keys": [
+    "rougier2014figures",
+    "cleveland1984graphical",
+    "crameri2020colour",
+    "w3c2023wcag21",
+    "wilkinson2016fair",
+    "heer2012interactive",
+    "ragan2016provenance"
+  ],
+  "design_source_dois": [
+    "10.1371/journal.pcbi.1003833",
+    "10.1080/01621459.1984.10478080",
+    "10.1038/s41467-020-19160-7",
+    "10.1038/sdata.2016.18",
+    "10.1145/2133806.2133821",
+    "10.1109/TVCG.2015.2467551"
+  ],
+  "fidelity": "Honeybee Standard Brain structural projectome diagnostic",
+  "figure_path": "output/figures/empirical/connectome_structural_graph.png",
+  "manuscript_label": "fig:connectome_structural_graph",
+  "manuscript_section": "manuscript/09_empirical_results.md",
+  "plot_data_path": "output/figures/empirical/connectome_structural_graph_data.json",
+  "priority": "primary",
+  "quality": {
+    "height_px": 980,
+    "max_intensity": 255,
+    "mean_intensity": 247.8401866151866,
+    "min_intensity": 24,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 232,
+    "std_intensity": 33.13791300449755,
+    "width_px": 1554
+  },
+  "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "output/data/bee_brain_connectome.json",
+  "source_dois": [
+    "10.1002/cne.20644"
+  ],
+  "title": "Connectome Structural Graph",
+  "unsupported_inference": "Does not claim synaptic adjacency or functional Granger completeness.",
+  "validation_status": "structural connectome tier witness with plot data",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.586,
+    "figure_role": "overview",
+    "height_px": 980,
+    "label_density": "dense",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 1554,
+    "min_dimension_px": 980,
+    "readability_status": "pass",
+    "width_px": 1554
+  }
+}

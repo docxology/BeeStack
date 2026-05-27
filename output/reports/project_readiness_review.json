@@ -1,7 +1,7 @@
 {
   "documentation_audit": {
     "available": true,
-    "docs_checked": 163,
+    "docs_checked": 185,
     "missing_agents_dirs": [],
     "missing_output_paths": [],
     "missing_readme_dirs": [],
@@ -9,18 +9,18 @@
   },
   "methods_analysis": {
     "available": true,
-    "figure_count": 7,
+    "figure_count": 8,
     "module_count": 5,
     "overall_validation_fraction": 1.0,
     "top_validation_gaps": [
-      "Paoli MATLAB calcium traces are not yet local or parseable",
       "Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.",
       "Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset.",
       "No heavyweight spiking simulator is required in the default path.",
       "The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics.",
       "No learned transition model or recursive social-belief inference yet.",
       "Expected free energy terms are transparent hand-calibrated witnesses.",
-      "Large-N colony dynamics are summarized by configured scaling rather than simulated at full population by default."
+      "Large-N colony dynamics are summarized by configured scaling rather than simulated at full population by default.",
+      "Strict visual scenes prove small-scene contacts, not full BEEHAVE-scale population dynamics."
     ]
   },
   "passed": true,
@@ -100,14 +100,14 @@
     "External nectar landscape calibration and brood demography remain future adapter layers."
   ],
   "signposting": {
-    "directory_count": 61,
+    "directory_count": 71,
     "missing_agents_dirs": [],
     "missing_readme_dirs": [],
     "passed": true
   },
   "stack_synthesis": {
     "available": true,
-    "figure_count": 1,
+    "figure_count": 2,
     "readiness_fraction": 0.9316666666666666,
     "top_findings": [
       "Weakest synthesized module is BeeSwarm (readiness 0.925; gaps 3).",

@@ -12,7 +12,7 @@
   "alt_text": "Table-style claim audit mapping hard constraints, evidence surfaces, and unsupported manuscript boundaries.",
   "artifact_kind": "figure",
   "backend": "Matplotlib",
-  "caption": "First-principles claim audit separating hard evidence constraints, replaceable implementation choices, and blocked digital-twin claims.",
+  "caption": "Matplotlib beestack first-principles claim audit shows First-principles claim audit separating hard evidence constraints, replaceable implementation choices, and blocked digital-twin claims. Generated from figure registry, source audit, and generated project contracts. Sidecar validation checks raster, source routing, and registered claim tier. Does not add evidence beyond registered reports or make blocked claims current.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
@@ -39,6 +39,7 @@
   "figure_path": "output/figures/beestack_first_principles_claim_audit.png",
   "manuscript_label": "fig:first_principles_claim_audit",
   "manuscript_section": "manuscript/02_claim_ledger.md",
+  "plot_data_path": "output/figures/beestack_first_principles_claim_audit_data.json",
   "priority": "primary",
   "quality": {
     "height_px": 1028,
@@ -59,5 +60,17 @@
   ],
   "title": "Beestack First Principles Claim Audit",
   "unsupported_inference": "Does not add evidence beyond registered reports or make blocked claims current.",
-  "validation_status": "nonblank quality sidecar generated"
+  "validation_status": "nonblank quality sidecar and plot data generated",
+  "visual_quality": {
+    "aspect_class": "wide",
+    "aspect_ratio": 2.156,
+    "figure_role": "overview",
+    "height_px": 1028,
+    "label_density": "dense",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 2216,
+    "min_dimension_px": 1028,
+    "readability_status": "pass",
+    "width_px": 2216
+  }
 }

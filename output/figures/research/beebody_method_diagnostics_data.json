@@ -1,0 +1,29 @@
+{
+  "chart_type": "bar",
+  "figure_path": "output/figures/research/beebody_method_diagnostics.png",
+  "labels": [
+    "body_mass_mg",
+    "wing_stroke_hz",
+    "bee_visual_score",
+    "bee_silhouette_score",
+    "morphology_score",
+    "inertia_rescaling_score",
+    "contact_proxy_count",
+    "real_flybody_animation_count"
+  ],
+  "module": "BeeBody",
+  "orientation": "horizontal",
+  "schema": "beestack.figure_data.v1",
+  "title": "beebody method diagnostics",
+  "validation_fraction": 1.0,
+  "values": [
+    80.0,
+    230.0,
+    0.9804109700520833,
+    1.0,
+    1.0,
+    0.82,
+    3.0,
+    3.0
+  ]
+}

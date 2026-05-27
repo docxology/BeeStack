@@ -12,7 +12,7 @@
   "alt_text": "Small-multiple line charts of sensitivity sweep outputs by parameter.",
   "artifact_kind": "figure",
   "backend": "Matplotlib/pandas/NetworkX",
-  "caption": "Deterministic sensitivity-sweep panel showing reduced-kernel response under controlled one-parameter perturbations.",
+  "caption": "Matplotlib/pandas/NetworkX beestack research sensitivity sweeps shows Deterministic sensitivity-sweep panel showing reduced-kernel response under controlled one-parameter perturbations. Generated from ResearchSuiteReport sensitivity sweeps. Sidecar validation checks raster, source routing, and registered claim tier. Does not replace Bayesian calibration or external scenario validation.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
@@ -39,6 +39,7 @@
   "figure_path": "output/figures/research/research_sensitivity_sweeps.png",
   "manuscript_label": "fig:research_sweeps",
   "manuscript_section": "manuscript/11_research_synthesis.md",
+  "plot_data_path": "output/figures/research/research_sensitivity_sweeps_data.json",
   "priority": "primary",
   "quality": {
     "height_px": 1360,
@@ -59,5 +60,17 @@
   ],
   "title": "Research Sensitivity Sweeps",
   "unsupported_inference": "Does not replace Bayesian calibration or external scenario validation.",
-  "validation_status": "nonblank image and quality sidecar passed"
+  "validation_status": "nonblank image, quality sidecar, and plot data passed",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.114,
+    "figure_role": "overview",
+    "height_px": 1360,
+    "label_density": "moderate",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 1515,
+    "min_dimension_px": 1360,
+    "readability_status": "pass",
+    "width_px": 1515
+  }
 }

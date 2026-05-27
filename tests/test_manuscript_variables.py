@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from beestack.body import REFERENCE_MASS_MG, REFERENCE_STROKE_HZ, REFERENCE_WING_POWER_MW
+from beestack.brain.waggle import JOHNSTON_EVENT_MIN_FREQUENCY_HZ
 from beestack.config import BeeStackConfig
 from beestack.manuscript_variables import (
     _count,
@@ -106,3 +108,38 @@ def test_generate_variables_populated_artifacts() -> None:
     assert variables["BRAIN_DATA_PARSEABLE_FRACTION"] == "0.830"
     assert variables["METHODS_BODY_MORPHOLOGY_SCORE"] == "0.900"
     assert variables["READINESS_TOP_PRIORITY"] == "Tighten swarm gate (P2)"
+
+
+def test_generate_variables_exposes_manuscript_claim_constants() -> None:
+    cfg = BeeStackConfig()
+    artifacts = {
+        "empirical_analysis": {
+            "brain_data_completeness": {
+                "dataset_count": 10,
+                "downloaded_dataset_count": 7,
+                "parseable_dataset_count": 6,
+                "parseability_target": 0.8,
+                "source_verified_dataset_count": 10,
+                "source_verified_blocked_count": 4,
+            }
+        }
+    }
+    variables = generate_variables(cfg, {}, artifacts)
+    assert variables["DANCE_EVENT_RATE_HZ"] == str(cfg.timing.dance_event_rate_hz)
+    assert variables["CONTROL_STEPS_PER_POLICY"] == "10"
+    assert variables["JOHNSTON_EVENT_MIN_FREQUENCY_HZ"] == str(int(JOHNSTON_EVENT_MIN_FREQUENCY_HZ))
+    assert variables["WING_POWER_REFERENCE_MW"] == str(int(REFERENCE_WING_POWER_MW))
+    assert variables["WING_POWER_REFERENCE_MASS_MG"] == str(int(REFERENCE_MASS_MG))
+    assert variables["WING_POWER_REFERENCE_STROKE_HZ"] == str(int(REFERENCE_STROKE_HZ))
+    assert variables["BROOD_TEMP_TARGET_C"] == "34"
+    assert variables["BROOD_TEMP_BAND_MIN_C"] == "32"
+    assert variables["BROOD_TEMP_BAND_MAX_C"] == "36"
+    assert variables["COMB_SHAPE_X"] == "18"
+    assert variables["COMB_SHAPE_Y"] == "12"
+    assert variables["COMB_SHAPE_Z"] == "4"
+    assert variables["BRAIN_PARSEABILITY_TARGET"] == "0.800"
+    assert variables["BRAIN_SOURCE_DATASET_COUNT"] == "10"
+    assert variables["BRAIN_DOWNLOADED_DATASET_COUNT"] == "7"
+    assert variables["BRAIN_PARSEABLE_DATASET_COUNT"] == "6"
+    assert variables["BRAIN_SOURCE_VERIFIED_DATASET_COUNT"] == "10"
+    assert variables["BRAIN_SOURCE_VERIFIED_BLOCKED_COUNT"] == "4"

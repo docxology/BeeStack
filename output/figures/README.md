@@ -1,9 +1,7 @@
-# output/figures
+# Figure Gallery
 
-Generated static figures for analysis, empirical data, research reports, and
-manuscript evidence-boundary views.
+Generated static BeeStack visualization gallery containing manuscript-primary PNGs, supporting diagnostics, metadata sidecars, and raw plot-data JSON.
 
-- Scope: Regeneratable output artifacts, including the first-principles
-  claim-audit figure and curated manuscript evidence figures.
+- Scope: Regeneratable figure artifacts. Primary manuscript use is governed by src/beestack/visualization/figure_registry.py and beestack.figure.v1 sidecars.
 - Regenerate: uv run python scripts/analysis_pipeline.py
-- Canonical source: scripts/analysis_pipeline.py or scripts/analyze_empirical_bee_data.py
+- Canonical source: scripts/analysis_pipeline.py and src/beestack/visualization/figure_registry.py

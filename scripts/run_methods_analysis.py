@@ -14,7 +14,7 @@ for path in (SRC_ROOT, SCRIPT_ROOT):
     if str(path) not in sys.path:
         sys.path.insert(0, str(path))
 
-from beestack import BeeStackConfig, config_from_mapping
+from beestack import BeeStackConfig, config_from_mapping, finalize_project_outputs
 from methods_analysis_io import write_methods_analysis_outputs
 
 
@@ -29,6 +29,7 @@ def load_config() -> BeeStackConfig:
 def main() -> None:
     cfg = load_config()
     report_json, report_md = write_methods_analysis_outputs(cfg, PROJECT_ROOT)
+    finalize_project_outputs(PROJECT_ROOT)
     print(f"BeeStack methods analysis complete: {report_json} and {report_md}")
 
 

@@ -4,7 +4,7 @@ Science-first per-module methods panels connecting quantitative diagnostics, val
 
 - Module panels: `5`
 - Overall validation fraction: `1.000`
-- Visualization records represented: `44`
+- Visualization records represented: `52`
 - Scenario sweep panels: `3`
 - All validations passed: `True`
 
@@ -16,7 +16,7 @@ Science-first per-module methods panels connecting quantitative diagnostics, val
 - Methods: FlyBody task render path; reduced telemetry witness; bee morphology cue scoring; strict scene contact provenance
 - Metrics: `bee_silhouette_score=1`, `bee_visual_score=0.98`, `contact_proxy_count=3`, `energy_drop_j=0.000821`, `inertia_rescaling_score=0.82`, `max_speed_m_s=0.004`, `mean_speed_m_s=0.004`, `mean_wing_power_mw=58.3`, `morphology_score=1`, `real_flybody_body_animation_count=3`, `wingbeat_frequency_hz=230`
 - Validation fraction: `1.000`
-- Visual artifacts: `8`
+- Visual artifacts: `11`
 - Evidence status: output/reports/bee_visual_verification.md [generated]
 - Interpretation: Body evidence combines FlyBody output with finite closed-loop telemetry.
 - Known gaps: Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.; Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset.
@@ -25,9 +25,9 @@ Science-first per-module methods panels connecting quantitative diagnostics, val
 
 - Fidelity: `empirical reduced AL-MB-CX kernel`
 - Methods: empirical anatomy inventory; workbook/CSV activity parsing; waggle follower antennal-position parsing; odor-template bank projection; AL/MB/CX reduced kernel validation
-- Metrics: `anatomy_inventory_count=7`, `brain_data_parseable_fraction=0.6`, `brain_source_verified_fraction=1`, `calcium_dataset_count=0`, `empirical_panel_count=48`, `enabled_dataset_count=10`, `mean_odor_separability=0.651`, `neuropil_count=22`, `region_response_class_count=6`, `template_count=24`, `waggle_decoding_improvement=0.248`, `waggle_follower_confidence=0.289`
+- Metrics: `anatomy_inventory_count=7`, `brain_data_parseable_fraction=0.8`, `brain_source_verified_fraction=1`, `calcium_dataset_count=1`, `empirical_panel_count=48`, `enabled_dataset_count=10`, `mean_odor_separability=0.651`, `neuropil_count=22`, `region_response_class_count=6`, `template_count=24`, `waggle_decoding_improvement=0.248`, `waggle_follower_confidence=0.289`
 - Validation fraction: `1.000`
-- Visual artifacts: `19`
+- Visual artifacts: `22`
 - Evidence status: output/reports/empirical_analysis.md [parsed]; output/reports/waggle_follower_analysis.md [parsed]
 - Interpretation: Brain evidence separates source registries from parsed local anatomy/activity payloads and declares availability gates when public data are absent.
 - Known gaps: No heavyweight spiking simulator is required in the default path.; The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics.
@@ -49,7 +49,7 @@ Science-first per-module methods panels connecting quantitative diagnostics, val
 - Methods: strict FlyBody/MuJoCo contact scenes; BeeBody waggle follower-orientation telemetry; dance recruitment sensitivity; pheromone field stability; BEEHAVE-compatible colony summaries
 - Metrics: `agent_count=50`, `contact_graph_edge_count=10`, `final_mean_pheromone=0`, `mean_recruited_followers=7`, `represented_colony_size=2e+04`, `strict_contact_scene_count=3`, `total_recruited_followers=168`, `unique_bee_contact_pair_count=15`, `waggle_follower_orientation_confidence=0.788`, `waggle_follower_orientation_error_deg=19.1`, `waggle_phase_coupling_score=9.15e-17`
 - Validation fraction: `1.000`
-- Visual artifacts: `7`
+- Visual artifacts: `9`
 - Evidence status: output/reports/flybody_contact_physics.md [generated]
 - Interpretation: Swarm evidence separates strict small-scene physics from reduced colony dynamics.
 - Known gaps: Large-N colony dynamics are summarized by configured scaling rather than simulated at full population by default.; Strict visual scenes prove small-scene contacts, not full BEEHAVE-scale population dynamics.; Trophallaxis, brood demography, and external weather-forage runtime coupling remain adapter targets.
@@ -116,7 +116,6 @@ Science-first per-module methods panels connecting quantitative diagnostics, val
 
 ## Top Validation Gaps
 
-- Paoli MATLAB calcium traces are not yet local or parseable
 - Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.
 - Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset.
 - No heavyweight spiking simulator is required in the default path.
@@ -124,3 +123,4 @@ Science-first per-module methods panels connecting quantitative diagnostics, val
 - No learned transition model or recursive social-belief inference yet.
 - Expected free energy terms are transparent hand-calibrated witnesses.
 - Large-N colony dynamics are summarized by configured scaling rather than simulated at full population by default.
+- Strict visual scenes prove small-scene contacts, not full BEEHAVE-scale population dynamics.

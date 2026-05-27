@@ -18,7 +18,13 @@ from .empirical_figures import (
     WaggleFollowerSummary,
     generate_empirical_figures,
 )
-from .figure_metadata import assert_nonblank_quality, image_quality_summary, write_figure_sidecar
+from .figure_metadata import (
+    assert_nonblank_quality,
+    image_quality_summary,
+    write_figure_artifacts,
+    write_figure_sidecar,
+)
+from .figure_plot_data import FIGURE_DATA_SCHEMA, figure_data_path, write_figure_plot_data
 from .figure_registry import (
     FigureNarrative,
     all_figure_narratives,
@@ -37,12 +43,19 @@ from .style import (
     wcag_contrast_check,
 )
 from .synthesis_figures import generate_stack_synthesis_figures
+from .visual_quality import (
+    visual_quality_markdown,
+    visual_quality_payload,
+    write_visual_quality_report,
+)
 
 __all__ = [
     "AnimationArtifact",
     "BeeBrainDataCompletenessPanel",
     "BeeRenderSignature",
+    "FIGURE_DATA_SCHEMA",
     "FigureNarrative",
+    "figure_data_path",
     "MODULE_COLORS",
     "WaggleDanceVisualizationConfig",
     "WaggleFollowerSummary",
@@ -69,5 +82,10 @@ __all__ = [
     "waggle_dance_visualization_config",
     "write_interactive_methods_dashboard",
     "write_interactive_research_outputs",
+    "write_figure_artifacts",
+    "write_figure_plot_data",
     "write_figure_sidecar",
+    "visual_quality_markdown",
+    "visual_quality_payload",
+    "write_visual_quality_report",
 ]

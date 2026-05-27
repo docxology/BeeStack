@@ -12,6 +12,7 @@ from typing import Any
 
 from PIL import Image
 
+from ..security import assert_safe_zip_member, validate_zip_archive_bounds
 from .datasets import BeeBrainAtlasAsset
 
 
@@ -163,9 +164,11 @@ def atlas_inventory_from_zip(path: Path, asset_id: str | None = None) -> AtlasIn
     bounds_max: tuple[float, float, float] | None = None
     centroid_sum = _zero3()
     with zipfile.ZipFile(path) as archive:
+        validate_zip_archive_bounds(archive)
         for info in archive.infolist():
             if info.is_dir():
                 continue
+            assert_safe_zip_member(info.filename)
             files.append(info.filename)
             total_uncompressed += int(info.file_size)
             suffix = Path(info.filename).suffix.lower() or "<none>"

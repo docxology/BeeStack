@@ -12,7 +12,10 @@ SCRIPT_ROOT = PROJECT_ROOT / "scripts"
 if str(SCRIPT_ROOT) not in sys.path:
     sys.path.insert(0, str(SCRIPT_ROOT))
 
-from signpost_project_tree import write_project_readiness_review, write_signposts  # noqa: E402
+from beestack.documentation_signpost import (  # noqa: E402
+    write_project_readiness_review,
+    write_signposts,
+)
 
 
 def test_signpost_writer_excludes_caches_and_creates_context(tmp_path: Path) -> None:
@@ -30,7 +33,15 @@ def test_signpost_writer_excludes_caches_and_creates_context(tmp_path: Path) -> 
         "output/animations/flybody_bee/assets",
         "output/animations/flybody_scenes/waggle",
         "output/llm",
+        "output/figures",
+        "output/figures/empirical",
+        "output/figures/methods",
+        "output/figures/research",
+        "output/figures/renders",
         "output/pdf",
+        "output/slides",
+        "output/web",
+        "output/reports",
         "output/data/empirical_sources/example-dataset/files",
         "output/diagnostics/walk_probe/assets",
     ):
@@ -42,6 +53,7 @@ def test_signpost_writer_excludes_caches_and_creates_context(tmp_path: Path) -> 
     assert "output/animations/flybody_bee/assets/README.md" in result.readme_written
     assert "output/animations/flybody_scenes/waggle/README.md" in result.readme_written
     assert "output/llm/README.md" in result.readme_written
+    assert "output/figures/empirical/README.md" in result.readme_written
     assert "output/pdf/README.md" in result.readme_written
     assert not (tmp_path / ".git" / "README.md").exists()
     assert not (tmp_path / ".venv" / "README.md").exists()
@@ -55,6 +67,18 @@ def test_signpost_writer_excludes_caches_and_creates_context(tmp_path: Path) -> 
     assert "Copied FlyBody OBJ/XML assets" in asset_readme
     assert "Generated or downloaded artifact area" in asset_agents
     llm_readme = (tmp_path / "output" / "llm" / "README.md").read_text(encoding="utf-8")
+    figures_readme = (tmp_path / "output" / "figures" / "README.md").read_text(
+        encoding="utf-8"
+    )
+    empirical_agents = (
+        tmp_path / "output" / "figures" / "empirical" / "AGENTS.md"
+    ).read_text(encoding="utf-8")
+    slides_agents = (tmp_path / "output" / "slides" / "AGENTS.md").read_text(
+        encoding="utf-8"
+    )
+    reports_readme = (tmp_path / "output" / "reports" / "README.md").read_text(
+        encoding="utf-8"
+    )
     scene_readme = (
         tmp_path / "output" / "animations" / "flybody_scenes" / "waggle" / "README.md"
     ).read_text(encoding="utf-8")
@@ -64,6 +88,12 @@ def test_signpost_writer_excludes_caches_and_creates_context(tmp_path: Path) -> 
         encoding="utf-8"
     )
     assert "LLM-assisted research notes" in llm_readme
+    assert "manuscript-primary PNGs" in figures_readme
+    assert "split companion relationships" in figures_readme
+    assert "*_data.json plot-data files" in empirical_agents
+    assert "canonical manuscript source" in slides_agents
+    assert "visual inventories" in reports_readme
+    assert "visual-quality QA payloads" in reports_readme
     assert "Strict FlyBody Scene: waggle" in scene_readme
     assert "Local export artifact area" in pdf_agents
     assert "Matplotlib support area" in mpl_agents

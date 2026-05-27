@@ -1,0 +1,31 @@
+{
+  "chart_type": "bar",
+  "figure_path": "output/figures/empirical/empirical_panel_quality.png",
+  "labels": [
+    "S8_Data.xlsx:Feuil1:generic_numeric_respon",
+    "Annex1b_Suppdata_AmOr136.xlsx:E.Sensitivit",
+    "Data colonies.xlsx:HPLC:nouvian_structured",
+    "Annex1b_Suppdata_AmOr136.xlsx:D.Specificit",
+    "Data individuals.xlsx:HPLC:nouvian_structu",
+    "Annex1a_Suppdata_AmOr109.xlsx:D.Specificit",
+    "Annex1a_Suppdata_AmOr109.xlsx:C.Specificit",
+    "Annex1b_Suppdata_AmOr136.xlsx:C.Specificit",
+    "Data colonies.xlsx:Behaviour:nouvian_struc",
+    "Data pharmaco.xlsx:CYP:nouvian_structured_"
+  ],
+  "orientation": "horizontal",
+  "schema": "beestack.figure_data.v1",
+  "title": "Empirical panel mean absolute response",
+  "values": [
+    111.83186081898438,
+    12.183203270159789,
+    11.420577245884775,
+    10.125113868397362,
+    9.99535168165361,
+    9.355158730181548,
+    5.327020202188636,
+    3.8963250823099984,
+    0.6682692307692308,
+    0.5859375
+  ]
+}

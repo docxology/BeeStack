@@ -1,0 +1,77 @@
+{
+  "accessibility_checks": {
+    "background": "#FFFFFF",
+    "contrast_ratio": 17.73971700407407,
+    "foreground": "#111827",
+    "large_text_passed": true,
+    "large_text_threshold": 3.0,
+    "normal_text_passed": true,
+    "normal_text_threshold": 4.5,
+    "standard": "WCAG 2.1 AA contrast thresholds"
+  },
+  "alt_text": "Module-by-module methods detail table with validation, artifacts, evidence links, gaps, and conservative boundary text.",
+  "artifact_kind": "figure",
+  "backend": "Matplotlib/pandas",
+  "caption": "Matplotlib/pandas/NetworkX beestack methods dashboard detail shows Split companion table showing module validation fractions, visual artifact counts, evidence-link counts, gap counts, and boundaries. Generated from MethodsAnalysisReport module panels and visual QA report. Sidecar validation checks raster, source routing, and registered claim tier. Does not support biological predictive validity.",
+  "citation_keys": [
+    "wilson2017good",
+    "lamprecht2020fairsoftware"
+  ],
+  "claim_tier": "methods_provenance_diagnostic",
+  "design_citation_keys": [
+    "rougier2014figures",
+    "cleveland1984graphical",
+    "crameri2020colour",
+    "w3c2023wcag21",
+    "wilkinson2016fair",
+    "heer2012interactive",
+    "ragan2016provenance"
+  ],
+  "design_source_dois": [
+    "10.1371/journal.pcbi.1003833",
+    "10.1080/01621459.1984.10478080",
+    "10.1038/s41467-020-19160-7",
+    "10.1038/sdata.2016.18",
+    "10.1145/2133806.2133821",
+    "10.1109/TVCG.2015.2467551"
+  ],
+  "fidelity": "methods provenance diagnostic",
+  "figure_path": "output/figures/methods/methods_dashboard_detail.png",
+  "manuscript_label": "fig:methods_dashboard_detail",
+  "manuscript_section": "manuscript/08_validation_and_figures.md",
+  "plot_data_path": "output/figures/methods/methods_dashboard_detail_data.json",
+  "priority": "primary",
+  "quality": {
+    "height_px": 1136,
+    "max_intensity": 255,
+    "mean_intensity": 249.50198540067117,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 27.310563983440975,
+    "width_px": 2216
+  },
+  "regeneration_command": "uv run python scripts/run_methods_analysis.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "MethodsAnalysisReport module panels and visual QA report",
+  "source_dois": [
+    "10.1371/journal.pcbi.1005510",
+    "10.3233/DS-190026"
+  ],
+  "title": "Methods Dashboard Detail",
+  "unsupported_inference": "Does not support biological predictive validity.",
+  "validation_status": "nonblank image, quality sidecar, and plot data passed",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.951,
+    "figure_role": "detail",
+    "height_px": 1136,
+    "label_density": "dense",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 2216,
+    "min_dimension_px": 1136,
+    "readability_status": "pass",
+    "split_group": "methods_dashboard",
+    "width_px": 2216
+  }
+}

@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from typing import Any
 
+from .body.energetics import REFERENCE_MASS_MG, REFERENCE_STROKE_HZ, REFERENCE_WING_POWER_MW
+from .brain.waggle import JOHNSTON_EVENT_MIN_FREQUENCY_HZ
 from .config import BeeStackConfig
 from .manifest import module_coverage
 
@@ -30,13 +32,27 @@ def generate_variables(
     groups = animation.get("groups", {})
     waggle = empirical.get("waggle_follower_analysis", {}).get("summary", {})
     completeness = empirical.get("brain_data_completeness", {})
+    connectome = empirical.get("connectome", {})
+    sensor_noise = cfg.body.sensor_noise
+    control_steps_per_policy = round(cfg.timing.control_rate_hz / cfg.timing.policy_rate_hz)
     return {
         "CONFIG_SEED": str(cfg.seed),
         "CONTROL_RATE_HZ": str(cfg.timing.control_rate_hz),
         "PHYSICS_DT_MS": f"{cfg.timing.physics_dt_s * 1000:.1f}",
         "POLICY_RATE_HZ": str(cfg.timing.policy_rate_hz),
+        "CONTROL_STEPS_PER_POLICY": str(control_steps_per_policy),
+        "DANCE_EVENT_RATE_HZ": str(cfg.timing.dance_event_rate_hz),
         "BODY_MASS_MG": f"{cfg.body.body_mass_mg:.1f}",
+        "BODY_LEG_COUNT": "6",
+        "BODY_LEG_DOF_PER_LEG": str(cfg.body.leg_dof_per_leg),
+        "BODY_WING_DOF_PER_WING": str(cfg.body.wing_dof_per_wing),
         "WING_STROKE_HZ": f"{cfg.body.wing_stroke_hz:.0f}",
+        "WING_POWER_REFERENCE_MW": f"{REFERENCE_WING_POWER_MW:.0f}",
+        "WING_POWER_REFERENCE_MASS_MG": f"{REFERENCE_MASS_MG:.0f}",
+        "WING_POWER_REFERENCE_STROKE_HZ": f"{REFERENCE_STROKE_HZ:.0f}",
+        "SENSOR_NOISE_VISUAL": _fmt(sensor_noise.get("visual")),
+        "SENSOR_NOISE_OLFACTORY": _fmt(sensor_noise.get("olfactory")),
+        "SENSOR_NOISE_MECHANOSENSORY": _fmt(sensor_noise.get("mechanosensory")),
         "OMMATIDIA_PER_EYE": f"{cfg.body.ommatidia_per_eye:,}",
         "GLOMERULI": str(cfg.brain.glomeruli),
         "KC_PER_HEMISPHERE": f"{cfg.brain.kenyon_cells_per_hemisphere:,}",
@@ -50,8 +66,15 @@ def generate_variables(
         "POLICY_HORIZON": str(cfg.mind.policy_horizon),
         "SWARM_AGENTS": str(cfg.swarm.agent_count),
         "REPRESENTED_COLONY_SIZE": f"{cfg.swarm.represented_colony_size:,}",
+        "BROOD_TEMP_TARGET_C": f"{cfg.niche.brood_temperature_target_c:.0f}",
+        "BROOD_TEMP_BAND_MIN_C": f"{cfg.niche.brood_temperature_band_c[0]:.0f}",
+        "BROOD_TEMP_BAND_MAX_C": f"{cfg.niche.brood_temperature_band_c[1]:.0f}",
+        "COMB_SHAPE_X": str(cfg.niche.comb_shape[0]),
+        "COMB_SHAPE_Y": str(cfg.niche.comb_shape[1]),
+        "COMB_SHAPE_Z": str(cfg.niche.comb_shape[2]),
         "COMB_VOXELS": f"{cfg.niche.comb_shape[0] * cfg.niche.comb_shape[1] * cfg.niche.comb_shape[2]:,}",
         "FLYBODY_ACTION_DIM": str(cfg.flybody.action_dim_default),
+        "JOHNSTON_EVENT_MIN_FREQUENCY_HZ": f"{JOHNSTON_EVENT_MIN_FREQUENCY_HZ:.0f}",
         "ANIMATION_FRAMES": str(cfg.visualization.animation_frames),
         "ANIMATION_FPS": str(cfg.visualization.animation_fps),
         "LONG_WAGGLE_ANIMATION_FRAMES": str(cfg.visualization.long_waggle_animation_frames),
@@ -74,16 +97,46 @@ def generate_variables(
         "WAGGLE_FOLLOWER_CONFIDENCE": _fmt(waggle.get("confidence_score")),
         "WAGGLE_DECODING_IMPROVEMENT": _fmt(waggle.get("decoding_improvement_fraction")),
         "BRAIN_DATA_PARSEABLE_FRACTION": _fmt(completeness.get("parseable_fraction")),
+        "BRAIN_PARSEABILITY_TARGET": _fmt(completeness.get("parseability_target")),
+        "BRAIN_SOURCE_DATASET_COUNT": _count(completeness.get("dataset_count")),
+        "BRAIN_DOWNLOADED_DATASET_COUNT": _count(completeness.get("downloaded_dataset_count")),
+        "BRAIN_PARSEABLE_DATASET_COUNT": _count(completeness.get("parseable_dataset_count")),
+        "BRAIN_SOURCE_VERIFIED_DATASET_COUNT": _count(
+            completeness.get("source_verified_dataset_count")
+        ),
+        "BRAIN_SOURCE_VERIFIED_BLOCKED_COUNT": _count(
+            completeness.get("source_verified_blocked_count")
+        ),
         "BRAIN_SOURCE_VERIFIED_FRACTION": _fmt(completeness.get("source_verified_fraction")),
         "BRAIN_PARSEABILITY_TARGET_SATISFIED": str(
             completeness.get("parseability_target_satisfied", "N/A")
         ),
+        "EMPIRICAL_COMPLETENESS_THRESHOLD": _fmt(cfg.research.empirical_completeness_threshold),
         "ANATOMY_INVENTORY_COUNT": _count_list_or_value(
             empirical.get("anatomy_inventories"),
             empirical.get("anatomy_inventory_count"),
         ),
         "EMPIRICAL_TEMPLATE_COUNT": _count(empirical.get("template_count")),
         "EMPIRICAL_KNOWN_GAP_COUNT": _count_list_or_value(empirical.get("known_gaps")),
+        "CONNECTOME_TIER": str(connectome.get("tier", "N/A")),
+        "CONNECTOME_NODE_COUNT": _count(connectome.get("node_count")),
+        "CONNECTOME_STRUCTURAL_EDGE_COUNT": _count(
+            sum(
+                1
+                for edge in connectome.get("edges", [])
+                if isinstance(edge, dict) and edge.get("edge_kind") == "structural_tract"
+            )
+        ),
+        "CONNECTOME_SYNAPTIC_EDGE_COUNT": _count(
+            sum(
+                1
+                for edge in connectome.get("edges", [])
+                if isinstance(edge, dict) and edge.get("edge_kind") == "synaptic"
+            )
+        ),
+        "CONNECTOME_STRUCTURAL_COVERAGE": _fmt(
+            (connectome.get("completeness") or {}).get("structural_coverage")
+        ),
         "ANIMATION_COUNT": _count_list_or_value(animation.get("animations")),
         "REAL_FLYBODY_ANIMATION_COUNT": _count_list_or_value(groups.get("real_flybody_3d")),
         "REDUCED_ANIMATION_COUNT": _count_list_or_value(groups.get("reduced_schematic")),

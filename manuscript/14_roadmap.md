@@ -1,4 +1,4 @@
-# Roadmap
+# Roadmap {#sec:roadmap}
 
 The implementation roadmap follows the fidelity gaps exposed by the
 research suite and the readiness review. It is ordered by
@@ -38,6 +38,16 @@ digital-twin evidence only when it has typed state variables, units,
 source provenance, update equations or learned transition models,
 longitudinal assimilation, held-out validation residuals, and a generated
 artifact in `output/data/` or `output/reports/`.
+
+Scholarship refresh hooks for those axes include: **axis 1** — BeeBiome
+SRA metadata and pathogen-assay parsers [@rechlaval2025beebiome]; **axis 4**
+— spatial/snRNA-seq validation tasks against reduced AL–MB–CX backends
+[@naturecomm2025spatialbrain; @g3journal2023scrna]; **axis 6** — EPA hive
+matrices, landscape pesticide exposure, and forage metabarcoding
+[@epa2024hivematrices; @hisamoto2024landscape; @chege2025forage]; **axis 7**
+— Auburn/AIA and COLOSS-style colony-loss surveys as assimilation targets
+with held-out residuals [@auburn2025survey; @colossbeebook], not as v0
+model outputs.
 
 ## 1. Build the colony-state ledger
 
@@ -156,6 +166,40 @@ other roadmap step.
 *Acceptance criterion:* `SIGNPOSTED_DIRECTORY_COUNT` continues to
 match the actual directory count, and the readiness review's
 priority list continues to drive the next-iteration backlog.
+
+## 10. Register external repository metadata
+
+Materialize the scholarship refresh as durable registry artifacts:
+`output/data/external_dataset_registry.json` plus ledger rows for BeeBiome,
+HGD, BeeBDC, HAv3.1, survey portals, EPA hive matrices, and COLOSS BEEBOOK
+(see [@sec:materials]).
+
+*Acceptance criterion:* every registry row lists `wired_in_beestack: false`,
+a target module, a blocker string, and an official DOI or HTTPS URL; the
+documentation audit reports zero stale paths to the registry file.
+
+## 11. Colony-health driver stubs
+
+Add typed placeholder fields for Varroa load, viral titers, pesticide
+burden, and microbiome summaries in the colony ledger schema—initialized to
+zero or missing with explicit provenance until calibrated against field
+data [@scientificreports2026amitraz; @wilfert2022dwv;
+@glinski2024hivematrices].
+
+*Acceptance criterion:* `colony_state_timeseries.json` (or successor artifact)
+includes the stub fields with units and `source_provenance: null` until
+assimilation populates them; no manuscript section claims non-zero values.
+
+## 12. Waggle communication literature regression tests
+
+Add regression checks that the Hadjitofi–Webb dance decoder and follower
+orientation diagnostics remain consistent with published kinematic bounds
+when run on registered Figshare deposits [@hadjitofi2024figshare;
+@dong2023wagglesocial; @pnas2026waggleaudience].
+
+*Acceptance criterion:* a methods-analysis or empirical test module reports
+pass/fail against published summary statistics or tolerance bands documented
+in `output/reports/waggle_literature_regression.json`.
 
 ## What is intentionally *not* in the roadmap
 

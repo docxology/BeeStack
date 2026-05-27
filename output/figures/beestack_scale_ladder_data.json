@@ -1,0 +1,7 @@
+{
+  "chart_type": "schematic",
+  "figure_path": "output/figures/beestack_scale_ladder.png",
+  "nodes": [],
+  "schema": "beestack.figure_data.v1",
+  "title": "beestack scale ladder"
+}

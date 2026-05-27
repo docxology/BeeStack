@@ -22,6 +22,7 @@ from ..body import (
 from ..brain import decode_waggle
 from ..config import BeeStackConfig, Caste
 from ..mind import caste_prior
+from .figure_output import finalize_contact_sheet, save_annotated_contact_sheet
 
 
 @dataclass(frozen=True)
@@ -147,6 +148,14 @@ def _animate_body(
     _save_frames_as_gif(rendered_frames, path, fps)
     contact_sheet = output_dir / "beebody_flybody_morphology_contact_sheet.png"
     _save_contact_sheet(rendered_frames, contact_sheet)
+    _write_contact_sheet_bundle(
+        contact_sheet,
+        source_gif=path,
+        frame_count=len(rendered_frames),
+        title="BeeBody FlyBody morphology contact sheet",
+        fidelity="real_flybody_3d contact sheet",
+        source_data=body_plan.xml_path,
+    )
     return AnimationArtifact(
         "BeeBody",
         str(path),
@@ -186,6 +195,14 @@ def _animate_body_flight(
     _save_frames_as_gif(rendered_frames, path, fps)
     contact_sheet = output_dir / "beebody_flybody_flight_contact_sheet.png"
     _save_contact_sheet(rendered_frames, contact_sheet)
+    _write_contact_sheet_bundle(
+        contact_sheet,
+        source_gif=path,
+        frame_count=len(rendered_frames),
+        title="BeeBody FlyBody flight contact sheet",
+        fidelity="real_flybody_3d contact sheet",
+        source_data=body_plan.xml_path,
+    )
     return AnimationArtifact(
         "BeeBody",
         str(path),
@@ -231,17 +248,30 @@ def _as_uint8(array: np.ndarray) -> np.ndarray:
     return np.clip(array, 0, 255).astype(np.uint8)
 
 
+def _write_contact_sheet_bundle(
+    contact_sheet: Path,
+    *,
+    source_gif: Path,
+    frame_count: int,
+    title: str,
+    fidelity: str,
+    source_data: str,
+) -> None:
+    finalize_contact_sheet(
+        contact_sheet,
+        source_gif=source_gif,
+        frame_count=frame_count,
+        title=title,
+        backend="Pillow contact sheet",
+        fidelity=fidelity,
+        source_data=source_data,
+        validation_status="nonblank contact sheet with plot data",
+        regeneration_command="uv run python scripts/generate_animations.py",
+    )
+
+
 def _save_contact_sheet(frames: list[np.ndarray], path: Path, columns: int = 4) -> None:
-    if not frames:
-        raise ValueError("frames must not be empty")
-    sample_count = min(8, len(frames))
-    indices = np.linspace(0, len(frames) - 1, sample_count, dtype=int)
-    images = [_frame_to_image(frames[index]).resize((240, 180)) for index in indices]
-    rows = int(np.ceil(sample_count / columns))
-    sheet = Image.new("RGB", (columns * 240, rows * 180), color=(255, 255, 255))
-    for index, image in enumerate(images):
-        sheet.paste(image, ((index % columns) * 240, (index // columns) * 180))
-    sheet.save(path)
+    save_annotated_contact_sheet(frames, path, columns=columns)
 
 
 def _save_gif_contact_sheet(path: Path, contact_sheet: Path) -> None:
@@ -257,15 +287,27 @@ def _save_gif_contact_sheet(path: Path, contact_sheet: Path) -> None:
         _save_contact_sheet(frames, contact_sheet)
 
 
+def _ring_layout(center: tuple[float, float], count: int, spread: float) -> np.ndarray:
+    if count <= 0:
+        return np.zeros((0, 2))
+    angles = np.linspace(0.0, 2.0 * np.pi, count, endpoint=False)
+    radii = np.linspace(spread * 0.25, spread, count)
+    return np.column_stack(
+        [center[0] + radii * np.cos(angles), center[1] + radii * np.sin(angles)]
+    )
+
+
 def _animate_brain(
     cfg: BeeStackConfig, output_dir: Path, frames: int, fps: int
 ) -> AnimationArtifact:
     path = output_dir / "beebrain_neural_anatomy.gif"
     fig, ax = plt.subplots(figsize=(6, 4))
-    rng = np.random.default_rng(cfg.seed)
-    mb_nodes = rng.normal(loc=(0.1, 0.15), scale=(0.18, 0.10), size=(80, 2))
-    al_nodes = rng.normal(loc=(-0.72, -0.12), scale=(0.09, 0.08), size=(30, 2))
-    cx_nodes = rng.normal(loc=(0.68, -0.05), scale=(0.10, 0.07), size=(32, 2))
+    al_center = (-0.72, -0.12)
+    mb_center = (0.1, 0.15)
+    cx_center = (0.68, -0.05)
+    al_nodes = _ring_layout(al_center, min(cfg.brain.glomeruli, 30), 0.08)
+    mb_nodes = _ring_layout(mb_center, min(cfg.brain.kenyon_cells_per_hemisphere // 500, 80), 0.18)
+    cx_nodes = _ring_layout(cx_center, min(cfg.brain.heading_bins, 32), 0.10)
 
     def update(i: int):
         ax.clear()
@@ -307,6 +349,14 @@ def _animate_brain(
     _save(fig, update, frames, fps, path)
     contact_sheet = output_dir / "beebrain_neural_anatomy_contact_sheet.png"
     _save_gif_contact_sheet(path, contact_sheet)
+    _write_contact_sheet_bundle(
+        contact_sheet,
+        source_gif=path,
+        frame_count=frames,
+        title="BeeBrain neural anatomy contact sheet",
+        fidelity="reduced_schematic contact sheet",
+        source_data="Honeybee Standard Brain module layout (AL/MB/CX atlas-derived schematic)",
+    )
     return AnimationArtifact(
         "BeeBrain",
         str(path),
@@ -350,6 +400,14 @@ def _animate_mind(
     _save(fig, update, frames, fps, path)
     contact_sheet = output_dir / "beemind_policy_beliefs_contact_sheet.png"
     _save_gif_contact_sheet(path, contact_sheet)
+    _write_contact_sheet_bundle(
+        contact_sheet,
+        source_gif=path,
+        frame_count=frames,
+        title="BeeMind policy beliefs contact sheet",
+        fidelity="reduced_schematic contact sheet",
+        source_data="BeeStackConfig mind policy parameters",
+    )
     return AnimationArtifact(
         "BeeMind",
         str(path),
@@ -406,6 +464,14 @@ def _animate_swarm(
     _save(fig, update, frames, fps, path)
     contact_sheet = output_dir / "beeswarm_dance_pheromone_contact_sheet.png"
     _save_gif_contact_sheet(path, contact_sheet)
+    _write_contact_sheet_bundle(
+        contact_sheet,
+        source_gif=path,
+        frame_count=frames,
+        title="BeeSwarm dance pheromone contact sheet",
+        fidelity="reduced_schematic contact sheet",
+        source_data="BeeStackConfig swarm parameters",
+    )
     return AnimationArtifact(
         "BeeSwarm",
         str(path),
@@ -422,6 +488,14 @@ def _animate_swarm_collision(
     cfg: BeeStackConfig, output_dir: Path, frames: int, fps: int
 ) -> AnimationArtifact:
     scene = render_flybody_swarm_collision_scene(cfg, output_dir, frames=frames, fps=fps)
+    _write_contact_sheet_bundle(
+        Path(scene.contact_sheet_path),
+        source_gif=Path(scene.gif_path),
+        frame_count=frames,
+        title="BeeSwarm 10-BeeBody collision contact sheet",
+        fidelity="real_flybody_3d contact sheet",
+        source_data=scene.body_plan_xml_path,
+    )
     return AnimationArtifact(
         "BeeSwarm",
         scene.gif_path,
@@ -444,6 +518,14 @@ def _animate_waggle_dance(
     cfg: BeeStackConfig, output_dir: Path, frames: int, fps: int
 ) -> AnimationArtifact:
     scene = render_flybody_waggle_scene(cfg, output_dir, frames=frames, fps=fps)
+    _write_contact_sheet_bundle(
+        Path(scene.contact_sheet_path),
+        source_gif=Path(scene.gif_path),
+        frame_count=frames,
+        title="BeeSwarm configured waggle dance contact sheet",
+        fidelity="real_flybody_3d contact sheet",
+        source_data=scene.body_plan_xml_path,
+    )
     return AnimationArtifact(
         "BeeSwarm",
         scene.gif_path,
@@ -480,6 +562,14 @@ def _animate_waggle_dance_long(
         output_dir,
         frames=long_frames,
         fps=long_fps,
+    )
+    _write_contact_sheet_bundle(
+        Path(scene.contact_sheet_path),
+        source_gif=Path(scene.gif_path),
+        frame_count=scene.frames,
+        title="BeeSwarm long waggle dance contact sheet",
+        fidelity="real_flybody_3d contact sheet",
+        source_data=scene.body_plan_xml_path,
     )
     return AnimationArtifact(
         "BeeSwarm",
@@ -651,6 +741,14 @@ def _animate_niche(
     _save(fig, update, frames, fps, path)
     contact_sheet = output_dir / "beeniche_comb_thermal_contact_sheet.png"
     _save_gif_contact_sheet(path, contact_sheet)
+    _write_contact_sheet_bundle(
+        contact_sheet,
+        source_gif=path,
+        frame_count=frames,
+        title="BeeNiche comb thermal contact sheet",
+        fidelity="reduced_schematic contact sheet",
+        source_data="BeeStackConfig niche thermal parameters",
+    )
     return AnimationArtifact(
         "BeeNiche",
         str(path),

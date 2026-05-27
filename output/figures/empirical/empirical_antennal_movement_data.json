@@ -1,0 +1,24 @@
+{
+  "bee_count": 20,
+  "chart_type": "bar",
+  "figure_path": "output/figures/empirical/empirical_antennal_movement.png",
+  "labels": [
+    "Odor-on fraction",
+    "Left theta deflection",
+    "Right theta deflection",
+    "Theta derivative drive",
+    "Left/right synchrony"
+  ],
+  "orientation": "horizontal",
+  "plume_count": 3,
+  "row_count": 431520,
+  "schema": "beestack.figure_data.v1",
+  "title": "Jernigan empirical antennal active sensing",
+  "values": [
+    0.7772061549870226,
+    0.3720156566313128,
+    0.37004144561944674,
+    0.20909014051467958,
+    0.4448599787672444
+  ]
+}

@@ -1,4 +1,4 @@
-# Claim Ledger
+# Claim Ledger {#sec:claim_ledger}
 
 BeeStack is a *research-operations* project rather than a single monolithic
 simulator. It scopes itself around three commitments — fidelity honesty,
@@ -40,6 +40,7 @@ reduced kernel, or on empirical anchor data.
 | Bee-shaped individual walking and flight renders | Strict FlyBody tasks over generated honeybee MJCF | `output/reports/bee_visual_verification.md` | Calibrated honeybee ground reaction forces |
 | Multi-BeeBody waggle and collision scenes | Prefixed BeeBody MJCF copies driven along scripted kinematic poses, with real MuJoCo geometry/contact detection at those poses | `output/reports/flybody_contact_physics.md` | Integrated multi-bee flight dynamics, or BEEHAVE-scale colony dynamics |
 | BeeBrain empirical anchoring | Curated public anatomy/activity/follower datasets parsed into summaries | `output/data/empirical_analysis.json` | Connectome-level or spiking neural dynamics |
+| BeeBrain structural projectome | HSB VRML tract/neuron geometry plus documented AL→MB/CX pathway semantics | `output/data/bee_brain_connectome.json` | Synaptic adjacency or functional Granger connectome completeness |
 | Active-inference-style policy selection | Deterministic reduced policy scoring with diagnostics | `output/reports/methods_analysis.md` | Learned colony-optimal control |
 | Comb and brood thermal behavior | Reduced grid and thermal kernels with validation checks | `output/reports/beestack_research_report.md` | Full hive thermodynamics |
 | Scholarship and figure provenance | Verified source-refresh ledger, bibliography DOI audit, and figure sidecars | `output/llm/source_refresh_ledger.md`; `output/data/manuscript_figure_index.json` | Web synthesis replacing direct scholarly/official verification |
@@ -60,7 +61,9 @@ artifacts. A soft constraint is different: it is an implementation
 choice that may be replaced when stronger evidence arrives, provided the
 public contracts remain satisfied.
 
-![Matplotlib first-principles claim audit generated from the figure registry, source audit, and generated project contracts; sidecar validation checks the raster, and the figure supports claim-boundary review rather than adding new empirical evidence or making blocked claims current.](../figures/beestack_first_principles_claim_audit.png){#fig:first_principles_claim_audit}
+[@fig:first_principles_claim_audit] summarizes how registered reports and contracts map to claim tiers.
+
+![Matplotlib beestack first-principles claim audit shows First-principles claim audit separating hard evidence constraints, replaceable implementation choices, and blocked digital-twin claims. Generated from figure registry, source audit, and generated project contracts. Sidecar validation checks raster, source routing, and registered claim tier. Does not add evidence beyond registered reports or make blocked claims current.](../figures/beestack_first_principles_claim_audit.png){#fig:first_principles_claim_audit}
 
 This boundary keeps the scope falsifiable. If a future BeeBrain backend
 adds spiking AL-MB-CX dynamics, the hard requirement is not "keep the old

@@ -77,6 +77,21 @@ def test_parse_paoli_relabels_on_mismatch() -> None:
     assert ds.acquisition_hz == 100.0
 
 
+def test_parse_paoli_pads_variable_glomerulus_counts() -> None:
+    payload = {
+        "db": {
+            "bee": [np.zeros((4, 3, 2, 5)), np.zeros((6, 3, 2, 5))],
+            "fs": 100.0,
+            "odors": ["a", "b", "c"],
+            "glomeruli": [],
+        }
+    }
+    ds = parse_paoli_matlab_payload(payload)
+    assert ds.traces.shape == (2, 3, 2, 5, 6)
+    assert np.isnan(ds.traces[0, 0, 0, 0, 4])
+    assert not np.isnan(ds.traces[1, 0, 0, 0, 5])
+
+
 def test_calcium_dataset_validation_raises() -> None:
     good = np.zeros((1, 2, 1, 4, 3))  # bee, odor, trial, time, glom
     ds = calcium_dataset_from_trial_array("d", good, 50.0, ("a", "b"), ("g0", "g1", "g2"))

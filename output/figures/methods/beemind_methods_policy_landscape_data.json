@@ -1,0 +1,27 @@
+{
+  "chart_type": "bar",
+  "figure_path": "output/figures/methods/beemind_methods_policy_landscape.png",
+  "labels": [
+    "policy_switch_count",
+    "efe_margin",
+    "efe_range",
+    "branching_factor",
+    "candidate_count",
+    "policy_horizon",
+    "final_energy_j"
+  ],
+  "module": "BeeMind",
+  "orientation": "horizontal",
+  "schema": "beestack.figure_data.v1",
+  "title": "beemind methods policy landscape",
+  "validation_fraction": 1.0,
+  "values": [
+    0.0,
+    0.10801372983415232,
+    0.26625450046454535,
+    4.0,
+    4.0,
+    10.0,
+    23.999143213986002
+  ]
+}

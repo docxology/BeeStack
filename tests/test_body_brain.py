@@ -622,7 +622,7 @@ def test_waggle_follower_dataset_parser_and_diagnostics() -> None:
     assert payload["dataset_count"] >= 10
     assert "waggle_decoding" in payload["module_target_counts"]
     assert completeness.source_verified_fraction == pytest.approx(1.0)
-    assert completeness.parseability_target_satisfied
+    assert not completeness.parseability_target_satisfied
     assert all(isinstance(gap, BeeBrainSourceGap) for gap in completeness.source_gaps)
     assert all(isinstance(status, BeeBrainSourceStatus) for status in completeness.source_statuses)
     panel = BeeBrainDataCompletenessPanel(

@@ -11,13 +11,10 @@ SRC_ROOT = PROJECT_ROOT / "src"
 if str(SRC_ROOT) not in sys.path:
     sys.path.insert(0, str(SRC_ROOT))
 
-from beestack import audit_documentation, documentation_audit_markdown
-from signpost_project_tree import write_project_readiness_review, write_signposts
+from beestack import audit_documentation, documentation_audit_markdown, finalize_project_outputs
 
 
 def main() -> None:
-    write_signposts(PROJECT_ROOT)
-    write_project_readiness_review(PROJECT_ROOT)
     audit = audit_documentation(PROJECT_ROOT)
     report_dir = PROJECT_ROOT / "output" / "reports"
     report_dir.mkdir(parents=True, exist_ok=True)
@@ -29,7 +26,7 @@ def main() -> None:
         documentation_audit_markdown(audit),
         encoding="utf-8",
     )
-    write_project_readiness_review(PROJECT_ROOT)
+    finalize_project_outputs(PROJECT_ROOT)
     if not audit.passed:
         raise SystemExit("BeeStack documentation audit failed")
     print("BeeStack documentation audit passed")

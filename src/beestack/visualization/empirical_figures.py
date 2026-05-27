@@ -19,8 +19,18 @@ from ..brain import (
     NeuropilAbbreviation,
     WaggleFollowerSummary,
 )
-from .figure_metadata import write_figure_sidecar
-from .style import PALETTE, apply_panel_style, module_color, style_context
+from ..brain.connectome import BeeBrainConnectomeReport
+from .figure_output import finalize_static_figures
+from .figure_plot_specs import empirical_plot_data
+from .style import (
+    PALETTE,
+    add_figure_note,
+    apply_panel_style,
+    module_color,
+    status_color,
+    style_context,
+    wrap_label,
+)
 
 
 def generate_empirical_figures(
@@ -35,6 +45,7 @@ def generate_empirical_figures(
     activity_summary: BeeBrainActivitySummary | None = None,
     waggle_summary: WaggleFollowerSummary | None = None,
     data_completeness: BeeBrainDataCompletenessPanel | None = None,
+    connectome_report: BeeBrainConnectomeReport | None = None,
 ) -> list[Path]:
     """Generate empirical data validation and stack-integration figures."""
 
@@ -66,6 +77,7 @@ def generate_empirical_figures(
                     _anatomy_projection(
                         anatomy_inventories,
                         output_dir / "empirical_anatomy_projection.png",
+                        connectome_report=connectome_report,
                     )
                 )
         if neuropil_abbreviations:
@@ -112,16 +124,34 @@ def generate_empirical_figures(
                     ),
                 ]
             )
-    for path in paths:
-        write_figure_sidecar(
-            path,
-            title=path.stem.replace("_", " ").title(),
-            backend="Matplotlib empirical-data renderer",
-            fidelity=_empirical_figure_fidelity(path.name),
-            source_data="output/data/empirical_analysis.json",
-            validation_status="nonblank empirical diagnostic",
-            regeneration_command="uv run python scripts/analyze_empirical_bee_data.py",
-        )
+    context = {
+        "panels": panels,
+        "panel_stats": panel_stats,
+        "stack_alignment": stack_alignment,
+        "antennal_summaries": antennal_summaries,
+        "anatomy_summary": anatomy_summary,
+        "anatomy_inventories": anatomy_inventories,
+        "neuropil_abbreviations": neuropil_abbreviations,
+        "activity_summary": activity_summary,
+        "waggle_summary": waggle_summary,
+        "data_completeness": data_completeness,
+        "connectome_report": connectome_report,
+    }
+
+    def _plot_data(path: Path) -> dict[str, object]:
+        return empirical_plot_data(path, **context)
+
+    def _sidecar(path: Path) -> dict[str, object]:
+        return {
+            "title": path.stem.replace("_", " ").title(),
+            "backend": "Matplotlib empirical-data renderer",
+            "fidelity": _empirical_figure_fidelity(path.name),
+            "source_data": "output/data/empirical_analysis.json",
+            "validation_status": "nonblank empirical diagnostic with plot data",
+            "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+        }
+
+    finalize_static_figures(paths, plot_data_for=_plot_data, sidecar_for=_sidecar)
     return paths
 
 
@@ -282,7 +312,12 @@ def _neuropil_coverage_bars(abbreviations: tuple[NeuropilAbbreviation, ...], pat
     return path
 
 
-def _anatomy_projection(inventories: tuple[AtlasInventory, ...], path: Path) -> Path:
+def _anatomy_projection(
+    inventories: tuple[AtlasInventory, ...],
+    path: Path,
+    *,
+    connectome_report: BeeBrainConnectomeReport | None = None,
+) -> Path:
     vrml_items = [inventory for inventory in inventories if inventory.vrml_centroid is not None]
     fig, ax = plt.subplots(figsize=(7, 6))
     max_vertices = max((item.vrml_vertex_count for item in vrml_items), default=1)
@@ -314,6 +349,26 @@ def _anatomy_projection(inventories: tuple[AtlasInventory, ...], path: Path) -> 
             ha="center",
             va="center",
         )
+    if connectome_report is not None:
+        anchors = _module_anchor_positions(inventories)
+        drawn: set[tuple[str, str]] = set()
+        for edge in connectome_report.edges:
+            if edge.edge_kind != "structural_tract":
+                continue
+            source_xy = _connectome_anchor_xy(edge.source_id, anchors)
+            target_xy = _connectome_anchor_xy(edge.target_id, anchors)
+            if source_xy is None or target_xy is None:
+                continue
+            key = (edge.source_id, edge.target_id)
+            if key in drawn:
+                continue
+            drawn.add(key)
+            ax.annotate(
+                "",
+                xy=target_xy,
+                xytext=source_xy,
+                arrowprops={"arrowstyle": "->", "color": "#334155", "alpha": 0.55, "lw": 1.1},
+            )
     ax.set_title("Honeybee Standard Brain VRML geometry projection")
     ax.set_xlabel("VRML X coordinate")
     ax.set_ylabel("VRML Y coordinate")
@@ -449,24 +504,64 @@ def _brain_data_completeness_matrix(panel: BeeBrainDataCompletenessPanel, path: 
         ],
         dtype=float,
     )
-    fig, ax = plt.subplots(figsize=(10, 5.5))
+    fig, ax = plt.subplots(figsize=(10.8, 6.1))
     image = ax.imshow(matrix, aspect="auto", cmap="YlGnBu")
-    ax.set_title("BeeBrain curated source completeness matrix")
+    ax.set_title("BeeBrain curated source completeness matrix", loc="left")
     ax.set_xlabel("Modality family")
     ax.set_ylabel("Module target")
     ax.set_xticks(range(len(modalities)))
-    ax.set_xticklabels(modalities, rotation=35, ha="right", fontsize=8)
-    ax.set_yticks(range(len(modules)))
-    ax.set_yticklabels(modules, fontsize=8)
-    fig.colorbar(image, ax=ax, label="Curated source count")
-    ax.text(
-        0.01,
-        -0.22,
-        f"downloaded={panel.downloaded_fraction:.2f}; parseable={panel.parseable_fraction:.2f}",
-        transform=ax.transAxes,
-        fontsize=9,
+    ax.set_xticklabels(
+        [wrap_label(modality.replace("_", " "), width=18, max_lines=2) for modality in modalities],
+        rotation=25,
+        ha="right",
+        fontsize=8,
     )
-    fig.tight_layout()
+    ax.set_yticks(range(len(modules)))
+    ax.set_yticklabels([module.replace("_", " ") for module in modules], fontsize=8)
+    threshold = float(matrix.max()) * 0.52 if matrix.size else 0.0
+    for row_index, module in enumerate(modules):
+        for column_index, modality in enumerate(modalities):
+            count = int(panel.module_modality_matrix[module].get(modality, 0))
+            ax.text(
+                column_index,
+                row_index,
+                str(count),
+                ha="center",
+                va="center",
+                fontsize=8,
+                fontweight="bold" if count else "normal",
+                color="white" if count > threshold else "#111827",
+            )
+    fig.colorbar(image, ax=ax, label="Curated source count")
+    badge_rows = (
+        ("downloaded", panel.downloaded_fraction, "available"),
+        ("parseable", panel.parseable_fraction, "partial"),
+    )
+    for index, (label, fraction, status) in enumerate(badge_rows):
+        ax.text(
+            0.02 + index * 0.22,
+            -0.24,
+            f"{label}: {fraction:.2f}",
+            transform=ax.transAxes,
+            ha="left",
+            va="top",
+            fontsize=8.5,
+            fontweight="bold",
+            color="#111827",
+            bbox={
+                "boxstyle": "round,pad=0.28",
+                "facecolor": status_color(status),
+                "edgecolor": "#111827",
+                "alpha": 0.22,
+            },
+        )
+    add_figure_note(
+        fig,
+        "Zero cells are availability gaps; counts are registered local source rows, not calcium-validated dynamics.",
+        width=110,
+        y=0.018,
+    )
+    fig.tight_layout(rect=(0, 0.10, 1, 0.98))
     fig.savefig(path, dpi=160)
     plt.close(fig)
     return path
@@ -490,3 +585,59 @@ def _panel_label(modality: str) -> str:
     parts = [part for part in modality.split(":") if part]
     label = parts[-2] if len(parts) >= 2 else modality
     return shorten(label, width=54, placeholder="...")
+
+
+_MODULE_ASSET_FILES: dict[str, tuple[str, ...]] = {
+    "antennal_lobe": ("ALF1_Standard.zip", "ACT_Standard.zip"),
+    "mushroom_body": ("ALF1_Standard.zip", "Atlas_Pe1_PNII.zip"),
+    "central_complex": ("ACT_Standard.zip", "Atlas_Pe1_PNII.zip"),
+    "whole_brain": ("VRML.zip",),
+}
+
+
+def _module_anchor_positions(
+    inventories: tuple[AtlasInventory, ...],
+) -> dict[str, tuple[float, float]]:
+    by_name = {Path(inventory.local_path).name: inventory for inventory in inventories}
+    anchors: dict[str, tuple[float, float]] = {}
+    for module, file_names in _MODULE_ASSET_FILES.items():
+        points: list[tuple[float, float]] = []
+        for file_name in file_names:
+            inventory = by_name.get(file_name)
+            if inventory is None or inventory.vrml_centroid is None:
+                continue
+            points.append((inventory.vrml_centroid[0], inventory.vrml_centroid[1]))
+        if points:
+            anchors[module] = (
+                sum(point[0] for point in points) / len(points),
+                sum(point[1] for point in points) / len(points),
+            )
+    return anchors
+
+
+def _connectome_anchor_xy(
+    node_id: str,
+    anchors: dict[str, tuple[float, float]],
+) -> tuple[float, float] | None:
+    if node_id.startswith("neuropil:"):
+        module = node_id.split(":", 1)[1]
+        return anchors.get(module)
+    if node_id.startswith("tract:"):
+        edge_key = node_id.split(":", 1)[1]
+        if "alf1" in edge_key:
+            return anchors.get("mushroom_body") or anchors.get("antennal_lobe")
+        if "act" in edge_key:
+            return anchors.get("central_complex") or anchors.get("antennal_lobe")
+        if "pe1" in edge_key:
+            return anchors.get("mushroom_body")
+    if node_id.startswith("neuron:"):
+        asset_id = node_id.split(":", 2)[1]
+        hint = {
+            "hsb-vrml-alf1": "mushroom_body",
+            "hsb-vrml-act": "antennal_lobe",
+            "hsb-vrml-pe1-pn": "mushroom_body",
+            "hsb-vrml-atlas": "whole_brain",
+        }.get(asset_id)
+        if hint is not None:
+            return anchors.get(hint)
+    return None

@@ -92,6 +92,6 @@
     "left hamuli coupling cue added between forewing and hindwing",
     "right hamuli coupling cue added between forewing and hindwing"
   ],
-  "source_xml_path": ".venv/lib/python3.11/site-packages/flybody/fruitfly/assets/fruitfly.xml",
+  "source_xml_path": ".venv/lib/python3.12/site-packages/flybody/fruitfly/assets/fruitfly.xml",
   "xml_path": "output/animations/flybody_scenes/collision/body_plan/assets/apis_mellifera_worker.xml"
 }

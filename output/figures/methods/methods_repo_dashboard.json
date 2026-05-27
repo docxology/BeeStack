@@ -12,7 +12,7 @@
   "alt_text": "Heatmap of methods-analysis module rows and normalized validation, metric, visual-artifact, evidence-link, and gap columns.",
   "artifact_kind": "figure",
   "backend": "Matplotlib/pandas",
-  "caption": "Methods dashboard summarizing per-module validation, evidence links, visual artifacts, metric counts, and explicit gap counts.",
+  "caption": "Matplotlib/pandas/NetworkX beestack methods dashboard shows Methods dashboard summarizing per-module validation, evidence links, visual artifacts, metric counts, and explicit gap counts. Generated from MethodsAnalysisReport module panels and validation panels. Sidecar validation checks raster, source routing, and registered claim tier. Does not support biological predictive validity.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
@@ -39,16 +39,17 @@
   "figure_path": "output/figures/methods/methods_repo_dashboard.png",
   "manuscript_label": "fig:methods_dashboard",
   "manuscript_section": "manuscript/08_validation_and_figures.md",
+  "plot_data_path": "output/figures/methods/methods_repo_dashboard_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 993,
+    "height_px": 882,
     "max_intensity": 255,
-    "mean_intensity": 163.7177998994678,
+    "mean_intensity": 167.15733097599337,
     "min_intensity": 0,
     "mode": "RGBA",
-    "nonzero_histogram_bins": 254,
-    "std_intensity": 96.0783924256399,
-    "width_px": 1749
+    "nonzero_histogram_bins": 250,
+    "std_intensity": 95.39327856949878,
+    "width_px": 1743
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
   "schema": "beestack.figure.v1",
@@ -59,5 +60,18 @@
   ],
   "title": "Methods Repo Dashboard",
   "unsupported_inference": "Does not support biological predictive validity.",
-  "validation_status": "nonblank image and quality sidecar passed"
+  "validation_status": "nonblank image, quality sidecar, and plot data passed",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.976,
+    "figure_role": "dashboard",
+    "height_px": 882,
+    "label_density": "dense",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 1743,
+    "min_dimension_px": 882,
+    "readability_status": "pass",
+    "split_group": "methods_dashboard",
+    "width_px": 1743
+  }
 }

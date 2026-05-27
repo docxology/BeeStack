@@ -1,4 +1,4 @@
-# Evidence-Typed Architecture
+# Evidence-Typed Architecture {#sec:architecture}
 
 BeeStack is organized around the five biological layers named in the
 project specification [@friedman2026beestack], each implemented as a
@@ -70,7 +70,7 @@ same data contracts before it can enter the closed loop.
 
 The default configuration uses a {{CONTROL_RATE_HZ}} Hz
 observation–action boundary, {{POLICY_RATE_HZ}} Hz policy cadence
-(typical: every tenth control step), and {{PHYSICS_DT_MS}} ms physics
+(typical: every {{CONTROL_STEPS_PER_POLICY}} control steps), and {{PHYSICS_DT_MS}} ms physics
 step. These are interface and integration choices that keep the layer
 contracts aligned with FlyBody/MuJoCo stepping; they should not be read
 as calibrated honey-bee sensorimotor latency estimates.
@@ -91,7 +91,7 @@ variables:
 | Belief latent dim | {{LATENT_DIM}} | Reduced kernel |
 | Swarm agents | {{SWARM_AGENTS}} | Reduced kernel |
 | Represented colony size | {{REPRESENTED_COLONY_SIZE}} | Mid-season colony scale |
-| Comb voxels | {{COMB_VOXELS}} | Default $18 \times 12 \times 4$ |
+| Comb voxels | {{COMB_VOXELS}} | Default ${{COMB_SHAPE_X}} \times {{COMB_SHAPE_Y}} \times {{COMB_SHAPE_Z}}$ |
 
 ## Determinism and reproducibility
 
@@ -116,12 +116,14 @@ reduced schematic), and the manuscript figure index links
 {{MANUSCRIPT_FIGURE_INDEX_COUNT}} figures and visual artifacts to their
 backend, fidelity tier, validation status, and regeneration command.
 
-![Matplotlib BeeStack graphical abstract generated from module contracts and coverage records; sidecar validation checks the raster output, and the figure supports architecture traceability rather than biological or digital-twin validation.](../figures/beestack_graphical_abstract.png){#fig:beestack_graphical_abstract}
+[@fig:beestack_graphical_abstract] summarizes module coverage and stack contracts at a glance.
+
+![Matplotlib beestack graphical abstract shows Showcase architecture schematic linking BeeBody, BeeBrain, BeeMind, BeeSwarm, and BeeNiche through typed contracts and generated evidence. Generated from module coverage records and stack contract definitions. Sidecar validation checks raster, source routing, and registered claim tier. Does not support a claim of biological or digital-twin validation.](../figures/beestack_graphical_abstract.png){#fig:beestack_graphical_abstract}
 
 ## Module dependencies
 
 The static module-coverage figure (`output/figures/module_contract_coverage.png`,
-see "Integrated Results") renders the dependency surface explicitly so that reviewers can
+see [@sec:integrated_results]) renders the dependency surface explicitly so that reviewers can
 trace the path from a single observation to a single action without
 having to read the code.
 

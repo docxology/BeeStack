@@ -41,6 +41,7 @@ rather than treating the target as a present-tense result.
 | Strict 3D waggle evidence | `docs/waggle_3d_scenario.md` | `uv run python scripts/verify_bee_render.py` |
 | BeeBrain data provenance | `docs/beebrain_data_pipeline.md` | `uv run python scripts/analyze_empirical_bee_data.py` |
 | Claim, source, and artifact audit | `docs/research_operations_playbook.md` | `uv run python scripts/audit_documentation.py` |
+| Security posture and threat model | `docs/security_posture.md` | `uv run python scripts/run_security_audit.py` |
 | Digital-twin target assessment | `docs/digital_twin_path.md` | `uv run python scripts/assess_digital_twin_readiness.py` |
 | Manuscript editing | `docs/manuscript_development.md` | `uv run python scripts/z_generate_manuscript_variables.py` |
 | Source-refresh ledger | `output/llm/source_refresh_ledger.md` | `uv run python scripts/write_source_refresh_ledger.py` |
@@ -63,7 +64,9 @@ uv run python scripts/assess_digital_twin_readiness.py
 uv run python scripts/verify_generated_reports.py
 uv run python scripts/signpost_project_tree.py --check
 uv run python scripts/audit_documentation.py
+uv run python scripts/run_security_audit.py
 uv run python scripts/z_generate_manuscript_variables.py
+uv run python scripts/audit_publication_readiness.py --check
 ```
 
 `scripts/fetch_empirical_bee_data.py` now attempts full curated downloads by
@@ -107,7 +110,25 @@ uv run python scripts/verify_generated_reports.py
 uv run python scripts/audit_documentation.py
 uv run python scripts/signpost_project_tree.py --check
 uv run python scripts/z_generate_manuscript_variables.py
+uv run python scripts/audit_publication_readiness.py --check
 ```
+
+## Release 1.0
+
+Version identifiers: `manuscript/config.yaml` → `paper.version: "1.0"`;
+`pyproject.toml` → `1.0.0`; `src/beestack/version.py` is the package source of truth.
+
+Publication gate (after full verification above):
+
+```bash
+uv run python scripts/audit_publication_readiness.py --check
+# strict deposit check:
+uv run python scripts/audit_publication_readiness.py --check --require-doi
+```
+
+Combined PDF: `output/pdf/BeeStack_combined.pdf` (render from template root with
+`uv run python scripts/03_render_pdf.py --project BeeStack`). See `CHANGELOG.md`
+for scope and known gaps. Mint `publication.doi` at Zenodo before public deposit.
 
 ## Output Map
 

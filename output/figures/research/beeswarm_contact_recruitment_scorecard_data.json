@@ -1,0 +1,31 @@
+{
+  "chart_type": "bar",
+  "figure_path": "output/figures/research/beeswarm_contact_recruitment_scorecard.png",
+  "labels": [
+    "agent_count",
+    "represented_colony_size",
+    "strict_scene_count",
+    "bee_bee_contact_count",
+    "floor_contact_count",
+    "waggle_follower_orientation_confidence",
+    "waggle_follower_orientation_error_deg",
+    "waggle_phase_coupling_score",
+    "total_recruited_followers"
+  ],
+  "module": "BeeSwarm",
+  "orientation": "horizontal",
+  "schema": "beestack.figure_data.v1",
+  "title": "beeswarm contact recruitment scorecard",
+  "validation_fraction": 1.0,
+  "values": [
+    50.0,
+    20000.0,
+    3.0,
+    1382.0,
+    116.0,
+    0.7878249999999999,
+    19.095750000000013,
+    9.148365930103435e-17,
+    168.0
+  ]
+}

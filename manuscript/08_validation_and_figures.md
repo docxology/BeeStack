@@ -1,4 +1,4 @@
-# Validation and Figure Evidence
+# Validation and Figure Evidence {#sec:validation}
 
 BeeStack treats visualization as *evidence* only when the backend and
 validation status are explicit. A figure without fidelity metadata is not used
@@ -15,6 +15,16 @@ BeeSwarm ten-bee collision scene, the BeeSwarm configured waggle dance,
 and the long multi-BeeBody waggle-dance scenario. Reduced schematic
 outputs are retained for module-level Brain, Mind, recruitment-field
 Swarm, and Niche summaries — they are *explanatory*, not biomechanical.
+
+The strict FlyBody/MuJoCo contact sheets in
+[@sec:methods_body_swarm] — [@fig:beebody_flybody_morphology],
+[@fig:beebody_flybody_flight], [@fig:beeswarm_10_beebody_collision],
+[@fig:beeswarm_waggle_dance_configured], and
+[@fig:beeswarm_waggle_dance_long] — are the print-facing witnesses for
+those five real animations. Each sheet samples eight frames from the
+registered GIF; verification scores and contact reports in
+`output/reports/bee_visual_verification.md` and
+`output/reports/flybody_contact_physics.md` bind the pixels to claim tier.
 
 ## Multi-level visual checks
 
@@ -82,15 +92,49 @@ that contract: it separates strict rendered physics, empirical availability,
 reduced kernels, compatibility summaries, and the still-blocked digital-twin
 claim.
 
-![Matplotlib BeeStack evidence ladder generated from methods analysis, readiness review, and artifact manifests; sidecar validation checks the raster, and the figure states which visual tiers support current claims rather than digital-twin readiness.](../figures/beestack_evidence_ladder.png){#fig:beestack_evidence_ladder}
+## Security posture validation
 
-![Matplotlib validation-readiness panel generated from source-refresh records, readiness review, generated reports, and figure sidecars; sidecar validation checks the raster, and the figure shows implemented checks and blocked residual, uncertainty, assimilation, and governance evidence rather than drawing invented residual bars.](../figures/beestack_validation_readiness_residuals.png){#fig:validation_readiness_residuals}
+Alongside figure, source, and documentation audits, BeeStack runs a static
+security posture gate (`output/reports/security_posture_audit.json`) that
+verifies curated download host allowlisting, zip-member safety checks, absence
+of forbidden orchestration patterns, and presence of the repository threat
+model (`BeeStack-threat-model.md`). This gate does not replace penetration
+testing or infrastructure hardening; it makes the **implemented** software
+controls auditable alongside the evidence ladder. Operational detail lives in
+[@sec:ethics] and `docs/security_posture.md`.
 
-![Matplotlib manuscript figure claim map generated from the figure registry and manuscript figure index; sidecar validation checks the raster, and the figure supports figure-provenance review rather than adding empirical evidence.](../figures/manuscript_figure_claim_map.png){#fig:manuscript_figure_claim_map}
+The validation figures below separate overview and detail surfaces: evidence
+tiers, residual readiness blockers, manuscript claim routing, module-level
+methods state, and manuscript evidence links. Each insert states its backend,
+source report, sidecar validation, and blocked inference in the caption text.
 
-![Matplotlib/pandas BeeStack methods dashboard generated from MethodsAnalysisReport; sidecar validation checks the raster, and the figure supports provenance and validation coverage claims rather than biological predictive validity.](../figures/methods/methods_repo_dashboard.png){#fig:methods_dashboard}
+[@fig:beestack_evidence_ladder] ranks evidence tiers against readiness artifacts.
 
-![Matplotlib/pandas manuscript evidence index generated from MethodsAnalysisReport evidence links; sidecar validation checks the raster, and the figure supports manuscript provenance coverage rather than absent empirical support.](../figures/methods/methods_manuscript_evidence_index.png){#fig:methods_evidence_index}
+![Matplotlib beestack evidence ladder shows Visual evidence contract separating backend, claim tier, validation status, source data, and unsupported inference for current BeeStack figures. Generated from methods analysis, readiness review, and generated artifact manifests. Sidecar validation checks raster, source routing, and registered claim tier. Does not remove the assimilation, residual, uncertainty, or governance gaps.](../figures/beestack_evidence_ladder.png){#fig:beestack_evidence_ladder}
+
+[@fig:validation_readiness_residuals] lists residual blockers that still prevent digital-twin readiness.
+
+![Matplotlib beestack validation readiness and residual blockers shows Validation-readiness panel separating implemented verification checks from blocked held-out residual, uncertainty, assimilation, and governance evidence. Generated from source refresh ledger, readiness review, generated reports, and figure sidecars. Sidecar validation checks raster, source routing, and registered claim tier. Does not provide held-out residuals, uncertainty quantification, or digital-twin readiness.](../figures/beestack_validation_readiness_residuals.png){#fig:validation_readiness_residuals}
+
+[@fig:manuscript_figure_claim_map] maps registered figures by manuscript section and claim family.
+
+![Matplotlib beestack manuscript figure claim map shows Overview matrix grouping inserted primary figures by manuscript section and registered claim family. Generated from figure registry and manuscript figure index. Sidecar validation checks raster, source routing, and registered claim tier. Does not add empirical evidence beyond the registered figure sidecars.](../figures/manuscript_figure_claim_map.png){#fig:manuscript_figure_claim_map}
+
+[@fig:manuscript_figure_claim_detail] lists the same primary figures with source classes and explicit unsupported-inference boundaries.
+
+![Matplotlib beestack manuscript figure claim detail shows Split companion table listing primary figures, source-data classes, claim tiers, and unsupported-inference boundaries. Generated from figure registry and manuscript figure index. Sidecar validation checks raster, source routing, and registered claim tier. Does not add empirical evidence beyond the registered figure sidecars.](../figures/manuscript_figure_claim_detail.png){#fig:manuscript_figure_claim_detail width=98%}
+
+[@fig:methods_dashboard] summarizes module-level methods panels in one dashboard.
+
+![Matplotlib/pandas/NetworkX beestack methods dashboard shows Methods dashboard summarizing per-module validation, evidence links, visual artifacts, metric counts, and explicit gap counts. Generated from MethodsAnalysisReport module panels and validation panels. Sidecar validation checks raster, source routing, and registered claim tier. Does not support biological predictive validity.](../figures/methods/methods_repo_dashboard.png){#fig:methods_dashboard}
+
+[@fig:methods_dashboard_detail] expands the methods dashboard into a module table with gap and boundary text kept legible at PDF scale.
+
+![Matplotlib/pandas/NetworkX beestack methods dashboard detail shows Split companion table showing module validation fractions, visual artifact counts, evidence-link counts, gap counts, and boundaries. Generated from MethodsAnalysisReport module panels and visual QA report. Sidecar validation checks raster, source routing, and registered claim tier. Does not support biological predictive validity.](../figures/methods/methods_dashboard_detail.png){#fig:methods_dashboard_detail width=98%}
+
+[@fig:methods_evidence_index] links manuscript sections to evidence records and regeneration commands.
+
+![Matplotlib/pandas/NetworkX beestack manuscript evidence index shows Manuscript evidence index comparing evidence-link counts, visual-artifact counts, and validation fractions by BeeStack module. Generated from MethodsAnalysisReport manuscript evidence links. Sidecar validation checks raster, source routing, and registered claim tier. Does not substitute evidence links for absent empirical support.](../figures/methods/methods_manuscript_evidence_index.png){#fig:methods_evidence_index}
 
 ## Figure design, accessibility, and claim discipline
 

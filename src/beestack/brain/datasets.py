@@ -19,6 +19,7 @@ class EmpiricalBrainDataset:
     variables: tuple[str, ...]
     integration_target: str
     license_note: str = "See source repository or publisher terms."
+    supplementary_downloads: tuple[tuple[str, str], ...] = ()
 
     def as_dict(self) -> dict[str, str | tuple[str, ...]]:
         return asdict(self)
@@ -106,6 +107,12 @@ def empirical_brain_datasets() -> tuple[EmpiricalBrainDataset, ...]:
             sample="10 atlas-identified glomeruli, 30 repetitions, 6 odorants, 100 Hz windows",
             variables=("negative_deltaF_over_F", "glomerular_latency", "VAR_connectivity"),
             integration_target="test lateral inhibition, latency, and functional-connectivity summaries",
+            supplementary_downloads=(
+                (
+                    "insects-14-00539-s001.zip",
+                    "https://mdpi-res.com/d_attachment/insects/insects-14-00539/article_deploy/insects-14-00539-s001.zip",
+                ),
+            ),
         ),
         EmpiricalBrainDataset(
             dataset_id="kaneko-2016-kenyon-subtypes",

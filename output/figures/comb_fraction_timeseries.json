@@ -12,7 +12,7 @@
   "alt_text": "Line chart of BeeNiche comb occupancy fraction over control steps.",
   "artifact_kind": "figure",
   "backend": "Matplotlib",
-  "caption": "Integrated-run comb-occupancy witness showing deterministic BeeNiche state changes across control steps.",
+  "caption": "Matplotlib beeniche comb occupancy time series shows Integrated-run comb-occupancy witness showing deterministic BeeNiche state changes across control steps. Generated from output/data/simulation_records.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate full hive ecology.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
@@ -39,6 +39,7 @@
   "figure_path": "output/figures/comb_fraction_timeseries.png",
   "manuscript_label": "fig:comb_fraction",
   "manuscript_section": "manuscript/10_integrated_results.md",
+  "plot_data_path": "output/figures/comb_fraction_timeseries_data.json",
   "priority": "primary",
   "quality": {
     "height_px": 705,
@@ -59,5 +60,17 @@
   ],
   "title": "Comb Fraction Timeseries",
   "unsupported_inference": "Does not validate full hive ecology.",
-  "validation_status": "nonblank quality sidecar generated"
+  "validation_status": "nonblank quality sidecar and plot data generated",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.766,
+    "figure_role": "overview",
+    "height_px": 705,
+    "label_density": "compact",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 1245,
+    "min_dimension_px": 705,
+    "readability_status": "pass",
+    "width_px": 1245
+  }
 }

@@ -1,6 +1,6 @@
 # output/figures/empirical
 
-Generated or downloaded artifact area. Do not hand-edit scientific outputs; change the producing script or source helper and regenerate.
+Generated visualization area. Do not hand-edit PNGs, sidecars, or *_data.json plot-data files; update the registry, source report, or plotting helper and regenerate. Preserve manuscript-primary labels, source data, visual_quality metadata, and unsupported-inference boundaries.
 
-- Canonical source: scripts/analysis_pipeline.py or scripts/analyze_empirical_bee_data.py
-- Regeneration command: uv run python scripts/analysis_pipeline.py
+- Canonical source: scripts/analyze_empirical_bee_data.py and src/beestack/visualization/empirical_figures.py
+- Regeneration command: uv run python scripts/analyze_empirical_bee_data.py

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -152,6 +153,24 @@ def test_manuscript_variables_cover_tokens() -> None:
     )
     tokens = {token.split("}}")[0] for token in manuscript_text.split("{{")[1:]}
     assert tokens <= set(variables)
+
+
+def test_manuscript_quantitative_claims_use_variable_tokens() -> None:
+    banned_patterns = {
+        "dance event rate": r"\b250 Hz\b",
+        "johnston event floor": r"\b200 Hz\b",
+        "parseability target": r"\b0\.800\b",
+        "wing power reference": r"~58 mW",
+        "reference body mass": r"≈80 mg",
+        "reference stroke frequency": r"≈230 Hz",
+        "brood target": r"configured 34\s*\n?\s*°C target",
+        "comb shape": r"18 \\times 12 \\times 4",
+        "policy cadence": r"every tenth control step",
+    }
+    for path in sorted((PROJECT_ROOT / "manuscript").glob("*.md")):
+        text = path.read_text(encoding="utf-8")
+        for label, pattern in banned_patterns.items():
+            assert re.search(pattern, text) is None, f"{path.name} hard-codes {label}"
 
 
 def test_manuscript_uses_restructured_evidence_typed_arc() -> None:

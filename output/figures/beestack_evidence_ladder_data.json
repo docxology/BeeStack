@@ -1,0 +1,17 @@
+{
+  "annotations": [
+    "Visual evidence contract separating backend, claim tier, validation status, source data, and unsupported inference for current BeeStack figures.",
+    "claim_tier=fidelity_boundary",
+    "source_data=methods analysis, readiness review, and generated artifact manifests"
+  ],
+  "chart_type": "schematic",
+  "figure_path": "output/figures/beestack_evidence_ladder.png",
+  "nodes": [
+    {
+      "id": "fig:beestack_evidence_ladder",
+      "label": "BeeStack evidence ladder"
+    }
+  ],
+  "schema": "beestack.figure_data.v1",
+  "title": "BeeStack evidence ladder"
+}

@@ -1,0 +1,306 @@
+{
+  "annotations": [
+    "primary_figure_count=42"
+  ],
+  "chart_type": "schematic",
+  "figure_path": "output/figures/manuscript_figure_claim_detail.png",
+  "nodes": [],
+  "rows": [
+    {
+      "artifact_path": "output/figures/beestack_graphical_abstract.png",
+      "claim_tier": "architecture_schematic",
+      "manuscript_section": "manuscript/04_evidence_typed_architecture.md",
+      "source_data": "module coverage records and stack contract definitions",
+      "unsupported_inference": "Does not support a claim of biological or digital-twin validation."
+    },
+    {
+      "artifact_path": "output/figures/beestack_evidence_ladder.png",
+      "claim_tier": "fidelity_boundary",
+      "manuscript_section": "manuscript/08_validation_and_figures.md",
+      "source_data": "methods analysis, readiness review, and generated artifact manifests",
+      "unsupported_inference": "Does not remove the assimilation, residual, uncertainty, or governance gaps."
+    },
+    {
+      "artifact_path": "output/figures/manuscript_figure_claim_map.png",
+      "claim_tier": "manuscript_figure_provenance_map",
+      "manuscript_section": "manuscript/08_validation_and_figures.md",
+      "source_data": "figure registry and manuscript figure index",
+      "unsupported_inference": "Does not add empirical evidence beyond the registered figure sidecars."
+    },
+    {
+      "artifact_path": "output/figures/manuscript_figure_claim_detail.png",
+      "claim_tier": "manuscript_figure_provenance_map",
+      "manuscript_section": "manuscript/08_validation_and_figures.md",
+      "source_data": "figure registry and manuscript figure index",
+      "unsupported_inference": "Does not add empirical evidence beyond the registered figure sidecars."
+    },
+    {
+      "artifact_path": "output/figures/beestack_first_principles_claim_audit.png",
+      "claim_tier": "first_principles_claim_boundary",
+      "manuscript_section": "manuscript/02_claim_ledger.md",
+      "source_data": "figure registry, source audit, and generated project contracts",
+      "unsupported_inference": "Does not add evidence beyond registered reports or make blocked claims current."
+    },
+    {
+      "artifact_path": "output/figures/beestack_scholarship_evidence_matrix.png",
+      "claim_tier": "scholarship_evidence_matrix",
+      "manuscript_section": "manuscript/03_materials_and_source_provenance.md",
+      "source_data": "source refresh ledger, bibliography, source audit, and figure registry",
+      "unsupported_inference": "Does not replace direct DOI/source verification or add empirical data."
+    },
+    {
+      "artifact_path": "output/figures/beebody_beeswarm_micro_macro_calibration.png",
+      "claim_tier": "micro_macro_calibration_boundary",
+      "manuscript_section": "manuscript/05_methods_body_swarm.md",
+      "source_data": "FlyBody scene metrics, simulation records, BEEHAVE anchor, and source refresh ledger",
+      "unsupported_inference": "Does not calibrate colony-scale recruitment or make small-scene contacts a population model."
+    },
+    {
+      "artifact_path": "output/figures/beebrain_beemind_anatomy_policy_map.png",
+      "claim_tier": "neurocognitive_mapping_diagnostic",
+      "manuscript_section": "manuscript/06_methods_brain_mind.md",
+      "source_data": "source refresh ledger, BeeBrain source registry, and active-inference methods records",
+      "unsupported_inference": "Does not support connectome-scale, calcium-validated, or learned generative dynamics."
+    },
+    {
+      "artifact_path": "output/figures/beeniche_adapter_niche_map.png",
+      "claim_tier": "adapter_boundary_diagnostic",
+      "manuscript_section": "manuscript/07_methods_niche.md",
+      "source_data": "source refresh ledger, niche methods records, simulation records, and adapter notes",
+      "unsupported_inference": "Does not validate full ecology, real-time hive control, or thermodynamic colony dynamics."
+    },
+    {
+      "artifact_path": "output/figures/beestack_validation_readiness_residuals.png",
+      "claim_tier": "validation_readiness_boundary",
+      "manuscript_section": "manuscript/08_validation_and_figures.md",
+      "source_data": "source refresh ledger, readiness review, generated reports, and figure sidecars",
+      "unsupported_inference": "Does not provide held-out residuals, uncertainty quantification, or digital-twin readiness."
+    },
+    {
+      "artifact_path": "output/figures/methods/methods_repo_dashboard.png",
+      "claim_tier": "methods_provenance_diagnostic",
+      "manuscript_section": "manuscript/08_validation_and_figures.md",
+      "source_data": "MethodsAnalysisReport module panels and validation panels",
+      "unsupported_inference": "Does not support biological predictive validity."
+    },
+    {
+      "artifact_path": "output/figures/methods/methods_dashboard_detail.png",
+      "claim_tier": "methods_provenance_diagnostic",
+      "manuscript_section": "manuscript/08_validation_and_figures.md",
+      "source_data": "MethodsAnalysisReport module panels and visual QA report",
+      "unsupported_inference": "Does not support biological predictive validity."
+    },
+    {
+      "artifact_path": "output/figures/methods/methods_manuscript_evidence_index.png",
+      "claim_tier": "methods_provenance_diagnostic",
+      "manuscript_section": "manuscript/08_validation_and_figures.md",
+      "source_data": "MethodsAnalysisReport manuscript evidence links",
+      "unsupported_inference": "Does not substitute evidence links for absent empirical support."
+    },
+    {
+      "artifact_path": "output/figures/methods/beebody_methods_telemetry_dashboard.png",
+      "claim_tier": "strict_visual_plus_reduced_telemetry",
+      "manuscript_section": "manuscript/05_methods_body_swarm.md",
+      "source_data": "MethodsAnalysisReport and simulation records",
+      "unsupported_inference": "Does not calibrate honeybee biomechanics or aerodynamics."
+    },
+    {
+      "artifact_path": "output/figures/renders/beebody_flybody_morphology_contact_sheet.png",
+      "claim_tier": "strict_flybody_render",
+      "manuscript_section": "manuscript/05_methods_body_swarm.md",
+      "source_data": "animation manifest, bee visual verification, and apis_mellifera_worker MJCF",
+      "unsupported_inference": "Does not calibrate honeybee walking biomechanics or prove field-scale locomotion."
+    },
+    {
+      "artifact_path": "output/figures/renders/beebody_flybody_flight_contact_sheet.png",
+      "claim_tier": "strict_flybody_render",
+      "manuscript_section": "manuscript/05_methods_body_swarm.md",
+      "source_data": "animation manifest, bee visual verification, and apis_mellifera_worker MJCF",
+      "unsupported_inference": "Does not calibrate honeybee aerodynamics or hovering power against measured loads."
+    },
+    {
+      "artifact_path": "output/figures/beebody_motion_power_phase.png",
+      "claim_tier": "integrated_run_witness",
+      "manuscript_section": "manuscript/05_methods_body_swarm.md",
+      "source_data": "output/data/simulation_records.json and methods analysis",
+      "unsupported_inference": "Does not validate measured honeybee metabolic rates or aerodynamic coefficients."
+    },
+    {
+      "artifact_path": "output/figures/renders/beeswarm_10_beebody_collision_contact_sheet.png",
+      "claim_tier": "strict_small_scene_not_colony_dynamics",
+      "manuscript_section": "manuscript/05_methods_body_swarm.md",
+      "source_data": "animation manifest, flybody_scenes/collision contact report, and scene XML",
+      "unsupported_inference": "Does not validate colony-scale collision dynamics or integrated flight physics."
+    },
+    {
+      "artifact_path": "output/figures/renders/beeswarm_waggle_dance_configured_contact_sheet.png",
+      "claim_tier": "strict_small_scene_not_colony_dynamics",
+      "manuscript_section": "manuscript/05_methods_body_swarm.md",
+      "source_data": "animation manifest, flybody_scenes/waggle contact report, and decoded dance settings",
+      "unsupported_inference": "Does not validate recruitment outcomes against field colony traces."
+    },
+    {
+      "artifact_path": "output/figures/renders/beeswarm_waggle_dance_long_contact_sheet.png",
+      "claim_tier": "strict_small_scene_not_colony_dynamics",
+      "manuscript_section": "manuscript/05_methods_body_swarm.md",
+      "source_data": "animation manifest, flybody_scenes/waggle_long contact report, and follower-orientation diagnostics",
+      "unsupported_inference": "Does not prove colony-scale dance-language use or calibrated follower kinematics."
+    },
+    {
+      "artifact_path": "output/figures/methods/beebrain_methods_empirical_completeness.png",
+      "claim_tier": "empirical_reduced_or_availability_gated",
+      "manuscript_section": "manuscript/06_methods_brain_mind.md",
+      "source_data": "MethodsAnalysisReport and empirical analysis report",
+      "unsupported_inference": "Does not support connectome-scale or calcium-validated dynamics."
+    },
+    {
+      "artifact_path": "output/figures/methods/beemind_methods_policy_landscape.png",
+      "claim_tier": "reduced_validated_kernel",
+      "manuscript_section": "manuscript/06_methods_brain_mind.md",
+      "source_data": "MethodsAnalysisReport and policy-selection diagnostics",
+      "unsupported_inference": "Does not support a learned or biologically calibrated generative model."
+    },
+    {
+      "artifact_path": "output/figures/methods/beeswarm_methods_contact_recruitment.png",
+      "claim_tier": "strict_small_scene_not_colony_dynamics",
+      "manuscript_section": "manuscript/05_methods_body_swarm.md",
+      "source_data": "MethodsAnalysisReport, animation manifest, and simulation records",
+      "unsupported_inference": "Does not validate colony-scale recruitment dynamics."
+    },
+    {
+      "artifact_path": "output/figures/methods/beeniche_methods_comb_thermal.png",
+      "claim_tier": "reduced_validated_kernel",
+      "manuscript_section": "manuscript/07_methods_niche.md",
+      "source_data": "MethodsAnalysisReport and simulation records",
+      "unsupported_inference": "Does not support a full ecology or hive thermodynamics engine."
+    },
+    {
+      "artifact_path": "output/figures/body_energy_timeseries.png",
+      "claim_tier": "integrated_run_witness",
+      "manuscript_section": "manuscript/10_integrated_results.md",
+      "source_data": "output/data/simulation_records.json",
+      "unsupported_inference": "Does not calibrate honeybee energetics."
+    },
+    {
+      "artifact_path": "output/figures/comb_fraction_timeseries.png",
+      "claim_tier": "integrated_run_witness",
+      "manuscript_section": "manuscript/10_integrated_results.md",
+      "source_data": "output/data/simulation_records.json",
+      "unsupported_inference": "Does not validate full hive ecology."
+    },
+    {
+      "artifact_path": "output/figures/module_contract_coverage.png",
+      "claim_tier": "contract_coverage_witness",
+      "manuscript_section": "manuscript/10_integrated_results.md",
+      "source_data": "output/data/module_coverage.json",
+      "unsupported_inference": "Does not prove scientific validation completeness."
+    },
+    {
+      "artifact_path": "output/figures/empirical/empirical_panel_heatmap.png",
+      "claim_tier": "empirical_reduced_or_availability_gated",
+      "manuscript_section": "manuscript/09_empirical_results.md",
+      "source_data": "output/data/empirical_analysis.json",
+      "unsupported_inference": "Does not support connectome-scale or calcium-validated dynamics."
+    },
+    {
+      "artifact_path": "output/figures/empirical/empirical_stack_alignment.png",
+      "claim_tier": "empirical_reduced_or_availability_gated",
+      "manuscript_section": "manuscript/09_empirical_results.md",
+      "source_data": "output/data/empirical_analysis.json",
+      "unsupported_inference": "Does not calibrate reduced kernels to biological ground truth."
+    },
+    {
+      "artifact_path": "output/figures/empirical/empirical_anatomy_projection.png",
+      "claim_tier": "structural_projectome_witness",
+      "manuscript_section": "manuscript/09_empirical_results.md",
+      "source_data": "output/data/bee_brain_connectome.json",
+      "unsupported_inference": "Does not infer functional or synaptic connectivity."
+    },
+    {
+      "artifact_path": "output/figures/empirical/empirical_activity_summary.png",
+      "claim_tier": "empirical_reduced_or_availability_gated",
+      "manuscript_section": "manuscript/09_empirical_results.md",
+      "source_data": "output/data/empirical_analysis.json",
+      "unsupported_inference": "Does not support calcium-validated dynamics when Paoli traces are blocked."
+    },
+    {
+      "artifact_path": "output/figures/empirical/waggle_follower_alignment.png",
+      "claim_tier": "empirical_reduced_or_availability_gated",
+      "manuscript_section": "manuscript/09_empirical_results.md",
+      "source_data": "output/data/waggle_follower_analysis.json",
+      "unsupported_inference": "Does not validate colony-scale recruitment."
+    },
+    {
+      "artifact_path": "output/figures/empirical/connectome_structural_graph.png",
+      "claim_tier": "structural_projectome_witness",
+      "manuscript_section": "manuscript/09_empirical_results.md",
+      "source_data": "output/data/bee_brain_connectome.json",
+      "unsupported_inference": "Does not claim synaptic adjacency or functional Granger completeness."
+    },
+    {
+      "artifact_path": "output/figures/empirical/connectome_completeness_tiers.png",
+      "claim_tier": "empirical_availability_diagnostic",
+      "manuscript_section": "manuscript/09_empirical_results.md",
+      "source_data": "output/data/brain_data_completeness.json",
+      "unsupported_inference": "Does not upgrade unavailable tiers into supported claims."
+    },
+    {
+      "artifact_path": "output/figures/empirical/brain_data_completeness_matrix.png",
+      "claim_tier": "empirical_availability_diagnostic",
+      "manuscript_section": "manuscript/09_empirical_results.md",
+      "source_data": "output/data/brain_data_completeness.json",
+      "unsupported_inference": "Does not replace absent calcium payloads with synthetic traces."
+    },
+    {
+      "artifact_path": "output/figures/empirical/bee_brain_multimodal_source_map.png",
+      "claim_tier": "empirical_availability_diagnostic",
+      "manuscript_section": "manuscript/09_empirical_results.md",
+      "source_data": "output/data/brain_data_completeness.json and empirical analysis report",
+      "unsupported_inference": "Does not support a complete multimodal empirical assimilation pipeline."
+    },
+    {
+      "artifact_path": "output/figures/research/research_module_scorecard_heatmap.png",
+      "claim_tier": "research_scorecard_diagnostic",
+      "manuscript_section": "manuscript/11_research_synthesis.md",
+      "source_data": "ResearchSuiteReport scorecards and visual inventory",
+      "unsupported_inference": "Does not support biological predictive validity."
+    },
+    {
+      "artifact_path": "output/figures/research/research_sensitivity_sweeps.png",
+      "claim_tier": "reduced_sensitivity_diagnostic",
+      "manuscript_section": "manuscript/11_research_synthesis.md",
+      "source_data": "ResearchSuiteReport sensitivity sweeps",
+      "unsupported_inference": "Does not replace Bayesian calibration or external scenario validation."
+    },
+    {
+      "artifact_path": "output/figures/research/research_fidelity_evidence_network.png",
+      "claim_tier": "research_evidence_network",
+      "manuscript_section": "manuscript/11_research_synthesis.md",
+      "source_data": "ResearchSuiteReport evidence records",
+      "unsupported_inference": "Does not make empirical coverage complete."
+    },
+    {
+      "artifact_path": "output/figures/research/research_evidence_detail.png",
+      "claim_tier": "research_evidence_network",
+      "manuscript_section": "manuscript/11_research_synthesis.md",
+      "source_data": "ResearchSuiteReport evidence records and empirical availability rows",
+      "unsupported_inference": "Does not make empirical coverage complete."
+    },
+    {
+      "artifact_path": "output/figures/research/stack_synthesis_dashboard.png",
+      "claim_tier": "cross_stack_synthesis_diagnostic",
+      "manuscript_section": "manuscript/11_research_synthesis.md",
+      "source_data": "output/reports/stack_synthesis_review.json",
+      "unsupported_inference": "Does not make BeeStack digital-twin ready."
+    },
+    {
+      "artifact_path": "output/figures/research/stack_synthesis_findings_detail.png",
+      "claim_tier": "cross_stack_synthesis_diagnostic",
+      "manuscript_section": "manuscript/11_research_synthesis.md",
+      "source_data": "output/reports/stack_synthesis_review.json",
+      "unsupported_inference": "Does not make BeeStack digital-twin ready."
+    }
+  ],
+  "schema": "beestack.figure_data.v1",
+  "title": "Manuscript figure claim map"
+}

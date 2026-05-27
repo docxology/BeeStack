@@ -2,9 +2,7 @@
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
-from typing import Any
 
 from beestack import (
     BeeStackConfig,
@@ -12,19 +10,8 @@ from beestack import (
     research_report_markdown,
     run_sensitivity_sweeps,
 )
+from beestack.utils import read_json, write_json
 from beestack.visualization import generate_research_figures, write_interactive_research_outputs
-from signpost_project_tree import write_project_readiness_review, write_signposts
-
-
-def write_json(path: Path, payload: Any) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-
-
-def read_json(path: Path, default: Any | None = None) -> Any:
-    if not path.exists():
-        return {} if default is None else default
-    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def write_research_suite_outputs(
@@ -104,6 +91,4 @@ def write_research_suite_outputs(
     report_md.write_text(research_report_markdown(report), encoding="utf-8")
     interactive_dir.mkdir(parents=True, exist_ok=True)
     sensitivity_dir.mkdir(parents=True, exist_ok=True)
-    write_signposts(project_root)
-    write_project_readiness_review(project_root)
     return report_json, report_md

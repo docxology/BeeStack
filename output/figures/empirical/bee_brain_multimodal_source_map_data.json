@@ -1,0 +1,31 @@
+{
+  "chart_type": "bar",
+  "figure_path": "output/figures/empirical/bee_brain_multimodal_source_map.png",
+  "labels": [
+    "3d",
+    "brain",
+    "calcium-sensitive",
+    "fast",
+    "frame-level",
+    "gene-expression",
+    "high-speed",
+    "line-scan",
+    "odorant-receptor",
+    "pan-neuronal"
+  ],
+  "orientation": "horizontal",
+  "schema": "beestack.figure_data.v1",
+  "title": "BeeBrain multimodal empirical source map",
+  "values": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ]
+}

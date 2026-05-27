@@ -1,7 +1,7 @@
-# output/figures/research
+# Research Figure Gallery
 
-Generated static figures for analysis, empirical data, and research reports.
+Research-suite scorecards, synthesis dashboards, evidence networks, and sensitivity panels generated from local ResearchSuiteReport artifacts.
 
-- Scope: Regeneratable output artifacts.
-- Regenerate: uv run python scripts/analysis_pipeline.py
-- Canonical source: scripts/analysis_pipeline.py or scripts/analyze_empirical_bee_data.py
+- Scope: Manuscript-primary research synthesis figures, supporting diagnostics, sidecars, and plot data. These show readiness and gaps, not validation.
+- Regenerate: uv run python scripts/run_research_suite.py
+- Canonical source: scripts/run_research_suite.py and src/beestack/visualization/research_figures.py

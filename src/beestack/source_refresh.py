@@ -49,6 +49,42 @@ class SourceRefreshRecord:
         return asdict(self)
 
 
+@dataclass(frozen=True)
+class ExternalDatasetRecord:
+    """Repository-level resource not yet wired into BeeStack empirical pipelines."""
+
+    resource_id: str
+    name: str
+    resource_type: str
+    official_doi: str
+    official_url: str
+    target_module: str
+    wired_in_beestack: bool
+    blocker: str
+
+    def __post_init__(self) -> None:
+        for field_name in (
+            "resource_id",
+            "name",
+            "resource_type",
+            "official_url",
+            "target_module",
+            "blocker",
+        ):
+            if not getattr(self, field_name):
+                raise ValueError(f"{field_name} must be nonempty")
+        if self.official_doi and not self.official_doi.startswith("10."):
+            raise ValueError(f"external dataset DOI is malformed: {self.official_doi}")
+        if not self.official_doi and not self.official_url.startswith("https://"):
+            raise ValueError("external dataset rows require a DOI or HTTPS URL")
+
+    def as_dict(self) -> dict[str, object]:
+        return asdict(self)
+
+
+_SCHOLARSHIP_MATRIX = ("output/figures/beestack_scholarship_evidence_matrix.png",)
+
+
 def verified_source_refresh_ledger() -> tuple[SourceRefreshRecord, ...]:
     """Return directly verified source-refresh records used by the manuscript."""
 
@@ -112,7 +148,7 @@ def verified_source_refresh_ledger() -> tuple[SourceRefreshRecord, ...]:
                 "manuscript/15_reproducibility.md",
                 "manuscript/16_ethics_governance.md",
             ),
-            figure_targets=("output/figures/beestack_scholarship_evidence_matrix.png",),
+            figure_targets=_SCHOLARSHIP_MATRIX,
             notes="Anchors FAIR software provenance, metadata, licensing, and reuse claims.",
         ),
         SourceRefreshRecord(
@@ -211,6 +247,249 @@ def verified_source_refresh_ledger() -> tuple[SourceRefreshRecord, ...]:
             figure_targets=("output/figures/beestack_validation_readiness_residuals.png",),
             notes="Anchors conservative digital-twin readiness and governance framing.",
         ),
+        SourceRefreshRecord(
+            citation_key="dong2023wagglesocial",
+            title="Social learning in honey bee waggle dance communication",
+            authors="Dong et al.",
+            year=2023,
+            doi="10.1126/science.ade1702",
+            source_url="https://doi.org/10.1126/science.ade1702",
+            direct_verification_status="verified",
+            discovery_channel="scholarship integration review and direct Science verification",
+            claim_tier="scholarship_anchor",
+            availability_status="scholarly_metadata",
+            section_targets=(
+                "manuscript/01_scholarship_and_related_work.md",
+                "manuscript/05_methods_body_swarm.md",
+            ),
+            figure_targets=("output/figures/beebody_beeswarm_micro_macro_calibration.png",),
+            notes="Anchors social-learning context for waggle recruitment interfaces.",
+        ),
+        SourceRefreshRecord(
+            citation_key="pnas2026waggleaudience",
+            title="The audience shapes the information content of the honey bee waggle dance",
+            authors="Schwab et al.",
+            year=2026,
+            doi="10.1073/pnas.2518687123",
+            source_url="https://doi.org/10.1073/pnas.2518687123",
+            direct_verification_status="verified",
+            discovery_channel="scholarship integration review and direct PNAS verification",
+            claim_tier="scholarship_anchor",
+            availability_status="scholarly_metadata",
+            section_targets=(
+                "manuscript/01_scholarship_and_related_work.md",
+                "manuscript/05_methods_body_swarm.md",
+            ),
+            figure_targets=("output/figures/beebody_beeswarm_micro_macro_calibration.png",),
+            notes="Anchors bidirectional dance-audience communication context.",
+        ),
+        SourceRefreshRecord(
+            citation_key="wallberg2019hav31",
+            title=(
+                "A hybrid de novo genome assembly of the honeybee, Apis mellifera, "
+                "with chromosome-length scaffolds"
+            ),
+            authors="Wallberg et al.",
+            year=2019,
+            doi="10.1186/s12864-019-5639-3",
+            source_url="https://doi.org/10.1186/s12864-019-5639-3",
+            direct_verification_status="verified",
+            discovery_channel="scholarship integration review and direct BMC verification",
+            claim_tier="scholarship_anchor",
+            availability_status="open_repository_not_wired",
+            section_targets=(
+                "manuscript/01_scholarship_and_related_work.md",
+                "manuscript/03_materials_and_source_provenance.md",
+            ),
+            figure_targets=_SCHOLARSHIP_MATRIX,
+            notes="Anchors HAv3.1 reference genome context; not registered in BeeBrain fetch yet.",
+        ),
+        SourceRefreshRecord(
+            citation_key="walsh2022hgd",
+            title="Hymenoptera Genome Database: integrating community curation with high-quality genomes",
+            authors="Walsh et al.",
+            year=2022,
+            doi="10.1093/nar/gkab1018",
+            source_url="https://doi.org/10.1093/nar/gkab1018",
+            direct_verification_status="verified",
+            discovery_channel="scholarship integration review and direct NAR verification",
+            claim_tier="scholarship_anchor",
+            availability_status="open_repository_not_wired",
+            section_targets=(
+                "manuscript/01_scholarship_and_related_work.md",
+                "manuscript/03_materials_and_source_provenance.md",
+            ),
+            figure_targets=_SCHOLARSHIP_MATRIX,
+            notes="Anchors HymenopteraMine/HGD genomics infrastructure context.",
+        ),
+        SourceRefreshRecord(
+            citation_key="rechlaval2025beebiome",
+            title="The BeeBiome data portal provides easy access to bee microbiome information",
+            authors="Rech de Laval et al.",
+            year=2025,
+            doi="10.1186/s12859-025-06229-7",
+            source_url="https://doi.org/10.1186/s12859-025-06229-7",
+            direct_verification_status="verified",
+            discovery_channel="scholarship integration review and direct BMC verification",
+            claim_tier="scholarship_anchor",
+            availability_status="open_repository_not_wired",
+            section_targets=(
+                "manuscript/01_scholarship_and_related_work.md",
+                "manuscript/03_materials_and_source_provenance.md",
+                "manuscript/14_roadmap.md",
+            ),
+            figure_targets=_SCHOLARSHIP_MATRIX,
+            notes="Anchors bee microbiome repository landscape; not wired into BeeNiche yet.",
+        ),
+        SourceRefreshRecord(
+            citation_key="dorey2023beebdc",
+            title="A globally synthesised and flagged bee occurrence dataset",
+            authors="Dorey et al.",
+            year=2023,
+            doi="10.1038/s41597-023-02626-w",
+            source_url="https://doi.org/10.1038/s41597-023-02626-w",
+            direct_verification_status="verified",
+            discovery_channel="scholarship integration review and direct Scientific Data verification",
+            claim_tier="scholarship_anchor",
+            availability_status="open_repository_not_wired",
+            section_targets=(
+                "manuscript/01_scholarship_and_related_work.md",
+                "manuscript/03_materials_and_source_provenance.md",
+                "manuscript/07_methods_niche.md",
+            ),
+            figure_targets=_SCHOLARSHIP_MATRIX,
+            notes="Anchors global bee occurrence aggregation; not wired into BeeNiche forage yet.",
+        ),
+        SourceRefreshRecord(
+            citation_key="vanengelsdorp2009ccd",
+            title="Colony Collapse Disorder: A Descriptive Study",
+            authors="VanEngelsdorp et al.",
+            year=2009,
+            doi="10.1371/journal.pone.0006481",
+            source_url="https://doi.org/10.1371/journal.pone.0006481",
+            direct_verification_status="verified",
+            discovery_channel="scholarship integration review and direct PLOS verification",
+            claim_tier="scholarship_anchor",
+            availability_status="scholarly_open_metadata",
+            section_targets=(
+                "manuscript/01_scholarship_and_related_work.md",
+                "manuscript/12_discussion.md",
+            ),
+            figure_targets=_SCHOLARSHIP_MATRIX,
+            notes="Anchors CCD historical context for colony-health motivation.",
+        ),
+        SourceRefreshRecord(
+            citation_key="scientificreports2026amitraz",
+            title=(
+                "Evaluation of late-season Varroa destructor treatments and their "
+                "impact on amitraz resistance"
+            ),
+            authors="Anderson et al.",
+            year=2026,
+            doi="10.1038/s41598-026-44796-8",
+            source_url="https://doi.org/10.1038/s41598-026-44796-8",
+            direct_verification_status="verified",
+            discovery_channel="scholarship integration review and direct Nature verification",
+            claim_tier="scholarship_anchor",
+            availability_status="scholarly_open_metadata",
+            section_targets=(
+                "manuscript/01_scholarship_and_related_work.md",
+                "manuscript/13_limitations.md",
+                "manuscript/14_roadmap.md",
+            ),
+            figure_targets=_SCHOLARSHIP_MATRIX,
+            notes="Anchors amitraz-resistance field context; Varroa not modeled in v0.",
+        ),
+    )
+
+
+def external_dataset_registry() -> tuple[ExternalDatasetRecord, ...]:
+    """Return repository-level datasets BeeStack may ingest in future roadmap steps."""
+
+    return (
+        ExternalDatasetRecord(
+            resource_id="beebiome_portal",
+            name="BeeBiome data portal",
+            resource_type="microbiome_sra_index",
+            official_doi="10.1186/s12859-025-06229-7",
+            official_url="https://www.beebiome.org",
+            target_module="BeeNiche/colony_ledger",
+            wired_in_beestack=False,
+            blocker="Not registered in empirical_brain_datasets or BeeNiche driver parsers.",
+        ),
+        ExternalDatasetRecord(
+            resource_id="hymenoptera_genome_database",
+            name="Hymenoptera Genome Database / HymenopteraMine",
+            resource_type="genomics_annotation",
+            official_doi="10.1093/nar/gkab1018",
+            official_url="https://hymenoptera.elsiklab.missouri.edu/",
+            target_module="BeeBrain",
+            wired_in_beestack=False,
+            blocker="Genome annotation not registered alongside HSB empirical anatomy IDs.",
+        ),
+        ExternalDatasetRecord(
+            resource_id="beebdc_occurrence",
+            name="BeeBDC global bee occurrence dataset",
+            resource_type="occurrence_aggregation",
+            official_doi="10.1038/s41597-023-02626-w",
+            official_url="https://jbdorey.github.io/BeeBDC/",
+            target_module="BeeNiche",
+            wired_in_beestack=False,
+            blocker="Forage/landscape adapters use synthetic witnesses only.",
+        ),
+        ExternalDatasetRecord(
+            resource_id="ncbi_amel_hav31",
+            name="NCBI Apis mellifera HAv3.1 reference genome",
+            resource_type="reference_genome",
+            official_doi="10.1186/s12864-019-5639-3",
+            official_url="https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_003254395.2/",
+            target_module="BeeBrain",
+            wired_in_beestack=False,
+            blocker="No genome-fetch stage in empirical pipeline.",
+        ),
+        ExternalDatasetRecord(
+            resource_id="auburn_aia_survey",
+            name="U.S. Beekeeping Survey (Auburn / Apiary Inspectors of America)",
+            resource_type="colony_loss_survey",
+            official_doi="",
+            official_url="https://apiaryinspectors.org/US-beekeeping-survey-24-25",
+            target_module="colony_ledger/assimilation",
+            wired_in_beestack=False,
+            blocker="Survey microdata not ingested; scholarly continuity via @aurell2024survey only.",
+        ),
+        ExternalDatasetRecord(
+            resource_id="usda_nass_honey",
+            name="USDA NASS honey production statistics",
+            resource_type="agricultural_statistics",
+            official_doi="",
+            official_url="https://esmis.nal.usda.gov/publication/honey",
+            target_module="colony_ledger",
+            wired_in_beestack=False,
+            blocker="No NASS parser or assimilation surface in v0.",
+        ),
+        ExternalDatasetRecord(
+            resource_id="epa_hive_matrices",
+            name="EPA pesticide residue concentrations in hive matrices",
+            resource_type="pesticide_residue_dataset",
+            official_doi="10.23719/1523343",
+            official_url=(
+                "https://catalog.data.gov/dataset/"
+                "pesticide-residue-concentration-in-honey-bee-hive-matrices"
+            ),
+            target_module="BeeNiche",
+            wired_in_beestack=False,
+            blocker="Pesticide burden not a typed BeeNiche state variable in v0.",
+        ),
+        ExternalDatasetRecord(
+            resource_id="coloss_beebook",
+            name="COLOSS BEEBOOK standard methods",
+            resource_type="methods_manual",
+            official_doi="",
+            official_url="https://coloss.org/activities/beebook/",
+            target_module="methods/validation",
+            wired_in_beestack=False,
+            blocker="Methods panels not yet mapped chapter-by-chapter to BEEBOOK volumes.",
+        ),
     )
 
 
@@ -218,20 +497,6 @@ def perplexity_discovery_candidates() -> tuple[dict[str, str], ...]:
     """Return discovery-only candidates that were not promoted to claims."""
 
     return (
-        {
-            "candidate_key": "pnas2026waggleaudience",
-            "title": "The audience shapes the information content of the honey bee waggle dance",
-            "doi_or_url": "10.1073/pnas.2518687123",
-            "direct_verification_status": "discovery_only_not_promoted",
-            "availability_status": "official_page_seen_by_discovery; raw_payload_not_assessed",
-            "claim_tier": "candidate_scholarship_anchor",
-            "section_targets": "manuscript/01_scholarship_and_related_work.md",
-            "figure_targets": "output/figures/beebody_beeswarm_micro_macro_calibration.png",
-            "notes": (
-                "Perplexity surfaced a 2026 PNAS audience-response waggle source; "
-                "not cited until direct verification and bibliography entry are added."
-            ),
-        },
         {
             "candidate_key": "biodt_honeybee_prototype",
             "title": "Prototype Biodiversity Digital Twin: honey bees in agricultural landscapes",
@@ -281,11 +546,13 @@ def source_refresh_payload(project_root: Path | None = None) -> dict[str, object
     """Return a serializable source-refresh ledger payload."""
 
     rows = [row.as_dict() for row in verified_source_refresh_ledger()]
+    external_rows = [row.as_dict() for row in external_dataset_registry()]
     payload = {
-        "schema": "beestack.source_refresh.v1",
+        "schema": "beestack.source_refresh.v2",
         "research_method": "Perplexity discovery followed by direct scholarly/official verification",
         "direct_verification_required": True,
         "records": rows,
+        "external_dataset_registry": external_rows,
         "perplexity_discovery_candidates": perplexity_discovery_candidates(),
     }
     return project_relative_payload(payload, project_root) if project_root else payload
@@ -314,6 +581,24 @@ def source_refresh_markdown(project_root: Path | None = None) -> str:
             f"{', '.join(f'`{value}`' for value in row['section_targets'])} | "
             f"{', '.join(f'`{value}`' for value in row['figure_targets'])} |"
         )
+    lines.extend(["", "## External dataset registry (not yet wired)", ""])
+    lines.extend(
+        [
+            "| Resource | Type | DOI or URL | Target module | Wired | Blocker |",
+            "| --- | --- | --- | --- | --- | --- |",
+        ]
+    )
+    for row in payload["external_dataset_registry"]:
+        doi_or_url = row["official_doi"] or row["official_url"]
+        lines.append(
+            "| "
+            f"`{row['resource_id']}` | "
+            f"{row['resource_type']} | "
+            f"`{doi_or_url}` | "
+            f"{row['target_module']} | "
+            f"{'yes' if row['wired_in_beestack'] else 'no'} | "
+            f"{row['blocker']} |"
+        )
     lines.extend(["", "## Notes", ""])
     lines.extend(f"- `@{row['citation_key']}`: {row['notes']}" for row in payload["records"])
     lines.extend(
@@ -336,20 +621,3 @@ def source_refresh_markdown(project_root: Path | None = None) -> str:
         )
     lines.extend(["", "These candidates remain discovery records, not manuscript evidence."])
     return "\n".join(lines) + "\n"
-
-
-def write_source_refresh_ledger(project_root: Path) -> tuple[Path, Path]:
-    """Write JSON and Markdown source-refresh ledgers under output/llm."""
-
-    out_dir = project_root / "output" / "llm"
-    out_dir.mkdir(parents=True, exist_ok=True)
-    json_path = out_dir / "source_refresh_ledger.json"
-    md_path = out_dir / "source_refresh_ledger.md"
-    import json
-
-    json_path.write_text(
-        json.dumps(source_refresh_payload(project_root), indent=2, sort_keys=True) + "\n",
-        encoding="utf-8",
-    )
-    md_path.write_text(source_refresh_markdown(project_root), encoding="utf-8")
-    return json_path, md_path

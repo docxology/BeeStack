@@ -1,0 +1,77 @@
+{
+  "accessibility_checks": {
+    "background": "#FFFFFF",
+    "contrast_ratio": 17.73971700407407,
+    "foreground": "#111827",
+    "large_text_passed": true,
+    "large_text_threshold": 3.0,
+    "normal_text_passed": true,
+    "normal_text_threshold": 4.5,
+    "standard": "WCAG 2.1 AA contrast thresholds"
+  },
+  "alt_text": "Bar chart of structural, functional, and synaptic connectome tier coverage.",
+  "artifact_kind": "figure",
+  "backend": "matplotlib/networkx connectome renderer",
+  "caption": "Matplotlib connectome evidence tiers shows Coverage bars for structural, functional, and synaptic connectome tiers with synaptic tier explicitly unavailable. Generated from output/data/brain_data_completeness.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not upgrade unavailable tiers into supported claims.",
+  "citation_keys": [
+    "wilson2017good",
+    "lamprecht2020fairsoftware"
+  ],
+  "claim_tier": "empirical_availability_diagnostic",
+  "design_citation_keys": [
+    "rougier2014figures",
+    "cleveland1984graphical",
+    "crameri2020colour",
+    "w3c2023wcag21",
+    "wilkinson2016fair",
+    "heer2012interactive",
+    "ragan2016provenance"
+  ],
+  "design_source_dois": [
+    "10.1371/journal.pcbi.1003833",
+    "10.1080/01621459.1984.10478080",
+    "10.1038/s41467-020-19160-7",
+    "10.1038/sdata.2016.18",
+    "10.1145/2133806.2133821",
+    "10.1109/TVCG.2015.2467551"
+  ],
+  "fidelity": "Honeybee Standard Brain structural projectome diagnostic",
+  "figure_path": "output/figures/empirical/connectome_completeness_tiers.png",
+  "manuscript_label": "fig:connectome_completeness_tiers",
+  "manuscript_section": "manuscript/09_empirical_results.md",
+  "plot_data_path": "output/figures/empirical/connectome_completeness_tiers_data.json",
+  "priority": "primary",
+  "quality": {
+    "height_px": 624,
+    "max_intensity": 255,
+    "mean_intensity": 223.96715506715506,
+    "min_intensity": 24,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 232,
+    "std_intensity": 64.28978277990707,
+    "width_px": 945
+  },
+  "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "output/data/brain_data_completeness.json",
+  "source_dois": [
+    "10.1371/journal.pcbi.1005510",
+    "10.3233/DS-190026"
+  ],
+  "title": "Connectome Completeness Tiers",
+  "unsupported_inference": "Does not upgrade unavailable tiers into supported claims.",
+  "validation_status": "structural connectome tier witness with plot data",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.514,
+    "figure_role": "overview",
+    "height_px": 624,
+    "label_density": "compact",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 945,
+    "min_dimension_px": 624,
+    "readability_exception": "compact tier summary intentionally uses fewer labels",
+    "readability_status": "exception",
+    "width_px": 945
+  }
+}

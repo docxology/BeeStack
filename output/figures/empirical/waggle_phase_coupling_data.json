@@ -1,0 +1,20 @@
+{
+  "angles_deg": [
+    44.224605268037664,
+    -39.16407324687884,
+    2.5302660105794708,
+    9.900070576417585,
+    8.044836400546622
+  ],
+  "chart_type": "polar",
+  "figure_path": "output/figures/empirical/waggle_phase_coupling.png",
+  "labels": [
+    "Left antenna",
+    "Right antenna",
+    "Midpoint",
+    "Dancer gravity",
+    "Follower angle"
+  ],
+  "schema": "beestack.figure_data.v1",
+  "title": "Waggle follower phase and antenna coupling"
+}

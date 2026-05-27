@@ -1,15 +1,19 @@
 paper:
   title: "BeeStack: An Evidence-Typed Scaffold for Whole-Colony Honeybee Simulation"
   subtitle: "A Body–Brain–Mind–Swarm–Niche Substrate for Auditable Apis mellifera Modeling"
-  version: "0.2"
+  version: "1.0"
   date: "May 2026"
 
 authors:
   - name: "Daniel Ari Friedman"
     orcid: "0000-0001-6232-9096"
-    email: "danielarifriedman@gmail.com"
-    affiliation: "Active Inference Institute"
+    email: "daniel@activeinference.institute"
+    affiliation: "Atta Labs; Active Inference Institute"
     corresponding: true
+  - name: "Tucker Cahill Chambers"
+    orcid: "0009-0008-3793-7872"
+    affiliation: "Atta Labs"
+    corresponding: false
 
 publication:
   doi: ""
@@ -36,6 +40,7 @@ metadata:
   license: "MIT"
   language: "en"
   manuscript_dir: "manuscript"
+  geometry: "margin=0.15in"
 
 beestack:
   seed: 20260513

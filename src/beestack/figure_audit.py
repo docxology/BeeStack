@@ -9,7 +9,10 @@ from pathlib import Path
 
 from .visualization.figure_registry import high_priority_figure_artifacts
 
-_IMAGE_RE = re.compile(r"!\[(?P<caption>[^\]]*)\]\((?P<path>[^)]+)\)(?:\{#(?P<label>[^}]+)\})?")
+_MANUSCRIPT_AUDIT_SKIP = frozenset({"README.md", "SYNTAX.md", "AGENTS.md"})
+_IMAGE_RE = re.compile(
+    r"!\[(?P<caption>[^\]]*)\]\((?P<path>[^)]+)\)\{#fig:(?P<label>[^}\s]+)[^}]*\}"
+)
 _POSITIVE_CLAIM_RE = re.compile(r"\b(supports?|validates?|validated|proves?|confirms?)\b", re.I)
 _REQUIRED_SIDECAR_FIELDS = (
     "caption",
@@ -138,9 +141,7 @@ def audit_figures(
         sidecar_mismatches,
         primary_caption_failures,
         absolute_path_leaks,
-    ) = _audit_sidecars(
-        project_root, references_by_artifact
-    )
+    ) = _audit_sidecars(project_root, references_by_artifact)
     return FigureAudit(
         image_reference_count=len(references),
         missing_image_paths=tuple(sorted(dict.fromkeys(missing_images))),
@@ -161,6 +162,8 @@ def _manuscript_image_references(project_root: Path) -> tuple[FigureReference, .
     manuscript_dir = project_root / "output" / "manuscript"
     references: list[FigureReference] = []
     for markdown_path in sorted(manuscript_dir.glob("*.md")):
+        if markdown_path.name in _MANUSCRIPT_AUDIT_SKIP:
+            continue
         for line in markdown_path.read_text(encoding="utf-8", errors="replace").splitlines():
             for match in _IMAGE_RE.finditer(line):
                 relative = match.group("path")
@@ -196,10 +199,12 @@ def _audit_sidecars(
         except json.JSONDecodeError:
             required_failures.append(f"{sidecar_id}:invalid_json")
             continue
+        absolute_leaks.extend(_absolute_path_leaks(project_root, sidecar_id, payload))
+        if not _is_metadata_sidecar(sidecar, payload):
+            continue
         for field in _REQUIRED_SIDECAR_FIELDS:
             if not payload.get(field):
                 required_failures.append(f"{sidecar_id}:{field}")
-        absolute_leaks.extend(_absolute_path_leaks(project_root, sidecar_id, payload))
         figure_path = sidecar.with_suffix(".png")
         artifact = _relative(project_root, figure_path)
         reference = references_by_artifact.get(artifact)
@@ -207,7 +212,11 @@ def _audit_sidecars(
             continue
         if str(payload.get("priority", "")) == "indexed":
             continue
-        if str(payload.get("manuscript_label", "")) != reference.label:
+        sidecar_label = str(payload.get("manuscript_label", ""))
+        reference_label = (
+            reference.label if reference.label.startswith("fig:") else f"fig:{reference.label}"
+        )
+        if sidecar_label != reference_label:
             mismatches.append(f"{sidecar_id}:manuscript_label")
         sidecar_caption = str(payload.get("caption", ""))
         if sidecar_caption and not _captions_agree(sidecar_caption, reference.caption):
@@ -222,6 +231,15 @@ def _audit_sidecars(
         tuple(sorted(dict.fromkeys(primary_caption_failures))),
         tuple(sorted(dict.fromkeys(absolute_leaks))),
     )
+
+
+def _is_metadata_sidecar(sidecar: Path, payload: dict[str, object]) -> bool:
+    """Return True for narrative metadata sidecars, not raw plot-data JSON."""
+
+    schema = str(payload.get("schema", ""))
+    if schema == "beestack.figure_data.v1" or sidecar.name.endswith("_data.json"):
+        return False
+    return schema == "beestack.figure.v1" or sidecar.with_suffix(".png").exists()
 
 
 def _absolute_path_leaks(project_root: Path, sidecar_id: str, payload: object) -> tuple[str, ...]:

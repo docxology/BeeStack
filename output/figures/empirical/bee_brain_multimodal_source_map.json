@@ -12,7 +12,7 @@
   "alt_text": "Network-style map of empirical BeeBrain source channels and integration targets.",
   "artifact_kind": "figure",
   "backend": "Matplotlib empirical-data renderer",
-  "caption": "Multimodal source map organizing anatomy, odor-response, antennal, and waggle-follower records by integration target and local availability.",
+  "caption": "Matplotlib beebrain multimodal source map shows Multimodal source map organizing anatomy, odor-response, antennal, and waggle-follower records by integration target and local availability. Generated from output/data/brain_data_completeness.json and empirical analysis report. Sidecar validation checks raster, source routing, and registered claim tier. Does not support a complete multimodal empirical assimilation pipeline.",
   "citation_keys": [
     "galizia1999glomerular",
     "brandt2005standardbrain",
@@ -40,6 +40,7 @@
   "figure_path": "output/figures/empirical/bee_brain_multimodal_source_map.png",
   "manuscript_label": "fig:brain_multimodal_source_map",
   "manuscript_section": "manuscript/09_empirical_results.md",
+  "plot_data_path": "output/figures/empirical/bee_brain_multimodal_source_map_data.json",
   "priority": "primary",
   "quality": {
     "height_px": 784,
@@ -61,5 +62,17 @@
   ],
   "title": "Bee Brain Multimodal Source Map",
   "unsupported_inference": "Does not support a complete multimodal empirical assimilation pipeline.",
-  "validation_status": "nonblank empirical diagnostic"
+  "validation_status": "nonblank empirical diagnostic with plot data",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.818,
+    "figure_role": "overview",
+    "height_px": 784,
+    "label_density": "moderate",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 1425,
+    "min_dimension_px": 784,
+    "readability_status": "pass",
+    "width_px": 1425
+  }
 }

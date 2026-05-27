@@ -12,7 +12,7 @@
   "alt_text": "Matrix of BeeBrain source availability, parser status, and verification state.",
   "artifact_kind": "figure",
   "backend": "Matplotlib empirical-data renderer",
-  "caption": "Empirical completeness matrix showing which BeeBrain source rows are registered, locally available, parseable, and source-verified.",
+  "caption": "Matplotlib brain data completeness matrix shows Empirical completeness matrix showing which BeeBrain source rows are registered, locally available, parseable, and source-verified. Generated from output/data/brain_data_completeness.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not replace absent calcium payloads with synthetic traces.",
   "citation_keys": [
     "galizia1999glomerular",
     "brandt2005standardbrain",
@@ -40,16 +40,17 @@
   "figure_path": "output/figures/empirical/brain_data_completeness_matrix.png",
   "manuscript_label": "fig:brain_data_completeness_matrix",
   "manuscript_section": "manuscript/09_empirical_results.md",
+  "plot_data_path": "output/figures/empirical/brain_data_completeness_matrix_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 860,
+    "height_px": 947,
     "max_intensity": 255,
-    "mean_intensity": 224.9744550630653,
-    "min_intensity": 0,
+    "mean_intensity": 228.67849778931762,
+    "min_intensity": 24,
     "mode": "RGBA",
-    "nonzero_histogram_bins": 256,
-    "std_intensity": 71.91313418870402,
-    "width_px": 1499
+    "nonzero_histogram_bins": 232,
+    "std_intensity": 67.59445492811712,
+    "width_px": 1604
   },
   "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
   "schema": "beestack.figure.v1",
@@ -61,5 +62,17 @@
   ],
   "title": "Brain Data Completeness Matrix",
   "unsupported_inference": "Does not replace absent calcium payloads with synthetic traces.",
-  "validation_status": "nonblank empirical diagnostic"
+  "validation_status": "nonblank empirical diagnostic with plot data",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.694,
+    "figure_role": "dashboard",
+    "height_px": 947,
+    "label_density": "dense",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 1604,
+    "min_dimension_px": 947,
+    "readability_status": "pass",
+    "width_px": 1604
+  }
 }

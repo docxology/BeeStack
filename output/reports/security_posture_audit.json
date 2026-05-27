@@ -1,0 +1,11 @@
+{
+  "forbidden_pattern_hits": [],
+  "passed": true,
+  "registry_url_violations": [],
+  "security_doc_present": true,
+  "threat_model_present": true,
+  "urllib_modules": [
+    "beestack/brain/empirical_fetch.py"
+  ],
+  "uv_lock_present": true
+}

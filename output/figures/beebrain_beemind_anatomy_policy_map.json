@@ -12,7 +12,7 @@
   "alt_text": "Diagram mapping BeeBrain anatomy and waggle neuroethology anchors into BeeMind belief, preference, and policy terms.",
   "artifact_kind": "figure",
   "backend": "Matplotlib",
-  "caption": "Anatomy-to-policy map linking antennal-lobe, mushroom-body, central-complex, and waggle-follower anchors to BeeMind belief and policy contracts.",
+  "caption": "Matplotlib beebrain to beemind anatomy-policy map shows Anatomy-to-policy map linking antennal-lobe, mushroom-body, central-complex, and waggle-follower anchors to BeeMind belief and policy contracts. Generated from source refresh ledger, BeeBrain source registry, and active-inference methods records. Sidecar validation checks raster, source routing, and registered claim tier. Does not support connectome-scale, calcium-validated, or learned generative dynamics.",
   "citation_keys": [
     "brandt2005standardbrain",
     "rybak2010digital",
@@ -43,6 +43,7 @@
   "figure_path": "output/figures/beebrain_beemind_anatomy_policy_map.png",
   "manuscript_label": "fig:brain_mind_anatomy_policy",
   "manuscript_section": "manuscript/06_methods_brain_mind.md",
+  "plot_data_path": "output/figures/beebrain_beemind_anatomy_policy_map_data.json",
   "priority": "primary",
   "quality": {
     "height_px": 1028,
@@ -67,5 +68,17 @@
   ],
   "title": "Beebrain Beemind Anatomy Policy Map",
   "unsupported_inference": "Does not support connectome-scale, calcium-validated, or learned generative dynamics.",
-  "validation_status": "nonblank quality sidecar generated"
+  "validation_status": "nonblank quality sidecar and plot data generated",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 2.121,
+    "figure_role": "overview",
+    "height_px": 1028,
+    "label_density": "dense",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 2180,
+    "min_dimension_px": 1028,
+    "readability_status": "pass",
+    "width_px": 2180
+  }
 }

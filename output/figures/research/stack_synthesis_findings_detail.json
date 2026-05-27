@@ -1,0 +1,77 @@
+{
+  "accessibility_checks": {
+    "background": "#FFFFFF",
+    "contrast_ratio": 17.73971700407407,
+    "foreground": "#111827",
+    "large_text_passed": true,
+    "large_text_threshold": 3.0,
+    "normal_text_passed": true,
+    "normal_text_threshold": 4.5,
+    "standard": "WCAG 2.1 AA contrast thresholds"
+  },
+  "alt_text": "Two-panel synthesis detail with readiness bars and prioritized finding text boxes.",
+  "artifact_kind": "figure",
+  "backend": "Matplotlib/pandas synthesis dashboard",
+  "caption": "Matplotlib/pandas/NetworkX beestack synthesis findings detail shows Split companion panel showing module readiness scores beside prioritized cross-stack findings. Generated from output/reports/stack_synthesis_review.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not make BeeStack digital-twin ready.",
+  "citation_keys": [
+    "wilson2017good",
+    "lamprecht2020fairsoftware"
+  ],
+  "claim_tier": "cross_stack_synthesis_diagnostic",
+  "design_citation_keys": [
+    "rougier2014figures",
+    "cleveland1984graphical",
+    "crameri2020colour",
+    "w3c2023wcag21",
+    "wilkinson2016fair",
+    "heer2012interactive",
+    "ragan2016provenance"
+  ],
+  "design_source_dois": [
+    "10.1371/journal.pcbi.1003833",
+    "10.1080/01621459.1984.10478080",
+    "10.1038/s41467-020-19160-7",
+    "10.1038/sdata.2016.18",
+    "10.1145/2133806.2133821",
+    "10.1109/TVCG.2015.2467551"
+  ],
+  "fidelity": "cross-stack synthesis diagnostic, not biological validation",
+  "figure_path": "output/figures/research/stack_synthesis_findings_detail.png",
+  "manuscript_label": "fig:stack_synthesis_findings_detail",
+  "manuscript_section": "manuscript/11_research_synthesis.md",
+  "plot_data_path": "output/figures/research/stack_synthesis_findings_detail_data.json",
+  "priority": "primary",
+  "quality": {
+    "height_px": 1044,
+    "max_intensity": 255,
+    "mean_intensity": 223.3550565668112,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 57.988103853894394,
+    "width_px": 1991
+  },
+  "regeneration_command": "uv run python scripts/run_research_suite.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "output/reports/stack_synthesis_review.json",
+  "source_dois": [
+    "10.1371/journal.pcbi.1005510",
+    "10.3233/DS-190026"
+  ],
+  "title": "Stack Synthesis Findings Detail",
+  "unsupported_inference": "Does not make BeeStack digital-twin ready.",
+  "validation_status": "nonblank synthesis diagnostic with plot data",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.907,
+    "figure_role": "detail",
+    "height_px": 1044,
+    "label_density": "moderate",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 1991,
+    "min_dimension_px": 1044,
+    "readability_status": "pass",
+    "split_group": "stack_synthesis",
+    "width_px": 1991
+  }
+}

@@ -12,7 +12,7 @@
   "alt_text": "Readiness panel showing implemented checks and explicitly blocked residual or uncertainty rows instead of invented validation.",
   "artifact_kind": "figure",
   "backend": "Matplotlib",
-  "caption": "Validation-readiness panel separating implemented verification checks from blocked held-out residual, uncertainty, assimilation, and governance evidence.",
+  "caption": "Matplotlib beestack validation readiness and residual blockers shows Validation-readiness panel separating implemented verification checks from blocked held-out residual, uncertainty, assimilation, and governance evidence. Generated from source refresh ledger, readiness review, generated reports, and figure sidecars. Sidecar validation checks raster, source routing, and registered claim tier. Does not provide held-out residuals, uncertainty quantification, or digital-twin readiness.",
   "citation_keys": [
     "oreskes1994verification",
     "fair4rs2022principles",
@@ -40,6 +40,7 @@
   "figure_path": "output/figures/beestack_validation_readiness_residuals.png",
   "manuscript_label": "fig:validation_readiness_residuals",
   "manuscript_section": "manuscript/08_validation_and_figures.md",
+  "plot_data_path": "output/figures/beestack_validation_readiness_residuals_data.json",
   "priority": "primary",
   "quality": {
     "height_px": 1064,
@@ -61,5 +62,17 @@
   ],
   "title": "Beestack Validation Readiness Residuals",
   "unsupported_inference": "Does not provide held-out residuals, uncertainty quantification, or digital-twin readiness.",
-  "validation_status": "nonblank quality sidecar generated"
+  "validation_status": "nonblank quality sidecar and plot data generated",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 2.083,
+    "figure_role": "overview",
+    "height_px": 1064,
+    "label_density": "dense",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 2216,
+    "min_dimension_px": 1064,
+    "readability_status": "pass",
+    "width_px": 2216
+  }
 }

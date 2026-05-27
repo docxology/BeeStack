@@ -1,0 +1,37 @@
+{
+  "chart_type": "bar",
+  "figure_path": "output/figures/methods/beebrain_methods_empirical_completeness.png",
+  "labels": [
+    "waggle_decoding_improvement",
+    "waggle_follower_confidence",
+    "mean_odor_separability",
+    "brain_data_parseable_fraction",
+    "calcium_dataset_count",
+    "brain_source_verified_fraction",
+    "region_response_class_count",
+    "anatomy_inventory_count",
+    "enabled_dataset_count",
+    "neuropil_count",
+    "template_count",
+    "empirical_panel_count"
+  ],
+  "module": "BeeBrain",
+  "orientation": "horizontal",
+  "schema": "beestack.figure_data.v1",
+  "title": "beebrain methods empirical completeness",
+  "validation_fraction": 1.0,
+  "values": [
+    0.24776741229159377,
+    0.28875178634201437,
+    0.6511059958748602,
+    0.8,
+    1.0,
+    1.0,
+    6.0,
+    7.0,
+    10.0,
+    22.0,
+    24.0,
+    48.0
+  ]
+}

@@ -12,7 +12,7 @@
   "alt_text": "Four-panel synthesis dashboard with readiness bars, artifact-gap scatter, gates, and findings.",
   "artifact_kind": "figure",
   "backend": "Matplotlib/pandas synthesis dashboard",
-  "caption": "Cross-stack synthesis dashboard summarizing validation fractions, readiness, artifacts, explicit gaps, and scholarship anchors.",
+  "caption": "Matplotlib/pandas/NetworkX beestack cross-stack synthesis dashboard shows Cross-stack synthesis dashboard summarizing validation fractions, readiness, artifacts, explicit gaps, and scholarship anchors. Generated from output/reports/stack_synthesis_review.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not make BeeStack digital-twin ready.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
@@ -39,16 +39,17 @@
   "figure_path": "output/figures/research/stack_synthesis_dashboard.png",
   "manuscript_label": "fig:stack_synthesis_dashboard",
   "manuscript_section": "manuscript/11_research_synthesis.md",
+  "plot_data_path": "output/figures/research/stack_synthesis_dashboard_data.json",
   "priority": "primary",
   "quality": {
     "height_px": 1351,
     "max_intensity": 255,
-    "mean_intensity": 222.0209800578249,
+    "mean_intensity": 220.19127050452474,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 62.28665281246908,
-    "width_px": 1927
+    "std_intensity": 63.030435474698706,
+    "width_px": 2015
   },
   "regeneration_command": "uv run python scripts/run_research_suite.py",
   "schema": "beestack.figure.v1",
@@ -59,5 +60,18 @@
   ],
   "title": "Stack Synthesis Dashboard",
   "unsupported_inference": "Does not make BeeStack digital-twin ready.",
-  "validation_status": "nonblank synthesis diagnostic"
+  "validation_status": "nonblank synthesis diagnostic with plot data",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.491,
+    "figure_role": "dashboard",
+    "height_px": 1351,
+    "label_density": "dense",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 2015,
+    "min_dimension_px": 1351,
+    "readability_status": "pass",
+    "split_group": "stack_synthesis",
+    "width_px": 2015
+  }
 }

@@ -1,10 +1,27 @@
-% BeeStack manuscript preamble.
-% LaTeX packages required for tables, equations, units, and code listings.
-\usepackage{booktabs}
-\usepackage{microtype}
+# LaTeX Preamble
+
+Packages injected by the template PDF renderer (`infrastructure/rendering/_pdf_latex_helpers.py`).
+
+```latex
+% Document layout
+\usepackage[margin=0.15in]{geometry}
+\usepackage{float}
+\usepackage{graphicx}
+
+% Mathematics and units
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{microtype}
 \usepackage{xcolor}
-% Cross-reference helper used by Pandoc when {#fig:label} anchors are present.
-\usepackage[capitalize,noabbrev]{cleveref}
+\usepackage[binary-units]{siunitx}
+
+% Cross-references and citations
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    allcolors=red
+}
+\usepackage[capitalise,noabbrev]{cleveref}
+\usepackage{natbib}
+```

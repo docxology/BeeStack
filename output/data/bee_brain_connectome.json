@@ -1,0 +1,817 @@
+{
+  "completeness": {
+    "functional_coverage": 0.0,
+    "neuropil_node_fraction": 0.55,
+    "structural_coverage": 1.0,
+    "synaptic_coverage": 0.0
+  },
+  "edge_count": 6,
+  "edges": [
+    {
+      "edge_kind": "structural_tract",
+      "evidence": "ALF1 projection neuron geometry (Honeybee Standard Brain ALF1_Standard.zip)",
+      "source_id": "neuropil:antennal_lobe",
+      "target_id": "neuropil:mushroom_body",
+      "weight": null
+    },
+    {
+      "edge_kind": "structural_tract",
+      "evidence": "ALF1 projection neuron geometry (Honeybee Standard Brain ALF1_Standard.zip) (tract node)",
+      "source_id": "tract:tract:alf1-al-mb",
+      "target_id": "neuropil:mushroom_body",
+      "weight": null
+    },
+    {
+      "edge_kind": "structural_tract",
+      "evidence": "Antennocerebralis tract bundle (Honeybee Standard Brain ACT_Standard.zip)",
+      "source_id": "neuropil:antennal_lobe",
+      "target_id": "neuropil:central_complex",
+      "weight": null
+    },
+    {
+      "edge_kind": "structural_tract",
+      "evidence": "Antennocerebralis tract bundle (Honeybee Standard Brain ACT_Standard.zip) (tract node)",
+      "source_id": "tract:tract:act-antennocerebralis",
+      "target_id": "neuropil:central_complex",
+      "weight": null
+    },
+    {
+      "edge_kind": "structural_tract",
+      "evidence": "Pe1/Pn mushroom-body intrinsic and projection context (Atlas_Pe1_PNII.zip)",
+      "source_id": "neuropil:mushroom_body",
+      "target_id": "neuropil:central_complex",
+      "weight": null
+    },
+    {
+      "edge_kind": "structural_tract",
+      "evidence": "Pe1/Pn mushroom-body intrinsic and projection context (Atlas_Pe1_PNII.zip) (tract node)",
+      "source_id": "tract:tract:pe1-pn-mb-intrinsic",
+      "target_id": "neuropil:central_complex",
+      "weight": null
+    }
+  ],
+  "node_count": 95,
+  "nodes": [
+    {
+      "kind": "neuron",
+      "label": "hideOrShow_24",
+      "module_target": "antennal_lobe",
+      "node_id": "neuron:hsb-vrml-act:hideorshow_24",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "hideOrShow_25",
+      "module_target": "antennal_lobe",
+      "node_id": "neuron:hsb-vrml-act:hideorshow_25",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "hideOrShow_26",
+      "module_target": "antennal_lobe",
+      "node_id": "neuron:hsb-vrml-act:hideorshow_26",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "hideOrShow_27",
+      "module_target": "antennal_lobe",
+      "node_id": "neuron:hsb-vrml-act:hideorshow_27",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "hideOrShow_28",
+      "module_target": "antennal_lobe",
+      "node_id": "neuron:hsb-vrml-act:hideorshow_28",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "hideShowObject_24",
+      "module_target": "antennal_lobe",
+      "node_id": "neuron:hsb-vrml-act:hideshowobject_24",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "hideShowObject_25",
+      "module_target": "antennal_lobe",
+      "node_id": "neuron:hsb-vrml-act:hideshowobject_25",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "hideShowObject_26",
+      "module_target": "antennal_lobe",
+      "node_id": "neuron:hsb-vrml-act:hideshowobject_26",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "hideShowObject_27",
+      "module_target": "antennal_lobe",
+      "node_id": "neuron:hsb-vrml-act:hideshowobject_27",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "hideShowObject_28",
+      "module_target": "antennal_lobe",
+      "node_id": "neuron:hsb-vrml-act:hideshowobject_28",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "mouseClickOnSurface_24",
+      "module_target": "antennal_lobe",
+      "node_id": "neuron:hsb-vrml-act:mouseclickonsurface_24",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "mouseClickOnSurface_25",
+      "module_target": "antennal_lobe",
+      "node_id": "neuron:hsb-vrml-act:mouseclickonsurface_25",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "mouseClickOnSurface_26",
+      "module_target": "antennal_lobe",
+      "node_id": "neuron:hsb-vrml-act:mouseclickonsurface_26",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "mouseClickOnSurface_27",
+      "module_target": "antennal_lobe",
+      "node_id": "neuron:hsb-vrml-act:mouseclickonsurface_27",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "mouseClickOnSurface_28",
+      "module_target": "antennal_lobe",
+      "node_id": "neuron:hsb-vrml-act:mouseclickonsurface_28",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "Navigator_Info",
+      "module_target": "antennal_lobe",
+      "node_id": "neuron:hsb-vrml-act:navigator_info",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "Object",
+      "module_target": "antennal_lobe",
+      "node_id": "neuron:hsb-vrml-act:object",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "toggeldObject_24",
+      "module_target": "antennal_lobe",
+      "node_id": "neuron:hsb-vrml-act:toggeldobject_24",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "toggeldObject_25",
+      "module_target": "antennal_lobe",
+      "node_id": "neuron:hsb-vrml-act:toggeldobject_25",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "toggeldObject_26",
+      "module_target": "antennal_lobe",
+      "node_id": "neuron:hsb-vrml-act:toggeldobject_26",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "toggeldObject_27",
+      "module_target": "antennal_lobe",
+      "node_id": "neuron:hsb-vrml-act:toggeldobject_27",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "toggeldObject_28",
+      "module_target": "antennal_lobe",
+      "node_id": "neuron:hsb-vrml-act:toggeldobject_28",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "viewFrom",
+      "module_target": "antennal_lobe",
+      "node_id": "neuron:hsb-vrml-act:viewfrom",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "hideOrShow_21",
+      "module_target": "mushroom_body",
+      "node_id": "neuron:hsb-vrml-alf1:hideorshow_21",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ALF1_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "hideShowObject_21",
+      "module_target": "mushroom_body",
+      "node_id": "neuron:hsb-vrml-alf1:hideshowobject_21",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ALF1_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "mouseClickOnSurface_21",
+      "module_target": "mushroom_body",
+      "node_id": "neuron:hsb-vrml-alf1:mouseclickonsurface_21",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ALF1_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "Navigator_Info",
+      "module_target": "mushroom_body",
+      "node_id": "neuron:hsb-vrml-alf1:navigator_info",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ALF1_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "Object",
+      "module_target": "mushroom_body",
+      "node_id": "neuron:hsb-vrml-alf1:object",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ALF1_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "toggeldObject_21",
+      "module_target": "mushroom_body",
+      "node_id": "neuron:hsb-vrml-alf1:toggeldobject_21",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ALF1_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "viewFrom",
+      "module_target": "mushroom_body",
+      "node_id": "neuron:hsb-vrml-alf1:viewfrom",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ALF1_Standard.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "DragSensorX",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:dragsensorx",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "DragSensorY",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:dragsensory",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "DragSensorZ",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:dragsensorz",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "hideOrShow_25",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:hideorshow_25",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "hideShowObject_25",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:hideshowobject_25",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "imageBoundingBox",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:imageboundingbox",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "mouseClickOnSurface_25",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:mouseclickonsurface_25",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "Navigator_Info",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:navigator_info",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "Object",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:object",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "setXSliceNumber",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:setxslicenumber",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "setYSliceNumber",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:setyslicenumber",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "setZSliceNumber",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:setzslicenumber",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "toggeldObject_25",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:toggeldobject_25",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "toSeletedXSlice",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:toseletedxslice",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "toSeletedYSlice",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:toseletedyslice",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "toSeletedZSlice",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:toseletedzslice",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "viewFrom",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:viewfrom",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "X_axis",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:x_axis",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "X_SlicerCoords",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:x_slicercoords",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "xSlicer",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:xslicer",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "Y_axis",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:y_axis",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "Y_SlicerCoords",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:y_slicercoords",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "Z_axis",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:z_axis",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "Z_SlicerCoords",
+      "module_target": "whole_brain",
+      "node_id": "neuron:hsb-vrml-atlas:z_slicercoords",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "hideOrShow_20",
+      "module_target": "mushroom_body",
+      "node_id": "neuron:hsb-vrml-pe1-pn:hideorshow_20",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "Atlas_Pe1_PNII.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "hideShowObject_20",
+      "module_target": "mushroom_body",
+      "node_id": "neuron:hsb-vrml-pe1-pn:hideshowobject_20",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "Atlas_Pe1_PNII.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "mouseClickOnSurface_20",
+      "module_target": "mushroom_body",
+      "node_id": "neuron:hsb-vrml-pe1-pn:mouseclickonsurface_20",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "Atlas_Pe1_PNII.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "Navigator_Info",
+      "module_target": "mushroom_body",
+      "node_id": "neuron:hsb-vrml-pe1-pn:navigator_info",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "Atlas_Pe1_PNII.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "Object",
+      "module_target": "mushroom_body",
+      "node_id": "neuron:hsb-vrml-pe1-pn:object",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "Atlas_Pe1_PNII.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "toggeldObject_20",
+      "module_target": "mushroom_body",
+      "node_id": "neuron:hsb-vrml-pe1-pn:toggeldobject_20",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "Atlas_Pe1_PNII.zip"
+    },
+    {
+      "kind": "neuron",
+      "label": "viewFrom",
+      "module_target": "mushroom_body",
+      "node_id": "neuron:hsb-vrml-pe1-pn:viewfrom",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "Atlas_Pe1_PNII.zip"
+    },
+    {
+      "kind": "neuropil",
+      "label": "antennal lobe",
+      "module_target": "antennal_lobe",
+      "node_id": "neuropil:antennal_lobe",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "Central Body",
+      "module_target": "central_complex",
+      "node_id": "neuropil:cb",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "central complex",
+      "module_target": "central_complex",
+      "node_id": "neuropil:central_complex",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "left Antennal Lobe",
+      "module_target": "antennal_lobe",
+      "node_id": "neuropil:l-al",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "left lateral Basal Ring",
+      "module_target": "mushroom_body",
+      "node_id": "neuropil:l-latbr",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "left lateral Collar",
+      "module_target": "mushroom_body",
+      "node_id": "neuropil:l-latcollar",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "left lateral Lip",
+      "module_target": "mushroom_body",
+      "node_id": "neuropil:l-latlip",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "left Lobula",
+      "module_target": "optic_lobe",
+      "node_id": "neuropil:l-lob",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "left Medulla",
+      "module_target": "optic_lobe",
+      "node_id": "neuropil:l-med",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "left medial Basal Ring",
+      "module_target": "mushroom_body",
+      "node_id": "neuropil:l-medbr",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "left medial Collar",
+      "module_target": "mushroom_body",
+      "node_id": "neuropil:l-medcollar",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "left medial Lip",
+      "module_target": "mushroom_body",
+      "node_id": "neuropil:l-medlip",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "left ventral Mushroom Body",
+      "module_target": "mushroom_body",
+      "node_id": "neuropil:l-vmb",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "mushroom body",
+      "module_target": "mushroom_body",
+      "node_id": "neuropil:mushroom_body",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "neuropil",
+      "module_target": "neuropil",
+      "node_id": "neuropil:neuropil",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "optic lobe",
+      "module_target": "optic_lobe",
+      "node_id": "neuropil:optic_lobe",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "Protocerebral Lobes and Suboesophageal Ganglion",
+      "module_target": "neuropil",
+      "node_id": "neuropil:pl-sog",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "right Antennal Lobe",
+      "module_target": "antennal_lobe",
+      "node_id": "neuropil:r-al",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "right lateral Basal Ring",
+      "module_target": "mushroom_body",
+      "node_id": "neuropil:r-latbr",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "right lateral Collar",
+      "module_target": "mushroom_body",
+      "node_id": "neuropil:r-latcollar",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "right lateral Lip",
+      "module_target": "mushroom_body",
+      "node_id": "neuropil:r-latlip",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "right Lobula",
+      "module_target": "optic_lobe",
+      "node_id": "neuropil:r-lob",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "right Medulla",
+      "module_target": "optic_lobe",
+      "node_id": "neuropil:r-med",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "right medial Basal Ring",
+      "module_target": "mushroom_body",
+      "node_id": "neuropil:r-medbr",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "right medial Collar",
+      "module_target": "mushroom_body",
+      "node_id": "neuropil:r-medcollar",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "right medial Lip",
+      "module_target": "mushroom_body",
+      "node_id": "neuropil:r-medlip",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "neuropil",
+      "label": "right ventral Mushroom Body",
+      "module_target": "mushroom_body",
+      "node_id": "neuropil:r-vmb",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "neuropil_abbreviations.html"
+    },
+    {
+      "kind": "tract",
+      "label": "VRML atlas with antennocerebralis tracts tract bundle",
+      "module_target": "antennal_lobe",
+      "node_id": "tract:hsb-vrml-act",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ACT_Standard.zip"
+    },
+    {
+      "kind": "tract",
+      "label": "VRML atlas with ALF-1 neuron connecting AL and MB tract bundle",
+      "module_target": "mushroom_body",
+      "node_id": "tract:hsb-vrml-alf1",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "ALF1_Standard.zip"
+    },
+    {
+      "kind": "tract",
+      "label": "VRML Honeybee Atlas with olfactory-path neurons tract bundle",
+      "module_target": "whole_brain",
+      "node_id": "tract:hsb-vrml-atlas",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "VRML.zip"
+    },
+    {
+      "kind": "tract",
+      "label": "VRML atlas with MB intrinsic, Pe1, MB extrinsic, and PN neurons tract bundle",
+      "module_target": "mushroom_body",
+      "node_id": "tract:hsb-vrml-pe1-pn",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "Atlas_Pe1_PNII.zip"
+    },
+    {
+      "kind": "tract",
+      "label": "tract:act antennocerebralis",
+      "module_target": "antennal_lobe",
+      "node_id": "tract:tract:act-antennocerebralis",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "pathway_semantics"
+    },
+    {
+      "kind": "tract",
+      "label": "tract:alf1 al mb",
+      "module_target": "antennal_lobe",
+      "node_id": "tract:tract:alf1-al-mb",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "pathway_semantics"
+    },
+    {
+      "kind": "tract",
+      "label": "tract:pe1 pn mb intrinsic",
+      "module_target": "mushroom_body",
+      "node_id": "tract:tract:pe1-pn-mb-intrinsic",
+      "provenance_doi": "10.1002/cne.20644",
+      "source_asset": "pathway_semantics"
+    }
+  ],
+  "tier": "structural_projectome"
+}

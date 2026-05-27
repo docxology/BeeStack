@@ -9,6 +9,9 @@ import numpy as np
 from ..config import BeeStackConfig
 from .state import DanceVector
 
+JOHNSTON_EVENT_MIN_AMPLITUDE = 0.1
+JOHNSTON_EVENT_MIN_FREQUENCY_HZ = 200.0
+
 
 @dataclass(frozen=True)
 class WaggleDanceKinematics:
@@ -172,10 +175,12 @@ def waggle_duration_from_distance(distance_km: float) -> float:
 
 
 def johnston_event_detected(
-    amplitude: float, frequency_hz: float, min_amplitude: float = 0.1
+    amplitude: float,
+    frequency_hz: float,
+    min_amplitude: float = JOHNSTON_EVENT_MIN_AMPLITUDE,
 ) -> bool:
     """Return whether antennal vibration resembles a waggle event."""
 
     if min_amplitude < 0:
         raise ValueError("min_amplitude must be nonnegative")
-    return amplitude > min_amplitude and frequency_hz >= 200.0
+    return amplitude > min_amplitude and frequency_hz >= JOHNSTON_EVENT_MIN_FREQUENCY_HZ

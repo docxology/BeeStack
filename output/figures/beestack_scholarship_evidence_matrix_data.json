@@ -1,0 +1,17 @@
+{
+  "annotations": [
+    "Scholarship evidence matrix mapping directly verified sources to manuscript sections, figure targets, DOI-bearing source records, and claim tiers.",
+    "claim_tier=scholarship_evidence_matrix",
+    "source_data=source refresh ledger, bibliography, source audit, and figure registry"
+  ],
+  "chart_type": "schematic",
+  "figure_path": "output/figures/beestack_scholarship_evidence_matrix.png",
+  "nodes": [
+    {
+      "id": "fig:scholarship_evidence_matrix",
+      "label": "BeeStack scholarship evidence matrix"
+    }
+  ],
+  "schema": "beestack.figure_data.v1",
+  "title": "BeeStack scholarship evidence matrix"
+}

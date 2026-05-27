@@ -4,8 +4,10 @@
 
 1. The root specification is the conceptual source; `src/beestack/` is the
    executable source.
-2. Business logic belongs in `src/beestack/` and should remain deterministic,
-   typed, and side-effect free.
+2. Business logic belongs in `src/beestack/` and should remain deterministic
+   and typed. Pure modules stay side-effect free; visualization and FlyBody
+   scene adapters may write figures, MJCF, GIF, and signpost files when called
+   from scripts.
 3. Scripts are orchestrators only. They may load YAML, write JSON, build
    figures, and hydrate manuscript variables.
 4. Tests use real computations. Do not mock BeeStack modules.

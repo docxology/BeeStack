@@ -19,6 +19,7 @@
   "figure_path": "output/figures/beestack_contract_network.png",
   "manuscript_label": "fig:beestack_contract_network",
   "manuscript_section": "output/reports/manuscript_figure_index.md",
+  "plot_data_path": "output/figures/beestack_contract_network_data.json",
   "priority": "indexed",
   "quality": {
     "height_px": 1100,
@@ -36,5 +37,17 @@
   "source_dois": [],
   "title": "Beestack Contract Network",
   "unsupported_inference": "Does not support claims beyond the generated artifact and stated fidelity tier.",
-  "validation_status": "nonblank quality sidecar generated"
+  "validation_status": "nonblank quality sidecar and plot data generated",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.098,
+    "figure_role": "overview",
+    "height_px": 1100,
+    "label_density": "dense",
+    "manuscript_use": "indexed_gallery",
+    "max_dimension_px": 1208,
+    "min_dimension_px": 1100,
+    "readability_status": "gallery",
+    "width_px": 1208
+  }
 }

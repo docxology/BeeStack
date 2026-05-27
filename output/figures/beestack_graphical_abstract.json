@@ -12,7 +12,7 @@
   "alt_text": "Five BeeStack modules arranged as a left-to-right contract chain.",
   "artifact_kind": "figure",
   "backend": "Matplotlib",
-  "caption": "Showcase architecture schematic linking BeeBody, BeeBrain, BeeMind, BeeSwarm, and BeeNiche through typed contracts and generated evidence.",
+  "caption": "Matplotlib beestack graphical abstract shows Showcase architecture schematic linking BeeBody, BeeBrain, BeeMind, BeeSwarm, and BeeNiche through typed contracts and generated evidence. Generated from module coverage records and stack contract definitions. Sidecar validation checks raster, source routing, and registered claim tier. Does not support a claim of biological or digital-twin validation.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
@@ -39,16 +39,17 @@
   "figure_path": "output/figures/beestack_graphical_abstract.png",
   "manuscript_label": "fig:beestack_graphical_abstract",
   "manuscript_section": "manuscript/04_evidence_typed_architecture.md",
+  "plot_data_path": "output/figures/beestack_graphical_abstract_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 848,
+    "height_px": 956,
     "max_intensity": 255,
-    "mean_intensity": 237.83138378881463,
+    "mean_intensity": 237.71771093240181,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 49.1582216747675,
-    "width_px": 1784
+    "std_intensity": 49.313880821058966,
+    "width_px": 2180
   },
   "regeneration_command": "uv run python scripts/analysis_pipeline.py",
   "schema": "beestack.figure.v1",
@@ -59,5 +60,17 @@
   ],
   "title": "Beestack Graphical Abstract",
   "unsupported_inference": "Does not support a claim of biological or digital-twin validation.",
-  "validation_status": "nonblank quality sidecar generated"
+  "validation_status": "nonblank quality sidecar and plot data generated",
+  "visual_quality": {
+    "aspect_class": "wide",
+    "aspect_ratio": 2.28,
+    "figure_role": "overview",
+    "height_px": 956,
+    "label_density": "dense",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 2180,
+    "min_dimension_px": 956,
+    "readability_status": "pass",
+    "width_px": 2180
+  }
 }

@@ -19,6 +19,7 @@
   "figure_path": "output/figures/beestack_pipeline_overview.png",
   "manuscript_label": "fig:beestack_pipeline_overview",
   "manuscript_section": "output/reports/manuscript_figure_index.md",
+  "plot_data_path": "output/figures/beestack_pipeline_overview_data.json",
   "priority": "indexed",
   "quality": {
     "height_px": 740,
@@ -36,5 +37,17 @@
   "source_dois": [],
   "title": "Beestack Pipeline Overview",
   "unsupported_inference": "Does not support claims beyond the generated artifact and stated fidelity tier.",
-  "validation_status": "nonblank quality sidecar generated"
+  "validation_status": "nonblank quality sidecar and plot data generated",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 2.122,
+    "figure_role": "overview",
+    "height_px": 740,
+    "label_density": "moderate",
+    "manuscript_use": "indexed_gallery",
+    "max_dimension_px": 1570,
+    "min_dimension_px": 740,
+    "readability_status": "gallery",
+    "width_px": 1570
+  }
 }

@@ -14,7 +14,13 @@ from beestack.visualization.figure_registry import (
     generic_figure_sidecar_fields,
     high_priority_figure_artifacts,
 )
-from beestack.visualization.style import MODULE_COLORS, module_color, style_context
+from beestack.visualization.style import (
+    MODULE_COLORS,
+    module_color,
+    status_color,
+    style_context,
+    wrap_label,
+)
 
 
 def _varied_png(path: Path) -> Path:
@@ -29,6 +35,8 @@ def test_style_helpers_expose_stable_module_colors() -> None:
     assert set(MODULE_COLORS) >= {"BeeBody", "BeeBrain", "BeeMind", "BeeSwarm", "BeeNiche"}
     assert module_color("BeeBrain") == MODULE_COLORS["BeeBrain"]
     assert module_color("UnknownModule").startswith("#")
+    assert status_color("blocked") == "#C43C39"
+    assert "\n" in wrap_label("long visual label for a bounded axis box", width=15)
     with style_context():
         # The context manager should be usable by plotting code without leaking
         # implementation details into each figure builder.
@@ -49,6 +57,13 @@ def test_figure_narrative_registry_has_curated_primary_contract() -> None:
     assert "ragan2016provenance" in narrative.design_citation_keys
     assert "output/figures/beestack_graphical_abstract.png" in high_priority_figure_artifacts()
     assert "output/figures/manuscript_figure_claim_map.png" in high_priority_figure_artifacts()
+    assert "output/figures/manuscript_figure_claim_detail.png" in high_priority_figure_artifacts()
+    assert "output/figures/methods/methods_dashboard_detail.png" in high_priority_figure_artifacts()
+    assert "output/figures/research/research_evidence_detail.png" in high_priority_figure_artifacts()
+    assert (
+        "output/figures/research/stack_synthesis_findings_detail.png"
+        in high_priority_figure_artifacts()
+    )
     for artifact in (
         "output/figures/beestack_scholarship_evidence_matrix.png",
         "output/figures/beebody_beeswarm_micro_macro_calibration.png",
@@ -65,9 +80,38 @@ def test_figure_narrative_registry_has_curated_primary_contract() -> None:
         assert artifact in high_priority_figure_artifacts()
 
 
+def test_primary_caption_contracts_have_source_validation_and_boundaries() -> None:
+    for artifact in high_priority_figure_artifacts():
+        narrative = figure_narrative_for_path(artifact)
+        assert narrative is not None, artifact
+        caption = narrative.manuscript_contract_caption()
+        lowered = caption.lower()
+        assert " shows " in lowered, artifact
+        assert "generated from" in lowered, artifact
+        assert "sidecar validation" in lowered, artifact
+        assert narrative.unsupported_inference.rstrip(".") in caption, artifact
+
+
+def test_split_companion_primary_figures_are_registered_with_compact_text() -> None:
+    split_artifacts = (
+        "output/figures/manuscript_figure_claim_detail.png",
+        "output/figures/methods/methods_dashboard_detail.png",
+        "output/figures/research/research_evidence_detail.png",
+        "output/figures/research/stack_synthesis_findings_detail.png",
+    )
+    for artifact in split_artifacts:
+        narrative = figure_narrative_for_path(artifact)
+        assert narrative is not None, artifact
+        assert narrative.priority == "primary"
+        assert "Split companion" in narrative.caption
+        assert len(narrative.manuscript_contract_caption()) <= 520
+        assert "Generated from" not in narrative.alt_text
+        assert "Sidecar validation" not in narrative.alt_text
+
+
 def test_all_inserted_manuscript_figures_have_curated_registry_narratives() -> None:
     project_root = Path(__file__).resolve().parents[1]
-    image_re = re.compile(r"!\[[^\]]+\]\((?P<path>[^)]+)\)\{#(?P<label>[^}]+)\}")
+    image_re = re.compile(r"!\[[^\]]+\]\((?P<path>[^)]+)\)\{#fig:(?P<label>[^}\s]+)")
     references: list[tuple[str, str]] = []
     for markdown_path in sorted((project_root / "output" / "manuscript").glob("*.md")):
         for match in image_re.finditer(markdown_path.read_text(encoding="utf-8")):
@@ -80,7 +124,7 @@ def test_all_inserted_manuscript_figures_have_curated_registry_narratives() -> N
         narrative = figure_narrative_for_path(artifact)
         assert narrative is not None, artifact
         assert narrative.priority == "primary", artifact
-        assert narrative.manuscript_label == label
+        assert narrative.manuscript_label == f"fig:{label}"
 
 
 def test_generic_figure_fields_do_not_promise_animation_sidecars() -> None:
@@ -111,7 +155,9 @@ def test_write_figure_sidecar_adds_registry_narrative_metadata(tmp_path: Path) -
     )
 
     payload = json.loads(sidecar.read_text(encoding="utf-8"))
-    assert payload["caption"].startswith("Showcase architecture schematic")
+    assert payload["caption"].startswith("Matplotlib beestack graphical abstract shows")
+    assert "Generated from module coverage records" in payload["caption"]
+    assert "Sidecar validation checks raster" in payload["caption"]
     assert payload["alt_text"]
     assert payload["manuscript_section"] == "manuscript/04_evidence_typed_architecture.md"
     assert payload["manuscript_label"] == "fig:beestack_graphical_abstract"
@@ -120,6 +166,9 @@ def test_write_figure_sidecar_adds_registry_narrative_metadata(tmp_path: Path) -
     assert payload["accessibility_checks"]["normal_text_passed"]
     assert payload["unsupported_inference"]
     assert payload["priority"] == "primary"
+    assert payload["visual_quality"]["manuscript_use"] == "manuscript_primary"
+    assert payload["visual_quality"]["figure_role"] == "overview"
+    assert payload["visual_quality"]["readability_status"] in {"pass", "exception"}
 
 
 def test_figure_audit_detects_path_label_sidecar_and_primary_failures(tmp_path: Path) -> None:
@@ -149,7 +198,7 @@ def test_figure_audit_detects_path_label_sidecar_and_primary_failures(tmp_path: 
 
     assert not audit.passed
     assert "output/manuscript/01.md:../figures/missing.png" in audit.missing_image_paths
-    assert "fig:dup" in audit.duplicate_labels
+    assert "dup" in audit.duplicate_labels
     assert "output/figures/present.json" in audit.missing_sidecar_paths
     assert audit.missing_high_priority_artifacts == ("output/figures/absent.png",)
     assert audit.absent_positive_claims
@@ -227,6 +276,58 @@ def test_figure_audit_detects_missing_sidecar_narrative_fields(tmp_path: Path) -
     assert not audit.passed
     assert "output/figures/incomplete.json:caption" in audit.sidecar_required_field_failures
     assert "output/figures/incomplete.json:artifact_kind" in audit.sidecar_required_field_failures
+
+
+def test_figure_audit_allows_plot_data_without_narrative_fields(tmp_path: Path) -> None:
+    manuscript = tmp_path / "output" / "manuscript"
+    figures = tmp_path / "output" / "figures"
+    manuscript.mkdir(parents=True)
+    figure_path = _varied_png(figures / "plotdata.png")
+    (figures / "plotdata.json").write_text(
+        json.dumps(
+            {
+                "schema": "beestack.figure.v1",
+                "figure_path": "output/figures/plotdata.png",
+                "title": "Plot Data Figure",
+                "backend": "Matplotlib",
+                "fidelity": "diagnostic",
+                "source_data": "output/data/run_summary.json",
+                "validation_status": "nonblank",
+                "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+                "caption": (
+                    "Matplotlib plot data figure generated from output data; "
+                    "sidecar-validated raster. Does not support external claims."
+                ),
+                "alt_text": "Plot data figure.",
+                "manuscript_section": "manuscript/01.md",
+                "manuscript_label": "fig:plotdata",
+                "claim_tier": "diagnostic",
+                "unsupported_inference": "Does not support external claims.",
+                "artifact_kind": "figure",
+            }
+        ),
+        encoding="utf-8",
+    )
+    (figures / "plotdata_data.json").write_text(
+        json.dumps({"schema": "beestack.figure_data.v1", "figure_path": str(figure_path)}),
+        encoding="utf-8",
+    )
+    (manuscript / "01.md").write_text(
+        (
+            "![Matplotlib plot data figure generated from output data; "
+            "sidecar-validated raster. Does not support external claims.]"
+            "(../figures/plotdata.png){#fig:plotdata}\n"
+        ),
+        encoding="utf-8",
+    )
+
+    audit = audit_figures(
+        tmp_path,
+        required_primary_artifacts=("output/figures/plotdata.png",),
+    )
+
+    assert not any("plotdata_data.json" in item for item in audit.sidecar_required_field_failures)
+    assert "output/figures/plotdata_data.json:figure_path" in audit.absolute_path_leaks
 
 
 def test_figure_audit_detects_primary_caption_contract_failures(tmp_path: Path) -> None:

@@ -1,0 +1,7 @@
+{
+  "chart_type": "schematic",
+  "figure_path": "output/figures/beestack_pipeline_overview.png",
+  "nodes": [],
+  "schema": "beestack.figure_data.v1",
+  "title": "beestack pipeline overview"
+}

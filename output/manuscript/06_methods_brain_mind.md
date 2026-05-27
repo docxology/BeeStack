@@ -1,4 +1,4 @@
-# BeeBrain and BeeMind Methods
+# BeeBrain and BeeMind Methods {#sec:methods_brain_mind}
 
 BeeBrain is a *reduced neural kernel with an empirical-data surface*.
 It implements antennal-lobe encoding, lateral inhibition, sparse Kenyon-cell
@@ -101,6 +101,14 @@ mellifera* sources:
   [@hadjitofi2024figshare] (CC BY 4.0) and Current Biology article
   [@hadjitofi2024currentbiology].
 
+Galizia and Kaneko rows remain **citation anchors** until publisher
+supplementary matrices or machine-readable tables are registered for fetch.
+Szyszka [@szyszka2023granger] supplementary material is fetched from MDPI
+(`mdpi-res.com`) and Table S1 is parsed; the VAR connectivity matrix is not
+public. Paoli Dryad `.mat` archives require bearer auth; set
+`DRYAD_API_TOKEN` when automating downloads. Figshare ndownloader URLs must
+not receive Dryad Authorization headers.
+
 ## Parser layer
 
 The parser layer converts real-format payloads into typed anatomy and
@@ -132,15 +140,15 @@ odor-response panels, 7 anatomy inventories,
 Figshare files are local, with follower-decoding confidence
 0.289 and decoding improvement
 0.248. The brain-data parseable-source
-fraction is 0.600. The run records
-0 local calcium datasets and
-1 empirical known gaps, making *missing
+fraction is 0.800. The run records
+1 local calcium datasets and
+0 empirical known gaps, making *missing
 upstream payloads visible* instead of fabricating data.
 The source-verified fraction is 1.000,
 and the 0.800 parseability-readiness target is recorded as
-True because every remaining
-nonparseable source must carry a DOI/source URL, parser status, blocker,
-and remediation path.
+True when the parseable-source fraction meets
+that threshold. Every remaining nonparseable source still must carry a DOI/source URL,
+parser status, blocker, and remediation path in the completeness panel.
 
 ## Anatomy-data-to-policy mapping
 
@@ -155,7 +163,9 @@ inference sources support the formal decomposition into beliefs,
 preferences, expected-free-energy terms, and policy scoring
 [@friston2010free; @parr2017working].
 
-![Matplotlib anatomy-policy map generated from the source-refresh ledger, BeeBrain source registry, and active-inference methods records; sidecar validation checks the raster, and the figure supports mapping diagnostics rather than connectome-scale or calcium-validated dynamics.](../figures/beebrain_beemind_anatomy_policy_map.png){#fig:brain_mind_anatomy_policy}
+[@fig:brain_mind_anatomy_policy] links BeeBrain anatomy sources to BeeMind policy contracts.
+
+![Matplotlib beebrain to beemind anatomy-policy map shows Anatomy-to-policy map linking antennal-lobe, mushroom-body, central-complex, and waggle-follower anchors to BeeMind belief and policy contracts. Generated from source refresh ledger, BeeBrain source registry, and active-inference methods records. Sidecar validation checks raster, source routing, and registered claim tier. Does not support connectome-scale, calcium-validated, or learned generative dynamics.](../figures/beebrain_beemind_anatomy_policy_map.png){#fig:brain_mind_anatomy_policy}
 
 ## Methods-analysis pass
 
@@ -165,9 +175,11 @@ anatomy-inventory count, neuropil count, region-response class count,
 odor separability, and calcium-dataset availability. The figure is
 written to
 `output/figures/methods/beebrain_methods_empirical_completeness.png`,
-and the top gap is propagated as Paoli MATLAB calcium traces are not yet local or parseable.
+and the top gap is propagated as Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream..
 
-![Matplotlib/pandas BeeBrain empirical-completeness dashboard generated from MethodsAnalysisReport and empirical-analysis metadata; sidecar validation checks the raster, and the figure supports source availability and parser-gap claims rather than connectome-scale or calcium-validated dynamics.](../figures/methods/beebrain_methods_empirical_completeness.png){#fig:brain_methods_completeness}
+[@fig:brain_methods_completeness] summarizes empirical and methods completeness for BeeBrain.
+
+![Matplotlib/pandas/NetworkX beebrain empirical methods completeness shows BeeBrain completeness dashboard reporting available empirical channels, parser gaps, and the absence of locally parsed calcium datasets. Generated from MethodsAnalysisReport and empirical analysis report. Sidecar validation checks raster, source routing, and registered claim tier. Does not support connectome-scale or calcium-validated dynamics.](../figures/methods/beebrain_methods_empirical_completeness.png){#fig:brain_methods_completeness}
 
 ## Fidelity boundary
 
@@ -219,7 +231,9 @@ exposes candidate count, expected-free-energy range, selected-policy
 margin, policy-switch count, and final energy. The figure is written to
 `output/figures/methods/beemind_methods_policy_landscape.png`.
 
-![Matplotlib/pandas BeeMind policy-landscape dashboard generated from MethodsAnalysisReport and policy diagnostics; sidecar validation checks the raster, and the figure supports finite reduced-kernel policy transparency rather than a learned biological generative model.](../figures/methods/beemind_methods_policy_landscape.png){#fig:mind_methods_policy}
+[@fig:mind_methods_policy] exposes the Mind policy-landscape witness panel.
+
+![Matplotlib/pandas/NetworkX beemind policy landscape shows BeeMind policy landscape showing finite expected-free-energy terms, candidate-policy margin, and deterministic action-contract outputs. Generated from MethodsAnalysisReport and policy-selection diagnostics. Sidecar validation checks raster, source routing, and registered claim tier. Does not support a learned or biologically calibrated generative model.](../figures/methods/beemind_methods_policy_landscape.png){#fig:mind_methods_policy}
 
 ## Brain-mind fidelity boundary
 
@@ -229,3 +243,23 @@ roadmap-tagged and can enter the kernel through the same `BeliefState`
 and `Action` contracts. A learned generative BeeMind would replace
 `score_policies()` and the inner forward simulator while leaving every
 other module untouched.
+
+## Relation to connectome and omics literature
+
+Recent honey-bee brain atlases combine single-cell and spatial
+transcriptomics with behavioural context
+[@g3journal2023scrna; @naturecomm2025spatialbrain]. Reference genomes and
+HymenopteraMine annotation [@wallberg2019hav31; @walsh2022hgd] define
+what a genome-to-circuit join could look like. BeeStack's current BeeBrain
+path instead ingests the Honey-Bee Standard Brain structural atlas and
+registered activity summaries (odor panels, antennal kinematics,
+dance-follower positioning) with parseable fraction
+0.800.
+
+Functional Granger connectivity from calcium imaging
+[@szyszka2023granger] remains a documented blocker when connectivity
+matrices are not publicly deposited. The methods contract therefore
+separates **structural-match and panel-summary witnesses** from
+**connectome-scale or calcium-validated dynamics**—the latter require
+simulator-backed backends and held-out task residuals described in
+[@sec:roadmap], not prose upgrades alone.

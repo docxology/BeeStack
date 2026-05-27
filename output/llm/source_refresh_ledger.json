@@ -1,17 +1,88 @@
 {
   "direct_verification_required": true,
-  "perplexity_discovery_candidates": [
+  "external_dataset_registry": [
     {
-      "availability_status": "official_page_seen_by_discovery; raw_payload_not_assessed",
-      "candidate_key": "pnas2026waggleaudience",
-      "claim_tier": "candidate_scholarship_anchor",
-      "direct_verification_status": "discovery_only_not_promoted",
-      "doi_or_url": "10.1073/pnas.2518687123",
-      "figure_targets": "output/figures/beebody_beeswarm_micro_macro_calibration.png",
-      "notes": "Perplexity surfaced a 2026 PNAS audience-response waggle source; not cited until direct verification and bibliography entry are added.",
-      "section_targets": "manuscript/01_scholarship_and_related_work.md",
-      "title": "The audience shapes the information content of the honey bee waggle dance"
+      "blocker": "Not registered in empirical_brain_datasets or BeeNiche driver parsers.",
+      "name": "BeeBiome data portal",
+      "official_doi": "10.1186/s12859-025-06229-7",
+      "official_url": "https://www.beebiome.org",
+      "resource_id": "beebiome_portal",
+      "resource_type": "microbiome_sra_index",
+      "target_module": "BeeNiche/colony_ledger",
+      "wired_in_beestack": false
     },
+    {
+      "blocker": "Genome annotation not registered alongside HSB empirical anatomy IDs.",
+      "name": "Hymenoptera Genome Database / HymenopteraMine",
+      "official_doi": "10.1093/nar/gkab1018",
+      "official_url": "https://hymenoptera.elsiklab.missouri.edu/",
+      "resource_id": "hymenoptera_genome_database",
+      "resource_type": "genomics_annotation",
+      "target_module": "BeeBrain",
+      "wired_in_beestack": false
+    },
+    {
+      "blocker": "Forage/landscape adapters use synthetic witnesses only.",
+      "name": "BeeBDC global bee occurrence dataset",
+      "official_doi": "10.1038/s41597-023-02626-w",
+      "official_url": "https://jbdorey.github.io/BeeBDC/",
+      "resource_id": "beebdc_occurrence",
+      "resource_type": "occurrence_aggregation",
+      "target_module": "BeeNiche",
+      "wired_in_beestack": false
+    },
+    {
+      "blocker": "No genome-fetch stage in empirical pipeline.",
+      "name": "NCBI Apis mellifera HAv3.1 reference genome",
+      "official_doi": "10.1186/s12864-019-5639-3",
+      "official_url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_003254395.2/",
+      "resource_id": "ncbi_amel_hav31",
+      "resource_type": "reference_genome",
+      "target_module": "BeeBrain",
+      "wired_in_beestack": false
+    },
+    {
+      "blocker": "Survey microdata not ingested; scholarly continuity via @aurell2024survey only.",
+      "name": "U.S. Beekeeping Survey (Auburn / Apiary Inspectors of America)",
+      "official_doi": "",
+      "official_url": "https://apiaryinspectors.org/US-beekeeping-survey-24-25",
+      "resource_id": "auburn_aia_survey",
+      "resource_type": "colony_loss_survey",
+      "target_module": "colony_ledger/assimilation",
+      "wired_in_beestack": false
+    },
+    {
+      "blocker": "No NASS parser or assimilation surface in v0.",
+      "name": "USDA NASS honey production statistics",
+      "official_doi": "",
+      "official_url": "https://esmis.nal.usda.gov/publication/honey",
+      "resource_id": "usda_nass_honey",
+      "resource_type": "agricultural_statistics",
+      "target_module": "colony_ledger",
+      "wired_in_beestack": false
+    },
+    {
+      "blocker": "Pesticide burden not a typed BeeNiche state variable in v0.",
+      "name": "EPA pesticide residue concentrations in hive matrices",
+      "official_doi": "10.23719/1523343",
+      "official_url": "https://catalog.data.gov/dataset/pesticide-residue-concentration-in-honey-bee-hive-matrices",
+      "resource_id": "epa_hive_matrices",
+      "resource_type": "pesticide_residue_dataset",
+      "target_module": "BeeNiche",
+      "wired_in_beestack": false
+    },
+    {
+      "blocker": "Methods panels not yet mapped chapter-by-chapter to BEEBOOK volumes.",
+      "name": "COLOSS BEEBOOK standard methods",
+      "official_doi": "",
+      "official_url": "https://coloss.org/activities/beebook/",
+      "resource_id": "coloss_beebook",
+      "resource_type": "methods_manual",
+      "target_module": "methods/validation",
+      "wired_in_beestack": false
+    }
+  ],
+  "perplexity_discovery_candidates": [
     {
       "availability_status": "official_article_page; code_data_payload_not_assessed",
       "candidate_key": "biodt_honeybee_prototype",
@@ -209,8 +280,171 @@
       "source_url": "https://doi.org/10.1186/s13073-019-0701-3",
       "title": "Digital twins to personalize medicine",
       "year": 2020
+    },
+    {
+      "authors": "Dong et al.",
+      "availability_status": "scholarly_metadata",
+      "citation_key": "dong2023wagglesocial",
+      "claim_tier": "scholarship_anchor",
+      "direct_verification_status": "verified",
+      "discovery_channel": "scholarship integration review and direct Science verification",
+      "doi": "10.1126/science.ade1702",
+      "figure_targets": [
+        "output/figures/beebody_beeswarm_micro_macro_calibration.png"
+      ],
+      "notes": "Anchors social-learning context for waggle recruitment interfaces.",
+      "section_targets": [
+        "manuscript/01_scholarship_and_related_work.md",
+        "manuscript/05_methods_body_swarm.md"
+      ],
+      "source_url": "https://doi.org/10.1126/science.ade1702",
+      "title": "Social learning in honey bee waggle dance communication",
+      "year": 2023
+    },
+    {
+      "authors": "Schwab et al.",
+      "availability_status": "scholarly_metadata",
+      "citation_key": "pnas2026waggleaudience",
+      "claim_tier": "scholarship_anchor",
+      "direct_verification_status": "verified",
+      "discovery_channel": "scholarship integration review and direct PNAS verification",
+      "doi": "10.1073/pnas.2518687123",
+      "figure_targets": [
+        "output/figures/beebody_beeswarm_micro_macro_calibration.png"
+      ],
+      "notes": "Anchors bidirectional dance-audience communication context.",
+      "section_targets": [
+        "manuscript/01_scholarship_and_related_work.md",
+        "manuscript/05_methods_body_swarm.md"
+      ],
+      "source_url": "https://doi.org/10.1073/pnas.2518687123",
+      "title": "The audience shapes the information content of the honey bee waggle dance",
+      "year": 2026
+    },
+    {
+      "authors": "Wallberg et al.",
+      "availability_status": "open_repository_not_wired",
+      "citation_key": "wallberg2019hav31",
+      "claim_tier": "scholarship_anchor",
+      "direct_verification_status": "verified",
+      "discovery_channel": "scholarship integration review and direct BMC verification",
+      "doi": "10.1186/s12864-019-5639-3",
+      "figure_targets": [
+        "output/figures/beestack_scholarship_evidence_matrix.png"
+      ],
+      "notes": "Anchors HAv3.1 reference genome context; not registered in BeeBrain fetch yet.",
+      "section_targets": [
+        "manuscript/01_scholarship_and_related_work.md",
+        "manuscript/03_materials_and_source_provenance.md"
+      ],
+      "source_url": "https://doi.org/10.1186/s12864-019-5639-3",
+      "title": "A hybrid de novo genome assembly of the honeybee, Apis mellifera, with chromosome-length scaffolds",
+      "year": 2019
+    },
+    {
+      "authors": "Walsh et al.",
+      "availability_status": "open_repository_not_wired",
+      "citation_key": "walsh2022hgd",
+      "claim_tier": "scholarship_anchor",
+      "direct_verification_status": "verified",
+      "discovery_channel": "scholarship integration review and direct NAR verification",
+      "doi": "10.1093/nar/gkab1018",
+      "figure_targets": [
+        "output/figures/beestack_scholarship_evidence_matrix.png"
+      ],
+      "notes": "Anchors HymenopteraMine/HGD genomics infrastructure context.",
+      "section_targets": [
+        "manuscript/01_scholarship_and_related_work.md",
+        "manuscript/03_materials_and_source_provenance.md"
+      ],
+      "source_url": "https://doi.org/10.1093/nar/gkab1018",
+      "title": "Hymenoptera Genome Database: integrating community curation with high-quality genomes",
+      "year": 2022
+    },
+    {
+      "authors": "Rech de Laval et al.",
+      "availability_status": "open_repository_not_wired",
+      "citation_key": "rechlaval2025beebiome",
+      "claim_tier": "scholarship_anchor",
+      "direct_verification_status": "verified",
+      "discovery_channel": "scholarship integration review and direct BMC verification",
+      "doi": "10.1186/s12859-025-06229-7",
+      "figure_targets": [
+        "output/figures/beestack_scholarship_evidence_matrix.png"
+      ],
+      "notes": "Anchors bee microbiome repository landscape; not wired into BeeNiche yet.",
+      "section_targets": [
+        "manuscript/01_scholarship_and_related_work.md",
+        "manuscript/03_materials_and_source_provenance.md",
+        "manuscript/14_roadmap.md"
+      ],
+      "source_url": "https://doi.org/10.1186/s12859-025-06229-7",
+      "title": "The BeeBiome data portal provides easy access to bee microbiome information",
+      "year": 2025
+    },
+    {
+      "authors": "Dorey et al.",
+      "availability_status": "open_repository_not_wired",
+      "citation_key": "dorey2023beebdc",
+      "claim_tier": "scholarship_anchor",
+      "direct_verification_status": "verified",
+      "discovery_channel": "scholarship integration review and direct Scientific Data verification",
+      "doi": "10.1038/s41597-023-02626-w",
+      "figure_targets": [
+        "output/figures/beestack_scholarship_evidence_matrix.png"
+      ],
+      "notes": "Anchors global bee occurrence aggregation; not wired into BeeNiche forage yet.",
+      "section_targets": [
+        "manuscript/01_scholarship_and_related_work.md",
+        "manuscript/03_materials_and_source_provenance.md",
+        "manuscript/07_methods_niche.md"
+      ],
+      "source_url": "https://doi.org/10.1038/s41597-023-02626-w",
+      "title": "A globally synthesised and flagged bee occurrence dataset",
+      "year": 2023
+    },
+    {
+      "authors": "VanEngelsdorp et al.",
+      "availability_status": "scholarly_open_metadata",
+      "citation_key": "vanengelsdorp2009ccd",
+      "claim_tier": "scholarship_anchor",
+      "direct_verification_status": "verified",
+      "discovery_channel": "scholarship integration review and direct PLOS verification",
+      "doi": "10.1371/journal.pone.0006481",
+      "figure_targets": [
+        "output/figures/beestack_scholarship_evidence_matrix.png"
+      ],
+      "notes": "Anchors CCD historical context for colony-health motivation.",
+      "section_targets": [
+        "manuscript/01_scholarship_and_related_work.md",
+        "manuscript/12_discussion.md"
+      ],
+      "source_url": "https://doi.org/10.1371/journal.pone.0006481",
+      "title": "Colony Collapse Disorder: A Descriptive Study",
+      "year": 2009
+    },
+    {
+      "authors": "Anderson et al.",
+      "availability_status": "scholarly_open_metadata",
+      "citation_key": "scientificreports2026amitraz",
+      "claim_tier": "scholarship_anchor",
+      "direct_verification_status": "verified",
+      "discovery_channel": "scholarship integration review and direct Nature verification",
+      "doi": "10.1038/s41598-026-44796-8",
+      "figure_targets": [
+        "output/figures/beestack_scholarship_evidence_matrix.png"
+      ],
+      "notes": "Anchors amitraz-resistance field context; Varroa not modeled in v0.",
+      "section_targets": [
+        "manuscript/01_scholarship_and_related_work.md",
+        "manuscript/13_limitations.md",
+        "manuscript/14_roadmap.md"
+      ],
+      "source_url": "https://doi.org/10.1038/s41598-026-44796-8",
+      "title": "Evaluation of late-season Varroa destructor treatments and their impact on amitraz resistance",
+      "year": 2026
     }
   ],
   "research_method": "Perplexity discovery followed by direct scholarly/official verification",
-  "schema": "beestack.source_refresh.v1"
+  "schema": "beestack.source_refresh.v2"
 }

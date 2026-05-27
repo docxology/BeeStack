@@ -1,0 +1,19 @@
+{
+  "chart_type": "contact_sheet",
+  "columns": 4,
+  "figure_path": "output/animations/beeniche_comb_thermal_contact_sheet.png",
+  "frame_count": 24,
+  "sampled_frame_indices": [
+    0,
+    3,
+    6,
+    9,
+    13,
+    16,
+    19,
+    23
+  ],
+  "schema": "beestack.figure_data.v1",
+  "source_gif": "output/animations/beeniche_comb_thermal.gif",
+  "title": "beeniche comb thermal contact sheet"
+}

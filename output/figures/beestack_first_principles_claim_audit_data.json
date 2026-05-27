@@ -1,0 +1,17 @@
+{
+  "annotations": [
+    "First-principles claim audit separating hard evidence constraints, replaceable implementation choices, and blocked digital-twin claims.",
+    "claim_tier=first_principles_claim_boundary",
+    "source_data=figure registry, source audit, and generated project contracts"
+  ],
+  "chart_type": "schematic",
+  "figure_path": "output/figures/beestack_first_principles_claim_audit.png",
+  "nodes": [
+    {
+      "id": "fig:first_principles_claim_audit",
+      "label": "BeeStack first-principles claim audit"
+    }
+  ],
+  "schema": "beestack.figure_data.v1",
+  "title": "BeeStack first-principles claim audit"
+}

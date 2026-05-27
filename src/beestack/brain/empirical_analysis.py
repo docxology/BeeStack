@@ -154,6 +154,7 @@ class BeeBrainDataCompletenessPanel:
     module_modality_matrix: dict[str, dict[str, int]]
     source_gaps: tuple[BeeBrainSourceGap, ...]
     source_statuses: tuple[BeeBrainSourceStatus, ...]
+    connectome_tiers: dict[str, object] = field(default_factory=dict)
 
     @property
     def downloaded_fraction(self) -> float:
@@ -169,10 +170,7 @@ class BeeBrainDataCompletenessPanel:
 
     @property
     def parseability_target_satisfied(self) -> bool:
-        return bool(
-            self.parseable_fraction >= self.parseability_target
-            or self.source_verified_dataset_count == self.dataset_count
-        )
+        return bool(self.parseable_fraction >= self.parseability_target)
 
     def as_dict(self) -> dict[str, object]:
         return {
@@ -191,6 +189,7 @@ class BeeBrainDataCompletenessPanel:
             "module_modality_matrix": self.module_modality_matrix,
             "source_gaps": [gap.as_dict() for gap in self.source_gaps],
             "source_statuses": [status.as_dict() for status in self.source_statuses],
+            "connectome_tiers": self.connectome_tiers,
         }
 
 
@@ -422,6 +421,7 @@ def bee_brain_data_completeness_panel(
     parseable_dataset_ids: Sequence[str] = (),
     parser_status_by_dataset: Mapping[str, str] | None = None,
     parseability_target: float = 0.8,
+    connectome_tiers: Mapping[str, object] | None = None,
 ) -> BeeBrainDataCompletenessPanel:
     """Build a deterministic completeness scorecard for curated BeeBrain sources."""
 
@@ -450,7 +450,13 @@ def bee_brain_data_completeness_panel(
         )
         blocker = ""
         remediation = "none"
-        if dataset_id not in downloaded:
+        if parser_status.startswith("citation_anchor_only"):
+            blocker = "citation_anchor_only"
+            remediation = (
+                "publisher supplementary data not registered for automated fetch; "
+                "manuscript citation anchor only"
+            )
+        elif dataset_id not in downloaded:
             blocker = "no_local_payload"
             remediation = "run scripts/fetch_empirical_bee_data.py for full downloads"
             gaps.append(
@@ -503,6 +509,7 @@ def bee_brain_data_completeness_panel(
         },
         source_gaps=tuple(gaps),
         source_statuses=tuple(statuses),
+        connectome_tiers=dict(connectome_tiers or {}),
     )
 
 

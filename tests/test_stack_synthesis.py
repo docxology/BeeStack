@@ -87,9 +87,13 @@ def test_stack_synthesis_review_serializes_and_figures(tmp_path: Path) -> None:
     json.dumps(payload)
 
     figures = generate_stack_synthesis_figures(review, tmp_path)
-    assert len(figures) == 1
-    assert figures[0].exists() and figures[0].stat().st_size > 0
-    sidecar = figures[0].with_suffix(".json")
+    assert len(figures) == 2
+    assert {figure.name for figure in figures} == {
+        "stack_synthesis_dashboard.png",
+        "stack_synthesis_findings_detail.png",
+    }
+    assert all(figure.exists() and figure.stat().st_size > 0 for figure in figures)
+    sidecar = (tmp_path / "stack_synthesis_dashboard.json")
     assert sidecar.exists()
     assert "cross-stack synthesis diagnostic" in sidecar.read_text()
 
@@ -111,9 +115,7 @@ def test_stack_synthesis_review_normalizes_project_local_figure_paths() -> None:
         },
         readiness_review={"signposting": {"directory_count": 10}},
         bibliography_keys=("seeley1989superorganism", "saltelli2008global"),
-    ).with_figures(
-        (str(project_root / "output" / "figures" / "research" / "stack_synthesis.png"),)
-    )
+    ).with_figures((str(project_root / "output" / "figures" / "research" / "stack_synthesis.png"),))
 
     payload = review.as_dict()
     markdown = stack_synthesis_markdown(review)

@@ -1,0 +1,120 @@
+{
+  "chart_type": "schematic",
+  "edges": [
+    {
+      "source": "BeeBody",
+      "target": "BeeBody:evidence"
+    },
+    {
+      "source": "BeeBrain",
+      "target": "BeeBrain:evidence"
+    },
+    {
+      "source": "BeeMind",
+      "target": "BeeMind:evidence"
+    },
+    {
+      "source": "BeeSwarm",
+      "target": "BeeSwarm:evidence"
+    },
+    {
+      "source": "BeeNiche",
+      "target": "BeeNiche:evidence"
+    },
+    {
+      "label": "BeeBrain templates",
+      "source": "empirical-panels",
+      "target": "BeeBrain"
+    },
+    {
+      "label": "BeeBrain calcium summaries",
+      "source": "calcium-datasets",
+      "target": "BeeBrain"
+    },
+    {
+      "label": "BeeBrain anatomy mapping",
+      "source": "honeybee-standard-brain",
+      "target": "BeeBrain"
+    },
+    {
+      "label": "Stack empirical drive",
+      "source": "template-bank",
+      "target": "BeeBrain"
+    },
+    {
+      "label": "BeeBrain/BeeSwarm waggle decoding",
+      "source": "figshare-hadjitofi-2024-waggle-following",
+      "target": "BeeBrain"
+    }
+  ],
+  "figure_path": "output/figures/research/research_fidelity_evidence_network.png",
+  "nodes": [
+    {
+      "id": "BeeBody",
+      "kind": "module"
+    },
+    {
+      "id": "BeeBrain",
+      "kind": "module"
+    },
+    {
+      "id": "BeeMind",
+      "kind": "module"
+    },
+    {
+      "id": "BeeSwarm",
+      "kind": "module"
+    },
+    {
+      "id": "BeeNiche",
+      "kind": "module"
+    },
+    {
+      "id": "BeeBody:evidence",
+      "kind": "evidence",
+      "label": "FlyBody walking and flig"
+    },
+    {
+      "id": "BeeBrain:evidence",
+      "kind": "evidence",
+      "label": "Curated public honeybee "
+    },
+    {
+      "id": "BeeMind:evidence",
+      "kind": "evidence",
+      "label": "Expected-free-energy pol"
+    },
+    {
+      "id": "BeeSwarm:evidence",
+      "kind": "evidence",
+      "label": "Strict FlyBody/MuJoCo co"
+    },
+    {
+      "id": "BeeNiche:evidence",
+      "kind": "evidence",
+      "label": "Voxel comb, brood therma"
+    },
+    {
+      "id": "empirical-panels",
+      "kind": "empirical"
+    },
+    {
+      "id": "calcium-datasets",
+      "kind": "empirical"
+    },
+    {
+      "id": "honeybee-standard-brain",
+      "kind": "empirical"
+    },
+    {
+      "id": "template-bank",
+      "kind": "empirical"
+    },
+    {
+      "id": "figshare-hadjitofi-2024-waggle-following",
+      "kind": "empirical"
+    }
+  ],
+  "schema": "beestack.figure_data.v1",
+  "title": "Research fidelity evidence network"
+}

@@ -2,8 +2,11 @@
 
 This project follows the research-template pattern:
 
-1. `src/beestack/` contains pure domain logic. Do not import infrastructure,
-   write files, print, or perform network access from source modules.
+1. `src/beestack/` contains domain logic. Do not import infrastructure,
+   print, or perform network access from source modules. Pure computation
+   stays side-effect free; sanctioned presentation adapters in
+   `visualization/` and `body/flybody_scene_signpost.py` may write figures,
+   MJCF, GIF, and signpost files when invoked from scripts.
 2. `scripts/` contains thin orchestrators. Scripts may read config, write
    output artifacts, and call plotting or manuscript hydration helpers.
 3. `tests/` uses real computations only. Do not use mocks for domain behavior.
@@ -31,6 +34,14 @@ This project follows the research-template pattern:
     hydrated manuscript must reference only existing generated images with
     sidecars. Generated project-local artifact paths should serialize as stable
     `output/...` paths, not checkout-specific absolute paths.
+11. Security posture is a code contract. Curated empirical fetch URLs must pass
+    `beestack.security.validate_download_url`; zip ingest must call
+    `assert_safe_zip_member`; threat model and `docs/security_posture.md` must
+    stay present; run `uv run python scripts/run_security_audit.py` before release.
+12. Release 1.0 uses `scripts/audit_publication_readiness.py` (also invoked from
+    `verify_generated_reports.py`). Blockers: aligned version strings, combined
+    PDF, hydrated variables, security/generated audits, `CHANGELOG.md`. Warnings:
+    empty DOI, parseable fraction below target.
 
 The upstream instruction asked agents to read `skills/PAI/SKILL.md`. If that
 path is absent in this project checkout, use the installed PAI skill from the
@@ -46,6 +57,14 @@ uv run pytest --cov=src --cov-report=term-missing
 uv run python scripts/analysis_pipeline.py
 uv run python scripts/verify_generated_reports.py
 uv run python scripts/audit_documentation.py
+uv run python scripts/run_security_audit.py
 uv run python scripts/signpost_project_tree.py --check
 uv run python scripts/z_generate_manuscript_variables.py
+uv run python scripts/audit_publication_readiness.py --check
 ```
+
+Structural maintainability (thermo-nuclear bar) is tracked in [`ISA.md`](ISA.md)
+section J (ISC-105..112). Post-remediation (2026-05-25): **119/119** criteria
+pass; report
+[`output/reports/thermo_nuclear_code_quality_review.md`](output/reports/thermo_nuclear_code_quality_review.md)
+verdict **PASS**. ISC-65/66 are closed.

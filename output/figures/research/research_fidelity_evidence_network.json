@@ -12,7 +12,7 @@
   "alt_text": "Network diagram linking BeeStack modules to evidence and empirical source nodes.",
   "artifact_kind": "figure",
   "backend": "Matplotlib/pandas/NetworkX",
-  "caption": "Evidence network linking module scorecards, empirical BeeBrain records, and provenance nodes from the research suite.",
+  "caption": "Matplotlib/NetworkX beestack fidelity evidence network shows Evidence network linking module scorecards, empirical BeeBrain records, and provenance nodes from the research suite. Generated from ResearchSuiteReport evidence records. Sidecar validation checks raster, source routing, and registered claim tier. Does not make empirical coverage complete.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
@@ -39,16 +39,17 @@
   "figure_path": "output/figures/research/research_fidelity_evidence_network.png",
   "manuscript_label": "fig:research_network",
   "manuscript_section": "manuscript/11_research_synthesis.md",
+  "plot_data_path": "output/figures/research/research_fidelity_evidence_network_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 1175,
+    "height_px": 1073,
     "max_intensity": 255,
-    "mean_intensity": 248.08476595744682,
-    "min_intensity": 0,
+    "mean_intensity": 250.75435057896448,
+    "min_intensity": 24,
     "mode": "RGBA",
-    "nonzero_histogram_bins": 256,
-    "std_intensity": 33.696299231361785,
-    "width_px": 1685
+    "nonzero_histogram_bins": 232,
+    "std_intensity": 25.475758085769687,
+    "width_px": 1717
   },
   "regeneration_command": "uv run python scripts/run_research_suite.py",
   "schema": "beestack.figure.v1",
@@ -59,5 +60,18 @@
   ],
   "title": "Research Fidelity Evidence Network",
   "unsupported_inference": "Does not make empirical coverage complete.",
-  "validation_status": "nonblank image and quality sidecar passed"
+  "validation_status": "nonblank image, quality sidecar, and plot data passed",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.6,
+    "figure_role": "overview",
+    "height_px": 1073,
+    "label_density": "dense",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 1717,
+    "min_dimension_px": 1073,
+    "readability_status": "pass",
+    "split_group": "research_evidence",
+    "width_px": 1717
+  }
 }

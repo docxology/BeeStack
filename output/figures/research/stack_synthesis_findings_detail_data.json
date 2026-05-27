@@ -1,0 +1,91 @@
+{
+  "annotations": [
+    "Weakest synthesized module is BeeSwarm (readiness 0.925; gaps 3).",
+    "Cross-stack validation mean is 1.000 with 11 catalogued module gaps.",
+    "Integrated simulation improved brood-temperature error by 4.415 C over 24 steps.",
+    "All synthesis validation gates passed in the latest generated run."
+  ],
+  "chart_type": "schematic",
+  "figure_path": "output/figures/research/stack_synthesis_findings_detail.png",
+  "nodes": [
+    {
+      "artifact_count": 23,
+      "evidence_count": 2,
+      "fidelity_level": "FlyBody render path plus reduced closed-loop telemetry",
+      "known_gap_count": 2,
+      "log_metric_mean": 0.812684896150744,
+      "metric_count": 14,
+      "module": "BeeBody",
+      "readiness_score": 0.9333333333333332,
+      "validation_fraction": 1.0
+    },
+    {
+      "artifact_count": 30,
+      "evidence_count": 3,
+      "fidelity_level": "empirical reduced AL-MB-CX kernel",
+      "known_gap_count": 2,
+      "log_metric_mean": 0.7045198348552425,
+      "metric_count": 14,
+      "module": "BeeBrain",
+      "readiness_score": 0.9333333333333332,
+      "validation_fraction": 1.0
+    },
+    {
+      "artifact_count": 10,
+      "evidence_count": 2,
+      "fidelity_level": "bounded active-inference-style policy kernel",
+      "known_gap_count": 2,
+      "log_metric_mean": 0.4622683579184332,
+      "metric_count": 9,
+      "module": "BeeMind",
+      "readiness_score": 0.9333333333333332,
+      "validation_fraction": 1.0
+    },
+    {
+      "artifact_count": 24,
+      "evidence_count": 2,
+      "fidelity_level": "reduced communication kernel plus strict FlyBody/MuJoCo BeeBody waggle/collision scenes",
+      "known_gap_count": 3,
+      "log_metric_mean": 1.3824048925056165,
+      "metric_count": 14,
+      "module": "BeeSwarm",
+      "readiness_score": 0.9249999999999999,
+      "validation_fraction": 1.0
+    },
+    {
+      "artifact_count": 13,
+      "evidence_count": 2,
+      "fidelity_level": "voxel comb and thermal kernel with adapter schemas",
+      "known_gap_count": 2,
+      "log_metric_mean": 0.7505675574339595,
+      "metric_count": 9,
+      "module": "BeeNiche",
+      "readiness_score": 0.9333333333333332,
+      "validation_fraction": 1.0
+    }
+  ],
+  "rows": [
+    {
+      "name": "simulation_thermal_error_improvement_c",
+      "value": 4.414516422852656
+    },
+    {
+      "name": "module_artifact_coverage_fraction",
+      "value": 1.0
+    },
+    {
+      "name": "empirical_parseable_fraction",
+      "value": 0.8
+    },
+    {
+      "name": "signposting_fraction",
+      "value": 1.0
+    },
+    {
+      "name": "scholarship_reference_count",
+      "value": 95.0
+    }
+  ],
+  "schema": "beestack.figure_data.v1",
+  "title": "stack synthesis findings detail"
+}

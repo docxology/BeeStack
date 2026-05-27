@@ -7,7 +7,15 @@ from .bee_mjcf import (
     validate_bee_body_plan_xml,
     write_modified_bee_body_plan,
 )
-from .energetics import cost_of_transport, metabolic_budget_j, walking_power_mw, wing_power_mw
+from .energetics import (
+    REFERENCE_MASS_MG,
+    REFERENCE_STROKE_HZ,
+    REFERENCE_WING_POWER_MW,
+    cost_of_transport,
+    metabolic_budget_j,
+    walking_power_mw,
+    wing_power_mw,
+)
 from .flybody_adapter import (
     FlyBodyBeeBackend,
     FlyBodyForkSpec,
@@ -64,6 +72,9 @@ __all__ = [
     "FlyBodySceneRenderConfig",
     "FlyBodyUnavailableError",
     "HoneybeeCalibrationTarget",
+    "REFERENCE_MASS_MG",
+    "REFERENCE_STROKE_HZ",
+    "REFERENCE_WING_POWER_MW",
     "action_to_flybody_action",
     "action_to_flybody_named_action",
     "MorphologicalFeature",

@@ -10,8 +10,20 @@ import numpy as np
 import pandas as pd
 
 from ..research import MethodsAnalysisReport
-from .figure_metadata import assert_nonblank_quality, write_figure_sidecar
-from .style import PALETTE, add_panel_label, apply_panel_style, module_color, style_context
+from .figure_metadata import assert_nonblank_quality
+from .figure_output import finalize_static_figures
+from .figure_plot_specs import methods_plot_data
+from .style import (
+    PALETTE,
+    add_panel_label,
+    apply_panel_style,
+    bounded_text,
+    direct_label_bars,
+    format_compact_number,
+    module_color,
+    style_context,
+    wrap_label,
+)
 
 
 def generate_methods_figures(
@@ -25,6 +37,7 @@ def generate_methods_figures(
     with style_context():
         paths = [
             _repo_methods_dashboard(report, output_dir / "methods_repo_dashboard.png"),
+            _methods_dashboard_detail(report, output_dir / "methods_dashboard_detail.png"),
             _body_telemetry(
                 records, report, output_dir / "beebody_methods_telemetry_dashboard.png"
             ),
@@ -53,15 +66,21 @@ def generate_methods_figures(
         ]
     for path in paths:
         _validate_nonblank_image(path)
-        write_figure_sidecar(
-            path,
-            title=path.stem.replace("_", " ").title(),
-            backend="Matplotlib/pandas",
-            fidelity=_methods_figure_fidelity(path.name),
-            source_data="MethodsAnalysisReport, simulation records, and manuscript evidence links",
-            validation_status="nonblank image and quality sidecar passed",
-            regeneration_command="uv run python scripts/run_methods_analysis.py",
-        )
+
+    def _plot_data(path: Path) -> dict[str, object]:
+        return methods_plot_data(path, report=report, records=records)
+
+    def _sidecar(path: Path) -> dict[str, object]:
+        return {
+            "title": path.stem.replace("_", " ").title(),
+            "backend": "Matplotlib/pandas",
+            "fidelity": _methods_figure_fidelity(path.name),
+            "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+            "validation_status": "nonblank image, quality sidecar, and plot data passed",
+            "regeneration_command": "uv run python scripts/run_methods_analysis.py",
+        }
+
+    finalize_static_figures(paths, plot_data_for=_plot_data, sidecar_for=_sidecar)
     return paths
 
 
@@ -170,6 +189,101 @@ def _repo_methods_dashboard(report: MethodsAnalysisReport, path: Path) -> Path:
                 fontsize=8,
             )
     fig.colorbar(image, ax=ax, label="Column-normalized methods score")
+    fig.tight_layout(rect=(0, 0.06, 1, 0.95))
+    fig.savefig(path, dpi=180)
+    plt.close(fig)
+    return path
+
+
+def _methods_dashboard_detail(report: MethodsAnalysisReport, path: Path) -> Path:
+    rows = []
+    for panel in report.module_panels:
+        rows.append(
+            {
+                "module": panel.module,
+                "validation": panel.validation_panel.validation_fraction,
+                "artifacts": panel.visualization_panel.artifact_count,
+                "evidence": len(panel.manuscript_evidence),
+                "gaps": len(panel.known_gaps),
+                "boundary": panel.interpretation,
+            }
+        )
+    fig, ax = plt.subplots(figsize=(12.4, 6.4))
+    ax.axis("off")
+    ax.text(
+        0.02,
+        0.96,
+        "Methods dashboard detail: module evidence and explicit gaps",
+        transform=ax.transAxes,
+        ha="left",
+        va="top",
+        fontsize=13,
+        fontweight="bold",
+        color="#111827",
+    )
+    headers = ("Module", "Validation", "Artifacts", "Evidence", "Gaps", "Boundary")
+    widths = (0.12, 0.12, 0.12, 0.12, 0.08, 0.39)
+    x_positions = np.cumsum((0.02, *widths[:-1]))
+    for header, x in zip(headers, x_positions, strict=True):
+        ax.text(x, 0.86, header, transform=ax.transAxes, fontsize=8.5, fontweight="bold")
+    for row_index, row in enumerate(rows):
+        y = 0.79 - row_index * 0.135
+        ax.add_patch(
+            plt.Rectangle(
+                (0.015, y - 0.050),
+                0.96,
+                0.095,
+                transform=ax.transAxes,
+                facecolor="#F8FAFC" if row_index % 2 == 0 else "#FFFFFF",
+                edgecolor="#E2E8F0",
+                lw=0.5,
+            )
+        )
+        ax.text(
+            x_positions[0],
+            y,
+            str(row["module"]),
+            transform=ax.transAxes,
+            va="center",
+            fontsize=9,
+            fontweight="bold",
+            color=module_color(str(row["module"])),
+        )
+        numeric = (
+            format_compact_number(float(row["validation"])),
+            str(row["artifacts"]),
+            str(row["evidence"]),
+            str(row["gaps"]),
+        )
+        for index, value in enumerate(numeric, start=1):
+            ax.text(
+                x_positions[index],
+                y,
+                value,
+                transform=ax.transAxes,
+                va="center",
+                fontsize=8.4,
+                color="#334155",
+            )
+        bounded_text(
+            ax,
+            float(x_positions[-1]),
+            y + 0.038,
+            row["boundary"],
+            width=52,
+            max_lines=3,
+            fontsize=7.6,
+            facecolor="#FFFFFF",
+        )
+    fig.text(
+        0.5,
+        0.025,
+        "Detail companion to the normalized methods dashboard; counts are provenance and gap-routing evidence, not biological validation.",
+        ha="center",
+        va="bottom",
+        fontsize=8,
+        color="#475569",
+    )
     fig.tight_layout()
     fig.savefig(path, dpi=180)
     plt.close(fig)
@@ -195,13 +309,32 @@ def _body_telemetry(
     axes[1, 0].plot(steps, energy, color=module_color("BeeBrain"), marker="^")
     apply_panel_style(axes[1, 0], title="Energy budget", ylabel="J", grid_axis="both")
     labels = ["bee_visual_score", "bee_silhouette_score", "wingbeat_frequency_hz"]
-    values = [metrics.get(label, 0.0) for label in labels]
-    axes[1, 1].barh(labels[::-1], values[::-1], color=module_color("BeeMind"))
-    apply_panel_style(axes[1, 1], title="Morphology and wingbeat cues", grid_axis="x")
+    raw_values = [float(metrics.get(label, 0.0)) for label in labels]
+    scaled = np.log1p(np.abs(raw_values))
+    if float(scaled.max()) > 0:
+        scaled = scaled / float(scaled.max())
+    bars = axes[1, 1].barh(
+        [wrap_label(label.replace("_", " "), width=20, max_lines=2) for label in labels[::-1]],
+        scaled[::-1],
+        color=module_color("BeeMind"),
+    )
+    direct_label_bars(
+        axes[1, 1],
+        bars,
+        tuple(raw_values[::-1]),
+        horizontal=True,
+    )
+    axes[1, 1].set_xlim(0, 1.12)
+    apply_panel_style(
+        axes[1, 1],
+        title="Morphology and wingbeat cues",
+        xlabel="log1p-scaled value (raw label)",
+        grid_axis="x",
+    )
     for label, axis in zip(("A", "B", "C", "D"), axes.ravel(), strict=True):
         add_panel_label(axis, label)
     fig.suptitle("BeeBody methods telemetry and morphology diagnostics", y=0.995)
-    fig.tight_layout()
+    fig.tight_layout(rect=(0, 0.06, 1, 0.95))
     fig.savefig(path, dpi=180)
     plt.close(fig)
     return path
@@ -215,14 +348,36 @@ def _module_metric_panel(
 ) -> Path:
     panel = _panel(report, module)
     items = sorted(panel.quantitative_metrics.items(), key=lambda item: abs(item[1]))
-    labels = [item[0] for item in items]
-    values = [item[1] for item in items]
+    labels = [wrap_label(item[0].replace("_", " "), width=28, max_lines=2) for item in items]
+    raw_values = np.asarray([float(item[1]) for item in items], dtype=float)
+    scaled = np.log1p(np.abs(raw_values))
+    max_scaled = float(scaled.max()) if scaled.size else 0.0
+    if max_scaled > 0:
+        scaled = scaled / max_scaled
     fig = plt.figure(figsize=(11, 5.8))
     grid = fig.add_gridspec(1, 2, width_ratios=[1.55, 1.0])
     ax = fig.add_subplot(grid[0, 0])
     ax_context = fig.add_subplot(grid[0, 1])
-    ax.barh(labels, values, color=module_color(module))
-    apply_panel_style(ax, title=title, xlabel="Metric value", grid_axis="x")
+    y = np.arange(len(labels))
+    ax.barh(y, scaled, color=module_color(module), alpha=0.88)
+    ax.set_yticks(y, labels)
+    ax.set_xlim(0, 1.06)
+    for row_index, (scaled_value, raw_value) in enumerate(zip(scaled, raw_values, strict=False)):
+        ax.text(
+            min(1.02, float(scaled_value) + 0.025),
+            row_index,
+            f"{raw_value:.3g}",
+            va="center",
+            ha="left",
+            fontsize=7.5,
+            color="#334155",
+        )
+    apply_panel_style(
+        ax,
+        title=title,
+        xlabel="log1p-scaled metric magnitude (raw value labeled)",
+        grid_axis="x",
+    )
     add_panel_label(ax, "A")
     ax_context.axis("off")
     evidence = panel.manuscript_evidence[0]
@@ -234,19 +389,18 @@ def _module_metric_panel(
         "Conservative boundary\n" + panel.interpretation,
     )
     for index, text in enumerate(context_lines):
-        y = 0.93 - index * 0.18
-        ax_context.text(
+        bounded_text(
+            ax_context,
             0.02,
-            y,
+            0.93 - index * 0.18,
             text,
-            transform=ax_context.transAxes,
-            va="top",
+            width=36,
+            max_lines=3,
             fontsize=9,
-            bbox={"boxstyle": "round,pad=0.35", "facecolor": "#F8FAFC", "edgecolor": "#CBD5E1"},
         )
     add_panel_label(ax_context, "B")
-    fig.suptitle(f"{module}: methods evidence, validation, and claim boundary", y=0.995)
-    fig.tight_layout()
+    fig.suptitle(f"{module}: methods evidence, validation, and claim boundary", y=0.975)
+    fig.tight_layout(rect=(0, 0.05, 1, 0.95))
     fig.savefig(path, dpi=180)
     plt.close(fig)
     return path

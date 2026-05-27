@@ -1,0 +1,368 @@
+{
+  "chart_type": "schematic",
+  "figure_path": "output/figures/research/research_sensitivity_sweeps.png",
+  "nodes": [
+    {
+      "output": 23.99982150291375,
+      "output_name": "final_energy_j",
+      "parameter": "mind.energy_threshold",
+      "value": 0.15
+    },
+    {
+      "output": 23.99982150291375,
+      "output_name": "final_energy_j",
+      "parameter": "mind.energy_threshold",
+      "value": 0.3
+    },
+    {
+      "output": 23.99982150291375,
+      "output_name": "final_energy_j",
+      "parameter": "mind.energy_threshold",
+      "value": 0.44999999999999996
+    },
+    {
+      "output": 23.99982150291375,
+      "output_name": "final_energy_j",
+      "parameter": "mind.energy_threshold",
+      "value": 0.6
+    },
+    {
+      "output": 23.99982150291375,
+      "output_name": "final_energy_j",
+      "parameter": "mind.energy_threshold",
+      "value": 0.75
+    },
+    {
+      "output": 35.0,
+      "output_name": "total_recruited_followers",
+      "parameter": "mind.energy_threshold",
+      "value": 0.15
+    },
+    {
+      "output": 35.0,
+      "output_name": "total_recruited_followers",
+      "parameter": "mind.energy_threshold",
+      "value": 0.3
+    },
+    {
+      "output": 35.0,
+      "output_name": "total_recruited_followers",
+      "parameter": "mind.energy_threshold",
+      "value": 0.44999999999999996
+    },
+    {
+      "output": 35.0,
+      "output_name": "total_recruited_followers",
+      "parameter": "mind.energy_threshold",
+      "value": 0.6
+    },
+    {
+      "output": 35.0,
+      "output_name": "total_recruited_followers",
+      "parameter": "mind.energy_threshold",
+      "value": 0.75
+    },
+    {
+      "output": 0.08333333333333333,
+      "output_name": "final_comb_fraction",
+      "parameter": "mind.energy_threshold",
+      "value": 0.15
+    },
+    {
+      "output": 0.08333333333333333,
+      "output_name": "final_comb_fraction",
+      "parameter": "mind.energy_threshold",
+      "value": 0.3
+    },
+    {
+      "output": 0.08333333333333333,
+      "output_name": "final_comb_fraction",
+      "parameter": "mind.energy_threshold",
+      "value": 0.44999999999999996
+    },
+    {
+      "output": 0.08333333333333333,
+      "output_name": "final_comb_fraction",
+      "parameter": "mind.energy_threshold",
+      "value": 0.6
+    },
+    {
+      "output": 0.08333333333333333,
+      "output_name": "final_comb_fraction",
+      "parameter": "mind.energy_threshold",
+      "value": 0.75
+    },
+    {
+      "output": 0.0,
+      "output_name": "final_empirical_alignment",
+      "parameter": "mind.energy_threshold",
+      "value": 0.15
+    },
+    {
+      "output": 0.0,
+      "output_name": "final_empirical_alignment",
+      "parameter": "mind.energy_threshold",
+      "value": 0.3
+    },
+    {
+      "output": 0.0,
+      "output_name": "final_empirical_alignment",
+      "parameter": "mind.energy_threshold",
+      "value": 0.44999999999999996
+    },
+    {
+      "output": 0.0,
+      "output_name": "final_empirical_alignment",
+      "parameter": "mind.energy_threshold",
+      "value": 0.6
+    },
+    {
+      "output": 0.0,
+      "output_name": "final_empirical_alignment",
+      "parameter": "mind.energy_threshold",
+      "value": 0.75
+    },
+    {
+      "output": 23.99982150291375,
+      "output_name": "final_energy_j",
+      "parameter": "mind.follow_probability_threshold",
+      "value": 0.1
+    },
+    {
+      "output": 23.99982150291375,
+      "output_name": "final_energy_j",
+      "parameter": "mind.follow_probability_threshold",
+      "value": 0.25
+    },
+    {
+      "output": 23.99982150291375,
+      "output_name": "final_energy_j",
+      "parameter": "mind.follow_probability_threshold",
+      "value": 0.4
+    },
+    {
+      "output": 23.99982150291375,
+      "output_name": "final_energy_j",
+      "parameter": "mind.follow_probability_threshold",
+      "value": 0.5499999999999999
+    },
+    {
+      "output": 23.99982150291375,
+      "output_name": "final_energy_j",
+      "parameter": "mind.follow_probability_threshold",
+      "value": 0.7
+    },
+    {
+      "output": 40.0,
+      "output_name": "total_recruited_followers",
+      "parameter": "mind.follow_probability_threshold",
+      "value": 0.1
+    },
+    {
+      "output": 35.0,
+      "output_name": "total_recruited_followers",
+      "parameter": "mind.follow_probability_threshold",
+      "value": 0.25
+    },
+    {
+      "output": 30.0,
+      "output_name": "total_recruited_followers",
+      "parameter": "mind.follow_probability_threshold",
+      "value": 0.4
+    },
+    {
+      "output": 25.0,
+      "output_name": "total_recruited_followers",
+      "parameter": "mind.follow_probability_threshold",
+      "value": 0.5499999999999999
+    },
+    {
+      "output": 10.0,
+      "output_name": "total_recruited_followers",
+      "parameter": "mind.follow_probability_threshold",
+      "value": 0.7
+    },
+    {
+      "output": 0.08333333333333333,
+      "output_name": "final_comb_fraction",
+      "parameter": "mind.follow_probability_threshold",
+      "value": 0.1
+    },
+    {
+      "output": 0.08333333333333333,
+      "output_name": "final_comb_fraction",
+      "parameter": "mind.follow_probability_threshold",
+      "value": 0.25
+    },
+    {
+      "output": 0.08333333333333333,
+      "output_name": "final_comb_fraction",
+      "parameter": "mind.follow_probability_threshold",
+      "value": 0.4
+    },
+    {
+      "output": 0.08333333333333333,
+      "output_name": "final_comb_fraction",
+      "parameter": "mind.follow_probability_threshold",
+      "value": 0.5499999999999999
+    },
+    {
+      "output": 0.08333333333333333,
+      "output_name": "final_comb_fraction",
+      "parameter": "mind.follow_probability_threshold",
+      "value": 0.7
+    },
+    {
+      "output": 0.0,
+      "output_name": "final_empirical_alignment",
+      "parameter": "mind.follow_probability_threshold",
+      "value": 0.1
+    },
+    {
+      "output": 0.0,
+      "output_name": "final_empirical_alignment",
+      "parameter": "mind.follow_probability_threshold",
+      "value": 0.25
+    },
+    {
+      "output": 0.0,
+      "output_name": "final_empirical_alignment",
+      "parameter": "mind.follow_probability_threshold",
+      "value": 0.4
+    },
+    {
+      "output": 0.0,
+      "output_name": "final_empirical_alignment",
+      "parameter": "mind.follow_probability_threshold",
+      "value": 0.5499999999999999
+    },
+    {
+      "output": 0.0,
+      "output_name": "final_empirical_alignment",
+      "parameter": "mind.follow_probability_threshold",
+      "value": 0.7
+    },
+    {
+      "output": 23.99982150291375,
+      "output_name": "final_energy_j",
+      "parameter": "niche.ambient_temperature_c",
+      "value": 18.0
+    },
+    {
+      "output": 23.99982150291375,
+      "output_name": "final_energy_j",
+      "parameter": "niche.ambient_temperature_c",
+      "value": 22.0
+    },
+    {
+      "output": 23.99982150291375,
+      "output_name": "final_energy_j",
+      "parameter": "niche.ambient_temperature_c",
+      "value": 26.0
+    },
+    {
+      "output": 23.99982150291375,
+      "output_name": "final_energy_j",
+      "parameter": "niche.ambient_temperature_c",
+      "value": 30.0
+    },
+    {
+      "output": 23.99982150291375,
+      "output_name": "final_energy_j",
+      "parameter": "niche.ambient_temperature_c",
+      "value": 34.0
+    },
+    {
+      "output": 35.0,
+      "output_name": "total_recruited_followers",
+      "parameter": "niche.ambient_temperature_c",
+      "value": 18.0
+    },
+    {
+      "output": 35.0,
+      "output_name": "total_recruited_followers",
+      "parameter": "niche.ambient_temperature_c",
+      "value": 22.0
+    },
+    {
+      "output": 35.0,
+      "output_name": "total_recruited_followers",
+      "parameter": "niche.ambient_temperature_c",
+      "value": 26.0
+    },
+    {
+      "output": 35.0,
+      "output_name": "total_recruited_followers",
+      "parameter": "niche.ambient_temperature_c",
+      "value": 30.0
+    },
+    {
+      "output": 35.0,
+      "output_name": "total_recruited_followers",
+      "parameter": "niche.ambient_temperature_c",
+      "value": 34.0
+    },
+    {
+      "output": 0.08333333333333333,
+      "output_name": "final_comb_fraction",
+      "parameter": "niche.ambient_temperature_c",
+      "value": 18.0
+    },
+    {
+      "output": 0.08333333333333333,
+      "output_name": "final_comb_fraction",
+      "parameter": "niche.ambient_temperature_c",
+      "value": 22.0
+    },
+    {
+      "output": 0.08333333333333333,
+      "output_name": "final_comb_fraction",
+      "parameter": "niche.ambient_temperature_c",
+      "value": 26.0
+    },
+    {
+      "output": 0.08333333333333333,
+      "output_name": "final_comb_fraction",
+      "parameter": "niche.ambient_temperature_c",
+      "value": 30.0
+    },
+    {
+      "output": 0.08333333333333333,
+      "output_name": "final_comb_fraction",
+      "parameter": "niche.ambient_temperature_c",
+      "value": 34.0
+    },
+    {
+      "output": 0.0,
+      "output_name": "final_empirical_alignment",
+      "parameter": "niche.ambient_temperature_c",
+      "value": 18.0
+    },
+    {
+      "output": 0.0,
+      "output_name": "final_empirical_alignment",
+      "parameter": "niche.ambient_temperature_c",
+      "value": 22.0
+    },
+    {
+      "output": 0.0,
+      "output_name": "final_empirical_alignment",
+      "parameter": "niche.ambient_temperature_c",
+      "value": 26.0
+    },
+    {
+      "output": 0.0,
+      "output_name": "final_empirical_alignment",
+      "parameter": "niche.ambient_temperature_c",
+      "value": 30.0
+    },
+    {
+      "output": 0.0,
+      "output_name": "final_empirical_alignment",
+      "parameter": "niche.ambient_temperature_c",
+      "value": 34.0
+    }
+  ],
+  "schema": "beestack.figure_data.v1",
+  "title": "Research sensitivity sweeps"
+}

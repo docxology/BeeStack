@@ -1,0 +1,18 @@
+{
+  "chart_type": "bar",
+  "figure_path": "output/figures/empirical/connectome_completeness_tiers.png",
+  "labels": [
+    "structural",
+    "functional",
+    "synaptic"
+  ],
+  "orientation": "vertical",
+  "schema": "beestack.figure_data.v1",
+  "title": "Connectome evidence tiers",
+  "values": [
+    1.0,
+    0.0,
+    0.0
+  ],
+  "y_label": "coverage fraction"
+}

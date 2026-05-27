@@ -19,6 +19,7 @@
   "figure_path": "output/figures/beebrain_empirical_alignment_timeseries.png",
   "manuscript_label": "fig:beebrain_empirical_alignment_timeseries",
   "manuscript_section": "output/reports/manuscript_figure_index.md",
+  "plot_data_path": "output/figures/beebrain_empirical_alignment_timeseries_data.json",
   "priority": "indexed",
   "quality": {
     "height_px": 705,
@@ -36,5 +37,17 @@
   "source_dois": [],
   "title": "Beebrain Empirical Alignment Timeseries",
   "unsupported_inference": "Does not support claims beyond the generated artifact and stated fidelity tier.",
-  "validation_status": "nonblank quality sidecar generated"
+  "validation_status": "nonblank quality sidecar and plot data generated",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.76,
+    "figure_role": "overview",
+    "height_px": 705,
+    "label_density": "compact",
+    "manuscript_use": "indexed_gallery",
+    "max_dimension_px": 1241,
+    "min_dimension_px": 705,
+    "readability_status": "gallery",
+    "width_px": 1241
+  }
 }

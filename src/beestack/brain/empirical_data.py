@@ -115,6 +115,42 @@ class AntennalMovementSummary:
 
 
 @dataclass(frozen=True)
+class SzyszkaTemplateTestRow:
+    """One Wilcoxon best-match-to-template test from Szyszka supplementary Table S1."""
+
+    odor: str
+    condition_index: int
+    original_p: float
+    fdr_p: float
+    signed_rank_w: int
+
+    def as_dict(self) -> dict[str, float | int | str]:
+        return asdict(self)
+
+
+@dataclass(frozen=True)
+class SzyszkaGrangerSupplementSummary:
+    """Parsed MDPI supplementary material for Szyszka et al. Granger AL study."""
+
+    dataset_id: str
+    table_s1_row_count: int
+    odor_labels: tuple[str, ...]
+    rows: tuple[SzyszkaTemplateTestRow, ...]
+    var_connectivity_available: bool
+    source_files: tuple[str, ...] = ()
+
+    def as_dict(self) -> dict[str, object]:
+        return {
+            "dataset_id": self.dataset_id,
+            "table_s1_row_count": self.table_s1_row_count,
+            "odor_labels": self.odor_labels,
+            "rows": [row.as_dict() for row in self.rows],
+            "var_connectivity_available": self.var_connectivity_available,
+            "source_files": self.source_files,
+        }
+
+
+@dataclass(frozen=True)
 class WaggleFollowerTrack:
     """Per-follower trajectory summary from dance-following antennal data."""
 
@@ -226,11 +262,16 @@ def parse_paoli_matlab_payload(payload: Mapping[str, Any]) -> EmpiricalCalciumDa
     arrays = _bee_entries_to_arrays(bee_entries)
     if not arrays:
         raise ValueError("Paoli payload must contain at least one db.bee array")
+    max_glomeruli = max(int(array.shape[0]) for array in arrays)
     normalized = []
     for array in arrays:
         if array.ndim != 4:
             raise ValueError("each Paoli db.bee entry must be glomerulus x odor x trial x time")
-        normalized.append(np.moveaxis(np.asarray(array, dtype=float), 0, -1))
+        padded = array
+        if array.shape[0] < max_glomeruli:
+            pad_width = ((0, max_glomeruli - array.shape[0]), (0, 0), (0, 0), (0, 0))
+            padded = np.pad(array, pad_width, mode="constant", constant_values=np.nan)
+        normalized.append(np.moveaxis(np.asarray(padded, dtype=float), 0, -1))
     traces = np.stack(normalized, axis=0)
     fs = _scalar_or_mean(_field(db, "fs", 100.0))
     # If upstream label vectors are absent or length-mismatched we fall back to

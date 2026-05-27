@@ -1,0 +1,610 @@
+{
+  "chart_type": "schematic",
+  "edges": [
+    {
+      "kind": "structural_tract",
+      "source": "neuropil:antennal_lobe",
+      "target": "neuropil:mushroom_body"
+    },
+    {
+      "kind": "structural_tract",
+      "source": "neuropil:antennal_lobe",
+      "target": "neuropil:central_complex"
+    },
+    {
+      "kind": "structural_tract",
+      "source": "neuropil:mushroom_body",
+      "target": "neuropil:central_complex"
+    },
+    {
+      "kind": "structural_tract",
+      "source": "tract:tract:act-antennocerebralis",
+      "target": "neuropil:central_complex"
+    },
+    {
+      "kind": "structural_tract",
+      "source": "tract:tract:alf1-al-mb",
+      "target": "neuropil:mushroom_body"
+    },
+    {
+      "kind": "structural_tract",
+      "source": "tract:tract:pe1-pn-mb-intrinsic",
+      "target": "neuropil:central_complex"
+    }
+  ],
+  "figure_path": "output/figures/empirical/connectome_structural_graph.png",
+  "nodes": [
+    {
+      "id": "neuron:hsb-vrml-act:hideorshow_24",
+      "label": "hideOrShow_24",
+      "x": -0.8172442136519303,
+      "y": 0.583185712358694
+    },
+    {
+      "id": "neuron:hsb-vrml-act:hideorshow_25",
+      "label": "hideOrShow_25",
+      "x": -0.464523747349402,
+      "y": 0.7784107102224936
+    },
+    {
+      "id": "neuron:hsb-vrml-act:hideorshow_26",
+      "label": "hideOrShow_26",
+      "x": 0.9792807101021965,
+      "y": 0.12168727756372856
+    },
+    {
+      "id": "neuron:hsb-vrml-act:hideorshow_27",
+      "label": "hideOrShow_27",
+      "x": -0.013985587067794037,
+      "y": -0.9756686345951779
+    },
+    {
+      "id": "neuron:hsb-vrml-act:hideorshow_28",
+      "label": "hideOrShow_28",
+      "x": -0.8008048660619577,
+      "y": 0.41333811707312457
+    },
+    {
+      "id": "neuron:hsb-vrml-act:hideshowobject_24",
+      "label": "hideShowObject_24",
+      "x": 0.6523769655785197,
+      "y": 0.6773331013942515
+    },
+    {
+      "id": "neuron:hsb-vrml-act:hideshowobject_25",
+      "label": "hideShowObject_25",
+      "x": -0.38443167710865417,
+      "y": -0.9051949626760781
+    },
+    {
+      "id": "neuron:hsb-vrml-act:hideshowobject_26",
+      "label": "hideShowObject_26",
+      "x": -0.4195290927404532,
+      "y": 0.8925412113707266
+    },
+    {
+      "id": "neuron:hsb-vrml-act:hideshowobject_27",
+      "label": "hideShowObject_27",
+      "x": -0.9134463666153794,
+      "y": -0.18809530127041496
+    },
+    {
+      "id": "neuron:hsb-vrml-act:hideshowobject_28",
+      "label": "hideShowObject_28",
+      "x": 0.7581287375619656,
+      "y": -0.7136476318920948
+    },
+    {
+      "id": "neuron:hsb-vrml-act:mouseclickonsurface_24",
+      "label": "mouseClickOnSurfac",
+      "x": 0.15316523729740958,
+      "y": 0.9706043239767435
+    },
+    {
+      "id": "neuron:hsb-vrml-act:mouseclickonsurface_25",
+      "label": "mouseClickOnSurfac",
+      "x": -0.8923332641323202,
+      "y": 0.24575018608572582
+    },
+    {
+      "id": "neuron:hsb-vrml-act:mouseclickonsurface_26",
+      "label": "mouseClickOnSurfac",
+      "x": 0.8461767440314332,
+      "y": -0.5487275235445264
+    },
+    {
+      "id": "neuron:hsb-vrml-act:mouseclickonsurface_27",
+      "label": "mouseClickOnSurfac",
+      "x": 0.19492555360923516,
+      "y": 0.8913952041517923
+    },
+    {
+      "id": "neuron:hsb-vrml-act:mouseclickonsurface_28",
+      "label": "mouseClickOnSurfac",
+      "x": 0.8791658203870352,
+      "y": -0.10180425913548408
+    },
+    {
+      "id": "neuron:hsb-vrml-act:navigator_info",
+      "label": "Navigator_Info",
+      "x": -0.9346838124643506,
+      "y": 0.051526362534268504
+    },
+    {
+      "id": "neuron:hsb-vrml-act:object",
+      "label": "Object",
+      "x": -0.314918180893817,
+      "y": 0.766041586940699
+    },
+    {
+      "id": "neuron:hsb-vrml-act:toggeldobject_24",
+      "label": "toggeldObject_24",
+      "x": -0.3276343195716459,
+      "y": 0.895798761160467
+    },
+    {
+      "id": "neuron:hsb-vrml-act:toggeldobject_25",
+      "label": "toggeldObject_25",
+      "x": 0.8083728581542334,
+      "y": -0.47635740038881813
+    },
+    {
+      "id": "neuron:hsb-vrml-act:toggeldobject_26",
+      "label": "toggeldObject_26",
+      "x": 0.3753091459295031,
+      "y": -0.8224631401930422
+    },
+    {
+      "id": "neuron:hsb-vrml-act:toggeldobject_27",
+      "label": "toggeldObject_27",
+      "x": -0.19475178379251026,
+      "y": -0.8648701172929608
+    },
+    {
+      "id": "neuron:hsb-vrml-act:toggeldobject_28",
+      "label": "toggeldObject_28",
+      "x": 0.6675706027371557,
+      "y": -0.6015493835626688
+    },
+    {
+      "id": "neuron:hsb-vrml-act:viewfrom",
+      "label": "viewFrom",
+      "x": -0.009780752736382098,
+      "y": 0.8803962864362249
+    },
+    {
+      "id": "neuron:hsb-vrml-alf1:hideorshow_21",
+      "label": "hideOrShow_21",
+      "x": -0.1829222487828592,
+      "y": 0.9530588641102573
+    },
+    {
+      "id": "neuron:hsb-vrml-alf1:hideshowobject_21",
+      "label": "hideShowObject_21",
+      "x": -0.7300614231075011,
+      "y": 0.6339343372969664
+    },
+    {
+      "id": "neuron:hsb-vrml-alf1:mouseclickonsurface_21",
+      "label": "mouseClickOnSurfac",
+      "x": 0.5016108551862792,
+      "y": -0.667732702315261
+    },
+    {
+      "id": "neuron:hsb-vrml-alf1:navigator_info",
+      "label": "Navigator_Info",
+      "x": 0.8089064444839167,
+      "y": 0.3269377203504578
+    },
+    {
+      "id": "neuron:hsb-vrml-alf1:object",
+      "label": "Object",
+      "x": -0.23554773662123957,
+      "y": -0.9745506385564005
+    },
+    {
+      "id": "neuron:hsb-vrml-alf1:toggeldobject_21",
+      "label": "toggeldObject_21",
+      "x": -0.9024286808622803,
+      "y": 0.40243247161108686
+    },
+    {
+      "id": "neuron:hsb-vrml-alf1:viewfrom",
+      "label": "viewFrom",
+      "x": 0.4134514153183081,
+      "y": 0.7761381118046781
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:dragsensorx",
+      "label": "DragSensorX",
+      "x": 0.9492120875632091,
+      "y": 0.27935173258016704
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:dragsensory",
+      "label": "DragSensorY",
+      "x": -0.9398940387795753,
+      "y": -0.33677114026383476
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:dragsensorz",
+      "label": "DragSensorZ",
+      "x": 0.19378741263454274,
+      "y": -0.9031403606976747
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:hideorshow_25",
+      "label": "hideOrShow_25",
+      "x": 0.7582779652720841,
+      "y": 0.7130585132349486
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:hideshowobject_25",
+      "label": "hideShowObject_25",
+      "x": 0.9438571190185318,
+      "y": 0.0165209180296514
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:imageboundingbox",
+      "label": "imageBoundingBox",
+      "x": 0.6566041405095264,
+      "y": -0.7500740219000133
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:mouseclickonsurface_25",
+      "label": "mouseClickOnSurfac",
+      "x": -0.6194565357458829,
+      "y": -0.5844138973538442
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:navigator_info",
+      "label": "Navigator_Info",
+      "x": 0.901273958117971,
+      "y": 0.110344338998149
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:object",
+      "label": "Object",
+      "x": -0.8820679659750168,
+      "y": -0.3897367784992709
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:setxslicenumber",
+      "label": "setXSliceNumber",
+      "x": -0.535291974352311,
+      "y": -0.7521316031241743
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:setyslicenumber",
+      "label": "setYSliceNumber",
+      "x": -0.9472204717700792,
+      "y": -0.06782860193458265
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:setzslicenumber",
+      "label": "setZSliceNumber",
+      "x": -0.23926701811537127,
+      "y": 0.8905994283203986
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:toggeldobject_25",
+      "label": "toggeldObject_25",
+      "x": 0.8983300698001393,
+      "y": 0.2193827874785035
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:toseletedxslice",
+      "label": "toSeletedXSlice",
+      "x": -0.10898770371565505,
+      "y": 0.9164068577518322
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:toseletedyslice",
+      "label": "toSeletedYSlice",
+      "x": 0.8920594425548241,
+      "y": 0.3777770944539579
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:toseletedzslice",
+      "label": "toSeletedZSlice",
+      "x": 0.41524984179758834,
+      "y": 0.9124060858775115
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:viewfrom",
+      "label": "viewFrom",
+      "x": -0.7005517856229002,
+      "y": 0.7527189667951564
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:x_axis",
+      "label": "X_axis",
+      "x": -0.7953201798657518,
+      "y": -0.4336457740542787
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:x_slicercoords",
+      "label": "X_SlicerCoords",
+      "x": 0.8308680751781485,
+      "y": 0.4589849296025578
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:xslicer",
+      "label": "xSlicer",
+      "x": -0.910324822525987,
+      "y": 0.3179251712331583
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:y_axis",
+      "label": "Y_axis",
+      "x": -0.9548611089453758,
+      "y": -0.25195309720756065
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:y_slicercoords",
+      "label": "Y_SlicerCoords",
+      "x": 0.9055969081359393,
+      "y": -0.23517645288608374
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:z_axis",
+      "label": "Z_axis",
+      "x": 0.54831281715109,
+      "y": 0.7216209092651711
+    },
+    {
+      "id": "neuron:hsb-vrml-atlas:z_slicercoords",
+      "label": "Z_SlicerCoords",
+      "x": 0.7485701267229641,
+      "y": 0.6100483289572423
+    },
+    {
+      "id": "neuron:hsb-vrml-pe1-pn:hideorshow_20",
+      "label": "hideOrShow_20",
+      "x": -1.0,
+      "y": 0.011045407642387569
+    },
+    {
+      "id": "neuron:hsb-vrml-pe1-pn:hideshowobject_20",
+      "label": "hideShowObject_20",
+      "x": -0.1252720499459345,
+      "y": -0.9748990756743117
+    },
+    {
+      "id": "neuron:hsb-vrml-pe1-pn:mouseclickonsurface_20",
+      "label": "mouseClickOnSurfac",
+      "x": 0.6972240031615665,
+      "y": 0.500521634997429
+    },
+    {
+      "id": "neuron:hsb-vrml-pe1-pn:navigator_info",
+      "label": "Navigator_Info",
+      "x": 0.6201735071066046,
+      "y": 0.798179447908657
+    },
+    {
+      "id": "neuron:hsb-vrml-pe1-pn:object",
+      "label": "Object",
+      "x": -0.6174626887401065,
+      "y": -0.7621975307540934
+    },
+    {
+      "id": "neuron:hsb-vrml-pe1-pn:toggeldobject_20",
+      "label": "toggeldObject_20",
+      "x": 0.2754487578591937,
+      "y": -0.9249014308227143
+    },
+    {
+      "id": "neuron:hsb-vrml-pe1-pn:viewfrom",
+      "label": "viewFrom",
+      "x": -0.7504485143422179,
+      "y": 0.5307600599986666
+    },
+    {
+      "id": "neuropil:antennal_lobe",
+      "label": "antennal lobe",
+      "x": -0.6348380806644974,
+      "y": 0.6170523527850613
+    },
+    {
+      "id": "neuropil:cb",
+      "label": "Central Body",
+      "x": 0.4646956854480105,
+      "y": -0.9108889626980121
+    },
+    {
+      "id": "neuropil:central_complex",
+      "label": "central complex",
+      "x": 0.07787025812705631,
+      "y": 0.9265199612962489
+    },
+    {
+      "id": "neuropil:l-al",
+      "label": "left Antennal Lobe",
+      "x": 0.9781947923975017,
+      "y": -0.18522995984844645
+    },
+    {
+      "id": "neuropil:l-latbr",
+      "label": "left lateral Basal",
+      "x": -0.5360628287749276,
+      "y": 0.8412376897921023
+    },
+    {
+      "id": "neuropil:l-latcollar",
+      "label": "left lateral Colla",
+      "x": 0.897528008086126,
+      "y": -0.42672150434308304
+    },
+    {
+      "id": "neuropil:l-latlip",
+      "label": "left lateral Lip",
+      "x": -0.5533145632510439,
+      "y": 0.6936421030940428
+    },
+    {
+      "id": "neuropil:l-lob",
+      "label": "left Lobula",
+      "x": 0.7696643983776565,
+      "y": -0.6177822297763843
+    },
+    {
+      "id": "neuropil:l-med",
+      "label": "left Medulla",
+      "x": 0.34984526840238656,
+      "y": 0.8748619074054996
+    },
+    {
+      "id": "neuropil:l-medbr",
+      "label": "left medial Basal ",
+      "x": 0.07029678059386199,
+      "y": -0.9428308476636159
+    },
+    {
+      "id": "neuropil:l-medcollar",
+      "label": "left medial Collar",
+      "x": -0.877048609289314,
+      "y": -0.4940918435810449
+    },
+    {
+      "id": "neuropil:l-medlip",
+      "label": "left medial Lip",
+      "x": 0.3557987832220764,
+      "y": -0.9433557741739023
+    },
+    {
+      "id": "neuropil:l-vmb",
+      "label": "left ventral Mushr",
+      "x": -0.9955542045656285,
+      "y": -0.13760370792889076
+    },
+    {
+      "id": "neuropil:mushroom_body",
+      "label": "mushroom body",
+      "x": -0.6506216991918535,
+      "y": -0.42554081013714196
+    },
+    {
+      "id": "neuropil:neuropil",
+      "label": "neuropil",
+      "x": -0.9823272671747855,
+      "y": 0.15527576080718308
+    },
+    {
+      "id": "neuropil:optic_lobe",
+      "label": "optic lobe",
+      "x": 0.8339136026776333,
+      "y": -0.3368967803272372
+    },
+    {
+      "id": "neuropil:pl-sog",
+      "label": "Protocerebral Lobe",
+      "x": -0.7019220793485833,
+      "y": -0.6491156645156936
+    },
+    {
+      "id": "neuropil:r-al",
+      "label": "right Antennal Lob",
+      "x": -0.019416537729870547,
+      "y": 0.9756445269054103
+    },
+    {
+      "id": "neuropil:r-latbr",
+      "label": "right lateral Basa",
+      "x": 0.9549538756445749,
+      "y": -0.3294986732354152
+    },
+    {
+      "id": "neuropil:r-latcollar",
+      "label": "right lateral Coll",
+      "x": -0.898683957329497,
+      "y": 0.5049887064971221
+    },
+    {
+      "id": "neuropil:r-latlip",
+      "label": "right lateral Lip",
+      "x": 0.9678180562347849,
+      "y": -0.07245416481601813
+    },
+    {
+      "id": "neuropil:r-lob",
+      "label": "right Lobula",
+      "x": 0.5107643448537473,
+      "y": 0.8349065558883461
+    },
+    {
+      "id": "neuropil:r-med",
+      "label": "right Medulla",
+      "x": 0.27230733730266626,
+      "y": 0.9198212414680632
+    },
+    {
+      "id": "neuropil:r-medbr",
+      "label": "right medial Basal",
+      "x": -0.8184984288783036,
+      "y": -0.5872588625105202
+    },
+    {
+      "id": "neuropil:r-medcollar",
+      "label": "right medial Colla",
+      "x": -0.48964878486008967,
+      "y": -0.8517631200392569
+    },
+    {
+      "id": "neuropil:r-medlip",
+      "label": "right medial Lip",
+      "x": 0.6079763331403393,
+      "y": -0.8393229189114799
+    },
+    {
+      "id": "neuropil:r-vmb",
+      "label": "right ventral Mush",
+      "x": 0.15256779916035942,
+      "y": -0.9703547880022292
+    },
+    {
+      "id": "tract:hsb-vrml-act",
+      "label": "VRML atlas with an",
+      "x": -0.40689029549764183,
+      "y": -0.7798625098653046
+    },
+    {
+      "id": "tract:hsb-vrml-alf1",
+      "label": "VRML atlas with AL",
+      "x": -0.9277084525293634,
+      "y": 0.1673760178005812
+    },
+    {
+      "id": "tract:hsb-vrml-atlas",
+      "label": "VRML Honeybee Atla",
+      "x": -0.04972848803474833,
+      "y": -0.8932707069160942
+    },
+    {
+      "id": "tract:hsb-vrml-pe1-pn",
+      "label": "VRML atlas with MB",
+      "x": 0.5160481089094022,
+      "y": -0.8202261257872102
+    },
+    {
+      "id": "tract:tract:act-antennocerebralis",
+      "label": "tract:act antennoc",
+      "x": -0.33373310257328687,
+      "y": -0.18890935674134618
+    },
+    {
+      "id": "tract:tract:alf1-al-mb",
+      "label": "tract:alf1 al mb",
+      "x": -0.3258821078774641,
+      "y": -0.8834220363696602
+    },
+    {
+      "id": "tract:tract:pe1-pn-mb-intrinsic",
+      "label": "tract:pe1 pn mb in",
+      "x": 0.8138033440342357,
+      "y": 0.584443025475769
+    }
+  ],
+  "schema": "beestack.figure_data.v1",
+  "title": "BeeBrain structural projectome"
+}

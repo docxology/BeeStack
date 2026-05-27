@@ -1,4 +1,4 @@
-# Scholarship and Related Work
+# Scholarship and Related Work {#sec:scholarship}
 
 ## Motivation: the colony as a coupled body–brain–mind–swarm–niche system
 
@@ -54,6 +54,103 @@ availability-gated. The manuscript therefore treats scholarship as a
 source-governed map: each source is assigned to sections and figures in
 the source-refresh ledger, and claims that need empirical payloads stay
 blocked until those payloads are present, licensed, parsed, and audited.
+See [@fig:scholarship_evidence_matrix] in [@sec:materials] for the current section and figure
+routing table. The external repository landscape in [@sec:materials] lists
+genomics, microbiome, occurrence, survey, and pesticide datasets that BeeStack
+may ingest later but does not parse today.
+
+## Colony health and compound stressors (field context)
+
+Honey bee colony health is not a single-agent problem. Colony Collapse Disorder
+(CCD) first drew public attention when managed colonies disappeared with food
+and brood left behind but few dead workers in the hive
+[@vanengelsdorp2009ccd]. Subsequent work showed co-infections, elevated
+pathogen loads, and management stressors rather than one causal agent
+[@vanengelsdorp2009ccd; @wilfert2022dwv; @highfield2009dwv]. National U.S.
+surveys continued through the Bee Informed Partnership and, more recently, the
+Auburn University / Apiary Inspectors of America programme
+[@aurell2024survey; @bruckner2023survey; @auburn2025survey], with beekeeper
+triage reports documenting unusually high commercial losses in early 2025
+[@scitotenv2025triage].
+
+Parallel field threads sharpen the motivation for a colony-state ledger rather
+than a dance-only demo. *Varroa destructor* treatment efficacy is under pressure
+from amitraz resistance [@scientificreports2026amitraz; @scitotenv2024varroameta].
+Managed U.S. stocks show low mitochondrial diversity relative to Old World ranges
+[@chen2016genomic; @cridland2017demography]. Deformed wing virus remains a major
+overwintering risk [@wilfert2022dwv; @highfield2009dwv]. BeeStack does **not**
+model Varroa titers, viral loads, or survey-derived loss rates in v0; this
+section records why those variables belong on the roadmap, not in present-tense
+results.
+
+## Genomics, transcriptomics, and brain atlases
+
+The reference genome for *Apis mellifera* now spans chromosome-length assemblies
+(HAv3.1) [@wallberg2019hav31; @honeybee2006genome] with community annotation
+through the Hymenoptera Genome Database and HymenopteraMine [@walsh2022hgd].
+Single-cell and spatial transcriptomic atlases are mapping worker-brain cell
+types and behavioural states [@g3journal2023scrna; @naturecomm2025spatialbrain].
+
+BeeStack's BeeBrain surface is anchored differently: the Honey-Bee Standard Brain
+atlas and registered empirical panels (odor maps, antennal kinematics,
+dance-follower records) supply **structural and activity summaries**, not
+connectome-scale dynamics [@brandt2005standardbrain; @rybak2010digital]. Functional
+Granger connectivity from calcium imaging [@szyszka2023granger] remains blocked
+when authors provide matrices on request only. The contrast is intentional:
+genomics and omics infrastructure define what a future assimilation layer could
+join; the current pipeline reports parseable fraction and honest blockers instead
+of synthetic connectome edges.
+
+## Gut microbiome, pathogens, and social immunity
+
+Adult worker guts carry a conserved core microbiome of bee-adapted bacterial
+clusters transmitted socially [@kwong2016gutmicrobiome; @zheng2018mbio;
+@naturecomm2025metagenomics]. Microbiome composition correlates with winter
+survival and colony genetic diversity in field studies
+[@microbiome2024winter; @lactobacilli2025winter; @geneticdiversity2022microbiome].
+Honey bees also carry a reduced individual immune gene repertoire relative to
+solitary insects, with colony-level defences including hygienic behaviour,
+royal-jelly-mediated pathogen sharing, and altruistic eviction
+[@evans2006immune; @mondet2018hygienic; @brown2021royaljelly].
+
+None of these processes are state variables in BeeStack v0. They inform the
+colony ledger and BeeNiche driver surfaces described in [@sec:roadmap]: pathogen
+loads, pesticide burden, and microbiome summaries should enter only with typed
+units, provenance, and held-out validation—not as narrative filler.
+
+## Chemical ecology and recruitment
+
+Waggle-dance scholarship now spans recruited flight paths [@riley2005flightpaths],
+follower neuroethology [@hateren2019neuroethology], social learning of dance
+form [@dong2023wagglesocial], audience effects on dance content
+[@pnas2026waggleaudience], map-like spatial memory [@menzel2005map], and
+alarm/hygienic odour triggers [@andreu2025alarmor; @mondet2018hygienic;
+@andreu2025dryad]. BeeStack's strict BeeSwarm scenes and Hadjitofi–Webb
+dance-follower empirical records sit on this literature as **interface
+witnesses**: they justify recruitment-boundary language without claiming that
+the reduced communication kernel reproduces field colony demography
+[@hadjitofi2024figshare; @hadjitofi2024currentbiology; @becher2014beehave].
+
+## Landscape, pesticides, and monitoring
+
+Sublethal neonicotinoid exposure affects cognition, immunity, and reproduction
+at field-realistic doses [@ahsan2025neonic]. Hive-matrix residue surveys and open
+government datasets document multi-pesticide burdens in wax, pollen, and bee
+bread [@glinski2024hivematrices; @epa2024hivematrices; @hisamoto2024landscape].
+Landscape structure and land use alter forage quality and nutritional value
+[@chege2025forage; @landuse2024nutrition]. RFID and apiary IoT systems can
+track individual foraging and hive telemetry at scale—useful assimilation
+targets for a colony twin, not claims BeeStack makes today.
+
+## Open data infrastructure
+
+Community repositories now index bee genomics (HGD), microbiome SRA experiments
+(BeeBiome [@rechlaval2025beebiome]), and global occurrence records (BeeBDC
+[@dorey2023beebdc]). Standardized methods live in the COLOSS BEEBOOK
+[@colossbeebook]. BeeStack treats these as **interoperability targets** recorded
+in `output/data/external_dataset_registry.json` and [@sec:materials]; they are
+not substitutes for the project's empirical BeeBrain registry until registered,
+licensed, parsed, and audited like existing Dryad and Figshare deposits.
 
 ## Five biological layers in the BeeStack specification
 
@@ -171,8 +268,8 @@ capabilities as present-tense results.
 
 ## Reading guide
 
-Readers who want a one-page mental model should start with the abstract
-and "Evidence-Typed Architecture." Readers who want to reproduce the run
-should jump to "Reproducibility." Readers evaluating fidelity claims
-should read "Discussion" and "Limitations" before "Integrated Results" so
+Readers who want a one-page mental model should start with [@sec:abstract]
+and [@sec:architecture]. Readers who want to reproduce the run
+should jump to [@sec:reproducibility]. Readers evaluating fidelity claims
+should read [@sec:discussion] and [@sec:limitations] before [@sec:integrated_results] so
 the fidelity tier of each number is visible before the number itself.

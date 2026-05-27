@@ -12,7 +12,7 @@
   "alt_text": "BeeBrain empirical completeness panel with source availability and gap markers.",
   "artifact_kind": "figure",
   "backend": "Matplotlib/pandas",
-  "caption": "BeeBrain completeness dashboard reporting available empirical channels, parser gaps, and the absence of locally parsed calcium datasets.",
+  "caption": "Matplotlib/pandas/NetworkX beebrain empirical methods completeness shows BeeBrain completeness dashboard reporting available empirical channels, parser gaps, and the absence of locally parsed calcium datasets. Generated from MethodsAnalysisReport and empirical analysis report. Sidecar validation checks raster, source routing, and registered claim tier. Does not support connectome-scale or calcium-validated dynamics.",
   "citation_keys": [
     "galizia1999glomerular",
     "brandt2005standardbrain",
@@ -40,16 +40,17 @@
   "figure_path": "output/figures/methods/beebrain_methods_empirical_completeness.png",
   "manuscript_label": "fig:brain_methods_completeness",
   "manuscript_section": "manuscript/06_methods_brain_mind.md",
+  "plot_data_path": "output/figures/methods/beebrain_methods_empirical_completeness_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 1050,
+    "height_px": 977,
     "max_intensity": 255,
-    "mean_intensity": 248.41946581582485,
+    "mean_intensity": 234.88065204077054,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 33.433499169582085,
-    "width_px": 2373
+    "std_intensity": 52.05448886443223,
+    "width_px": 1962
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
   "schema": "beestack.figure.v1",
@@ -61,5 +62,17 @@
   ],
   "title": "Beebrain Methods Empirical Completeness",
   "unsupported_inference": "Does not support connectome-scale or calcium-validated dynamics.",
-  "validation_status": "nonblank image and quality sidecar passed"
+  "validation_status": "nonblank image, quality sidecar, and plot data passed",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 2.008,
+    "figure_role": "overview",
+    "height_px": 977,
+    "label_density": "moderate",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 1962,
+    "min_dimension_px": 977,
+    "readability_status": "pass",
+    "width_px": 1962
+  }
 }

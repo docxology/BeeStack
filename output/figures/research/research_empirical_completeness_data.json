@@ -1,0 +1,21 @@
+{
+  "chart_type": "bar",
+  "figure_path": "output/figures/research/research_empirical_completeness.png",
+  "labels": [
+    "empirical-panels",
+    "calcium-datasets",
+    "honeybee-standard-brain",
+    "template-bank",
+    "figshare-hadjitofi-2024-waggle-following"
+  ],
+  "orientation": "horizontal",
+  "schema": "beestack.figure_data.v1",
+  "title": "Research empirical completeness",
+  "values": [
+    1.0,
+    0.125,
+    0.8,
+    1.0,
+    0.28875178634201437
+  ]
+}

@@ -1,4 +1,4 @@
-# Ethics and Governance
+# Ethics and Governance {#sec:ethics}
 
 BeeStack ingests public data about a living organism, and runs that
 data through a stack whose downstream applications could plausibly
@@ -32,6 +32,13 @@ the DOI, source URL, file size, and download timestamp for each local
 payload. The Hadjitofi–Webb dataset's CC BY 4.0 license is honored by
 explicit attribution in the methods analysis, in the manuscript
 sections that use the data, and in the bibliography.
+
+External repositories listed in `output/data/external_dataset_registry.json`
+(BeeBiome, BeeBDC, EPA hive matrices, survey portals) are scholarship and
+roadmap targets only in v0. SRA and open-government datasets carry their
+host terms; survey microdata must not be ingested without explicit license
+and governance review even when summary statistics are public
+[@rechlaval2025beebiome; @epa2024hivematrices; @auburn2025survey].
 
 ## Animal-research ethics
 
@@ -103,3 +110,29 @@ influence ecological, agricultural, or robotic decisions, BeeStack
 reports fidelity gaps, provenance, and current non-capabilities
 alongside every generated result. Its evidence should be visible in
 prose sections, figures, and JSON reports.
+
+## Software security and supply chain
+
+BeeStack is an offline research CLI, not a network service. Security work
+therefore targets **curated fetch**, **archive safety**, **dependency
+integrity**, and **auditability** rather than API perimeter controls.
+
+Empirical BeeBrain downloads use a single HTTPS module with a host allowlist
+(`datadryad.org`, Figshare endpoints, and the FU Berlin Virtual Honeybee
+Standard Brain mirror). Every fetch URL is validated before `urllib` access,
+and zip members are rejected when paths traverse outside the archive root.
+Configuration loads through `yaml.safe_load`; domain code under
+`src/beestack/` performs no network I/O.
+
+The repository ships a local threat model (`BeeStack-threat-model.md`) and a
+posture audit gate (`uv run python scripts/run_security_audit.py`) that checks
+registry URLs, forbidden patterns (`shell=True`, unsafe deserialization), and
+documentation presence. Nation-state and APT considerations—dependency
+substitution, FlyBody/MuJoCo toolchain tampering, and future hive API
+credentials—are enumerated there with proportional mitigations (lockfile
+discipline, render verification reports, and conservative governance prose).
+
+This section does **not** certify FedRAMP, ISO 27001, or zero-trust deployment.
+It documents the controls BeeStack actually implements today so downstream
+integrators can map gaps before coupling live colony sensors or shared
+infrastructure.

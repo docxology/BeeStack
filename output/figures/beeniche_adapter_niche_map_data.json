@@ -1,0 +1,17 @@
+{
+  "annotations": [
+    "Adapter map placing BEEHAVE-compatible colony summaries beside comb, thermal, and forage fields without claiming full hive ecology.",
+    "claim_tier=adapter_boundary_diagnostic",
+    "source_data=source refresh ledger, niche methods records, simulation records, and adapter notes"
+  ],
+  "chart_type": "schematic",
+  "figure_path": "output/figures/beeniche_adapter_niche_map.png",
+  "nodes": [
+    {
+      "id": "fig:niche_adapter_map",
+      "label": "BeeNiche adapter and niche map"
+    }
+  ],
+  "schema": "beestack.figure_data.v1",
+  "title": "BeeNiche adapter and niche map"
+}

@@ -1,7 +1,9 @@
 # API Reference
 
 BeeStack keeps domain behavior in `src/beestack/` and keeps scripts thin. The
-objects below are the stable public surface used by orchestration and tests.
+public package surface is exported lazily from `beestack/__init__.py` via
+`_public_exports.py` (203 symbols). The objects below are the stable public
+surface used by orchestration and tests.
 
 ## Core Contracts
 

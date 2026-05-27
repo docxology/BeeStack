@@ -12,7 +12,7 @@
   "alt_text": "Four-panel BeeBody telemetry dashboard with speed, wing power, energy, and cues.",
   "artifact_kind": "figure",
   "backend": "Matplotlib/pandas",
-  "caption": "BeeBody methods dashboard showing reduced telemetry, energy, wing-power, and morphology cues beside the FlyBody-backed fidelity boundary.",
+  "caption": "Matplotlib/pandas/NetworkX beebody methods telemetry dashboard shows BeeBody methods dashboard showing reduced telemetry, energy, wing-power, and morphology cues beside the FlyBody-backed fidelity boundary. Generated from MethodsAnalysisReport and simulation records. Sidecar validation checks raster, source routing, and registered claim tier. Does not calibrate honeybee biomechanics or aerodynamics.",
   "citation_keys": [
     "vaxenburg2025flybody",
     "todorov2012mujoco"
@@ -39,15 +39,16 @@
   "figure_path": "output/figures/methods/beebody_methods_telemetry_dashboard.png",
   "manuscript_label": "fig:body_methods_dashboard",
   "manuscript_section": "manuscript/05_methods_body_swarm.md",
+  "plot_data_path": "output/figures/methods/beebody_methods_telemetry_dashboard_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 1157,
+    "height_px": 1088,
     "max_intensity": 255,
-    "mean_intensity": 244.29792557304918,
+    "mean_intensity": 243.53910161138924,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 40.63569425855534,
+    "std_intensity": 42.004337629874485,
     "width_px": 1786
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
@@ -59,5 +60,17 @@
   ],
   "title": "Beebody Methods Telemetry Dashboard",
   "unsupported_inference": "Does not calibrate honeybee biomechanics or aerodynamics.",
-  "validation_status": "nonblank image and quality sidecar passed"
+  "validation_status": "nonblank image, quality sidecar, and plot data passed",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.642,
+    "figure_role": "dashboard",
+    "height_px": 1088,
+    "label_density": "dense",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 1786,
+    "min_dimension_px": 1088,
+    "readability_status": "pass",
+    "width_px": 1786
+  }
 }

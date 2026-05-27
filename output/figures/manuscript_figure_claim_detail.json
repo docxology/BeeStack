@@ -1,0 +1,80 @@
+{
+  "accessibility_checks": {
+    "background": "#FFFFFF",
+    "contrast_ratio": 17.73971700407407,
+    "foreground": "#111827",
+    "large_text_passed": true,
+    "large_text_threshold": 3.0,
+    "normal_text_passed": true,
+    "normal_text_threshold": 4.5,
+    "standard": "WCAG 2.1 AA contrast thresholds"
+  },
+  "alt_text": "Two-column detail table of registered primary figure provenance and not-supported boundaries.",
+  "artifact_kind": "figure",
+  "backend": "Matplotlib",
+  "caption": "Matplotlib beestack manuscript figure claim detail shows Split companion table listing primary figures, source-data classes, claim tiers, and unsupported-inference boundaries. Generated from figure registry and manuscript figure index. Sidecar validation checks raster, source routing, and registered claim tier. Does not add empirical evidence beyond the registered figure sidecars.",
+  "citation_keys": [
+    "wilson2017good",
+    "lamprecht2020fairsoftware"
+  ],
+  "claim_tier": "manuscript_figure_provenance_map",
+  "design_citation_keys": [
+    "rougier2014figures",
+    "cleveland1984graphical",
+    "crameri2020colour",
+    "w3c2023wcag21",
+    "wilkinson2016fair",
+    "heer2012interactive",
+    "ragan2016provenance"
+  ],
+  "design_source_dois": [
+    "10.1371/journal.pcbi.1003833",
+    "10.1080/01621459.1984.10478080",
+    "10.1038/s41467-020-19160-7",
+    "10.1038/sdata.2016.18",
+    "10.1145/2133806.2133821",
+    "10.1109/TVCG.2015.2467551"
+  ],
+  "fidelity": "reduced deterministic kernel diagnostic",
+  "figure_path": "output/figures/manuscript_figure_claim_detail.png",
+  "manuscript_label": "fig:manuscript_figure_claim_detail",
+  "manuscript_section": "manuscript/08_validation_and_figures.md",
+  "metrics": {
+    "primary_figure_count": 42
+  },
+  "plot_data_path": "output/figures/manuscript_figure_claim_detail_data.json",
+  "priority": "primary",
+  "quality": {
+    "height_px": 2014,
+    "max_intensity": 255,
+    "mean_intensity": 244.30653514075095,
+    "min_intensity": 0,
+    "mode": "RGBA",
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 36.908466359954446,
+    "width_px": 2684
+  },
+  "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+  "schema": "beestack.figure.v1",
+  "source_data": "figure registry and manuscript figure index",
+  "source_dois": [
+    "10.1371/journal.pcbi.1005510",
+    "10.3233/DS-190026"
+  ],
+  "title": "Manuscript Figure Claim Detail",
+  "unsupported_inference": "Does not add empirical evidence beyond the registered figure sidecars.",
+  "validation_status": "nonblank quality sidecar and plot data generated",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.333,
+    "figure_role": "detail",
+    "height_px": 2014,
+    "label_density": "dense",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 2684,
+    "min_dimension_px": 2014,
+    "readability_status": "pass",
+    "split_group": "manuscript_figure_claims",
+    "width_px": 2684
+  }
+}

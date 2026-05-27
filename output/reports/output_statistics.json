@@ -1,0 +1,356 @@
+{
+  "directories": {
+    "pdf": {
+      "exists": true,
+      "file_count": 12,
+      "size_mb": "5.27",
+      "total_size_bytes": 5530378,
+      "largest_files": [
+        {
+          "name": "BeeStack_combined.pdf",
+          "size_mb": "4.80",
+          "path": "pdf/BeeStack_combined.pdf"
+        },
+        {
+          "name": "_combined_manuscript.tex",
+          "size_mb": "0.16",
+          "path": "pdf/_combined_manuscript.tex"
+        },
+        {
+          "name": "_combined_manuscript.md",
+          "size_mb": "0.13",
+          "path": "pdf/_combined_manuscript.md"
+        }
+      ],
+      "extensions": {
+        ".md": 3,
+        ".log": 2,
+        ".aux": 1,
+        ".blg": 1,
+        ".bib": 1,
+        ".pdf": 1,
+        ".tex": 1,
+        ".toc": 1,
+        ".bbl": 1
+      }
+    },
+    "web": {
+      "exists": true,
+      "file_count": 22,
+      "size_mb": "0.56",
+      "total_size_bytes": 591321,
+      "largest_files": [
+        {
+          "name": "index.html",
+          "size_mb": "0.20",
+          "path": "web/index.html"
+        },
+        {
+          "name": "_combined_manuscript.md",
+          "size_mb": "0.13",
+          "path": "web/_combined_manuscript.md"
+        },
+        {
+          "name": "manuscript__05_methods_body_swarm.html",
+          "size_mb": "0.02",
+          "path": "web/manuscript__05_methods_body_swarm.html"
+        }
+      ],
+      "extensions": {
+        ".md": 3,
+        ".html": 19
+      }
+    },
+    "slides": {
+      "exists": true,
+      "file_count": 145,
+      "size_mb": "6.63",
+      "total_size_bytes": 6948143,
+      "largest_files": [
+        {
+          "name": "05_methods_body_swarm_slides.pdf",
+          "size_mb": "1.89",
+          "path": "slides/05_methods_body_swarm_slides.pdf"
+        },
+        {
+          "name": "08_validation_and_figures_slides.pdf",
+          "size_mb": "1.06",
+          "path": "slides/08_validation_and_figures_slides.pdf"
+        },
+        {
+          "name": "11_research_synthesis_slides.pdf",
+          "size_mb": "0.49",
+          "path": "slides/11_research_synthesis_slides.pdf"
+        }
+      ],
+      "extensions": {
+        ".nav": 18,
+        ".toc": 18,
+        ".tex": 19,
+        ".pdf": 18,
+        ".aux": 18,
+        ".snm": 18,
+        ".log": 18,
+        ".vrb": 16,
+        ".md": 2
+      }
+    },
+    "figures": {
+      "exists": true,
+      "file_count": 124,
+      "size_mb": "6.03",
+      "total_size_bytes": 6325973,
+      "largest_files": [
+        {
+          "name": "manuscript_figure_claim_map.png",
+          "size_mb": "0.56",
+          "path": "figures/manuscript_figure_claim_map.png"
+        },
+        {
+          "name": "beeswarm_10_beebody_collision_contact_sheet.png",
+          "size_mb": "0.41",
+          "path": "figures/renders/beeswarm_10_beebody_collision_contact_sheet.png"
+        },
+        {
+          "name": "beeswarm_waggle_dance_configured_contact_sheet.png",
+          "size_mb": "0.27",
+          "path": "figures/renders/beeswarm_waggle_dance_configured_contact_sheet.png"
+        }
+      ],
+      "extensions": {
+        ".png": 57,
+        ".json": 57,
+        ".md": 10
+      }
+    },
+    "data": {
+      "exists": true,
+      "file_count": 81,
+      "size_mb": "194.17",
+      "total_size_bytes": 203601857,
+      "largest_files": [
+        {
+          "name": "dryad-jernigan-2026-antennal-movement.zip",
+          "size_mb": "160.61",
+          "path": "data/empirical_sources/dryad-jernigan-2026-antennal-movement/dryad-jernigan-2026-antennal-movement.zip"
+        },
+        {
+          "name": "HBSGrey.zip",
+          "size_mb": "7.65",
+          "path": "data/empirical_sources/virtual-honeybee-standard-brain/HBSGrey.zip"
+        },
+        {
+          "name": "VRML.zip",
+          "size_mb": "5.69",
+          "path": "data/empirical_sources/virtual-honeybee-standard-brain/VRML.zip"
+        }
+      ],
+      "extensions": {
+        ".json": 22,
+        ".md": 24,
+        ".zip": 11,
+        ".html": 1,
+        ".csv": 23
+      }
+    },
+    "reports": {
+      "exists": true,
+      "file_count": 30,
+      "size_mb": "0.33",
+      "total_size_bytes": 349949,
+      "largest_files": [
+        {
+          "name": "documentation_audit.json",
+          "size_mb": "0.06",
+          "path": "reports/documentation_audit.json"
+        },
+        {
+          "name": "documentation_audit.md",
+          "size_mb": "0.05",
+          "path": "reports/documentation_audit.md"
+        },
+        {
+          "name": "beestack_research_report.json",
+          "size_mb": "0.04",
+          "path": "reports/beestack_research_report.json"
+        }
+      ],
+      "extensions": {
+        ".md": 18,
+        ".json": 11,
+        ".txt": 1
+      }
+    },
+    "simulations": {
+      "exists": true,
+      "file_count": 2,
+      "size_mb": "0.00",
+      "total_size_bytes": 600,
+      "largest_files": [
+        {
+          "name": "AGENTS.md",
+          "size_mb": "0.00",
+          "path": "simulations/AGENTS.md"
+        },
+        {
+          "name": "README.md",
+          "size_mb": "0.00",
+          "path": "simulations/README.md"
+        }
+      ],
+      "extensions": {
+        ".md": 2
+      }
+    },
+    "llm": {
+      "exists": true,
+      "file_count": 5,
+      "size_mb": "0.02",
+      "total_size_bytes": 18339,
+      "largest_files": [
+        {
+          "name": "source_refresh_ledger.json",
+          "size_mb": "0.01",
+          "path": "llm/source_refresh_ledger.json"
+        },
+        {
+          "name": "source_refresh_ledger.md",
+          "size_mb": "0.00",
+          "path": "llm/source_refresh_ledger.md"
+        },
+        {
+          "name": "2026-05-18-perplexity-documentation-validation-audit.md",
+          "size_mb": "0.00",
+          "path": "llm/2026-05-18-perplexity-documentation-validation-audit.md"
+        }
+      ],
+      "extensions": {
+        ".md": 4,
+        ".json": 1
+      }
+    },
+    "logs": {
+      "exists": true,
+      "file_count": 3,
+      "size_mb": "0.00",
+      "total_size_bytes": 1861,
+      "largest_files": [
+        {
+          "name": "pipeline.log",
+          "size_mb": "0.00",
+          "path": "logs/pipeline.log"
+        },
+        {
+          "name": "README.md",
+          "size_mb": "0.00",
+          "path": "logs/README.md"
+        },
+        {
+          "name": "AGENTS.md",
+          "size_mb": "0.00",
+          "path": "logs/AGENTS.md"
+        }
+      ],
+      "extensions": {
+        ".log": 1,
+        ".md": 2
+      }
+    }
+  },
+  "total_files": 424,
+  "total_size_mb": 213.02072620391846,
+  "largest_files": [
+    {
+      "name": "dryad-jernigan-2026-antennal-movement.zip",
+      "size_mb": "160.61",
+      "category": "data",
+      "path": "data/empirical_sources/dryad-jernigan-2026-antennal-movement/dryad-jernigan-2026-antennal-movement.zip"
+    },
+    {
+      "name": "HBSGrey.zip",
+      "size_mb": "7.65",
+      "category": "data",
+      "path": "data/empirical_sources/virtual-honeybee-standard-brain/HBSGrey.zip"
+    },
+    {
+      "name": "VRML.zip",
+      "size_mb": "5.69",
+      "category": "data",
+      "path": "data/empirical_sources/virtual-honeybee-standard-brain/VRML.zip"
+    },
+    {
+      "name": "BeeStack_combined.pdf",
+      "size_mb": "4.80",
+      "category": "pdf",
+      "path": "pdf/BeeStack_combined.pdf"
+    },
+    {
+      "name": "05_methods_body_swarm_slides.pdf",
+      "size_mb": "1.89",
+      "category": "slides",
+      "path": "slides/05_methods_body_swarm_slides.pdf"
+    },
+    {
+      "name": "08_validation_and_figures_slides.pdf",
+      "size_mb": "1.06",
+      "category": "slides",
+      "path": "slides/08_validation_and_figures_slides.pdf"
+    },
+    {
+      "name": "manuscript_figure_claim_map.png",
+      "size_mb": "0.56",
+      "category": "figures",
+      "path": "figures/manuscript_figure_claim_map.png"
+    },
+    {
+      "name": "11_research_synthesis_slides.pdf",
+      "size_mb": "0.49",
+      "category": "slides",
+      "path": "slides/11_research_synthesis_slides.pdf"
+    },
+    {
+      "name": "beeswarm_10_beebody_collision_contact_sheet.png",
+      "size_mb": "0.41",
+      "category": "figures",
+      "path": "figures/renders/beeswarm_10_beebody_collision_contact_sheet.png"
+    },
+    {
+      "name": "beeswarm_waggle_dance_configured_contact_sheet.png",
+      "size_mb": "0.27",
+      "category": "figures",
+      "path": "figures/renders/beeswarm_waggle_dance_configured_contact_sheet.png"
+    }
+  ],
+  "missing_expected_files": [],
+  "sizes_by_category": {
+    "pdf": 5.274179458618164,
+    "web": 0.5639276504516602,
+    "slides": 6.626265525817871,
+    "figures": 6.0329179763793945,
+    "data": 194.16986179351807,
+    "reports": 0.3337373733520508,
+    "simulations": 0.00057220458984375,
+    "llm": 0.01748943328857422,
+    "logs": 0.0017747879028320312
+  },
+  "file_counts_by_type": {
+    ".md": 68,
+    ".log": 21,
+    ".aux": 19,
+    ".blg": 1,
+    ".bib": 1,
+    ".pdf": 19,
+    ".tex": 20,
+    ".toc": 19,
+    ".bbl": 1,
+    ".html": 20,
+    ".nav": 18,
+    ".snm": 18,
+    ".vrb": 16,
+    ".png": 57,
+    ".json": 91,
+    ".zip": 11,
+    ".csv": 23,
+    ".txt": 1
+  }
+}

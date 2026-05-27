@@ -1,0 +1,48 @@
+{
+  "schema": "beestack.waggle_literature_regression.v1",
+  "passed": true,
+  "checks": [
+    {
+      "name": "hadjitofi_antenna_decoding_improvement",
+      "passed": true,
+      "observed": 0.24776741229159377,
+      "bound": "> 0 (antennae reduce vector error vs no-antennae baseline)",
+      "citation_keys": [
+        "hadjitofi2024figshare",
+        "hadjitofi2024currentbiology"
+      ],
+      "notes": "Hadjitofi\u2013Webb Figshare summary: both-antennae decoding beats no-antennae control."
+    },
+    {
+      "name": "hadjitofi_both_antennae_beat_no_antennae",
+      "passed": true,
+      "observed": 60.178485797519286,
+      "bound": "< no_antennae_mean_abs_error_deg (80.000)",
+      "citation_keys": [
+        "hadjitofi2024figshare",
+        "hadjitofi2024currentbiology"
+      ],
+      "notes": "Published follower kinematics show antenna-mediated error reduction."
+    },
+    {
+      "name": "hadjitofi_parsed_track_count",
+      "passed": true,
+      "observed": 59,
+      "bound": ">= 1 parsed follower track",
+      "citation_keys": [
+        "hadjitofi2024figshare"
+      ],
+      "notes": "Regression requires a registered local Figshare deposit parse."
+    }
+  ],
+  "literature_anchors": [
+    "hadjitofi2024figshare",
+    "hadjitofi2024currentbiology",
+    "dong2023wagglesocial",
+    "pnas2026waggleaudience"
+  ],
+  "data_sources": [
+    "output/data/waggle_follower_analysis.json",
+    "output/data/methods_analysis.json"
+  ]
+}

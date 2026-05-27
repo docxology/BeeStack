@@ -1,4 +1,4 @@
-# Integrated Results
+# Integrated Results {#sec:integrated_results}
 
 This section reports the *deterministic integrated run* — the single
 closed-loop rollout that exercises every cross-layer contract. It is
@@ -19,7 +19,7 @@ selected policy was `{{FINAL_POLICY}}`, the final body speed was
 
 The final comb occupancy fraction was {{FINAL_COMB_FRACTION}}, and the
 brood-temperature error at the final step was
-{{BROOD_TEMP_ERROR_C}} °C from the configured 34
+{{BROOD_TEMP_ERROR_C}} °C from the configured {{BROOD_TEMP_TARGET_C}}
 °C target [@kronenberg1982colonial]. The run ended
 with empirical odor label `{{FINAL_EMPIRICAL_ODOR}}` selected from the
 registered odor templates, and an empirical-alignment score of
@@ -27,11 +27,21 @@ registered odor templates, and an empirical-alignment score of
 
 ## Witness figures
 
-![Matplotlib BeeBody energy time series generated from simulation records; sidecar validation checks the raster, and the figure supports deterministic reduced-run energy accounting rather than calibrated honeybee energetics.](../figures/body_energy_timeseries.png){#fig:body_energy}
+The three witnesses below summarize the integrated run recorded in
+`output/data/run_summary.json` and `simulation_records.json`. Each figure is a
+reduced-kernel diagnostic with an explicit sidecar boundary.
 
-![Matplotlib BeeNiche comb-occupancy time series generated from simulation records; sidecar validation checks the raster, and the figure supports deterministic niche-kernel behavior rather than full hive ecology.](../figures/comb_fraction_timeseries.png){#fig:comb_fraction}
+[@fig:body_energy] traces BeeBody energy witnesses across the integrated run.
 
-![Matplotlib BeeStack module contract coverage generated from module coverage records; sidecar validation checks the raster, and the figure supports implemented-contract coverage rather than scientific validation completeness.](../figures/module_contract_coverage.png){#fig:module_coverage}
+![Matplotlib beebody energy time series shows Integrated-run BeeBody energy witness showing deterministic reduced energy accounting across control steps. Generated from output/data/simulation_records.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not calibrate honeybee energetics.](../figures/body_energy_timeseries.png){#fig:body_energy}
+
+[@fig:comb_fraction] traces BeeNiche comb occupancy across the integrated run.
+
+![Matplotlib beeniche comb occupancy time series shows Integrated-run comb-occupancy witness showing deterministic BeeNiche state changes across control steps. Generated from output/data/simulation_records.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate full hive ecology.](../figures/comb_fraction_timeseries.png){#fig:comb_fraction}
+
+[@fig:module_coverage] renders module contract coverage from the integrated run.
+
+![Matplotlib beestack module contract coverage shows Contract-coverage witness showing the implemented v0 module contracts that participate in the integrated run. Generated from output/data/module_coverage.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not prove scientific validation completeness.](../figures/module_contract_coverage.png){#fig:module_coverage}
 
 ## Artifact trace
 
@@ -96,6 +106,6 @@ Where the run touches a specific module, the relevant per-module
 results section provides the depth: BeeBody for the energetics and rendering,
 BeeBrain for the AL–MB–CX trace, BeeMind for the policy-score landscape,
 BeeSwarm for the recruitment and contact pairs, and BeeNiche for the comb and
-thermal traces. Empirical anchor data are summarized in "Empirical Results";
+thermal traces. Empirical anchor data are summarized in [@sec:empirical_results];
 the research-suite
-scorecards and known-gaps catalog are in "Research-Suite Results."
+scorecards and known-gaps catalog are in [@sec:research_synthesis].

@@ -1,0 +1,29 @@
+{
+  "chart_type": "bar",
+  "figure_path": "output/figures/research/beebrain_empirical_evidence_map.png",
+  "labels": [
+    "registered_dataset_count",
+    "empirical_panel_count",
+    "template_count",
+    "anatomy_inventory_count",
+    "mean_odor_separability",
+    "waggle_follower_confidence",
+    "brain_data_parseable_fraction",
+    "source_verified_fraction"
+  ],
+  "module": "BeeBrain",
+  "orientation": "horizontal",
+  "schema": "beestack.figure_data.v1",
+  "title": "beebrain empirical evidence map",
+  "validation_fraction": 1.0,
+  "values": [
+    10.0,
+    48.0,
+    24.0,
+    7.0,
+    0.6511059958748602,
+    0.28875178634201437,
+    0.8,
+    1.0
+  ]
+}

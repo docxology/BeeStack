@@ -1,17 +1,17 @@
 # BeeStack Project Readiness Review
 
 - Passed: `True`
-- Signposted directories: `61`
+- Signposted directories: `71`
 - Signposting passed: `True`
 - Documentation audit available: `True`
 - Documentation audit passed: `True`
 - Methods analysis available: `True`
 - Methods validation fraction: `1.000`
-- Methods figure count: `7`
+- Methods figure count: `8`
 - Stack synthesis available: `True`
 - Stack synthesis validation fraction: `1.000`
 - Stack synthesis readiness fraction: `0.932`
-- Stack synthesis figure count: `1`
+- Stack synthesis figure count: `2`
 
 ## Signposting Gaps
 
@@ -34,7 +34,6 @@
 
 ## Methods Analysis Gaps
 
-- Paoli MATLAB calcium traces are not yet local or parseable
 - Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.
 - Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset.
 - No heavyweight spiking simulator is required in the default path.
@@ -42,6 +41,7 @@
 - No learned transition model or recursive social-belief inference yet.
 - Expected free energy terms are transparent hand-calibrated witnesses.
 - Large-N colony dynamics are summarized by configured scaling rather than simulated at full population by default.
+- Strict visual scenes prove small-scene contacts, not full BEEHAVE-scale population dynamics.
 
 ## Research Known Gaps
 

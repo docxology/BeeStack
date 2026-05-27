@@ -13,7 +13,8 @@ from beestack.source_audit import (
 def test_extract_pandoc_citations_ignores_inline_code() -> None:
     text = (
         "Use `@dataclass` and `[@not_a_citation]` in code, but cite "
-        "real sources [@galizia1999glomerular; @todorov2012mujoco]."
+        "real sources [@galizia1999glomerular; @todorov2012mujoco] and "
+        "cross-refs [@fig:body_energy; @sec:integrated_results]."
     )
 
     assert extract_pandoc_citation_keys(text) == (
@@ -50,9 +51,7 @@ def test_source_audit_flags_missing_keys_and_doi_mismatches(tmp_path: Path) -> N
 
     assert audit.passed is False
     assert "missing" in audit.missing_citation_keys
-    assert audit.doi_mismatches == (
-        "present: expected 10.0000/right, found 10.0000/wrong",
-    )
+    assert audit.doi_mismatches == ("present: expected 10.0000/right, found 10.0000/wrong",)
     assert audit.unconservative_digital_twin_claims == (
         "manuscript/01_intro.md: A cited claim [@present; @missing]. A digital twin is complete.",
     )
@@ -93,6 +92,14 @@ def test_verified_scholarship_refresh_sources_are_required_and_section_mapped() 
         "riley2005flightpaths": "10.1038/nature03526",
         "landgraf2011roboticdance": "10.1371/journal.pone.0021354",
         "hateren2019neuroethology": "10.3390/insects10100336",
+        "dong2023wagglesocial": "10.1126/science.ade1702",
+        "pnas2026waggleaudience": "10.1073/pnas.2518687123",
+        "wallberg2019hav31": "10.1186/s12864-019-5639-3",
+        "walsh2022hgd": "10.1093/nar/gkab1018",
+        "rechlaval2025beebiome": "10.1186/s12859-025-06229-7",
+        "dorey2023beebdc": "10.1038/s41597-023-02626-w",
+        "vanengelsdorp2009ccd": "10.1371/journal.pone.0006481",
+        "scientificreports2026amitraz": "10.1038/s41598-026-44796-8",
     }
 
     assert required.items() <= EXPECTED_BIB_DOIS.items()
@@ -106,6 +113,21 @@ def test_verified_scholarship_refresh_sources_are_required_and_section_mapped() 
         assert row.section_targets
         assert row.figure_targets
         assert row.claim_tier in {"scholarship_anchor", "method_anchor", "validation_anchor"}
+
+
+def test_external_dataset_registry_records_are_unwired_with_blockers() -> None:
+    from beestack.source_refresh import external_dataset_registry
+
+    rows = external_dataset_registry()
+    assert len(rows) >= 8
+    assert all(not row.wired_in_beestack for row in rows)
+    assert all(row.blocker for row in rows)
+    assert {row.resource_id for row in rows} >= {
+        "beebiome_portal",
+        "hymenoptera_genome_database",
+        "beebdc_occurrence",
+        "epa_hive_matrices",
+    }
 
 
 def test_source_audit_flags_figure_registry_keys_and_dois_missing_from_bib(

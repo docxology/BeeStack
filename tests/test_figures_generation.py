@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from beestack.visualization.figure_plot_data import figure_data_path
 from beestack.visualization.figures import generate_analysis_figures
 
 
@@ -30,8 +31,9 @@ def _records() -> list[dict[str, object]]:
 def test_generate_analysis_figures_writes_pngs_and_sidecars(tmp_path: Path) -> None:
     modules = ["BeeBody", "BeeBrain", "BeeMind", "BeeSwarm", "BeeNiche"]
     paths = generate_analysis_figures(_records(), modules, tmp_path)
-    assert len(paths) == 20
+    assert len(paths) == 21
     assert tmp_path / "manuscript_figure_claim_map.png" in paths
+    assert tmp_path / "manuscript_figure_claim_detail.png" in paths
     for filename in (
         "beestack_scholarship_evidence_matrix.png",
         "beebody_beeswarm_micro_macro_calibration.png",
@@ -46,7 +48,14 @@ def test_generate_analysis_figures_writes_pngs_and_sidecars(tmp_path: Path) -> N
         sidecar = p.with_suffix(".json")
         assert sidecar.exists(), f"missing sidecar for {p}"
         assert sidecar.stat().st_size > 0
+        data_path = figure_data_path(p)
+        assert data_path.exists(), f"missing plot data for {p}"
+        data_payload = json.loads(data_path.read_text(encoding="utf-8"))
+        assert data_payload["schema"] == "beestack.figure_data.v1"
+        assert data_payload["figure_path"]
+        assert data_payload.get("chart_type") or data_payload.get("series") or data_payload.get("nodes")
         payload = json.loads(sidecar.read_text(encoding="utf-8"))
+        assert payload["plot_data_path"]
         assert payload["caption"]
         assert payload["alt_text"]
         assert payload["claim_tier"]
@@ -64,5 +73,5 @@ def test_generate_analysis_figures_empty_records(tmp_path: Path) -> None:
     # Degenerate input must still produce valid non-empty figures (defensive
     # series helpers return [default]).
     paths = generate_analysis_figures([], [], tmp_path)
-    assert len(paths) == 20
+    assert len(paths) == 21
     assert all(p.exists() and p.stat().st_size > 0 for p in paths)

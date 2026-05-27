@@ -30,6 +30,14 @@ EXPECTED_BIB_DOIS: dict[str, str] = {
     "wilkinson2016fair": "10.1038/sdata.2016.18",
     "lamprecht2020fairsoftware": "10.3233/DS-190026",
     "fair4rs2022principles": "10.1038/s41597-022-01710-x",
+    "dong2023wagglesocial": "10.1126/science.ade1702",
+    "pnas2026waggleaudience": "10.1073/pnas.2518687123",
+    "wallberg2019hav31": "10.1186/s12864-019-5639-3",
+    "walsh2022hgd": "10.1093/nar/gkab1018",
+    "rechlaval2025beebiome": "10.1186/s12859-025-06229-7",
+    "dorey2023beebdc": "10.1038/s41597-023-02626-w",
+    "vanengelsdorp2009ccd": "10.1371/journal.pone.0006481",
+    "scientificreports2026amitraz": "10.1038/s41598-026-44796-8",
 }
 
 _FIELD_RE = re.compile(
@@ -45,6 +53,7 @@ _INLINE_CODE_RE = re.compile(r"`[^`\n]*`")
 _FENCED_CODE_RE = re.compile(r"```.*?```", re.DOTALL)
 _CITATION_CLUSTER_RE = re.compile(r"\[(?:[^\]]*?@[^]]+?)\]")
 _CITATION_KEY_RE = re.compile(r"@([A-Za-z0-9_:-]+)")
+_CROSSREF_PREFIXES = ("fig:", "sec:", "eq:", "tbl:")
 _TOKEN_RE = re.compile(r"\{\{[A-Z0-9_]+\}\}")
 
 _UNSAFE_TWIN_WORDS = (
@@ -139,7 +148,9 @@ def audit_sources(
     expected_dois = dict(EXPECTED_BIB_DOIS if required_bib_dois is None else required_bib_dois)
     doi_mismatches = _doi_mismatches(bib_entries, expected_dois)
     missing_required = _missing_required_fields(bib_entries, expected_dois)
-    required_registry_dois = registry_dois if registry_dois is not None else _default_registry_dois()
+    required_registry_dois = (
+        registry_dois if registry_dois is not None else _default_registry_dois()
+    )
     represented, missing_registry = _registry_doi_coverage(bib_entries, required_registry_dois)
     figure_keys = (
         figure_registry_citation_keys
@@ -177,7 +188,11 @@ def extract_pandoc_citation_keys(text: str) -> tuple[str, ...]:
     stripped = _strip_code(text)
     keys: list[str] = []
     for cluster in _CITATION_CLUSTER_RE.findall(stripped):
-        keys.extend(_CITATION_KEY_RE.findall(cluster))
+        keys.extend(
+            key
+            for key in _CITATION_KEY_RE.findall(cluster)
+            if not key.startswith(_CROSSREF_PREFIXES)
+        )
     return tuple(dict.fromkeys(keys))
 
 
@@ -333,11 +348,12 @@ def _unconservative_digital_twin_claims(
             lowered = _claim_scan_text(clean).lower()
             if "digital" not in lowered or "twin" not in lowered:
                 continue
-            if not any(re.search(rf"\b{re.escape(word)}\b", lowered) for word in _UNSAFE_TWIN_WORDS):
+            if not any(
+                re.search(rf"\b{re.escape(word)}\b", lowered) for word in _UNSAFE_TWIN_WORDS
+            ):
                 continue
             if any(
-                re.search(rf"\b{re.escape(word)}\b", lowered)
-                for word in _CONSERVATIVE_TWIN_WORDS
+                re.search(rf"\b{re.escape(word)}\b", lowered) for word in _CONSERVATIVE_TWIN_WORDS
             ):
                 continue
             claims.append(f"{relative}: {clean}")

@@ -261,6 +261,7 @@
         ],
         "sample": "8 bees, 3 odorants, 20 trials, glomerulus-by-odorant-by-trial-by-time arrays",
         "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.qbzkh18sc",
+        "supplementary_downloads": [],
         "title": "Honey bee antennal lobe calcium imaging",
         "variables": [
           "deltaF_over_F",
@@ -280,6 +281,7 @@
         ],
         "sample": "30 odorants with identified glomerular outlines compared across animals",
         "source_url": "https://www.nature.com/articles/nn0599_473",
+        "supplementary_downloads": [],
         "title": "The glomerular code for odor representation in Apis mellifera",
         "variables": [
           "odor_identity",
@@ -301,6 +303,7 @@
         ],
         "sample": "average-shape atlas for registering structural and functional data",
         "source_url": "https://www.bcp.fu-berlin.de/en/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/index.html",
+        "supplementary_downloads": [],
         "title": "Virtual Honeybee Standard Brain Atlas",
         "variables": [
           "neuropil_surfaces",
@@ -320,6 +323,12 @@
         ],
         "sample": "10 atlas-identified glomeruli, 30 repetitions, 6 odorants, 100 Hz windows",
         "source_url": "https://www.mdpi.com/2075-4450/14/6/539",
+        "supplementary_downloads": [
+          [
+            "insects-14-00539-s001.zip",
+            "https://mdpi-res.com/d_attachment/insects/insects-14-00539/article_deploy/insects-14-00539-s001.zip"
+          ]
+        ],
         "title": "Transient calcium dynamics in the honey bee antennal lobe network",
         "variables": [
           "negative_deltaF_over_F",
@@ -338,6 +347,7 @@
         ],
         "sample": "large-type, small-type, class-II, and middle-type Kenyon cell evidence",
         "source_url": "https://zoologicalletters.biomedcentral.com/articles/10.1186/s40851-016-0051-6",
+        "supplementary_downloads": [],
         "title": "Gene expression profiles and neural activities of honeybee Kenyon cell subtypes",
         "variables": [
           "KC_subtype",
@@ -359,6 +369,7 @@
         ],
         "sample": "Excel files with antennal-lobe, lateral-horn, and mushroom-body calyx odor responses",
         "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.83bk3j9tt",
+        "supplementary_downloads": [],
         "title": "Multisite imaging of neural activity using GCaMP6f in the honey bee",
         "variables": [
           "S2_Data.xlsx",
@@ -380,6 +391,7 @@
         ],
         "sample": "supplementary workbook for AmOR136 and AmOR11 receptor tuning",
         "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.rv15dv4k2",
+        "supplementary_downloads": [],
         "title": "Identification of two odorant receptors tuned to alarm pheromone in Apis mellifera",
         "variables": [
           "odorant",
@@ -401,6 +413,7 @@
         ],
         "sample": "CSV with bee, plume, frame, antennal tip/base positions, theta, phi, and odor detector columns",
         "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.qjq2bvqw6",
+        "supplementary_downloads": [],
         "title": "Antennal movement responses to different plume structures in Apis mellifera",
         "variables": [
           "Bee",
@@ -425,6 +438,7 @@
         ],
         "sample": "Excel workbooks for colonies, individuals, and pharmacological manipulation",
         "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.rj10c",
+        "supplementary_downloads": [],
         "title": "Cooperative defence operates by social modulation of biogenic amine levels in the honeybee brain",
         "variables": [
           "serotonin",
@@ -447,6 +461,7 @@
         ],
         "sample": "Apis mellifera nestmate follower positions, antenna angles, binned features, and dance-decoding model errors",
         "source_url": "https://figshare.com/articles/dataset/Honeybee_antennal_positioning_data_when_following_dances/24715977",
+        "supplementary_downloads": [],
         "title": "Honeybee antennal positioning data when following dances",
         "variables": [
           "angle_to_dancer_deg",
@@ -770,5 +785,5 @@
       "target": "BeeBody"
     }
   ],
-  "version": "0.1.0"
+  "version": "1.0.0"
 }

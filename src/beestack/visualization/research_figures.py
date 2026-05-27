@@ -5,13 +5,23 @@ from __future__ import annotations
 from pathlib import Path
 
 import matplotlib.pyplot as plt
-import networkx as nx
 import numpy as np
 import pandas as pd
+from matplotlib.patches import FancyArrowPatch, Rectangle
 
 from ..research import ResearchSuiteReport
-from .figure_metadata import assert_nonblank_quality, write_figure_sidecar
-from .style import PALETTE, apply_panel_style, module_color, style_context
+from .figure_metadata import assert_nonblank_quality
+from .figure_output import finalize_static_figures
+from .figure_plot_specs import research_plot_data
+from .style import (
+    add_figure_note,
+    apply_panel_style,
+    bounded_text,
+    module_color,
+    status_color,
+    style_context,
+    wrap_label,
+)
 
 
 def generate_research_figures(report: ResearchSuiteReport, output_dir: Path) -> list[Path]:
@@ -24,6 +34,7 @@ def generate_research_figures(report: ResearchSuiteReport, output_dir: Path) -> 
             _validation_bars(report, output_dir / "research_validation_scorecard.png"),
             _sensitivity_sweeps(report, output_dir / "research_sensitivity_sweeps.png"),
             _evidence_network(report, output_dir / "research_fidelity_evidence_network.png"),
+            _evidence_detail(report, output_dir / "research_evidence_detail.png"),
             _visualization_inventory(report, output_dir / "research_visualization_inventory.png"),
             _empirical_completeness(report, output_dir / "research_empirical_completeness.png"),
             _module_metric_bars(report, "BeeBody", output_dir / "beebody_method_diagnostics.png"),
@@ -40,15 +51,21 @@ def generate_research_figures(report: ResearchSuiteReport, output_dir: Path) -> 
         ]
     for path in paths:
         _validate_nonblank_image(path)
-        write_figure_sidecar(
-            path,
-            title=path.stem.replace("_", " ").title(),
-            backend="Matplotlib/pandas/NetworkX",
-            fidelity=_research_figure_fidelity(path.name),
-            source_data="ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
-            validation_status="nonblank image and quality sidecar passed",
-            regeneration_command="uv run python scripts/run_research_suite.py",
-        )
+
+    def _plot_data(path: Path) -> dict[str, object]:
+        return research_plot_data(path, report=report)
+
+    def _sidecar(path: Path) -> dict[str, object]:
+        return {
+            "title": path.stem.replace("_", " ").title(),
+            "backend": "Matplotlib/pandas/NetworkX",
+            "fidelity": _research_figure_fidelity(path.name),
+            "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+            "validation_status": "nonblank image, quality sidecar, and plot data passed",
+            "regeneration_command": "uv run python scripts/run_research_suite.py",
+        }
+
+    finalize_static_figures(paths, plot_data_for=_plot_data, sidecar_for=_sidecar)
     return paths
 
 
@@ -152,7 +169,12 @@ def _scorecard_heatmap(report: ResearchSuiteReport, path: Path) -> Path:
     fig, ax = plt.subplots(figsize=(10.5, 5.9))
     image = ax.imshow(normalized.to_numpy(), aspect="auto", cmap="viridis", vmin=0, vmax=1)
     ax.set_title("BeeStack dense research method scorecard", loc="left")
-    ax.set_xticks(range(len(normalized.columns)), normalized.columns, rotation=25, ha="right")
+    ax.set_xticks(
+        range(len(normalized.columns)),
+        [wrap_label(column.replace("_", " "), width=16, max_lines=2) for column in normalized.columns],
+        rotation=20,
+        ha="right",
+    )
     ax.set_yticks(range(len(normalized.index)), normalized.index)
     for row_index, module in enumerate(frame.index):
         for column_index, column in enumerate(frame.columns):
@@ -167,6 +189,15 @@ def _scorecard_heatmap(report: ResearchSuiteReport, path: Path) -> Path:
                 color="white" if normalized.loc[module, column] < 0.58 else "black",
             )
     fig.colorbar(image, ax=ax, label="Column-normalized summary score")
+    bounded_text(
+        ax,
+        0.02,
+        -0.24,
+        "Read as a provenance scorecard: normalized cells support gap visibility and readiness review, not biological predictive validation.",
+        width=96,
+        max_lines=2,
+        fontsize=8,
+    )
     fig.tight_layout()
     fig.savefig(path, dpi=170)
     plt.close(fig)
@@ -224,33 +255,200 @@ def _sensitivity_sweeps(report: ResearchSuiteReport, path: Path) -> Path:
 
 
 def _evidence_network(report: ResearchSuiteReport, path: Path) -> Path:
-    graph = nx.DiGraph()
-    for scorecard in report.module_scorecards:
-        graph.add_node(scorecard.module, kind="module")
-        for evidence_label in scorecard.evidence:
-            evidence_node = f"{scorecard.module}:evidence"
-            graph.add_node(evidence_node, kind="evidence")
-            graph.add_edge(scorecard.module, evidence_node, label=evidence_label[:24])
-    for empirical_record in report.empirical_evidence:
-        graph.add_node(empirical_record.dataset_id, kind="empirical")
-        graph.add_edge(
-            empirical_record.dataset_id, "BeeBrain", label=empirical_record.integration_target
-        )
-    positions = nx.spring_layout(graph, seed=13)
-    colors = [
-        module_color("BeeBody")
-        if graph.nodes[node]["kind"] == "module"
-        else module_color("BeeBrain")
-        if graph.nodes[node]["kind"] == "empirical"
-        else PALETTE[5]
-        for node in graph.nodes
-    ]
-    fig, ax = plt.subplots(figsize=(10, 7))
-    nx.draw_networkx_edges(graph, positions, ax=ax, alpha=0.35, arrows=True)
-    nx.draw_networkx_nodes(graph, positions, node_color=colors, node_size=1050, ax=ax)
-    nx.draw_networkx_labels(graph, positions, font_size=7, ax=ax)
-    ax.set_title("BeeStack fidelity and empirical evidence network")
+    positions = {
+        "BeeBody": (0.16, 0.68),
+        "BeeBrain": (0.38, 0.74),
+        "BeeMind": (0.60, 0.68),
+        "BeeSwarm": (0.28, 0.34),
+        "BeeNiche": (0.50, 0.34),
+    }
+    evidence_counts = {scorecard.module: len(scorecard.evidence) for scorecard in report.module_scorecards}
+    gap_counts = {scorecard.module: len(scorecard.known_gaps) for scorecard in report.module_scorecards}
+    fig, ax = plt.subplots(figsize=(10.2, 6.4))
     ax.axis("off")
+    ax.set_title("BeeStack evidence network overview", loc="left", pad=12)
+    for scorecard in report.module_scorecards:
+        x, y = positions.get(scorecard.module, (0.5, 0.5))
+        radius = 950 + evidence_counts[scorecard.module] * 90
+        ax.scatter(
+            [x],
+            [y],
+            s=radius,
+            color=module_color(scorecard.module),
+            edgecolor="#111827",
+            linewidth=1.0,
+            alpha=0.92,
+            transform=ax.transAxes,
+            zorder=3,
+        )
+        ax.text(
+            x,
+            y + 0.01,
+            scorecard.module,
+            transform=ax.transAxes,
+            ha="center",
+            va="center",
+            fontsize=9.2,
+            fontweight="bold",
+            color="white",
+            zorder=4,
+        )
+        ax.text(
+            x,
+            y - 0.095,
+            f"{evidence_counts[scorecard.module]} evidence\n{gap_counts[scorecard.module]} gaps",
+            transform=ax.transAxes,
+            ha="center",
+            va="top",
+            fontsize=8,
+            color="#334155",
+        )
+    for source, target in (
+        ("BeeBody", "BeeBrain"),
+        ("BeeBrain", "BeeMind"),
+        ("BeeMind", "BeeSwarm"),
+        ("BeeSwarm", "BeeNiche"),
+        ("BeeNiche", "BeeBody"),
+    ):
+        if source not in positions or target not in positions:
+            continue
+        ax.add_patch(
+            FancyArrowPatch(
+                positions[source],
+                positions[target],
+                transform=ax.transAxes,
+                arrowstyle="-|>",
+                mutation_scale=14,
+                lw=1.2,
+                color="#64748B",
+                alpha=0.65,
+                connectionstyle="arc3,rad=0.10",
+                zorder=1,
+            )
+        )
+    empirical_count = len(report.empirical_evidence)
+    bounded_text(
+        ax,
+        0.70,
+        0.78,
+        f"Empirical records route to BeeBrain: {empirical_count}. Detail companion lists source rows and integration targets.",
+        width=38,
+        max_lines=4,
+        fontsize=8.4,
+        facecolor="#F8FAFC",
+    )
+    bounded_text(
+        ax,
+        0.70,
+        0.42,
+        "Boundary: edge arrows show provenance routing and reduced-stack handoff, not predictive biological validation.",
+        width=38,
+        max_lines=4,
+        fontsize=8.4,
+        facecolor="#FFF7ED",
+        edgecolor="#FED7AA",
+    )
+    fig.tight_layout()
+    fig.savefig(path, dpi=170)
+    plt.close(fig)
+    return path
+
+
+def _evidence_detail(report: ResearchSuiteReport, path: Path) -> Path:
+    rows: list[dict[str, str]] = []
+    for scorecard in report.module_scorecards:
+        rows.append(
+            {
+                "module": scorecard.module,
+                "kind": "scorecard",
+                "item": "; ".join(scorecard.evidence[:2]),
+                "status": f"{scorecard.validation_fraction:.2f} validation",
+                "boundary": "; ".join(scorecard.known_gaps[:2]) or "explicit gaps carried in report",
+            }
+        )
+    for record in report.empirical_evidence:
+        rows.append(
+            {
+                "module": "BeeBrain",
+                "kind": "empirical",
+                "item": record.dataset_id,
+                "status": record.availability_status,
+                "boundary": record.integration_target,
+            }
+        )
+    fig, ax = plt.subplots(figsize=(12.2, 6.6))
+    ax.axis("off")
+    ax.text(
+        0.02,
+        0.96,
+        "Research evidence detail: scorecards and empirical routing",
+        transform=ax.transAxes,
+        ha="left",
+        va="top",
+        fontsize=13,
+        fontweight="bold",
+        color="#111827",
+    )
+    headers = ("Module", "Kind", "Evidence item", "Status", "Boundary / target")
+    x_positions = (0.02, 0.13, 0.25, 0.55, 0.70)
+    for header, x in zip(headers, x_positions, strict=True):
+        ax.text(x, 0.86, header, transform=ax.transAxes, fontsize=8.5, fontweight="bold")
+    for index, row in enumerate(rows[:12]):
+        y = 0.80 - index * 0.060
+        ax.add_patch(
+            Rectangle(
+                (0.015, y - 0.025),
+                0.96,
+                0.050,
+                transform=ax.transAxes,
+                facecolor="#F8FAFC" if index % 2 == 0 else "#FFFFFF",
+                edgecolor="#E2E8F0",
+                lw=0.5,
+            )
+        )
+        ax.text(
+            x_positions[0],
+            y,
+            row["module"],
+            transform=ax.transAxes,
+            va="center",
+            fontsize=8.2,
+            color=module_color(row["module"]) if row["module"].startswith("Bee") else "#334155",
+            fontweight="bold",
+        )
+        ax.text(x_positions[1], y, row["kind"], transform=ax.transAxes, va="center", fontsize=8.0)
+        ax.text(
+            x_positions[2],
+            y,
+            wrap_label(row["item"], width=34, max_lines=2),
+            transform=ax.transAxes,
+            va="center",
+            fontsize=7.5,
+            color="#111827",
+        )
+        ax.text(
+            x_positions[3],
+            y,
+            wrap_label(row["status"], width=18, max_lines=2),
+            transform=ax.transAxes,
+            va="center",
+            fontsize=7.5,
+            color="#334155",
+        )
+        ax.text(
+            x_positions[4],
+            y,
+            wrap_label(row["boundary"], width=38, max_lines=2),
+            transform=ax.transAxes,
+            va="center",
+            fontsize=7.5,
+            color="#334155",
+        )
+    add_figure_note(
+        fig,
+        "Detail companion to the evidence-network overview; rows are provenance and availability witnesses only.",
+        y=0.018,
+    )
     fig.tight_layout()
     fig.savefig(path, dpi=170)
     plt.close(fig)
@@ -275,15 +473,32 @@ def _visualization_inventory(report: ResearchSuiteReport, path: Path) -> Path:
 def _empirical_completeness(report: ResearchSuiteReport, path: Path) -> Path:
     frame = pd.DataFrame([evidence.as_dict() for evidence in report.empirical_evidence])
     fig, ax = plt.subplots(figsize=(9, 5))
-    ax.barh(
+    bars = ax.barh(
         frame["dataset_id"][::-1],
         frame["completeness_fraction"][::-1],
         color=module_color("BeeBrain"),
     )
+    for bar, fraction in zip(bars, frame["completeness_fraction"][::-1], strict=False):
+        status = "available" if float(fraction) >= 0.8 else "partial"
+        ax.text(
+            min(0.98, float(fraction) + 0.02),
+            bar.get_y() + bar.get_height() / 2,
+            f"{float(fraction):.2f} {status}",
+            va="center",
+            ha="left",
+            fontsize=7.8,
+            color="#111827",
+        )
     ax.set_xlim(0, 1)
     ax.set_xlabel("Completeness fraction")
     ax.set_title("BeeBrain empirical evidence completeness")
+    ax.axvline(0.8, color=status_color("warning"), lw=0.9, ls="--")
     apply_panel_style(ax, grid_axis="x")
+    add_figure_note(
+        fig,
+        "Completeness is source availability and parseability; it does not fill blocked calcium or synaptic evidence.",
+        y=0.012,
+    )
     fig.tight_layout()
     fig.savefig(path, dpi=170)
     plt.close(fig)
@@ -295,7 +510,11 @@ def _module_metric_bars(report: ResearchSuiteReport, module: str, path: Path) ->
     labels = list(scorecard.metrics)
     values = [scorecard.metrics[label] for label in labels]
     fig, ax = plt.subplots(figsize=(8, 4.8))
-    ax.barh(labels[::-1], values[::-1], color=module_color(module))
+    ax.barh(
+        [wrap_label(label.replace("_", " "), width=28, max_lines=2) for label in labels[::-1]],
+        values[::-1],
+        color=module_color(module),
+    )
     ax.set_title(f"{module} research diagnostics")
     apply_panel_style(ax, grid_axis="x")
     fig.tight_layout()

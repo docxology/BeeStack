@@ -25,6 +25,7 @@ Use the lightest tier that answers the question.
 
 ```bash
 uv run python scripts/z_generate_manuscript_variables.py
+uv run python scripts/run_security_audit.py
 uv run python scripts/audit_documentation.py
 uv run python scripts/signpost_project_tree.py --check
 ```
@@ -45,6 +46,9 @@ uv run python scripts/run_methods_analysis.py
 uv run python scripts/run_stack_synthesis.py
 uv run python scripts/verify_generated_reports.py
 ```
+
+`verify_generated_reports.py` also enforces the security posture audit (threat
+model, lockfile, fetch allowlist, forbidden patterns).
 
 Use this when BeeBrain data, scorecards, methods figures, sensitivity sweeps,
 stack-synthesis statistics, or research reports changed. The central report is
@@ -80,6 +84,7 @@ uv run python scripts/run_methods_analysis.py
 uv run python scripts/run_stack_synthesis.py
 uv run python scripts/assess_digital_twin_readiness.py
 uv run python scripts/verify_generated_reports.py
+uv run python scripts/run_security_audit.py
 uv run python scripts/audit_documentation.py
 uv run python scripts/signpost_project_tree.py --check
 uv run python scripts/z_generate_manuscript_variables.py

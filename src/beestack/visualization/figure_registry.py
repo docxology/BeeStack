@@ -27,15 +27,21 @@ class FigureNarrative:
     design_citation_keys: tuple[str, ...] = ()
     design_source_dois: tuple[str, ...] = ()
     artifact_kind: str = "figure"
+    manuscript_width: str = ""
 
     def __post_init__(self) -> None:
         for field_name, value in asdict(self).items():
             if field_name in {
+                "manuscript_width",
                 "citation_keys",
                 "source_dois",
                 "design_citation_keys",
                 "design_source_dois",
             }:
+                if field_name == "manuscript_width":
+                    if not isinstance(value, str):
+                        raise ValueError("figure narrative manuscript_width must be a string")
+                    continue
                 if not all(isinstance(item, str) and item for item in value):
                     raise ValueError(f"figure narrative {field_name} values must be nonempty")
                 continue
@@ -48,11 +54,23 @@ class FigureNarrative:
             if not (doi_text.startswith("10.") and "/" in doi_text):
                 raise ValueError(f"figure narrative DOI is malformed: {doi}")
 
+    def manuscript_contract_caption(self) -> str:
+        """Long-form caption shared by manuscript alt-text and JSON sidecars."""
+
+        backend = _infer_manuscript_backend(self.artifact_path)
+        seen = self.caption.strip().rstrip(".")
+        boundary = self.unsupported_inference.strip().rstrip(".")
+        return (
+            f"{backend} {self.title.lower()} shows {seen}. Generated from "
+            f"{self.source_data}. Sidecar validation checks raster, source routing, "
+            f"and registered claim tier. {boundary}."
+        )
+
     def as_sidecar_fields(self) -> dict[str, object]:
         """Return fields that extend the JSON figure sidecar contract."""
 
         return {
-            "caption": self.caption,
+            "caption": self.manuscript_contract_caption(),
             "alt_text": self.alt_text,
             "manuscript_section": self.manuscript_section,
             "manuscript_label": self.manuscript_label,
@@ -123,6 +141,7 @@ def _narrative(
     source_dois: tuple[str, ...] = _DEFAULT_DOIS,
     design_citation_keys: tuple[str, ...] = _DEFAULT_DESIGN_CITATIONS,
     design_source_dois: tuple[str, ...] = _DEFAULT_DESIGN_DOIS,
+    manuscript_width: str = "",
 ) -> FigureNarrative:
     return FigureNarrative(
         artifact_path=artifact_path,
@@ -141,6 +160,7 @@ def _narrative(
         source_dois=source_dois,
         design_citation_keys=design_citation_keys,
         design_source_dois=design_source_dois,
+        manuscript_width=manuscript_width,
     )
 
 
@@ -183,12 +203,12 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
         "output/figures/manuscript_figure_claim_map.png",
         title="BeeStack manuscript figure claim map",
         caption=(
-            "Manuscript figure claim map showing inserted primary figures by manuscript "
-            "section, claim tier, source-data class, validation status, and conservative boundary."
+            "Overview matrix grouping inserted primary figures by manuscript section "
+            "and registered claim family."
         ),
         alt_text=(
-            "Table-style map of manuscript figures with section placement, claim tier, "
-            "source-data class, validation status, and not-supported boundaries."
+            "Heatmap-style overview of manuscript sections by claim family with counts "
+            "in each cell."
         ),
         manuscript_section="manuscript/08_validation_and_figures.md",
         manuscript_label="fig:manuscript_figure_claim_map",
@@ -198,6 +218,27 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
         regeneration_command="uv run python scripts/analysis_pipeline.py",
         unsupported_inference="Does not add empirical evidence beyond the registered figure sidecars.",
         priority="primary",
+    ),
+    _narrative(
+        "output/figures/manuscript_figure_claim_detail.png",
+        title="BeeStack manuscript figure claim detail",
+        caption=(
+            "Split companion table listing primary figures, source-data classes, "
+            "claim tiers, and unsupported-inference boundaries."
+        ),
+        alt_text=(
+            "Two-column detail table of registered primary figure provenance and "
+            "not-supported boundaries."
+        ),
+        manuscript_section="manuscript/08_validation_and_figures.md",
+        manuscript_label="fig:manuscript_figure_claim_detail",
+        claim_tier="manuscript_figure_provenance_map",
+        fidelity_level="manuscript evidence map",
+        source_data="figure registry and manuscript figure index",
+        regeneration_command="uv run python scripts/analysis_pipeline.py",
+        unsupported_inference="Does not add empirical evidence beyond the registered figure sidecars.",
+        priority="primary",
+        manuscript_width="width=98%",
     ),
     _narrative(
         "output/figures/beestack_first_principles_claim_audit.png",
@@ -334,7 +375,12 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
         regeneration_command="uv run python scripts/analysis_pipeline.py",
         unsupported_inference="Does not validate full ecology, real-time hive control, or thermodynamic colony dynamics.",
         priority="primary",
-        citation_keys=("becher2014beehave", "narsicht2020hiveopolis", "johnson2009self", "kronenberg1982colonial"),
+        citation_keys=(
+            "becher2014beehave",
+            "narsicht2020hiveopolis",
+            "johnson2009self",
+            "kronenberg1982colonial",
+        ),
         source_dois=("10.1111/1365-2664.12222",),
     ),
     _narrative(
@@ -356,8 +402,16 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
         regeneration_command="uv run python scripts/analysis_pipeline.py",
         unsupported_inference="Does not provide held-out residuals, uncertainty quantification, or digital-twin readiness.",
         priority="primary",
-        citation_keys=("oreskes1994verification", "fair4rs2022principles", "bjornsson2020digitaltwins"),
-        source_dois=("10.1126/science.263.5147.641", "10.1038/s41597-022-01710-x", "10.1186/s13073-019-0701-3"),
+        citation_keys=(
+            "oreskes1994verification",
+            "fair4rs2022principles",
+            "bjornsson2020digitaltwins",
+        ),
+        source_dois=(
+            "10.1126/science.263.5147.641",
+            "10.1038/s41597-022-01710-x",
+            "10.1186/s13073-019-0701-3",
+        ),
     ),
     _narrative(
         "output/figures/methods/methods_repo_dashboard.png",
@@ -378,6 +432,27 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
         regeneration_command="uv run python scripts/run_methods_analysis.py",
         unsupported_inference="Does not support biological predictive validity.",
         priority="primary",
+    ),
+    _narrative(
+        "output/figures/methods/methods_dashboard_detail.png",
+        title="BeeStack methods dashboard detail",
+        caption=(
+            "Split companion table showing module validation fractions, visual "
+            "artifact counts, evidence-link counts, gap counts, and boundaries."
+        ),
+        alt_text=(
+            "Module-by-module methods detail table with validation, artifacts, "
+            "evidence links, gaps, and conservative boundary text."
+        ),
+        manuscript_section="manuscript/08_validation_and_figures.md",
+        manuscript_label="fig:methods_dashboard_detail",
+        claim_tier="methods_provenance_diagnostic",
+        fidelity_level="methods provenance diagnostic",
+        source_data="MethodsAnalysisReport module panels and visual QA report",
+        regeneration_command="uv run python scripts/run_methods_analysis.py",
+        unsupported_inference="Does not support biological predictive validity.",
+        priority="primary",
+        manuscript_width="width=98%",
     ),
     _narrative(
         "output/figures/methods/methods_manuscript_evidence_index.png",
@@ -417,6 +492,148 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
         priority="primary",
         citation_keys=("vaxenburg2025flybody", "todorov2012mujoco"),
         source_dois=("10.1038/s41586-025-09029-4", "10.1109/IROS.2012.6386109"),
+    ),
+    _narrative(
+        "output/figures/renders/beebody_flybody_morphology_contact_sheet.png",
+        title="BeeBody FlyBody tripod walking render",
+        caption=(
+            "Eight-frame contact sheet from the FlyBody walk_imitation rollout on the "
+            "generated apis_mellifera_worker MJCF, showing tripod gait, corbiculae, "
+            "hindwing coupling, and honeybee visual cues."
+        ),
+        alt_text=(
+            "Contact sheet of eight FlyBody-rendered walking frames for a single "
+            "nestmate honeybee body plan."
+        ),
+        manuscript_section="manuscript/05_methods_body_swarm.md",
+        manuscript_label="fig:beebody_flybody_morphology",
+        claim_tier="strict_flybody_render",
+        fidelity_level="real_flybody_3d",
+        source_data="animation manifest, bee visual verification, and apis_mellifera_worker MJCF",
+        regeneration_command="uv run python scripts/generate_animations.py",
+        unsupported_inference="Does not calibrate honeybee walking biomechanics or prove field-scale locomotion.",
+        priority="primary",
+        citation_keys=("vaxenburg2025flybody", "todorov2012mujoco"),
+        source_dois=("10.1038/s41586-025-09029-4", "10.1109/IROS.2012.6386109"),
+        manuscript_width="width=98%",
+    ),
+    _narrative(
+        "output/figures/renders/beebody_flybody_flight_contact_sheet.png",
+        title="BeeBody FlyBody wing-beat flight render",
+        caption=(
+            "Eight-frame contact sheet from FlightImitationWBPG and WingBeatPatternGenerator "
+            "on the same honeybee MJCF, showing coupled forewing/hindwing surfaces and "
+            "wing-beat flight posture."
+        ),
+        alt_text=(
+            "Contact sheet of eight FlyBody-rendered flight frames for a single nestmate "
+            "honeybee body plan."
+        ),
+        manuscript_section="manuscript/05_methods_body_swarm.md",
+        manuscript_label="fig:beebody_flybody_flight",
+        claim_tier="strict_flybody_render",
+        fidelity_level="real_flybody_3d",
+        source_data="animation manifest, bee visual verification, and apis_mellifera_worker MJCF",
+        regeneration_command="uv run python scripts/generate_animations.py",
+        unsupported_inference="Does not calibrate honeybee aerodynamics or hovering power against measured loads.",
+        priority="primary",
+        citation_keys=("vaxenburg2025flybody", "todorov2012mujoco"),
+        source_dois=("10.1038/s41586-025-09029-4", "10.1109/IROS.2012.6386109"),
+        manuscript_width="width=98%",
+    ),
+    _narrative(
+        "output/figures/beebody_motion_power_phase.png",
+        title="BeeBody motion, wing power, and phase witness",
+        caption=(
+            "Integrated-run witness linking COM-speed proxy, wing-power trace, and "
+            "stroke-phase diagnostics for the reduced BeeBody energetics kernel."
+        ),
+        alt_text="Three-panel BeeBody motion, wing power, and phase diagnostic chart.",
+        manuscript_section="manuscript/05_methods_body_swarm.md",
+        manuscript_label="fig:body_motion_power_phase",
+        claim_tier="integrated_run_witness",
+        fidelity_level="reduced deterministic energetics diagnostic",
+        source_data="output/data/simulation_records.json and methods analysis",
+        regeneration_command="uv run python scripts/analysis_pipeline.py",
+        unsupported_inference="Does not validate measured honeybee metabolic rates or aerodynamic coefficients.",
+        priority="primary",
+    ),
+    _narrative(
+        "output/figures/renders/beeswarm_10_beebody_collision_contact_sheet.png",
+        title="BeeSwarm ten-BeeBody collision scene",
+        caption=(
+            "Eight-frame contact sheet from a strict MuJoCo scene with ten prefixed BeeBody "
+            "MJCF copies, recording bee-bee contact pairs and collision-proxy distances."
+        ),
+        alt_text=(
+            "Contact sheet of eight multi-bee MuJoCo frames with ten full BeeBody models "
+            "converging in a collision scene."
+        ),
+        manuscript_section="manuscript/05_methods_body_swarm.md",
+        manuscript_label="fig:beeswarm_10_beebody_collision",
+        claim_tier="strict_small_scene_not_colony_dynamics",
+        fidelity_level="real_flybody_3d_contact_physics",
+        source_data="animation manifest, flybody_scenes/collision contact report, and scene XML",
+        regeneration_command="uv run python scripts/generate_animations.py",
+        unsupported_inference="Does not validate colony-scale collision dynamics or integrated flight physics.",
+        priority="primary",
+        citation_keys=("vaxenburg2025flybody", "todorov2012mujoco"),
+        source_dois=("10.1038/s41586-025-09029-4", "10.1109/IROS.2012.6386109"),
+        manuscript_width="width=98%",
+    ),
+    _narrative(
+        "output/figures/renders/beeswarm_waggle_dance_configured_contact_sheet.png",
+        title="BeeSwarm configured waggle dance scene",
+        caption=(
+            "Eight-frame contact sheet from a strict MuJoCo waggle scene with one dancer "
+            "and follower BeeBody models on a comb floor, with floor/body contacts recorded."
+        ),
+        alt_text=(
+            "Contact sheet of eight MuJoCo frames showing a configured waggle dancer and "
+            "follower BeeBody models."
+        ),
+        manuscript_section="manuscript/05_methods_body_swarm.md",
+        manuscript_label="fig:beeswarm_waggle_dance_configured",
+        claim_tier="strict_small_scene_not_colony_dynamics",
+        fidelity_level="real_flybody_3d_contact_physics",
+        source_data="animation manifest, flybody_scenes/waggle contact report, and decoded dance settings",
+        regeneration_command="uv run python scripts/generate_animations.py",
+        unsupported_inference="Does not validate recruitment outcomes against field colony traces.",
+        priority="primary",
+        citation_keys=("vaxenburg2025flybody", "todorov2012mujoco", "hateren2019neuroethology"),
+        source_dois=(
+            "10.1038/s41586-025-09029-4",
+            "10.1109/IROS.2012.6386109",
+            "10.3390/insects10100336",
+        ),
+        manuscript_width="width=98%",
+    ),
+    _narrative(
+        "output/figures/renders/beeswarm_waggle_dance_long_contact_sheet.png",
+        title="BeeSwarm long waggle dance scenario",
+        caption=(
+            "Eight-frame contact sheet from the long configured waggle rollout with phase-aware "
+            "runs, follower-orientation diagnostics, and contact-graph evidence across the full dance."
+        ),
+        alt_text=(
+            "Contact sheet of eight MuJoCo frames from the long multi-BeeBody waggle scenario "
+            "with dancer and follower orientation cues."
+        ),
+        manuscript_section="manuscript/05_methods_body_swarm.md",
+        manuscript_label="fig:beeswarm_waggle_dance_long",
+        claim_tier="strict_small_scene_not_colony_dynamics",
+        fidelity_level="real_flybody_3d_contact_physics",
+        source_data="animation manifest, flybody_scenes/waggle_long contact report, and follower-orientation diagnostics",
+        regeneration_command="uv run python scripts/generate_animations.py",
+        unsupported_inference="Does not prove colony-scale dance-language use or calibrated follower kinematics.",
+        priority="primary",
+        citation_keys=("vaxenburg2025flybody", "todorov2012mujoco", "hadjitofi2024currentbiology"),
+        source_dois=(
+            "10.1038/s41586-025-09029-4",
+            "10.1109/IROS.2012.6386109",
+            "10.1016/j.cub.2024.02.045",
+        ),
+        manuscript_width="width=98%",
     ),
     _narrative(
         "output/figures/methods/beebrain_methods_empirical_completeness.png",
@@ -550,6 +767,254 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
         priority="primary",
     ),
     _narrative(
+        "output/figures/empirical/empirical_panel_heatmap.png",
+        title="Empirical odor-response panel heatmap",
+        caption=(
+            "Heatmap of the first registered empirical odor-response panel showing "
+            "channel responses across stimuli."
+        ),
+        alt_text="Heatmap of empirical odor response channels versus stimuli.",
+        manuscript_section="manuscript/09_empirical_results.md",
+        manuscript_label="fig:empirical_panel_heatmap",
+        claim_tier="empirical_reduced_or_availability_gated",
+        fidelity_level="empirical panel summary diagnostic",
+        source_data="output/data/empirical_analysis.json",
+        regeneration_command="uv run python scripts/analyze_empirical_bee_data.py",
+        unsupported_inference="Does not support connectome-scale or calcium-validated dynamics.",
+        priority="primary",
+    ),
+    _narrative(
+        "output/figures/empirical/empirical_panel_quality.png",
+        title="Empirical panel quality bars",
+        caption=(
+            "Mean absolute response by empirical panel modality for parser-quality review."
+        ),
+        alt_text="Bar chart of mean absolute empirical panel responses by modality.",
+        manuscript_section="manuscript/09_empirical_results.md",
+        manuscript_label="fig:empirical_panel_quality",
+        claim_tier="empirical_reduced_or_availability_gated",
+        fidelity_level="empirical panel summary diagnostic",
+        source_data="output/data/empirical_analysis.json",
+        regeneration_command="uv run python scripts/analyze_empirical_bee_data.py",
+        unsupported_inference="Does not replace absent calcium payloads with synthetic traces.",
+        priority="supporting",
+    ),
+    _narrative(
+        "output/figures/empirical/empirical_stack_alignment.png",
+        title="BeeBrain empirical stack alignment",
+        caption=(
+            "Alignment scores between empirical templates and reduced BeeBrain module contracts."
+        ),
+        alt_text="Bar chart of BeeBrain alignment scores to empirical templates.",
+        manuscript_section="manuscript/09_empirical_results.md",
+        manuscript_label="fig:empirical_stack_alignment",
+        claim_tier="empirical_reduced_or_availability_gated",
+        fidelity_level="empirical panel summary diagnostic",
+        source_data="output/data/empirical_analysis.json",
+        regeneration_command="uv run python scripts/analyze_empirical_bee_data.py",
+        unsupported_inference="Does not calibrate reduced kernels to biological ground truth.",
+        priority="primary",
+    ),
+    _narrative(
+        "output/figures/empirical/empirical_antennal_movement.png",
+        title="Empirical antennal active sensing",
+        caption=(
+            "Jernigan antennal kinematics summary: odor-on fraction, theta deflection, "
+            "and left-right synchrony."
+        ),
+        alt_text="Bar chart of Jernigan antennal active-sensing summary metrics.",
+        manuscript_section="manuscript/09_empirical_results.md",
+        manuscript_label="fig:empirical_antennal_movement",
+        claim_tier="empirical_reduced_or_availability_gated",
+        fidelity_level="empirical panel summary diagnostic",
+        source_data="output/data/empirical_analysis.json",
+        regeneration_command="uv run python scripts/analyze_empirical_bee_data.py",
+        unsupported_inference="Does not validate full antennal biomechanics.",
+        priority="supporting",
+        citation_keys=("jernigan2026dryad",),
+        source_dois=("10.5061/dryad.qjq2bvqw6",),
+    ),
+    _narrative(
+        "output/figures/empirical/empirical_anatomy_assets.png",
+        title="Honeybee Standard Brain atlas assets",
+        caption=(
+            "Downloaded Honeybee Standard Brain ZIP inventories ranked by uncompressed size."
+        ),
+        alt_text="Bar chart of Honeybee Standard Brain atlas asset sizes.",
+        manuscript_section="manuscript/09_empirical_results.md",
+        manuscript_label="fig:empirical_anatomy_assets",
+        claim_tier="empirical_reduced_or_availability_gated",
+        fidelity_level="empirical atlas/inventory summary diagnostic",
+        source_data="output/data/bee_brain_end_to_end_report.json",
+        regeneration_command="uv run python scripts/analyze_empirical_bee_data.py",
+        unsupported_inference="Does not claim synaptic adjacency from atlas geometry alone.",
+        priority="supporting",
+        citation_keys=("brandt2005standardbrain",),
+        source_dois=("10.1002/cne.20644",),
+    ),
+    _narrative(
+        "output/figures/empirical/empirical_anatomy_projection.png",
+        title="Honeybee Standard Brain VRML projection",
+        caption=(
+            "VRML geometry centroids with structural tract overlays when the connectome "
+            "report is available."
+        ),
+        alt_text="Scatter plot of VRML atlas centroids with optional structural tract edges.",
+        manuscript_section="manuscript/09_empirical_results.md",
+        manuscript_label="fig:empirical_anatomy_projection",
+        claim_tier="structural_projectome_witness",
+        fidelity_level="Honeybee Standard Brain structural wiring diagnostic",
+        source_data="output/data/bee_brain_connectome.json",
+        regeneration_command="uv run python scripts/analyze_empirical_bee_data.py",
+        unsupported_inference="Does not infer functional or synaptic connectivity.",
+        priority="primary",
+        citation_keys=("brandt2005standardbrain",),
+        source_dois=("10.1002/cne.20644",),
+    ),
+    _narrative(
+        "output/figures/empirical/empirical_neuropil_coverage.png",
+        title="Honeybee Standard Brain neuropil coverage",
+        caption=(
+            "Neuropil abbreviation counts grouped by region class from atlas HTML inventory."
+        ),
+        alt_text="Bar chart of neuropil abbreviation counts by region class.",
+        manuscript_section="manuscript/09_empirical_results.md",
+        manuscript_label="fig:empirical_neuropil_coverage",
+        claim_tier="empirical_reduced_or_availability_gated",
+        fidelity_level="empirical atlas/inventory summary diagnostic",
+        source_data="output/data/bee_brain_end_to_end_report.json",
+        regeneration_command="uv run python scripts/analyze_empirical_bee_data.py",
+        unsupported_inference="Does not map every glomerulus to a functional edge.",
+        priority="supporting",
+        citation_keys=("brandt2005standardbrain",),
+        source_dois=("10.1002/cne.20644",),
+    ),
+    _narrative(
+        "output/figures/empirical/empirical_activity_summary.png",
+        title="BeeBrain empirical activity summary",
+        caption=(
+            "Reduced activity summary combining odor separability, calcium fractions, "
+            "aftersmell response, and antennal drive."
+        ),
+        alt_text="Bar chart of normalized BeeBrain empirical activity summary metrics.",
+        manuscript_section="manuscript/09_empirical_results.md",
+        manuscript_label="fig:empirical_activity_summary",
+        claim_tier="empirical_reduced_or_availability_gated",
+        fidelity_level="empirical panel summary diagnostic",
+        source_data="output/data/empirical_analysis.json",
+        regeneration_command="uv run python scripts/analyze_empirical_bee_data.py",
+        unsupported_inference="Does not support calcium-validated dynamics when Paoli traces are blocked.",
+        priority="primary",
+    ),
+    _narrative(
+        "output/figures/empirical/waggle_follower_alignment.png",
+        title="Waggle follower empirical alignment",
+        caption=(
+            "Hadjitofi–Webb follower antennal alignment metrics mapped to BeeStack decoding confidence."
+        ),
+        alt_text="Bar chart of waggle follower alignment and decoding confidence metrics.",
+        manuscript_section="manuscript/09_empirical_results.md",
+        manuscript_label="fig:waggle_follower_alignment",
+        claim_tier="empirical_reduced_or_availability_gated",
+        fidelity_level="empirical waggle/follower summary diagnostic",
+        source_data="output/data/waggle_follower_analysis.json",
+        regeneration_command="uv run python scripts/analyze_empirical_bee_data.py",
+        unsupported_inference="Does not validate colony-scale recruitment.",
+        priority="primary",
+        citation_keys=("hadjitofi2024figshare", "hadjitofi2024currentbiology"),
+        source_dois=("10.6084/m9.figshare.24715977.v1", "10.1016/j.cub.2024.02.045"),
+    ),
+    _narrative(
+        "output/figures/empirical/waggle_phase_coupling.png",
+        title="Waggle follower phase coupling",
+        caption=(
+            "Polar summary of follower antenna phase, midpoint, dancer gravity, and follower angle."
+        ),
+        alt_text="Polar plot of waggle follower antenna and dancer phase metrics.",
+        manuscript_section="manuscript/09_empirical_results.md",
+        manuscript_label="fig:waggle_phase_coupling",
+        claim_tier="empirical_reduced_or_availability_gated",
+        fidelity_level="empirical waggle/follower summary diagnostic",
+        source_data="output/data/waggle_follower_analysis.json",
+        regeneration_command="uv run python scripts/analyze_empirical_bee_data.py",
+        unsupported_inference="Does not prove biological recruitment mechanisms.",
+        priority="supporting",
+        citation_keys=("hadjitofi2024figshare",),
+        source_dois=("10.6084/m9.figshare.24715977.v1",),
+    ),
+    _narrative(
+        "output/figures/empirical/beeswarm_waggle_recruitment_diagnostics.png",
+        title="BeeSwarm waggle recruitment diagnostics",
+        caption=(
+            "Decoding error inputs comparing no-antennae, all-model, and both-antennae follower rows."
+        ),
+        alt_text="Bar chart of waggle recruitment decoding error by antenna condition.",
+        manuscript_section="manuscript/09_empirical_results.md",
+        manuscript_label="fig:beeswarm_waggle_recruitment_diagnostics",
+        claim_tier="empirical_reduced_or_availability_gated",
+        fidelity_level="empirical waggle/follower summary diagnostic",
+        source_data="output/data/waggle_follower_analysis.json",
+        regeneration_command="uv run python scripts/analyze_empirical_bee_data.py",
+        unsupported_inference="Does not validate full BeeSwarm colony dynamics.",
+        priority="supporting",
+        citation_keys=("hadjitofi2024figshare",),
+        source_dois=("10.6084/m9.figshare.24715977.v1",),
+    ),
+    _narrative(
+        "output/figures/empirical/connectome_structural_graph.png",
+        title="BeeBrain structural projectome graph",
+        caption=(
+            "Network layout of Honeybee Standard Brain neuropils, named neuron/tract "
+            "nodes, and documented structural tract edges."
+        ),
+        alt_text="Directed graph of BeeBrain structural connectome nodes and tract edges.",
+        manuscript_section="manuscript/09_empirical_results.md",
+        manuscript_label="fig:connectome_structural_graph",
+        claim_tier="structural_projectome_witness",
+        fidelity_level="Honeybee Standard Brain structural wiring diagnostic",
+        source_data="output/data/bee_brain_connectome.json",
+        regeneration_command="uv run python scripts/analyze_empirical_bee_data.py",
+        unsupported_inference="Does not claim synaptic adjacency or functional Granger completeness.",
+        priority="primary",
+        citation_keys=("brandt2005standardbrain",),
+        source_dois=("10.1002/cne.20644",),
+    ),
+    _narrative(
+        "output/figures/empirical/connectome_neuropil_module_map.png",
+        title="Connectome neuropil module map",
+        caption=(
+            "Heatmap of neuropil abbreviation counts mapped onto BeeBrain module targets."
+        ),
+        alt_text="Heatmap of neuropil counts by BeeBrain module.",
+        manuscript_section="manuscript/09_empirical_results.md",
+        manuscript_label="fig:connectome_neuropil_module_map",
+        claim_tier="structural_projectome_witness",
+        fidelity_level="Honeybee Standard Brain structural wiring diagnostic",
+        source_data="output/data/bee_brain_connectome.json",
+        regeneration_command="uv run python scripts/analyze_empirical_bee_data.py",
+        unsupported_inference="Does not infer functional connectivity.",
+        priority="supporting",
+        citation_keys=("brandt2005standardbrain",),
+        source_dois=("10.1002/cne.20644",),
+    ),
+    _narrative(
+        "output/figures/empirical/connectome_completeness_tiers.png",
+        title="Connectome evidence tiers",
+        caption=(
+            "Coverage bars for structural, functional, and synaptic connectome tiers "
+            "with synaptic tier explicitly unavailable."
+        ),
+        alt_text="Bar chart of structural, functional, and synaptic connectome tier coverage.",
+        manuscript_section="manuscript/09_empirical_results.md",
+        manuscript_label="fig:connectome_completeness_tiers",
+        claim_tier="empirical_availability_diagnostic",
+        fidelity_level="connectome tier availability diagnostic",
+        source_data="output/data/brain_data_completeness.json",
+        regeneration_command="uv run python scripts/analyze_empirical_bee_data.py",
+        unsupported_inference="Does not upgrade unavailable tiers into supported claims.",
+        priority="primary",
+    ),
+    _narrative(
         "output/figures/empirical/brain_data_completeness_matrix.png",
         title="Brain data completeness matrix",
         caption=(
@@ -643,6 +1108,27 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
         priority="primary",
     ),
     _narrative(
+        "output/figures/research/research_evidence_detail.png",
+        title="BeeStack research evidence detail",
+        caption=(
+            "Split companion table listing research scorecard evidence, empirical "
+            "source rows, availability states, and integration targets."
+        ),
+        alt_text=(
+            "Research evidence detail table with module, evidence kind, item, "
+            "status, and boundary or target columns."
+        ),
+        manuscript_section="manuscript/11_research_synthesis.md",
+        manuscript_label="fig:research_evidence_detail",
+        claim_tier="research_evidence_network",
+        fidelity_level="research provenance diagnostic",
+        source_data="ResearchSuiteReport evidence records and empirical availability rows",
+        regeneration_command="uv run python scripts/run_research_suite.py",
+        unsupported_inference="Does not make empirical coverage complete.",
+        priority="primary",
+        manuscript_width="width=98%",
+    ),
+    _narrative(
         "output/figures/research/stack_synthesis_dashboard.png",
         title="BeeStack cross-stack synthesis dashboard",
         caption=(
@@ -658,6 +1144,27 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
         regeneration_command="uv run python scripts/run_research_suite.py",
         unsupported_inference="Does not make BeeStack digital-twin ready.",
         priority="primary",
+    ),
+    _narrative(
+        "output/figures/research/stack_synthesis_findings_detail.png",
+        title="BeeStack synthesis findings detail",
+        caption=(
+            "Split companion panel showing module readiness scores beside "
+            "prioritized cross-stack findings."
+        ),
+        alt_text=(
+            "Two-panel synthesis detail with readiness bars and prioritized "
+            "finding text boxes."
+        ),
+        manuscript_section="manuscript/11_research_synthesis.md",
+        manuscript_label="fig:stack_synthesis_findings_detail",
+        claim_tier="cross_stack_synthesis_diagnostic",
+        fidelity_level="cross-stack synthesis diagnostic, not biological validation",
+        source_data="output/reports/stack_synthesis_review.json",
+        regeneration_command="uv run python scripts/run_research_suite.py",
+        unsupported_inference="Does not make BeeStack digital-twin ready.",
+        priority="primary",
+        manuscript_width="width=98%",
     ),
 )
 
@@ -732,3 +1239,30 @@ def _normalize_artifact_path(path: Path) -> str:
     if "output" in parts:
         return "/".join(parts[parts.index("output") :])
     return path.as_posix()
+
+
+def _infer_manuscript_backend(artifact_path: str) -> str:
+    if "/renders/" in artifact_path or "/animations/" in artifact_path:
+        return "FlyBody/MuJoCo"
+    if "/research/" in artifact_path and "network" in artifact_path:
+        return "Matplotlib/NetworkX"
+    if "/methods/" in artifact_path or "/research/" in artifact_path:
+        return "Matplotlib/pandas/NetworkX"
+    return "Matplotlib"
+
+
+def manuscript_relative_image_path(artifact_path: str) -> str:
+    """Return a manuscript-relative path from a project-root artifact path."""
+
+    normalized = _normalize_artifact_path(Path(artifact_path))
+    return "../" + normalized.removeprefix("output/")
+
+
+def manuscript_image_markdown(narrative: FigureNarrative) -> str:
+    """Build the Pandoc markdown image line for a curated primary figure."""
+
+    rel = manuscript_relative_image_path(narrative.artifact_path)
+    label = narrative.manuscript_label
+    if narrative.manuscript_width:
+        label = f"{label} {narrative.manuscript_width}"
+    return f"![{narrative.manuscript_contract_caption()}]({rel}){{#{label}}}"

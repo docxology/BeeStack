@@ -12,7 +12,7 @@
   "alt_text": "Matrix of verified scholarship sources with DOI status, target sections, target figures, and claim-tier categories.",
   "artifact_kind": "figure",
   "backend": "Matplotlib",
-  "caption": "Scholarship evidence matrix mapping directly verified sources to manuscript sections, figure targets, DOI-bearing source records, and claim tiers.",
+  "caption": "Matplotlib beestack scholarship evidence matrix shows Scholarship evidence matrix mapping directly verified sources to manuscript sections, figure targets, DOI-bearing source records, and claim tiers. Generated from source refresh ledger, bibliography, source audit, and figure registry. Sidecar validation checks raster, source routing, and registered claim tier. Does not replace direct DOI/source verification or add empirical data.",
   "citation_keys": [
     "fair4rs2022principles",
     "wilkinson2016fair",
@@ -40,15 +40,16 @@
   "figure_path": "output/figures/beestack_scholarship_evidence_matrix.png",
   "manuscript_label": "fig:scholarship_evidence_matrix",
   "manuscript_section": "manuscript/03_materials_and_source_provenance.md",
+  "plot_data_path": "output/figures/beestack_scholarship_evidence_matrix_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 1028,
+    "height_px": 1589,
     "max_intensity": 255,
-    "mean_intensity": 244.26947758261176,
+    "mean_intensity": 238.55004065933258,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 37.0092063038372,
+    "std_intensity": 45.22495646096014,
     "width_px": 2396
   },
   "regeneration_command": "uv run python scripts/analysis_pipeline.py",
@@ -61,5 +62,17 @@
   ],
   "title": "Beestack Scholarship Evidence Matrix",
   "unsupported_inference": "Does not replace direct DOI/source verification or add empirical data.",
-  "validation_status": "nonblank quality sidecar generated"
+  "validation_status": "nonblank quality sidecar and plot data generated",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.508,
+    "figure_role": "dashboard",
+    "height_px": 1589,
+    "label_density": "dense",
+    "manuscript_use": "manuscript_primary",
+    "max_dimension_px": 2396,
+    "min_dimension_px": 1589,
+    "readability_status": "pass",
+    "width_px": 2396
+  }
 }

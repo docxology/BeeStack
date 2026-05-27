@@ -19,15 +19,16 @@
   "figure_path": "output/figures/research/beemind_policy_sensitivity.png",
   "manuscript_label": "fig:beemind_policy_sensitivity",
   "manuscript_section": "output/reports/manuscript_figure_index.md",
+  "plot_data_path": "output/figures/research/beemind_policy_sensitivity_data.json",
   "priority": "indexed",
   "quality": {
     "height_px": 799,
     "max_intensity": 255,
-    "mean_intensity": 230.5634247049884,
+    "mean_intensity": 230.41108956880623,
     "min_intensity": 24,
     "mode": "RGBA",
     "nonzero_histogram_bins": 232,
-    "std_intensity": 55.63967012420128,
+    "std_intensity": 55.772545308640105,
     "width_px": 1344
   },
   "regeneration_command": "uv run python scripts/run_research_suite.py",
@@ -36,5 +37,17 @@
   "source_dois": [],
   "title": "Beemind Policy Sensitivity",
   "unsupported_inference": "Does not support claims beyond the generated artifact and stated fidelity tier.",
-  "validation_status": "nonblank image and quality sidecar passed"
+  "validation_status": "nonblank image, quality sidecar, and plot data passed",
+  "visual_quality": {
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.682,
+    "figure_role": "overview",
+    "height_px": 799,
+    "label_density": "moderate",
+    "manuscript_use": "indexed_gallery",
+    "max_dimension_px": 1344,
+    "min_dimension_px": 799,
+    "readability_status": "gallery",
+    "width_px": 1344
+  }
 }
