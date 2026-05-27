@@ -212,3 +212,14 @@ def test_generated_report_audit_flags_project_root_path_leakage(
     assert not audit.passed
     assert audit.project_root_path_leaks == ("output/data/empirical_analysis.json",)
     assert "Project-root path leaks: `1`" in generated_report_audit_markdown(audit)
+
+
+def test_thermo_nuclear_report_tracks_current_verification_count() -> None:
+    report = Path(__file__).resolve().parents[1] / "output" / "reports" / (
+        "thermo_nuclear_code_quality_review.md"
+    )
+    text = report.read_text(encoding="utf-8")
+
+    assert "164/164" not in text
+    assert "pytest:                                       189 passed, 92.27% coverage" in text
+    assert "| pytest zero failures | Pass (189) |" in text

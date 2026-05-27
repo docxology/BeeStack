@@ -3,15 +3,14 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from ..research import MethodsAnalysisReport
 from .figure_metadata import assert_nonblank_quality
-from .figure_output import finalize_static_figures
+from .figure_output import finalize_static_figures, write_stable_plotly_html
 from .figure_plot_specs import methods_plot_data
 from .style import (
     PALETTE,
@@ -24,6 +23,9 @@ from .style import (
     style_context,
     wrap_label,
 )
+
+if TYPE_CHECKING:
+    from ..research import MethodsAnalysisReport
 
 
 def generate_methods_figures(
@@ -127,7 +129,7 @@ def write_interactive_methods_dashboard(
         range_y=(0, 1.05),
         title="BeeStack methods-analysis validation and visualization coverage",
     )
-    fig.write_html(scorecard_path, include_plotlyjs="cdn")
+    write_stable_plotly_html(fig, scorecard_path)
 
     metric_rows = []
     for panel in report.module_panels:
@@ -144,7 +146,7 @@ def write_interactive_methods_dashboard(
         title="BeeStack methods-analysis module metrics",
     )
     fig.update_xaxes(tickangle=45)
-    fig.write_html(metrics_path, include_plotlyjs="cdn")
+    write_stable_plotly_html(fig, metrics_path)
     return [scorecard_path, metrics_path]
 
 

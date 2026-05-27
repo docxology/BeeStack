@@ -249,3 +249,8 @@ def test_research_suite_report_figures_and_interactive_outputs(tmp_path: Path) -
     html_paths = write_interactive_research_outputs(report, tmp_path / "interactive")
     assert len(html_paths) == 2
     assert all("Plotly" in path.read_text(encoding="utf-8") for path in html_paths)
+    assert all(_stable_plotly_div(path) in path.read_text(encoding="utf-8") for path in html_paths)
+
+
+def _stable_plotly_div(path: Path) -> str:
+    return f'id="beestack-{path.stem.replace("_", "-")}"'

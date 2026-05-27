@@ -26,6 +26,27 @@ def finalize_static_figures(
     return paths
 
 
+def stable_plotly_div_id(path: Path) -> str:
+    """Return a deterministic Plotly div id for a generated HTML artifact."""
+
+    stem = path.stem.lower()
+    safe = "".join(char if char.isalnum() else "-" for char in stem).strip("-")
+    return f"beestack-{safe or 'plot'}"
+
+
+def write_stable_plotly_html(
+    fig: Any,
+    path: Path,
+    *,
+    include_plotlyjs: str | bool = "cdn",
+) -> Path:
+    """Write Plotly HTML without random UUID churn in regenerated artifacts."""
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fig.write_html(path, include_plotlyjs=include_plotlyjs, div_id=stable_plotly_div_id(path))
+    return path
+
+
 def gif_frame_count(path: Path) -> int:
     """Count frames in a GIF without loading every pixel into memory."""
 

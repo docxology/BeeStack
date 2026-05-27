@@ -3,12 +3,12 @@
 from __future__ import annotations
 
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from ..research import StackSynthesisReview
 from .figure_metadata import assert_nonblank_quality, write_figure_artifacts
 from .figure_plot_specs import synthesis_plot_data
 from .style import (
@@ -21,6 +21,9 @@ from .style import (
     style_context,
     wrap_label,
 )
+
+if TYPE_CHECKING:
+    from ..research import StackSynthesisReview
 
 
 def generate_stack_synthesis_figures(

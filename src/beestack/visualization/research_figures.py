@@ -3,15 +3,15 @@
 from __future__ import annotations
 
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from matplotlib.patches import FancyArrowPatch, Rectangle
 
-from ..research import ResearchSuiteReport
 from .figure_metadata import assert_nonblank_quality
-from .figure_output import finalize_static_figures
+from .figure_output import finalize_static_figures, write_stable_plotly_html
 from .figure_plot_specs import research_plot_data
 from .style import (
     add_figure_note,
@@ -22,6 +22,9 @@ from .style import (
     style_context,
     wrap_label,
 )
+
+if TYPE_CHECKING:
+    from ..research import ResearchSuiteReport
 
 
 def generate_research_figures(report: ResearchSuiteReport, output_dir: Path) -> list[Path]:
@@ -104,7 +107,7 @@ def write_interactive_research_outputs(report: ResearchSuiteReport, output_dir: 
         range_y=(0, 1),
         title="BeeStack research validation scorecards",
     )
-    fig.write_html(scorecard_path, include_plotlyjs="cdn")
+    write_stable_plotly_html(fig, scorecard_path)
 
     sweep_rows = []
     for sweep in report.sensitivity_sweeps:
@@ -128,7 +131,7 @@ def write_interactive_research_outputs(report: ResearchSuiteReport, output_dir: 
         facet_col_wrap=2,
         title="BeeStack reduced-kernel sensitivity sweeps",
     )
-    fig.write_html(sweep_path, include_plotlyjs="cdn")
+    write_stable_plotly_html(fig, sweep_path)
     return [scorecard_path, sweep_path]
 
 

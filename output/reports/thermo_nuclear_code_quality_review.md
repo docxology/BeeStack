@@ -5,9 +5,9 @@
 **Rubric:** thermo-nuclear-code-quality-review (cursor-team-kit)
 **Verdict:** **PASS**
 
-Functional gates: **164/164 pytest pass**, publication readiness audit pass,
-generated-report audit pass. BeeBrain connectome + empirical thermo-nuclear
-remediation complete.
+Functional gates: **189/189 pytest pass with 92.27% coverage**, publication
+readiness audit pass, generated-report audit pass. BeeBrain connectome +
+empirical thermo-nuclear remediation complete.
 
 ---
 
@@ -26,7 +26,7 @@ brain → visualization imports:                0 (grep src/beestack/brain/)
 bee_brain_connectome.json tier:               structural_projectome
 structural tract edges:                       6 (synaptic edges: 0)
 empirical figure registry entries:            15 under output/figures/empirical/
-pytest:                                       164 passed
+pytest:                                       189 passed, 92.27% coverage
 ```
 
 ---
@@ -71,6 +71,6 @@ pytest:                                       164 passed
 | All empirical + connectome figures registry-backed | Pass |
 | No src module >1k without decomposition | Pass |
 | All scripts ≤250 lines | Pass |
-| pytest zero failures | Pass (164) |
+| pytest zero failures | Pass (189) |
 
 **Verdict:** Full pass for thermo-nuclear structural intent and BeeBrain connectome program success criteria.
