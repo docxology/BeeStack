@@ -59,11 +59,11 @@
 
 ## Archive Caveats
 
-- `dryad-paoli-2024-al-calcium` was cataloged but not downloaded (429 Too Many Requests).
-- `dryad-carcaud-2022-multisite-gcamp` was cataloged but not downloaded (429 Too Many Requests).
-- `dryad-andreu-2025-alarm-odorant-receptors` was cataloged but not downloaded (429 Too Many Requests).
-- `dryad-jernigan-2026-antennal-movement` was cataloged but not downloaded (429 Too Many Requests).
-- `dryad-nouvian-2017-biogenic-amines` was cataloged but not downloaded (429 Too Many Requests).
+- `dryad-paoli-2024-al-calcium` was cataloged but not downloaded (file-level fallback did not produce a local file).
+- `dryad-carcaud-2022-multisite-gcamp` was cataloged but not downloaded (file-level fallback did not produce a local file).
+- `dryad-andreu-2025-alarm-odorant-receptors` was cataloged but not downloaded (file-level fallback did not produce a local file).
+- `dryad-jernigan-2026-antennal-movement` was cataloged but not downloaded (file-level fallback did not produce a local file).
+- `dryad-nouvian-2017-biogenic-amines` was cataloged but not downloaded (file-level fallback did not produce a local file).
 
 ## Figures
 

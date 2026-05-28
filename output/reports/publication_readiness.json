@@ -3,7 +3,7 @@
   "checks": {
     "changelog_present": true,
     "combined_pdf": true,
-    "doi_configured": false,
+    "doi_configured": true,
     "generated_report_audit": true,
     "legacy_pdf_absent": true,
     "manuscript_variables_hydrated": true,
@@ -17,7 +17,5 @@
   "ok": true,
   "package_version": "1.0.0",
   "release": "1.0",
-  "warnings": [
-    "publication.doi not set in manuscript/config.yaml (mint Zenodo DOI before public deposit)"
-  ]
+  "warnings": []
 }

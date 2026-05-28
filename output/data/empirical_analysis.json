@@ -91,7 +91,7 @@
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/HBSGrey.zip",
       "sha256": "95ca205aae95639d44a3a3ff43838f9f30e2c578ae8362206eba47dcfc81f642",
       "size_bytes": 8026083,
-      "skipped_existing": false,
+      "skipped_existing": true,
       "title": "Average gray-value TIFF images of the Honeybee Standard Brain",
       "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/HBSGrey.zip"
     },
@@ -106,7 +106,7 @@
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/HBSConfocal.zip",
       "sha256": "6f7216f5eba3ae981549eeb34b7bc81f12f1fceb0a4bcfed993148351e14a90d",
       "size_bytes": 1379635,
-      "skipped_existing": false,
+      "skipped_existing": true,
       "title": "Average gray-value JPG images of the Honeybee Standard Brain",
       "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/HBSConfocal.zip"
     },
@@ -121,7 +121,7 @@
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/HBSLabels.zip",
       "sha256": "bd4842913b49ccac5febcaaf5d68cbc37b71fa4039735658d06fc49f9892a966",
       "size_bytes": 421327,
-      "skipped_existing": false,
+      "skipped_existing": true,
       "title": "Label-field TIFF dataset of the Honeybee Standard Brain",
       "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/HBSLabels.zip"
     },
@@ -136,7 +136,7 @@
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/VRML.zip",
       "sha256": "25dd3d25d07cdf7a9319fc469cf1d86d75f5a44922e97d26160d4166e46dab5b",
       "size_bytes": 5965616,
-      "skipped_existing": false,
+      "skipped_existing": true,
       "title": "VRML Honeybee Atlas with olfactory-path neurons",
       "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/VRML.zip"
     },
@@ -151,7 +151,7 @@
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/ACT_Standard.zip",
       "sha256": "e87bc041afb6b4c2ee53e3a35d1c8b322a33aee218dd0243b0115206e613ab8e",
       "size_bytes": 2070538,
-      "skipped_existing": false,
+      "skipped_existing": true,
       "title": "VRML atlas with antennocerebralis tracts",
       "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/ACT_Standard.zip"
     },
@@ -166,7 +166,7 @@
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/ALF1_Standard.zip",
       "sha256": "6ece5a2d89612cda28ed7df626548a71383dee9dae15375316dd574c7ab420aa",
       "size_bytes": 2251043,
-      "skipped_existing": false,
+      "skipped_existing": true,
       "title": "VRML atlas with ALF-1 neuron connecting AL and MB",
       "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/ALF1_Standard.zip"
     },
@@ -181,7 +181,7 @@
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/Atlas_Pe1_PNII.zip",
       "sha256": "ab20443e5bc815a2953ae36b50af01aaeac56450dd39d41c8069b629af4c91f9",
       "size_bytes": 4033983,
-      "skipped_existing": false,
+      "skipped_existing": true,
       "title": "VRML atlas with MB intrinsic, Pe1, MB extrinsic, and PN neurons",
       "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/Atlas_Pe1_PNII.zip"
     },
@@ -196,7 +196,7 @@
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/neuropil_abbreviations.html",
       "sha256": "6663681566682ea707d882c53d5ee812a06b6cbea750eab6b9f6a71e20f1c057",
       "size_bytes": 28375,
-      "skipped_existing": false,
+      "skipped_existing": true,
       "title": "Honeybee Standard Brain neuropil abbreviation table",
       "url": "https://www.bcp.fu-berlin.de/en/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/abbreviations/index.html"
     }
@@ -477,7 +477,7 @@
   "archive_status": [
     {
       "archive_downloaded": false,
-      "archive_error": "429 Too Many Requests",
+      "archive_error": null,
       "archive_sha256": null,
       "archive_size_bytes": 0,
       "archive_skipped_existing": false,
@@ -489,7 +489,7 @@
         "output/data/empirical_sources/dryad-paoli-2024-al-calcium/files/README.md"
       ],
       "file_downloaded_count": 2,
-      "full_download_requested": true,
+      "full_download_requested": false,
       "license": "See source repository or publisher terms.",
       "local_archive": null,
       "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.qbzkh18sc",
@@ -498,7 +498,7 @@
     },
     {
       "archive_downloaded": false,
-      "archive_error": "429 Too Many Requests",
+      "archive_error": null,
       "archive_sha256": null,
       "archive_size_bytes": 0,
       "archive_skipped_existing": false,
@@ -517,7 +517,7 @@
         "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S8_Data.xlsx"
       ],
       "file_downloaded_count": 9,
-      "full_download_requested": true,
+      "full_download_requested": false,
       "license": "See source repository or publisher terms.",
       "local_archive": null,
       "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.83bk3j9tt",
@@ -526,7 +526,7 @@
     },
     {
       "archive_downloaded": false,
-      "archive_error": "429 Too Many Requests",
+      "archive_error": null,
       "archive_sha256": null,
       "archive_size_bytes": 0,
       "archive_skipped_existing": false,
@@ -538,7 +538,7 @@
         "output/data/empirical_sources/dryad-andreu-2025-alarm-odorant-receptors/files/Suppdata_AmOR.zip"
       ],
       "file_downloaded_count": 2,
-      "full_download_requested": true,
+      "full_download_requested": false,
       "license": "See source repository or publisher terms.",
       "local_archive": null,
       "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.rv15dv4k2",
@@ -547,7 +547,7 @@
     },
     {
       "archive_downloaded": false,
-      "archive_error": "429 Too Many Requests",
+      "archive_error": null,
       "archive_sha256": null,
       "archive_size_bytes": 0,
       "archive_skipped_existing": false,
@@ -559,7 +559,7 @@
         "output/data/empirical_sources/dryad-jernigan-2026-antennal-movement/files/README.md"
       ],
       "file_downloaded_count": 2,
-      "full_download_requested": true,
+      "full_download_requested": false,
       "license": "See source repository or publisher terms.",
       "local_archive": null,
       "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.qjq2bvqw6",
@@ -568,7 +568,7 @@
     },
     {
       "archive_downloaded": false,
-      "archive_error": "429 Too Many Requests",
+      "archive_error": null,
       "archive_sha256": null,
       "archive_size_bytes": 0,
       "archive_skipped_existing": false,
@@ -581,7 +581,7 @@
         "output/data/empirical_sources/dryad-nouvian-2017-biogenic-amines/files/Data pharmaco.xlsx"
       ],
       "file_downloaded_count": 3,
-      "full_download_requested": true,
+      "full_download_requested": false,
       "license": "See source repository or publisher terms.",
       "local_archive": null,
       "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.rj10c",
@@ -1858,7 +1858,7 @@
         "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/HBSGrey.zip",
         "sha256": "95ca205aae95639d44a3a3ff43838f9f30e2c578ae8362206eba47dcfc81f642",
         "size_bytes": 8026083,
-        "skipped_existing": false,
+        "skipped_existing": true,
         "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/HBSGrey.zip"
       },
       {
@@ -1869,7 +1869,7 @@
         "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/HBSConfocal.zip",
         "sha256": "6f7216f5eba3ae981549eeb34b7bc81f12f1fceb0a4bcfed993148351e14a90d",
         "size_bytes": 1379635,
-        "skipped_existing": false,
+        "skipped_existing": true,
         "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/HBSConfocal.zip"
       },
       {
@@ -1880,7 +1880,7 @@
         "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/HBSLabels.zip",
         "sha256": "bd4842913b49ccac5febcaaf5d68cbc37b71fa4039735658d06fc49f9892a966",
         "size_bytes": 421327,
-        "skipped_existing": false,
+        "skipped_existing": true,
         "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/HBSLabels.zip"
       },
       {
@@ -1891,7 +1891,7 @@
         "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/VRML.zip",
         "sha256": "25dd3d25d07cdf7a9319fc469cf1d86d75f5a44922e97d26160d4166e46dab5b",
         "size_bytes": 5965616,
-        "skipped_existing": false,
+        "skipped_existing": true,
         "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/VRML.zip"
       },
       {
@@ -1902,7 +1902,7 @@
         "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/ACT_Standard.zip",
         "sha256": "e87bc041afb6b4c2ee53e3a35d1c8b322a33aee218dd0243b0115206e613ab8e",
         "size_bytes": 2070538,
-        "skipped_existing": false,
+        "skipped_existing": true,
         "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/ACT_Standard.zip"
       },
       {
@@ -1913,7 +1913,7 @@
         "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/ALF1_Standard.zip",
         "sha256": "6ece5a2d89612cda28ed7df626548a71383dee9dae15375316dd574c7ab420aa",
         "size_bytes": 2251043,
-        "skipped_existing": false,
+        "skipped_existing": true,
         "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/ALF1_Standard.zip"
       },
       {
@@ -1924,7 +1924,7 @@
         "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/Atlas_Pe1_PNII.zip",
         "sha256": "ab20443e5bc815a2953ae36b50af01aaeac56450dd39d41c8069b629af4c91f9",
         "size_bytes": 4033983,
-        "skipped_existing": false,
+        "skipped_existing": true,
         "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/Atlas_Pe1_PNII.zip"
       },
       {
@@ -1935,14 +1935,14 @@
         "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/neuropil_abbreviations.html",
         "sha256": "6663681566682ea707d882c53d5ee812a06b6cbea750eab6b9f6a71e20f1c057",
         "size_bytes": 28375,
-        "skipped_existing": false,
+        "skipped_existing": true,
         "url": "https://www.bcp.fu-berlin.de/en/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/abbreviations/index.html"
       }
     ],
     "archive_status": [
       {
         "archive_downloaded": false,
-        "archive_error": "429 Too Many Requests",
+        "archive_error": null,
         "archive_sha256": null,
         "archive_size_bytes": 0,
         "archive_skipped_existing": false,
@@ -1954,7 +1954,7 @@
           "output/data/empirical_sources/dryad-paoli-2024-al-calcium/files/README.md"
         ],
         "file_downloaded_count": 2,
-        "full_download_requested": true,
+        "full_download_requested": false,
         "license": "See source repository or publisher terms.",
         "local_archive": null,
         "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.qbzkh18sc",
@@ -1963,7 +1963,7 @@
       },
       {
         "archive_downloaded": false,
-        "archive_error": "429 Too Many Requests",
+        "archive_error": null,
         "archive_sha256": null,
         "archive_size_bytes": 0,
         "archive_skipped_existing": false,
@@ -1982,7 +1982,7 @@
           "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S8_Data.xlsx"
         ],
         "file_downloaded_count": 9,
-        "full_download_requested": true,
+        "full_download_requested": false,
         "license": "See source repository or publisher terms.",
         "local_archive": null,
         "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.83bk3j9tt",
@@ -1991,7 +1991,7 @@
       },
       {
         "archive_downloaded": false,
-        "archive_error": "429 Too Many Requests",
+        "archive_error": null,
         "archive_sha256": null,
         "archive_size_bytes": 0,
         "archive_skipped_existing": false,
@@ -2003,7 +2003,7 @@
           "output/data/empirical_sources/dryad-andreu-2025-alarm-odorant-receptors/files/Suppdata_AmOR.zip"
         ],
         "file_downloaded_count": 2,
-        "full_download_requested": true,
+        "full_download_requested": false,
         "license": "See source repository or publisher terms.",
         "local_archive": null,
         "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.rv15dv4k2",
@@ -2012,7 +2012,7 @@
       },
       {
         "archive_downloaded": false,
-        "archive_error": "429 Too Many Requests",
+        "archive_error": null,
         "archive_sha256": null,
         "archive_size_bytes": 0,
         "archive_skipped_existing": false,
@@ -2024,7 +2024,7 @@
           "output/data/empirical_sources/dryad-jernigan-2026-antennal-movement/files/README.md"
         ],
         "file_downloaded_count": 2,
-        "full_download_requested": true,
+        "full_download_requested": false,
         "license": "See source repository or publisher terms.",
         "local_archive": null,
         "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.qjq2bvqw6",
@@ -2033,7 +2033,7 @@
       },
       {
         "archive_downloaded": false,
-        "archive_error": "429 Too Many Requests",
+        "archive_error": null,
         "archive_sha256": null,
         "archive_size_bytes": 0,
         "archive_skipped_existing": false,
@@ -2046,7 +2046,7 @@
           "output/data/empirical_sources/dryad-nouvian-2017-biogenic-amines/files/Data pharmaco.xlsx"
         ],
         "file_downloaded_count": 3,
-        "full_download_requested": true,
+        "full_download_requested": false,
         "license": "See source repository or publisher terms.",
         "local_archive": null,
         "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.rj10c",
