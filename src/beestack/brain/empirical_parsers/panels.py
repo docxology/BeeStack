@@ -221,9 +221,7 @@ def timecourse_rows(
     return rows
 
 
-def generic_numeric_rows(
-    table: list[tuple[Any, ...]], channel_prefix: str
-) -> list[dict[str, Any]]:
+def generic_numeric_rows(table: list[tuple[Any, ...]], channel_prefix: str) -> list[dict[str, Any]]:
     headers = [str(cell).strip() if cell is not None else "" for cell in table[0]]
     rows: list[dict[str, Any]] = []
     for row_index, row in enumerate(table[1:], start=1):

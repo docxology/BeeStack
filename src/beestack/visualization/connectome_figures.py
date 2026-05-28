@@ -239,7 +239,11 @@ def _completeness_tiers(
 ) -> Path:
     labels = ["structural", "functional", "synaptic"]
     coverage = [
-        float((tiers.get(label, {}) or {}).get("coverage", report.completeness.get(f"{label}_coverage", 0.0)))
+        float(
+            (tiers.get(label, {}) or {}).get(
+                "coverage", report.completeness.get(f"{label}_coverage", 0.0)
+            )
+        )
         for label in labels
     ]
     fig, ax = plt.subplots(figsize=(6, 4))

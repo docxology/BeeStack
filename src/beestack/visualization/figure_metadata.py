@@ -343,7 +343,9 @@ def _readability_exception(stem: str, role: str, status: str) -> str:
     if status != "exception":
         return ""
     if role == "contact_sheet":
-        return "contact sheet source raster is frame-strip evidence; preserve generated frame aspect"
+        return (
+            "contact sheet source raster is frame-strip evidence; preserve generated frame aspect"
+        )
     if stem in {"connectome_completeness_tiers"}:
         return "compact tier summary intentionally uses fewer labels"
     return "registered dense manuscript figure has a split companion or constrained label set"

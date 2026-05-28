@@ -215,8 +215,11 @@ def test_generated_report_audit_flags_project_root_path_leakage(
 
 
 def test_thermo_nuclear_report_tracks_current_verification_count() -> None:
-    report = Path(__file__).resolve().parents[1] / "output" / "reports" / (
-        "thermo_nuclear_code_quality_review.md"
+    report = (
+        Path(__file__).resolve().parents[1]
+        / "output"
+        / "reports"
+        / ("thermo_nuclear_code_quality_review.md")
     )
     text = report.read_text(encoding="utf-8")
 

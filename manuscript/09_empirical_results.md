@@ -98,12 +98,14 @@ missing parseable payloads. In the current generated evidence snapshot,
 {{BRAIN_PARSEABLE_DATASET_COUNT}} are parseable, and
 {{BRAIN_SOURCE_VERIFIED_BLOCKED_COUNT}} source-verified records remain
 blocked with explicit remediation notes. Empirically known gaps are catalogued as
-`EMPIRICAL_KNOWN_GAP_COUNT = {{EMPIRICAL_KNOWN_GAP_COUNT}}`, and the
-dominant current gap is that Paoli MATLAB calcium traces
-[@paoli2024dryad] are not yet local or parseable in the current
-artifact set. BeeStack records this as a *gap* rather than replacing it
-with synthetic data — preserving the distinction between registered
-sources, local payloads, parsed summaries, and model inputs.
+`EMPIRICAL_KNOWN_GAP_COUNT = {{EMPIRICAL_KNOWN_GAP_COUNT}}`. The Paoli
+MATLAB calcium archive [@paoli2024dryad] is now downloaded and parsed
+into empirical response summaries, where it serves as a citation anchor;
+it is not yet wired as a model input or held-out validation target, so
+its contribution remains evidentiary rather than integrative. BeeStack
+preserves this distinction between registered sources, local payloads,
+parsed summaries, and model inputs rather than fabricating synthetic
+traces to claim integration it has not yet performed.
 
 ## Empirical figures
 
@@ -144,7 +146,7 @@ into a manuscript-visible atlas witness.
 [@fig:empirical_activity_summary] condenses the current activity evidence while
 preserving the calcium-availability boundary.
 
-![Matplotlib beebrain empirical activity summary shows Reduced activity summary combining odor separability, calcium fractions, aftersmell response, and antennal drive. Generated from output/data/empirical_analysis.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not support calcium-validated dynamics when Paoli traces are blocked.](../figures/empirical/empirical_activity_summary.png){#fig:empirical_activity_summary}
+![Matplotlib beebrain empirical activity summary shows Reduced activity summary combining odor separability, calcium fractions, aftersmell response, and antennal drive. Generated from output/data/empirical_analysis.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not support calcium-validated dynamics; parsed calcium traces are a citation anchor, not a model input.](../figures/empirical/empirical_activity_summary.png){#fig:empirical_activity_summary}
 
 [@fig:waggle_follower_alignment] maps local Hadjitofi-Webb follower summaries
 to BeeStack decoding confidence without validating colony-scale recruitment.

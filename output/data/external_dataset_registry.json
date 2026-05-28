@@ -33,7 +33,7 @@
     {
       "blocker": "No genome-fetch stage in empirical pipeline.",
       "name": "NCBI Apis mellifera HAv3.1 reference genome",
-      "official_doi": "10.1186/s12864-019-5639-3",
+      "official_doi": "10.1186/s12864-019-5642-0",
       "official_url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_003254395.2/",
       "resource_id": "ncbi_amel_hav31",
       "resource_type": "reference_genome",

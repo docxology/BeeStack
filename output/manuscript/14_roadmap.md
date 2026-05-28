@@ -75,21 +75,23 @@ posterior predictive checks.
 posterior artifact is written, with a `forecast_skill.md` report describing
 held-out residuals and uncertainty intervals.
 
-## 3. Resolve BeeBrain calcium-acquisition gaps
+## 3. Integrate the acquired BeeBrain calcium evidence
 
-Complete BeeBrain calcium acquisition by resolving missing local Paoli
-MAT payloads [@paoli2024dryad], validating HDF5/MAT parsing across the
-registered datasets, and linking calcium templates into the standard
-empirical dashboard. This is the highest-leverage near-term move:
-calcium data are needed for the AL→MB encoding fidelity claim, for the
-empirical alignment metric in the integrated results, and for the
-methods-analysis completeness panel in the BeeBrain methods.
+The Paoli MAT calcium archive [@paoli2024dryad] is now downloaded and
+parsed into empirical response summaries, so acquisition and parsing are
+complete and the modality is reported as parseable rather than
+blocker-documented. The highest-leverage near-term move is to advance it
+from a citation anchor to a model input: wire the parsed calcium
+responses into the AL→MB encoding fidelity claim, expose them through the
+empirical alignment metric in the integrated results, and raise the
+calcium modality completeness beyond its current partial coverage in the
+methods-analysis panel.
 
-*Acceptance criterion:* `CALCIUM_DATASET_COUNT >= 1`, at least one
-local parseable calcium payload listed in
-`output/data/brain_data_completeness.json`, and an updated BeeBrain
-methods panel that reports the calcium modality as parseable rather
-than blocker-documented.
+*Acceptance criterion:* the parsed calcium dataset feeds at least one
+model-side AL→MB validation residual (not just a reporting panel), and
+the calcium modality completeness recorded in
+`output/data/brain_data_completeness.json` rises above its current
+citation-anchor level.
 
 ## 4. Calibrate BeeBody beyond visual MJCF
 

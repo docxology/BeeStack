@@ -48,7 +48,7 @@
 - `output/figures/empirical/empirical_panel_heatmap.png` `dashboard` `moderate` `exception` split=`none` caption=`352` alt=`59`
 - `output/figures/empirical/empirical_stack_alignment.png` `overview` `moderate` `pass` split=`none` caption=`327` alt=`62`
 - `output/figures/empirical/empirical_anatomy_projection.png` `overview` `moderate` `pass` split=`none` caption=`335` alt=`74`
-- `output/figures/empirical/empirical_activity_summary.png` `overview` `moderate` `pass` split=`none` caption=`370` alt=`68`
+- `output/figures/empirical/empirical_activity_summary.png` `overview` `moderate` `pass` split=`none` caption=`404` alt=`68`
 - `output/figures/empirical/waggle_follower_alignment.png` `overview` `moderate` `pass` split=`none` caption=`322` alt=`71`
 - `output/figures/empirical/connectome_structural_graph.png` `overview` `dense` `pass` split=`none` caption=`372` alt=`71`
 - `output/figures/empirical/connectome_completeness_tiers.png` `overview` `compact` `exception` split=`none` caption=`349` alt=`75`

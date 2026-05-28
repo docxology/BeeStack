@@ -37,4 +37,4 @@
   no unresolved token placeholders remain in `output/manuscript/`.
 - Combined PDF from the template repo:
   `uv run python scripts/03_render_pdf.py --project BeeStack` (run from
-  `/Users/4d/Documents/GitHub/template`).
+  the template repository root).

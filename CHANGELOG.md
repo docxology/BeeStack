@@ -23,9 +23,11 @@ First publication-ready manuscript and package release.
 ### Known gaps (documented, not hidden)
 
 - `publication.doi` must be minted at Zenodo before public deposit.
-- Paoli Dryad calcium archive (`[@paoli2024dryad]`) not yet local/parseable (Dryad 405/401 on bulk fetch).
-- Brain-data parseable-source fraction below the 0.8 target until calcium payloads ingest.
-- Research readiness reports list open synthesis and validation follow-ups alongside `validation_fraction=1.0`.
+- Paoli Dryad calcium archive (`[@paoli2024dryad]`) is downloaded and parsed as a
+  citation anchor, but not yet wired as a model input or held-out validation target
+  (its contribution is evidentiary, not integrative).
+- `overall_validation_fraction` is a config-band module self-test rate, not a
+  biological-validation score; it is reported alongside the catalogued open-gap count.
 
 ### Verification
 
@@ -41,3 +43,25 @@ uv run python scripts/audit_publication_readiness.py --check
 - Post-redirect HTTPS host re-validation in `empirical_fetch` (TM-002).
 - Zip archive member-count and uncompressed-size caps in ingest paths (TM-003).
 - Empirical analysis wired into `analysis_pipeline.py` before methods outputs.
+
+### Pre-publication RedTeam remediation (2026-05-27, ISA iteration 10)
+
+Eight-vector adversarial pass found defects invisible to the green oracle:
+
+- Abstract reframed: `RESEARCH_VALIDATION_FRACTION` now presented as a config-band
+  module self-test rate co-located with the open-gap count, not a bare
+  "validation fraction of 1.000"; binding guard added in
+  `tests/test_research_headline_honesty.py`.
+- Central-complex methods prose corrected to "sky-compass bearing and optic-flow
+  drift" (matches `central_complex.heading_ring`; no inertial cue is implemented).
+- BeeSwarm caste list corrected to nurse/forager/guard/scout/wax-builder (matches
+  `config.Caste`); the prior "builder, fanner" wording was a prose-only error.
+- Stale calcium narrative in abstract/results/roadmap updated to reflect the
+  downloaded-and-parsed citation-anchor state (gap count is 0).
+- Two cited DOIs corrected against Crossref/PubMed: `landuse2024nutrition`
+  (J. Environ. Manage., `10.1016/j.jenvman.2024.120031`) and
+  `scitotenv2024varroameta` (2025, `10.1016/j.scitotenv.2024.178228`).
+- Determinism hardening: `waggle_literature_regression` JSON writer now uses
+  `sort_keys=True`; `swarm/agents.py` caste selection uses a `(prob, name)`
+  tie-break (matches the policy convention).
+- Removed two checkout-specific absolute paths from shipped docs.

@@ -1,7 +1,7 @@
 [
   {
     "archive_downloaded": false,
-    "archive_error": "429 Too Many Requests",
+    "archive_error": null,
     "archive_sha256": null,
     "archive_size_bytes": 0,
     "archive_skipped_existing": false,
@@ -9,11 +9,11 @@
     "dataset_id": "dryad-paoli-2024-al-calcium",
     "doi": "10.5061/dryad.qbzkh18sc",
     "downloaded_file_paths": [
-      "/Users/4d/Documents/GitHub/projects/passive/BeeStack/output/data/empirical_sources/dryad-paoli-2024-al-calcium/files/calcium_imaging_database.mat.zip",
-      "/Users/4d/Documents/GitHub/projects/passive/BeeStack/output/data/empirical_sources/dryad-paoli-2024-al-calcium/files/README.md"
+      "output/data/empirical_sources/dryad-paoli-2024-al-calcium/files/calcium_imaging_database.mat.zip",
+      "output/data/empirical_sources/dryad-paoli-2024-al-calcium/files/README.md"
     ],
     "file_downloaded_count": 2,
-    "full_download_requested": true,
+    "full_download_requested": false,
     "license": "See source repository or publisher terms.",
     "local_archive": null,
     "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.qbzkh18sc",
@@ -22,7 +22,7 @@
   },
   {
     "archive_downloaded": false,
-    "archive_error": "429 Too Many Requests",
+    "archive_error": null,
     "archive_sha256": null,
     "archive_size_bytes": 0,
     "archive_skipped_existing": false,
@@ -30,18 +30,18 @@
     "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
     "doi": "10.5061/dryad.83bk3j9tt",
     "downloaded_file_paths": [
-      "/Users/4d/Documents/GitHub/projects/passive/BeeStack/output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/README.txt",
-      "/Users/4d/Documents/GitHub/projects/passive/BeeStack/output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S1_Data.xlsx",
-      "/Users/4d/Documents/GitHub/projects/passive/BeeStack/output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S2_Data.xlsx",
-      "/Users/4d/Documents/GitHub/projects/passive/BeeStack/output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S3_Data.xlsx",
-      "/Users/4d/Documents/GitHub/projects/passive/BeeStack/output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S4_Data.xlsx",
-      "/Users/4d/Documents/GitHub/projects/passive/BeeStack/output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S5_Data.xlsx",
-      "/Users/4d/Documents/GitHub/projects/passive/BeeStack/output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S6_Data.xlsx",
-      "/Users/4d/Documents/GitHub/projects/passive/BeeStack/output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S7_Data.xlsx",
-      "/Users/4d/Documents/GitHub/projects/passive/BeeStack/output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S8_Data.xlsx"
+      "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/README.txt",
+      "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S1_Data.xlsx",
+      "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S2_Data.xlsx",
+      "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S3_Data.xlsx",
+      "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S4_Data.xlsx",
+      "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S5_Data.xlsx",
+      "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S6_Data.xlsx",
+      "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S7_Data.xlsx",
+      "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S8_Data.xlsx"
     ],
     "file_downloaded_count": 9,
-    "full_download_requested": true,
+    "full_download_requested": false,
     "license": "See source repository or publisher terms.",
     "local_archive": null,
     "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.83bk3j9tt",
@@ -50,7 +50,7 @@
   },
   {
     "archive_downloaded": false,
-    "archive_error": "429 Too Many Requests",
+    "archive_error": null,
     "archive_sha256": null,
     "archive_size_bytes": 0,
     "archive_skipped_existing": false,
@@ -58,11 +58,11 @@
     "dataset_id": "dryad-andreu-2025-alarm-odorant-receptors",
     "doi": "10.5061/dryad.rv15dv4k2",
     "downloaded_file_paths": [
-      "/Users/4d/Documents/GitHub/projects/passive/BeeStack/output/data/empirical_sources/dryad-andreu-2025-alarm-odorant-receptors/files/README.md",
-      "/Users/4d/Documents/GitHub/projects/passive/BeeStack/output/data/empirical_sources/dryad-andreu-2025-alarm-odorant-receptors/files/Suppdata_AmOR.zip"
+      "output/data/empirical_sources/dryad-andreu-2025-alarm-odorant-receptors/files/README.md",
+      "output/data/empirical_sources/dryad-andreu-2025-alarm-odorant-receptors/files/Suppdata_AmOR.zip"
     ],
     "file_downloaded_count": 2,
-    "full_download_requested": true,
+    "full_download_requested": false,
     "license": "See source repository or publisher terms.",
     "local_archive": null,
     "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.rv15dv4k2",
@@ -71,7 +71,7 @@
   },
   {
     "archive_downloaded": false,
-    "archive_error": "429 Too Many Requests",
+    "archive_error": null,
     "archive_sha256": null,
     "archive_size_bytes": 0,
     "archive_skipped_existing": false,
@@ -79,11 +79,11 @@
     "dataset_id": "dryad-jernigan-2026-antennal-movement",
     "doi": "10.5061/dryad.qjq2bvqw6",
     "downloaded_file_paths": [
-      "/Users/4d/Documents/GitHub/projects/passive/BeeStack/output/data/empirical_sources/dryad-jernigan-2026-antennal-movement/files/Jernigan_etal_2026_JEB_activesensing_plumestructure_antennal_data.csv",
-      "/Users/4d/Documents/GitHub/projects/passive/BeeStack/output/data/empirical_sources/dryad-jernigan-2026-antennal-movement/files/README.md"
+      "output/data/empirical_sources/dryad-jernigan-2026-antennal-movement/files/Jernigan_etal_2026_JEB_activesensing_plumestructure_antennal_data.csv",
+      "output/data/empirical_sources/dryad-jernigan-2026-antennal-movement/files/README.md"
     ],
     "file_downloaded_count": 2,
-    "full_download_requested": true,
+    "full_download_requested": false,
     "license": "See source repository or publisher terms.",
     "local_archive": null,
     "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.qjq2bvqw6",
@@ -92,7 +92,7 @@
   },
   {
     "archive_downloaded": false,
-    "archive_error": "429 Too Many Requests",
+    "archive_error": null,
     "archive_sha256": null,
     "archive_size_bytes": 0,
     "archive_skipped_existing": false,
@@ -100,12 +100,12 @@
     "dataset_id": "dryad-nouvian-2017-biogenic-amines",
     "doi": "10.5061/dryad.rj10c",
     "downloaded_file_paths": [
-      "/Users/4d/Documents/GitHub/projects/passive/BeeStack/output/data/empirical_sources/dryad-nouvian-2017-biogenic-amines/files/Data colonies.xlsx",
-      "/Users/4d/Documents/GitHub/projects/passive/BeeStack/output/data/empirical_sources/dryad-nouvian-2017-biogenic-amines/files/Data individuals.xlsx",
-      "/Users/4d/Documents/GitHub/projects/passive/BeeStack/output/data/empirical_sources/dryad-nouvian-2017-biogenic-amines/files/Data pharmaco.xlsx"
+      "output/data/empirical_sources/dryad-nouvian-2017-biogenic-amines/files/Data colonies.xlsx",
+      "output/data/empirical_sources/dryad-nouvian-2017-biogenic-amines/files/Data individuals.xlsx",
+      "output/data/empirical_sources/dryad-nouvian-2017-biogenic-amines/files/Data pharmaco.xlsx"
     ],
     "file_downloaded_count": 3,
-    "full_download_requested": true,
+    "full_download_requested": false,
     "license": "See source repository or publisher terms.",
     "local_archive": null,
     "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.rj10c",

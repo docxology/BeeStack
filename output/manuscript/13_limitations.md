@@ -37,10 +37,11 @@ antennal summaries, and 24 templates with
 parseable fraction 0.800. But the default
 neural model remains a reduced AL–MB–CX and dance-decoding kernel.
 It does not claim connectome-level dynamics, a heavyweight spiking
-simulator, or learned synaptic plasticity. The most concrete gap is
-that Paoli MATLAB calcium traces [@paoli2024dryad] are not yet local
-or parseable, so the empirical alignment metric currently sits closer
-to "structural-match witness" than to "predictive likelihood".
+simulator, or learned synaptic plasticity. The Paoli MATLAB calcium
+traces [@paoli2024dryad] are now parsed and serve as a citation anchor,
+but are not yet wired as a predictive model input, so the empirical
+alignment metric currently sits closer to "structural-match witness"
+than to "predictive likelihood".
 
 ## BeeMind: generative-model depth
 

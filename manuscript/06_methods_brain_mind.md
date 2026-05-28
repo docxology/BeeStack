@@ -47,7 +47,7 @@ class-i Kenyon-cell fraction in the configuration (`kc_class_i_fraction
 ## Central complex (CX)
 
 The CX channel maintains a head-direction estimate on {{HEADING_BINS}}
-bins by integrating optic-flow drift and inertial cues, in the spirit of
+bins by integrating a sky-compass bearing and optic-flow drift, in the spirit of
 the anatomically constrained insect path-integration model
 [@stone2017central; @honkanen2019sky]. The CX state is part of every
 `BrainState` so downstream layers (BeeMind belief updates, BeeSwarm

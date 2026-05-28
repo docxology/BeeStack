@@ -1,9 +1,8 @@
 # BeeStack threat model
 
 Evidence anchors use repository-relative paths under the BeeStack project root
-(`/Users/4d/Documents/GitHub/projects/passive/BeeStack` when checked out from
-the private projects repo; symlinked as `projects_in_progress/BeeStack` in the
-template workspace).
+(the project's own checkout directory; in the private projects workspace this is
+symlinked as `projects_in_progress/BeeStack` for template discovery).
 
 ## Executive summary
 

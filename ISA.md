@@ -4,11 +4,11 @@ task: "Project ISA — BeeStack evidence-typed scaffold for whole-colony honeybe
 effort: E5
 effort_source: classifier
 phase: complete
-progress: 119/119
+progress: 146/147
 mode: autonomous
 started: 2026-05-16T01:39:08Z
-updated: 2026-05-25T12:00:00Z
-iteration: 9
+updated: 2026-05-27T22:45:00Z
+iteration: 11
 ---
 
 # BeeStack — Ideal State Artifact
@@ -240,6 +240,50 @@ export barrel).
 - [x] ISC-111: Post-pipeline signpost/readiness hook centralized — `finalize_project_outputs(project_root)` in `documentation_signpost.py`
 - [x] ISC-112: Root `beestack/__init__.py` public surface ≤150 lines — lazy `__getattr__` + `_public_exports.py` map; `__init__.py` is 15 lines (2026-05-25)
 
+### K. Iteration-10 pre-publication RedTeam remediation (2026-05-27)
+
+Eight-vector adversarial pass (RedTeam VectorSpecialists, oracle attacked first) over
+the manuscript + code + claim ledger. The publication-readiness oracle was found
+**honesty-blind** (ORACLE-INCOMPLETE): it certifies `ok:true` while the abstract
+over-claims and prose drifts from artifacts. All criteria below were OPEN after the
+adversarial pass; each was independently re-verified on-disk before any fix.
+
+- [x] ISC-113: `ruff format --check src tests scripts` reports all formatted (CI Format-check step was RED on 26 files at ruff 0.15.12 == locked)
+- [x] ISC-114: Anti: zero absolute home-directory checkout paths in tracked non-`output/` files (was 2: threat-model L4, manuscript/AGENTS.md L40)
+- [x] ISC-115: Abstract frames `RESEARCH_VALIDATION_FRACTION` as a module self-test pass-rate AND co-locates `RESEARCH_KNOWN_GAP_COUNT` — no bare "validation fraction of 1.000" over-claim (was: 1.000 with no caveat beside 11 gaps + a 0.125-complete record)
+- [x] ISC-116: A binding regression test FAILS if a headline full-validation claim (overall_validation_fraction≥1.0) co-exists with known_gaps>0 or below-threshold parsed evidence (closes the V0 oracle gap; negative-control proven)
+- [x] ISC-117: CX methods prose names the actual implemented cue set (sky-compass bearing + optic-flow), not "inertial cues" — code `central_complex.heading_ring` uses `[heading,sky_compass,flow]` weights `[0.4,0.45,0.15]`, no inertial; cited `@honkanen2019sky` is a sky-compass paper
+- [x] ISC-118: Caste list in `05_methods_body_swarm.md` matches `config.Caste = ["nurse","forager","guard","scout","wax_builder"]` (was "builder, and fanner" — invented "fanner", dropped "scout", renamed "wax_builder")
+- [x] ISC-119: Calcium narrative in `00_abstract`/`09_empirical_results`/`14_roadmap` reflects parsed-citation-anchor state, internally consistent with `EMPIRICAL_KNOWN_GAP_COUNT=0` (was: "not yet local or parseable, records this as a *gap*" while .mat.zip is on disk, parser_status=parsed, gap=0 — self-contradiction). Honest distinction: parsed-anchor ≠ model-integrated (calcium feeds only reporting/figures, not orchestrator/brain step)
+- [x] ISC-120: `CALCIUM_ACQUISITION_HZ` sourced from parsed data (127.65 Hz) or honestly labeled config-nominal (was config 100 vs parsed 127.65)
+- [x] ISC-121: `landuse2024nutrition` bib corrected — journal J Environ Manage, vol 352, DOI `10.1016/j.jenvman.2024.120031`, title "bees' food" (Crossref/PubMed-verified; was STOTEN + fabricated DOI `.00173`)
+- [x] ISC-122: `scitotenv2024varroameta` bib corrected — title "A systematic meta-analysis of the efficacy of treatments for a global honey bee pathogen - the Varroa mite", year 2025, DOI `10.1016/j.scitotenv.2024.178228` (Crossref-verified; was paraphrased title + 2024 + PII-as-DOI `.083864`)
+- [x] ISC-123: 4 orphan bib keys (`khamassi2020bio`,`nagari2017waggle`,`wario2015automatic`,`webb2020waggle`) resolved — cited or removed; source-audit oracle now counts orphans in `passed`
+- [x] ISC-124: Determinism hardening — `waggle_literature_regression` JSON writer uses `sort_keys=True` (the lone writer missing it); `swarm/agents.py` caste `max` uses `(prob, name)` tie-break (matches policy convention); defends §15 byte-identity claim
+- [x] ISC-125: Author metadata correct + consistent — Daniel (ORCID 0000-0001-6232-9096; Active Inference Institute + Atta Labs) corresponding; Tucker Cahill Chambers (ORCID 0009-0008-3793-7872; Atta Labs only) across `config.yaml` + `pyproject.toml`
+- [x] ISC-126: Full quality gate re-run green from the project venv — ruff check + format, `uv lock --check`, pytest (≥189 passed, 0 failed), coverage ≥92%
+- [x] ISC-127: Pipeline + audits re-run green — analysis_pipeline, publication-readiness `ok:true`, documentation audit, security audit, signpost check
+- [x] ISC-128: Combined manuscript PDF re-renders after prose edits (hydrated, 0 residual `{{` tokens)
+- [x] ISC-129: Independent cross-vendor Forge audit (read-only) returns no unaddressed CRITICAL on the fixed artifact set
+- [x] ISC-130: Anti: no fix introduces a fabricated value or laundered DOI — every corrected number/DOI is primary-source verified (Crossref/PubMed), no plausible-guess replacements
+- [x] ISC-131: Pre-publication verdict delivered as a top-line CERTIFY / NOT-CERTIFY with explicitly scoped residuals (what was and was NOT audited)
+
+### L. Iteration-11 comprehensive residual closure (2026-05-27)
+
+User directive "comprehensively proceed with all additions and improvements" — close
+every iteration-10 residual that is within my authority (DOI minting stays a
+user/credential action) and make all further defensible improvements.
+
+- [x] ISC-132: Every CITED bib DOI (76) resolves to the correct paper — Crossref-verified title/first-author/year; each mismatch fixed with primary-source metadata (no guessing)
+- [x] ISC-133: `CALCIUM_ACQUISITION_HZ` sourced from the parsed Paoli dataset (≈127.65 Hz) with config fallback — closes iter-10 residual ISC-120
+- [x] ISC-134: Publication-readiness oracle hardened — headline-honesty binding wired into the GATE itself (blocks/warns if overall_validation_fraction≥1.0 ships with known_gaps>0 and no disclosure), not only a test; positive + negative control tests
+- [x] ISC-135: `source_audit` DOI-shape validation broadened to ALL cited entries (not just the 27-key allowlist); orphan count surfaced honestly (warning, since the 4 are an intentional discovered-pool)
+- [ ] ISC-136: Coverage de-brittled above the razor-thin margin (target ≥ 93%, real-data no-mock tests only)
+- [x] ISC-137: Full gate green from venv (ruff check+format, pytest ≥191 passed, coverage ≥92%, lock), pipeline + all audits green, combined PDF re-rendered
+- [x] ISC-138: Independent cross-vendor Forge re-confirm — no unaddressed CRITICAL on the iter-11 additions
+- [x] ISC-139: Anti: no DOI/author "corrected" to a plausible guess — every change primary-source verified; DOI minting explicitly left as the one user-gated action
+- [x] ISC-140: Updated pre-publication verdict reflecting closed residuals (target: CERTIFY pending only the user-gated Zenodo DOI mint)
+
 ## Test Strategy
 
 | isc | type | check | threshold | tool |
@@ -273,6 +317,76 @@ export barrel).
 | manuscript-complete | Hydrate variables, fix references/figures | ISC-92..96 | validation-gates,config-consistency | no |
 
 ## Decisions
+
+- 2026-05-27T22:20:00Z — Iteration 11 (comprehensive residual closure, E5 context-override).
+  User: "comprehensively proceed with all additions and improvements." Closed every
+  iter-10 residual within my authority. **Bibliography DOI integrity (the big one):** a
+  full Crossref resolution audit of all 76 cited DOIs found **30 flagged**, of which ~21
+  were real defects far beyond the iter-10 spot-check — including DOIs that resolved to
+  the WRONG paper (`honeybee2006genome`→a zeolite paper; `highfield2009dwv`→a polyphenol
+  paper; `zheng2018mbio`→the Engel 2016 review, not the Zheng 2017 PNAS paper whose author
+  roster it carried), Crossref DOIs that 404'd (`wilfert2022dwv` was actually Science 2016
+  10.1126/science.aac9976; `wallberg2019hav31` a digit-typo 5639-3→5642-0; `pollination2016value`
+  wrong journal+DOI; `evans2006immune` wrong journal+DOI), and ~13 wrong first authors where
+  the DOI was right (Mondet→McAfee, Schwab→Lin, Donkersley→Inês da Silva, Serra-Borrell→O'Connell,
+  Szyszka→Paoli, etc.). All 24 corrections were verified against Crossref/PubMed primary records —
+  NO plausible-guessing. `seeley1989superorganism` JSTOR DOI 404'd on doi.org itself → removed
+  (real essay, cited by volume/pages). The 6 Dryad + 1 Figshare + 1 gov DataCite DOIs correctly
+  resolve via doi.org (HTTP 200/202) but are not indexed by the Crossref API — confirmed valid,
+  left as-is. Re-audit after fixes: 30→8 flagged, all 8 confirmed-valid DataCite/escaping artifacts.
+- 2026-05-27 — Other residual closures: ISC-133 `CALCIUM_ACQUISITION_HZ` now sourced from the
+  parsed Paoli dataset (127.7 Hz) with config fallback. ISC-134 the headline-honesty binding is
+  wired into `check_publication_readiness` itself (blocks overall_validation_fraction>=1.0 with
+  zero known_gaps), not only the iter-10 test. ISC-135 `source_audit` now shape-validates the DOI
+  of EVERY cited entry (closing the prior allowlist-only gap V-E found) and gates on malformed DOIs.
+  Discovered the `EXPECTED_BIB_DOIS` allowlist ITSELF encoded the wrong Wallberg DOI, propagated to
+  `source_refresh.py` (×3), the §03 provenance table, and a test — fix-every-copy applied across all 5.
+  The one residual I cannot close: minting the public Zenodo DOI (credentialed, irreversible — user action).
+
+- 2026-05-27T21:46:42Z — Iteration 10 (pre-publication RedTeam remediation, E4
+  context-override; classifier fail-safe E3 via 25s timeout, same as prior
+  iterations). Ran the authoritative gate from the project venv FIRST (R8): tests
+  189 passed @ 92.27%, but `ruff format --check` was RED on 26 files (locked ruff
+  0.15.12 == venv, so CI red), and the prior ISA's "119/119 / format-clean" was a
+  stale inherited premise. RedTeam VectorSpecialists (8 specialists, oracle attacked
+  first): verifier-specialist verdict **ORACLE-INCOMPLETE** — `check_publication_
+  readiness` and the research suite certify `ok:true` while `overall_validation_
+  fraction` (mean of 16 config-band booleans, structurally ≥ never-drops-below-1.0
+  while gaps are merely declared) is never bound to the 11 `known_gaps` or the
+  0.125-complete record. Findings (all on-disk-verified before fixing): V-A abstract
+  over-claim (bare "validation fraction 1.000"); V-B CX prose "inertial cues" vs
+  code sky-compass; V-C caste "builder, fanner" vs code scout/wax_builder; V-D STALE
+  calcium "not yet local or parseable" while parsed (gap=0); V-E 2 wrong cited DOIs +
+  source-audit orphan blindness. V-F (results/discussion) and V-G (determinism core)
+  came back CLEAN (honest negative evidence) — V-G surfaced 2 latent hazards only.
+- 2026-05-27 — Advisor (Rule 2, commitment boundary) reshaped the plan: (1) verdict
+  must be NOT-CERTIFY-as-found, never pre-granted conditional; post-fix certification
+  needs an INDEPENDENT pass (Forge), since I am both fixer and certifier; (2)
+  direction of V-B/V-C is CODE-authoritative (CX's own cited `@honkanen2019sky` is a
+  sky-compass paper; castes driven by `config.Caste`) → prose is the defect, "results
+  clean" holds; (3) calcium must distinguish parsed-citation-anchor from
+  model-integrated — confirmed by tracing consumption: calcium feeds only
+  reporting/figures/`empirical_alignment` scoring, NOT the orchestrator/brain step;
+  (4) validation fraction reframed (rename-in-prose to "config-band self-test rate" +
+  co-locate gap count) AND a binding regression test wired, not just re-qualified.
+- 2026-05-27 — DOIs corrected against PRIMARY sources (no plausible-guess laundering):
+  `landuse2024nutrition` → J. Environ. Manage. vol 352, `10.1016/j.jenvman.2024.120031`
+  (PubMed 38232587); `scitotenv2024varroameta` → 2025, `10.1016/j.scitotenv.2024.178228`
+  (Crossref); `scientificreports2026amitraz` DOI resolves (Crossref) but had WRONG first
+  author (Anderson→**Tokach, Rogan**) + off title — corrected. szyszka-2023-granger is
+  PARSED, but §01/§09 "Granger matrix request-only" is honest precision (the matrix
+  sub-artifact, not the dataset) — left intact. Orphans (4 keys) are an intentional
+  stack-synthesis discovered-pool — NOT removed (would break synthesis); prior ISA
+  "0 orphans" claim corrected.
+- 2026-05-27 — Forge cross-vendor independent audit (Rule 2a, mandatory E4 + advisor's
+  independent pass) VERIFIED fixes 1–8 correct (ran the new test: 2 passed; ran a
+  50-agent population: 0 ties / 0 caste diffs proving the tie-break is value-invariant;
+  traced calcium→model path end-to-end confirming scoring-only). It caught a **BLOCKER I
+  missed**: `13_limitations.md:40-43` was a THIRD copy of the stale "calcium not yet
+  local or parseable" claim (fix-every-copy failure) — now fixed. A subsequent thorough
+  sweep then found the §09 figure-caption + `figure_registry.py:900` carried the same
+  stale "when Paoli traces are blocked" clause — also fixed to the clean citation-anchor
+  framing. Forge verdict: NOT-CERTIFY pending §13 → CERTIFY-WITH-RESIDUALS after.
 
 - 2026-05-25T12:00:00Z — Iteration 6 (thermo-nuclear structural review). Read-only
   maintainability audit per cursor-team-kit `thermo-nuclear-code-quality-review`.
@@ -446,6 +560,60 @@ export barrel).
 
 ## Changelog
 
+- **conjectured** (iteration 10 close): the iter-10 spot-check found 3 bad citations
+  (2 DOIs + 1 author); fixing those plus the abstract/calcium/caste defects left the
+  manuscript citation set sound enough for publication.
+  **refuted by**: a comprehensive Crossref resolution audit of ALL 76 cited DOIs (not a
+  spot-check) — 30 flagged, ~21 real defects: DOIs resolving to entirely WRONG papers
+  (honeybee genome→zeolite; DWV→polyphenol oxidase; Zheng→Engel review), 404'ing
+  Crossref DOIs that were actually different journals/years (Wilfert was Science 2016,
+  not a 2022 Sci Rep), and ~13 wrong first authors with correct DOIs. The 3-defect
+  spot-check had sampled <15% of the real error rate.
+  **learned**: spot-checking a bibliography is not auditing it — a manuscript can carry a
+  ~25% citation-defect rate (wrong DOI / wrong author / wrong journal) while every prose
+  token hydrates and every green gate passes, because the offline source-audit only
+  shape-checked a 27-key allowlist and never resolved DOIs against a registry. Worse, the
+  allowlist ITSELF encoded a wrong DOI (Wallberg), which propagated to the provenance
+  ledger, the §03 table, and a test. Citation integrity requires resolving every cited
+  identifier against its registrar (Crossref for journals, doi.org for DataCite), and
+  fixing every copy when an identifier is corrected.
+  **criterion now**: ISC-132 (all 76 cited DOIs Crossref/doi.org-resolved + corrected),
+  ISC-135 (source-audit shape-validates EVERY cited DOI, not just the allowlist), ISC-134
+  (publication gate binds the headline self-test rate to disclosed gaps).
+
+- **conjectured** (iteration 9 close): with 146→189 tests green, all audits
+  passing, and `audit_publication_readiness.py` returning `ok:true`, BeeStack 1.0
+  was publication-ready.
+  **refuted by**: running the gate from the project venv FIRST (R8) showed CI's
+  `ruff format --check` step RED on 26 drifted files (locked ruff 0.15.12 == venv),
+  and an 8-vector RedTeam pass — with the oracle attacked first — returned
+  **ORACLE-INCOMPLETE**: the publication gate verifies file presence + token
+  hydration + self-reported flags but binds nothing to scientific honesty, so it
+  certified a manuscript that (a) headlined "validation fraction of 1.000" with no
+  caveat beside 11 gaps + a 0.125-complete record, (b) said the Paoli calcium
+  archive was "not yet local or parseable" in THREE sections while it was downloaded
+  and parsed (gap count 0), (c) described the central complex integrating "inertial
+  cues" the code never implements, (d) listed castes ("builder, fanner") that are not
+  the implemented `config.Caste` set, and (e) cited three references with wrong
+  DOIs/journal/author. None of these moved a single green test.
+  **learned**: a green oracle that checks shape/presence/hydration is blind to
+  factual and honesty correctness; prose and hand-typed metadata DRIFT from the run
+  artifacts between automated sessions, and the drift is invisible to "tests pass +
+  audits ok." Worse, the same stale claim hides in MULTIPLE copies (the calcium gap
+  shipped in §09, §14, §13, AND a generated figure caption) — fixing the first three
+  is not fixing it; the independent cross-vendor reviewer (Forge) caught the §13 copy
+  the fixer missed. Every external "automation" delta needs a fresh from-venv gate
+  run + an adversarial prose-vs-code/data re-read, not a re-run of the suite that was
+  green WITH the defect.
+  **criterion now**: ISC-113 (format gate green), ISC-115 (abstract reframes the
+  self-test rate + co-locates gaps), ISC-116 (binding regression test fails the build
+  if a perfect self-test rate ships with zero disclosed gaps OR the abstract headlines
+  it bare — `tests/test_research_headline_honesty.py`, proven to fire on the dishonest
+  state by Forge), ISC-117/118/119 (CX cue / caste list / calcium narrative match
+  code+data across ALL copies), ISC-121/122 (DOIs primary-source-verified), ISC-124
+  (determinism hardening); pre-publication verdict scopes what the honesty-blind
+  oracle still cannot see.
+
 - **2026-05-25 (iteration 9, documentation and manuscript pass):** Paper-wide
   manuscript title normalization, registry-backed figure captions via
   `manuscript_image_markdown()`, scholarship cross-reference in section 01,
@@ -576,6 +744,80 @@ export barrel).
   check and the prose now matches the corrected implementation.
 
 ## Verification
+
+**Iteration 11 (2026-05-27) — comprehensive residual closure (ISC-132..140 + ISC-120).**
+- ISC-132: full Crossref resolution audit of all 76 cited DOIs → 30 flagged → 24 corrected
+  against Crossref/PubMed primary records (15 DOI/journal/year/title + author fixes, plus 5
+  stale volume/number/page tuples Forge surfaced, all primary-verified) → re-audit 30→8, all
+  8 remaining confirmed-valid (6 Dryad + 1 Figshare + 1 gov DataCite DOIs resolve via doi.org
+  HTTP 200/202; not indexed by Crossref API). `seeley1989` JSTOR DOI 404'd on doi.org → removed.
+- ISC-120/133: `CALCIUM_ACQUISITION_HZ` hydrates to **127.7** from parsed `calcium_datasets[0].acquisition_hz`
+  (was config-nominal 100); config fallback retained. Closes the iter-10 residual.
+- ISC-134: `check_publication_readiness` now blocks `overall_validation_fraction>=1.0` with zero
+  `known_gaps`; live gate `validation_fraction_discloses_gaps: true`; `tests/test_oracle_hardening.py`
+  proves it fires on the bad state.
+- ISC-135: `source_audit._malformed_cited_dois` shape-validates EVERY cited DOI (closing the
+  allowlist-only gap); gated in `passed`; the `EXPECTED_BIB_DOIS` allowlist + `source_refresh.py`(×3)
+  + §03 table + test all synced off the corrected Wallberg DOI (fix-every-copy).
+- ISC-137: `.venv` gate green — ruff check + format clean, **195 passed @ 92.40%** coverage,
+  doc/security/signpost/publication-readiness all green (`ok:true`, blockers `[]`).
+- ISC-128/138: combined PDF re-rendered from template root (prior attempt failed on a cwd/path
+  bug, fixed) — **68 pages**; pypdf text-extraction confirms corrected citations present
+  (McAfee, nature05260, science.aac9976) and old wrong DOIs (nature05200, 5639-3) absent. Forge
+  independent re-confirm: **CERTIFY-WITH-RESIDUALS**, all 24 corrections VERIFIED, citing
+  sentences still supported, oracle bindings truly bind, no new correctness defect; Forge's lone
+  residual (stale vol/pages) then closed + re-verified.
+- ISC-139: no fabrication — every corrected identifier resolved against Crossref/PubMed; the one
+  unclosable residual (mint the public Zenodo DOI) is a credentialed user action.
+- ISC-136 (OPEN — minor residual): coverage improved 92.27→92.40% and all iter-11 code is covered,
+  but the ≥93% comfortable-margin target was not reached; left open rather than padded with
+  coverage-only tests.
+
+**Iteration 10 (2026-05-27) — pre-publication RedTeam remediation (ISC-113..131).**
+All evidence captured from the project venv this session.
+- ISC-113: `.venv/bin/ruff format --check src tests scripts` → "174 files already
+  formatted" (was 26 to reformat); `ruff check` → "All checks passed!".
+- ISC-114: published-doc absolute-path leaks scrubbed (threat-model L4,
+  manuscript/AGENTS.md L40); iter-11 also relativized the empirical fetch manifests
+  and the output-statistics report so zero home-directory paths remain in tracked files.
+- ISC-115/116: hydrated `output/manuscript/00_abstract.md` → "config-band self-test
+  rate of 1.000 … 11 explicitly catalogued open gaps"; `tests/test_research_headline_
+  honesty.py` 2 tests pass and Forge proved both fire on the dishonest (1.0 + 0 gaps /
+  bare-headline) state.
+- ISC-117: PDF text layer contains "sky-compass", not "inertial cue".
+- ISC-118: PDF contains "scout"/"wax-builder", not "fanner"; matches `config.Caste`.
+- ISC-119: PDF/manuscript/`empirical_status` sweep → "not yet local or parseable" = 0
+  hits (was 3 prose copies + 1 generated figure caption); EMPIRICAL_KNOWN_GAP_COUNT=0
+  consistent; calcium framed as parsed citation-anchor, not model input (confirmed:
+  calcium feeds reporting/alignment-scoring only, not orchestrator/brain step).
+- ISC-121/122: bib DOIs corrected against primary sources — `landuse2024nutrition`
+  → J. Environ. Manage. 352, `10.1016/j.jenvman.2024.120031` (PubMed 38232587);
+  `scitotenv2024varroameta` → 2025, `10.1016/j.scitotenv.2024.178228` (Crossref).
+  Also `scientificreports2026amitraz` author Anderson→Tokach (DOI resolves, Crossref).
+- ISC-123: 4 orphan keys confirmed intentional stack-synthesis discovered-pool (in
+  `stack_synthesis_review.json`); not removed; prior "0 orphans" claim corrected.
+- ISC-124: `agents.py:20` `(prob,name)` tie-break + `waggle_literature_regression.py:178`
+  `sort_keys=True`; Forge ran a 50-agent population → 0 ties / 0 caste diffs (value-invariant).
+- ISC-125: authors consistent — Daniel (ORCID 0000-0001-6232-9096; Active Inference
+  Institute; Atta Labs; corresponding) + Tucker Cahill Chambers (0009-0008-3793-7872;
+  Atta Labs) across config.yaml + self-cite bib + pyproject.
+- ISC-126: `.venv/bin/python -m pytest --cov=src` → **191 passed, 0 failed, 92.27%**
+  (clean run, no concurrent render; the earlier "2 failed" was a PDF-render race).
+- ISC-127: `analysis_pipeline.py` exit 0 (24 steps/21 figures/9 animations);
+  doc-audit "passed"; `audit_publication_readiness.py` `ok:true, blockers:[]`;
+  security "passed"; signpost 71 dirs "passed".
+- ISC-128: `output/pdf/BeeStack_combined.pdf` re-rendered (68 pages, 7.69 MB, 15:21);
+  pypdf text extraction confirms corrected prose present, stale claims absent.
+- ISC-129: Forge cross-vendor audit (independent, read-only) caught the §13 blocker
+  the fixer missed; after fix, Forge re-confirm verdict **CERTIFY-WITH-RESIDUALS**,
+  no new defect, all 3 deltas VERIFIED on-disk, all gates re-run by Forge.
+- ISC-130: no fabrication — every corrected DOI/author primary-source verified
+  (Crossref/PubMed); no plausible-guess replacements.
+- ISC-131: pre-publication verdict delivered (CERTIFY-WITH-RESIDUALS, scoped below).
+- ISC-120 (DEFERRED — documented residual): `CALCIUM_ACQUISITION_HZ` remains the
+  config-nominal 100 Hz (parsed Paoli rate is 127.65 Hz); the variable is latent (not
+  surfaced in rendered prose), so no published claim is affected. Follow-up: source it
+  from the parsed dataset or rename `_NOMINAL`.
 
 **Code Quality (ISC-1..12)** — `uv run ruff check src tests scripts` → "All
 checks passed!"; `ruff format --check` → "90 files already formatted";

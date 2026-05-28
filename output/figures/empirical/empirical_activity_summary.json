@@ -12,7 +12,7 @@
   "alt_text": "Bar chart of normalized BeeBrain empirical activity summary metrics.",
   "artifact_kind": "figure",
   "backend": "Matplotlib empirical-data renderer",
-  "caption": "Matplotlib beebrain empirical activity summary shows Reduced activity summary combining odor separability, calcium fractions, aftersmell response, and antennal drive. Generated from output/data/empirical_analysis.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not support calcium-validated dynamics when Paoli traces are blocked.",
+  "caption": "Matplotlib beebrain empirical activity summary shows Reduced activity summary combining odor separability, calcium fractions, aftersmell response, and antennal drive. Generated from output/data/empirical_analysis.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not support calcium-validated dynamics; parsed calcium traces are a citation anchor, not a model input.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
@@ -59,7 +59,7 @@
     "10.3233/DS-190026"
   ],
   "title": "Empirical Activity Summary",
-  "unsupported_inference": "Does not support calcium-validated dynamics when Paoli traces are blocked.",
+  "unsupported_inference": "Does not support calcium-validated dynamics; parsed calcium traces are a citation anchor, not a model input.",
   "validation_status": "nonblank empirical diagnostic with plot data",
   "visual_quality": {
     "aspect_class": "balanced",

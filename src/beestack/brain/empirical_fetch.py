@@ -376,7 +376,9 @@ def _process_dryad_files(
             "source_url": dataset.get("source_url"),
             "license": dataset.get("license_note"),
             "parser_status": _dryad_parser_status(
-                dataset_id, remote_path, _dryad_download_remediation(file_error) if file_error else None
+                dataset_id,
+                remote_path,
+                _dryad_download_remediation(file_error) if file_error else None,
             ),
         }
         catalog.append(row)
@@ -513,9 +515,7 @@ def _figshare_parser_status(file_name: str) -> str:
     return "cataloged_unparsed"
 
 
-def _dryad_parser_status(
-    dataset_id: str, remote_path: str, file_error: str | None
-) -> str:
+def _dryad_parser_status(dataset_id: str, remote_path: str, file_error: str | None) -> str:
     """Return the expected parser status for one cataloged Dryad file."""
 
     if file_error:
@@ -656,9 +656,13 @@ def fetch_empirical_sources(
                 force=force,
             )
         )
-    write_json(output_dir / "catalog.json", catalog)
-    write_json(output_dir / "archives.json", archives)
-    write_json(output_dir / "anatomy_downloads.json", anatomy_downloads)
+    # Serialize download manifests with repo-relative paths (AGENTS.md rule 10):
+    # local paths are provenance-only here, so normalize them off the checkout root
+    # rather than leaking absolute home-directory paths into tracked, publishable JSON.
+    manifest_root = output_dir.parents[2]
+    write_json(output_dir / "catalog.json", catalog, project_root=manifest_root)
+    write_json(output_dir / "archives.json", archives, project_root=manifest_root)
+    write_json(output_dir / "anatomy_downloads.json", anatomy_downloads, project_root=manifest_root)
     return EmpiricalFetchSummary(
         catalog_count=len(catalog),
         downloaded_archives=sum(1 for row in archives if row.get("archive_downloaded")),

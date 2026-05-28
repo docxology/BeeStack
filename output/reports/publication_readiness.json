@@ -11,7 +11,8 @@
     "package_version_1_0_0": true,
     "parseability_flag_consistent": true,
     "parseability_target_satisfied": true,
-    "security_posture": true
+    "security_posture": true,
+    "validation_fraction_discloses_gaps": true
   },
   "ok": true,
   "package_version": "1.0.0",

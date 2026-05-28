@@ -139,6 +139,26 @@ def check_publication_readiness(
             "documented in limitations and roadmap — not a release blocker"
         )
 
+    # Headline-honesty binding (iter-11): a perfect config-band self-test rate may
+    # not be published without acknowledged limitations. overall_validation_fraction
+    # is a mean of module threshold checks, structurally disjoint from known_gaps;
+    # this gate prevents the run from claiming full validation while cataloguing zero
+    # gaps (the over-claim state the prior oracle was blind to).
+    research = _read_json(root / "output" / "data" / "research_suite_report.json")
+    overall_validation = research.get("overall_validation_fraction")
+    known_gaps = research.get("known_gaps")
+    if isinstance(overall_validation, (int, float)) and float(overall_validation) >= 1.0:
+        gaps_disclosed = isinstance(known_gaps, list) and len(known_gaps) > 0
+        checks["validation_fraction_discloses_gaps"] = gaps_disclosed
+        if not gaps_disclosed:
+            blockers.append(
+                "research_suite_report.json reports overall_validation_fraction>=1.0 "
+                "with zero known_gaps: a perfect config-band self-test rate published "
+                "without any acknowledged limitation is an over-claim"
+            )
+    else:
+        checks["validation_fraction_discloses_gaps"] = True
+
     changelog = root / "CHANGELOG.md"
     checks["changelog_present"] = changelog.is_file()
     if not checks["changelog_present"]:

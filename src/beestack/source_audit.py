@@ -32,7 +32,7 @@ EXPECTED_BIB_DOIS: dict[str, str] = {
     "fair4rs2022principles": "10.1038/s41597-022-01710-x",
     "dong2023wagglesocial": "10.1126/science.ade1702",
     "pnas2026waggleaudience": "10.1073/pnas.2518687123",
-    "wallberg2019hav31": "10.1186/s12864-019-5639-3",
+    "wallberg2019hav31": "10.1186/s12864-019-5642-0",
     "walsh2022hgd": "10.1093/nar/gkab1018",
     "rechlaval2025beebiome": "10.1186/s12859-025-06229-7",
     "dorey2023beebdc": "10.1038/s41597-023-02626-w",
@@ -100,6 +100,7 @@ class SourceAudit:
     figure_registry_citation_keys_missing: tuple[str, ...]
     figure_registry_source_dois_missing: tuple[str, ...]
     unconservative_digital_twin_claims: tuple[str, ...]
+    malformed_cited_dois: tuple[str, ...] = ()
 
     @property
     def passed(self) -> bool:
@@ -111,6 +112,7 @@ class SourceAudit:
             or self.figure_registry_citation_keys_missing
             or self.figure_registry_source_dois_missing
             or self.unconservative_digital_twin_claims
+            or self.malformed_cited_dois
         )
 
     def as_dict(self) -> dict[str, object]:
@@ -179,6 +181,7 @@ def audit_sources(
         figure_registry_citation_keys_missing=missing_figure_keys,
         figure_registry_source_dois_missing=missing_figure_dois,
         unconservative_digital_twin_claims=unsafe_twin_claims,
+        malformed_cited_dois=_malformed_cited_dois(bib_entries, citation_keys),
     )
 
 
@@ -272,6 +275,33 @@ def _doi_mismatches(
         if _normalize_doi(found) != _normalize_doi(expected):
             mismatches.append(f"{key}: expected {expected}, found {found or 'missing DOI'}")
     return tuple(mismatches)
+
+
+_DOI_SHAPE_RE = re.compile(r"^10\.\d{4,9}/\S+$")
+
+
+def _malformed_cited_dois(
+    entries: dict[str, dict[str, str]], citation_keys: tuple[str, ...]
+) -> tuple[str, ...]:
+    """Flag every CITED entry whose ``doi`` field is present but malformed.
+
+    Broadens DOI validation beyond the curated allowlist (the prior gate only
+    shape-checked ``EXPECTED_BIB_DOIS``): any cited reference carrying a DOI that
+    is not a well-formed ``10.NNNN/suffix`` string is surfaced as a release
+    blocker. Resolution against a DOI registry is an online concern handled by
+    the periodic Crossref audit, not this offline gate.
+    """
+
+    cited = set(citation_keys)
+    malformed: list[str] = []
+    for key in sorted(cited):
+        entry = entries.get(key)
+        if entry is None:
+            continue
+        doi = (entry.get("doi") or "").strip()
+        if doi and not _DOI_SHAPE_RE.match(doi):
+            malformed.append(f"{key}: malformed DOI {doi!r}")
+    return tuple(malformed)
 
 
 def _missing_required_fields(

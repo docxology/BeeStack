@@ -39,7 +39,11 @@ def nouvian_hplc_rows(table: list[tuple[Any, ...]]) -> list[dict[str, Any]]:
             continue
         stimulus = join_label(
             region,
-            text(source_row[odor_idx] if odor_idx is not None and odor_idx < len(source_row) else None),
+            text(
+                source_row[odor_idx]
+                if odor_idx is not None and odor_idx < len(source_row)
+                else None
+            ),
             text(
                 source_row[behavior_idx]
                 if behavior_idx is not None and behavior_idx < len(source_row)
@@ -47,7 +51,9 @@ def nouvian_hplc_rows(table: list[tuple[Any, ...]]) -> list[dict[str, Any]]:
             ),
         )
         colony = text(
-            source_row[colony_idx] if colony_idx is not None and colony_idx < len(source_row) else None
+            source_row[colony_idx]
+            if colony_idx is not None and colony_idx < len(source_row)
+            else None
         )
         for idx, amine in amine_columns:
             value = numeric(source_row[idx] if idx < len(source_row) else None)

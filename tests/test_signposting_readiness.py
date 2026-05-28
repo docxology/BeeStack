@@ -67,18 +67,12 @@ def test_signpost_writer_excludes_caches_and_creates_context(tmp_path: Path) -> 
     assert "Copied FlyBody OBJ/XML assets" in asset_readme
     assert "Generated or downloaded artifact area" in asset_agents
     llm_readme = (tmp_path / "output" / "llm" / "README.md").read_text(encoding="utf-8")
-    figures_readme = (tmp_path / "output" / "figures" / "README.md").read_text(
+    figures_readme = (tmp_path / "output" / "figures" / "README.md").read_text(encoding="utf-8")
+    empirical_agents = (tmp_path / "output" / "figures" / "empirical" / "AGENTS.md").read_text(
         encoding="utf-8"
     )
-    empirical_agents = (
-        tmp_path / "output" / "figures" / "empirical" / "AGENTS.md"
-    ).read_text(encoding="utf-8")
-    slides_agents = (tmp_path / "output" / "slides" / "AGENTS.md").read_text(
-        encoding="utf-8"
-    )
-    reports_readme = (tmp_path / "output" / "reports" / "README.md").read_text(
-        encoding="utf-8"
-    )
+    slides_agents = (tmp_path / "output" / "slides" / "AGENTS.md").read_text(encoding="utf-8")
+    reports_readme = (tmp_path / "output" / "reports" / "README.md").read_text(encoding="utf-8")
     scene_readme = (
         tmp_path / "output" / "animations" / "flybody_scenes" / "waggle" / "README.md"
     ).read_text(encoding="utf-8")

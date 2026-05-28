@@ -21,7 +21,7 @@
 - ![Matplotlib beebody and beeswarm micro-to-macro calibration map shows Calibration-boundary map connecting strict BeeBody/FlyBody scene metrics, waggle-motion anchors, and reduced BeeSwarm or BEEHAVE-compatible colony summaries. Generated from FlyBody scene metrics, simulation records, BEEHAVE anchor, and source refresh ledger. Sidecar validation checks raster, source routing, and registered claim tier. Does not calibrate colony-scale recruitment or make small-scene contacts a population model.](../figures/beebody_beeswarm_micro_macro_calibration.png){#fig:body_swarm_micro_macro}
 - ![Matplotlib beebody energy time series shows Integrated-run BeeBody energy witness showing deterministic reduced energy accounting across control steps. Generated from output/data/simulation_records.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not calibrate honeybee energetics.](../figures/body_energy_timeseries.png){#fig:body_energy}
 - ![Matplotlib beebody motion, wing power, and phase witness shows Integrated-run witness linking COM-speed proxy, wing-power trace, and stroke-phase diagnostics for the reduced BeeBody energetics kernel. Generated from output/data/simulation_records.json and methods analysis. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate measured honeybee metabolic rates or aerodynamic coefficients.](../figures/beebody_motion_power_phase.png){#fig:body_motion_power_phase}
-- ![Matplotlib beebrain empirical activity summary shows Reduced activity summary combining odor separability, calcium fractions, aftersmell response, and antennal drive. Generated from output/data/empirical_analysis.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not support calcium-validated dynamics when Paoli traces are blocked.](../figures/empirical/empirical_activity_summary.png){#fig:empirical_activity_summary}
+- ![Matplotlib beebrain empirical activity summary shows Reduced activity summary combining odor separability, calcium fractions, aftersmell response, and antennal drive. Generated from output/data/empirical_analysis.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not support calcium-validated dynamics; parsed calcium traces are a citation anchor, not a model input.](../figures/empirical/empirical_activity_summary.png){#fig:empirical_activity_summary}
 - ![Matplotlib beebrain empirical stack alignment shows Alignment scores between empirical templates and reduced BeeBrain module contracts. Generated from output/data/empirical_analysis.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not calibrate reduced kernels to biological ground truth.](../figures/empirical/empirical_stack_alignment.png){#fig:empirical_stack_alignment}
 - ![Matplotlib beebrain multimodal source map shows Multimodal source map organizing anatomy, odor-response, antennal, and waggle-follower records by integration target and local availability. Generated from output/data/brain_data_completeness.json and empirical analysis report. Sidecar validation checks raster, source routing, and registered claim tier. Does not support a complete multimodal empirical assimilation pipeline.](../figures/empirical/bee_brain_multimodal_source_map.png){#fig:brain_multimodal_source_map}
 - ![Matplotlib beebrain structural projectome graph shows Network layout of Honeybee Standard Brain neuropils, named neuron/tract nodes, and documented structural tract edges. Generated from output/data/bee_brain_connectome.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not claim synaptic adjacency or functional Granger completeness.](../figures/empirical/connectome_structural_graph.png){#fig:connectome_structural_graph}
@@ -201,6 +201,7 @@
 - Keep the reduced telemetry path deterministic, but do not silently downgrade
 - Limit empirical BeeBrain alignment to one odor template for a small experiment:
 - Local override: set `BEESTACK_FLYBODY_PATH=/path/to/flybody-beestack` or
+- MATLAB calcium archive [@paoli2024dryad] is now downloaded and parsed
 - MJCF assets used by FlyBody.
 - MJCF/FlyBody/MuJoCo path with render and contact verification. They do
 - Mind, and Niche emit deterministic reduced module GIFs under
@@ -238,6 +239,7 @@
 - Split from the former `empirical_ingest.py` god-module. Each parser owns one
 - Strict FlyBody scene XML and contact-scene animation metadata:
 - Swarm production animations, empirical reduced for BeeBrain, and reduced
+- The Paoli MAT calcium archive [@paoli2024dryad] is now downloaded and
 - The `beestack.empirical` config section controls enabled dataset IDs, calcium
 - The abstract does not claim a full calibrated honeybee simulator.
 - The animation pipeline is module-aligned: BeeBody emits FlyBody walking
@@ -299,7 +301,7 @@
 - `BeeBrain`: reduced but empirical-data-driven AL/MB/CX, odor-template,
 - `BeeStackConfig.empirical` controls the dataset IDs, calcium protocol, atlas
 - `BrainState`: AL/MB/CX/dance/empirical-alignment output.
-- `EMPIRICAL_KNOWN_GAP_COUNT = {{EMPIRICAL_KNOWN_GAP_COUNT}}`, and the
+- `EMPIRICAL_KNOWN_GAP_COUNT = {{EMPIRICAL_KNOWN_GAP_COUNT}}`. The Paoli
 - `EmpiricalAnatomyDataset`
 - `EmpiricalBrainDataset`
 - `EmpiricalCalciumDataset`
@@ -495,6 +497,7 @@
 - blocked with explicit remediation notes. Empirically known gaps are catalogued as
 - body-scene work [@vaxenburg2025flybody], while BEEHAVE remains the
 - bounded reduced kernels with explicit diagnostics.
+- but are not yet wired as a predictive model input, so the empirical
 - by FlyBody-generated scene XMLs, rendered by MuJoCo, and supported by finite
 - calibration result. Strict FlyBody/MuJoCo scenes provide executable body
 - claims, empirical-data scope, or public-method comparisons. Current external
@@ -528,8 +531,7 @@
 - dynamics remain reduced
 - eight evenly sampled frames from the single-nestmate FlyBody renders —
 - empirical BeeBrain evidence: `output/data/empirical_analysis.json` and
-- empirical alignment metric in the integrated results, and for the
-- empirical dashboard. This is the highest-leverage near-term move:
+- empirical alignment metric in the integrated results, and raise the
 - empirical dataset provenance, calcium-trace summaries, odor-template
 - empirical evidence records, visualization inventories, sensitivity sweeps, and
 - empirical follower confidence without breaking existing call sites.
@@ -567,6 +569,7 @@
 - heading distribution, dance events, and empirical alignment metadata.
 - helper adds empirical follower confidence, follower-alignment score, stop-signal
 - into a reduced AL–MB–CX path; the alignment metric measures whether
+- into empirical response summaries, where it serves as a citation anchor;
 - inventories, empirical evidence summaries, deterministic sensitivity sweeps,
 - is FlyBody-backed for production rendering, and the visual
 - is allowed to skip the optional empirical-analysis stage while the offline core
@@ -593,12 +596,12 @@
 - of module readiness, simulation telemetry, empirical parseability, visual
 - on top of the FlyBody execution path: the verification script measures
 - optional empirical-data gates that distinguish absent public payloads from
-- or parseable, so the empirical alignment metric currently sits closer
 - orientation but not biomechanical or empirical evidence.
 - output/            Regeneratable artifacts and raw empirical downloads
 - outputs and {{REDUCED_ANIMATION_COUNT}} reduced schematic outputs. The
 - outputs, empirical BeeBrain evidence, reduced kernels, validation reports,
 - panels, Jernigan frame-level antennal movement rows, and empirical template
+- parsed into empirical response summaries, so acquisition and parsing are
 - path uses real [FlyBody](https://github.com/TuragaLab/flybody) tasks, and the
 - paths. BeeBrain reduced neural dynamics should not be described as full
 - payloads are first recorded as metadata, then only downloaded and parsed
@@ -714,7 +717,7 @@
 - {{EMPIRICAL_TEMPLATE_COUNT}} templates. It also records
 - {{FINAL_EMPIRICAL_ALIGNMENT}}.
 - {{RESEARCH_EVIDENCE_COUNT}} empirical evidence records,
-- {{RESEARCH_EVIDENCE_COUNT}} empirical evidence records, and an overall
+- {{RESEARCH_EVIDENCE_COUNT}} empirical evidence records. All module
 - {{WING_STROKE_HZ}} Hz wing stroke, and {{FLYBODY_ACTION_DIM}} FlyBody
 - | Active-inference-style policy selection | Deterministic reduced policy scoring with diagnostics | `output/reports/methods_analysis.md` | Learned colony-optimal control |
 - | Archive ingest | `src/beestack/brain/empirical_ingest.py`, `src/beestack/brain/anatomy.py` | Zip-slip rejection (`assert_safe_zip_member`); member-count and uncompressed-size caps (`validate_zip_archive_bounds`, TM-003) |

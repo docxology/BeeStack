@@ -292,9 +292,7 @@ def _ring_layout(center: tuple[float, float], count: int, spread: float) -> np.n
         return np.zeros((0, 2))
     angles = np.linspace(0.0, 2.0 * np.pi, count, endpoint=False)
     radii = np.linspace(spread * 0.25, spread, count)
-    return np.column_stack(
-        [center[0] + radii * np.cos(angles), center[1] + radii * np.sin(angles)]
-    )
+    return np.column_stack([center[0] + radii * np.cos(angles), center[1] + radii * np.sin(angles)])
 
 
 def _animate_brain(

@@ -46,8 +46,7 @@ def test_publication_readiness_blocks_wrong_manuscript_version(tmp_path: Path) -
         encoding="utf-8",
     )
     (data_dir / "brain_data_completeness.json").write_text(
-        json.dumps({"parseability_target_satisfied": False, "parseable_fraction": 0.6})
-        + "\n",
+        json.dumps({"parseability_target_satisfied": False, "parseable_fraction": 0.6}) + "\n",
         encoding="utf-8",
     )
 

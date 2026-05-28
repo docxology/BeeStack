@@ -35,6 +35,14 @@ def generate_variables(
     connectome = empirical.get("connectome", {})
     sensor_noise = cfg.body.sensor_noise
     control_steps_per_policy = round(cfg.timing.control_rate_hz / cfg.timing.policy_rate_hz)
+    # Prefer the acquisition rate measured from the parsed calcium dataset; fall back
+    # to the configured nominal rate only when no calcium payload is parsed locally.
+    parsed_calcium = (empirical.get("calcium_datasets") or [{}])[0]
+    calcium_acquisition_hz = (
+        f"{float(parsed_calcium['acquisition_hz']):.1f}"
+        if parsed_calcium.get("acquisition_hz")
+        else f"{cfg.empirical.calcium_acquisition_hz:.0f}"
+    )
     return {
         "CONFIG_SEED": str(cfg.seed),
         "CONTROL_RATE_HZ": str(cfg.timing.control_rate_hz),
@@ -60,7 +68,7 @@ def generate_variables(
         "ACTIVE_KC": f"{cfg.brain.active_kenyon_cells:,}",
         "HEADING_BINS": str(cfg.brain.heading_bins),
         "EMPIRICAL_DATASET_COUNT": str(len(cfg.empirical.enabled_dataset_ids)),
-        "CALCIUM_ACQUISITION_HZ": f"{cfg.empirical.calcium_acquisition_hz:.0f}",
+        "CALCIUM_ACQUISITION_HZ": calcium_acquisition_hz,
         "ODOR_TEMPLATE_COUNT": str(len(cfg.empirical.odor_templates)),
         "LATENT_DIM": str(cfg.mind.latent_dim),
         "POLICY_HORIZON": str(cfg.mind.policy_horizon),

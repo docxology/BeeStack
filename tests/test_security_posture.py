@@ -23,7 +23,9 @@ def test_validate_download_url_accepts_curated_hosts() -> None:
     validate_download_url(
         "https://dryad-assetstore-merritt-west.s3.us-west-2.amazonaws.com/v3/307381/data/file.zip"
     )
-    validate_download_url("https://mdpi-res.com/d_attachment/insects/insects-14-00539/article_deploy/insects-14-00539-s001.zip")
+    validate_download_url(
+        "https://mdpi-res.com/d_attachment/insects/insects-14-00539/article_deploy/insects-14-00539-s001.zip"
+    )
     validate_download_url(
         "https://s3-eu-west-1.amazonaws.com/pfigshare-u-files/44977549/features.csv"
     )
@@ -93,8 +95,9 @@ def test_validate_zip_archive_bounds_rejects_uncompressed_size(
     with zipfile.ZipFile(payload, "w") as archive:
         archive.writestr("file.txt", "bee")
     payload.seek(0)
-    with zipfile.ZipFile(payload) as archive, pytest.raises(
-        ValueError, match="uncompressed size cap"
+    with (
+        zipfile.ZipFile(payload) as archive,
+        pytest.raises(ValueError, match="uncompressed size cap"),
     ):
         validate_zip_archive_bounds(archive)
 

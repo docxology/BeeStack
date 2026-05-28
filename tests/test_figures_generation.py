@@ -53,7 +53,11 @@ def test_generate_analysis_figures_writes_pngs_and_sidecars(tmp_path: Path) -> N
         data_payload = json.loads(data_path.read_text(encoding="utf-8"))
         assert data_payload["schema"] == "beestack.figure_data.v1"
         assert data_payload["figure_path"]
-        assert data_payload.get("chart_type") or data_payload.get("series") or data_payload.get("nodes")
+        assert (
+            data_payload.get("chart_type")
+            or data_payload.get("series")
+            or data_payload.get("nodes")
+        )
         payload = json.loads(sidecar.read_text(encoding="utf-8"))
         assert payload["plot_data_path"]
         assert payload["caption"]

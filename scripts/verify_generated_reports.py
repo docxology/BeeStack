@@ -44,8 +44,7 @@ def main() -> None:
     if not publication["ok"]:
         blockers = publication.get("blockers", ())
         raise SystemExit(
-            "BeeStack publication readiness failed: "
-            + "; ".join(str(item) for item in blockers)
+            "BeeStack publication readiness failed: " + "; ".join(str(item) for item in blockers)
         )
     print("BeeStack generated-report audit passed")
     print("BeeStack security posture audit passed")

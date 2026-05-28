@@ -17,7 +17,7 @@ def initialize_agents(cfg: BeeStackConfig, seed: int) -> tuple[BeeAgent, ...]:
     for idx in range(cfg.swarm.agent_count):
         age = float(rng.uniform(1.0, 35.0))
         probs = caste_prior(age)
-        caste = max(probs, key=lambda caste_name: probs[caste_name])
+        caste = max(probs, key=lambda caste_name: (probs[caste_name], caste_name))
         belief = BeliefState(
             pose=np.zeros(cfg.mind.latent_dim, dtype=float),
             energy=float(rng.uniform(0.45, 1.0)),

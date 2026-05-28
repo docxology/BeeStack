@@ -175,5 +175,5 @@ def write_waggle_literature_regression_report(
     report = build_waggle_literature_regression_report(project_root, cfg)
     path = project_root / "output" / "reports" / "waggle_literature_regression.json"
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(report.as_dict(), indent=2) + "\n", encoding="utf-8")
+    path.write_text(json.dumps(report.as_dict(), indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return path

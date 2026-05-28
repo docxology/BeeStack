@@ -43,9 +43,7 @@ def validate_zip_archive_bounds(archive: zipfile.ZipFile) -> None:
 
     infos = [info for info in archive.infolist() if not info.is_dir()]
     if len(infos) > MAX_ZIP_MEMBER_COUNT:
-        raise ValueError(
-            f"zip archive exceeds member cap ({len(infos)} > {MAX_ZIP_MEMBER_COUNT})"
-        )
+        raise ValueError(f"zip archive exceeds member cap ({len(infos)} > {MAX_ZIP_MEMBER_COUNT})")
     total_uncompressed = sum(int(info.file_size) for info in infos)
     if total_uncompressed > MAX_ZIP_UNCOMPRESSED_BYTES:
         raise ValueError(

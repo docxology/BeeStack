@@ -212,13 +212,20 @@ def _stack_graphical_abstract(module_names: list[str], path: Path) -> Path:
         fontweight="bold",
         color="#111827",
     )
-    headers = (("Module", 0.045), ("Local evidence", 0.238), ("Typed contract", 0.498), ("Boundary", 0.735))
+    headers = (
+        ("Module", 0.045),
+        ("Local evidence", 0.238),
+        ("Typed contract", 0.498),
+        ("Boundary", 0.735),
+    )
     for header, x in headers:
         ax.text(x, 0.855, header, transform=ax.transAxes, fontsize=8.8, fontweight="bold")
     y_positions = np.linspace(0.755, 0.275, len(modules))
     for index, (module, y) in enumerate(zip(modules, y_positions, strict=False)):
         color = module_color(module)
-        evidence, contract, boundary = lane_text.get(module, ("Generated records", module, "Gap bounded"))
+        evidence, contract, boundary = lane_text.get(
+            module, ("Generated records", module, "Gap bounded")
+        )
         ax.add_patch(
             Rectangle(
                 (0.03, y - 0.055),

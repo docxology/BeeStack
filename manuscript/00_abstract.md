@@ -45,9 +45,12 @@ response panels, {{ANATOMY_INVENTORY_COUNT}} anatomy inventories,
 {{EMPIRICAL_TEMPLATE_COUNT}} odor templates, with a parseable-source
 fraction of {{BRAIN_DATA_PARSEABLE_FRACTION}}. The research suite reports
 {{RESEARCH_VISUALIZATION_COUNT}} visualization artifacts,
-{{RESEARCH_SWEEP_COUNT}} deterministic sensitivity sweeps,
-{{RESEARCH_EVIDENCE_COUNT}} empirical evidence records, and an overall
-validation fraction of {{RESEARCH_VALIDATION_FRACTION}}. The methods-analysis
+{{RESEARCH_SWEEP_COUNT}} deterministic sensitivity sweeps, and
+{{RESEARCH_EVIDENCE_COUNT}} empirical evidence records. All module
+contract self-tests pass — a config-band self-test rate of
+{{RESEARCH_VALIDATION_FRACTION}} — measured alongside
+{{RESEARCH_KNOWN_GAP_COUNT}} explicitly catalogued open gaps, so this
+rate denotes contract conformance rather than biological validation. The methods-analysis
 pass adds {{METHODS_PANEL_COUNT}} module dashboards,
 {{METHODS_FIGURE_COUNT}} static methods figures, and
 {{METHODS_EVIDENCE_LINK_COUNT}} manuscript-evidence cross-links.

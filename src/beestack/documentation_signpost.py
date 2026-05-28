@@ -479,9 +479,13 @@ def _canonical_source(parts: tuple[str, ...], generated: bool) -> str:
         if len(parts) >= 3 and parts[2] == "empirical":
             return "scripts/analyze_empirical_bee_data.py and src/beestack/visualization/empirical_figures.py"
         if len(parts) >= 3 and parts[2] == "methods":
-            return "scripts/run_methods_analysis.py and src/beestack/visualization/methods_figures.py"
+            return (
+                "scripts/run_methods_analysis.py and src/beestack/visualization/methods_figures.py"
+            )
         if len(parts) >= 3 and parts[2] == "research":
-            return "scripts/run_research_suite.py and src/beestack/visualization/research_figures.py"
+            return (
+                "scripts/run_research_suite.py and src/beestack/visualization/research_figures.py"
+            )
         if len(parts) >= 3 and parts[2] == "renders":
             return "scripts/generate_animations.py and src/beestack/visualization/figure_output.py"
         return "scripts/analysis_pipeline.py and src/beestack/visualization/figure_registry.py"

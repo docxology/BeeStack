@@ -189,8 +189,7 @@ def _stack_synthesis_dashboard(review: StackSynthesisReview, path: Path) -> Path
 
     ax_findings.axis("off")
     finding_text = "\n\n".join(
-        f"- {wrap_label(finding, width=58, max_lines=3)}"
-        for finding in review.prioritized_findings
+        f"- {wrap_label(finding, width=58, max_lines=3)}" for finding in review.prioritized_findings
     )
     bounded_text(
         ax_findings,

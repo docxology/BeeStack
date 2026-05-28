@@ -124,9 +124,7 @@ def analysis_plot_data(
             x=steps,
             series={
                 "comb_fraction": _numeric_series(records, "comb_fraction"),
-                "brood_temperature_error_c": _numeric_series(
-                    records, "brood_temperature_error_c"
-                ),
+                "brood_temperature_error_c": _numeric_series(records, "brood_temperature_error_c"),
             },
         )
     if name == "beestack_graphical_abstract.png":
@@ -248,9 +246,7 @@ def empirical_plot_data(
         return categorical_plot(
             title="Honeybee Standard Brain atlas assets",
             labels=[Path(inventory.local_path).name for inventory in ranked],
-            values=[
-                inventory.total_uncompressed_bytes / 1_000_000 for inventory in ranked
-            ],
+            values=[inventory.total_uncompressed_bytes / 1_000_000 for inventory in ranked],
             extra={
                 "downloaded_asset_count": anatomy_summary.downloaded_asset_count,
                 "asset_count": anatomy_summary.asset_count,
@@ -605,12 +601,16 @@ def research_plot_data(path: Path, *, report: Any) -> dict[str, Any]:
                     )
         return schematic_plot(title="Research sensitivity sweeps", nodes=rows)
     if name in {"research_fidelity_evidence_network.png", "research_evidence_detail.png"}:
-        nodes = [{"id": scorecard.module, "kind": "module"} for scorecard in report.module_scorecards]
+        nodes = [
+            {"id": scorecard.module, "kind": "module"} for scorecard in report.module_scorecards
+        ]
         edges: list[dict[str, str]] = []
         for scorecard in report.module_scorecards:
             for evidence_label in scorecard.evidence:
                 evidence_node = f"{scorecard.module}:evidence"
-                nodes.append({"id": evidence_node, "kind": "evidence", "label": evidence_label[:24]})
+                nodes.append(
+                    {"id": evidence_node, "kind": "evidence", "label": evidence_label[:24]}
+                )
                 edges.append({"source": scorecard.module, "target": evidence_node})
         for empirical_record in report.empirical_evidence:
             nodes.append({"id": empirical_record.dataset_id, "kind": "empirical"})
@@ -674,11 +674,7 @@ def _registry_schematic_plot_data(path: Path) -> dict[str, Any]:
     """Use figure-registry narratives for schematic audit figures."""
 
     narrative = next(
-        (
-            item
-            for item in all_figure_narratives()
-            if Path(item.artifact_path).name == path.name
-        ),
+        (item for item in all_figure_narratives() if Path(item.artifact_path).name == path.name),
         None,
     )
     if narrative is None:

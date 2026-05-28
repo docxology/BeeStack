@@ -786,9 +786,7 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
     _narrative(
         "output/figures/empirical/empirical_panel_quality.png",
         title="Empirical panel quality bars",
-        caption=(
-            "Mean absolute response by empirical panel modality for parser-quality review."
-        ),
+        caption=("Mean absolute response by empirical panel modality for parser-quality review."),
         alt_text="Bar chart of mean absolute empirical panel responses by modality.",
         manuscript_section="manuscript/09_empirical_results.md",
         manuscript_label="fig:empirical_panel_quality",
@@ -837,9 +835,7 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
     _narrative(
         "output/figures/empirical/empirical_anatomy_assets.png",
         title="Honeybee Standard Brain atlas assets",
-        caption=(
-            "Downloaded Honeybee Standard Brain ZIP inventories ranked by uncompressed size."
-        ),
+        caption=("Downloaded Honeybee Standard Brain ZIP inventories ranked by uncompressed size."),
         alt_text="Bar chart of Honeybee Standard Brain atlas asset sizes.",
         manuscript_section="manuscript/09_empirical_results.md",
         manuscript_label="fig:empirical_anatomy_assets",
@@ -874,9 +870,7 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
     _narrative(
         "output/figures/empirical/empirical_neuropil_coverage.png",
         title="Honeybee Standard Brain neuropil coverage",
-        caption=(
-            "Neuropil abbreviation counts grouped by region class from atlas HTML inventory."
-        ),
+        caption=("Neuropil abbreviation counts grouped by region class from atlas HTML inventory."),
         alt_text="Bar chart of neuropil abbreviation counts by region class.",
         manuscript_section="manuscript/09_empirical_results.md",
         manuscript_label="fig:empirical_neuropil_coverage",
@@ -903,7 +897,7 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
         fidelity_level="empirical panel summary diagnostic",
         source_data="output/data/empirical_analysis.json",
         regeneration_command="uv run python scripts/analyze_empirical_bee_data.py",
-        unsupported_inference="Does not support calcium-validated dynamics when Paoli traces are blocked.",
+        unsupported_inference="Does not support calcium-validated dynamics; parsed calcium traces are a citation anchor, not a model input.",
         priority="primary",
     ),
     _narrative(
@@ -982,9 +976,7 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
     _narrative(
         "output/figures/empirical/connectome_neuropil_module_map.png",
         title="Connectome neuropil module map",
-        caption=(
-            "Heatmap of neuropil abbreviation counts mapped onto BeeBrain module targets."
-        ),
+        caption=("Heatmap of neuropil abbreviation counts mapped onto BeeBrain module targets."),
         alt_text="Heatmap of neuropil counts by BeeBrain module.",
         manuscript_section="manuscript/09_empirical_results.md",
         manuscript_label="fig:connectome_neuropil_module_map",
@@ -1153,8 +1145,7 @@ FIGURE_NARRATIVES: tuple[FigureNarrative, ...] = (
             "prioritized cross-stack findings."
         ),
         alt_text=(
-            "Two-panel synthesis detail with readiness bars and prioritized "
-            "finding text boxes."
+            "Two-panel synthesis detail with readiness bars and prioritized finding text boxes."
         ),
         manuscript_section="manuscript/11_research_synthesis.md",
         manuscript_label="fig:stack_synthesis_findings_detail",

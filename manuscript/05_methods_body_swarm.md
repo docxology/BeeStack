@@ -147,7 +147,7 @@ The reduced kernel initializes {{SWARM_AGENTS}} agents, broadcasts dance
 recruitment events drawn from the BeeBrain dance decoder, updates a
 small grid of pheromone components on a $12 \times 12 \times 4$
 pheromone-grid shape, allocates tasks across nurse, forager, guard,
-builder, and fanner roles, and writes BEEHAVE-compatible summary fields.
+scout, and wax-builder roles, and writes BEEHAVE-compatible summary fields.
 This is compatibility/parity language only: the current kernel has not
 been validated against BEEHAVE scenario tables or colony-demography time
 series. The local-follower count per dance is configurable, with the

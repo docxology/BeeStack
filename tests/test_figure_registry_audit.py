@@ -59,7 +59,9 @@ def test_figure_narrative_registry_has_curated_primary_contract() -> None:
     assert "output/figures/manuscript_figure_claim_map.png" in high_priority_figure_artifacts()
     assert "output/figures/manuscript_figure_claim_detail.png" in high_priority_figure_artifacts()
     assert "output/figures/methods/methods_dashboard_detail.png" in high_priority_figure_artifacts()
-    assert "output/figures/research/research_evidence_detail.png" in high_priority_figure_artifacts()
+    assert (
+        "output/figures/research/research_evidence_detail.png" in high_priority_figure_artifacts()
+    )
     assert (
         "output/figures/research/stack_synthesis_findings_detail.png"
         in high_priority_figure_artifacts()

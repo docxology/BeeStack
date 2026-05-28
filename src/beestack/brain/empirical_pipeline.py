@@ -200,9 +200,7 @@ def build_empirical_analysis_bundle(
         parseability_target=0.8,
         connectome_tiers=connectome_tiers,
     )
-    gap_list = tuple(
-        known_gaps(archive_rows, anatomy_summary, activity_summary, waggle_dataset)
-    )
+    gap_list = tuple(known_gaps(archive_rows, anatomy_summary, activity_summary, waggle_dataset))
     end_to_end_report = BeeBrainEndToEndReport(
         anatomy=anatomy_summary,
         activity=activity_summary,

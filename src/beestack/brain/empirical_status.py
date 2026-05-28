@@ -80,8 +80,11 @@ def parser_status_by_dataset(
         file_error = str(row.get("file_error") or "")
         if file_error:
             statuses[dataset_id] = f"download_blocked:{file_error}"
-        elif parser_status.startswith("citation_anchor_only") or parser_status and parser_status_priority(parser_status) > parser_status_priority(
-            statuses.get(dataset_id, "")
+        elif (
+            parser_status.startswith("citation_anchor_only")
+            or parser_status
+            and parser_status_priority(parser_status)
+            > parser_status_priority(statuses.get(dataset_id, ""))
         ):
             statuses[dataset_id] = parser_status
     return statuses

@@ -30,7 +30,11 @@ def parse_table_s1_text(text: str) -> tuple[SzyszkaTemplateTestRow, ...]:
     section = text.split(marker, 1)[1]
     rows: list[SzyszkaTemplateTestRow] = []
     for odor in ODOR_LABELS:
-        odor_match = re.search(rf"\b{re.escape(odor)}\b\s*(?P<body>.*?)(?=\b(?:{'|'.join(ODOR_LABELS)})\b|$)", section, re.S)
+        odor_match = re.search(
+            rf"\b{re.escape(odor)}\b\s*(?P<body>.*?)(?=\b(?:{'|'.join(ODOR_LABELS)})\b|$)",
+            section,
+            re.S,
+        )
         if not odor_match:
             continue
         triplets = _TRIPLET_PATTERN.findall(odor_match.group("body"))

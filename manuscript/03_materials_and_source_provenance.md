@@ -67,7 +67,7 @@ downloaded under license, parsed, and audited.
 | BeeBiome portal [@rechlaval2025beebiome] | microbiome SRA index | DOI `10.1186/s12859-025-06229-7` | BeeNiche / colony ledger | metadata only |
 | HGD / HymenopteraMine [@walsh2022hgd] | genomics annotation | DOI `10.1093/nar/gkab1018` | BeeBrain annotation | not registered |
 | BeeBDC [@dorey2023beebdc] | global occurrence | DOI `10.1038/s41597-023-02626-w` | BeeNiche forage / landscape | not registered |
-| NCBI HAv3.1 [@wallberg2019hav31] | reference genome | DOI `10.1186/s12864-019-5639-3` | BeeBrain / omics join | not registered |
+| NCBI HAv3.1 [@wallberg2019hav31] | reference genome | DOI `10.1186/s12864-019-5642-0` | BeeBrain / omics join | not registered |
 | Auburn / AIA survey [@auburn2025survey] | colony-loss survey | [official portal](https://apiaryinspectors.org/US-beekeeping-survey-24-25) | colony ledger / assimilation | survey not ingested |
 | USDA NASS honey statistics | production time series | [NASS honey portal](https://esmis.nal.usda.gov/publication/honey) | colony ledger | no parser |
 | EPA hive-matrix residues [@epa2024hivematrices] | pesticide concentrations | DOI `10.23719/1523343` | BeeNiche drivers | not registered |

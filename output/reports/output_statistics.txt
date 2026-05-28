@@ -2,7 +2,7 @@
 OUTPUT STATISTICS REPORT
 ============================================================
 
-Output Directory: /Users/4d/Documents/GitHub/projects/passive/BeeStack/output
+Output Directory: output
 
 Total Files: 424
 Total Size: 213.02 MB

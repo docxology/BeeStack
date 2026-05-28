@@ -34,7 +34,7 @@
     {
       "blocker": "No genome-fetch stage in empirical pipeline.",
       "name": "NCBI Apis mellifera HAv3.1 reference genome",
-      "official_doi": "10.1186/s12864-019-5639-3",
+      "official_doi": "10.1186/s12864-019-5642-0",
       "official_url": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_003254395.2/",
       "resource_id": "ncbi_amel_hav31",
       "resource_type": "reference_genome",
@@ -328,7 +328,7 @@
       "claim_tier": "scholarship_anchor",
       "direct_verification_status": "verified",
       "discovery_channel": "scholarship integration review and direct BMC verification",
-      "doi": "10.1186/s12864-019-5639-3",
+      "doi": "10.1186/s12864-019-5642-0",
       "figure_targets": [
         "output/figures/beestack_scholarship_evidence_matrix.png"
       ],
@@ -337,7 +337,7 @@
         "manuscript/01_scholarship_and_related_work.md",
         "manuscript/03_materials_and_source_provenance.md"
       ],
-      "source_url": "https://doi.org/10.1186/s12864-019-5639-3",
+      "source_url": "https://doi.org/10.1186/s12864-019-5642-0",
       "title": "A hybrid de novo genome assembly of the honeybee, Apis mellifera, with chromosome-length scaffolds",
       "year": 2019
     },

@@ -93,7 +93,7 @@ def test_stack_synthesis_review_serializes_and_figures(tmp_path: Path) -> None:
         "stack_synthesis_findings_detail.png",
     }
     assert all(figure.exists() and figure.stat().st_size > 0 for figure in figures)
-    sidecar = (tmp_path / "stack_synthesis_dashboard.json")
+    sidecar = tmp_path / "stack_synthesis_dashboard.json"
     assert sidecar.exists()
     assert "cross-stack synthesis diagnostic" in sidecar.read_text()
 

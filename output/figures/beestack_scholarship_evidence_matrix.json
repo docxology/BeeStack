@@ -45,11 +45,11 @@
   "quality": {
     "height_px": 1589,
     "max_intensity": 255,
-    "mean_intensity": 238.55004065933258,
+    "mean_intensity": 238.549954245118,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 45.22495646096014,
+    "std_intensity": 45.22544811380808,
     "width_px": 2396
   },
   "regeneration_command": "uv run python scripts/analysis_pipeline.py",

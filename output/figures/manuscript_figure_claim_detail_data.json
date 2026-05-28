@@ -221,7 +221,7 @@
       "claim_tier": "empirical_reduced_or_availability_gated",
       "manuscript_section": "manuscript/09_empirical_results.md",
       "source_data": "output/data/empirical_analysis.json",
-      "unsupported_inference": "Does not support calcium-validated dynamics when Paoli traces are blocked."
+      "unsupported_inference": "Does not support calcium-validated dynamics; parsed calcium traces are a citation anchor, not a model input."
     },
     {
       "artifact_path": "output/figures/empirical/waggle_follower_alignment.png",

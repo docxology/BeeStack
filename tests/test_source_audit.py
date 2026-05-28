@@ -94,7 +94,7 @@ def test_verified_scholarship_refresh_sources_are_required_and_section_mapped() 
         "hateren2019neuroethology": "10.3390/insects10100336",
         "dong2023wagglesocial": "10.1126/science.ade1702",
         "pnas2026waggleaudience": "10.1073/pnas.2518687123",
-        "wallberg2019hav31": "10.1186/s12864-019-5639-3",
+        "wallberg2019hav31": "10.1186/s12864-019-5642-0",
         "walsh2022hgd": "10.1093/nar/gkab1018",
         "rechlaval2025beebiome": "10.1186/s12859-025-06229-7",
         "dorey2023beebdc": "10.1038/s41597-023-02626-w",

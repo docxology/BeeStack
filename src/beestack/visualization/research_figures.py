@@ -174,7 +174,10 @@ def _scorecard_heatmap(report: ResearchSuiteReport, path: Path) -> Path:
     ax.set_title("BeeStack dense research method scorecard", loc="left")
     ax.set_xticks(
         range(len(normalized.columns)),
-        [wrap_label(column.replace("_", " "), width=16, max_lines=2) for column in normalized.columns],
+        [
+            wrap_label(column.replace("_", " "), width=16, max_lines=2)
+            for column in normalized.columns
+        ],
         rotation=20,
         ha="right",
     )
@@ -265,8 +268,12 @@ def _evidence_network(report: ResearchSuiteReport, path: Path) -> Path:
         "BeeSwarm": (0.28, 0.34),
         "BeeNiche": (0.50, 0.34),
     }
-    evidence_counts = {scorecard.module: len(scorecard.evidence) for scorecard in report.module_scorecards}
-    gap_counts = {scorecard.module: len(scorecard.known_gaps) for scorecard in report.module_scorecards}
+    evidence_counts = {
+        scorecard.module: len(scorecard.evidence) for scorecard in report.module_scorecards
+    }
+    gap_counts = {
+        scorecard.module: len(scorecard.known_gaps) for scorecard in report.module_scorecards
+    }
     fig, ax = plt.subplots(figsize=(10.2, 6.4))
     ax.axis("off")
     ax.set_title("BeeStack evidence network overview", loc="left", pad=12)
@@ -366,7 +373,8 @@ def _evidence_detail(report: ResearchSuiteReport, path: Path) -> Path:
                 "kind": "scorecard",
                 "item": "; ".join(scorecard.evidence[:2]),
                 "status": f"{scorecard.validation_fraction:.2f} validation",
-                "boundary": "; ".join(scorecard.known_gaps[:2]) or "explicit gaps carried in report",
+                "boundary": "; ".join(scorecard.known_gaps[:2])
+                or "explicit gaps carried in report",
             }
         )
     for record in report.empirical_evidence:

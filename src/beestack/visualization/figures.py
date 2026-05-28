@@ -72,9 +72,7 @@ def generate_analysis_figures(
                 fig_dir / "beestack_validation_readiness_residuals.png"
             ),
             _manuscript_figure_claim_map(fig_dir / "manuscript_figure_claim_map.png"),
-            _manuscript_figure_claim_detail(
-                fig_dir / "manuscript_figure_claim_detail.png"
-            ),
+            _manuscript_figure_claim_detail(fig_dir / "manuscript_figure_claim_detail.png"),
             _pipeline_overview(fig_dir / "beestack_pipeline_overview.png"),
         ]
     primary_figure_count = sum(
@@ -87,7 +85,8 @@ def generate_analysis_figures(
     def _sidecar(path: Path) -> dict[str, object]:
         metrics = (
             {"primary_figure_count": primary_figure_count}
-            if path.name in {
+            if path.name
+            in {
                 "manuscript_figure_claim_map.png",
                 "manuscript_figure_claim_detail.png",
             }

@@ -84,9 +84,7 @@ def build_structural_connectome(
             )
 
     asset_by_id = {asset.asset_id: asset for asset in honeybee_standard_brain_assets()}
-    inventory_by_file = {
-        Path(inventory.local_path).name: inventory for inventory in inventories
-    }
+    inventory_by_file = {Path(inventory.local_path).name: inventory for inventory in inventories}
 
     for asset_id, module_hint in ASSET_MODULE_HINTS.items():
         asset = asset_by_id.get(asset_id)

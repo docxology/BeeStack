@@ -781,7 +781,7 @@
         "10.1371/journal.pcbi.1005510",
         "10.3233/DS-190026"
       ],
-      "unsupported_inference": "Does not support calcium-validated dynamics when Paoli traces are blocked.",
+      "unsupported_inference": "Does not support calcium-validated dynamics; parsed calcium traces are a citation anchor, not a model input.",
       "validation_status": "nonblank_static_figure"
     },
     {
