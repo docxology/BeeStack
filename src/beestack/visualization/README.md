@@ -8,6 +8,11 @@ the recruitment-field Swarm view, and Niche remain Matplotlib summaries.
 Plotting belongs here or in thin scripts, never in Body/Brain/Mind/Swarm/Niche
 core logic.
 
+Waggle outputs also include a two-bee labeled strict scene
+(`beeswarm_waggle_pair_labeled.gif`) plus companion labeled data
+(`flybody_scenes/waggle_pair/waggle_pair_labeled_data.json`) so
+dancer/follower roles and coherence diagnostics are explicit.
+
 `style.py` centralizes the showcase publication palette, colorblind-safe status
 colors, label wrapping, bounded text boxes, panel spacing, badges, figure notes,
 direct labels, contact-sheet annotations, and grid treatment used by

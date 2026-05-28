@@ -29,7 +29,7 @@ from .flybody_adapter import (
 )
 from .flybody_scene_signpost import _write_scene_readmes
 
-SceneKind = Literal["collision", "waggle", "waggle_long"]
+SceneKind = Literal["collision", "waggle", "waggle_pair", "waggle_long"]
 
 _REFERENCE_ATTRS = {
     "joint",
@@ -201,6 +201,40 @@ def render_flybody_waggle_scene(
         include_comb=True,
     )
     frames_rgb, metrics = _render_scene_frames(cfg, scene_xml, render_cfg, "waggle")
+    _validate_waggle_scene_metrics(cfg, metrics)
+    return _write_scene_artifacts(
+        render_cfg,
+        scene_dir,
+        gif_path,
+        contact_sheet_path,
+        scene_xml,
+        body_plan,
+        frames_rgb,
+        metrics,
+    )
+
+
+def render_flybody_pair_waggle_scene(
+    cfg: BeeStackConfig,
+    animations_dir: Path,
+    frames: int | None = None,
+    fps: int | None = None,
+) -> FlyBodySceneArtifact:
+    """Render a strict two-bee waggle-following scene for labeled inspection."""
+
+    render_cfg = _scene_render_config(cfg, "waggle_pair", frames, fps)
+    scene_dir = animations_dir / "flybody_scenes" / "waggle_pair"
+    gif_path = animations_dir / "beeswarm_waggle_pair_labeled.gif"
+    contact_sheet_path = animations_dir / "beeswarm_waggle_pair_labeled_contact_sheet.png"
+    scene_xml, body_plan = write_prefixed_multi_bee_scene_xml(
+        cfg,
+        scene_dir,
+        "waggle_pair",
+        render_cfg.bee_count,
+        floor_z=render_cfg.altitude_m - 0.06,
+        include_comb=True,
+    )
+    frames_rgb, metrics = _render_scene_frames(cfg, scene_xml, render_cfg, "waggle_pair")
     _validate_waggle_scene_metrics(cfg, metrics)
     return _write_scene_artifacts(
         render_cfg,
@@ -400,7 +434,14 @@ def _scene_render_config(
     bee_count = (
         cfg.visualization.swarm_collision_bee_count
         if scene_name == "collision"
+        else 2
+        if scene_name == "waggle_pair"
         else cfg.visualization.waggle_dance_followers + 1
+    )
+    follower_spacing = (
+        cfg.waggle.follower_spacing_m * 1.55
+        if scene_name == "waggle_pair"
+        else cfg.waggle.follower_spacing_m
     )
     return FlyBodySceneRenderConfig(
         scene_name=scene_name,
@@ -417,7 +458,7 @@ def _scene_render_config(
         waggle_amplitude_m=waggle_kinematics_from_config(cfg).lateral_amplitude_m,
         waggle_loop_radius_m=waggle_kinematics_from_config(cfg).loop_radius_m,
         waggle_run_frequency_hz=cfg.waggle.waggle_run_frequency_hz,
-        follower_spacing_m=cfg.waggle.follower_spacing_m,
+        follower_spacing_m=follower_spacing,
         follower_orientation_gain=cfg.waggle.follower_orientation_gain,
         antennal_sampling_gain=cfg.waggle.antennal_sampling_gain,
         stop_signal_sensitivity=cfg.waggle.stop_signal_sensitivity,
