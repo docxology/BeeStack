@@ -1,0 +1,20 @@
+{
+  "artifacts": {
+    "contact_sheet_path": "/Users/jdietz/Documents/GitHub/dev/BeeStack/output/animations/communication_demos/beeswarm_antennal_sync_5_bees_contact_sheet.png",
+    "gif_path": "/Users/jdietz/Documents/GitHub/dev/BeeStack/output/animations/communication_demos/beeswarm_antennal_sync_5_bees.gif"
+  },
+  "effective_demo_parameters": {
+    "frequency_hz": 2.0272704215440385,
+    "sync_gain": 0.7551840007415647
+  },
+  "notes": "Reduced communication demo: antennal active-sensing summary values modulate synchronization and oscillation rate.",
+  "source_datasets": [
+    "dryad-jernigan-2026-antennal-movement"
+  ],
+  "source_metrics": {
+    "left_right_synchrony": 0.4448599787672444,
+    "odor_on_fraction": 0.7772061549870226,
+    "theta_derivative_drive": 0.20909014051467958
+  },
+  "title": "Antennal synchronization (5 bees)"
+}

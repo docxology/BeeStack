@@ -23,6 +23,8 @@ project. Use it alongside the root `README.md` and the generated reports in
   Niche, docs, and manuscript outputs.
 - `visualization_gallery.md`: FlyBody 3D, empirical, reduced schematic,
   diagnostic, research-suite, and methods-analysis artifact index.
+- `demo_simulation_hub.md`: single page for live demo entrypoints, BeeStack
+  trace exports, communication demos, and FlyBody simulation artifacts.
 
 ## BeeBrain Research Operations
 

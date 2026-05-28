@@ -286,6 +286,33 @@ def render_flybody_long_waggle_scene(
     )
 
 
+def sample_flybody_waggle_pose_trace(
+    cfg: BeeStackConfig,
+    scene_name: Literal["waggle", "waggle_pair", "waggle_long"] = "waggle",
+    *,
+    frames: int | None = None,
+    fps: int | None = None,
+) -> tuple[tuple[tuple[float, float, float, float], ...], ...]:
+    """Sample strict FlyBody waggle-scene poses without rendering frames."""
+
+    render_cfg = _scene_render_config(cfg, scene_name, frames, fps)
+    previous_poses: list[tuple[float, float, float, float]] | None = None
+    trace: list[tuple[tuple[float, float, float, float], ...]] = []
+    for frame_index in range(render_cfg.frames):
+        progress = frame_index / max(1, render_cfg.frames - 1)
+        poses = _waggle_poses(cfg, render_cfg, progress)
+        if previous_poses is not None:
+            poses = _limit_pose_deltas(
+                previous_poses,
+                poses,
+                max_position_step_m=render_cfg.max_position_step_m,
+                max_heading_step_rad=render_cfg.max_heading_step_rad,
+            )
+        previous_poses = [tuple(pose) for pose in poses]
+        trace.append(tuple(previous_poses))
+    return tuple(trace)
+
+
 def _validate_waggle_scene_metrics(cfg: BeeStackConfig, metrics: FlyBodyContactMetrics) -> None:
     if metrics.floor_contact_count <= 0:
         raise FlyBodyUnavailableError(

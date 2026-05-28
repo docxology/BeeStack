@@ -1,0 +1,23 @@
+{
+  "artifacts": {
+    "contact_sheet_path": "/Users/jdietz/Documents/GitHub/dev/BeeStack/output/animations/communication_demos/beeswarm_alarm_pheromone_relay_6_bees_contact_sheet.png",
+    "gif_path": "/Users/jdietz/Documents/GitHub/dev/BeeStack/output/animations/communication_demos/beeswarm_alarm_pheromone_relay_6_bees.gif"
+  },
+  "notes": "Reduced communication demo: receptor and neuromodulatory summary values drive field intensity and relay timing; not a full biophysical plume model.",
+  "roles": {
+    "bee_00": "sender",
+    "bee_02": "relay",
+    "bee_04": "relay",
+    "others": "receivers"
+  },
+  "source_datasets": [
+    "dryad-andreu-2025-alarm-odorant-receptors",
+    "dryad-nouvian-2017-biogenic-amines"
+  ],
+  "source_metrics": {
+    "neuromodulation_mean": 3.4486151589790097,
+    "odorant_receptors_mean": 4.5489696947769085,
+    "top_defence_stimulus": "CB"
+  },
+  "title": "Alarm pheromone relay (6 bees)"
+}

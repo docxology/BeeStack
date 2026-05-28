@@ -43,6 +43,7 @@ from .flybody_scene import (
     render_flybody_long_waggle_scene,
     render_flybody_swarm_collision_scene,
     render_flybody_waggle_scene,
+    sample_flybody_waggle_pose_trace,
     write_prefixed_multi_bee_scene_xml,
 )
 from .morphology import (
@@ -100,6 +101,7 @@ __all__ = [
     "render_flybody_waggle_scene",
     "render_flybody_pair_waggle_scene",
     "render_flybody_long_waggle_scene",
+    "sample_flybody_waggle_pose_trace",
     "step_body",
     "validate_bee_body_plan_xml",
     "validate_rendered_frames",
