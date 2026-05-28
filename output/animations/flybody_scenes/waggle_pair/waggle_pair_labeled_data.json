@@ -1,0 +1,73 @@
+{
+  "artifacts": {
+    "contact_report_path": "/Users/jdietz/Documents/GitHub/dev/BeeStack/output/animations/flybody_scenes/waggle_pair/contact_metrics.json",
+    "contact_sheet_path": "/Users/jdietz/Documents/GitHub/dev/BeeStack/output/animations/beeswarm_waggle_pair_labeled_contact_sheet.png",
+    "gif_path": "/Users/jdietz/Documents/GitHub/dev/BeeStack/output/animations/beeswarm_waggle_pair_labeled.gif",
+    "scene_xml_path": "/Users/jdietz/Documents/GitHub/dev/BeeStack/output/animations/flybody_scenes/waggle_pair/waggle_pair_flybody_scene.xml"
+  },
+  "effective_scene_config": {
+    "altitude_m": 0.05,
+    "antennal_sampling_gain": 0.75,
+    "bee_count": 2,
+    "follower_orientation_gain": 0.65,
+    "follower_spacing_m": 0.1705,
+    "fps": 8,
+    "frames": 24,
+    "height": 480,
+    "initial_speed_m_s": 0.35,
+    "max_heading_step_rad": 0.1308996938995747,
+    "max_position_step_m": 0.02,
+    "min_actual_contact_pairs": 1,
+    "scene_name": "waggle_pair",
+    "scene_radius_m": 0.18,
+    "stop_signal_sensitivity": 1.0,
+    "substeps": 4,
+    "waggle_amplitude_m": 0.035,
+    "waggle_loop_radius_m": 0.085,
+    "waggle_run_frequency_hz": 5.8500000000000005,
+    "width": 640
+  },
+  "metrics": {
+    "follower_distance_mean_m": 0.17130893162394104,
+    "follower_distance_std_m": 0.0069836429083201335,
+    "follower_orientation_confidence": 0.78429914178234,
+    "follower_orientation_error_max_deg": 21.849676048620573,
+    "follower_orientation_error_mean_deg": 19.413077239589402,
+    "waggle_phase_coupling_score": 0.05714434302486487,
+    "waggle_phase_samples": [
+      0.0,
+      0.04624505928853755,
+      0.0924901185770751,
+      0.13873517786561265,
+      0.1849802371541502,
+      0.23122529644268774,
+      0.2774703557312253,
+      0.32371541501976286,
+      0.3699604743083004,
+      0.416205533596838,
+      0.4624505928853755,
+      0.5086956521739131,
+      0.5549407114624506,
+      0.6011857707509881,
+      0.6474308300395257,
+      0.6936758893280633
+    ]
+  },
+  "roles": {
+    "bee_00": "dancer",
+    "bee_01": "follower"
+  },
+  "scene_name": "waggle_pair",
+  "waggle_visualization_config": {
+    "decoded_azimuth_deg": 155.0,
+    "decoded_distance_km": 1.2,
+    "duration_s": 1.2,
+    "follower_count": 10,
+    "follower_orientation_gain": 0.65,
+    "follower_spacing_m": 0.11,
+    "quality": 0.7142857142857143,
+    "relative_angle_deg": 35.0,
+    "sun_azimuth_deg": 120.0,
+    "waggle_run_frequency_hz": 13.0
+  }
+}

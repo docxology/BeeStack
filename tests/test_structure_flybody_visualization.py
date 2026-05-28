@@ -626,6 +626,7 @@ def test_module_animation_generation_and_accessibility_manifest(tmp_path: Path) 
         "BeeSwarm",
         "BeeSwarm",
         "BeeSwarm",
+        "BeeSwarm",
         "BeeNiche",
     ]
     assert all(Path(artifact.path).exists() for artifact in artifacts)
@@ -644,7 +645,8 @@ def test_module_animation_generation_and_accessibility_manifest(tmp_path: Path) 
     assert Path(artifacts[1].path).name == "beebody_flybody_flight.gif"
     assert Path(artifacts[5].path).name == "beeswarm_10_beebody_collision.gif"
     assert Path(artifacts[6].path).name == "beeswarm_waggle_dance_configured.gif"
-    assert Path(artifacts[7].path).name == "beeswarm_waggle_dance_long.gif"
+    assert Path(artifacts[7].path).name == "beeswarm_waggle_pair_labeled.gif"
+    assert Path(artifacts[8].path).name == "beeswarm_waggle_dance_long.gif"
     assert "mujoco" in artifacts[5].render_backend.lower()
     assert "flybody" in artifacts[5].render_backend.lower()
     assert "matplotlib" not in artifacts[5].render_backend.lower()
@@ -652,18 +654,24 @@ def test_module_animation_generation_and_accessibility_manifest(tmp_path: Path) 
     assert "flybody" in artifacts[6].render_backend.lower()
     assert "mujoco" in artifacts[7].render_backend.lower()
     assert "flybody" in artifacts[7].render_backend.lower()
+    assert "mujoco" in artifacts[8].render_backend.lower()
+    assert "flybody" in artifacts[8].render_backend.lower()
     assert artifacts[5].fidelity_level == "real_flybody_3d_contact_physics"
     assert artifacts[6].fidelity_level == "real_flybody_3d_contact_physics"
     assert artifacts[7].fidelity_level == "real_flybody_3d_contact_physics"
+    assert artifacts[8].fidelity_level == "real_flybody_3d_contact_physics"
     assert Path(artifacts[5].scene_xml).exists()
     assert Path(artifacts[6].scene_xml).exists()
     assert Path(artifacts[7].scene_xml).exists()
+    assert Path(artifacts[8].scene_xml).exists()
     assert Path(artifacts[5].contact_report).exists()
     assert Path(artifacts[6].contact_report).exists()
     assert Path(artifacts[7].contact_report).exists()
+    assert Path(artifacts[8].contact_report).exists()
     collision_report = json.loads(Path(artifacts[5].contact_report).read_text(encoding="utf-8"))
     waggle_report = json.loads(Path(artifacts[6].contact_report).read_text(encoding="utf-8"))
-    long_waggle_report = json.loads(Path(artifacts[7].contact_report).read_text(encoding="utf-8"))
+    pair_waggle_report = json.loads(Path(artifacts[7].contact_report).read_text(encoding="utf-8"))
+    long_waggle_report = json.loads(Path(artifacts[8].contact_report).read_text(encoding="utf-8"))
     assert collision_report["metrics"]["passed"]
     assert collision_report["metrics"]["bee_bee_contact_pairs"]
     assert collision_report["metrics"]["bee_bee_contact_count"] > 0
@@ -672,6 +680,11 @@ def test_module_animation_generation_and_accessibility_manifest(tmp_path: Path) 
     assert waggle_report["metrics"]["waggle_phase_samples"]
     assert waggle_report["metrics"]["follower_distance_mean_m"] > 0
     assert 0 <= waggle_report["metrics"]["follower_orientation_confidence"] <= 1
+    assert pair_waggle_report["scene_name"] == "waggle_pair"
+    assert pair_waggle_report["metrics"]["passed"]
+    assert pair_waggle_report["metrics"]["floor_contact_count"] > 0
+    assert pair_waggle_report["metrics"]["waggle_phase_samples"]
+    assert 0 <= pair_waggle_report["metrics"]["follower_orientation_confidence"] <= 1
     assert long_waggle_report["scene_name"] == "waggle_long"
     assert long_waggle_report["metrics"]["passed"]
     assert long_waggle_report["metrics"]["floor_contact_count"] > 0

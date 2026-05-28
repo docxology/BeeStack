@@ -1,7 +1,7 @@
 # BeeStack Project Readiness Review
 
 - Passed: `True`
-- Signposted directories: `71`
+- Signposted directories: `74`
 - Signposting passed: `True`
 - Documentation audit available: `True`
 - Documentation audit passed: `True`

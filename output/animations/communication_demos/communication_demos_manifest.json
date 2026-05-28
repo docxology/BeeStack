@@ -1,0 +1,27 @@
+{
+  "artifacts": [
+    {
+      "bee_count": 6,
+      "contact_sheet_path": "/Users/jdietz/Documents/GitHub/dev/BeeStack/output/animations/communication_demos/beeswarm_alarm_pheromone_relay_6_bees_contact_sheet.png",
+      "gif_path": "/Users/jdietz/Documents/GitHub/dev/BeeStack/output/animations/communication_demos/beeswarm_alarm_pheromone_relay_6_bees.gif",
+      "labeled_data_path": "/Users/jdietz/Documents/GitHub/dev/BeeStack/output/animations/communication_demos/beeswarm_alarm_pheromone_relay_6_bees_data.json",
+      "source_datasets": [
+        "dryad-andreu-2025-alarm-odorant-receptors",
+        "dryad-nouvian-2017-biogenic-amines"
+      ],
+      "title": "Alarm pheromone relay (6 bees)"
+    },
+    {
+      "bee_count": 5,
+      "contact_sheet_path": "/Users/jdietz/Documents/GitHub/dev/BeeStack/output/animations/communication_demos/beeswarm_antennal_sync_5_bees_contact_sheet.png",
+      "gif_path": "/Users/jdietz/Documents/GitHub/dev/BeeStack/output/animations/communication_demos/beeswarm_antennal_sync_5_bees.gif",
+      "labeled_data_path": "/Users/jdietz/Documents/GitHub/dev/BeeStack/output/animations/communication_demos/beeswarm_antennal_sync_5_bees_data.json",
+      "source_datasets": [
+        "dryad-jernigan-2026-antennal-movement"
+      ],
+      "title": "Antennal synchronization (5 bees)"
+    }
+  ],
+  "regeneration_command": "uv run python scripts/generate_communication_demos.py",
+  "source_empirical_analysis": "output/data/empirical_analysis.json"
+}

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BeeStack Demo and Simulation Hub</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #0b1020;
+      --panel: #141b34;
+      --text: #e8ecff;
+      --muted: #b8c2e8;
+      --accent: #7aa2ff;
+      --ok: #7dd3a7;
+    }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(180deg, #0b1020 0%, #111933 100%);
+      color: var(--text);
+    }
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 20px 48px;
+    }
+    h1, h2 { margin: 0 0 10px; }
+    p { color: var(--muted); line-height: 1.45; }
+    .card {
+      background: rgba(20, 27, 52, 0.92);
+      border: 1px solid rgba(122, 162, 255, 0.2);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin: 14px 0;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+    ul { margin: 8px 0 0 20px; }
+    li { margin: 6px 0; }
+    code {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(122, 162, 255, 0.2);
+      border-radius: 6px;
+      padding: 1px 6px;
+    }
+    pre {
+      margin: 8px 0 0;
+      background: rgba(0, 0, 0, 0.28);
+      border: 1px solid rgba(122, 162, 255, 0.2);
+      border-radius: 8px;
+      padding: 10px 12px;
+      overflow-x: auto;
+    }
+    .badge {
+      display: inline-block;
+      margin-left: 8px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(125, 211, 167, 0.2);
+      color: var(--ok);
+      font-size: 12px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>BeeStack Demo and Simulation Hub <span class="badge">Presentation Ready</span></h1>
+    <p>Single page for live simulation, BeeStack trace exports, FlyBody/MuJoCo demos, and communication artifacts.</p>
+
+    <section class="card">
+      <h2>1) Live Browser Simulation</h2>
+      <ul>
+        <li><a href="https://fractastical.github.io/bee-swarm-sim/bee_swarm_live_sim.html" target="_blank" rel="noreferrer">Bee Communication — Local-Cue Swarm Simulation</a></li>
+        <li>In UI: set engine to <code>BeeStack trace</code>, then use <code>Load BeeStack Trace JSON</code>.</li>
+        <li>Recommended trace file: <code>output/data/bee_swarm_trace/beestack_trace_flybody_pair_sample.json</code>.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>2) FlyBody/MuJoCo Core Demos</h2>
+      <ul>
+        <li><a href="../output/animations/beeswarm_waggle_pair_labeled.gif">Two-bee labeled waggle</a></li>
+        <li><a href="../output/animations/beeswarm_waggle_dance_long.gif">Long waggle scene</a></li>
+        <li><a href="../output/animations/beeswarm_waggle_dance_configured.gif">Configured waggle scene</a></li>
+        <li><a href="../output/animations/beeswarm_10_beebody_collision.gif">Ten-bee collision contact scene</a></li>
+        <li><a href="../output/reports/flybody_contact_physics.md">Contact physics report</a></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>3) Communication Demos (3+ Bees)</h2>
+      <ul>
+        <li><a href="../output/animations/communication_demos/beeswarm_alarm_pheromone_relay_6_bees.gif">Alarm pheromone relay (6 bees)</a></li>
+        <li><a href="../output/animations/communication_demos/beeswarm_antennal_sync_5_bees.gif">Antennal synchronization (5 bees)</a></li>
+        <li><a href="../output/animations/communication_demos/communication_demos_manifest.json">Communication demos manifest</a></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>4) Regenerate Commands</h2>
+      <pre>uv run python scripts/generate_animations.py
+uv run python scripts/generate_communication_demos.py
+uv run python scripts/export_bee_swarm_trace.py --trace-mode flybody_waggle_pair --steps 120 --bees 90 --flower-patches 18 --output output/data/bee_swarm_trace/beestack_trace_flybody_pair_sample.json</pre>
+    </section>
+
+    <section class="card">
+      <h2>5) Additional Indexes</h2>
+      <ul>
+        <li><a href="./demo_simulation_hub.md">Markdown hub</a></li>
+        <li><a href="./bee_swarm_live_integration.md">Bee Swarm Live integration notes</a></li>
+        <li><a href="./visualization_gallery.md">Visualization gallery</a></li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>

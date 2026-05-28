@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from collections.abc import Callable
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -10,11 +11,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.animation import FuncAnimation, PillowWriter
 from matplotlib.patches import Ellipse, RegularPolygon
-from PIL import Image
+from PIL import Image, ImageDraw
 
 from ..body import (
     FlyBodyBeeBackend,
     FlyBodyUnavailableError,
+    render_flybody_pair_waggle_scene,
     render_flybody_long_waggle_scene,
     render_flybody_swarm_collision_scene,
     render_flybody_waggle_scene,
@@ -113,6 +115,7 @@ def generate_module_animations(
         _animate_swarm,
         _animate_swarm_collision,
         _animate_waggle_dance,
+        _animate_waggle_dance_pair_labeled,
         _animate_waggle_dance_long,
         _animate_niche,
     )
@@ -585,6 +588,91 @@ def _animate_waggle_dance_long(
         contact_report=scene.contact_report_path,
         render_backend=scene.render_backend,
     )
+
+
+def _animate_waggle_dance_pair_labeled(
+    cfg: BeeStackConfig, output_dir: Path, frames: int, fps: int
+) -> AnimationArtifact:
+    scene = render_flybody_pair_waggle_scene(cfg, output_dir, frames=frames, fps=fps)
+    label_lines = (
+        "Two-bee waggle-following demo",
+        "bee_00 = dancer",
+        "bee_01 = follower",
+        f"effective waggle frequency: {scene.config.waggle_run_frequency_hz:.2f} Hz",
+        f"mean follower error: {scene.metrics.follower_orientation_error_mean_deg:.2f} deg",
+        f"orientation confidence: {scene.metrics.follower_orientation_confidence:.3f}",
+        f"phase coupling: {scene.metrics.waggle_phase_coupling_score:.3f}",
+        "label data: output/animations/flybody_scenes/waggle_pair/waggle_pair_labeled_data.json",
+    )
+    _annotate_contact_sheet_with_labels(Path(scene.contact_sheet_path), label_lines)
+    _write_waggle_pair_label_data(cfg, scene)
+    _write_contact_sheet_bundle(
+        Path(scene.contact_sheet_path),
+        source_gif=Path(scene.gif_path),
+        frame_count=frames,
+        title="BeeSwarm two-bee waggle labeled contact sheet",
+        fidelity="real_flybody_3d contact sheet",
+        source_data=scene.body_plan_xml_path,
+    )
+    return AnimationArtifact(
+        "BeeSwarm",
+        scene.gif_path,
+        frames,
+        fps,
+        "BeeSwarm two-bee labeled waggle-following demo",
+        "Strict 3D MuJoCo render showing one dancer bee (bee_00) and one follower bee (bee_01) with labeled waggle-following metrics.",
+        "Two-bee BeeSwarm waggle-following demo with explicit dancer/follower labels and a labeled-data JSON companion for interpretation.",
+        backend=scene.render_backend,
+        source=scene.body_plan_xml_path,
+        contact_sheet=scene.contact_sheet_path,
+        fidelity_level="real_flybody_3d_contact_physics",
+        scene_xml=scene.scene_xml_path,
+        contact_report=scene.contact_report_path,
+        render_backend=scene.render_backend,
+    )
+
+
+def _write_waggle_pair_label_data(cfg: BeeStackConfig, scene) -> None:
+    output_path = (
+        Path(scene.contact_report_path).parent / "waggle_pair_labeled_data.json"
+    )
+    payload = {
+        "scene_name": scene.scene_name,
+        "roles": {
+            "bee_00": "dancer",
+            "bee_01": "follower",
+        },
+        "waggle_visualization_config": waggle_dance_visualization_config(cfg).as_dict(),
+        "effective_scene_config": scene.config.as_dict(),
+        "metrics": {
+            "follower_orientation_error_mean_deg": scene.metrics.follower_orientation_error_mean_deg,
+            "follower_orientation_error_max_deg": scene.metrics.follower_orientation_error_max_deg,
+            "follower_orientation_confidence": scene.metrics.follower_orientation_confidence,
+            "follower_distance_mean_m": scene.metrics.follower_distance_mean_m,
+            "follower_distance_std_m": scene.metrics.follower_distance_std_m,
+            "waggle_phase_coupling_score": scene.metrics.waggle_phase_coupling_score,
+            "waggle_phase_samples": list(scene.metrics.waggle_phase_samples),
+        },
+        "artifacts": {
+            "gif_path": scene.gif_path,
+            "contact_sheet_path": scene.contact_sheet_path,
+            "contact_report_path": scene.contact_report_path,
+            "scene_xml_path": scene.scene_xml_path,
+        },
+    }
+    output_path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def _annotate_contact_sheet_with_labels(path: Path, lines: tuple[str, ...]) -> None:
+    image = Image.open(path).convert("RGB")
+    draw = ImageDraw.Draw(image)
+    x0, y0 = 12, 12
+    line_height = 17
+    box_height = 16 + line_height * len(lines)
+    draw.rectangle((x0 - 8, y0 - 8, x0 + 730, y0 + box_height), fill=(255, 255, 255))
+    for idx, line in enumerate(lines):
+        draw.text((x0, y0 + idx * line_height), line, fill=(17, 24, 39))
+    image.save(path)
 
 
 def _draw_bee(

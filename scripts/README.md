@@ -15,6 +15,8 @@ uv run python scripts/run_methods_analysis.py
 uv run python scripts/run_stack_synthesis.py
 uv run python scripts/run_research_suite.py
 uv run python scripts/run_research_suite.py --assemble-only
+uv run python scripts/generate_communication_demos.py
+uv run python scripts/export_bee_swarm_trace.py
 uv run python scripts/assess_digital_twin_readiness.py
 uv run python scripts/verify_generated_reports.py
 uv run python scripts/signpost_project_tree.py
@@ -35,6 +37,14 @@ skip message so offline core verification can continue without fabricated data.
 `generate_animations.py` writes FlyBody BeeBody locomotion GIFs, strict
 FlyBody/MuJoCo BeeSwarm collision/waggle scenes with contact reports, and
 reduced schematic module summaries.
+`generate_communication_demos.py` writes communication-focused reduced BeeSwarm
+demo GIFs (alarm-pheromone relay and antennal synchronization) under
+`output/animations/communication_demos/` with labeled data JSON sidecars tied
+to empirical source summaries.
+`export_bee_swarm_trace.py` writes BeeStack interoperability traces in the
+Bee Swarm Live JSON schema (`dt`, `frames`, `bees`, `flowers`, `signals`) to
+`output/data/bee_swarm_trace/beestack_trace.json` by default, with optional
+FlyBody-backed local waggle core trajectories via `--trace-mode flybody_*`.
 `verify_bee_render.py` checks BeeBody visual signatures and BeeSwarm strict
 contact-scene evidence.
 `run_methods_analysis.py` writes the methods-analysis report, module methods
