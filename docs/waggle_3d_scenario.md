@@ -45,6 +45,9 @@ waggle spacing, orientation gain, antennal sampling gain, and empirical
 follower-decoding confidence already used by BeeSwarm recruitment diagnostics.
 The scene applies BeeStack/FlyBody walking controls to legs and low-amplitude
 wing motion so the output reads as a comb-floor dance rather than a flight clip.
+For the two-bee labeled demo specifically, BeeStack also applies stricter
+per-frame position and heading-step clamps and a reduced waggle-run frequency
+to improve interpretability.
 
 ## Validation
 

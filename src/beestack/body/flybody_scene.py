@@ -76,6 +76,8 @@ class FlyBodySceneRenderConfig:
     follower_orientation_gain: float
     antennal_sampling_gain: float
     stop_signal_sensitivity: float
+    max_position_step_m: float
+    max_heading_step_rad: float
 
     def as_dict(self) -> dict[str, float | int | str]:
         return asdict(self)
@@ -443,6 +445,13 @@ def _scene_render_config(
         if scene_name == "waggle_pair"
         else cfg.waggle.follower_spacing_m
     )
+    waggle_frequency = (
+        min(cfg.waggle.waggle_run_frequency_hz * 0.45, 6.0)
+        if scene_name == "waggle_pair"
+        else cfg.waggle.waggle_run_frequency_hz
+    )
+    max_position_step = 0.020 if scene_name == "waggle_pair" else 0.060
+    max_heading_step = np.deg2rad(7.5 if scene_name == "waggle_pair" else 18.0)
     return FlyBodySceneRenderConfig(
         scene_name=scene_name,
         bee_count=bee_count,
@@ -457,11 +466,13 @@ def _scene_render_config(
         min_actual_contact_pairs=cfg.visualization.swarm_collision_min_actual_contact_pairs,
         waggle_amplitude_m=waggle_kinematics_from_config(cfg).lateral_amplitude_m,
         waggle_loop_radius_m=waggle_kinematics_from_config(cfg).loop_radius_m,
-        waggle_run_frequency_hz=cfg.waggle.waggle_run_frequency_hz,
+        waggle_run_frequency_hz=waggle_frequency,
         follower_spacing_m=follower_spacing,
         follower_orientation_gain=cfg.waggle.follower_orientation_gain,
         antennal_sampling_gain=cfg.waggle.antennal_sampling_gain,
         stop_signal_sensitivity=cfg.waggle.stop_signal_sensitivity,
+        max_position_step_m=max_position_step,
+        max_heading_step_rad=float(max_heading_step),
     )
 
 
@@ -577,7 +588,7 @@ def _render_scene_frames(
     control_names = _control_names_by_prefix(mujoco, model, render_cfg.bee_count)
     frames: list[np.ndarray] = []
     collector = _ContactCollector(scene_kind, render_cfg.bee_count)
-    previous_positions: list[tuple[float, float, float]] | None = None
+    previous_poses: list[tuple[float, float, float, float]] | None = None
     dt = 1.0 / max(1, render_cfg.fps)
     for frame_index in range(render_cfg.frames):
         data.qpos[:] = model.qpos0
@@ -589,6 +600,13 @@ def _render_scene_frames(
             if scene_kind == "collision"
             else _waggle_poses(cfg, render_cfg, progress)
         )
+        if previous_poses is not None and scene_kind.startswith("waggle"):
+            poses = _limit_pose_deltas(
+                previous_poses,
+                poses,
+                max_position_step_m=render_cfg.max_position_step_m,
+                max_heading_step_rad=render_cfg.max_heading_step_rad,
+            )
         if scene_kind.startswith("waggle"):
             collector.record_waggle_pose_diagnostics(
                 poses,
@@ -596,18 +614,18 @@ def _render_scene_frames(
                 frame_index,
                 cfg.waggle.max_orientation_error_deg,
             )
-        if previous_positions is None:
+        if previous_poses is None:
             velocities = [(0.0, 0.0, 0.0)] * len(poses)
         else:
             velocities = [
                 (
-                    (pose[0] - prev[0]) / dt,
-                    (pose[1] - prev[1]) / dt,
-                    (pose[2] - prev[2]) / dt,
+                    (pose[0] - prev_pose[0]) / dt,
+                    (pose[1] - prev_pose[1]) / dt,
+                    (pose[2] - prev_pose[2]) / dt,
                 )
-                for pose, prev in zip(poses, previous_positions, strict=False)
+                for pose, prev_pose in zip(poses, previous_poses, strict=False)
             ]
-        previous_positions = [(pose[0], pose[1], pose[2]) for pose in poses]
+        previous_poses = [tuple(pose) for pose in poses]
         for bee_index, pose in enumerate(poses):
             prefix = _bee_prefix(bee_index)
             _set_free_pose(mujoco, model, data, prefix, pose, velocities[bee_index])
@@ -725,6 +743,34 @@ def _mix_angles(start: float, target: float, weight: float) -> float:
     weight = float(np.clip(weight, 0.0, 1.0))
     delta = np.arctan2(np.sin(target - start), np.cos(target - start))
     return float(start + weight * delta)
+
+
+def _limit_pose_deltas(
+    previous_poses: list[tuple[float, float, float, float]],
+    poses: list[tuple[float, float, float, float]],
+    *,
+    max_position_step_m: float,
+    max_heading_step_rad: float,
+) -> list[tuple[float, float, float, float]]:
+    if len(previous_poses) != len(poses):
+        return poses
+    constrained: list[tuple[float, float, float, float]] = []
+    for prev, curr in zip(previous_poses, poses, strict=True):
+        px, py, pz, pheading = prev
+        cx, cy, cz, cheading = curr
+        dx = cx - px
+        dy = cy - py
+        dz = cz - pz
+        step_norm = float(np.sqrt(dx * dx + dy * dy + dz * dz))
+        if step_norm > max_position_step_m and step_norm > 0:
+            scale = max_position_step_m / step_norm
+            cx = px + dx * scale
+            cy = py + dy * scale
+            cz = pz + dz * scale
+        heading_delta = np.arctan2(np.sin(cheading - pheading), np.cos(cheading - pheading))
+        limited_delta = float(np.clip(heading_delta, -max_heading_step_rad, max_heading_step_rad))
+        constrained.append((float(cx), float(cy), float(cz), float(pheading + limited_delta)))
+    return constrained
 
 
 def _angle_error_deg(left: float, right: float) -> float:

@@ -598,6 +598,7 @@ def _animate_waggle_dance_pair_labeled(
         "Two-bee waggle-following demo",
         "bee_00 = dancer",
         "bee_01 = follower",
+        f"effective waggle frequency: {scene.config.waggle_run_frequency_hz:.2f} Hz",
         f"mean follower error: {scene.metrics.follower_orientation_error_mean_deg:.2f} deg",
         f"orientation confidence: {scene.metrics.follower_orientation_confidence:.3f}",
         f"phase coupling: {scene.metrics.waggle_phase_coupling_score:.3f}",
@@ -642,6 +643,7 @@ def _write_waggle_pair_label_data(cfg: BeeStackConfig, scene) -> None:
             "bee_01": "follower",
         },
         "waggle_visualization_config": waggle_dance_visualization_config(cfg).as_dict(),
+        "effective_scene_config": scene.config.as_dict(),
         "metrics": {
             "follower_orientation_error_mean_deg": scene.metrics.follower_orientation_error_mean_deg,
             "follower_orientation_error_max_deg": scene.metrics.follower_orientation_error_max_deg,
