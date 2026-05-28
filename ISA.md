@@ -745,6 +745,23 @@ user/credential action) and make all further defensible improvements.
 
 ## Verification
 
+**PUBLISHED 2026-05-27 — BeeStack 1.0.0 (standalone public repo + Zenodo).**
+The final user-gated residual is closed: BeeStack is published completely.
+- GitHub: <https://github.com/docxology/BeeStack> made PUBLIC; `main` at the v1.0.0
+  release commit; GitHub release `v1.0.0` with the combined PDF attached.
+- Zenodo (production): record <https://zenodo.org/record/20420557>, `state: done`.
+  Version DOI **10.5281/zenodo.20420557**, concept DOI **10.5281/zenodo.20420556**
+  (resolves HTTP 200). Deposit metadata: software, MIT, open; creators Friedman
+  (0000-0001-6232-9096; Active Inference Institute; Atta Labs) + Chambers
+  (0009-0008-3793-7872; Atta Labs); 14 keywords; supplement-to v1.0.0 tag.
+  Files: `BeeStack_combined.pdf` (68 pp, DOI-stamped) + `BeeStack-1.0.0-source.tar.gz`.
+- Publish-safety: pre-push leak sweep clean (0 home-directory paths in tracked files —
+  empirical fetch manifests + output-statistics relativized at the generator). Source
+  archive excludes regeneratable `output/`; large data blobs gitignored. Pre-publish
+  gate 195 passed @ 92.40%. DOI reserved → stamped into config + PDF → deposit
+  finalized → verified as a draft → published (self-consistent: the deposited PDF
+  carries its own DOI).
+
 **Iteration 11 (2026-05-27) — comprehensive residual closure (ISC-132..140 + ISC-120).**
 - ISC-132: full Crossref resolution audit of all 76 cited DOIs → 30 flagged → 24 corrected
   against Crossref/PubMed primary records (15 DOI/journal/year/title + author fixes, plus 5
