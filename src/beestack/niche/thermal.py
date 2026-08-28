@@ -10,17 +10,28 @@ from .state import CombGrid
 
 Array = NDArray[np.float64]
 
+#: Fraction of the temperature difference to ambient lost per step to passive
+#: heat exchange with the surroundings (dimensionless per-step coefficient).
+#: At steady state with a uniform source density ``q`` (in degC per step),
+#: the local equilibrium is ``ambient + q / passive_cooling_coeff``.
+PASSIVE_COOLING_COEFF = 0.02
+
 
 def thermal_step(
     grid: CombGrid,
     cfg: BeeStackConfig,
     heat_sources: Array | None = None,
     fanning_rate: float = 0.0,
+    passive_cooling_coeff: float | None = None,
 ) -> CombGrid:
-    """Run one simple heat diffusion and fanning step."""
+    """Run one simple heat diffusion, passive cooling, and fanning step."""
 
     if fanning_rate < 0:
         raise ValueError("fanning_rate must be nonnegative")
+    if passive_cooling_coeff is None:
+        passive_cooling_coeff = PASSIVE_COOLING_COEFF
+    if passive_cooling_coeff < 0:
+        raise ValueError("passive_cooling_coeff must be nonnegative")
     temp = grid.temperature_c
     sources = np.zeros_like(temp) if heat_sources is None else np.asarray(heat_sources, dtype=float)
     if sources.shape != temp.shape:
@@ -34,14 +45,16 @@ def thermal_step(
         + np.roll(temp, -1, axis=2)
     ) / 6.0
     diffusion = 0.12 * (neighbor_mean - temp)
-    ventilation = fanning_rate * 0.03 * (cfg.niche.ambient_temperature_c - temp)
+    ambient_offset = cfg.niche.ambient_temperature_c - temp
+    passive_cooling = passive_cooling_coeff * ambient_offset
+    ventilation = fanning_rate * 0.03 * ambient_offset
     occupied = grid.occupancy != 0
     regulation = np.zeros_like(temp)
     if np.any(occupied):
         regulation[occupied] = cfg.niche.thermoregulation_gain * (
             cfg.niche.brood_temperature_target_c - temp[occupied]
         )
-    next_temp = temp + diffusion + sources + ventilation + regulation
+    next_temp = temp + diffusion + sources + ventilation + passive_cooling + regulation
     return CombGrid(grid.occupancy.copy(), next_temp.astype(float))
 
 

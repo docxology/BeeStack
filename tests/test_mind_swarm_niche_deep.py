@@ -13,7 +13,7 @@ import math
 import numpy as np
 import pytest
 
-from beestack.brain import DanceVector, WaggleFollowerSummary
+from beestack.brain import WaggleFollowerSummary
 from beestack.config import BeeStackConfig
 from beestack.digital_twin import (
     EvidenceTier,
@@ -54,6 +54,7 @@ from beestack.niche import (
     seed_hex_comb,
     thermal_step,
 )
+from beestack.niche.thermal import PASSIVE_COOLING_COEFF
 from beestack.swarm import (
     BeeAgent,
     beehave_colony_summary,
@@ -237,8 +238,68 @@ def test_thermal_step_matches_closed_form_one_step_update() -> None:
         + np.roll(grid_temp, 1, axis=2)
         + np.roll(grid_temp, -1, axis=2)
     ) / 6.0
-    expected = grid_temp + 0.12 * (neighbor_mean - grid_temp) + heat
+    expected = (
+        grid_temp
+        + 0.12 * (neighbor_mean - grid_temp)
+        + heat
+        + PASSIVE_COOLING_COEFF * (cfg.niche.ambient_temperature_c - grid_temp)
+    )
     assert np.allclose(out.temperature_c, expected)
+
+
+def test_thermal_step_closed_form_multiple_steps() -> None:
+    """Closed form (diffusion + source + passive cooling) matches N steps."""
+    cfg = BeeStackConfig()
+    from beestack.niche.state import CombGrid
+
+    temp = np.full(cfg.niche.comb_shape, cfg.niche.ambient_temperature_c, dtype=float)
+    grid = CombGrid(np.zeros_like(temp), temp)
+    heat = np.zeros(cfg.niche.comb_shape)
+    heat[0, 0, 0] = 0.5
+
+    def expected_step(t: "np.ndarray") -> "np.ndarray":
+        neighbor_mean = (
+            np.roll(t, 1, axis=0)
+            + np.roll(t, -1, axis=0)
+            + np.roll(t, 1, axis=1)
+            + np.roll(t, -1, axis=1)
+            + np.roll(t, 1, axis=2)
+            + np.roll(t, -1, axis=2)
+        ) / 6.0
+        return (
+            t
+            + 0.12 * (neighbor_mean - t)
+            + heat
+            + PASSIVE_COOLING_COEFF * (cfg.niche.ambient_temperature_c - t)
+        )
+
+    running = grid
+    expected = temp.copy()
+    for _ in range(7):
+        running = thermal_step(running, cfg, heat_sources=heat, fanning_rate=0.0)
+        expected = expected_step(expected)
+    assert np.allclose(running.temperature_c, expected)
+
+
+def test_thermal_step_passive_cooling_bounds_sustained_heating() -> None:
+    """Sustained heat sources must reach a bounded equilibrium, not diverge."""
+    cfg = BeeStackConfig()
+    from beestack.niche.state import CombGrid
+
+    temp = np.full(cfg.niche.comb_shape, cfg.niche.ambient_temperature_c, dtype=float)
+    grid = CombGrid(np.zeros_like(temp), temp)
+    heat = np.zeros(cfg.niche.comb_shape)
+    heat[0:2, 0:2, 0] = 5.0  # heavy sustained load
+    running = grid
+    for _ in range(500):
+        running = thermal_step(running, cfg, heat_sources=heat, fanning_rate=0.0)
+    peak = float(running.temperature_c.max())
+    assert np.isfinite(running.temperature_c).all()
+    assert peak < 100.0, f"thermal runaway: peak {peak:.1f} degC after 500 steps"
+    # Energy balance: cell far from source/diffusion gradients sits near
+    # equilibrium T = ambient + q / passive_cooling_coeff (q = 5.0 W/cell).
+    equilibrium = cfg.niche.ambient_temperature_c + 5.0 / PASSIVE_COOLING_COEFF
+    assert peak < equilibrium + 25.0
 
 
 def test_thermal_step_regulation_acts_only_on_occupied_cells() -> None:
@@ -384,9 +445,7 @@ def test_action_mapping_covers_all_symbolic_policies() -> None:
 
 
 def test_landscape_patch_value_exact_formula_and_clipping() -> None:
-    assert landscape_patch_value(2.0, 0.9, competition=0.2) == pytest.approx(
-        0.9 * 0.8 / 1.5
-    )
+    assert landscape_patch_value(2.0, 0.9, competition=0.2) == pytest.approx(0.9 * 0.8 / 1.5)
     assert landscape_patch_value(0.0, 10.0) == 1.0
     assert landscape_patch_value(0.0, 0.0) == 0.0
     assert pollination_feedback(0.0, 100.0) == 0.0
@@ -418,9 +477,7 @@ def _agents_with_food_need(cfg: BeeStackConfig, food_need: float) -> tuple[BeeAg
         caste_probs=normalize_caste_probs({"forager": 1.0}),
         colony_need={"food_need": food_need},
     )
-    return tuple(
-        BeeAgent(idx, 20.0, "forager", np.zeros(3), 1.0, belief) for idx in range(4)
-    )
+    return tuple(BeeAgent(idx, 20.0, "forager", np.zeros(3), 1.0, belief) for idx in range(4))
 
 
 def _waggle_summary(confidence_score: float, antenna_error_deg: float) -> WaggleFollowerSummary:
@@ -462,9 +519,7 @@ def test_recruitment_diagnostics_round_trip_through_message_passing() -> None:
     assert recruitment.dance == dance
     assert len(recruitment.recruited_agent_ids) == len(agents)
     assert len(diag.probability_by_agent) == len(agents)
-    assert all(
-        p >= cfg.mind.follow_probability_threshold for _, p in diag.probability_by_agent
-    )
+    assert all(p >= cfg.mind.follow_probability_threshold for _, p in diag.probability_by_agent)
 
 
 def test_recruitment_only_considers_local_follower_cap() -> None:
@@ -525,9 +580,7 @@ def test_initialize_agents_seed_sensitivity() -> None:
     assert [agent.age_days for agent in a] != [agent.age_days for agent in b]
     assert [agent.age_days for agent in a] == [agent.age_days for agent in c]
     assert all(1.0 <= agent.age_days <= 35.0 for agent in a)
-    assert all(
-        agent.caste in {"nurse", "forager", "guard", "scout", "wax_builder"} for agent in a
-    )
+    assert all(agent.caste in {"nurse", "forager", "guard", "scout", "wax_builder"} for agent in a)
 
 
 def test_beehave_summary_exact_aggregates_and_empty_colony() -> None:
@@ -537,12 +590,8 @@ def test_beehave_summary_exact_aggregates_and_empty_colony() -> None:
     summary = beehave_colony_summary(
         agents, allocation, cfg, dance_recruitment_events=4, mean_pheromone=0.25
     )
-    assert summary.mean_energy == pytest.approx(
-        sum(agent.energy for agent in agents) / len(agents)
-    )
-    assert summary.scale_factor == pytest.approx(
-        cfg.swarm.represented_colony_size / len(agents)
-    )
+    assert summary.mean_energy == pytest.approx(sum(agent.energy for agent in agents) / len(agents))
+    assert summary.scale_factor == pytest.approx(cfg.swarm.represented_colony_size / len(agents))
     assert summary.nurses == 2
     assert summary.foragers == 3
     assert summary.wax_builders == 1

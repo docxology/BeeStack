@@ -143,6 +143,7 @@ class NicheConfig:
     brood_temperature_band_c: tuple[float, float] = (32.0, 36.0)
     wax_deposit_threshold: float = 0.35
     ambient_temperature_c: float = 25.0
+    passive_cooling_rate: float = 0.02
     foraging_radius_km: tuple[float, float] = (1.0, 3.0)
     thermoregulation_gain: float = 0.24
     seasonal_forage_amplitude: float = 0.35
