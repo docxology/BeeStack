@@ -27,7 +27,7 @@ fanning/heat-source witnesses. The brood-target band is
 $[32, 36]$ °C centred at 34 °C
 [@kronenberg1982colonial], and the kernel reports the
 brood-temperature error
-2.424 °C from that target at the end of
+2.875 °C from that target at the end of
 the run, plus the mean over the rollout. Heat sources (active bees
 clustered around brood) and heat sinks (foragers returning from cool
 ambient) are represented as bounded scalars applied at configured grid

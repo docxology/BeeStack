@@ -11,7 +11,7 @@
     {
       "evidence_links": 2,
       "module": "BeeBrain",
-      "validation_fraction": 1.0,
+      "validation_fraction": 0.8,
       "visual_artifacts": 22
     },
     {

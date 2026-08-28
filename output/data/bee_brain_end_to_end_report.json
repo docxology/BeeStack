@@ -1,18 +1,18 @@
 {
   "activity": {
-    "aftersmell_response_mean": 0.1701999114182084,
-    "all_quality_checks_passed": false,
+    "aftersmell_response_mean": 0.17019991141820834,
+    "all_quality_checks_passed": true,
     "antennal_active_sensing_drive": {
       "left_right_synchrony": 0.4448599787672444,
       "odor_on_fraction": 0.7772061549870226,
       "theta_derivative_drive": 0.20909014051467958
     },
     "antennal_movement_summary_count": 1,
-    "calcium_dataset_count": 1,
-    "calcium_excitatory_fraction": 0.08571428571428572,
-    "calcium_inhibitory_fraction": 0.34285714285714286,
-    "calcium_mean_latency_s": 1.2238801231807892,
-    "mean_odor_separability": 0.6511059958748602,
+    "calcium_dataset_count": 0,
+    "calcium_excitatory_fraction": 0.0,
+    "calcium_inhibitory_fraction": 0.0,
+    "calcium_mean_latency_s": 0.0,
+    "mean_odor_separability": 0.6511059958748603,
     "neuromodulatory_defence_summary": {
       "mean_abs_response": 3.4486151589790097,
       "panel_count": 7,
@@ -50,7 +50,7 @@
       "mushroom_body": 0.14088381916426101,
       "neuromodulation": 3.4486151589790097,
       "odorant_receptors": 4.5489696947769085,
-      "whole_brain_or_other": 4.300378466267597
+      "whole_brain_or_other": 4.300378466267598
     },
     "template_count": 24,
     "waggle_follower_summary": {
@@ -105,7 +105,7 @@
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/HBSGrey.zip",
       "sha256": "95ca205aae95639d44a3a3ff43838f9f30e2c578ae8362206eba47dcfc81f642",
       "size_bytes": 8026083,
-      "skipped_existing": true,
+      "skipped_existing": false,
       "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/HBSGrey.zip"
     },
     {
@@ -116,7 +116,7 @@
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/HBSConfocal.zip",
       "sha256": "6f7216f5eba3ae981549eeb34b7bc81f12f1fceb0a4bcfed993148351e14a90d",
       "size_bytes": 1379635,
-      "skipped_existing": true,
+      "skipped_existing": false,
       "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/HBSConfocal.zip"
     },
     {
@@ -127,7 +127,7 @@
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/HBSLabels.zip",
       "sha256": "bd4842913b49ccac5febcaaf5d68cbc37b71fa4039735658d06fc49f9892a966",
       "size_bytes": 421327,
-      "skipped_existing": true,
+      "skipped_existing": false,
       "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/HBSLabels.zip"
     },
     {
@@ -138,7 +138,7 @@
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/VRML.zip",
       "sha256": "25dd3d25d07cdf7a9319fc469cf1d86d75f5a44922e97d26160d4166e46dab5b",
       "size_bytes": 5965616,
-      "skipped_existing": true,
+      "skipped_existing": false,
       "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/VRML.zip"
     },
     {
@@ -149,7 +149,7 @@
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/ACT_Standard.zip",
       "sha256": "e87bc041afb6b4c2ee53e3a35d1c8b322a33aee218dd0243b0115206e613ab8e",
       "size_bytes": 2070538,
-      "skipped_existing": true,
+      "skipped_existing": false,
       "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/ACT_Standard.zip"
     },
     {
@@ -160,7 +160,7 @@
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/ALF1_Standard.zip",
       "sha256": "6ece5a2d89612cda28ed7df626548a71383dee9dae15375316dd574c7ab420aa",
       "size_bytes": 2251043,
-      "skipped_existing": true,
+      "skipped_existing": false,
       "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/ALF1_Standard.zip"
     },
     {
@@ -171,7 +171,7 @@
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/Atlas_Pe1_PNII.zip",
       "sha256": "ab20443e5bc815a2953ae36b50af01aaeac56450dd39d41c8069b629af4c91f9",
       "size_bytes": 4033983,
-      "skipped_existing": true,
+      "skipped_existing": false,
       "url": "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/Atlas_Pe1_PNII.zip"
     },
     {
@@ -180,8 +180,8 @@
       "downloaded": true,
       "error": null,
       "local_path": "output/data/empirical_sources/virtual-honeybee-standard-brain/neuropil_abbreviations.html",
-      "sha256": "6663681566682ea707d882c53d5ee812a06b6cbea750eab6b9f6a71e20f1c057",
-      "size_bytes": 28375,
+      "sha256": "b45515d39fc55f9af06b285dddc2b966d541cb3e5af9ea6d593575c777200505",
+      "size_bytes": 28345,
       "skipped_existing": true,
       "url": "https://www.bcp.fu-berlin.de/en/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/abbreviations/index.html"
     }
@@ -189,7 +189,7 @@
   "archive_status": [
     {
       "archive_downloaded": false,
-      "archive_error": null,
+      "archive_error": "405 Method Not Allowed",
       "archive_sha256": null,
       "archive_size_bytes": 0,
       "archive_skipped_existing": false,
@@ -197,11 +197,10 @@
       "dataset_id": "dryad-paoli-2024-al-calcium",
       "doi": "10.5061/dryad.qbzkh18sc",
       "downloaded_file_paths": [
-        "output/data/empirical_sources/dryad-paoli-2024-al-calcium/files/calcium_imaging_database.mat.zip",
         "output/data/empirical_sources/dryad-paoli-2024-al-calcium/files/README.md"
       ],
-      "file_downloaded_count": 2,
-      "full_download_requested": false,
+      "file_downloaded_count": 1,
+      "full_download_requested": true,
       "license": "See source repository or publisher terms.",
       "local_archive": null,
       "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.qbzkh18sc",
@@ -209,95 +208,81 @@
       "title": "Honey bee antennal lobe calcium imaging"
     },
     {
-      "archive_downloaded": false,
+      "archive_downloaded": true,
       "archive_error": null,
-      "archive_sha256": null,
-      "archive_size_bytes": 0,
+      "archive_sha256": "3f125468e5a3aa29ede9d9e736c9153e4a044c1fda11466fe30851d4d2c735da",
+      "archive_size_bytes": 969822,
       "archive_skipped_existing": false,
       "cataloged_file_count": 9,
       "dataset_id": "dryad-carcaud-2022-multisite-gcamp",
       "doi": "10.5061/dryad.83bk3j9tt",
       "downloaded_file_paths": [
-        "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/README.txt",
-        "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S1_Data.xlsx",
-        "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S2_Data.xlsx",
-        "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S3_Data.xlsx",
-        "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S4_Data.xlsx",
-        "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S5_Data.xlsx",
-        "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S6_Data.xlsx",
-        "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S7_Data.xlsx",
-        "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/S8_Data.xlsx"
+        "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/README.txt"
       ],
-      "file_downloaded_count": 9,
-      "full_download_requested": false,
+      "file_downloaded_count": 1,
+      "full_download_requested": true,
       "license": "See source repository or publisher terms.",
-      "local_archive": null,
+      "local_archive": "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/dryad-carcaud-2022-multisite-gcamp.zip",
       "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.83bk3j9tt",
-      "storage_size": 1242065,
+      "storage_size": 968529,
       "title": "Multisite imaging of neural activity using GCaMP6f in the honey bee"
     },
     {
-      "archive_downloaded": false,
+      "archive_downloaded": true,
       "archive_error": null,
-      "archive_sha256": null,
-      "archive_size_bytes": 0,
+      "archive_sha256": "991c14e6c40b1bc5603400bd850c72e535d1e76aa72f790b5fde309a257e229a",
+      "archive_size_bytes": 56176,
       "archive_skipped_existing": false,
       "cataloged_file_count": 2,
       "dataset_id": "dryad-andreu-2025-alarm-odorant-receptors",
       "doi": "10.5061/dryad.rv15dv4k2",
       "downloaded_file_paths": [
-        "output/data/empirical_sources/dryad-andreu-2025-alarm-odorant-receptors/files/README.md",
-        "output/data/empirical_sources/dryad-andreu-2025-alarm-odorant-receptors/files/Suppdata_AmOR.zip"
+        "output/data/empirical_sources/dryad-andreu-2025-alarm-odorant-receptors/files/README.md"
       ],
-      "file_downloaded_count": 2,
-      "full_download_requested": false,
+      "file_downloaded_count": 1,
+      "full_download_requested": true,
       "license": "See source repository or publisher terms.",
-      "local_archive": null,
+      "local_archive": "output/data/empirical_sources/dryad-andreu-2025-alarm-odorant-receptors/dryad-andreu-2025-alarm-odorant-receptors.zip",
       "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.rv15dv4k2",
       "storage_size": 55827,
       "title": "Identification of two odorant receptors tuned to alarm pheromone in Apis mellifera"
     },
     {
-      "archive_downloaded": false,
+      "archive_downloaded": true,
       "archive_error": null,
-      "archive_sha256": null,
-      "archive_size_bytes": 0,
+      "archive_sha256": "2fe734af03ac0574eb76b6dc1cc0ad3a8172a9b796758b2199b6996aecfc50f6",
+      "archive_size_bytes": 168414554,
       "archive_skipped_existing": false,
       "cataloged_file_count": 2,
       "dataset_id": "dryad-jernigan-2026-antennal-movement",
       "doi": "10.5061/dryad.qjq2bvqw6",
       "downloaded_file_paths": [
-        "output/data/empirical_sources/dryad-jernigan-2026-antennal-movement/files/Jernigan_etal_2026_JEB_activesensing_plumestructure_antennal_data.csv",
         "output/data/empirical_sources/dryad-jernigan-2026-antennal-movement/files/README.md"
       ],
-      "file_downloaded_count": 2,
-      "full_download_requested": false,
+      "file_downloaded_count": 1,
+      "full_download_requested": true,
       "license": "See source repository or publisher terms.",
-      "local_archive": null,
+      "local_archive": "output/data/empirical_sources/dryad-jernigan-2026-antennal-movement/dryad-jernigan-2026-antennal-movement.zip",
       "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.qjq2bvqw6",
       "storage_size": 168389956,
       "title": "Antennal movement responses to different plume structures in Apis mellifera"
     },
     {
-      "archive_downloaded": false,
+      "archive_downloaded": true,
       "archive_error": null,
-      "archive_sha256": null,
-      "archive_size_bytes": 0,
+      "archive_sha256": "777837fc80741e1e18b1b975bd80896aee7be865c91ad042cad26e849dc6248e",
+      "archive_size_bytes": 97381,
       "archive_skipped_existing": false,
       "cataloged_file_count": 3,
       "dataset_id": "dryad-nouvian-2017-biogenic-amines",
       "doi": "10.5061/dryad.rj10c",
-      "downloaded_file_paths": [
-        "output/data/empirical_sources/dryad-nouvian-2017-biogenic-amines/files/Data colonies.xlsx",
-        "output/data/empirical_sources/dryad-nouvian-2017-biogenic-amines/files/Data individuals.xlsx",
-        "output/data/empirical_sources/dryad-nouvian-2017-biogenic-amines/files/Data pharmaco.xlsx"
-      ],
-      "file_downloaded_count": 3,
-      "full_download_requested": false,
+      "downloaded_file_paths": [],
+      "file_downloaded_count": 0,
+      "full_download_requested": true,
       "license": "See source repository or publisher terms.",
-      "local_archive": null,
+      "local_archive": "output/data/empirical_sources/dryad-nouvian-2017-biogenic-amines/dryad-nouvian-2017-biogenic-amines.zip",
       "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.rj10c",
-      "storage_size": 117640,
+      "storage_size": 96873,
       "title": "Cooperative defence operates by social modulation of biogenic amine levels in the honeybee brain"
     }
   ],
@@ -321,5 +306,7 @@
     "output/figures/empirical/brain_data_completeness_matrix.png",
     "output/figures/empirical/bee_brain_multimodal_source_map.png"
   ],
-  "known_gaps": []
+  "known_gaps": [
+    "Paoli MATLAB calcium traces are not yet local or parseable"
+  ]
 }

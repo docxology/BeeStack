@@ -15,15 +15,15 @@
   "orientation": "horizontal",
   "schema": "beestack.figure_data.v1",
   "title": "beebrain empirical evidence map",
-  "validation_fraction": 1.0,
+  "validation_fraction": 0.75,
   "values": [
     10.0,
     48.0,
     24.0,
     7.0,
-    0.6511059958748602,
+    0.6511059958748603,
     0.28875178634201437,
-    0.8,
+    0.7,
     1.0
   ]
 }

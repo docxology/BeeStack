@@ -43,12 +43,12 @@ stroke. The empirical run currently integrates 48
 response panels, 7 anatomy inventories,
 1 antennal-movement summaries, and
 24 odor templates, with a parseable-source
-fraction of 0.800. The research suite reports
+fraction of 0.700. The research suite reports
 87 visualization artifacts,
 3 deterministic sensitivity sweeps, and
 5 empirical evidence records. All module
 contract self-tests pass — a config-band self-test rate of
-1.000 — measured alongside
+0.938 — measured alongside
 11 explicitly catalogued open gaps, so this
 rate denotes contract conformance rather than biological validation. The methods-analysis
 pass adds 5 module dashboards,

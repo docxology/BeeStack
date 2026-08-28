@@ -140,13 +140,13 @@ odor-response panels, 7 anatomy inventories,
 Figshare files are local, with follower-decoding confidence
 0.289 and decoding improvement
 0.248. The brain-data parseable-source
-fraction is 0.800. The run records
-1 local calcium datasets and
-0 empirical known gaps, making *missing
+fraction is 0.700. The run records
+0 local calcium datasets and
+1 empirical known gaps, making *missing
 upstream payloads visible* instead of fabricating data.
 The source-verified fraction is 1.000,
 and the 0.800 parseability-readiness target is recorded as
-True when the parseable-source fraction meets
+False when the parseable-source fraction meets
 that threshold. Every remaining nonparseable source still must carry a DOI/source URL,
 parser status, blocker, and remediation path in the completeness panel.
 
@@ -175,7 +175,7 @@ anatomy-inventory count, neuropil count, region-response class count,
 odor separability, and calcium-dataset availability. The figure is
 written to
 `output/figures/methods/beebrain_methods_empirical_completeness.png`,
-and the top gap is propagated as Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream..
+and the top gap is propagated as BeeBrain: brain_parseability_target.
 
 [@fig:brain_methods_completeness] summarizes empirical and methods completeness for BeeBrain.
 
@@ -254,7 +254,7 @@ what a genome-to-circuit join could look like. BeeStack's current BeeBrain
 path instead ingests the Honey-Bee Standard Brain structural atlas and
 registered activity summaries (odor panels, antennal kinematics,
 dance-follower positioning) with parseable fraction
-0.800.
+0.700.
 
 Functional Granger connectivity from calcium imaging
 [@szyszka2023granger] remains a documented blocker when connectivity

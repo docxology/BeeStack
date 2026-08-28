@@ -1,7 +1,7 @@
 {
   "command_count": 282,
-  "directory_count": 71,
-  "docs_checked": 185,
+  "directory_count": 72,
+  "docs_checked": 187,
   "fidelity_claims": [
     "![FlyBody/MuJoCo beebody flybody tripod walking render shows Eight-frame contact sheet from the FlyBody walk_imitation rollout on the generated apis_mellifera_worker MJCF, showing tripod gait, corbiculae, hindwing coupling, and honeybee visual cues. Generated from animation manifest, bee visual verification, and apis_mellifera_worker MJCF. Sidecar validation checks raster, source routing, and registered claim tier. Does not calibrate honeybee walking biomechanics or prove field-scale locomotion.](../figures/renders/beebody_flybody_morphology_contact_sheet.png){#fig:beebody_flybody_morphology width=98%}",
     "![FlyBody/MuJoCo beebody flybody wing-beat flight render shows Eight-frame contact sheet from FlightImitationWBPG and WingBeatPatternGenerator on the same honeybee MJCF, showing coupled forewing/hindwing surfaces and wing-beat flight posture. Generated from animation manifest, bee visual verification, and apis_mellifera_worker MJCF. Sidecar validation checks raster, source routing, and registered claim tier. Does not calibrate honeybee aerodynamics or hovering power against measured loads.](../figures/renders/beebody_flybody_flight_contact_sheet.png){#fig:beebody_flybody_flight width=98%}",

@@ -21,7 +21,7 @@ biological realism, and the project is explicit about that asymmetry.
   48 response panels, 7
   anatomy inventories, 1 antennal-movement
   summaries, and 24 integrated odor templates,
-  with parseable-source fraction 0.800.
+  with parseable-source fraction 0.700.
 - **BeeMind**, the non-visual portion of BeeSwarm, and **BeeNiche** are
   explicitly *reduced kernels*. Their value is contract integration,
   diagnostic transparency, and extensibility, not biological prediction.
@@ -83,7 +83,7 @@ importable module logic with no filesystem or network side effects;
 computations with no mocks; `manuscript/` holds tokenized prose hydrated
 from real run-time values; and `output/` contains regeneratable
 artifacts. Every non-cache directory is signposted, with
-71 directories covered by local README and
+72 directories covered by local README and
 AGENTS files so that downstream agents — human or LLM — can pick up the
 project without rediscovering its structure.
 
@@ -109,7 +109,7 @@ and known gaps. It currently reports 87
 visualization artifacts, 3 sensitivity sweeps,
 5 empirical evidence records,
 11 explicitly catalogued gaps, and an overall
-validation fraction of 1.000. The readiness
+validation fraction of 0.938. The readiness
 review currently prioritizes **BeeBrain calcium acquisition completion (P27)** as the top
 follow-up item, making the next pass a *scientific decision* rather than
 an unstructured refactor.

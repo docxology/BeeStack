@@ -2,8 +2,8 @@
   "empirical_availability_counts": {
     "generated": 1,
     "missing_optional": 0,
-    "network_gated_absent": 0,
-    "parsed": 4,
+    "network_gated_absent": 1,
+    "parsed": 3,
     "registered_absent": 0
   },
   "empirical_evidence": [
@@ -17,12 +17,12 @@
       "modality": "workbook/CSV odor response panels"
     },
     {
-      "availability_status": "parsed",
-      "completeness_fraction": 0.125,
+      "availability_status": "network_gated_absent",
+      "completeness_fraction": 0.0,
       "dataset_id": "calcium-datasets",
       "integration_target": "BeeBrain calcium summaries",
-      "known_gap": "below configured completeness threshold",
-      "local_records": 1,
+      "known_gap": "network gated absent; below configured completeness threshold",
+      "local_records": 0,
       "modality": "Paoli-style calcium traces"
     },
     {
@@ -66,7 +66,7 @@
     "No external Hiveopolis or BEEHAVE engine is required in the default path.",
     "External nectar landscape calibration and brood demography remain future adapter layers."
   ],
-  "local_empirical_record_count": 140,
+  "local_empirical_record_count": 139,
   "module_scorecards": [
     {
       "evidence": [
@@ -124,16 +124,16 @@
       ],
       "metrics": {
         "anatomy_inventory_count": 7.0,
-        "brain_data_parseable_fraction": 0.8,
+        "brain_data_parseable_fraction": 0.7,
         "empirical_panel_count": 48.0,
-        "mean_odor_separability": 0.6511059958748602,
+        "mean_odor_separability": 0.6511059958748603,
         "registered_dataset_count": 10.0,
         "source_verified_fraction": 1.0,
         "template_count": 24.0,
         "waggle_follower_confidence": 0.28875178634201437
       },
       "module": "BeeBrain",
-      "validation_fraction": 1.0,
+      "validation_fraction": 0.75,
       "validations": [
         {
           "detail": "Empirical templates are available for stack integration",
@@ -159,9 +159,9 @@
         {
           "detail": "Curated BeeBrain sources are parseable or source-verified blockers",
           "name": "brain_parseability_target",
-          "passed": true,
+          "passed": false,
           "threshold": ">= 0.8 or all blockers source-verified",
-          "value": 0.8
+          "value": 0.7
         }
       ]
     },
@@ -266,7 +266,7 @@
       "metrics": {
         "brood_temperature_target_c": 34.0,
         "comb_voxels": 864.0,
-        "final_brood_temperature_error_c": 2.4240946882584566,
+        "final_brood_temperature_error_c": 2.874567201134734,
         "final_comb_fraction": 0.08333333333333333,
         "foraging_radius_midpoint_km": 2.0,
         "thermoregulation_gain": 0.24
@@ -293,13 +293,13 @@
           "name": "brood_temperature_calibrated_error",
           "passed": true,
           "threshold": "< 3 C",
-          "value": 2.4240946882584566
+          "value": 2.874567201134734
         }
       ]
     }
   ],
-  "overall_validation_fraction": 1.0,
-  "parsed_empirical_evidence_count": 4,
+  "overall_validation_fraction": 0.9375,
+  "parsed_empirical_evidence_count": 3,
   "sensitivity_sweeps": [
     {
       "interpretation": "mind.energy_threshold sweep is insensitive under the current reduced kernel; recruitment and comb fraction ranges both stayed at 0.",

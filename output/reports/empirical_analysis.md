@@ -2,12 +2,12 @@
 
 - Panels analyzed: `48`
 - Workbook dataframe summaries: `48`
-- Calcium datasets parsed: `1`
+- Calcium datasets parsed: `0`
 - Antennal movement summaries: `1`
 - Anatomy inventories parsed: `7`
 - Neuropil abbreviations parsed: `22`
 - Templates integrated into BeeBrain: `24`
-- All quality checks passed: `False`
+- All quality checks passed: `True`
 - Mean odor separability: `0.651`
 - Empirical drive label: `16ol`
 - Empirical antennal vibration: `[0.2940877942985068, 223.52702354388055]`
@@ -36,7 +36,7 @@
 
 ## Activity Summary
 
-- Calcium latency `1.224` s; inhibitory fraction `0.343`; excitatory fraction `0.086`.
+- Calcium latency `0.000` s; inhibitory fraction `0.000`; excitatory fraction `0.000`.
 - Aftersmell/post-odor response mean: `0.170`
 - `antennal_lobe` mean absolute response: `0.254`
 - `lateral_horn` mean absolute response: `0.046`
@@ -55,15 +55,15 @@
 
 ## Brain Data Completeness
 
-- Curated datasets `10`; downloaded `8`; parseable `8`; parseable fraction `0.800`; source-verified `10`; target satisfied `True`.
+- Curated datasets `10`; downloaded `8`; parseable `7`; parseable fraction `0.700`; source-verified `10`; target satisfied `False`.
 
 ## Archive Caveats
 
-- `dryad-paoli-2024-al-calcium` was cataloged but not downloaded (file-level fallback did not produce a local file).
-- `dryad-carcaud-2022-multisite-gcamp` was cataloged but not downloaded (file-level fallback did not produce a local file).
-- `dryad-andreu-2025-alarm-odorant-receptors` was cataloged but not downloaded (file-level fallback did not produce a local file).
-- `dryad-jernigan-2026-antennal-movement` was cataloged but not downloaded (file-level fallback did not produce a local file).
-- `dryad-nouvian-2017-biogenic-amines` was cataloged but not downloaded (file-level fallback did not produce a local file).
+- `dryad-paoli-2024-al-calcium` was cataloged but not downloaded (405 Method Not Allowed).
+
+## Known Gaps
+
+- Paoli MATLAB calcium traces are not yet local or parseable.
 
 ## Figures
 

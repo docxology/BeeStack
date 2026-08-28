@@ -71,7 +71,7 @@ neural simulators.
 
 This has two consequences. First, empirical coverage metrics are not
 administrative bookkeeping; they are part of the scientific result.
-`0.800` tells the reader how much of the
+`0.700` tells the reader how much of the
 registered brain evidence is actually usable by the current pipeline.
 Second, missing or partial sources must remain visible. A calcium trace
 that is registered but unavailable locally is not converted into a

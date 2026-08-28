@@ -2,13 +2,13 @@
 
 Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidence, and reduced validated Mind/Swarm/Niche kernels.
 
-- Overall validation fraction: `1.000`
+- Overall validation fraction: `0.938`
 - Module scorecards: `5`
 - Visualization artifacts: `87`
 - Empirical registry/evidence rows: `5`
-- Parsed empirical evidence rows: `4`
-- Local empirical records represented: `140`
-- Empirical availability states: `generated=1, missing_optional=0, network_gated_absent=0, parsed=4, registered_absent=0`
+- Parsed empirical evidence rows: `3`
+- Local empirical records represented: `139`
+- Empirical availability states: `generated=1, missing_optional=0, network_gated_absent=1, parsed=3, registered_absent=0`
 - Sensitivity sweeps: `3`
 
 ## Module Scorecards
@@ -24,8 +24,8 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 ### BeeBrain
 
 - Fidelity: `empirical reduced AL-MB-CX kernel`
-- Validation fraction: `1.000`
-- Metrics: `anatomy_inventory_count=7`, `brain_data_parseable_fraction=0.8`, `empirical_panel_count=48`, `mean_odor_separability=0.651`, `registered_dataset_count=10`, `source_verified_fraction=1`, `template_count=24`, `waggle_follower_confidence=0.289`
+- Validation fraction: `0.750`
+- Metrics: `anatomy_inventory_count=7`, `brain_data_parseable_fraction=0.7`, `empirical_panel_count=48`, `mean_odor_separability=0.651`, `registered_dataset_count=10`, `source_verified_fraction=1`, `template_count=24`, `waggle_follower_confidence=0.289`
 - Evidence: Curated public honeybee anatomy/activity loaders and template-bank integration.
 - Known gaps: No heavyweight spiking simulator is required in the default path.; The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics.
 
@@ -49,7 +49,7 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 
 - Fidelity: `voxel comb and thermal kernel with adapter schemas`
 - Validation fraction: `1.000`
-- Metrics: `brood_temperature_target_c=34`, `comb_voxels=864`, `final_brood_temperature_error_c=2.42`, `final_comb_fraction=0.0833`, `foraging_radius_midpoint_km=2`, `thermoregulation_gain=0.24`
+- Metrics: `brood_temperature_target_c=34`, `comb_voxels=864`, `final_brood_temperature_error_c=2.87`, `final_comb_fraction=0.0833`, `foraging_radius_midpoint_km=2`, `thermoregulation_gain=0.24`
 - Evidence: Voxel comb, brood thermal field, and adapter-schema metrics.
 - Known gaps: No external Hiveopolis or BEEHAVE engine is required in the default path.; External nectar landscape calibration and brood demography remain future adapter layers.
 
@@ -163,7 +163,7 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 ## Empirical Evidence
 
 - `empirical-panels`: workbook/CSV odor response panels, status `parsed`, completeness `1.000`, records `48`
-- `calcium-datasets`: Paoli-style calcium traces, status `parsed`, completeness `0.125`, records `1`, gap `below configured completeness threshold`
+- `calcium-datasets`: Paoli-style calcium traces, status `network_gated_absent`, completeness `0.000`, records `0`, gap `network gated absent; below configured completeness threshold`
 - `honeybee-standard-brain`: atlas/VRML/TIFF anatomy assets, status `parsed`, completeness `0.800`, records `8`
 - `template-bank`: glomerulus-length empirical templates, status `generated`, completeness `1.000`, records `24`
 - `figshare-hadjitofi-2024-waggle-following`: waggle follower antennal-position CSVs, status `parsed`, completeness `0.289`, records `59`, gap `below configured completeness threshold`

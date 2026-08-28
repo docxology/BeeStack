@@ -313,6 +313,6 @@
     "AmOR136:i9"
   ],
   "schema": "beestack.figure_data.v1",
-  "title": "Empirical response panel: Annex1b_Suppdata_AmOr136.xlsx:A.Pheromonal blend dF-F0:receptor_response",
+  "title": "Empirical response panel: Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136.xlsx:A.Pheromonal blend dF-F0:receptor_response",
   "value_label": "normalized fluorescence"
 }

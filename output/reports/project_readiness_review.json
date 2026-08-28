@@ -1,7 +1,7 @@
 {
   "documentation_audit": {
     "available": true,
-    "docs_checked": 185,
+    "docs_checked": 187,
     "missing_agents_dirs": [],
     "missing_output_paths": [],
     "missing_readme_dirs": [],
@@ -11,16 +11,16 @@
     "available": true,
     "figure_count": 8,
     "module_count": 5,
-    "overall_validation_fraction": 1.0,
+    "overall_validation_fraction": 0.96,
     "top_validation_gaps": [
+      "BeeBrain: brain_parseability_target",
+      "BeeBrain: parseability_target_satisfied",
+      "Paoli MATLAB calcium traces are not yet local or parseable",
       "Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.",
       "Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset.",
       "No heavyweight spiking simulator is required in the default path.",
       "The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics.",
-      "No learned transition model or recursive social-belief inference yet.",
-      "Expected free energy terms are transparent hand-calibrated witnesses.",
-      "Large-N colony dynamics are summarized by configured scaling rather than simulated at full population by default.",
-      "Strict visual scenes prove small-scene contacts, not full BEEHAVE-scale population dynamics."
+      "No learned transition model or recursive social-belief inference yet."
     ]
   },
   "passed": true,
@@ -100,7 +100,7 @@
     "External nectar landscape calibration and brood demography remain future adapter layers."
   ],
   "signposting": {
-    "directory_count": 71,
+    "directory_count": 72,
     "missing_agents_dirs": [],
     "missing_readme_dirs": [],
     "passed": true
@@ -108,11 +108,11 @@
   "stack_synthesis": {
     "available": true,
     "figure_count": 2,
-    "readiness_fraction": 0.9316666666666666,
+    "readiness_fraction": 0.9091666666666667,
     "top_findings": [
-      "Weakest synthesized module is BeeSwarm (readiness 0.925; gaps 3).",
-      "Cross-stack validation mean is 1.000 with 11 catalogued module gaps.",
-      "Integrated simulation improved brood-temperature error by 4.415 C over 24 steps."
+      "Weakest synthesized module is BeeBrain (readiness 0.821; gaps 2).",
+      "Cross-stack validation mean is 0.950 with 11 catalogued module gaps.",
+      "Integrated simulation improved brood-temperature error by 3.964 C over 24 steps."
     ],
     "validation_fraction": 1.0
   }

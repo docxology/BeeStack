@@ -4,14 +4,14 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 
 ## Global Statistics
 
-- `empirical_parseable_fraction`: 0.800
+- `empirical_parseable_fraction`: 0.700
 - `known_gap_count_total`: 11.000
 - `metric_count_total`: 60.000
 - `module_artifact_coverage_fraction`: 1.000
-- `module_readiness_mean`: 0.932
-- `module_validation_mean`: 1.000
-- `module_validation_min`: 1.000
-- `module_validation_std`: 0.000
+- `module_readiness_mean`: 0.909
+- `module_validation_mean`: 0.950
+- `module_validation_min`: 0.750
+- `module_validation_std`: 0.100
 - `real_flybody_animation_count`: 5.000
 - `reduced_schematic_animation_count`: 4.000
 - `scholarship_reference_count`: 95.000
@@ -21,7 +21,7 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 - `simulation_policy_switch_count`: 0.000
 - `simulation_recruited_total`: 168.000
 - `simulation_step_count`: 24.000
-- `simulation_thermal_error_improvement_c`: 4.415
+- `simulation_thermal_error_improvement_c`: 3.964
 - `visualization_artifact_count`: 87.000
 
 ## Module Panels
@@ -29,7 +29,7 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 | Module | Fidelity | Validation | Readiness | Metrics | Evidence | Artifacts | Gaps |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | BeeBody | FlyBody render path plus reduced closed-loop telemetry | 1.000 | 0.933 | 14 | 2 | 23 | 2 |
-| BeeBrain | empirical reduced AL-MB-CX kernel | 1.000 | 0.933 | 14 | 3 | 30 | 2 |
+| BeeBrain | empirical reduced AL-MB-CX kernel | 0.750 | 0.821 | 14 | 3 | 30 | 2 |
 | BeeMind | bounded active-inference-style policy kernel | 1.000 | 0.933 | 9 | 2 | 10 | 2 |
 | BeeSwarm | reduced communication kernel plus strict FlyBody/MuJoCo BeeBody waggle/collision scenes | 1.000 | 0.925 | 14 | 2 | 24 | 3 |
 | BeeNiche | voxel comb and thermal kernel with adapter schemas | 1.000 | 0.933 | 9 | 2 | 13 | 2 |
@@ -37,19 +37,19 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 ## Validations
 
 - `module_coverage`: pass; value `5`; threshold `5`. Body, Brain, Mind, Swarm, and Niche all appear in synthesis.
-- `validation_target`: pass; value `1.0`; threshold `0.9`. Mean module validation fraction meets synthesis target.
+- `validation_target`: pass; value `0.95`; threshold `0.9`. Mean module validation fraction meets synthesis target.
 - `artifact_coverage`: pass; value `1.0`; threshold `1.0`. Each module has visualization or evidence artifacts.
 - `documentation_signposting`: pass; value `1.0`; threshold `1.0`. Every non-cache directory has README.md and AGENTS.md coverage.
-- `empirical_parseability`: pass; value `0.8`; threshold `0.5`. BeeBrain parseable-source fraction clears configured minimum.
+- `empirical_parseability`: pass; value `0.7`; threshold `0.5`. BeeBrain parseable-source fraction clears configured minimum.
 - `simulation_energy_finite`: pass; value `0.000821`; threshold `>= 0`. Body energy does not increase during the deterministic integrated run.
-- `simulation_thermal_improves`: pass; value `4.415`; threshold `> 0`. Brood-temperature error improves over the deterministic run.
+- `simulation_thermal_improves`: pass; value `3.964`; threshold `> 0`. Brood-temperature error improves over the deterministic run.
 - `scholarship_minimum`: pass; value `95`; threshold `7`. Manuscript bibliography includes the configured minimum scholarship anchors.
 
 ## Prioritized Findings
 
-- Weakest synthesized module is BeeSwarm (readiness 0.925; gaps 3).
-- Cross-stack validation mean is 1.000 with 11 catalogued module gaps.
-- Integrated simulation improved brood-temperature error by 4.415 C over 24 steps.
+- Weakest synthesized module is BeeBrain (readiness 0.821; gaps 2).
+- Cross-stack validation mean is 0.950 with 11 catalogued module gaps.
+- Integrated simulation improved brood-temperature error by 3.964 C over 24 steps.
 - All synthesis validation gates passed in the latest generated run.
 
 ## Scholarship Anchors

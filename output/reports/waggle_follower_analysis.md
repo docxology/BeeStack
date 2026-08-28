@@ -43,8 +43,8 @@ This report covers the curated Hadjitofi-Webb Figshare waggle-following source a
 
 - Curated datasets: `10`
 - Downloaded datasets: `8`
-- Parseable datasets: `8`
-- Parseable fraction: `0.800`
+- Parseable datasets: `7`
+- Parseable fraction: `0.700`
 - Source-verified datasets: `10`
-- Source-verified blockers: `2`
-- Parseability target satisfied: `True`
+- Source-verified blockers: `3`
+- Parseability target satisfied: `False`

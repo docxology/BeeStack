@@ -3,13 +3,13 @@
   "figure_path": "output/figures/empirical/empirical_panel_quality.png",
   "labels": [
     "S8_Data.xlsx:Feuil1:generic_numeric_respon",
-    "Annex1b_Suppdata_AmOr136.xlsx:E.Sensitivit",
+    "Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136",
     "Data colonies.xlsx:HPLC:nouvian_structured",
-    "Annex1b_Suppdata_AmOr136.xlsx:D.Specificit",
+    "Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136",
     "Data individuals.xlsx:HPLC:nouvian_structu",
-    "Annex1a_Suppdata_AmOr109.xlsx:D.Specificit",
-    "Annex1a_Suppdata_AmOr109.xlsx:C.Specificit",
-    "Annex1b_Suppdata_AmOr136.xlsx:C.Specificit",
+    "Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109",
+    "Suppdata_AmOR.zip/Annex1a_Suppdata_AmOr109",
+    "Suppdata_AmOR.zip/Annex1b_Suppdata_AmOr136",
     "Data colonies.xlsx:Behaviour:nouvian_struc",
     "Data pharmaco.xlsx:CYP:nouvian_structured_"
   ],

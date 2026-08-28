@@ -87,18 +87,18 @@ local and parseable.
 ## Data completeness
 
 The brain-data completeness panel reports a parseable-source fraction
-of 0.800 and a source-verified fraction of
+of 0.700 and a source-verified fraction of
 1.000. The parseability-readiness flag is
-True against the recorded 0.800
+False against the recorded 0.800
 target. That flag reflects the parseable-source fraction only; source-verified
 records with explicit blockers are tracked separately and do not substitute for
 missing parseable payloads. In the current generated evidence snapshot,
 10 curated BeeBrain sources are registered,
 8 have local payloads,
-8 are parseable, and
-2 source-verified records remain
+7 are parseable, and
+3 source-verified records remain
 blocked with explicit remediation notes. Empirically known gaps are catalogued as
-`EMPIRICAL_KNOWN_GAP_COUNT = 0`. The Paoli
+`EMPIRICAL_KNOWN_GAP_COUNT = 1`. The Paoli
 MATLAB calcium archive [@paoli2024dryad] is now downloaded and parsed
 into empirical response summaries, where it serves as a citation anchor;
 it is not yet wired as a model input or held-out validation target, so
@@ -167,8 +167,8 @@ A reduced BeeBrain that substitutes synthetic values for missing calcium
 traces would still produce a complete-looking manuscript. The gap-explicit
 design here deliberately makes incompleteness visible in the hydrated
 manuscript: `BRAIN_DATA_PARSEABLE_FRACTION =
-0.800` and `EMPIRICAL_KNOWN_GAP_COUNT =
-0` are not editorial choices; they are
+0.700` and `EMPIRICAL_KNOWN_GAP_COUNT =
+1` are not editorial choices; they are
 the same values the readiness review and research-suite scorecards
 read. A reviewer can read the manuscript, the JSON reports, and the
 readiness review without having to cross-check that they tell the

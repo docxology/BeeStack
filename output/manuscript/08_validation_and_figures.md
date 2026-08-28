@@ -70,7 +70,7 @@ Validation is also textual and structural.
   digital-twin wording.
 - The **readiness review**
   (`output/reports/project_readiness_review.md`) records
-  71 signposted directories and
+  72 signposted directories and
   prioritizes the next-improvement backlog from the research gaps —
   the current top priority is BeeBrain calcium acquisition completion (P27).
 

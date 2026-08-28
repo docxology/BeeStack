@@ -36,5 +36,5 @@
 - After edits, run `scripts/z_generate_manuscript_variables.py` and check that
   no unresolved token placeholders remain in `output/manuscript/`.
 - Combined PDF from the template repo:
-  `uv run python scripts/03_render_pdf.py --project BeeStack` (run from
+  `uv run python scripts/pipeline/stage_03_render.py --project BeeStack` (run from
   the template repository root).

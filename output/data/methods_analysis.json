@@ -1,5 +1,5 @@
 {
-  "all_validations_passed": true,
+  "all_validations_passed": false,
   "evidence_availability_counts": {
     "generated": 4,
     "missing_optional": 0,
@@ -425,12 +425,12 @@
       ],
       "quantitative_metrics": {
         "anatomy_inventory_count": 7.0,
-        "brain_data_parseable_fraction": 0.8,
+        "brain_data_parseable_fraction": 0.7,
         "brain_source_verified_fraction": 1.0,
-        "calcium_dataset_count": 1.0,
+        "calcium_dataset_count": 0.0,
         "empirical_panel_count": 48.0,
         "enabled_dataset_count": 10.0,
-        "mean_odor_separability": 0.6511059958748602,
+        "mean_odor_separability": 0.6511059958748603,
         "neuropil_count": 22.0,
         "region_response_class_count": 6.0,
         "template_count": 24.0,
@@ -463,9 +463,9 @@
           {
             "detail": "Curated BeeBrain sources are parseable or source-verified blockers",
             "name": "brain_parseability_target",
-            "passed": true,
+            "passed": false,
             "threshold": ">= 0.8 or all blockers source-verified",
-            "value": 0.8
+            "value": 0.7
           },
           {
             "detail": "empirical panels present",
@@ -493,7 +493,7 @@
             "name": "calcium_gap_declared",
             "passed": true,
             "threshold": "present or declared gap",
-            "value": 1.0
+            "value": 0.0
           },
           {
             "detail": "waggle gap declared",
@@ -505,16 +505,19 @@
           {
             "detail": "parseability target satisfied",
             "name": "parseability_target_satisfied",
-            "passed": true,
+            "passed": false,
             "threshold": ">= 0.8 or source-verified blockers",
-            "value": 0.8
+            "value": 0.7
           }
         ],
-        "failed_checks": [],
+        "failed_checks": [
+          "brain_parseability_target",
+          "parseability_target_satisfied"
+        ],
         "module": "BeeBrain",
-        "passed_count": 10,
+        "passed_count": 8,
         "validation_count": 10,
-        "validation_fraction": 1.0
+        "validation_fraction": 0.8
       },
       "visualization_panel": {
         "animation_count": 1,
@@ -972,10 +975,10 @@
       "quantitative_metrics": {
         "brood_target_margin_c": 2.0,
         "comb_voxels": 864.0,
-        "final_brood_temperature_error_c": 2.4240946882584566,
+        "final_brood_temperature_error_c": 2.874567201134734,
         "final_comb_fraction": 0.08333333333333333,
         "foraging_radius_midpoint_km": 2.0,
-        "mean_brood_temperature_error_c": 3.190730105980709,
+        "mean_brood_temperature_error_c": 3.496782295360592,
         "mean_comb_fraction": 0.08333333333333333,
         "thermoregulation_gain": 0.24
       },
@@ -1000,7 +1003,7 @@
             "name": "brood_temperature_calibrated_error",
             "passed": true,
             "threshold": "< 3 C",
-            "value": 2.4240946882584566
+            "value": 2.874567201134734
           },
           {
             "detail": "comb fraction nonnegative",
@@ -1014,7 +1017,7 @@
             "name": "thermal_error_finite",
             "passed": true,
             "threshold": "finite",
-            "value": 3.190730105980709
+            "value": 3.496782295360592
           },
           {
             "detail": "brood target inside band",
@@ -1028,7 +1031,7 @@
             "name": "brood_temperature_error_target",
             "passed": true,
             "threshold": "< 3 C",
-            "value": 2.4240946882584566
+            "value": 2.874567201134734
           }
         ],
         "failed_checks": [],
@@ -1077,7 +1080,7 @@
       }
     }
   ],
-  "overall_validation_fraction": 1.0,
+  "overall_validation_fraction": 0.96,
   "scenario_sweeps": [
     {
       "dominant_output": "final_comb_fraction",
@@ -1327,14 +1330,14 @@
   "summary": "Science-first per-module methods panels connecting quantitative diagnostics, validation scorecards, visualization provenance, and manuscript evidence availability.",
   "title": "BeeStack Methods Analysis",
   "top_validation_gaps": [
+    "BeeBrain: brain_parseability_target",
+    "BeeBrain: parseability_target_satisfied",
+    "Paoli MATLAB calcium traces are not yet local or parseable",
     "Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.",
     "Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset.",
     "No heavyweight spiking simulator is required in the default path.",
     "The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics.",
-    "No learned transition model or recursive social-belief inference yet.",
-    "Expected free energy terms are transparent hand-calibrated witnesses.",
-    "Large-N colony dynamics are summarized by configured scaling rather than simulated at full population by default.",
-    "Strict visual scenes prove small-scene contacts, not full BEEHAVE-scale population dynamics."
+    "No learned transition model or recursive social-belief inference yet."
   ],
   "visualization_count": 52
 }

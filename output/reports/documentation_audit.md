@@ -1,12 +1,12 @@
 # BeeStack Documentation Audit
 
 - Passed: `True`
-- Documents checked: `185`
+- Documents checked: `187`
 - `uv run` commands referenced: `282`
 - Source links referenced: `17`
 - Generated-output paths referenced: `207`
 - Unresolved manuscript variables: `0`
-- Signposted directories: `71`
+- Signposted directories: `72`
 - Signposting passed: `True`
 - Source audit passed: `True`
 - Figure audit passed: `True`

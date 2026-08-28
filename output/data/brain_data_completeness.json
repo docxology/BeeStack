@@ -109,19 +109,26 @@
     "whole_brain": 1
   },
   "parseability_target": 0.8,
-  "parseability_target_satisfied": true,
-  "parseable_dataset_count": 8,
-  "parseable_fraction": 0.8,
-  "source_gaps": [],
+  "parseability_target_satisfied": false,
+  "parseable_dataset_count": 7,
+  "parseable_fraction": 0.7,
+  "source_gaps": [
+    {
+      "dataset_id": "dryad-paoli-2024-al-calcium",
+      "detail": "local payload exists but no parser emitted a BeeStack analysis record",
+      "remediation": "inspect file inventory and add a targeted parser or mark out of scope",
+      "severity": "low"
+    }
+  ],
   "source_statuses": [
     {
-      "blocker": "",
+      "blocker": "local_payload_not_parseable",
       "dataset_id": "dryad-paoli-2024-al-calcium",
       "doi": "10.5061/dryad.qbzkh18sc",
       "downloaded": true,
-      "parseable": true,
-      "parser_status": "parsed",
-      "remediation": "none",
+      "parseable": false,
+      "parser_status": "download_blocked:401 Unauthorized",
+      "remediation": "inspect file inventory and add a targeted parser or mark out of scope",
       "source_url": "https://datadryad.org/dataset/doi:10.5061/dryad.qbzkh18sc",
       "source_verified": true
     },
@@ -225,7 +232,7 @@
       "source_verified": true
     }
   ],
-  "source_verified_blocked_count": 2,
+  "source_verified_blocked_count": 3,
   "source_verified_dataset_count": 10,
   "source_verified_fraction": 1.0
 }

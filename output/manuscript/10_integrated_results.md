@@ -19,7 +19,7 @@ selected policy was `nurse_brood`, the final body speed was
 
 The final comb occupancy fraction was 0.083, and the
 brood-temperature error at the final step was
-2.424 °C from the configured 34
+2.875 °C from the configured 34
 °C target [@kronenberg1982colonial]. The run ended
 with empirical odor label `geraniol` selected from the
 registered odor templates, and an empirical-alignment score of

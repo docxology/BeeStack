@@ -1,6 +1,6 @@
 # Manuscript Syntax Reference (BeeStack)
 
-Project overlay on the template guide [`docs/guides/manuscript-semantics.md`](../../../template/docs/guides/manuscript-semantics.md) (sibling `template/` checkout).
+Project overlay on the template guide `docs/guides/manuscript-semantics.md` in the sibling `template/` checkout (not resolvable from this tree).
 
 ## Margins and preamble
 
@@ -107,7 +107,7 @@ uv run pytest tests/test_manuscript_quality_guards.py -q
 From the template repository root (WIP path resolved automatically):
 
 ```bash
-uv run python scripts/03_render_pdf.py --project BeeStack
+uv run python scripts/pipeline/stage_03_render.py --project BeeStack
 uv run python -m infrastructure.validation.cli pdf \
   projects_in_progress/BeeStack/output/pdf/BeeStack_combined.pdf
 ```

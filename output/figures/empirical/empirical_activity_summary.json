@@ -44,11 +44,11 @@
   "quality": {
     "height_px": 784,
     "max_intensity": 255,
-    "mean_intensity": 232.03018976011458,
+    "mean_intensity": 237.31612692445398,
     "min_intensity": 24,
     "mode": "RGBA",
     "nonzero_histogram_bins": 232,
-    "std_intensity": 53.657248600628975,
+    "std_intensity": 49.0532695443504,
     "width_px": 1425
   },
   "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",

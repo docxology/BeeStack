@@ -1,8 +1,10 @@
 {
-  "blockers": [],
+  "blockers": [
+    "missing output/pdf/BeeStack_combined.pdf"
+  ],
   "checks": {
     "changelog_present": true,
-    "combined_pdf": true,
+    "combined_pdf": false,
     "doi_configured": true,
     "generated_report_audit": true,
     "legacy_pdf_absent": true,
@@ -10,12 +12,14 @@
     "manuscript_version_1_0": true,
     "package_version_1_0_0": true,
     "parseability_flag_consistent": true,
-    "parseability_target_satisfied": true,
+    "parseability_target_satisfied": false,
     "security_posture": true,
     "validation_fraction_discloses_gaps": true
   },
-  "ok": true,
+  "ok": false,
   "package_version": "1.0.0",
   "release": "1.0",
-  "warnings": []
+  "warnings": [
+    "brain parseability target not met (parseable_fraction=0.7); documented in limitations and roadmap \u2014 not a release blocker"
+  ]
 }

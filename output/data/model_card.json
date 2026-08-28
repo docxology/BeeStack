@@ -108,6 +108,7 @@
         1.0,
         3.0
       ],
+      "passive_cooling_rate": 0.02,
       "seasonal_forage_amplitude": 0.35,
       "thermoregulation_gain": 0.24,
       "wax_deposit_threshold": 0.35,

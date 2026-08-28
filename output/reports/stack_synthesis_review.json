@@ -20,11 +20,11 @@
       "evidence_count": 3,
       "fidelity_level": "empirical reduced AL-MB-CX kernel",
       "known_gap_count": 2,
-      "log_metric_mean": 0.7045198348552425,
+      "log_metric_mean": 0.6812445791845987,
       "metric_count": 14,
       "module": "BeeBrain",
-      "readiness_score": 0.9333333333333332,
-      "validation_fraction": 1.0
+      "readiness_score": 0.8208333333333334,
+      "validation_fraction": 0.75
     },
     {
       "artifact_count": 10,
@@ -53,7 +53,7 @@
       "evidence_count": 2,
       "fidelity_level": "voxel comb and thermal kernel with adapter schemas",
       "known_gap_count": 2,
-      "log_metric_mean": 0.7505675574339595,
+      "log_metric_mean": 0.759933068788627,
       "metric_count": 9,
       "module": "BeeNiche",
       "readiness_score": 0.9333333333333332,
@@ -61,12 +61,12 @@
     }
   ],
   "prioritized_findings": [
-    "Weakest synthesized module is BeeSwarm (readiness 0.925; gaps 3).",
-    "Cross-stack validation mean is 1.000 with 11 catalogued module gaps.",
-    "Integrated simulation improved brood-temperature error by 4.415 C over 24 steps.",
+    "Weakest synthesized module is BeeBrain (readiness 0.821; gaps 2).",
+    "Cross-stack validation mean is 0.950 with 11 catalogued module gaps.",
+    "Integrated simulation improved brood-temperature error by 3.964 C over 24 steps.",
     "All synthesis validation gates passed in the latest generated run."
   ],
-  "readiness_fraction": 0.9316666666666666,
+  "readiness_fraction": 0.9091666666666667,
   "scholarship_keys": [
     "ahsan2025neonic",
     "andreu2025alarmor",
@@ -165,14 +165,14 @@
     "zheng2018mbio"
   ],
   "statistics": {
-    "empirical_parseable_fraction": 0.8,
+    "empirical_parseable_fraction": 0.7,
     "known_gap_count_total": 11.0,
     "metric_count_total": 60.0,
     "module_artifact_coverage_fraction": 1.0,
-    "module_readiness_mean": 0.9316666666666666,
-    "module_validation_mean": 1.0,
-    "module_validation_min": 1.0,
-    "module_validation_std": 0.0,
+    "module_readiness_mean": 0.9091666666666667,
+    "module_validation_mean": 0.95,
+    "module_validation_min": 0.75,
+    "module_validation_std": 0.09999999999999999,
     "real_flybody_animation_count": 5.0,
     "reduced_schematic_animation_count": 4.0,
     "scholarship_reference_count": 95.0,
@@ -182,7 +182,7 @@
     "simulation_policy_switch_count": 0.0,
     "simulation_recruited_total": 168.0,
     "simulation_step_count": 24.0,
-    "simulation_thermal_error_improvement_c": 4.414516422852656,
+    "simulation_thermal_error_improvement_c": 3.9640439099763785,
     "visualization_artifact_count": 87.0
   },
   "summary": "Statistical synthesis of module readiness, simulation telemetry, visualization evidence, documentation signposting, empirical coverage, and manuscript scholarship.",
@@ -201,7 +201,7 @@
       "name": "validation_target",
       "passed": true,
       "threshold": 0.9,
-      "value": 1.0
+      "value": 0.95
     },
     {
       "detail": "Each module has visualization or evidence artifacts.",
@@ -222,7 +222,7 @@
       "name": "empirical_parseability",
       "passed": true,
       "threshold": 0.5,
-      "value": 0.8
+      "value": 0.7
     },
     {
       "detail": "Body energy does not increase during the deterministic integrated run.",
@@ -236,7 +236,7 @@
       "name": "simulation_thermal_improves",
       "passed": true,
       "threshold": "> 0",
-      "value": 4.415
+      "value": 3.964
     },
     {
       "detail": "Manuscript bibliography includes the configured minimum scholarship anchors.",

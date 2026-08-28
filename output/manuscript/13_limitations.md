@@ -34,7 +34,7 @@ can acquire, parse, summarize, and integrate real honey-bee anatomy
 and activity sources — currently 48 panels,
 7 inventories, 1
 antennal summaries, and 24 templates with
-parseable fraction 0.800. But the default
+parseable fraction 0.700. But the default
 neural model remains a reduced AL–MB–CX and dance-decoding kernel.
 It does not claim connectome-level dynamics, a heavyweight spiking
 simulator, or learned synaptic plasticity. The Paoli MATLAB calcium

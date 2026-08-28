@@ -16,7 +16,7 @@ scorecards, 5 empirical evidence records,
 87 visualization artifacts,
 3 deterministic sensitivity sweeps, and
 11 known gaps. The overall validation
-fraction is 1.000. The scorecard heatmap,
+fraction is 0.938. The scorecard heatmap,
 sensitivity sweeps, evidence network overview, and evidence detail table below
 are Matplotlib/pandas or NetworkX diagnostics from the typed research report;
 each sidecar states what the figure does not prove.
@@ -51,13 +51,13 @@ findings companion.
 
 The latest synthesis reports validation fraction
 1.000, synthesized readiness fraction
-0.932, artifact coverage
+0.909, artifact coverage
 1.000, and
 95 bibliography anchors. The digital-twin
 readiness gate remains `False` in the generated readiness
 review. The integrated run improved brood-temperature error by
-4.415 °C. The top
-synthesis finding is: **Weakest synthesized module is BeeSwarm (readiness 0.925; gaps 3).**
+3.964 °C. The top
+synthesis finding is: **Weakest synthesized module is BeeBrain (readiness 0.821; gaps 2).**
 
 [@fig:stack_synthesis_dashboard] summarizes cross-stack synthesis metrics and readiness fractions.
 
@@ -113,7 +113,7 @@ structurally insensitive under the current reduced kernel
 The readiness review writes
 `output/reports/project_readiness_review.md` and
 `output/reports/project_readiness_review.json`. It currently reports
-strict signposting coverage for 71
+strict signposting coverage for 72
 directories and keeps the next-improvement backlog tied to the
 research-suite gaps. The top prioritized improvement is
 **BeeBrain calcium acquisition completion (P27)**.
@@ -135,9 +135,9 @@ The methods-analysis report writes
 5 module methods panels,
 3 scenario-sweep panels,
 52 linked visualization records, and an
-overall methods validation fraction of 1.000.
-Its `all_validations_passed` flag is True,
-and its highest-priority visible gap is **Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.**.
+overall methods validation fraction of 0.960.
+Its `all_validations_passed` flag is False,
+and its highest-priority visible gap is **BeeBrain: brain_parseability_target**.
 
 ## What "validation fraction" means
 
