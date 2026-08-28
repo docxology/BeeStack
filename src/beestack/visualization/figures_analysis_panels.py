@@ -24,6 +24,28 @@ from .style import (
 )
 
 
+def _style_secondary_axis(axis: Any) -> None:
+    """Restyle a twinx axis so it reads as part of the same panel."""
+
+    axis.spines["top"].set_visible(False)
+    axis.grid(False)
+
+
+def _add_panel_legend(figure: Any, handles: list[Any], labels: list[str], axis: Any) -> None:
+    """Attach a compact legend for dual-axis panels so series are identifiable."""
+
+    if handles:
+        figure.legend(
+            handles,
+            labels,
+            loc="upper right",
+            bbox_to_anchor=(0.98, 0.97),
+            bbox_transform=axis.transAxes,
+            fontsize=8,
+            handlelength=1.6,
+        )
+
+
 def _energy_timeseries(records: list[dict[str, Any]], path: Path) -> Path:
     steps = _steps(records)
     energy = _numeric_series(records, "energy_j")
@@ -32,6 +54,21 @@ def _energy_timeseries(records: list[dict[str, Any]], path: Path) -> Path:
     ax.set_xlabel("Control step")
     ax.set_ylabel("Energy (J)")
     ax.set_title("BeeBody energy across integrated BeeStack run")
+    # Direct annotation of the total energy change so the reader does not
+    # have to subtract endpoint values from the axis.
+    if len(energy) >= 2:
+        change = energy[-1] - energy[0]
+        sign = "+" if change > 0 else ""
+        ax.text(
+            0.97,
+            0.90,
+            f"change: {sign}{change:.2f} J over {len(steps) - 1} steps",
+            transform=ax.transAxes,
+            ha="right",
+            va="top",
+            fontsize=8,
+            color="#0f766e",
+        )
     apply_panel_style(ax, grid_axis="both")
     fig.tight_layout()
     fig.savefig(path, dpi=180)
@@ -98,13 +135,25 @@ def _brain_empirical_alignment(records: list[dict[str, Any]], path: Path) -> Pat
     alignment = _numeric_series(records, "dominant_empirical_alignment")
     odors = [str(row.get("dominant_empirical_odor", "")) for row in records] or [""]
     fig, ax = plt.subplots(figsize=(7, 4))
-    ax.plot(steps, alignment, marker="o", color="#1d4ed8", lw=2)
+    ax.plot(steps, alignment, marker="o", color="#1d4ed8", lw=2, label="Template alignment")
     ax.fill_between(steps, alignment, color="#bfdbfe", alpha=0.45)
-    if odors[-1]:
-        ax.text(steps[-1], alignment[-1], f" {odors[-1]}", va="center", fontsize=8)
+    odors_present = [odor for odor in odors if odor]
+    if odors_present:
+        # Name the dominant empirical odor in a legend entry rather than a
+        # marginal annotation that clips against the axes edge.
+        ax.plot(
+            [],
+            [],
+            linestyle="none",
+            marker="s",
+            color="#93c5fd",
+            label=f"dominant empirical odor: {odors_present[-1]}",
+        )
+        ax.legend(loc="lower right", fontsize=8)
     ax.set_ylim(0, max(1.0, max(alignment) * 1.15))
+    ax.set_xlim(left=steps[0] - 0.15 * max(1, steps[-1] - steps[0]))
     ax.set_xlabel("Control step")
-    ax.set_ylabel("Template alignment")
+    ax.set_ylabel("Template alignment (fraction)")
     ax.set_title("BeeBrain empirical odor-template alignment")
     apply_panel_style(ax, grid_axis="both")
     fig.tight_layout()
@@ -121,6 +170,7 @@ def _mind_policy_timeline(records: list[dict[str, Any]], path: Path) -> Path:
     ax.step(steps, encoded, where="mid", color="#9333ea", lw=2)
     ax.scatter(steps, encoded, color="#f97316", s=42, zorder=3)
     ax.set_yticks(range(len(labels)), labels)
+    ax.set_ylabel("Selected policy")
     ax.set_xlabel("Control step")
     ax.set_title("BeeMind selected-policy timeline")
     apply_panel_style(ax, grid_axis="x")
@@ -139,11 +189,18 @@ def _swarm_recruitment_allocation(records: list[dict[str, Any]], path: Path) -> 
     ax.set_xlabel("Control step")
     ax.set_ylabel("Followers")
     ax2 = ax.twinx()
-    ax2.plot(steps, pheromone, color="#0f766e", marker="o", label="Mean pheromone")
-    ax2.set_ylabel("Mean pheromone")
+    ax2.plot(steps, pheromone, color="#0f766e", marker="o", label="Mean pheromone (a.u.)")
+    ax2.set_ylabel("Mean pheromone (a.u.)")
     ax.set_title("BeeSwarm recruitment and shared-field state")
     ax.bar_label(bars, fmt="%.0f", fontsize=7, padding=2)
     apply_panel_style(ax, grid_axis="y")
+    _style_secondary_axis(ax2)
+    _add_panel_legend(
+        fig,
+        [bars, ax2.lines[0]],
+        ["Recruited followers", "Mean pheromone (a.u.)"],
+        ax,
+    )
     fig.tight_layout()
     fig.savefig(path, dpi=180)
     plt.close(fig)
@@ -160,10 +217,17 @@ def _niche_thermal_comb_panel(records: list[dict[str, Any]], path: Path) -> Path
     ax.set_ylabel("Comb fraction")
     ax.set_ylim(0, max(0.1, max(comb) * 1.2))
     ax2 = ax.twinx()
-    ax2.plot(steps, error, color="#dc2626", marker="o", label="Brood temp error")
-    ax2.set_ylabel("Brood temperature error (C)")
+    ax2.plot(steps, error, color="#dc2626", marker="o", label="Brood temperature error")
+    ax2.set_ylabel("Brood temperature error (°C)")
     ax.set_title("BeeNiche comb and brood-thermal diagnostics")
     apply_panel_style(ax, grid_axis="both")
+    _style_secondary_axis(ax2)
+    _add_panel_legend(
+        fig,
+        [ax.lines[0], ax2.lines[0]],
+        ["Comb fraction", "Brood temperature error (°C)"],
+        ax,
+    )
     fig.tight_layout()
     fig.savefig(path, dpi=180)
     plt.close(fig)
