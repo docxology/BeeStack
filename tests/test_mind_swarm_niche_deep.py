@@ -257,7 +257,7 @@ def test_thermal_step_closed_form_multiple_steps() -> None:
     heat = np.zeros(cfg.niche.comb_shape)
     heat[0, 0, 0] = 0.5
 
-    def expected_step(t: "np.ndarray") -> "np.ndarray":
+    def expected_step(t: np.ndarray) -> np.ndarray:
         neighbor_mean = (
             np.roll(t, 1, axis=0)
             + np.roll(t, -1, axis=0)
