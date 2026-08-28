@@ -127,7 +127,7 @@ uv run python scripts/audit_publication_readiness.py --check --require-doi
 ```
 
 Combined PDF: `output/pdf/BeeStack_combined.pdf` (render from template root with
-`uv run python scripts/03_render_pdf.py --project BeeStack`). See `CHANGELOG.md`
+`uv run python scripts/pipeline/stage_03_render.py --project BeeStack`). See `CHANGELOG.md`
 for scope and known gaps. Mint `publication.doi` at Zenodo before public deposit.
 
 ## Output Map
