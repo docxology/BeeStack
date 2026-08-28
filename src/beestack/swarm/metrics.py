@@ -46,8 +46,15 @@ def colony_expected_free_energy(
     weights = np.asarray(caste_weights, dtype=float)
     if efes.shape != weights.shape:
         raise ValueError("individual_efes and caste_weights must have same shape")
+    if not np.all(np.isfinite(efes)) or not np.all(np.isfinite(weights)):
+        # A non-finite weight previously propagated NaN/inf into the colony
+        # witness metric silently; fail loudly instead (colony EFE must remain
+        # a finite, auditable aggregate).
+        raise ValueError("individual_efes and caste_weights must be finite")
     if emergence_penalty < 0:
         raise ValueError("emergence_penalty must be nonnegative")
+    if not np.isfinite(emergence_penalty):
+        raise ValueError("emergence_penalty must be finite")
     if weights.sum() <= 0:
         raise ValueError("caste_weights must have positive sum")
     return float(np.average(efes, weights=weights) + emergence_penalty)

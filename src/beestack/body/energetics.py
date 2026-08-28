@@ -28,12 +28,12 @@ def wing_power_mw(
     BeeStack specification. Load and wing wear apply multiplicative penalties.
     """
 
-    if mass_mg <= 0:
-        raise ValueError("mass_mg must be positive")
-    if stroke_hz <= 0:
-        raise ValueError("stroke_hz must be positive")
-    if load_fraction < 0:
-        raise ValueError("load_fraction must be nonnegative")
+    if not math.isfinite(mass_mg) or mass_mg <= 0:
+        raise ValueError("mass_mg must be finite and positive")
+    if not math.isfinite(stroke_hz) or stroke_hz <= 0:
+        raise ValueError("stroke_hz must be finite and positive")
+    if not math.isfinite(load_fraction) or load_fraction < 0:
+        raise ValueError("load_fraction must be finite and nonnegative")
     if not 0 <= wing_area_loss_fraction < 1:
         raise ValueError("wing_area_loss_fraction must be in [0, 1)")
 
