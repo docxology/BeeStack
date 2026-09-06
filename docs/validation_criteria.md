@@ -68,7 +68,7 @@ Coverage over `src/` must remain at or above 92%.
   modality counts, module-target counts, a module/modality matrix, and explicit
   source gaps.
 - `brain_data_parseable_fraction` must satisfy the configured empirical
-  completeness threshold (`0.5` in `manuscript/config.yaml`). The stricter
+  completeness threshold (`0.5` in `docs/manuscript/config.yaml`). The stricter
   `0.800` parseability target remains an improvement target. Remaining blockers
   are allowed only when every curated source is DOI/source-verified and the blocker,
   parser status, and remediation path are recorded.

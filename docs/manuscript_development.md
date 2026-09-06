@@ -1,7 +1,7 @@
 # Manuscript Development Guide
 
 The manuscript is a generated research narrative. Source sections live in
-`manuscript/`; hydrated sections live in `output/manuscript/`; numeric or
+`docs/manuscript/`; hydrated sections live in `output/manuscript/`; numeric or
 configuration-derived statements flow through
 `output/data/manuscript_variables.json`.
 

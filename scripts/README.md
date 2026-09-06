@@ -1,68 +1,28 @@
 # Scripts
 
-Scripts are thin orchestrators. They import pure behavior from `src/beestack/`
-and handle file I/O for the template-style output tree.
+Scripts are thin orchestrators: argparse, path bootstrap, logging, and a
+delegated call into `src/beestack/` entrypoints. Business, data, plotting, and
+analysis logic lives in `src/beestack/` (importable and tested), not here.
 
-```bash
-uv run python scripts/analysis_pipeline.py
-uv run python scripts/generate_animations.py
-uv run python scripts/verify_bee_render.py
-uv run python scripts/review_stack_integrity.py
-uv run python scripts/fetch_empirical_bee_data.py
-uv run python scripts/fetch_empirical_bee_data.py --metadata-only
-uv run python scripts/analyze_empirical_bee_data.py
-uv run python scripts/run_methods_analysis.py
-uv run python scripts/run_stack_synthesis.py
-uv run python scripts/run_research_suite.py
-uv run python scripts/run_research_suite.py --assemble-only
-uv run python scripts/assess_digital_twin_readiness.py
-uv run python scripts/verify_generated_reports.py
-uv run python scripts/signpost_project_tree.py
-uv run python scripts/signpost_project_tree.py --check
-uv run python scripts/audit_documentation.py
-uv run python scripts/z_generate_manuscript_variables.py
-```
-
-`fetch_empirical_bee_data.py` attempts full curated BeeBrain downloads by
-default, skips local non-empty payloads, falls back from Dryad archive endpoints
-to file-level downloads where possible, catalogs Figshare waggle-following CSVs,
-and records source errors in manifests.
-`analyze_empirical_bee_data.py` integrates downloaded Honeybee Standard Brain
-anatomy assets, workbook panels, MATLAB calcium payloads, Jernigan antennal CSV
-summaries, Hadjitofi-Webb waggle follower CSVs, and Nouvian neuromodulatory
-spreadsheets when available. If no local empirical panels exist, it exits with a
-skip message so offline core verification can continue without fabricated data.
-`generate_animations.py` writes FlyBody BeeBody locomotion GIFs, strict
-FlyBody/MuJoCo BeeSwarm collision/waggle scenes with contact reports, and
-reduced schematic module summaries.
-`verify_bee_render.py` checks BeeBody visual signatures and BeeSwarm strict
-contact-scene evidence.
-`run_methods_analysis.py` writes the methods-analysis report, module methods
-figures, JSON figure sidecars, interactive methods dashboard, and manuscript
-figure index.
-`run_stack_synthesis.py` writes the cross-stack statistical synthesis report,
-dashboard figure, and stack-synthesis JSON used by manuscript variables.
-`run_research_suite.py` calls the analysis, empirical, visual-verification, and
-integrity pipelines by default, then writes the central research report,
-research figures with JSON sidecars, optional Plotly HTML, sensitivity sweeps,
-methods-analysis artifacts, and the stack-synthesis review. Use
-`run_research_suite.py --assemble-only` in CI or full-gate scripts after
-`analysis_pipeline.py`, `analyze_empirical_bee_data.py`, `verify_bee_render.py`,
-and `review_stack_integrity.py` have already run once.
-`assess_digital_twin_readiness.py` writes conservative digital-twin maturity,
-blocker, validation-residual, and governance readiness reports.
-`verify_generated_reports.py` writes and enforces the generated-report audit,
-including stale local test-report files, missing current evidence artifacts, and
-failed gates whose detail text still uses success wording.
-`review_stack_integrity.py` writes the module-by-module API, contract,
-validation, diagnostic, evidence, and fidelity review under `output/reports/`.
-`audit_documentation.py` writes documentation freshness and fidelity-claim
-reports under `output/reports/`, including generated-output references found in
-nested `README.md` and `AGENTS.md` signposts.
-`signpost_project_tree.py` writes missing `README.md` and `AGENTS.md` files for
-every non-cache directory, excludes caches such as `.uv-cache/`, and emits the
-project readiness review.
-`methods_analysis_io.py`, `research_suite_io.py`, and `stack_synthesis_io.py`
-are shared I/O-helper modules imported by `run_methods_analysis.py`,
-`run_research_suite.py`, and `run_stack_synthesis.py`, not standalone
-entrypoints.
+| Script | Purpose | Delegates to | Run command |
+|--------|---------|--------------|-------------|
+| `analysis_pipeline.py` | Full analysis pipeline: config load, figures, module animations, render stills, reports, source refresh, waggle literature regression | `beestack`, `beestack.visualization`, `beestack.waggle_literature_regression` | `uv run python scripts/analysis_pipeline.py` |
+| `analyze_empirical_bee_data.py` | Integrates downloaded BeeBrain anatomy, calcium, antennal, waggle-follower, and neuromodulatory assets into empirical panels and figures; skips offline | `beestack.brain.empirical_pipeline`, `beestack.visualization` | `uv run python scripts/analyze_empirical_bee_data.py` |
+| `assess_digital_twin_readiness.py` | Writes conservative digital-twin maturity, blocker, validation-residual, and governance readiness reports | `beestack.digital_twin` | `uv run python scripts/assess_digital_twin_readiness.py` |
+| `audit_documentation.py` | Writes documentation freshness and fidelity-claim audits, including generated-output references in nested signposts | `beestack` (`audit_documentation`) | `uv run python scripts/audit_documentation.py` |
+| `audit_publication_readiness.py` | Release-1.0 publication readiness gate; exits 1 on blockers with `--check` | `beestack.publication_readiness` | `uv run python scripts/audit_publication_readiness.py --check` |
+| `fetch_empirical_bee_data.py` | Downloads curated BeeBrain sources with manifests; skips non-empty local payloads, falls back across endpoints, catalogs Figshare CSVs | `beestack.brain.empirical_fetch` | `uv run python scripts/fetch_empirical_bee_data.py` (`--metadata-only` to skip downloads) |
+| `generate_animations.py` | Writes FlyBody BeeBody locomotion GIFs, strict FlyBody/MuJoCo BeeSwarm collision/waggle scenes with contact reports, and reduced schematics | `beestack.visualization` | `uv run python scripts/generate_animations.py` |
+| `methods_analysis_io.py` | Shared I/O helper: methods-analysis report, figure, sidecar, dashboard, and figure-index writers; not a standalone entrypoint | `beestack`, `beestack.visualization` (imported by `run_methods_analysis.py`) | imported, not run |
+| `research_suite_io.py` | Shared I/O helper: research report, figure, sidecar, and interactive-output writers; not a standalone entrypoint | `beestack`, `beestack.visualization` (imported by `run_research_suite.py`) | imported, not run |
+| `review_stack_integrity.py` | Writes the module-by-module API, contract, validation, diagnostic, evidence, and fidelity review | `beestack` (`stack_integrity_review`) | `uv run python scripts/review_stack_integrity.py` |
+| `run_methods_analysis.py` | Writes the methods-analysis report, module methods figures, JSON sidecars, interactive dashboard, and manuscript figure index | `methods_analysis_io`, `beestack` | `uv run python scripts/run_methods_analysis.py` |
+| `run_research_suite.py` | Calls analysis, empirical, visual-verification, and integrity pipelines, then writes the central research report, figures, sensitivity sweeps, methods artifacts, and stack-synthesis review | sibling scripts, `research_suite_io`, `methods_analysis_io`, `stack_synthesis_io`, `beestack` | `uv run python scripts/run_research_suite.py` (`--assemble-only` in CI after prerequisites) |
+| `run_security_audit.py` | Writes and enforces the security posture audit (URL validation, zip ingest, threat model presence); exits nonzero on failure | `beestack` (`audit_security_posture`) | `uv run python scripts/run_security_audit.py` |
+| `run_stack_synthesis.py` | Writes the cross-stack statistical synthesis report, dashboard figure, and manuscript-variable JSON | `stack_synthesis_io`, `beestack` | `uv run python scripts/run_stack_synthesis.py` |
+| `signpost_project_tree.py` | Writes missing README/AGENTS signposts for every non-cache directory and emits the readiness review | `beestack.documentation_signpost` | `uv run python scripts/signpost_project_tree.py --check` |
+| `stack_synthesis_io.py` | Shared I/O helper: stack-synthesis report, figure, and JSON writers; not a standalone entrypoint | `beestack`, `beestack.visualization` (imported by `run_stack_synthesis.py`) | imported, not run |
+| `verify_bee_render.py` | Checks BeeBody visual signatures and BeeSwarm strict contact-scene evidence | `beestack.visualization.bee_render_verification` | `uv run python scripts/verify_bee_render.py` |
+| `verify_generated_reports.py` | Writes and enforces the generated-report audit: stale local test reports, missing evidence artifacts, success-wording failures | `beestack` (`audit_generated_reports`), `beestack.publication_readiness` | `uv run python scripts/verify_generated_reports.py` |
+| `write_source_refresh_ledger.py` | Writes the external-source refresh ledger and dataset registry under `output/llm/` and `output/data/` | `beestack.source_refresh` | `uv run python scripts/write_source_refresh_ledger.py` |
+| `z_generate_manuscript_variables.py` | Hydrates `{{VARIABLE}}` tokens in manuscript prose from live repo/config values | `beestack.manuscript_variables` | `uv run python scripts/z_generate_manuscript_variables.py` |

@@ -11,7 +11,7 @@ a calibrated whole-bee biomechanics model.
 - Upstream: `https://github.com/TuragaLab/flybody`
 - BeeStack fork target: `https://github.com/docxology/flybody-beestack`
 - Local override: set `BEESTACK_FLYBODY_PATH=/path/to/flybody-beestack` or
-  `beestack.flybody.local_fork_path` in `manuscript/config.yaml`.
+  `beestack.flybody.local_fork_path` in `docs/manuscript/config.yaml`.
 
 ## Bee-Specific Patch Plan
 

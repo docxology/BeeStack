@@ -1,6 +1,6 @@
 # Configuration
 
-BeeStack is driven by `manuscript/config.yaml`, loaded by the thin scripts and
+BeeStack is driven by `docs/manuscript/config.yaml`, loaded by the thin scripts and
 validated by `src/beestack/config.py`.
 
 ## Sections

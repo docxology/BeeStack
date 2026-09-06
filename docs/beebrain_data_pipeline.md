@@ -152,7 +152,7 @@ decoding confidence, neuropil coverage, and region response summaries. Missing
 or blocked files are reported as gaps.
 
 The current configured gate is `brain_data_parseable_fraction >= 0.5`, set by
-`research.empirical_completeness_threshold` in `manuscript/config.yaml`. The
+`research.empirical_completeness_threshold` in `docs/manuscript/config.yaml`. The
 stricter `0.800` parseability target remains an improvement target. When a
 source cannot yet be parsed locally, the completeness panel can still pass the
 readiness gate only if the source is DOI/source-verified and the manifest

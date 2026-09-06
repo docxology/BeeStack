@@ -20,7 +20,7 @@ the dataset registry in `src/beestack/brain/datasets.py`.
 
 **In scope**
 
-- Runtime: `src/beestack/`, `scripts/`, `manuscript/`, generated `output/`
+- Runtime: `src/beestack/`, `scripts/`, `docs/manuscript/`, generated `output/`
 - Build/dev: `pyproject.toml`, `uv.lock`, pytest/pre-commit when run locally
 - Empirical fetch/ingest against public Dryad, Figshare, and FU Berlin atlas hosts
 
@@ -59,7 +59,7 @@ the dataset registry in `src/beestack/brain/datasets.py`.
 
 ### Data flows and trust boundaries
 
-- **Operator → CLI scripts** — shell argv, local `manuscript/config.yaml`; trust: operator-controlled; validation: `yaml.safe_load`, config validators in `src/beestack/config.py`.
+- **Operator → CLI scripts** — shell argv, local `docs/manuscript/config.yaml`; trust: operator-controlled; validation: `yaml.safe_load`, config validators in `src/beestack/config.py`.
 - **CLI → local `output/`** — JSON, PNG, GIF, PDF artifacts; trust: same user; validation: integrity and figure audits.
 - **Fetch module → public data hosts (HTTPS)** — archives and anatomy assets; trust boundary: remote public repositories; validation: `validate_download_url` host allowlist (`src/beestack/security/url_policy.py`).
 - **Ingest → zip members** — nested archives from downloaded payloads; trust boundary: remote file content; validation: `assert_safe_zip_member` (`src/beestack/security/path_safety.py`).
@@ -118,11 +118,11 @@ flowchart LR
 | Surface | How reached | Trust boundary | Notes | Evidence |
 | --- | --- | --- | --- | --- |
 | Shell CLI | `uv run python scripts/...` | Operator → scripts | Primary control plane | `scripts/*.py` |
-| YAML config | `manuscript/config.yaml` | Operator → config | Drives simulation parameters | `src/beestack/config.py` |
+| YAML config | `docs/manuscript/config.yaml` | Operator → config | Drives simulation parameters | `src/beestack/config.py` |
 | HTTPS fetch | empirical pipeline | Internet → fetch | Curated hosts only | `empirical_fetch.py` |
 | Zip ingest | post-download analysis | Remote archive → parser | Zip-slip risk | `empirical_ingest.py` |
 | FlyBody/MuJoCo | animation scripts | Local toolchain → render | Native code dependency | `body/flybody_adapter.py` |
-| Hydrated manuscript | PDF stage | Local files → renderer | Claim injection if audits skipped | `manuscript/*.md` |
+| Hydrated manuscript | PDF stage | Local files → renderer | Claim injection if audits skipped | `docs/manuscript/*.md` |
 
 ## Top abuse paths
 
@@ -166,7 +166,7 @@ Examples: TM-001 high (dependency trojan); TM-002 medium (allowlist + HTTPS); TM
 | `src/beestack/brain/datasets.py` | Curated URL registry | TM-002, TM-004 |
 | `scripts/analysis_pipeline.py` | Central orchestration | TM-004 |
 | `src/beestack/security/posture.py` | Automated posture gate | TM-001, TM-004 |
-| `manuscript/16_ethics_governance.md` | Dual-use and governance | TM-005 |
+| `docs/manuscript/16_ethics_governance.md` | Dual-use and governance | TM-005 |
 | `pyproject.toml` / `uv.lock` | Dependency integrity | TM-001, TM-006 |
 | `src/beestack/body/flybody_adapter.py` | Native render toolchain | TM-006, TM-007 |
 
