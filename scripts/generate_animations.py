@@ -3,39 +3,28 @@
 from __future__ import annotations
 
 import json
-import sys
 from pathlib import Path
 
-import yaml
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-SRC_ROOT = PROJECT_ROOT / "src"
-if str(SRC_ROOT) not in sys.path:
-    sys.path.insert(0, str(SRC_ROOT))
 
-from beestack import BeeStackConfig, config_from_mapping, finalize_project_outputs
-from beestack.utils import project_relative_path, project_relative_payload
-from beestack.visualization import generate_module_animations, waggle_dance_visualization_config
-from beestack.visualization.animation_manifest import (
+from beestack.documentation_signpost import finalize_project_outputs  # noqa: E402
+from beestack.pipeline import load_config  # noqa: E402
+from beestack.utils import project_relative_path, project_relative_payload  # noqa: E402
+from beestack.visualization import (  # noqa: E402
+    generate_module_animations,
+    waggle_dance_visualization_config,
+)
+from beestack.visualization.animation_manifest import (  # noqa: E402
     bee_signatures,
     build_animation_manifest_payload,
     contact_physics_markdown,
 )
-from beestack.visualization.bee_signature import bee_render_report_markdown
-from beestack.visualization.render_stills import publish_flybody_render_stills
-
-
-def load_config() -> BeeStackConfig:
-    config_path = PROJECT_ROOT / "manuscript" / "config.yaml"
-    if not config_path.exists():
-        return BeeStackConfig()
-    with config_path.open("r", encoding="utf-8") as handle:
-        payload = yaml.safe_load(handle) or {}
-    return config_from_mapping(payload.get("beestack", payload))
+from beestack.visualization.bee_signature import bee_render_report_markdown  # noqa: E402
+from beestack.visualization.render_stills import publish_flybody_render_stills  # noqa: E402
 
 
 def main() -> None:
-    cfg = load_config()
+    cfg = load_config(PROJECT_ROOT)
     artifacts = generate_module_animations(cfg, PROJECT_ROOT / "output" / "animations")
     manifest, bee_visual_report_payload, contact_physics_report_payload = (
         build_animation_manifest_payload(

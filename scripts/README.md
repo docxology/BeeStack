@@ -1,28 +1,46 @@
 # Scripts
 
-Scripts are thin orchestrators: argparse, path bootstrap, logging, and a
-delegated call into `src/beestack/` entrypoints. Business, data, plotting, and
-analysis logic lives in `src/beestack/` (importable and tested), not here.
+Thin orchestrators. Each script only resolves the project root, parses optional
+arguments, and makes delegated calls into `src/beestack/`; the shared
+artifact-pipeline steps live in `src/beestack/pipeline.py`. Domain, plot, and
+analysis logic is not defined here, and scripts never import other scripts.
 
-| Script | Purpose | Delegates to | Run command |
-|--------|---------|--------------|-------------|
-| `analysis_pipeline.py` | Full analysis pipeline: config load, figures, module animations, render stills, reports, source refresh, waggle literature regression | `beestack`, `beestack.visualization`, `beestack.waggle_literature_regression` | `uv run python scripts/analysis_pipeline.py` |
-| `analyze_empirical_bee_data.py` | Integrates downloaded BeeBrain anatomy, calcium, antennal, waggle-follower, and neuromodulatory assets into empirical panels and figures; skips offline | `beestack.brain.empirical_pipeline`, `beestack.visualization` | `uv run python scripts/analyze_empirical_bee_data.py` |
-| `assess_digital_twin_readiness.py` | Writes conservative digital-twin maturity, blocker, validation-residual, and governance readiness reports | `beestack.digital_twin` | `uv run python scripts/assess_digital_twin_readiness.py` |
-| `audit_documentation.py` | Writes documentation freshness and fidelity-claim audits, including generated-output references in nested signposts | `beestack` (`audit_documentation`) | `uv run python scripts/audit_documentation.py` |
-| `audit_publication_readiness.py` | Release-1.0 publication readiness gate; exits 1 on blockers with `--check` | `beestack.publication_readiness` | `uv run python scripts/audit_publication_readiness.py --check` |
-| `fetch_empirical_bee_data.py` | Downloads curated BeeBrain sources with manifests; skips non-empty local payloads, falls back across endpoints, catalogs Figshare CSVs | `beestack.brain.empirical_fetch` | `uv run python scripts/fetch_empirical_bee_data.py` (`--metadata-only` to skip downloads) |
-| `generate_animations.py` | Writes FlyBody BeeBody locomotion GIFs, strict FlyBody/MuJoCo BeeSwarm collision/waggle scenes with contact reports, and reduced schematics | `beestack.visualization` | `uv run python scripts/generate_animations.py` |
-| `methods_analysis_io.py` | Shared I/O helper: methods-analysis report, figure, sidecar, dashboard, and figure-index writers; not a standalone entrypoint | `beestack`, `beestack.visualization` (imported by `run_methods_analysis.py`) | imported, not run |
-| `research_suite_io.py` | Shared I/O helper: research report, figure, sidecar, and interactive-output writers; not a standalone entrypoint | `beestack`, `beestack.visualization` (imported by `run_research_suite.py`) | imported, not run |
-| `review_stack_integrity.py` | Writes the module-by-module API, contract, validation, diagnostic, evidence, and fidelity review | `beestack` (`stack_integrity_review`) | `uv run python scripts/review_stack_integrity.py` |
-| `run_methods_analysis.py` | Writes the methods-analysis report, module methods figures, JSON sidecars, interactive dashboard, and manuscript figure index | `methods_analysis_io`, `beestack` | `uv run python scripts/run_methods_analysis.py` |
-| `run_research_suite.py` | Calls analysis, empirical, visual-verification, and integrity pipelines, then writes the central research report, figures, sensitivity sweeps, methods artifacts, and stack-synthesis review | sibling scripts, `research_suite_io`, `methods_analysis_io`, `stack_synthesis_io`, `beestack` | `uv run python scripts/run_research_suite.py` (`--assemble-only` in CI after prerequisites) |
-| `run_security_audit.py` | Writes and enforces the security posture audit (URL validation, zip ingest, threat model presence); exits nonzero on failure | `beestack` (`audit_security_posture`) | `uv run python scripts/run_security_audit.py` |
-| `run_stack_synthesis.py` | Writes the cross-stack statistical synthesis report, dashboard figure, and manuscript-variable JSON | `stack_synthesis_io`, `beestack` | `uv run python scripts/run_stack_synthesis.py` |
-| `signpost_project_tree.py` | Writes missing README/AGENTS signposts for every non-cache directory and emits the readiness review | `beestack.documentation_signpost` | `uv run python scripts/signpost_project_tree.py --check` |
-| `stack_synthesis_io.py` | Shared I/O helper: stack-synthesis report, figure, and JSON writers; not a standalone entrypoint | `beestack`, `beestack.visualization` (imported by `run_stack_synthesis.py`) | imported, not run |
-| `verify_bee_render.py` | Checks BeeBody visual signatures and BeeSwarm strict contact-scene evidence | `beestack.visualization.bee_render_verification` | `uv run python scripts/verify_bee_render.py` |
-| `verify_generated_reports.py` | Writes and enforces the generated-report audit: stale local test reports, missing evidence artifacts, success-wording failures | `beestack` (`audit_generated_reports`), `beestack.publication_readiness` | `uv run python scripts/verify_generated_reports.py` |
-| `write_source_refresh_ledger.py` | Writes the external-source refresh ledger and dataset registry under `output/llm/` and `output/data/` | `beestack.source_refresh` | `uv run python scripts/write_source_refresh_ledger.py` |
-| `z_generate_manuscript_variables.py` | Hydrates `{{VARIABLE}}` tokens in manuscript prose from live repo/config values | `beestack.manuscript_variables` | `uv run python scripts/z_generate_manuscript_variables.py` |
+## Inventory
+
+| Script | Purpose | Delegates to | Command |
+|--------|---------|--------------|---------|
+| `analysis_pipeline.py` | Full analysis stage chain: simulation, integrity, figures, animations, empirical, research, methods, synthesis, audits | `beestack.pipeline.run_analysis_pipeline` | `uv run python scripts/analysis_pipeline.py` |
+| `analyze_empirical_bee_data.py` | Empirical BeeBrain analysis when local panels exist; prints a skip message offline | `beestack.pipeline.run_empirical_stage` | `uv run python scripts/analyze_empirical_bee_data.py` |
+| `assess_digital_twin_readiness.py` | Conservative digital-twin maturity, blocker, validation-residual, and governance reports | `beestack.digital_twin.assess_digital_twin_readiness` | `uv run python scripts/assess_digital_twin_readiness.py` |
+| `audit_documentation.py` | Documentation freshness and fidelity-claim audit reports | `beestack.documentation_audit.audit_documentation` | `uv run python scripts/audit_documentation.py` |
+| `audit_publication_readiness.py` | Release 1.0 publication-readiness gate with `--check` and `--require-doi` flags | `beestack.publication_readiness.check_publication_readiness` | `uv run python scripts/audit_publication_readiness.py --check` |
+| `fetch_empirical_bee_data.py` | Curated BeeBrain downloads from Dryad, Figshare, and anatomy URLs (network-gated) | `beestack.brain.empirical_fetch.fetch_empirical_sources` | `uv run python scripts/fetch_empirical_bee_data.py` |
+| `generate_animations.py` | FlyBody BeeBody locomotion GIFs, strict BeeSwarm contact scenes, visual reports | `beestack.visualization` animation builders | `uv run python scripts/generate_animations.py` |
+| `review_stack_integrity.py` | Module-by-module API, contract, validation, evidence, and fidelity review | `beestack.pipeline.run_integrity_stage` | `uv run python scripts/review_stack_integrity.py` |
+| `run_methods_analysis.py` | Methods-analysis report, module methods figures, sidecars, dashboard, figure index | `beestack.pipeline.write_methods_analysis_outputs` | `uv run python scripts/run_methods_analysis.py` |
+| `run_research_suite.py` | Research suite: optional upstream stages plus research, methods, and synthesis artifacts | `beestack.pipeline` stage runners and artifact writers | `uv run python scripts/run_research_suite.py` |
+| `run_security_audit.py` | Security posture audit written and enforced | `beestack.security.posture.audit_security_posture` | `uv run python scripts/run_security_audit.py` |
+| `run_stack_synthesis.py` | Cross-stack statistical synthesis report, dashboard figure, synthesis JSON | `beestack.pipeline.write_stack_synthesis_outputs` | `uv run python scripts/run_stack_synthesis.py` |
+| `signpost_project_tree.py` | Writes/checks README/AGENTS signposts and the project readiness review | `beestack.documentation_signpost.write_signposts` | `uv run python scripts/signpost_project_tree.py --check` |
+| `verify_bee_render.py` | BeeBody visual signatures and BeeSwarm strict contact-scene verification | `beestack.pipeline.run_bee_render_stage` | `uv run python scripts/verify_bee_render.py` |
+| `verify_generated_reports.py` | Generated-report semantic audit plus security and publication gates | `beestack.generated_report_audit.audit_generated_reports` | `uv run python scripts/verify_generated_reports.py` |
+| `write_source_refresh_ledger.py` | External-source refresh ledger and dataset registry artifacts | `beestack.pipeline.write_source_refresh_ledger_outputs` | `uv run python scripts/write_source_refresh_ledger.py` |
+| `z_generate_manuscript_variables.py` | Hydrates `{{TOKEN}}` manuscript variables and copies sources to `output/manuscript/` | `beestack.manuscript_variables.generate_variables` | `uv run python scripts/z_generate_manuscript_variables.py` |
+
+## Notes
+
+- `fetch_empirical_bee_data.py` attempts full curated BeeBrain downloads by
+  default, skips local non-empty payloads, falls back from Dryad archive
+  endpoints to file-level downloads where possible, catalogs Figshare
+  waggle-following CSVs, and records source errors in manifests. Use
+  `--metadata-only` for catalog-only runs.
+- `analyze_empirical_bee_data.py` integrates downloaded Honeybee Standard Brain
+  anatomy assets, workbook panels, MATLAB calcium payloads, Jernigan antennal
+  CSV summaries, Hadjitofi-Webb waggle follower CSVs, and Nouvian
+  neuromodulatory spreadsheets when available. If no local empirical panels
+  exist, it exits with a skip message so offline core verification can continue
+  without fabricated data.
+- `run_research_suite.py --assemble-only` writes research/methods/synthesis
+  outputs from existing prerequisite artifacts; use it in CI or full-gate
+  scripts after `analysis_pipeline.py`, `analyze_empirical_bee_data.py`,
+  `verify_bee_render.py`, and `review_stack_integrity.py` have already run once.

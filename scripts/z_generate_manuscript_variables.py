@@ -9,29 +9,14 @@ from __future__ import annotations
 
 import json
 import re
-import sys
 from pathlib import Path
 
-import yaml
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-SRC_ROOT = PROJECT_ROOT / "src"
-if str(SRC_ROOT) not in sys.path:
-    sys.path.insert(0, str(SRC_ROOT))
 
-from beestack.config import BeeStackConfig, config_from_mapping
-from beestack.manuscript_variables import generate_variables
+from beestack.manuscript_variables import generate_variables  # noqa: E402
+from beestack.pipeline import load_config  # noqa: E402
 
 TOKEN_RE = re.compile(r"\{\{([A-Z0-9_]+)\}\}")
-
-
-def load_config() -> BeeStackConfig:
-    config_path = PROJECT_ROOT / "manuscript" / "config.yaml"
-    if not config_path.exists():
-        return BeeStackConfig()
-    with config_path.open("r", encoding="utf-8") as handle:
-        payload = yaml.safe_load(handle) or {}
-    return config_from_mapping(payload.get("beestack", payload))
 
 
 def load_summary() -> dict:
@@ -72,7 +57,7 @@ def hydrate_text(text: str, variables: dict[str, str]) -> str:
 
 
 def main() -> None:
-    cfg = load_config()
+    cfg = load_config(PROJECT_ROOT)
     variables = generate_variables(cfg, load_summary(), load_artifacts())
     data_path = PROJECT_ROOT / "output" / "data" / "manuscript_variables.json"
     data_path.parent.mkdir(parents=True, exist_ok=True)

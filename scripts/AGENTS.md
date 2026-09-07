@@ -1,67 +1,48 @@
-# scripts/ - BeeStack Thin Orchestrator Contract
+# scripts/ - BeeStack Orchestrators
 
-## Contract
+Thin-orchestrator contract:
 
-Scripts in this directory are thin orchestrators ONLY. Each entrypoint may:
-
-1. Bootstrap paths (`PROJECT_ROOT`, insert `src/` into `sys.path`).
-2. Parse argparse flags and configure logging.
-3. Make delegated calls into `src/beestack/` entrypoints and write artifacts.
-
-Business, data, plotting, analysis, and scientific-policy logic belongs in
-`src/beestack/` (importable and tested there); do not add simulation equations,
-statistics, or policy logic to scripts. Presentation output (figures, GIFs,
-MJCF, signposts) is produced by sanctioned adapters in
-`src/beestack/visualization/` and `src/beestack/body/` when scripts invoke them.
+- Scripts are entrypoints only: project-root bootstrap, optional argparse, and
+  delegated calls. No `sys.path` manipulation: `beestack` is the installed
+  package under `uv run`.
+- Import domain logic from `src/beestack/`; shared pipeline steps live in
+  `src/beestack/pipeline.py`. Never import another script; promote shared
+  behavior into `src/beestack/` and have both callers delegate to it.
+- Do not add simulation equations, scientific policy logic, BibTeX parsing, or
+  config loading directly in scripts. `beestack.pipeline.load_config` is the
+  shared manuscript config loader.
+- `analysis_pipeline.py` generates both static figures and module animations
+  through `beestack.pipeline.run_analysis_pipeline`.
+- Keep optional network/data stages explicit. Empirical scripts may skip when
+  payloads are absent, but they must not replace absent public data with
+  invented values.
+- Keep signposting and readiness reports synchronized after scripts create new
+  output directories.
+- Prefer `run_research_suite.py --assemble-only` after prerequisite analysis,
+  empirical, render-verification, and integrity scripts have already run in the
+  same gate; use the default full mode only for local convenience.
+- Run `verify_generated_reports.py` after research, methods, synthesis, and
+  digital-twin reports are refreshed so stale local test summaries and
+  unsupported evidence claims fail loudly.
 
 ## Inventory
 
-| Script | Delegates to | Notes |
-|--------|--------------|-------|
-| `analysis_pipeline.py` | `beestack`, `beestack.visualization`, `beestack.waggle_literature_regression` | Full pipeline: figures, animations, render stills, reports, source refresh |
-| `analyze_empirical_bee_data.py` | `beestack.brain.empirical_pipeline`, `beestack.visualization` | Network/data gated; skips offline, never fabricates data |
-| `assess_digital_twin_readiness.py` | `beestack.digital_twin` | Conservative maturity/blocker/governance reports |
-| `audit_documentation.py` | `beestack.audit_documentation` | Documentation freshness and fidelity-claim audit |
-| `audit_publication_readiness.py` | `beestack.publication_readiness` | Release-1.0 gate; `--check` exits 1 on blockers |
-| `fetch_empirical_bee_data.py` | `beestack.brain.empirical_fetch` | Curated downloads; `--metadata-only`, `--force`, `--output-dir` |
-| `generate_animations.py` | `beestack.visualization` | BeeBody GIFs, BeeSwarm contact scenes, reduced schematics |
-| `methods_analysis_io.py` | `beestack`, `beestack.visualization` | Shared helper for `run_methods_analysis.py`; not an entrypoint |
-| `research_suite_io.py` | `beestack`, `beestack.visualization` | Shared helper for `run_research_suite.py`; not an entrypoint |
-| `review_stack_integrity.py` | `beestack.stack_integrity_review` | Module-by-module integrity review |
-| `run_methods_analysis.py` | `methods_analysis_io`, `beestack` | Methods report, figures, sidecars, dashboard, figure index |
-| `run_research_suite.py` | sibling scripts, `research_suite_io`, `methods_analysis_io`, `stack_synthesis_io`, `beestack` | Central suite; `--assemble-only` for CI after prerequisites |
-| `run_security_audit.py` | `beestack.audit_security_posture` | Security posture gate; exits nonzero on failure |
-| `run_stack_synthesis.py` | `stack_synthesis_io`, `beestack` | Cross-stack synthesis report, dashboard, JSON |
-| `signpost_project_tree.py` | `beestack.documentation_signpost` | Writes missing signposts; `--check` gate |
-| `stack_synthesis_io.py` | `beestack`, `beestack.visualization` | Shared helper for `run_stack_synthesis.py`; not an entrypoint |
-| `verify_bee_render.py` | `beestack.visualization.bee_render_verification` | BeeBody signatures and BeeSwarm contact-scene evidence |
-| `verify_generated_reports.py` | `beestack.audit_generated_reports`, `beestack.publication_readiness` | Generated-report audit; also enforces publication readiness |
-| `write_source_refresh_ledger.py` | `beestack.source_refresh` | External-source refresh ledger and dataset registry |
-| `z_generate_manuscript_variables.py` | `beestack.manuscript_variables` | Hydrates `{{VARIABLE}}` tokens in manuscript prose |
-
-## Gotchas
-
-- Bootstrap before imports: entrypoints insert `src/` (and, for composite
-  scripts, `scripts/`) into `sys.path` before importing `beestack`; keep that
-  ordering and the E402 suppressions.
-- `methods_analysis_io.py`, `research_suite_io.py`, and `stack_synthesis_io.py`
-  are shared I/O helpers imported by the `run_*` scripts, not standalone
-  entrypoints.
-- `z_generate_manuscript_variables.py` is `z_`-prefixed so it sorts last in
-  verification gates and hydrates after all other artifacts exist.
-- Empirical scripts skip with a message when public payloads are absent; they
-  must not replace absent data with invented values.
-- Prefer `run_research_suite.py --assemble-only` in CI or full-gate scripts
-  after `analysis_pipeline.py`, `analyze_empirical_bee_data.py`,
-  `verify_bee_render.py`, and `review_stack_integrity.py` have already run;
-  use the default full mode only for local convenience.
-- Gate scripts fail loudly: `run_security_audit.py`,
-  `audit_publication_readiness.py --check`, `signpost_project_tree.py --check`,
-  and `verify_generated_reports.py` exit nonzero on failure. Run
-  `verify_generated_reports.py` after refreshing research, methods, synthesis,
-  and digital-twin reports.
-- Documentation (including this directory's README/AGENTS) must only reference
-  `output/...` paths that exist or directory locations;
-  `audit_documentation.py` fails on stale generated-output references. Keep
-  signposting and readiness reports synchronized after scripts create new
-  output directories.
+| Script | Delegates to | Writes |
+|--------|--------------|--------|
+| `analysis_pipeline.py` | `beestack.pipeline.run_analysis_pipeline` | `output/data/`, `output/reports/`, `output/figures/`, `output/animations/`, `output/llm/source_refresh_ledger.json` |
+| `analyze_empirical_bee_data.py` | `beestack.pipeline.run_empirical_stage` | `output/data/empirical_*` panels and figures, `output/reports/empirical_analysis.md` |
+| `assess_digital_twin_readiness.py` | `beestack.digital_twin.assess_digital_twin_readiness` | `output/data/digital_twin_readiness.json`, `output/reports/digital_twin_readiness.md` |
+| `audit_documentation.py` | `beestack.documentation_audit.audit_documentation` | `output/reports/documentation_audit.json` plus Markdown companion |
+| `audit_publication_readiness.py` | `beestack.publication_readiness.check_publication_readiness` | `output/reports/publication_readiness.json` |
+| `fetch_empirical_bee_data.py` | `beestack.brain.empirical_fetch.fetch_empirical_sources` | `output/data/empirical_sources/` catalog and downloads |
+| `generate_animations.py` | `beestack.visualization` animation builders | `output/animations/`, `output/data/animation_manifest.json`, visual and contact reports in `output/reports/` |
+| `review_stack_integrity.py` | `beestack.pipeline.run_integrity_stage` | `output/reports/beestack_integrity_review.json` plus Markdown companion |
+| `run_methods_analysis.py` | `beestack.pipeline.write_methods_analysis_outputs` | `output/data/methods_analysis.json`, methods figures, `output/reports/methods_analysis.md`, manuscript figure index |
+| `run_research_suite.py` | `beestack.pipeline` stage runners and artifact writers | `output/reports/beestack_research_report.json` plus methods and synthesis artifacts |
+| `run_security_audit.py` | `beestack.security.posture.audit_security_posture` | `output/reports/security_posture_audit.json` plus Markdown companion |
+| `run_stack_synthesis.py` | `beestack.pipeline.write_stack_synthesis_outputs` | `output/data/stack_synthesis_review.json`, `output/reports/stack_synthesis_review.md` |
+| `signpost_project_tree.py` | `beestack.documentation_signpost.write_signposts` | `README.md`/`AGENTS.md` signposts, `output/reports/project_readiness_review.json` |
+| `verify_bee_render.py` | `beestack.pipeline.run_bee_render_stage` | `output/reports/bee_visual_verification.json` plus Markdown companion |
+| `verify_generated_reports.py` | `beestack.generated_report_audit.audit_generated_reports` | `output/reports/generated_report_audit.json`, `output/reports/publication_readiness.json` |
+| `write_source_refresh_ledger.py` | `beestack.pipeline.write_source_refresh_ledger_outputs` | `output/llm/source_refresh_ledger.json`, `output/data/external_dataset_registry.json` |
+| `z_generate_manuscript_variables.py` | `beestack.manuscript_variables.generate_variables` | `output/data/manuscript_variables.json`, `output/manuscript/` |
