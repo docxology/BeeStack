@@ -1,0 +1,121 @@
+{
+  "algorithm": "web-renderer-combine-v1",
+  "binding_sha256": "f9feb5e99752dc55002c0841a62db6ca5971472393e23fe0ac5ec60791e3524a",
+  "combined_path": "output/web/_combined_manuscript.md",
+  "combined_sha256": "66ed813366ec5192e7eba97b1063f0254becad796bd16353f1bb57330256b631",
+  "combined_size_bytes": 163716,
+  "input_root_kind": "hydrated",
+  "ordered_inputs": [
+    {
+      "ordinal": 1,
+      "path": "output/manuscript/00_abstract.md",
+      "sha256": "0006743a379c76e4e7ef69a65c9ea9db874d3dae112e558a8656903ecb6681fc",
+      "size_bytes": 3828
+    },
+    {
+      "ordinal": 2,
+      "path": "output/manuscript/01_scholarship_and_related_work.md",
+      "sha256": "ac07b251618809d4575027a23b6cff61759955285072d7646df5d934d095f998",
+      "size_bytes": 16205
+    },
+    {
+      "ordinal": 3,
+      "path": "output/manuscript/02_claim_ledger.md",
+      "sha256": "34405393ee1f30ae8d62be1a33cc93f83e81bae91e5683d336869c96452fad4c",
+      "size_bytes": 8981
+    },
+    {
+      "ordinal": 4,
+      "path": "output/manuscript/03_materials_and_source_provenance.md",
+      "sha256": "3665daf4f639d6b37652bbc547455e2f79d0f93f72023db82e0160b508de4f99",
+      "size_bytes": 7017
+    },
+    {
+      "ordinal": 5,
+      "path": "output/manuscript/04_evidence_typed_architecture.md",
+      "sha256": "c2094791234293c11724f6dbfe34bc22dce4fcc6de14ffd9bb2cf917f0b2ad22",
+      "size_bytes": 7423
+    },
+    {
+      "ordinal": 6,
+      "path": "output/manuscript/05_methods_body_swarm.md",
+      "sha256": "07e73816ea298e71e6e8ff788bf0be98dfa68c0883c53b3f89af88204863cead",
+      "size_bytes": 16459
+    },
+    {
+      "ordinal": 7,
+      "path": "output/manuscript/06_methods_brain_mind.md",
+      "sha256": "1de7ff5b67d24fc2699e940056e00b09e4189f5bd80584a118896046b03ede6e",
+      "size_bytes": 14311
+    },
+    {
+      "ordinal": 8,
+      "path": "output/manuscript/07_methods_niche.md",
+      "sha256": "c5b98cea8d3c66e322ceb8d6431d88fed5fbc0c5739c1ee5693a040cf5562394",
+      "size_bytes": 6547
+    },
+    {
+      "ordinal": 9,
+      "path": "output/manuscript/08_validation_and_figures.md",
+      "sha256": "605d1838778c653ca3fb24d3c8bcf5e886910dbaca33b3a17752d25b229f9b13",
+      "size_bytes": 12940
+    },
+    {
+      "ordinal": 10,
+      "path": "output/manuscript/09_empirical_results.md",
+      "sha256": "ce33468499edbe5beb3f333a5a6de9bb0f665e61820f4552dc559b148cd2f567",
+      "size_bytes": 11481
+    },
+    {
+      "ordinal": 11,
+      "path": "output/manuscript/10_integrated_results.md",
+      "sha256": "4a6430eb42805b541849d8d2995a9c9463a2237306808cc4fb168fe708669451",
+      "size_bytes": 6007
+    },
+    {
+      "ordinal": 12,
+      "path": "output/manuscript/11_research_synthesis.md",
+      "sha256": "6f5566712768603b332a7a6e1f6a65b08988d51042fbe09d4a0cf246b542083d",
+      "size_bytes": 10214
+    },
+    {
+      "ordinal": 13,
+      "path": "output/manuscript/12_discussion.md",
+      "sha256": "b2d53febf985c532c8e9f165e07c0f1164a070695817c6902152180328ed1d0e",
+      "size_bytes": 10103
+    },
+    {
+      "ordinal": 14,
+      "path": "output/manuscript/13_limitations.md",
+      "sha256": "c8a73f5464a557c83f523614ebcc71055b98e0bcb314034e1e994e1f00786f89",
+      "size_bytes": 6939
+    },
+    {
+      "ordinal": 15,
+      "path": "output/manuscript/14_roadmap.md",
+      "sha256": "014081a0750b476ab100a4558c74c17149b846aea3c97b5c1b14b55a2a30c200",
+      "size_bytes": 10549
+    },
+    {
+      "ordinal": 16,
+      "path": "output/manuscript/15_reproducibility.md",
+      "sha256": "f9b290608c846c3805ed87b93ac717ac99cc5dbe8308ef63627fae5e2456566d",
+      "size_bytes": 7037
+    },
+    {
+      "ordinal": 17,
+      "path": "output/manuscript/16_ethics_governance.md",
+      "sha256": "60240570f2d4dfa1189f5387abcf345c27254b6baaac8139ebb3117d7a0ba071",
+      "size_bytes": 7214
+    },
+    {
+      "ordinal": 18,
+      "path": "output/manuscript/99_references.md",
+      "sha256": "8a3df7206d04da0184f90bb3f81d07c2085ed6e27e8019133722074241c2b0de",
+      "size_bytes": 323
+    }
+  ],
+  "ordered_inputs_sha256": "19e9990a7e8b2334c397568dfd44547f49af7df75dbc7f880ae595cef3d1cca7",
+  "project": "ongoing/BeeStack",
+  "schema_version": "template-manuscript-composition-v1"
+}
