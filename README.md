@@ -115,7 +115,7 @@ uv run python scripts/audit_publication_readiness.py --check
 
 ## Release 1.0
 
-Version identifiers: `manuscript/config.yaml` → `paper.version: "1.0"`;
+Version identifiers: `docs/manuscript/config.yaml` → `paper.version: "1.0"`;
 `pyproject.toml` → `1.0.0`; `src/beestack/version.py` is the package source of truth.
 
 Publication gate (after full verification above):
@@ -226,7 +226,7 @@ src/beestack/      Typed contracts, domain kernels, anatomy/activity parsers
 tests/             Unit and integration tests with a 92% source coverage gate
 scripts/           Thin orchestration scripts for downloads, analysis, reports
 docs/              Architecture, runbooks, API, validation, and output guides
-manuscript/        Template-renderable paper sections and bibliography
+docs/manuscript/        Template-renderable paper sections and bibliography
 output/            Regeneratable artifacts and raw empirical downloads
 ```
 
@@ -260,7 +260,7 @@ then records the error and attempts file-level downloads where the catalog
 exposes URLs.
 
 The current empirical readiness gate uses the configured
-`research.empirical_completeness_threshold` from `manuscript/config.yaml`
+`research.empirical_completeness_threshold` from `docs/manuscript/config.yaml`
 (`0.5` in this checkout). BeeStack also records every registered-but-not-local
 or nonparseable source with DOI/source verification, parser status, blocker,
 and remediation path in `output/data/brain_data_completeness.json`. A stricter

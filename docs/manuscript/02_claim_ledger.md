@@ -80,7 +80,7 @@ The implementation follows the research-template separation of concerns
 that the surrounding repository enforces: `src/beestack/` contains
 importable module logic with no filesystem or network side effects;
 `scripts/` owns I/O, downloads, and orchestration; `tests/` uses real
-computations with no mocks; `manuscript/` holds tokenized prose hydrated
+computations with no mocks; `docs/manuscript/` holds tokenized prose hydrated
 from real run-time values; and `output/` contains regeneratable
 artifacts. Every non-cache directory is signposted, with
 {{SIGNPOSTED_DIRECTORY_COUNT}} directories covered by local README and

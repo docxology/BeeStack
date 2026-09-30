@@ -191,7 +191,7 @@ as the project's living system of record.
 - [x] ISC-79: Interactive Plotly HTML (if produced) contains data traces
 
 ### F. Configuration
-- [x] ISC-80: `manuscript/config.yaml` parses and every referenced key is consumed by code (no orphan keys)
+- [x] ISC-80: `docs/manuscript/config.yaml` parses and every referenced key is consumed by code (no orphan keys)
 - [x] ISC-81: `pyproject.toml` coverage/ruff/pytest config internally consistent and matches docs
 - [x] ISC-82: Every `{{VARIABLE}}` token in manuscript has a generator entry (no token without a source value)
 - [x] ISC-83: Config defaults produce all gate thresholds being met deterministically
@@ -249,7 +249,7 @@ over-claims and prose drifts from artifacts. All criteria below were OPEN after 
 adversarial pass; each was independently re-verified on-disk before any fix.
 
 - [x] ISC-113: `ruff format --check src tests scripts` reports all formatted (CI Format-check step was RED on 26 files at ruff 0.15.12 == locked)
-- [x] ISC-114: Anti: zero absolute home-directory checkout paths in tracked non-`output/` files (was 2: threat-model L4, manuscript/AGENTS.md L40)
+- [x] ISC-114: Anti: zero absolute home-directory checkout paths in tracked non-`output/` files (was 2: threat-model L4, docs/manuscript/AGENTS.md L40)
 - [x] ISC-115: Abstract frames `RESEARCH_VALIDATION_FRACTION` as a module self-test pass-rate AND co-locates `RESEARCH_KNOWN_GAP_COUNT` — no bare "validation fraction of 1.000" over-claim (was: 1.000 with no caveat beside 11 gaps + a 0.125-complete record)
 - [x] ISC-116: A binding regression test FAILS if a headline full-validation claim (overall_validation_fraction≥1.0) co-exists with known_gaps>0 or below-threshold parsed evidence (closes the V0 oracle gap; negative-control proven)
 - [x] ISC-117: CX methods prose names the actual implemented cue set (sky-compass bearing + optic-flow), not "inertial cues" — code `central_complex.heading_ring` uses `[heading,sky_compass,flow]` weights `[0.4,0.45,0.15]`, no inertial; cited `@honkanen2019sky` is a sky-compass paper
@@ -795,7 +795,7 @@ All evidence captured from the project venv this session.
 - ISC-113: `.venv/bin/ruff format --check src tests scripts` → "174 files already
   formatted" (was 26 to reformat); `ruff check` → "All checks passed!".
 - ISC-114: published-doc absolute-path leaks scrubbed (threat-model L4,
-  manuscript/AGENTS.md L40); iter-11 also relativized the empirical fetch manifests
+  docs/manuscript/AGENTS.md L40); iter-11 also relativized the empirical fetch manifests
   and the output-statistics report so zero home-directory paths remain in tracked files.
 - ISC-115/116: hydrated `output/manuscript/00_abstract.md` → "config-band self-test
   rate of 1.000 … 11 explicitly catalogued open gaps"; `tests/test_research_headline_

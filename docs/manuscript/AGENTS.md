@@ -1,4 +1,4 @@
-# manuscript/ - BeeStack
+# docs/manuscript/ - BeeStack
 
 - Keep quantitative claims tied to manuscript variable tokens when they derive from
   code or configuration.

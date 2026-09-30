@@ -155,7 +155,7 @@ For every material claim, keep this chain intact:
    any scholarly or official source that anchors the sentence.
 6. **Figure narrative**: caption, alt text, manuscript section, figure label,
    claim tier, and unsupported-inference language when the artifact is visual.
-7. **Manuscript sentence**: prose in `manuscript/` that uses a token or cites
+7. **Manuscript sentence**: prose in `docs/manuscript/` that uses a token or cites
    the generated artifact.
 
 If any link is missing, the claim belongs in the roadmap or limitations rather

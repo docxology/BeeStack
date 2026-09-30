@@ -23,7 +23,7 @@ flowchart TB
 - `src/beestack/`: pure Python package; no project file I/O.
 - `tests/`: zero-mock unit and integration tests against source behavior.
 - `scripts/`: thin orchestration for outputs.
-- `manuscript/`: paper source with `{{VARIABLE}}` tokens.
+- `docs/manuscript/`: paper source with `{{VARIABLE}}` tokens.
 - `output/`: regeneratable artifacts.
 
 ## Module Boundaries

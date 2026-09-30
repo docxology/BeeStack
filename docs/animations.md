@@ -64,7 +64,7 @@ subdirectory, strict-scene substeps, swarm collision bee count/speed/radius/
 altitude/minimum contact-pair requirement, short animation frames/fps, long
 waggle frames/fps, and waggle-dance duration, angle, sun azimuth, quality,
 follower count, waggle amplitude, and loop radius come from
-`beestack.visualization` in `manuscript/config.yaml`. Domain-level waggle-run
+`beestack.visualization` in `docs/manuscript/config.yaml`. Domain-level waggle-run
 frequency, follower spacing, follower orientation gain, antennal sampling gain,
 and stop-signal sensitivity come from `beestack.waggle`. Tests also call
 `generate_module_animations()` with explicit overrides for short deterministic

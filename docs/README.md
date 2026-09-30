@@ -8,7 +8,7 @@ project. Use it alongside the root `README.md` and the generated reports in
 
 - `architecture.md`: module boundaries, data flow, and stack layering.
 - `stack_contracts.md`: executable cross-layer contracts and rates.
-- `configuration.md`: validated YAML knobs in `manuscript/config.yaml`.
+- `configuration.md`: validated YAML knobs in `docs/manuscript/config.yaml`.
 - `api_reference.md`: public typed records and pure helper functions.
 - `generated_outputs.md`: where every major artifact is written.
 - `digital_twin_path.md`: concrete path from the current scaffold to a full

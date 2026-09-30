@@ -2,7 +2,7 @@
 
 Reproducibility in BeeStack is a *property of the pipeline*, not a
 property of any individual artifact. The run is manifest-driven by
-`manuscript/config.yaml`, seeded with `{{CONFIG_SEED}}`, managed
+`docs/manuscript/config.yaml`, seeded with `{{CONFIG_SEED}}`, managed
 through `uv`, and exercises every cross-layer contract from raw
 configuration to hydrated manuscript prose.
 
@@ -18,7 +18,7 @@ per-file coverage trace. The coverage gate is configured at 92% in
 
 ## Publication metadata
 
-`manuscript/config.yaml` leaves `publication.doi` empty while BeeStack
+`docs/manuscript/config.yaml` leaves `publication.doi` empty while BeeStack
 remains a scaffold checkout. When a Zenodo or journal DOI is minted,
 populate that field and regenerate hydration so the abstract and
 reproducibility sections pick up the stable identifier automatically.

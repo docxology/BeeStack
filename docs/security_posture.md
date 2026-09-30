@@ -67,4 +67,4 @@ trust zones with their own hardening (see threat model TM-006..TM-008).
 - [`AGENTS.md`](../AGENTS.md) — agent editing contract and verification commands
 - [`docs/research_operations_playbook.md`](research_operations_playbook.md) — claim and provenance audit
 - [`docs/digital_twin_path.md`](digital_twin_path.md) — governance readiness axis
-- [`manuscript/16_ethics_governance.md`](../manuscript/16_ethics_governance.md) — ethics and software-security prose
+- [`docs/manuscript/16_ethics_governance.md`](../manuscript/16_ethics_governance.md) — ethics and software-security prose
