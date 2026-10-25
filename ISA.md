@@ -16,11 +16,11 @@ iteration: 11
 ## Problem
 
 BeeStack is a five-layer (Body→Brain→Mind→Swarm→Niche) honeybee
-evidence-typed simulation scaffold in `projects/passive/BeeStack/` (symlinked
-from `projects_in_progress/` for template discovery). The checkout ships
-90 Python modules under `src/beestack/`, 25 test files, 18 orchestration
+evidence-typed simulation scaffold, published as the standalone
+`docxology/BeeStack` repository. The checkout ships
+118 Python modules under `src/beestack/`, 40 test files, 17 orchestration
 scripts, 18 numbered manuscript sections plus `preamble.md` and
-`99_references.md`, and 24 docs under `docs/`. Acceptance gates (coverage
+`99_references.md`, and 25 docs under `docs/`. Acceptance gates (coverage
 ≥92%, morphology ≥0.85, waggle error <35°, brain parseable fraction at the
 configured gate, thermal error <3°C, zero unresolved manuscript variables,
 clean documentation audit) are tracked in this ISA and verified by the

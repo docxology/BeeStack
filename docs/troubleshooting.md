@@ -1,5 +1,16 @@
 # Troubleshooting
 
+## `uv sync` Fails While Building `dm-tree`
+
+`flybody` → `dm-control` → `dm-tree` 0.1.8 publishes no wheel for Python 3.14+
+and its source build fails without a CMake toolchain, so `uv sync` aborts before
+installing anything. The repository pins `.python-version` to `3.11` (matching
+CI). If your shell, editor, or CI image forces a newer interpreter, override it:
+
+```bash
+uv sync --python 3.11
+```
+
 ## `uv run python scripts/fetch_empirical_bee_data.py` Is Slow
 
 The default fetch attempts full curated downloads. Some Dryad archives are large.

@@ -32,7 +32,7 @@ First publication-ready manuscript and package release.
 ### Verification
 
 ```bash
-uv run pytest --cov=src --cov-fail-under=90
+uv run pytest --cov=src --cov-fail-under=92
 uv run python scripts/analysis_pipeline.py
 uv run python scripts/verify_generated_reports.py
 uv run python scripts/audit_publication_readiness.py --check
