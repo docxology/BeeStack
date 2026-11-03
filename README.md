@@ -49,7 +49,7 @@ rather than treating the target as a present-tense result.
 ## Quickstart
 
 ```bash
-uv sync   # .python-version pins 3.11: FlyBody's dm-tree pin has no wheel for Python >= 3.14
+uv sync   # interpreter as pinned in .python-version (also the file CI reads); see docs/troubleshooting.md if the dm-tree build fails
 uv run pytest --cov=src --cov-report=term-missing
 uv run python scripts/analysis_pipeline.py
 uv run python scripts/generate_animations.py
