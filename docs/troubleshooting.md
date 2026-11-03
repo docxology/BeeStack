@@ -4,12 +4,18 @@
 
 `flybody` → `dm-control` → `dm-tree` 0.1.8 publishes no wheel for Python 3.14+
 and its source build fails without a CMake toolchain, so `uv sync` aborts before
-installing anything. The repository pins `.python-version` to `3.11` (matching
-CI). If your shell, editor, or CI image forces a newer interpreter, override it:
+installing anything. This repository pins its interpreter in `.python-version`,
+the same file CI reads, and that pin is the first thing to check when this build
+fails. `uv.lock` resolves `dm-tree` 0.1.10 below Python 3.13 and 0.1.8 at 3.13
+and above, so an override below 3.13 selects the other branch. That is read from
+the lock rather than measured on your machine, and it is the branch to try:
 
 ```bash
-uv sync --python 3.11
+uv sync --python 3.12
 ```
+
+If your shell, editor, or CI image forces an interpreter other than the pinned
+one, override it the same way.
 
 ## `uv run python scripts/fetch_empirical_bee_data.py` Is Slow
 
