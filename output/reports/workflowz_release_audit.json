@@ -1,6 +1,6 @@
 {
   "schema": "beestack.workflowz.release_audit.v1",
-  "observed_at": "2026-11-08T05:58:45.099772+00:00",
+  "observed_at": "2026-11-08T08:29:37.412072+00:00",
   "repository": "docxology/BeeStack",
   "candidate_package_version": "2.0.0",
   "manuscript_version": "2.0",
@@ -8,7 +8,9 @@
   "source_binding": {
     "base_commit": "015550a26d57a36e45bbada018daf126b5332d93",
     "branch": "work/wfz-beestack-release-20261107",
-    "aggregate_sha256": "22586c9b092fe472259a34448ef6312269eea3c8cac1f8a406b662e564165b20",
+    "aggregate_sha256": "abc33dc69147371e83ae8ca9118824a5ef3dccc2263c551598f47324db9b7d88",
+    "scope": "software, tests, native CI, canonical docs/manuscript and root contracts; generated outputs are separately sealed",
+    "aggregate_algorithm": "SHA-256 of UTF-8 compact sorted-key JSON source records, sorted by path",
     "records": [
       {
         "path": ".gitattributes",
@@ -57,8 +59,8 @@
       },
       {
         "path": "AGENTS.md",
-        "sha256": "7decbb066d27157ba8091f07cd0927e7b467fe15d8eef3bbba27ca7e51ffc4f2",
-        "size": 5672
+        "sha256": "91d2c30bc086e7668249ea6392dc141fd64e3db93dd5ba6d020f5b89c068e421",
+        "size": 6093
       },
       {
         "path": "BeeStack-threat-model.md",
@@ -67,8 +69,8 @@
       },
       {
         "path": "CHANGELOG.md",
-        "sha256": "ee9b9e2074d20ad06e5e060d1173a933ab4e99980b7ce1fc5c86e955bed91e2b",
-        "size": 8589
+        "sha256": "0fea5b9164e9f0ce31eb47e4b87db26a4389cf8d517db0da4a890f0bdec97735",
+        "size": 9656
       },
       {
         "path": "ISA.md",
@@ -107,8 +109,8 @@
       },
       {
         "path": "docs/api_reference.md",
-        "sha256": "59760a1c099d9b6bff4d2329f77a1bae10a8eb1711ec11500f9275e881ad6416",
-        "size": 9074
+        "sha256": "07aa5d6e0bb80f7fb8c944e6333e3fcb4e596dbf9335b7c416454f69e8c80282",
+        "size": 10905
       },
       {
         "path": "docs/architecture.md",
@@ -207,8 +209,8 @@
       },
       {
         "path": "docs/manuscript/10_integrated_results.md",
-        "sha256": "5868b65980bac90bbc675bf24b95ec3b12c1f33553320ce2c03ef667bf4ca426",
-        "size": 6208
+        "sha256": "c25f436c9902b30d648314aebf66c75ef1801e826cd64d10f115a3ea4dbe3316",
+        "size": 6353
       },
       {
         "path": "docs/manuscript/11_research_synthesis.md",
@@ -247,8 +249,8 @@
       },
       {
         "path": "docs/manuscript/AGENTS.md",
-        "sha256": "ea58dc87274c4e9abe464784c502b01a61382de31ecaa301c1b57cc608d8096f",
-        "size": 3218
+        "sha256": "44c58bbbaef1f366b0fbb8979594e40e9c2c04e7e1fed083d03713c20b680981",
+        "size": 3386
       },
       {
         "path": "docs/manuscript/MANUSCRIPT_STATUS.md",
@@ -257,8 +259,8 @@
       },
       {
         "path": "docs/manuscript/README.md",
-        "sha256": "c0266f1b689fc3982fb1d9283abd21f0c2f4fae17decc8155989c893c200f2e9",
-        "size": 1679
+        "sha256": "7fa075bd792c41ef4654e6a5188e4a81b82266f152626c175b1b3fa8886c720c",
+        "size": 1839
       },
       {
         "path": "docs/manuscript/SYNTAX.md",
@@ -317,8 +319,8 @@
       },
       {
         "path": "docs/troubleshooting.md",
-        "sha256": "57194f6aa42602f492cb79b822e97898718f2402e7aa0997cc9dfd2915794ba1",
-        "size": 4878
+        "sha256": "befe0ad872cc4beb2d03ec2ee976c4f5e88484e1e64cce68af857b598737511f",
+        "size": 5222
       },
       {
         "path": "docs/validation_criteria.md",
@@ -542,8 +544,8 @@
       },
       {
         "path": "src/beestack/brain/README.md",
-        "sha256": "3ce8bc79800f3a0c16073d16138e823a7ab93b92741edf122b290e161daa3a94",
-        "size": 3107
+        "sha256": "ad93844041cd635c46c180e0a47374f30c3c03c239a6dd948fe0a19d044c7d78",
+        "size": 3371
       },
       {
         "path": "src/beestack/brain/__init__.py",
@@ -592,8 +594,8 @@
       },
       {
         "path": "src/beestack/brain/empirical.py",
-        "sha256": "67e36bb716cc4816fa25a21a137433ee2ad15e9745c369fc28a8dc10c4079262",
-        "size": 8973
+        "sha256": "36edd6759682c1b26a1947d42310447eaff13ae86c2638ec737e8573ba396f75",
+        "size": 8971
       },
       {
         "path": "src/beestack/brain/empirical_analysis.py",
@@ -617,8 +619,8 @@
       },
       {
         "path": "src/beestack/brain/empirical_ingest_reports.py",
-        "sha256": "7a9b794a8c0ae35cdfe92307992bd6d8d33ad6da75f9c919d0ddbdc3f613478b",
-        "size": 8784
+        "sha256": "80bd13889d3c8a6c7d4c41452d385675bf255ce1cdff9ed8846a6f954a071bba",
+        "size": 8798
       },
       {
         "path": "src/beestack/brain/empirical_parsers/AGENTS.md",
@@ -697,8 +699,8 @@
       },
       {
         "path": "src/beestack/brain/pipeline.py",
-        "sha256": "fec21b1c60de386c12a78206da3d8b7358c8433941b11d67a423dcfdf2fe73cf",
-        "size": 2327
+        "sha256": "e6c34fa9284120b5d59c7789da77e10940e448231b47c2afe52dbcc935747487",
+        "size": 2259
       },
       {
         "path": "src/beestack/brain/state.py",
@@ -782,8 +784,8 @@
       },
       {
         "path": "src/beestack/manuscript_variables.py",
-        "sha256": "cbba8027e2e0a5f01ffb1fdb294d7e0a68c5ac2401bf7849fe13c3764266fbc4",
-        "size": 14808
+        "sha256": "8a3c75225248d62ec5caa971bbc57cb2e989f15663fade6c76d311b56d512311",
+        "size": 14810
       },
       {
         "path": "src/beestack/mind/AGENTS.md",
@@ -862,8 +864,8 @@
       },
       {
         "path": "src/beestack/orchestrator.py",
-        "sha256": "8e3c12643130cefa1f13ceddc5e04c0b01261c9d88905f2072a26218ddbe1b00",
-        "size": 10762
+        "sha256": "923ca6bb5d45b2f4feb89a9d6cffacc34e1a738f1482fa42c02dbdbd675be60e",
+        "size": 10841
       },
       {
         "path": "src/beestack/pipeline.py",
@@ -887,8 +889,8 @@
       },
       {
         "path": "src/beestack/research/README.md",
-        "sha256": "8eba958e357a679a168a670948e8d697c6ff48ee43ee7393de21fc485b6bb647",
-        "size": 2045
+        "sha256": "50f8eb18db2f3d1b02835602bb64371cf8c4a7db7ecb29eee9111146cada8243",
+        "size": 3464
       },
       {
         "path": "src/beestack/research/__init__.py",
@@ -902,33 +904,33 @@
       },
       {
         "path": "src/beestack/research/methods_assembly.py",
-        "sha256": "163e4a90a460b9655870fe38545535b386634c57732a3254101e0b36ea45285e",
-        "size": 12982
+        "sha256": "3f8da55d6539b0553be5bd5d267990d1d192b2ab819ab422ca6d731e0e03b640",
+        "size": 13329
       },
       {
         "path": "src/beestack/research/methods_helpers.py",
-        "sha256": "3dfe3f7a6b52ed124231ae42e3e642ba60eb5f9247cdd2748f35c84c8b5e06f4",
-        "size": 5407
+        "sha256": "133dd4d77195aff88cd018d85845814b53aaba020ec594a96b32f0fd149cd814",
+        "size": 5486
       },
       {
         "path": "src/beestack/research/methods_models.py",
-        "sha256": "841ce1a41f09b2e0e266d4c716f8b1535c380e03ce1e5211d1b074c0888c15cf",
-        "size": 15454
+        "sha256": "83628b29677c2d53dacfa32f0ed2853d9f1c40aac9c858f2fe45a59663809f9f",
+        "size": 16619
       },
       {
         "path": "src/beestack/research/methods_panels.py",
-        "sha256": "868dd6b26be65d26e547fb0976545566039c687195fc06d541933667d6bc335e",
-        "size": 28326
+        "sha256": "ef8f2f8b8b88ead2c2924918de231b2c6935f555096883da75be4221a67e8580",
+        "size": 27083
       },
       {
         "path": "src/beestack/research/methods_validators.py",
-        "sha256": "5bc8c1e25736bbceb79354710f5f66fb91ecd1bc6b079a3138db0c889a11e261",
-        "size": 791
+        "sha256": "ba79c63bc44d3105a70ba9126b739f7ceb3c3b10490f8951af6704eb14520b9a",
+        "size": 1735
       },
       {
         "path": "src/beestack/research/suite.py",
-        "sha256": "4c6c58b577a3663f5fe3c45de0e34d4e0cd65b798b35a8424492b4e869694948",
-        "size": 37128
+        "sha256": "3c642036ada58c9a9dbe39337730d543fc91375d6a9c928f5e3d761320ddbb8f",
+        "size": 37934
       },
       {
         "path": "src/beestack/research/synthesis.py",
@@ -1057,8 +1059,8 @@
       },
       {
         "path": "src/beestack/visualization/README.md",
-        "sha256": "638f6276669b24560aa9fb80beabd060cb4aa08bf6619fda0226b8ca6678ade3",
-        "size": 4618
+        "sha256": "d2651c5435829b89056543962a83a29942e160e0bef3018d5a638eadf875d735",
+        "size": 5126
       },
       {
         "path": "src/beestack/visualization/__init__.py",
@@ -1107,13 +1109,13 @@
       },
       {
         "path": "src/beestack/visualization/figure_plot_data.py",
-        "sha256": "08dbc3e922564f9e646cf04bb5fbeee4bb57634ee47dca3de99c05687c606ac4",
-        "size": 3724
+        "sha256": "2dbdcc1c5b7f8939eb4e7e31f76a1baa3a137862e0e3d4088aa9722a015afa05",
+        "size": 3731
       },
       {
         "path": "src/beestack/visualization/figure_plot_specs.py",
-        "sha256": "6200bf4b8093398db64eab8dad3cf0dc072a862e669d4adbc1f159707c2ffa15",
-        "size": 33763
+        "sha256": "6dc17535afeb629d3631b35a147299fdf0c6ce6f2df564dcf3fa454a0a8bb430",
+        "size": 34075
       },
       {
         "path": "src/beestack/visualization/figure_registry.py",
@@ -1127,8 +1129,8 @@
       },
       {
         "path": "src/beestack/visualization/figures_analysis_panels.py",
-        "sha256": "a930506c6e387cbd231c8bc704329aa0e090368a2176adf314656608311928db",
-        "size": 13695
+        "sha256": "085139582f2fc2ed43ef121aed192fa315842f6ebdf5390b91512eac81aec699",
+        "size": 13900
       },
       {
         "path": "src/beestack/visualization/figures_calibration_maps.py",
@@ -1142,8 +1144,8 @@
       },
       {
         "path": "src/beestack/visualization/figures_common.py",
-        "sha256": "f9a07acfad1fa8ce91c973b2b053227496a17ea1ce1654f4f42f011c6d5dfbac",
-        "size": 1619
+        "sha256": "8f781178c1d2e505c371b1b5f9a3427708400ed9fc01cd4033693548bfa438ed",
+        "size": 1745
       },
       {
         "path": "src/beestack/visualization/figures_overview.py",
@@ -1152,8 +1154,8 @@
       },
       {
         "path": "src/beestack/visualization/methods_figures.py",
-        "sha256": "54771bfe11eebd83a7cbf109de49e1bf619b1cddc7cc3ea91c092ba200c8b757",
-        "size": 18094
+        "sha256": "0fac718295b11a30273f56f3aca5acec4f60677103f58a2d8d703332c84af06d",
+        "size": 18058
       },
       {
         "path": "src/beestack/visualization/render_stills.py",
@@ -1162,8 +1164,8 @@
       },
       {
         "path": "src/beestack/visualization/research_figures.py",
-        "sha256": "5507794d7cfe370de6e6ad048919d5140a65912aaa7ac0d8deb1fbc81e295774",
-        "size": 19325
+        "sha256": "8453385ca241c67e7409c3da3b33ed1bf7aecc68efd6fcf138629839bfaacf00",
+        "size": 20485
       },
       {
         "path": "src/beestack/visualization/style.py",
@@ -1217,8 +1219,8 @@
       },
       {
         "path": "tests/test_body_brain.py",
-        "sha256": "9e9c5fe9cf8a1033490b9e0cea4580b38e46f7db023de251aff13b881953fe77",
-        "size": 26559
+        "sha256": "21989e74551f91aaef714442d5829805126eec7dfbe6c84e945b70112b3d312f",
+        "size": 26475
       },
       {
         "path": "tests/test_build_artifact_custody.py",
@@ -1302,8 +1304,8 @@
       },
       {
         "path": "tests/test_evidence_boundaries.py",
-        "sha256": "c51d66dcf9b6a2999f538fc6efd03843c904d1fbc8b5669ac54072146a2715dc",
-        "size": 14339
+        "sha256": "8da8f579a93b7b6bacf5340314302d6688ca48571a3bd0bf7ebce7794b257a51",
+        "size": 14408
       },
       {
         "path": "tests/test_figure_metadata.py",
@@ -1352,8 +1354,8 @@
       },
       {
         "path": "tests/test_methods_analysis.py",
-        "sha256": "7ad2c7e1e05f954f5e634c47ada4c4a1e332e8cbad4db8bdc2b3269f78af6030",
-        "size": 19666
+        "sha256": "4d0400b9c1e5a12caa92d8e9e6b214fe5cdbc1efce85794590108d614b4ae369",
+        "size": 24878
       },
       {
         "path": "tests/test_mind_swarm_niche.py",
@@ -1377,8 +1379,8 @@
       },
       {
         "path": "tests/test_orchestrator_manifest_manuscript.py",
-        "sha256": "b7a5bb128c0e6e319d48742c7dec4c8a086646a9764c5701704b2edaaacd4619",
-        "size": 8325
+        "sha256": "6ee1370c623f2d7f1c4710ed35acb64c393f05e4c4ee9e2d0e65b7a48fa259a2",
+        "size": 9148
       },
       {
         "path": "tests/test_publication_readiness.py",
@@ -1422,8 +1424,8 @@
       },
       {
         "path": "tests/test_stack_synthesis.py",
-        "sha256": "43f6c7fbcccdb9ea9322d572700853bde222fa527fc15eb801fc6557aa3d274b",
-        "size": 7947
+        "sha256": "cf6d1959448e4da02d40bc7ee5d8c942d2f4bb521fc5597be9f33a5ff3ff08f9",
+        "size": 9045
       },
       {
         "path": "tests/test_structure_flybody_visualization.py",
@@ -1470,8 +1472,7 @@
         "sha256": "172f6c1bfa45c95c02cd7d7a458504bd56f53e060853b4bf310836830cc3af6c",
         "size": 208208
       }
-    ],
-    "scope": "software, tests, native CI, canonical docs/manuscript and root contracts; generated outputs are separately sealed"
+    ]
   },
   "acceptance": [
     {
@@ -1531,6 +1532,14 @@
     {
       "name": "WfzBeeReleaseProof2",
       "workers": 2
+    },
+    {
+      "name": "WfzBeeMethodsNullClosure",
+      "workers": 1
+    },
+    {
+      "name": "WfzBeeNullRefute",
+      "workers": 1
     }
   ],
   "adversary_model": {
@@ -1628,6 +1637,37 @@
         "docs/manuscript/references.bib"
       ],
       "impact": "Claims now distinguish configured timing, executed reduced ticks, measured reproducibility, missing aggregates and biological validation. Incorrect citation identities/topics were corrected or removed; version DOI is not fabricated."
+    },
+    {
+      "paths": [
+        "src/beestack/brain/pipeline.py",
+        "src/beestack/orchestrator.py",
+        "tests/test_orchestrator_manifest_manuscript.py"
+      ],
+      "impact": "An omitted template bank silently selected hand-specified synthetic priors. Default stepping now has no empirical bank; record/summary alignment is null. Explicit supplied banks retain measured zero and nonzero results. Counterfactual helpers do not become raw-data evidence."
+    },
+    {
+      "paths": [
+        "src/beestack/research/methods_panels.py",
+        "src/beestack/research/suite.py",
+        "tests/test_methods_analysis.py",
+        "docs/api_reference.md"
+      ],
+      "impact": "Unobserved odor separability was converted to a numeric zero in methods and research diagnostic maps. Those means are now omitted when unobserved; a supplied measured zero is retained. Before/after behavioral regression distinguishes these states."
+    },
+    {
+      "paths": [
+        "docs/api_reference.md",
+        "src/beestack/research/README.md",
+        "output/interactive/methods_module_metrics.html",
+        "output/interactive/research_sensitivity_sweeps.html",
+        "src/beestack/research/methods_models.py",
+        "src/beestack/research/methods_helpers.py",
+        "src/beestack/research/methods_validators.py",
+        "src/beestack/visualization/research_figures.py",
+        "src/beestack/visualization/methods_figures.py"
+      ],
+      "impact": "Mixed-unit ranking, shared sweep scales and missing-as-insensitive summaries obscured meaning. Native-unit static/interactive tables and independent-axis small multiples accompany coordinate-preserving nullable outputs, derived counts and unavailable incomplete ranges. No cross-unit dominant-output field or fabricated missing sweep remains."
     }
   ],
   "verification": {
@@ -1642,22 +1682,22 @@
       "xelatex": "TeX Live 2026",
       "flybody_commit": "d015e9bfe441bd90ae431bac24c55cb74bdbce26"
     },
-    "tests_passed": 727,
+    "tests_passed": 750,
     "coverage": {
-      "covered_lines": 10858,
-      "num_statements": 11435,
-      "percent_covered": 92.80498425671601,
-      "percent_covered_display": "92.80",
+      "covered_lines": 10890,
+      "num_statements": 11467,
+      "percent_covered": 92.83568137811311,
+      "percent_covered_display": "92.84",
       "missing_lines": 577,
       "excluded_lines": 12,
-      "percent_statements_covered": 94.954088325317,
-      "percent_statements_covered_display": "94.95",
-      "num_branches": 3492,
-      "num_partial_branches": 415,
-      "covered_branches": 2995,
-      "missing_branches": 497,
-      "percent_branches_covered": 85.76746849942727,
-      "percent_branches_covered_display": "85.77"
+      "percent_statements_covered": 94.96816952995553,
+      "percent_statements_covered_display": "94.97",
+      "num_branches": 3510,
+      "num_partial_branches": 412,
+      "covered_branches": 3014,
+      "missing_branches": 496,
+      "percent_branches_covered": 85.86894586894587,
+      "percent_branches_covered_display": "85.87"
     },
     "coverage_floor_percent": 92,
     "unit_commands": "output/reports/workflowz_unit_gates.json",
@@ -1670,30 +1710,43 @@
       "package_bytes_identical": true
     },
     "core_sha256": {
-      "run_summary.json": "16849fa85935ed5a8f43633a09bd31c112656f1f1fb771e44a480c354795771f",
-      "simulation_records.json": "1c4bbb442c998e1f8e76dc4be4be11b61f70705ea454211b04e1462cdc4f05ee",
+      "run_summary.json": "65ea0947b48430c7e8b7950375a997bd0a1eaea09249ee83b0e9fcdb7c3f5eac",
+      "simulation_records.json": "1bfd077e6ffdff0cdf74553c9cfab47a8f51cb1ca00f41ffe5df87e5e543c421",
       "task_allocation.json": "d3b6256590b0739b1ec2b208c21863ff13a3ab1046eb92ac5b29edb457d610fa"
     },
     "artifacts": [
       {
         "path": "dist/beestack-2.0.0-py3-none-any.whl",
-        "size": 326584,
-        "sha256": "45c5e5b7b8c082d6bd1c1599aadf8b1d057d2eedf3ae4192797608b2176f3331"
+        "size": 327817,
+        "sha256": "81e31f6c02ef0ef6d6632e999764793eeffbc6d239a2339e96256fa91b2e162a"
       },
       {
         "path": "dist/beestack-2.0.0.tar.gz",
-        "size": 381755,
-        "sha256": "a0db6eac65d2d2078c15aaa9b560344c3a9692b1570c05550fdc3a298d8bc9c3"
+        "size": 384358,
+        "sha256": "9a0ea5e746982ca71b1f52bd83848fac2e15e63dfb0d3a29c40096b20f2a1653"
       },
       {
         "path": "output/pdf/BeeStack_combined.pdf",
-        "size": 7179855,
-        "sha256": "ecdb0246efbfe7414b7fee4f0061d6e2d0ea8e468811d3349b783bd82447fcdf"
+        "size": 7225971,
+        "sha256": "9e4b0590323e48e09c25057acf970c0738a19bd35860a35b82c4046260f7ec0d"
       }
     ],
     "visual_proof": "output/reports/workflowz_pdf_inspection.json",
     "local_link_proof": "output/reports/workflowz_document_links.json",
-    "dependency_observation": "output/reports/workflowz_dependency_observation.json"
+    "dependency_observation": "output/reports/workflowz_dependency_observation.json",
+    "final_integrated_proof": "output/reports/workflowz_integrated_final_proof.json",
+    "interactive_proof": "output/reports/workflowz_interactive_inspection.json",
+    "canonical_package_source_files_matched": 119,
+    "pdf_pages": 56,
+    "visual_review_scope": "All 56 contact-sheet page layouts plus high-resolution detail pages 13, 22, 33, 45 and 51; no missing glyphs or overfull boxes.",
+    "interactive_surfaces": 4,
+    "strict_doi_gate": "FAILED as required: publication.doi not set in docs/manuscript/config.yaml; normal readiness passed.",
+    "local_links": {
+      "documents": 88,
+      "checked": 18,
+      "failures": 0
+    },
+    "physics_and_render": "9 actual animations: 2 strict FlyBody body renders, 3 MuJoCo scripted-pose contact scenes and 4 reduced schematics; current engineering checks passed, not biological or forward-dynamics calibration."
   },
   "qualified_receipts": [
     {
@@ -1731,7 +1784,13 @@
     {
       "id": "wfz-beestack-build-artifact-contamination-before/16882-6e8c5dbe3fef4dc1a5f25ee2f3b75bfc",
       "outcome": "Before: four transient build guides generated; clean artifact and preservation regression subsequently passed"
-    }
+    },
+    "wfz-beestack-missing-mean-confirmed-before/17588-10d26fa2dc3c49979fae31e665645e8c",
+    "wfz-beestack-missing-mean-passing-after/17605-58c548f6d2bf47c19bdeff18293410e9",
+    "wfz-beestack-final-unobserved-mean-full-gates/17611-875a1c65b69c4abfb9f516c5bfc1c3a7",
+    "wfz-beestack-final-mean-complete-pytest/17619-318b0c86cafa408eb1d91e7f50840a87",
+    "wfz-beestack-final-mean-native-consumer-manuscript/17656-5e412323fd2c421c86030cb35969c665",
+    "wfz-beestack-final-all-source-document-links/17753-edda6c59c87a4a989f1582b8a5a531a7"
   ],
   "empirical": {
     "availability_report": "output/reports/workflowz_available_payloads.json",
@@ -1752,16 +1811,22 @@
     "Absent empirical payloads were not synthesized; full modality analyses cannot be certified.",
     "No exhaustive decompressor fuzzing, worst-case peak-RSS proof or full third-party/native bundled-library audit. OSV returned zero findings for 73 exact PyPI lock versions only.",
     "No comparable performance benchmark or cross-platform binary/render reproducibility claim.",
-    "All 56 PDF pages were visually inspected; not every scientific citation/parameter was independently full-text verified.",
     "Historical ISA 119/119 and May PASS statements are not today\u2019s criterion-by-criterion proof.",
-    "Authenticated deposit, remote main/tag/release/assets and post-push CI not performed."
+    "Authenticated deposit, remote main/tag/release/assets and post-push CI not performed.",
+    "Primary-source identity/DOI checks do not independently full-text verify every scientific claim or parameter.",
+    "Interactive files exercised on desktop installed Chrome only; no mobile, cross-browser or WCAG certification. Their Plotly viewer requires cdn.plot.ly; PNG/PDF artifacts remain the offline presentation surface."
   ],
   "failures_and_superseded_evidence": [
     "Intermediate coverage, manuscript path/cwd, offline-figure, typography and build-contamination failures were fixed and re-exercised; native command history retains failed attempts.",
     "The first supplement probe used an unrecognized private lane; corrected supplementary-lane acquisition and actual-loader proof supersede it.",
     "Earlier installed-wheel/packaging reports are historical; final_wheel_runtime and installed_consumer_completion reports identify current artifacts.",
     "Direct system-Git executable launch refused hardlink aliases; authorized offline reader subsequently proved original source.",
-    "A concurrent intent write waited behind an active repository test lease and was interrupted; no baseline command launched in that attempt."
+    "A concurrent intent write waited behind an active repository test lease and was interrupted; no baseline command launched in that attempt.",
+    "The 727-test and 748-test receipts are historical. Final current software proof has 750 passing tests and 92.84% combined coverage; the 92% floor is unchanged.",
+    "Actual rendered UI review refuted the previous mixed-unit/shared-axis presentation and exposed implicit synthetic template priors and missingness loss. Static and interactive views were corrected together.",
+    "The first new mean regression lacked required visualization artifacts and failed at its fixture boundary; the corrected real scorecard/assembler regression then demonstrated 1 failure and 1 pass before production edits, and 2 passes afterward.",
+    "One final full-suite launch was interrupted by the Eval client timeout after successful lock/lint/format steps. Its process tree was reaped; only the interrupted pytest step and subsequent payload observer were resumed successfully.",
+    "A superseded native run was intentionally cancelled after the unobserved empirical mean defect was confirmed. No result from that cancelled chain certifies the final source."
   ],
   "custody_note": "Initial dependency-cache bootstrap let Git discover the ancestor repository from an empty cache path. Guarded corrective fetch restored nonshallow history; original HEAD/origin/branches were preserved, without stash/reset/history rewrite or unrelated checkout mutation.",
   "publication": {
@@ -1780,6 +1845,21 @@
       "Governed GitHub config enables only issues; release writes disabled and installed asset continuation does not authorize BeeStack PDF uploads. No raw gh/HTTP/CI bypass.",
       "Default-branch push requires a frozen one-repository plan and exact PUSH 1 OWNED REPOSITORIES confirmation; no confirmed candidate plan available."
     ],
-    "operator_prerequisites": "Reserve the version DOI with authenticated owner access and provide an approved governed release/asset route, then rerender/reseal and obtain exact frozen push confirmation. Manager/configuration changes are outside this task."
+    "operator_prerequisites": "Reserve the version DOI with authenticated owner access and provide an approved governed release/asset route, then rerender/reseal and obtain exact frozen push confirmation. Manager/configuration changes are outside this task.",
+    "candidate_v2_tag_collisions_observed": [],
+    "effective_main_rules_observed": [
+      "deletion",
+      "non_fast_forward"
+    ],
+    "remote_observation_urls": [
+      "https://api.github.com/repos/docxology/BeeStack/git/ref/heads/main",
+      "https://api.github.com/repos/docxology/BeeStack/git/matching-refs/tags/v2",
+      "https://api.github.com/repos/docxology/BeeStack/releases/latest",
+      "https://api.github.com/repos/docxology/BeeStack/rules/branches/main"
+    ],
+    "write_classes_observed": [
+      "issues"
+    ],
+    "local_source_commit_note": "Final commit SHA and committed-source archive binding live in the repository-local candidate manifest/final chat; this generated receipt seals source content without a self-referential commit hash."
   }
 }

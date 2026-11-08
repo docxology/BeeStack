@@ -361,10 +361,10 @@
       "artifact_path": "output/figures/beebrain_empirical_alignment_timeseries.png",
       "availability_status": "unrecorded",
       "backend": "Matplotlib",
-      "caption": "Beebrain Empirical Alignment Timeseries generated from generated BeeStack figure artifact; this figure is a empirical summary projected into a reduced BeeBrain contract and should be interpreted through its sidecar validation metadata.",
+      "caption": "Beebrain Empirical Alignment Timeseries generated from generated BeeStack figure artifact; this figure is a reduced template-alignment diagnostic; empirical inputs only when available and should be interpreted through its sidecar validation metadata.",
       "citation_keys": [],
       "claim_tier": "generated_diagnostic",
-      "fidelity_level": "empirical summary projected into a reduced BeeBrain contract",
+      "fidelity_level": "reduced template-alignment diagnostic; empirical inputs only when available",
       "manuscript_label": "fig:beebrain_empirical_alignment_timeseries",
       "manuscript_section": "output/reports/manuscript_figure_index.md",
       "manuscript_sections": [

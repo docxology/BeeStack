@@ -1,29 +1,38 @@
 {
-  "chart_type": "bar",
+  "chart_type": "table",
   "figure_path": "output/figures/research/beebrain_empirical_evidence_map.png",
-  "labels": [
-    "registered_dataset_count",
-    "empirical_panel_count",
-    "template_count",
-    "anatomy_inventory_count",
-    "mean_odor_separability",
-    "waggle_follower_confidence",
-    "brain_data_parseable_fraction",
-    "source_verified_fraction"
-  ],
   "module": "BeeBrain",
-  "orientation": "horizontal",
+  "rows": [
+    {
+      "metric": "anatomy_inventory_count",
+      "value": 0.0
+    },
+    {
+      "metric": "brain_data_parseable_fraction",
+      "value": 0.0
+    },
+    {
+      "metric": "empirical_panel_count",
+      "value": 0.0
+    },
+    {
+      "metric": "registered_dataset_count",
+      "value": 10.0
+    },
+    {
+      "metric": "source_verified_fraction",
+      "value": 0.0
+    },
+    {
+      "metric": "template_count",
+      "value": 0.0
+    },
+    {
+      "metric": "waggle_follower_confidence",
+      "value": 0.0
+    }
+  ],
   "schema": "beestack.figure_data.v1",
   "title": "beebrain empirical evidence map",
-  "validation_fraction": 0.0,
-  "values": [
-    10.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-  ]
+  "validation_fraction": 0.0
 }

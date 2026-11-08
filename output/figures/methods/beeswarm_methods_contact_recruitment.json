@@ -43,14 +43,14 @@
   "plot_data_path": "output/figures/methods/beeswarm_methods_contact_recruitment_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 974,
+    "height_px": 976,
     "max_intensity": 255,
-    "mean_intensity": 239.82974371059063,
+    "mean_intensity": 243.74831870075974,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 45.57995798943668,
-    "width_px": 1978
+    "std_intensity": 47.3106800467313,
+    "width_px": 1983
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
   "schema": "beestack.figure.v1",
@@ -65,14 +65,14 @@
   "validation_status": "nonblank image, quality sidecar, and plot data passed",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 2.031,
+    "aspect_ratio": 2.032,
     "figure_role": "overview",
-    "height_px": 974,
+    "height_px": 976,
     "label_density": "moderate",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 1978,
-    "min_dimension_px": 974,
+    "max_dimension_px": 1983,
+    "min_dimension_px": 976,
     "readability_status": "pass",
-    "width_px": 1978
+    "width_px": 1983
   }
 }

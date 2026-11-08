@@ -42,14 +42,14 @@
   "plot_data_path": "output/figures/research/research_sensitivity_sweeps_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 1362,
+    "height_px": 1571,
     "max_intensity": 255,
-    "mean_intensity": 245.95636993944183,
+    "mean_intensity": 248.24935733617022,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 38.02267607516904,
-    "width_px": 1516
+    "std_intensity": 33.69557114632531,
+    "width_px": 2026
   },
   "regeneration_command": "uv run python scripts/run_research_suite.py",
   "schema": "beestack.figure.v1",
@@ -63,14 +63,14 @@
   "validation_status": "nonblank image, quality sidecar, and plot data passed",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 1.113,
+    "aspect_ratio": 1.29,
     "figure_role": "overview",
-    "height_px": 1362,
-    "label_density": "moderate",
+    "height_px": 1571,
+    "label_density": "dense",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 1516,
-    "min_dimension_px": 1362,
+    "max_dimension_px": 2026,
+    "min_dimension_px": 1571,
     "readability_status": "pass",
-    "width_px": 1516
+    "width_px": 2026
   }
 }

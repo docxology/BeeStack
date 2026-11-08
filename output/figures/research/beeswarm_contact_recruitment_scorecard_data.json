@@ -1,31 +1,46 @@
 {
-  "chart_type": "bar",
+  "chart_type": "table",
   "figure_path": "output/figures/research/beeswarm_contact_recruitment_scorecard.png",
-  "labels": [
-    "agent_count",
-    "represented_colony_size",
-    "strict_scene_count",
-    "bee_bee_contact_count",
-    "floor_contact_count",
-    "waggle_follower_orientation_confidence",
-    "waggle_follower_orientation_error_deg",
-    "waggle_phase_coupling_score",
-    "total_recruited_followers"
-  ],
   "module": "BeeSwarm",
-  "orientation": "horizontal",
+  "rows": [
+    {
+      "metric": "agent_count",
+      "value": 50.0
+    },
+    {
+      "metric": "bee_bee_contact_count",
+      "value": 1382.0
+    },
+    {
+      "metric": "floor_contact_count",
+      "value": 116.0
+    },
+    {
+      "metric": "represented_colony_size",
+      "value": 20000.0
+    },
+    {
+      "metric": "strict_scene_count",
+      "value": 3.0
+    },
+    {
+      "metric": "total_recruited_followers",
+      "value": 168.0
+    },
+    {
+      "metric": "waggle_follower_orientation_confidence",
+      "value": 0.7878249999999999
+    },
+    {
+      "metric": "waggle_follower_orientation_error_deg",
+      "value": 19.095750000000013
+    },
+    {
+      "metric": "waggle_phase_coupling_score",
+      "value": 9.148365930103435e-17
+    }
+  ],
   "schema": "beestack.figure_data.v1",
   "title": "beeswarm contact recruitment scorecard",
-  "validation_fraction": 1.0,
-  "values": [
-    50.0,
-    20000.0,
-    3.0,
-    1382.0,
-    116.0,
-    0.7878249999999999,
-    19.095750000000013,
-    9.148365930103435e-17,
-    168.0
-  ]
+  "validation_fraction": 1.0
 }

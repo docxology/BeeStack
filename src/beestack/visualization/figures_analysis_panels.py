@@ -135,8 +135,12 @@ def _brain_empirical_alignment(records: list[dict[str, Any]], path: Path) -> Pat
     alignment = _numeric_series(records, "dominant_empirical_alignment")
     odors = [str(row.get("dominant_empirical_odor", "")) for row in records] or [""]
     fig, ax = plt.subplots(figsize=(7, 4))
-    ax.plot(steps, alignment, marker="o", color="#1d4ed8", lw=2, label="Template alignment")
-    ax.fill_between(steps, alignment, color="#bfdbfe", alpha=0.45)
+    observed = [value for value in alignment if value is not None]
+    samples = np.asarray(alignment, dtype=float)
+    ax.plot(steps, samples, marker="o", color="#1d4ed8", lw=2, label="Template alignment")
+    ax.fill_between(steps, samples, color="#bfdbfe", alpha=0.45)
+    if not observed:
+        ax.text(0.5, 0.5, "No empirical templates available", ha="center", transform=ax.transAxes)
     odors_present = [odor for odor in odors if odor]
     if odors_present:
         # Name the dominant empirical odor in a legend entry rather than a
@@ -150,10 +154,10 @@ def _brain_empirical_alignment(records: list[dict[str, Any]], path: Path) -> Pat
             label=f"dominant empirical odor: {odors_present[-1]}",
         )
         ax.legend(loc="lower right", fontsize=8)
-    ax.set_ylim(0, max(1.0, max(alignment) * 1.15))
+    ax.set_ylim(-1.05, 1.05)
     ax.set_xlim(left=steps[0] - 0.15 * max(1, steps[-1] - steps[0]))
     ax.set_xlabel("Control step")
-    ax.set_ylabel("Template alignment (fraction)")
+    ax.set_ylabel("Cosine template alignment")
     ax.set_title("BeeBrain empirical odor-template alignment")
     apply_panel_style(ax, grid_axis="both")
     fig.tight_layout()

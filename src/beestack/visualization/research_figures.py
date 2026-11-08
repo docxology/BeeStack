@@ -45,15 +45,15 @@ def generate_research_figures(
             _evidence_detail(report, output_dir / "research_evidence_detail.png"),
             _visualization_inventory(report, output_dir / "research_visualization_inventory.png"),
             _empirical_completeness(report, output_dir / "research_empirical_completeness.png"),
-            _module_metric_bars(report, "BeeBody", output_dir / "beebody_method_diagnostics.png"),
-            _module_metric_bars(
+            _module_metric_table(report, "BeeBody", output_dir / "beebody_method_diagnostics.png"),
+            _module_metric_table(
                 report, "BeeBrain", output_dir / "beebrain_empirical_evidence_map.png"
             ),
-            _module_metric_bars(report, "BeeMind", output_dir / "beemind_policy_sensitivity.png"),
-            _module_metric_bars(
+            _module_metric_table(report, "BeeMind", output_dir / "beemind_policy_sensitivity.png"),
+            _module_metric_table(
                 report, "BeeSwarm", output_dir / "beeswarm_contact_recruitment_scorecard.png"
             ),
-            _module_metric_bars(
+            _module_metric_table(
                 report, "BeeNiche", output_dir / "beeniche_thermal_comb_scorecard.png"
             ),
         ]
@@ -112,7 +112,8 @@ def write_interactive_research_outputs(report: ResearchSuiteReport, output_dir: 
         y="validation_fraction",
         color="fidelity_level",
         range_y=(0, 1),
-        title="BeeStack research validation scorecards",
+        title="BeeStack research configured self-test scorecards (not biological validation)",
+        labels={"validation_fraction": "Configured self-test fraction"},
     )
     write_stable_plotly_html(fig, scorecard_path)
 
@@ -135,9 +136,12 @@ def write_interactive_research_outputs(report: ResearchSuiteReport, output_dir: 
         y="output",
         color="output_name",
         facet_col="parameter",
-        facet_col_wrap=2,
-        title="BeeStack reduced-kernel sensitivity sweeps",
+        facet_row="output_name",
+        title="Reduced-kernel sensitivity: independent native-unit axes; missing output has no points",
     )
+    fig.update_xaxes(matches=None, showticklabels=True)
+    fig.update_yaxes(matches=None, showticklabels=True)
+    fig.update_layout(height=1100, showlegend=False)
     write_stable_plotly_html(fig, sweep_path)
     return [scorecard_path, sweep_path]
 
@@ -242,8 +246,8 @@ def _validation_bars(report: ResearchSuiteReport, path: Path) -> Path:
         color=[module_color(module) for module in frame["module"]],
     )
     ax.set_ylim(0, 1.05)
-    ax.set_ylabel("Validation fraction")
-    ax.set_title("Research-suite validation scorecard")
+    ax.set_ylabel("Configured self-test fraction")
+    ax.set_title("Research-suite config-band self-tests")
     apply_panel_style(ax, grid_axis="y")
     fig.tight_layout()
     fig.savefig(path, dpi=170)
@@ -252,16 +256,35 @@ def _validation_bars(report: ResearchSuiteReport, path: Path) -> Path:
 
 
 def _sensitivity_sweeps(report: ResearchSuiteReport, path: Path) -> Path:
-    fig, axes = plt.subplots(len(report.sensitivity_sweeps), 1, figsize=(9, 8), sharex=False)
-    axes = np.atleast_1d(axes)
-    for axis, sweep in zip(axes, report.sensitivity_sweeps, strict=True):
-        for output_name, values in sweep.outputs.items():
-            axis.plot(sweep.values, values, marker="o", label=output_name)
-        axis.set_title(sweep.parameter)
-        axis.grid(alpha=0.22)
-        axis.legend(fontsize=7, ncol=2)
+    output_names = tuple(
+        dict.fromkeys(name for sweep in report.sensitivity_sweeps for name in sweep.outputs)
+    )
+    fig, axes = plt.subplots(
+        len(output_names),
+        len(report.sensitivity_sweeps),
+        figsize=(12, 2.3 * len(output_names)),
+        squeeze=False,
+    )
+    for column, sweep in enumerate(report.sensitivity_sweeps):
+        for row, output_name in enumerate(output_names):
+            axis = axes[row, column]
+            values = sweep.outputs.get(output_name)
+            if values is not None and any(value is not None for value in values):
+                axis.plot(sweep.values, values, marker="o")
+            else:
+                axis.text(0.5, 0.5, "Unavailable", ha="center", transform=axis.transAxes)
+            if row == 0:
+                axis.set_title(wrap_label(sweep.parameter), fontsize=9)
+            if column == 0:
+                axis.set_ylabel(output_name, fontsize=8)
+            axis.grid(alpha=0.22)
     fig.suptitle("Reduced-kernel sensitivity sweeps", y=0.995)
-    fig.tight_layout()
+    add_figure_note(
+        fig,
+        "Independent native-unit axes; unavailable outputs are not zero. Not empirical validation.",
+        y=0.012,
+    )
+    fig.tight_layout(rect=(0, 0.035, 1, 0.97))
     fig.savefig(path, dpi=170)
     plt.close(fig)
     return path
@@ -523,18 +546,21 @@ def _empirical_completeness(report: ResearchSuiteReport, path: Path) -> Path:
     return path
 
 
-def _module_metric_bars(report: ResearchSuiteReport, module: str, path: Path) -> Path:
+def _module_metric_table(report: ResearchSuiteReport, module: str, path: Path) -> Path:
     scorecard = next(item for item in report.module_scorecards if item.module == module)
-    labels = list(scorecard.metrics)
-    values = [scorecard.metrics[label] for label in labels]
+    items = sorted(scorecard.metrics.items())
     fig, ax = plt.subplots(figsize=(8, 4.8))
-    ax.barh(
-        [wrap_label(label.replace("_", " "), width=28, max_lines=2) for label in labels[::-1]],
-        values[::-1],
-        color=module_color(module),
+    ax.axis("off")
+    table = ax.table(
+        cellText=[[wrap_label(name, width=34), f"{value:.3g}"] for name, value in items],
+        colLabels=["Metric (native units)", "Value"],
+        colWidths=[0.75, 0.25],
+        cellLoc="left",
+        bbox=(0, 0.03, 1, 0.9),
     )
-    ax.set_title(f"{module} research diagnostics")
-    apply_panel_style(ax, grid_axis="x")
+    table.auto_set_font_size(False)
+    table.set_fontsize(9)
+    ax.set_title(f"{module} research diagnostics: native-unit metric table")
     fig.tight_layout()
     fig.savefig(path, dpi=170)
     plt.close(fig)

@@ -266,39 +266,39 @@
       "artifact_path": "output/figures/methods/beebrain_methods_empirical_completeness.png",
       "caption_length": 419,
       "figure_role": "overview",
-      "height_px": 974,
+      "height_px": 976,
       "label_density": "moderate",
       "manuscript_label": "fig:brain_methods_completeness",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 1978
+      "width_px": 1983
     },
     {
       "alt_text_length": 76,
       "artifact_path": "output/figures/methods/beemind_methods_policy_landscape.png",
       "caption_length": 413,
       "figure_role": "overview",
-      "height_px": 974,
+      "height_px": 976,
       "label_density": "moderate",
       "manuscript_label": "fig:mind_methods_policy",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 1970
+      "width_px": 1983
     },
     {
       "alt_text_length": 75,
       "artifact_path": "output/figures/methods/beeswarm_methods_contact_recruitment.png",
       "caption_length": 420,
       "figure_role": "overview",
-      "height_px": 974,
+      "height_px": 976,
       "label_density": "moderate",
       "manuscript_label": "fig:swarm_methods_contact",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 1978
+      "width_px": 1983
     },
     {
       "alt_text_length": 74,
@@ -487,13 +487,13 @@
       "artifact_path": "output/figures/research/research_sensitivity_sweeps.png",
       "caption_length": 388,
       "figure_role": "overview",
-      "height_px": 1362,
-      "label_density": "moderate",
+      "height_px": 1571,
+      "label_density": "dense",
       "manuscript_label": "fig:research_sweeps",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 1516
+      "width_px": 2026
     },
     {
       "alt_text_length": 80,

@@ -1,25 +1,34 @@
 {
-  "chart_type": "bar",
+  "chart_type": "table",
   "figure_path": "output/figures/research/beeniche_thermal_comb_scorecard.png",
-  "labels": [
-    "comb_voxels",
-    "brood_temperature_target_c",
-    "final_comb_fraction",
-    "final_brood_temperature_error_c",
-    "thermoregulation_gain",
-    "foraging_radius_midpoint_km"
-  ],
   "module": "BeeNiche",
-  "orientation": "horizontal",
+  "rows": [
+    {
+      "metric": "brood_temperature_target_c",
+      "value": 34.0
+    },
+    {
+      "metric": "comb_voxels",
+      "value": 864.0
+    },
+    {
+      "metric": "final_brood_temperature_error_c",
+      "value": 2.874567201134734
+    },
+    {
+      "metric": "final_comb_fraction",
+      "value": 0.08333333333333333
+    },
+    {
+      "metric": "foraging_radius_midpoint_km",
+      "value": 2.0
+    },
+    {
+      "metric": "thermoregulation_gain",
+      "value": 0.24
+    }
+  ],
   "schema": "beestack.figure_data.v1",
   "title": "beeniche thermal comb scorecard",
-  "validation_fraction": 1.0,
-  "values": [
-    864.0,
-    34.0,
-    0.08333333333333333,
-    2.874567201134734,
-    0.24,
-    2.0
-  ]
+  "validation_fraction": 1.0
 }

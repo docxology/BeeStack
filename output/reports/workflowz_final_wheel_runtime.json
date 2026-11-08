@@ -13,7 +13,7 @@
       ],
       "cwd": "$VALIDATION_STAGE",
       "returncode": 0,
-      "seconds": 1.323
+      "seconds": 1.841
     },
     {
       "argv": [
@@ -30,7 +30,7 @@
       ],
       "cwd": "$VALIDATION_STAGE",
       "returncode": 0,
-      "seconds": 0.133
+      "seconds": 0.201
     },
     {
       "argv": [
@@ -40,7 +40,7 @@
       ],
       "cwd": "$VALIDATION_STAGE",
       "returncode": 0,
-      "seconds": 0.023
+      "seconds": 0.047
     },
     {
       "argv": [
@@ -50,19 +50,19 @@
       ],
       "cwd": "$VALIDATION_STAGE/.uv-cache/cli-outside-cwd",
       "returncode": 0,
-      "seconds": 158.625
+      "seconds": 255.057
     }
   ],
   "artifacts": [
     {
       "path": "dist/beestack-2.0.0-py3-none-any.whl",
-      "size": 326584,
-      "sha256": "45c5e5b7b8c082d6bd1c1599aadf8b1d057d2eedf3ae4192797608b2176f3331"
+      "size": 327817,
+      "sha256": "81e31f6c02ef0ef6d6632e999764793eeffbc6d239a2339e96256fa91b2e162a"
     },
     {
       "path": "dist/beestack-2.0.0.tar.gz",
-      "size": 381755,
-      "sha256": "a0db6eac65d2d2078c15aaa9b560344c3a9692b1570c05550fdc3a298d8bc9c3"
+      "size": 384358,
+      "sha256": "9a0ea5e746982ca71b1f52bd83848fac2e15e63dfb0d3a29c40096b20f2a1653"
     }
   ],
   "package_source_sha256": {
@@ -84,12 +84,12 @@
     "beestack/brain/connectome/graph.py": "82583c0887d285172cc8daf57eb331ca98e3d5e96afbe5985d1da5bf3096865c",
     "beestack/brain/connectome/structural_wiring.py": "189d9872a1f8486ca9c1ec50408b2395c7fbf8eb99df5ffced980a92562dc3c0",
     "beestack/brain/datasets.py": "a6a86203dddadd225c4a389c7663aebf570a603b0c5a6bbacee2d964ddd378d3",
-    "beestack/brain/empirical.py": "67e36bb716cc4816fa25a21a137433ee2ad15e9745c369fc28a8dc10c4079262",
+    "beestack/brain/empirical.py": "36edd6759682c1b26a1947d42310447eaff13ae86c2638ec737e8573ba396f75",
     "beestack/brain/empirical_analysis.py": "711b70a632da1bcf5d717e71a11a1b70692d02404de94dc02c75a38cc6527fdb",
     "beestack/brain/empirical_data.py": "9b3e2d80c8e898942798c4812fe76421d8e73a3545e3d33df626c65653182ac6",
     "beestack/brain/empirical_fetch.py": "a48426378c3db198bc784741c772c9ceee7b8f8563f18eeda7f8440bb5295f83",
     "beestack/brain/empirical_ingest.py": "b2922d8d8092f5ba9c128d053cfdca2842f877af4d1518253d6b4c46e382f0e5",
-    "beestack/brain/empirical_ingest_reports.py": "7a9b794a8c0ae35cdfe92307992bd6d8d33ad6da75f9c919d0ddbdc3f613478b",
+    "beestack/brain/empirical_ingest_reports.py": "80bd13889d3c8a6c7d4c41452d385675bf255ce1cdff9ed8846a6f954a071bba",
     "beestack/brain/empirical_parsers/__init__.py": "9411307979e5298a30c4393e1dc2141d4af21d3a8cad54377b623ab96028074e",
     "beestack/brain/empirical_parsers/anatomy_loader.py": "a9940fc67eca8be3ec5adabde790d9168ef4446cbe275a5f9e4bab3f9c6d4de4",
     "beestack/brain/empirical_parsers/antennal.py": "2ad220f4464dc45a889daf10e14633f0fac02210e16c1d9b39695d13d5cd12af",
@@ -103,7 +103,7 @@
     "beestack/brain/empirical_status.py": "d652552fab623c6e256e377d971af4c6a0ea0df21560d82365eeb966cb90330a",
     "beestack/brain/mushroom_body.py": "8766b5f8dfacd48f11826104993dd970d5cf26eeab3fd7dc113aa8923bf6f4e2",
     "beestack/brain/olfaction.py": "d997cfaad7fdf3a7b7c0a28db5ec75702c1cecaef4e9c00531899ab7c541aa12",
-    "beestack/brain/pipeline.py": "fec21b1c60de386c12a78206da3d8b7358c8433941b11d67a423dcfdf2fe73cf",
+    "beestack/brain/pipeline.py": "e6c34fa9284120b5d59c7789da77e10940e448231b47c2afe52dbcc935747487",
     "beestack/brain/state.py": "2c1e0f1d1aa4c2288e35d94f2baa4fef220611697c8936b43f11043e19f8842f",
     "beestack/brain/vision.py": "118c5d004c0b9d7b108e4c8bf1a5a36f93b82ee120b0fdfaaff6496f63e25434",
     "beestack/brain/waggle.py": "2349b37bd35e87a575b78255d83f130b71bedaa033c147449cd24cf7a45a25a3",
@@ -118,7 +118,7 @@
     "beestack/generated_report_audit.py": "960ffabf96c4ee3c601504ab08e2ac54305840d72e954033e26b0a1ba1a60af4",
     "beestack/integrity.py": "2001bddcd4ed74a16573d319664764e0b0859721c3d31085a291d08adb676362",
     "beestack/manifest.py": "366bb51ae1836f7f22626ae794232777494879cbfecfc6de7324a23990b8f760",
-    "beestack/manuscript_variables.py": "cbba8027e2e0a5f01ffb1fdb294d7e0a68c5ac2401bf7849fe13c3764266fbc4",
+    "beestack/manuscript_variables.py": "8a3c75225248d62ec5caa971bbc57cb2e989f15663fade6c76d311b56d512311",
     "beestack/mind/__init__.py": "bddae02d780d4840e36cfc34900e205cb867b0bbafa953fed6a901a3ad70bd0e",
     "beestack/mind/caste.py": "62bd78c967ca5bf5d145c9ae130efcaa1bbe071622250f871fc2cb16855a82cd",
     "beestack/mind/dance.py": "45aa06980a4972a05b54d124a3fa6aefd44874e79b718351767ba723f0a585da",
@@ -130,18 +130,18 @@
     "beestack/niche/metrics.py": "9cdeebd2181f403b3fa1f052edb41b43b2a448c2c022363b7b9b186ff1e13a93",
     "beestack/niche/state.py": "aabf7e55ff18ba1743b30a96ffcea7abea15c13f279dcf598cb47005af57cb59",
     "beestack/niche/thermal.py": "2d4bb64569c6acf097b0752f7e21cd139594f3418ee99f681eafe75719222ee0",
-    "beestack/orchestrator.py": "8e3c12643130cefa1f13ceddc5e04c0b01261c9d88905f2072a26218ddbe1b00",
+    "beestack/orchestrator.py": "923ca6bb5d45b2f4feb89a9d6cffacc34e1a738f1482fa42c02dbdbd675be60e",
     "beestack/pipeline.py": "5787cd9e7afb249013db52af24e94d32e0ff63f3b5049a50c9d2815a09db7a81",
     "beestack/project_config.py": "2f3a2f15d6463bd320c07da3136a3942cf6c26b161db91f82e909308142cc398",
     "beestack/publication_readiness.py": "994239f60b45e5a259d209c7e0d3490281a1609765bd04e849374b8d21010883",
     "beestack/research/__init__.py": "63f46c5200824257baf5cf097efb24b12ddd7916a6b421495b8f58534b7cda31",
     "beestack/research/methods.py": "f920a670b10496a0c1992a363e8d8c4c4e66b5e031dfc05f66c8bcc7d9db7ef1",
-    "beestack/research/methods_assembly.py": "163e4a90a460b9655870fe38545535b386634c57732a3254101e0b36ea45285e",
-    "beestack/research/methods_helpers.py": "3dfe3f7a6b52ed124231ae42e3e642ba60eb5f9247cdd2748f35c84c8b5e06f4",
-    "beestack/research/methods_models.py": "841ce1a41f09b2e0e266d4c716f8b1535c380e03ce1e5211d1b074c0888c15cf",
-    "beestack/research/methods_panels.py": "868dd6b26be65d26e547fb0976545566039c687195fc06d541933667d6bc335e",
-    "beestack/research/methods_validators.py": "5bc8c1e25736bbceb79354710f5f66fb91ecd1bc6b079a3138db0c889a11e261",
-    "beestack/research/suite.py": "4c6c58b577a3663f5fe3c45de0e34d4e0cd65b798b35a8424492b4e869694948",
+    "beestack/research/methods_assembly.py": "3f8da55d6539b0553be5bd5d267990d1d192b2ab819ab422ca6d731e0e03b640",
+    "beestack/research/methods_helpers.py": "133dd4d77195aff88cd018d85845814b53aaba020ec594a96b32f0fd149cd814",
+    "beestack/research/methods_models.py": "83628b29677c2d53dacfa32f0ed2853d9f1c40aac9c858f2fe45a59663809f9f",
+    "beestack/research/methods_panels.py": "ef8f2f8b8b88ead2c2924918de231b2c6935f555096883da75be4221a67e8580",
+    "beestack/research/methods_validators.py": "ba79c63bc44d3105a70ba9126b739f7ceb3c3b10490f8951af6704eb14520b9a",
+    "beestack/research/suite.py": "3c642036ada58c9a9dbe39337730d543fc91375d6a9c928f5e3d761320ddbb8f",
     "beestack/research/synthesis.py": "41f61c246cfe8bbe88865f755e9aef8d4749f79f7651e6ba26d6b11d87aefbab",
     "beestack/security/__init__.py": "c846de04689eaff7e35b6ef2c5ab7ae35f36abbaa3c841ef9040dffa2c643a29",
     "beestack/security/path_safety.py": "4a6f9a75eaf8fdaf524a8150614d618b772149e2ba9b5596f736b3661621bc0a",
@@ -169,31 +169,31 @@
     "beestack/visualization/empirical_figures.py": "ac6cbb9a126c128d58a90ab31fe646592abeb8a9a7ec82455f7b8a5a32d1337c",
     "beestack/visualization/figure_metadata.py": "261627f486ab3217db1b551608ae7eab1c9ac5fb8dc0455900fd8e5dd95f31d1",
     "beestack/visualization/figure_output.py": "8f7a850b11c0b12cc4906b6360f8fa42cfa333a6f388305f86a0df551aeda25b",
-    "beestack/visualization/figure_plot_data.py": "08dbc3e922564f9e646cf04bb5fbeee4bb57634ee47dca3de99c05687c606ac4",
-    "beestack/visualization/figure_plot_specs.py": "6200bf4b8093398db64eab8dad3cf0dc072a862e669d4adbc1f159707c2ffa15",
+    "beestack/visualization/figure_plot_data.py": "2dbdcc1c5b7f8939eb4e7e31f76a1baa3a137862e0e3d4088aa9722a015afa05",
+    "beestack/visualization/figure_plot_specs.py": "6dc17535afeb629d3631b35a147299fdf0c6ce6f2df564dcf3fa454a0a8bb430",
     "beestack/visualization/figure_registry.py": "9e88a46611f89675292c5d317f9e496ba020c214f44f1f8a9b91d38079700215",
     "beestack/visualization/figures.py": "4e112cb1dad0e37e9a8e369b2c58c77d46913f7f6bcd731ed6c8fda5a3d93021",
-    "beestack/visualization/figures_analysis_panels.py": "a930506c6e387cbd231c8bc704329aa0e090368a2176adf314656608311928db",
+    "beestack/visualization/figures_analysis_panels.py": "085139582f2fc2ed43ef121aed192fa315842f6ebdf5390b91512eac81aec699",
     "beestack/visualization/figures_calibration_maps.py": "58f952f1d9b3aec7be37e00db89488ab31a42766a75965781ccb7824162d26fa",
     "beestack/visualization/figures_claim_audit.py": "c022eab5d39d879b0fac76321536293e6753e4f92d4efa2babbe1b88a0246e13",
-    "beestack/visualization/figures_common.py": "f9a07acfad1fa8ce91c973b2b053227496a17ea1ce1654f4f42f011c6d5dfbac",
+    "beestack/visualization/figures_common.py": "8f781178c1d2e505c371b1b5f9a3427708400ed9fc01cd4033693548bfa438ed",
     "beestack/visualization/figures_overview.py": "fbd9e09ebc2c4a608d2ca98c87b2adce84b6a79618f9b055952d048edb6a6ad8",
-    "beestack/visualization/methods_figures.py": "54771bfe11eebd83a7cbf109de49e1bf619b1cddc7cc3ea91c092ba200c8b757",
+    "beestack/visualization/methods_figures.py": "0fac718295b11a30273f56f3aca5acec4f60677103f58a2d8d703332c84af06d",
     "beestack/visualization/render_stills.py": "a811c8eea63360f1619a1ef90e3ce49333c35c65059618b4da001dafaad5fedd",
-    "beestack/visualization/research_figures.py": "5507794d7cfe370de6e6ad048919d5140a65912aaa7ac0d8deb1fbc81e295774",
+    "beestack/visualization/research_figures.py": "8453385ca241c67e7409c3da3b33ed1bf7aecc68efd6fcf138629839bfaacf00",
     "beestack/visualization/style.py": "6750a85ff24240bc65bb0b89cb83bae8ed4ef33d31b2f231f5eee822ff123489",
     "beestack/visualization/synthesis_figures.py": "f20c49f09d78d4bbfc93e7978252f54eff7761d710d28cab58a91c1995e3d9f6",
     "beestack/visualization/visual_quality.py": "bff69f448e1f8be173e79c6525fa237e9c64f337ab7a89fdf841efa9b1ad887d",
     "beestack/waggle_literature_regression.py": "706955f930bd50d773edd4bb6e5bac2e304d362cf3902d11da96fb25eea5a593"
   },
   "core_before": {
-    "run_summary.json": "16849fa85935ed5a8f43633a09bd31c112656f1f1fb771e44a480c354795771f",
-    "simulation_records.json": "1c4bbb442c998e1f8e76dc4be4be11b61f70705ea454211b04e1462cdc4f05ee",
+    "run_summary.json": "65ea0947b48430c7e8b7950375a997bd0a1eaea09249ee83b0e9fcdb7c3f5eac",
+    "simulation_records.json": "1bfd077e6ffdff0cdf74553c9cfab47a8f51cb1ca00f41ffe5df87e5e543c421",
     "task_allocation.json": "d3b6256590b0739b1ec2b208c21863ff13a3ab1046eb92ac5b29edb457d610fa"
   },
   "core_after": {
-    "run_summary.json": "16849fa85935ed5a8f43633a09bd31c112656f1f1fb771e44a480c354795771f",
-    "simulation_records.json": "1c4bbb442c998e1f8e76dc4be4be11b61f70705ea454211b04e1462cdc4f05ee",
+    "run_summary.json": "65ea0947b48430c7e8b7950375a997bd0a1eaea09249ee83b0e9fcdb7c3f5eac",
+    "simulation_records.json": "1bfd077e6ffdff0cdf74553c9cfab47a8f51cb1ca00f41ffe5df87e5e543c421",
     "task_allocation.json": "d3b6256590b0739b1ec2b208c21863ff13a3ab1046eb92ac5b29edb457d610fa"
   },
   "outside_cwd_outputs_absent": true,

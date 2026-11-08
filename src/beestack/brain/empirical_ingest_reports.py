@@ -30,7 +30,7 @@ def markdown_report(report: dict[str, Any], figure_paths: list[Path], project_ro
         f"- Empirical drive label: `{report['empirical_drive_label']}`",
         f"- Empirical antennal vibration: `{report['empirical_antennal_vibration']}`",
         f"- Final stack empirical odor: `{report['simulation_summary_with_empirical_templates']['final_empirical_odor']}`",
-        f"- Final stack empirical alignment: `{report['simulation_summary_with_empirical_templates']['final_empirical_alignment']:.3f}`",
+        f"- Final stack empirical alignment: `{_optional_number(report['simulation_summary_with_empirical_templates']['final_empirical_alignment'])}`",
         "",
         "## Top BeeBrain Alignments",
         "",

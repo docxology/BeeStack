@@ -14,6 +14,13 @@ repair a contained project's runtime. Under inherited admission rules, use the
 qualified bounded offline test runner; acquire exact dependency artifacts in a
 separate admitted step. Missing prerequisites remain explicit, not mocked out.
 
+## Interactive HTML opens blank
+
+Interactive HTML generation is offline, but its viewer loads Plotly JavaScript
+from `cdn.plot.ly`. Viewing a fresh HTML artifact therefore requires access to
+that CDN. Use the generated PNG figures or combined PDF for fully offline
+viewing; the scientific computation does not require a chart-sharing service.
+
 ## `uv run python scripts/fetch_empirical_bee_data.py` Is Slow
 
 The default fetch attempts full curated downloads. Some Dryad archives are large.

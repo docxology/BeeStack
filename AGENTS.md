@@ -23,6 +23,8 @@ This project follows the research-template pattern:
 7. Empirical BeeBrain analysis is network/data gated. If public payloads are
    absent, document the availability state and blockers; do not synthesize fake
    empirical traces to make reports look complete.
+   Unobserved empirical means must not be filled with zero; finite diagnostic
+   maps omit them while preserving actual measured zeros.
 8. Digital-twin wording must stay conservative until longitudinal assimilation,
    held-out validation residuals, uncertainty, and governance artifacts exist.
 9. Source evidence is an offline contract. Manuscript citations must use Pandoc
@@ -56,6 +58,10 @@ This project follows the research-template pattern:
     and explicit shared sampling rates are required for executable templates.
     Current evidence must match raw payload, configuration and implementation hashes;
     skipped/failed analysis cannot revive historical output as a current measurement.
+    An absent template bank makes integrated alignment unavailable, not zero;
+    preserve null through records, summaries, sweeps and raw plot data. Scientific
+    charts must not compare unlike native units on shared axes or label configured
+    self-tests as biological validation.
 15. Render the manuscript locally with `scripts/render_manuscript.py`; Pandoc and
     XeLaTeX are required. No template-root commands or sibling output writes.
 

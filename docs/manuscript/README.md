@@ -25,6 +25,8 @@ Configured timing targets are not proof of executed cadence: the reduced loop
 selects a policy each control tick and does not substep MuJoCo. Reproducibility
 claims must identify the actual compared outputs and environment, not promise
 byte-identical rendering or timestamped reports from a shared seed alone.
+Optional template-bank diagnostics are N/A without supplied compatible templates;
+neither a missing odor label nor missing alignment is an empirical selection.
 
 Primary-source identity evidence and unresolved retrieval gaps are retained in
 `output/reports/workflowz_source_verification.json`. Its registry observations

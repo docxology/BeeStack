@@ -11,9 +11,13 @@ BeeBrain implements the reduced functional neural architecture:
   alignment, waggle-follower decoding, data-completeness scorecards, and
   Kenyon-cell subtype constraints.
 
-`BeeStackConfig.empirical` controls the dataset IDs, calcium protocol, atlas
-range, and odor-template priors used by the empirical helpers and
-`process_observation()`. `empirical_data.py` adds real-format parsers for
+`BeeStackConfig.empirical` controls dataset IDs, calcium protocol, atlas range,
+and the explicit synthetic-prior helper. `process_observation()` computes
+alignment only from supplied templates; without a bank its alignment map is
+empty and integrated records/summaries report null, not a selected odor with
+zero alignment. Constructed priors are opt-in counterfactual model inputs,
+never a substitute for absent empirical payloads.
+`empirical_data.py` adds real-format parsers for
 Paoli Dryad MATLAB `db.bee` calcium arrays, tabular Dryad workbook/CSV response
 panels, Jernigan frame-level antennal movement rows, and empirical template
 projection into the configured glomerulus axis. It also parses Hadjitofi-Webb

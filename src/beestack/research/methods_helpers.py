@@ -88,8 +88,11 @@ def _check(
     )
 
 
-def _metric_summary(metrics: dict[str, float]) -> str:
-    return ", ".join(f"`{name}={value:.3g}`" for name, value in sorted(metrics.items()))
+def _metric_summary(metrics: dict[str, float | None]) -> str:
+    return ", ".join(
+        f"`{name}={value:.3g}`" if value is not None else f"`{name}=unavailable`"
+        for name, value in sorted(metrics.items())
+    )
 
 
 def _evidence_status_summary(links: tuple[ManuscriptEvidenceLink, ...]) -> str:

@@ -32,6 +32,8 @@
   FlyBody/MuJoCo-backed witnesses from reduced kernels and empirical summaries.
 - Distinguish configured timing targets from executed reduced-loop behavior and
   limit reproducibility claims to compared artifacts and their observed runtime.
+- Optional template diagnostics must remain unavailable without supplied templates;
+  do not describe a blank odor or zero-imputed alignment as an empirical selection.
 - Every curated figure callout should carry a manuscript-useful caption:
   backend, source artifact/report, validation status, and what the reader must
   not infer from the figure. Prefer `manuscript_image_markdown()` in

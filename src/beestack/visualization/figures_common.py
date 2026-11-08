@@ -9,7 +9,7 @@ def _analysis_figure_fidelity(filename: str) -> str:
     """Classify base analysis figures without overstating biological fidelity."""
 
     if "beebrain_empirical" in filename:
-        return "empirical summary projected into a reduced BeeBrain contract"
+        return "reduced template-alignment diagnostic; empirical inputs only when available"
     if (
         "graphical_abstract" in filename
         or "contract" in filename
@@ -33,10 +33,16 @@ def _steps(records: list[dict[str, Any]]) -> list[int]:
     return [int(row.get("step_index", index)) for index, row in enumerate(records)]
 
 
-def _numeric_series(records: list[dict[str, Any]], key: str, default: float = 0.0) -> list[float]:
+def _numeric_series(
+    records: list[dict[str, Any]], key: str, default: float = 0.0
+) -> list[float | None]:
     if not records:
         return [default]
-    return [float(row.get(key, default)) for row in records]
+    series = []
+    for row in records:
+        value = row.get(key, default)
+        series.append(None if value is None else float(value))
+    return series
 
 
 def _policy_series(records: list[dict[str, Any]]) -> tuple[list[str], list[int]]:

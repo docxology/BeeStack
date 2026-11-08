@@ -47,6 +47,7 @@ def assemble_methods_analysis_report(
     artifact_metadata: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> MethodsAnalysisReport:
     """Assemble module-level methods diagnostics from generated stack artifacts."""
+    sweeps = _scenario_sweep_panels(research_report)
     previous = research_report.get("visualization_artifacts", ())
     metadata = {_visualization_path(str(row["path"]), project_root): row for row in previous}
     metadata.update(
@@ -90,7 +91,6 @@ def assemble_methods_analysis_report(
         _swarm_panel(cfg, simulation_records, animation_manifest, scorecards, visuals),
         _niche_panel(cfg, simulation_records, simulation_summary, scorecards, visuals),
     )
-    sweeps = _scenario_sweep_panels(research_report)
     evidence_links = tuple(link for panel in modules for link in panel.manuscript_evidence)
     gaps = _top_validation_gaps(modules, empirical_analysis, integrity_review)
     all_passed = all(panel.validation_panel.validation_fraction >= 1.0 for panel in modules)
@@ -151,8 +151,14 @@ def methods_analysis_markdown(report: MethodsAnalysisReport) -> str:
                 f"### {sweep.parameter}",
                 "",
                 f"- Values: `{', '.join(f'{value:.3g}' for value in sweep.values)}`",
-                f"- Dominant output: `{sweep.dominant_output}`",
+                f"- Varying outputs: `{', '.join(sweep.varying_outputs) or 'none'}`",
                 f"- Output ranges: {_metric_summary(sweep.output_ranges)}",
+                f"- Unavailable or partial outputs: `{', '.join(sweep.unavailable_outputs) or 'none'}`",
+                "- Observation counts: "
+                + ", ".join(
+                    f"`{name}={count}/{len(sweep.values)}`"
+                    for name, count in sweep.observation_counts.items()
+                ),
                 f"- Monotonic outputs: `{', '.join(sweep.monotonic_outputs) or 'none'}`",
                 f"- Insensitive outputs: `{', '.join(sweep.insensitive_outputs) or 'none'}`",
                 f"- Interpretation: {sweep.interpretation}",

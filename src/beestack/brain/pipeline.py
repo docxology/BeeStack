@@ -12,7 +12,6 @@ from .central_complex import heading_ring
 from .empirical import (
     empirical_alignment_score,
     empirical_brain_profile,
-    empirical_odor_response_templates,
 )
 from .mushroom_body import kenyon_sparse_code
 from .olfaction import glomerular_encode, lateral_inhibition
@@ -31,8 +30,8 @@ def process_observation(
 
     `odor_templates` can be produced by real empirical loaders such as
     `response_templates_from_calcium_dataset()` or
-    `response_templates_from_odor_panel()`. When omitted, BeeStack uses the
-    configured deterministic empirical priors.
+    `response_templates_from_odor_panel()`. Without supplied templates the
+    alignment map is empty; synthetic priors never substitute for absent data.
     """
 
     validate_observation(obs, cfg)
@@ -40,15 +39,14 @@ def process_observation(
     sparse = kenyon_sparse_code(glomeruli, cfg, seed=seed, projection=projection)
     # Reduced full-bearing compass; ocelli retain their 180-degree axis cue.
     heading = heading_ring(obs.heading_deg, obs.heading_deg, obs.optic_flow, cfg)
-    templates = (
-        dict(odor_templates)
-        if odor_templates is not None
-        else empirical_odor_response_templates(cfg)
+    alignment = (
+        {}
+        if odor_templates is None
+        else {
+            odorant: empirical_alignment_score(glomeruli, template)
+            for odorant, template in odor_templates.items()
+        }
     )
-    alignment = {
-        odorant: empirical_alignment_score(glomeruli, template)
-        for odorant, template in templates.items()
-    }
     dance = None
     amplitude, frequency = obs.antennal_vibration
     if johnston_event_detected(float(amplitude), float(frequency)):

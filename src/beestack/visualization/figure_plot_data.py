@@ -41,7 +41,7 @@ def timeseries_plot(
     title: str,
     x_key: str,
     x: list[float] | list[int],
-    series: dict[str, list[float]],
+    series: dict[str, list[float | None]],
     chart_type: str = "timeseries",
 ) -> dict[str, Any]:
     """Build a multi-series time/step plot payload."""

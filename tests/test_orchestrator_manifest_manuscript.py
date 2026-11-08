@@ -50,6 +50,25 @@ def test_run_simulation_is_deterministic_and_summarizable() -> None:
         run_simulation(cfg, steps=0)
 
 
+def test_unavailable_template_alignment_is_not_a_zero_measurement() -> None:
+    result = run_simulation(BeeStackConfig(), steps=2)
+    assert result.final_state.brain.empirical_alignment == {}
+    assert all(record.dominant_empirical_alignment is None for record in result.records)
+    assert result.summary()["final_empirical_alignment"] is None
+
+
+def test_supplied_zero_template_alignment_remains_numeric() -> None:
+    cfg = BeeStackConfig()
+    result = run_simulation(
+        cfg,
+        steps=1,
+        empirical_odor_templates={"explicit zero fixture": np.zeros(cfg.brain.glomeruli)},
+    )
+    assert result.final_state.brain.empirical_alignment == {"explicit zero fixture": 0.0}
+    assert result.records[0].dominant_empirical_alignment == 0.0
+    assert result.summary()["final_empirical_alignment"] == 0.0
+
+
 def test_run_simulation_accepts_empirical_template_drive() -> None:
     cfg = BeeStackConfig()
     template = np.linspace(0.0, 1.0, cfg.brain.glomeruli)

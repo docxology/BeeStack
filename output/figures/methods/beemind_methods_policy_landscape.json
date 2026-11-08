@@ -42,14 +42,14 @@
   "plot_data_path": "output/figures/methods/beemind_methods_policy_landscape_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 974,
+    "height_px": 976,
     "max_intensity": 255,
-    "mean_intensity": 236.891351796454,
+    "mean_intensity": 246.82912646842422,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 47.336201248297094,
-    "width_px": 1970
+    "std_intensity": 40.35973426341609,
+    "width_px": 1983
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
   "schema": "beestack.figure.v1",
@@ -63,14 +63,14 @@
   "validation_status": "nonblank image, quality sidecar, and plot data passed",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 2.023,
+    "aspect_ratio": 2.032,
     "figure_role": "overview",
-    "height_px": 974,
+    "height_px": 976,
     "label_density": "moderate",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 1970,
-    "min_dimension_px": 974,
+    "max_dimension_px": 1983,
+    "min_dimension_px": 976,
     "readability_status": "pass",
-    "width_px": 1970
+    "width_px": 1983
   }
 }

@@ -1,6 +1,6 @@
 {
   "pdf": "output/pdf/BeeStack_combined.pdf",
-  "pdf_sha256": "ecdb0246efbfe7414b7fee4f0061d6e2d0ea8e468811d3349b783bd82447fcdf",
+  "pdf_sha256": "9e4b0590323e48e09c25057acf970c0738a19bd35860a35b82c4046260f7ec0d",
   "pages": [
     {
       "page": 1,
@@ -266,7 +266,7 @@
     },
     {
       "page": 34,
-      "text_characters": 2715,
+      "text_characters": 2853,
       "image_count": 1,
       "topics": [
         "Ethics",
@@ -279,7 +279,7 @@
       "text_characters": 2906,
       "image_count": 1,
       "topics": [],
-      "starts_with": "Figure 26: Matplotlib beeniche comb occupancy time series shows Integrated-run comb-occupancy witness showing "
+      "starts_with": "Figure 26 traces BeeNiche comb occupancy across the integrated run.\nFigure 26: Matplotlib beeniche comb occupa"
     },
     {
       "page": 36,
@@ -459,7 +459,7 @@
   "maximum_overfull_pt": 0,
   "inspection": "All pages rasterized and text/structure observed; visual judgment recorded separately by the integration owner.",
   "integration_owner_visual_review": {
-    "overview_physical_pages": [
+    "all_page_contact_sheet_layout_review": [
       1,
       2,
       3,
@@ -517,20 +517,20 @@
       55,
       56
     ],
-    "detail_physical_pages": [
+    "high_resolution_detail_pages": [
       13,
       22,
       33,
       45,
       51
     ],
-    "detail_raster_long_edge_px": 1600,
+    "high_resolution_long_edge_px": 1600,
+    "accepted_layout": true,
     "observations": [
-      "All pages contain text or figures; no blank, visibly clipped or overlapping page content observed.",
-      "Literal paths and tables wrap; mathematical notation, captions and bibliography are present.",
-      "Unavailable empirical aggregates remain N/A; historical empirical figures are not presented as current results.",
-      "Strict multi-bee contact scenes are crowded scripted-pose witnesses, not calibrated colony dynamics."
+      "All 56 page compositions inspected; references and tables remain within page geometry.",
+      "Detail views inspected runtime/units/reproducibility, empirical N/A values, modality/aggregate distinctions, conservative fidelity limits and source provenance wrapping.",
+      "Figure captions distinguish software/render witnesses and synthetic model outputs from empirical biological validation."
     ],
-    "limit": "Visual/provenance inspection is not independent verification of every biological claim or parameter."
+    "limits": "Contact-sheet review is not full-resolution proofreading of every line; DOI/source-identity checks are not full-text scientific claim verification."
   }
 }

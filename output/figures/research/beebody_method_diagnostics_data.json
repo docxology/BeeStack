@@ -1,29 +1,42 @@
 {
-  "chart_type": "bar",
+  "chart_type": "table",
   "figure_path": "output/figures/research/beebody_method_diagnostics.png",
-  "labels": [
-    "body_mass_mg",
-    "wing_stroke_hz",
-    "bee_visual_score",
-    "bee_silhouette_score",
-    "morphology_score",
-    "inertia_rescaling_score",
-    "contact_proxy_count",
-    "real_flybody_animation_count"
-  ],
   "module": "BeeBody",
-  "orientation": "horizontal",
+  "rows": [
+    {
+      "metric": "bee_silhouette_score",
+      "value": 1.0
+    },
+    {
+      "metric": "bee_visual_score",
+      "value": 0.9909041341145833
+    },
+    {
+      "metric": "body_mass_mg",
+      "value": 80.0
+    },
+    {
+      "metric": "contact_proxy_count",
+      "value": 3.0
+    },
+    {
+      "metric": "inertia_rescaling_score",
+      "value": 0.82
+    },
+    {
+      "metric": "morphology_score",
+      "value": 1.0
+    },
+    {
+      "metric": "real_flybody_animation_count",
+      "value": 3.0
+    },
+    {
+      "metric": "wing_stroke_hz",
+      "value": 230.0
+    }
+  ],
   "schema": "beestack.figure_data.v1",
   "title": "beebody method diagnostics",
-  "validation_fraction": 1.0,
-  "values": [
-    80.0,
-    230.0,
-    0.9909041341145833,
-    1.0,
-    1.0,
-    0.82,
-    3.0,
-    3.0
-  ]
+  "validation_fraction": 1.0
 }

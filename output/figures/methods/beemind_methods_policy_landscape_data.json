@@ -1,27 +1,38 @@
 {
-  "chart_type": "bar",
+  "chart_type": "table",
   "figure_path": "output/figures/methods/beemind_methods_policy_landscape.png",
-  "labels": [
-    "policy_switch_count",
-    "efe_margin",
-    "efe_range",
-    "branching_factor",
-    "candidate_count",
-    "policy_horizon",
-    "final_energy_j"
-  ],
   "module": "BeeMind",
-  "orientation": "horizontal",
+  "rows": [
+    {
+      "metric": "branching_factor",
+      "value": 4.0
+    },
+    {
+      "metric": "candidate_count",
+      "value": 4.0
+    },
+    {
+      "metric": "efe_margin",
+      "value": 0.10801372983415232
+    },
+    {
+      "metric": "efe_range",
+      "value": 0.26625450046454535
+    },
+    {
+      "metric": "final_energy_j",
+      "value": 23.999143213986002
+    },
+    {
+      "metric": "policy_horizon",
+      "value": 10.0
+    },
+    {
+      "metric": "policy_switch_count",
+      "value": 0.0
+    }
+  ],
   "schema": "beestack.figure_data.v1",
   "title": "beemind methods policy landscape",
-  "validation_fraction": 1.0,
-  "values": [
-    0.0,
-    0.10801372983415232,
-    0.26625450046454535,
-    4.0,
-    4.0,
-    10.0,
-    23.999143213986002
-  ]
+  "validation_fraction": 1.0
 }

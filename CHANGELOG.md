@@ -15,6 +15,9 @@ All notable changes to BeeStack are documented in this file.
 - Python >=3.11,<3.13, pinned development runtime 3.12.16, and exact FlyBody commit.
 - Download caches require verified completion records; arbitrary Lambda/AWS targets
   are not curated origins. Container/array budgets apply before expansion/allocation.
+- No implicit synthetic template bank: absent alignment remains null. Scenario
+  panels retain nullable observations and derived counts/ranges; incomplete series
+  are unavailable, and the cross-unit `dominant_output` ranking is removed.
 
 - Executable empirical templates require complete observed grids and finite shared
   sampling rates. Source labels remain positional when biological identities are
@@ -60,6 +63,13 @@ All notable changes to BeeStack are documented in this file.
 - Manuscript timing now separates configured policy/physics targets from the
   executed reduced loop; reproducibility claims name the three compared JSON
   artifacts rather than promising identical rendering or timestamped reports.
+- Final browser review exposed shared/mixed-unit axes and an implicit synthetic
+  prior fallback masquerading as empirical template alignment. Explicit supplied
+  banks, nullable simulation/sweep outputs, native-unit small multiples, a module-
+  metric table and configured-self-test labels close those scientific-presentation
+  defects without inventing observations.
+- Methods/research metrics omit unobserved odor means while retaining measured
+  zero. Static and interactive module tables preserve native units.
 
 ### Release boundaries
 
@@ -69,8 +79,8 @@ verification remain explicit in the release receipt. No calibrated colony-twin c
 
 ### Exercised verification — 2026-11-08
 
-- Python 3.12.16 on macOS arm64: 727 tests passed; combined line/branch coverage
-  92.80%, with the 92% floor unchanged. Locked install, Ruff lint and format checks passed.
+- Python 3.12.16 on macOS arm64: 750 tests passed; combined line/branch coverage
+  92.84%, with the 92% floor unchanged. Locked install, Ruff lint and format checks passed.
 - Both non-editable wheel console commands ran real workflows from unrelated
   working directories. All 206 lazy exports resolved; the sdist rebuilt 119
   byte-identical packaged files. The three reduced-core JSON outputs reproduced exactly.
@@ -78,6 +88,10 @@ verification remain explicit in the release receipt. No calibrated colony-twin c
   gates ran. The combined 56-page PDF was visually inspected, with zero missing
   glyphs and zero overfull boxes. Strict deposit admission remains blocked by the
   absent new version-specific DOI; no 2.0 tag or release has been published.
+- All four HTML surfaces were exercised in installed desktop Chrome, including
+  actual legend hide/restore, 24 independent visible sweep axes, three unavailable
+  alignment series without plotted points, and a 49-row native-unit metric table.
+  This is not cross-browser, accessibility or biological validation.
 - Evidence, superseded failures, scientific limitations and unexercised surfaces:
   [Workflowz release audit](output/reports/workflowz_release_audit.json).
 

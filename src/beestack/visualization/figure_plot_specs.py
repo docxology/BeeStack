@@ -681,16 +681,16 @@ def methods_plot_data(
         token = module.lower()
         if token in name:
             panel = next(item for item in report.module_panels if item.module == module)
-            items = sorted(panel.quantitative_metrics.items(), key=lambda item: abs(item[1]))
-            return categorical_plot(
-                title=path.stem.replace("_", " "),
-                labels=[label for label, _ in items],
-                values=[value for _, value in items],
-                extra={
-                    "module": module,
-                    "validation_fraction": panel.validation_panel.validation_fraction,
-                },
-            )
+            return {
+                "chart_type": "table",
+                "title": path.stem.replace("_", " "),
+                "module": module,
+                "validation_fraction": panel.validation_panel.validation_fraction,
+                "rows": [
+                    {"metric": label, "value": value}
+                    for label, value in sorted(panel.quantitative_metrics.items())
+                ],
+            }
     return schematic_plot(title=path.stem.replace("_", " "), nodes=[])
 
 
@@ -720,7 +720,16 @@ def research_plot_data(path: Path, *, report: Any) -> dict[str, Any]:
                             "output": output,
                         }
                     )
-        return schematic_plot(title="Research sensitivity sweeps", nodes=rows)
+        return {
+            "chart_type": "faceted_timeseries",
+            "title": "Reduced-kernel sensitivity sweeps",
+            "rows": rows,
+            "facet_columns": "parameter",
+            "facet_rows": "output_name",
+            "x_key": "value",
+            "y_key": "output",
+            "independent_axes": True,
+        }
     if name in {"research_fidelity_evidence_network.png", "research_evidence_detail.png"}:
         nodes = [
             {"id": scorecard.module, "kind": "module"} for scorecard in report.module_scorecards
@@ -763,12 +772,16 @@ def research_plot_data(path: Path, *, report: Any) -> dict[str, Any]:
         token = module.lower()
         if token in name:
             scorecard = next(item for item in report.module_scorecards if item.module == module)
-            return categorical_plot(
-                title=path.stem.replace("_", " "),
-                labels=list(scorecard.metrics.keys()),
-                values=list(scorecard.metrics.values()),
-                extra={"module": module, "validation_fraction": scorecard.validation_fraction},
-            )
+            return {
+                "chart_type": "table",
+                "title": path.stem.replace("_", " "),
+                "module": module,
+                "validation_fraction": scorecard.validation_fraction,
+                "rows": [
+                    {"metric": label, "value": value}
+                    for label, value in sorted(scorecard.metrics.items())
+                ],
+            }
     return schematic_plot(title=path.stem.replace("_", " "), nodes=[])
 
 

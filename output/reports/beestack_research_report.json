@@ -126,7 +126,6 @@
         "anatomy_inventory_count": 0.0,
         "brain_data_parseable_fraction": 0.0,
         "empirical_panel_count": 0.0,
-        "mean_odor_separability": 0.0,
         "registered_dataset_count": 10.0,
         "source_verified_fraction": 0.0,
         "template_count": 0.0,
@@ -176,7 +175,6 @@
       ],
       "metrics": {
         "branching_factor": 4.0,
-        "final_empirical_alignment": 0.0,
         "final_energy_j": 23.999143213986002,
         "policy_horizon": 10.0,
         "risk_sensitivity": 0.5
@@ -312,11 +310,11 @@
           0.08333333333333333
         ],
         "final_empirical_alignment": [
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         "final_energy_j": [
           23.99982150291375,
@@ -353,11 +351,11 @@
           0.08333333333333333
         ],
         "final_empirical_alignment": [
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         "final_energy_j": [
           23.99982150291375,
@@ -394,11 +392,11 @@
           0.08333333333333333
         ],
         "final_empirical_alignment": [
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0
+          null,
+          null,
+          null,
+          null,
+          null
         ],
         "final_energy_j": [
           23.99982150291375,
@@ -552,7 +550,7 @@
       "artifact_type": "figure",
       "availability_status": "unrecorded",
       "backend": "Matplotlib",
-      "fidelity_level": "empirical summary projected into a reduced BeeBrain contract",
+      "fidelity_level": "reduced template-alignment diagnostic; empirical inputs only when available",
       "path": "output/figures/beebrain_empirical_alignment_timeseries.png",
       "regeneration_command": "uv run python scripts/analysis_pipeline.py",
       "source_data": "output/data/simulation_records.json and module coverage records",

@@ -25,7 +25,7 @@ from beestack.research.methods_assembly import (
     assemble_methods_analysis_report,
     manuscript_figure_index,
 )
-from beestack.research.suite import assemble_research_suite_report
+from beestack.research.suite import assemble_research_suite_report, run_sensitivity_sweeps
 from beestack.swarm.communication import dance_recruitment_diagnostics
 from beestack.swarm.state import BeeAgent
 from beestack.utils import project_relative_path, project_relative_payload
@@ -184,6 +184,7 @@ def _sidecars(root):
 
 def test_unique_inventory_preserves_sidecar_provenance_through_index(tmp_path):
     cfg = config_from_mapping({})
+    sweeps = run_sensitivity_sweeps(cfg)
     metadata = _sidecars(tmp_path)
     paths = (
         *metadata,
@@ -200,7 +201,7 @@ def test_unique_inventory_preserves_sidecar_provenance_through_index(tmp_path):
             empirical_analysis={},
             figure_paths=paths,
             interactive_paths=(),
-            sensitivity_sweeps=(),
+            sensitivity_sweeps=sweeps,
             project_root=tmp_path,
             artifact_metadata=metadata,
         )

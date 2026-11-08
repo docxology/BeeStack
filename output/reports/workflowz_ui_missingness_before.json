@@ -1,0 +1,86 @@
+{
+  "source_commit": "1d3f547b39472ba840f6c5dbc0a646acd69f48b3",
+  "observed_in_real_native_workflows": true,
+  "summary_alignment_without_templates": 0.0,
+  "sweep_alignment_without_templates": [
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "browser_observations": [
+    {
+      "path": "output/interactive/methods_dashboard.html",
+      "plots": [
+        {
+          "title": "BeeStack methods-analysis validation and visualization coverage",
+          "traces": 5
+        }
+      ]
+    },
+    {
+      "path": "output/interactive/methods_module_metrics.html",
+      "observed": {
+        "plotlyLoaded": true,
+        "plots": [
+          {
+            "title": "BeeStack methods-analysis module metrics",
+            "traces": 5,
+            "xaxis": "metric",
+            "yaxis": "value"
+          }
+        ]
+      }
+    },
+    {
+      "path": "output/interactive/research_scorecards.html",
+      "observed": {
+        "plotlyLoaded": true,
+        "plots": [
+          {
+            "title": "BeeStack research validation scorecards",
+            "traces": 5,
+            "xaxis": "module",
+            "yaxis": "validation_fraction"
+          }
+        ]
+      }
+    },
+    {
+      "path": "output/interactive/research_sensitivity_sweeps.html",
+      "observed": {
+        "plotlyLoaded": true,
+        "plots": [
+          {
+            "title": "BeeStack reduced-kernel sensitivity sweeps",
+            "traces": 12,
+            "xaxis": "value",
+            "yaxis": "output"
+          }
+        ]
+      }
+    }
+  ],
+  "defects": [
+    "Absent template alignment encoded as numeric zero.",
+    "Shared axes compress unlike parameter ranges/outputs; mixed-unit module values share one bar axis.",
+    "Interactive score labels do not state config-band self-test versus biological-validation scope."
+  ]
+}

@@ -1,7 +1,10 @@
 {
-  "chart_type": "schematic",
+  "chart_type": "faceted_timeseries",
+  "facet_columns": "parameter",
+  "facet_rows": "output_name",
   "figure_path": "output/figures/research/research_sensitivity_sweeps.png",
-  "nodes": [
+  "independent_axes": true,
+  "rows": [
     {
       "output": 23.99982150291375,
       "output_name": "final_energy_j",
@@ -93,31 +96,31 @@
       "value": 0.75
     },
     {
-      "output": 0.0,
+      "output": null,
       "output_name": "final_empirical_alignment",
       "parameter": "mind.energy_threshold",
       "value": 0.15
     },
     {
-      "output": 0.0,
+      "output": null,
       "output_name": "final_empirical_alignment",
       "parameter": "mind.energy_threshold",
       "value": 0.3
     },
     {
-      "output": 0.0,
+      "output": null,
       "output_name": "final_empirical_alignment",
       "parameter": "mind.energy_threshold",
       "value": 0.44999999999999996
     },
     {
-      "output": 0.0,
+      "output": null,
       "output_name": "final_empirical_alignment",
       "parameter": "mind.energy_threshold",
       "value": 0.6
     },
     {
-      "output": 0.0,
+      "output": null,
       "output_name": "final_empirical_alignment",
       "parameter": "mind.energy_threshold",
       "value": 0.75
@@ -213,31 +216,31 @@
       "value": 0.7
     },
     {
-      "output": 0.0,
+      "output": null,
       "output_name": "final_empirical_alignment",
       "parameter": "mind.follow_probability_threshold",
       "value": 0.1
     },
     {
-      "output": 0.0,
+      "output": null,
       "output_name": "final_empirical_alignment",
       "parameter": "mind.follow_probability_threshold",
       "value": 0.25
     },
     {
-      "output": 0.0,
+      "output": null,
       "output_name": "final_empirical_alignment",
       "parameter": "mind.follow_probability_threshold",
       "value": 0.4
     },
     {
-      "output": 0.0,
+      "output": null,
       "output_name": "final_empirical_alignment",
       "parameter": "mind.follow_probability_threshold",
       "value": 0.5499999999999999
     },
     {
-      "output": 0.0,
+      "output": null,
       "output_name": "final_empirical_alignment",
       "parameter": "mind.follow_probability_threshold",
       "value": 0.7
@@ -333,36 +336,38 @@
       "value": 34.0
     },
     {
-      "output": 0.0,
+      "output": null,
       "output_name": "final_empirical_alignment",
       "parameter": "niche.ambient_temperature_c",
       "value": 18.0
     },
     {
-      "output": 0.0,
+      "output": null,
       "output_name": "final_empirical_alignment",
       "parameter": "niche.ambient_temperature_c",
       "value": 22.0
     },
     {
-      "output": 0.0,
+      "output": null,
       "output_name": "final_empirical_alignment",
       "parameter": "niche.ambient_temperature_c",
       "value": 26.0
     },
     {
-      "output": 0.0,
+      "output": null,
       "output_name": "final_empirical_alignment",
       "parameter": "niche.ambient_temperature_c",
       "value": 30.0
     },
     {
-      "output": 0.0,
+      "output": null,
       "output_name": "final_empirical_alignment",
       "parameter": "niche.ambient_temperature_c",
       "value": 34.0
     }
   ],
   "schema": "beestack.figure_data.v1",
-  "title": "Research sensitivity sweeps"
+  "title": "Reduced-kernel sensitivity sweeps",
+  "x_key": "value",
+  "y_key": "output"
 }

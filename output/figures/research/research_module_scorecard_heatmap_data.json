@@ -60,7 +60,6 @@
         "anatomy_inventory_count": 0.0,
         "brain_data_parseable_fraction": 0.0,
         "empirical_panel_count": 0.0,
-        "mean_odor_separability": 0.0,
         "registered_dataset_count": 10.0,
         "source_verified_fraction": 0.0,
         "template_count": 0.0,
@@ -110,7 +109,6 @@
       ],
       "metrics": {
         "branching_factor": 4.0,
-        "final_empirical_alignment": 0.0,
         "final_energy_j": 23.999143213986002,
         "policy_horizon": 10.0,
         "risk_sensitivity": 0.5

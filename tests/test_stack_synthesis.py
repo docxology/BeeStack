@@ -58,6 +58,20 @@ def _synthesis_fixture():
 
 def test_stack_synthesis_review_serializes_and_figures(tmp_path: Path) -> None:
     cfg, records, summary, research, methods = _synthesis_fixture()
+    assert summary["final_empirical_alignment"] is None
+    assert all(record["dominant_empirical_alignment"] is None for record in records)
+    for raw, panel in zip(research["sensitivity_sweeps"], methods["scenario_sweeps"], strict=True):
+        assert tuple(panel["outputs"]["final_empirical_alignment"]) == tuple(
+            raw["outputs"]["final_empirical_alignment"]
+        )
+        assert all(value is None for value in panel["outputs"]["final_empirical_alignment"])
+        assert panel["observation_counts"]["final_empirical_alignment"] == 0
+        assert panel["output_ranges"]["final_empirical_alignment"] is None
+        assert "final_empirical_alignment" in panel["unavailable_outputs"]
+        assert "final_empirical_alignment" not in panel["insensitive_outputs"]
+        assert "final_empirical_alignment" not in panel["monotonic_outputs"]
+        assert "final_empirical_alignment" not in panel["varying_outputs"]
+    sweep_evidence = json.dumps(methods["scenario_sweeps"], allow_nan=False)
     review = assemble_stack_synthesis_review(
         cfg,
         simulation_records=records,
@@ -73,6 +87,7 @@ def test_stack_synthesis_review_serializes_and_figures(tmp_path: Path) -> None:
         readiness_review={"signposting": {"directory_count": 10}},
         bibliography_keys=("seeley1989superorganism", "saltelli2008global"),
     )
+    assert json.dumps(methods["scenario_sweeps"], allow_nan=False) == sweep_evidence
     payload = review.as_dict()
     assert [panel["module"] for panel in payload["module_panels"]] == [
         "BeeBody",

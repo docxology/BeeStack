@@ -1,7 +1,7 @@
 {
   "parser": "Pandoc 3.13 Markdown AST; code examples are not interpreted as links",
-  "documents": 85,
-  "local_links_checked": 16,
+  "documents": 88,
+  "local_links_checked": 18,
   "failures": [],
-  "scope": "source-owned README/AGENTS, docs, src, scripts and GitHub Markdown; remote HTTP identity/provenance checked separately"
+  "scope": "all root Markdown plus source-owned docs, src, scripts and GitHub Markdown; remote HTTP identity/provenance checked separately"
 }

@@ -55,7 +55,7 @@
 - `output/figures/empirical/brain_data_completeness_matrix.png` `dashboard` `dense` `pass` split=`none` caption=`377` alt=`78`
 - `output/figures/empirical/bee_brain_multimodal_source_map.png` `overview` `moderate` `pass` split=`none` caption=`424` alt=`80`
 - `output/figures/research/research_module_scorecard_heatmap.png` `dashboard` `moderate` `pass` split=`none` caption=`386` alt=`54`
-- `output/figures/research/research_sensitivity_sweeps.png` `overview` `moderate` `pass` split=`none` caption=`388` alt=`69`
+- `output/figures/research/research_sensitivity_sweeps.png` `overview` `dense` `pass` split=`none` caption=`388` alt=`69`
 - `output/figures/research/research_fidelity_evidence_network.png` `overview` `dense` `pass` split=`research_evidence` caption=`351` alt=`80`
 - `output/figures/research/research_evidence_detail.png` `detail` `dense` `pass` split=`research_evidence` caption=`399` alt=`104`
 - `output/figures/research/stack_synthesis_dashboard.png` `dashboard` `dense` `pass` split=`stack_synthesis` caption=`380` alt=`94`

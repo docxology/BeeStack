@@ -60,6 +60,14 @@ antenna conditions are plotted as unavailable gaps and serialized as nulls, not
 zero-error observations. Signature `motion_pixels` counts the union of changed
 RGB channels over adjacent frames, including periodic sequences with equal endpoints.
 
+Unavailable simulation template alignment remains null through summaries,
+sensitivity sweeps and raw plot data; a plot must show missing points rather
+than invent zero alignment. Sweep panels use independent native-unit axes for
+each input/output pair. Mixed-unit module metrics use a table, not a shared
+numeric bar axis. Interactive scorecards explicitly label configured self-tests,
+not biological validation. HTML viewers load Plotly from `cdn.plot.ly`; PNG/PDF
+artifacts support fully offline viewing.
+
 `connectome_figures.py` and `figure_plot_specs.py` share the typed structural/
 schematic graph boundary. Source-backed structural tract edges remain solid;
 unsupported semantic pathways remain dashed with their actual `edge_kind` in

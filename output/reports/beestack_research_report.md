@@ -25,7 +25,7 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 
 - Fidelity: `empirical reduced AL-MB-CX kernel`
 - Validation fraction: `0.000`
-- Metrics: `anatomy_inventory_count=0`, `brain_data_parseable_fraction=0`, `empirical_panel_count=0`, `mean_odor_separability=0`, `registered_dataset_count=10`, `source_verified_fraction=0`, `template_count=0`, `waggle_follower_confidence=0`
+- Metrics: `anatomy_inventory_count=0`, `brain_data_parseable_fraction=0`, `empirical_panel_count=0`, `registered_dataset_count=10`, `source_verified_fraction=0`, `template_count=0`, `waggle_follower_confidence=0`
 - Evidence: Curated public honeybee anatomy/activity loaders and template-bank integration.
 - Known gaps: No heavyweight spiking simulator is required in the default path.; The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics.
 
@@ -33,7 +33,7 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 
 - Fidelity: `bounded active-inference-style policy kernel`
 - Validation fraction: `1.000`
-- Metrics: `branching_factor=4`, `final_empirical_alignment=0`, `final_energy_j=24`, `policy_horizon=10`, `risk_sensitivity=0.5`
+- Metrics: `branching_factor=4`, `final_energy_j=24`, `policy_horizon=10`, `risk_sensitivity=0.5`
 - Evidence: Expected-free-energy policy diagnostics and deterministic policy selection.
 - Known gaps: No learned transition model or recursive social-belief inference yet.; Expected free energy terms are transparent hand-calibrated witnesses.
 
@@ -84,7 +84,7 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 - `output/figures/beebody_beeswarm_micro_macro_calibration.png`: figure, architecture schematic, nonblank quality sidecar and plot data generated
 - `output/figures/beebody_motion_power_phase.png`: figure, reduced deterministic kernel diagnostic, nonblank quality sidecar and plot data generated
 - `output/figures/beebrain_beemind_anatomy_policy_map.png`: figure, architecture schematic, nonblank quality sidecar and plot data generated
-- `output/figures/beebrain_empirical_alignment_timeseries.png`: figure, empirical summary projected into a reduced BeeBrain contract, nonblank quality sidecar and plot data generated
+- `output/figures/beebrain_empirical_alignment_timeseries.png`: figure, reduced template-alignment diagnostic; empirical inputs only when available, nonblank quality sidecar and plot data generated
 - `output/figures/beemind_policy_timeline.png`: figure, reduced deterministic kernel diagnostic, nonblank quality sidecar and plot data generated
 - `output/figures/beeniche_adapter_niche_map.png`: figure, architecture schematic, nonblank quality sidecar and plot data generated
 - `output/figures/beeniche_thermal_comb_panel.png`: figure, reduced deterministic kernel diagnostic, nonblank quality sidecar and plot data generated

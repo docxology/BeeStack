@@ -25,7 +25,7 @@ Science-first per-module methods panels connecting quantitative diagnostics, val
 
 - Fidelity: `empirical reduced AL-MB-CX kernel`
 - Methods: empirical anatomy inventory; workbook/CSV activity parsing; waggle follower antennal-position parsing; odor-template bank projection; AL/MB/CX reduced kernel validation
-- Metrics: `anatomy_inventory_count=0`, `brain_data_parseable_fraction=0`, `brain_source_verified_fraction=0`, `calcium_dataset_count=0`, `empirical_panel_count=0`, `enabled_dataset_count=10`, `mean_odor_separability=0`, `neuropil_count=0`, `region_response_class_count=0`, `template_count=0`, `waggle_both_antennae_error_count=0`, `waggle_follower_confidence=0`, `waggle_no_antennae_error_count=0`
+- Metrics: `anatomy_inventory_count=0`, `brain_data_parseable_fraction=0`, `brain_source_verified_fraction=0`, `calcium_dataset_count=0`, `empirical_panel_count=0`, `enabled_dataset_count=10`, `neuropil_count=0`, `region_response_class_count=0`, `template_count=0`, `waggle_both_antennae_error_count=0`, `waggle_follower_confidence=0`, `waggle_no_antennae_error_count=0`
 - Validation fraction: `0.000`
 - Visual artifacts: `22`
 - Evidence status: output/reports/empirical_analysis.md [network_gated_absent]; output/reports/waggle_follower_analysis.md [missing_optional]
@@ -70,28 +70,34 @@ Science-first per-module methods panels connecting quantitative diagnostics, val
 ### mind.energy_threshold
 
 - Values: `0.15, 0.3, 0.45, 0.6, 0.75`
-- Dominant output: `final_comb_fraction`
-- Output ranges: `final_comb_fraction=0`, `final_empirical_alignment=0`, `final_energy_j=0`, `total_recruited_followers=0`
+- Varying outputs: `none`
+- Output ranges: `final_comb_fraction=0`, `final_empirical_alignment=unavailable`, `final_energy_j=0`, `total_recruited_followers=0`
+- Unavailable or partial outputs: `final_empirical_alignment`
+- Observation counts: `final_comb_fraction=5/5`, `final_empirical_alignment=0/5`, `final_energy_j=5/5`, `total_recruited_followers=5/5`
 - Monotonic outputs: `none`
-- Insensitive outputs: `final_comb_fraction, final_empirical_alignment, final_energy_j, total_recruited_followers`
+- Insensitive outputs: `final_comb_fraction, final_energy_j, total_recruited_followers`
 - Interpretation: mind.energy_threshold sweep is insensitive under the current reduced kernel; recruitment and comb fraction ranges both stayed at 0.
 
 ### mind.follow_probability_threshold
 
 - Values: `0.1, 0.25, 0.4, 0.55, 0.7`
-- Dominant output: `total_recruited_followers`
-- Output ranges: `final_comb_fraction=0`, `final_empirical_alignment=0`, `final_energy_j=0`, `total_recruited_followers=30`
+- Varying outputs: `total_recruited_followers`
+- Output ranges: `final_comb_fraction=0`, `final_empirical_alignment=unavailable`, `final_energy_j=0`, `total_recruited_followers=30`
+- Unavailable or partial outputs: `final_empirical_alignment`
+- Observation counts: `final_comb_fraction=5/5`, `final_empirical_alignment=0/5`, `final_energy_j=5/5`, `total_recruited_followers=5/5`
 - Monotonic outputs: `total_recruited_followers`
-- Insensitive outputs: `final_comb_fraction, final_empirical_alignment, final_energy_j`
+- Insensitive outputs: `final_comb_fraction, final_energy_j`
 - Interpretation: mind.follow_probability_threshold sweep changed recruitment by 30 and comb fraction by 0 in the reduced kernel.
 
 ### niche.ambient_temperature_c
 
 - Values: `18, 22, 26, 30, 34`
-- Dominant output: `final_comb_fraction`
-- Output ranges: `final_comb_fraction=0`, `final_empirical_alignment=0`, `final_energy_j=0`, `total_recruited_followers=0`
+- Varying outputs: `none`
+- Output ranges: `final_comb_fraction=0`, `final_empirical_alignment=unavailable`, `final_energy_j=0`, `total_recruited_followers=0`
+- Unavailable or partial outputs: `final_empirical_alignment`
+- Observation counts: `final_comb_fraction=5/5`, `final_empirical_alignment=0/5`, `final_energy_j=5/5`, `total_recruited_followers=5/5`
 - Monotonic outputs: `none`
-- Insensitive outputs: `final_comb_fraction, final_empirical_alignment, final_energy_j, total_recruited_followers`
+- Insensitive outputs: `final_comb_fraction, final_energy_j, total_recruited_followers`
 - Interpretation: niche.ambient_temperature_c sweep is insensitive under the current reduced kernel; recruitment and comb fraction ranges both stayed at 0.
 
 ## Evidence Availability Links

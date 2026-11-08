@@ -20,10 +20,11 @@ selected policy was `{{FINAL_POLICY}}`, the final body speed was
 The final comb occupancy fraction was {{FINAL_COMB_FRACTION}}, and the
 brood-temperature error at the final step was
 {{BROOD_TEMP_ERROR_C}} °C from the configured {{BROOD_TEMP_TARGET_C}}
-°C target [@kronenberg1982colonial]. The run ended
-with empirical odor label `{{FINAL_EMPIRICAL_ODOR}}` selected from the
-registered odor templates, and an empirical-alignment score of
-{{FINAL_EMPIRICAL_ALIGNMENT}}.
+°C target [@kronenberg1982colonial]. The optional template-bank diagnostic
+reports odor `{{FINAL_EMPIRICAL_ODOR}}` and alignment
+{{FINAL_EMPIRICAL_ALIGNMENT}} when compatible templates are supplied; without
+that bank the diagnostic is unavailable, not a measured zero. It neither drives
+the fixed synthetic dance scenario nor establishes biological validation.
 
 ## Witness figures
 

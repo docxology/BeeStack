@@ -151,7 +151,7 @@ class SensitivitySweepResult:
 
     parameter: str
     values: tuple[float, ...]
-    outputs: dict[str, tuple[float, ...]]
+    outputs: dict[str, tuple[float | None, ...]]
     interpretation: str
 
     def __post_init__(self) -> None:
@@ -165,7 +165,9 @@ class SensitivitySweepResult:
         for name, values in self.outputs.items():
             if len(values) != len(self.values):
                 raise ValueError(f"sensitivity output {name} length mismatch")
-            _validate_numeric_sequence(values, f"sensitivity output {name}")
+            observed = tuple(value for value in values if value is not None)
+            if observed:
+                _validate_numeric_sequence(observed, f"sensitivity output {name}")
         if not self.interpretation:
             raise ValueError("sensitivity interpretation must be nonempty")
 
@@ -391,7 +393,7 @@ def _sweep(
     summaries = [
         run_simulation(cfg, steps=cfg.research.scenario_count).summary() for cfg in configs
     ]
-    outputs = {
+    outputs: dict[str, tuple[float | None, ...]] = {
         "final_energy_j": tuple(float(summary["final_energy_j"]) for summary in summaries),
         "total_recruited_followers": tuple(
             float(summary["total_recruited_followers"]) for summary in summaries
@@ -400,7 +402,7 @@ def _sweep(
             float(summary["final_comb_fraction"]) for summary in summaries
         ),
         "final_empirical_alignment": tuple(
-            float(summary["final_empirical_alignment"]) for summary in summaries
+            summary["final_empirical_alignment"] for summary in summaries
         ),
     }
     return SensitivitySweepResult(
@@ -411,9 +413,15 @@ def _sweep(
     )
 
 
-def _interpret_sweep(parameter: str, outputs: dict[str, tuple[float, ...]]) -> str:
-    recruited = outputs["total_recruited_followers"]
-    comb = outputs["final_comb_fraction"]
+def _interpret_sweep(parameter: str, outputs: dict[str, tuple[float | None, ...]]) -> str:
+    recruited = tuple(value for value in outputs["total_recruited_followers"] if value is not None)
+    comb = tuple(value for value in outputs["final_comb_fraction"] if value is not None)
+    if len(recruited) != len(outputs["total_recruited_followers"]) or len(comb) != len(
+        outputs["final_comb_fraction"]
+    ):
+        return (
+            f"{parameter} has unavailable recruitment/comb outputs; full ranges cannot be assessed."
+        )
     recruitment_range = max(recruited) - min(recruited)
     comb_range = max(comb) - min(comb)
     if recruitment_range == 0 and comb_range == 0:
@@ -438,6 +446,11 @@ def _module_scorecards(
     contact = manifest.get("flybody_contact_physics", {})
     bee_visual = manifest.get("bee_visual_signature", {})
     empirical_summary = empirical.get("activity_summary", {})
+    mean_odor_metrics = {}
+    if empirical_summary.get("mean_odor_separability") is not None:
+        mean_odor_metrics["mean_odor_separability"] = float(
+            empirical_summary["mean_odor_separability"]
+        )
     anatomy_summary = empirical.get("anatomy_summary", {})
     template_count = _float(
         empirical.get("template_count", empirical.get("template_bank", {}).get("template_count"))
@@ -512,7 +525,7 @@ def _module_scorecards(
                 "empirical_panel_count": _float(empirical.get("panel_count")),
                 "template_count": template_count,
                 "anatomy_inventory_count": _float(anatomy_summary.get("inventory_count")),
-                "mean_odor_separability": _float(empirical_summary.get("mean_odor_separability")),
+                **mean_odor_metrics,
                 "waggle_follower_confidence": _float(
                     empirical_summary.get("waggle_follower_summary", {}).get("confidence_score")
                 ),
@@ -560,11 +573,15 @@ def _module_scorecards(
             "BeeMind",
             module_reports,
             {
-                "policy_horizon": float(cfg.mind.policy_horizon),
-                "branching_factor": float(cfg.mind.branching_factor),
-                "risk_sensitivity": cfg.mind.risk_sensitivity,
-                "final_energy_j": _float(summary.get("final_energy_j")),
-                "final_empirical_alignment": _float(summary.get("final_empirical_alignment")),
+                key: value
+                for key, value in {
+                    "policy_horizon": float(cfg.mind.policy_horizon),
+                    "branching_factor": float(cfg.mind.branching_factor),
+                    "risk_sensitivity": cfg.mind.risk_sensitivity,
+                    "final_energy_j": _float(summary.get("final_energy_j")),
+                    "final_empirical_alignment": summary.get("final_empirical_alignment"),
+                }.items()
+                if value is not None
             },
             (
                 _validation(

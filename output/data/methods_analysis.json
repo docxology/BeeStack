@@ -469,7 +469,6 @@
         "calcium_dataset_count": 0.0,
         "empirical_panel_count": 0.0,
         "enabled_dataset_count": 10.0,
-        "mean_odor_separability": 0.0,
         "neuropil_count": 0.0,
         "region_response_class_count": 0.0,
         "template_count": 0.0,
@@ -645,7 +644,7 @@
         "fidelity_levels": [
           "reduced_schematic",
           "architecture schematic",
-          "empirical summary projected into a reduced BeeBrain contract",
+          "reduced template-alignment diagnostic; empirical inputs only when available",
           "empirical dataset availability diagnostic",
           "empirical waggle/follower summary diagnostic",
           "empirical dataset availability diagnostic",
@@ -1278,80 +1277,196 @@
   "overall_validation_fraction": 0.8,
   "scenario_sweeps": [
     {
-      "dominant_output": "final_comb_fraction",
       "insensitive_outputs": [
         "final_comb_fraction",
-        "final_empirical_alignment",
         "final_energy_j",
         "total_recruited_followers"
       ],
       "interpretation": "mind.energy_threshold sweep is insensitive under the current reduced kernel; recruitment and comb fraction ranges both stayed at 0.",
       "monotonic_outputs": [],
+      "observation_counts": {
+        "final_comb_fraction": 5,
+        "final_empirical_alignment": 0,
+        "final_energy_j": 5,
+        "total_recruited_followers": 5
+      },
       "output_ranges": {
         "final_comb_fraction": 0.0,
-        "final_empirical_alignment": 0.0,
+        "final_empirical_alignment": null,
         "final_energy_j": 0.0,
         "total_recruited_followers": 0.0
       },
+      "outputs": {
+        "final_comb_fraction": [
+          0.08333333333333333,
+          0.08333333333333333,
+          0.08333333333333333,
+          0.08333333333333333,
+          0.08333333333333333
+        ],
+        "final_empirical_alignment": [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "final_energy_j": [
+          23.99982150291375,
+          23.99982150291375,
+          23.99982150291375,
+          23.99982150291375,
+          23.99982150291375
+        ],
+        "total_recruited_followers": [
+          35.0,
+          35.0,
+          35.0,
+          35.0,
+          35.0
+        ]
+      },
       "parameter": "mind.energy_threshold",
+      "unavailable_outputs": [
+        "final_empirical_alignment"
+      ],
       "values": [
         0.15,
         0.3,
         0.44999999999999996,
         0.6,
         0.75
-      ]
+      ],
+      "varying_outputs": []
     },
     {
-      "dominant_output": "total_recruited_followers",
       "insensitive_outputs": [
         "final_comb_fraction",
-        "final_empirical_alignment",
         "final_energy_j"
       ],
       "interpretation": "mind.follow_probability_threshold sweep changed recruitment by 30 and comb fraction by 0 in the reduced kernel.",
       "monotonic_outputs": [
         "total_recruited_followers"
       ],
+      "observation_counts": {
+        "final_comb_fraction": 5,
+        "final_empirical_alignment": 0,
+        "final_energy_j": 5,
+        "total_recruited_followers": 5
+      },
       "output_ranges": {
         "final_comb_fraction": 0.0,
-        "final_empirical_alignment": 0.0,
+        "final_empirical_alignment": null,
         "final_energy_j": 0.0,
         "total_recruited_followers": 30.0
       },
+      "outputs": {
+        "final_comb_fraction": [
+          0.08333333333333333,
+          0.08333333333333333,
+          0.08333333333333333,
+          0.08333333333333333,
+          0.08333333333333333
+        ],
+        "final_empirical_alignment": [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "final_energy_j": [
+          23.99982150291375,
+          23.99982150291375,
+          23.99982150291375,
+          23.99982150291375,
+          23.99982150291375
+        ],
+        "total_recruited_followers": [
+          40.0,
+          35.0,
+          30.0,
+          25.0,
+          10.0
+        ]
+      },
       "parameter": "mind.follow_probability_threshold",
+      "unavailable_outputs": [
+        "final_empirical_alignment"
+      ],
       "values": [
         0.1,
         0.25,
         0.4,
         0.5499999999999999,
         0.7
+      ],
+      "varying_outputs": [
+        "total_recruited_followers"
       ]
     },
     {
-      "dominant_output": "final_comb_fraction",
       "insensitive_outputs": [
         "final_comb_fraction",
-        "final_empirical_alignment",
         "final_energy_j",
         "total_recruited_followers"
       ],
       "interpretation": "niche.ambient_temperature_c sweep is insensitive under the current reduced kernel; recruitment and comb fraction ranges both stayed at 0.",
       "monotonic_outputs": [],
+      "observation_counts": {
+        "final_comb_fraction": 5,
+        "final_empirical_alignment": 0,
+        "final_energy_j": 5,
+        "total_recruited_followers": 5
+      },
       "output_ranges": {
         "final_comb_fraction": 0.0,
-        "final_empirical_alignment": 0.0,
+        "final_empirical_alignment": null,
         "final_energy_j": 0.0,
         "total_recruited_followers": 0.0
       },
+      "outputs": {
+        "final_comb_fraction": [
+          0.08333333333333333,
+          0.08333333333333333,
+          0.08333333333333333,
+          0.08333333333333333,
+          0.08333333333333333
+        ],
+        "final_empirical_alignment": [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "final_energy_j": [
+          23.99982150291375,
+          23.99982150291375,
+          23.99982150291375,
+          23.99982150291375,
+          23.99982150291375
+        ],
+        "total_recruited_followers": [
+          35.0,
+          35.0,
+          35.0,
+          35.0,
+          35.0
+        ]
+      },
       "parameter": "niche.ambient_temperature_c",
+      "unavailable_outputs": [
+        "final_empirical_alignment"
+      ],
       "values": [
         18.0,
         22.0,
         26.0,
         30.0,
         34.0
-      ]
+      ],
+      "varying_outputs": []
     }
   ],
   "source_claim_crosswalk": [
@@ -1659,7 +1774,7 @@
       "artifact_type": "figure",
       "availability_status": "unrecorded",
       "backend": "Matplotlib",
-      "fidelity_level": "empirical summary projected into a reduced BeeBrain contract",
+      "fidelity_level": "reduced template-alignment diagnostic; empirical inputs only when available",
       "path": "output/figures/beebrain_empirical_alignment_timeseries.png",
       "regeneration_command": "uv run python scripts/analysis_pipeline.py",
       "source_data": "output/data/simulation_records.json and module coverage records",

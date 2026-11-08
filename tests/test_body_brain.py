@@ -222,7 +222,6 @@ def test_waggle_decode_and_observation_pipeline() -> None:
     assert brain.decoded_dance is not None
     assert brain.kc_code.active_fraction <= 0.02
     assert "dryad-paoli-2024-al-calcium" in brain.empirical_dataset_ids
-    assert set(brain.empirical_alignment) == {"1-octanol", "clove oil", "geraniol"}
 
 
 def test_empirical_beebrain_dataset_registry_and_calcium_summaries() -> None:

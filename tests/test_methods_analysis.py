@@ -17,12 +17,13 @@ from beestack import (
     manuscript_figure_index,
     manuscript_figure_index_markdown,
     methods_analysis_markdown,
+    run_sensitivity_sweeps,
     run_simulation,
     stack_integrity_review,
 )
 from beestack.research import ScenarioSweepPanel
+from beestack.research.suite import _module_scorecards
 from beestack.visualization import generate_methods_figures, write_interactive_methods_dashboard
-from beestack.visualization import methods_figures as methods_figures_module
 from tests.test_research_suite import _empirical, _manifest
 
 
@@ -107,9 +108,7 @@ def test_methods_analysis_records_validate_and_serialize() -> None:
     sweep = ScenarioSweepPanel(
         "x",
         (0.0, 1.0),
-        {"y": 1.0},
-        "y",
-        ("y",),
+        {"y": (0.0, 1.0)},
         "monotonic",
     )
     report = MethodsAnalysisReport(
@@ -181,9 +180,7 @@ def test_manuscript_figure_index_normalizes_project_absolute_artifact_paths() ->
     sweep = ScenarioSweepPanel(
         "x",
         (0.0, 1.0),
-        {"y": 1.0},
-        "y",
-        ("y",),
+        {"y": (0.0, 1.0)},
         "monotonic",
     )
     report = MethodsAnalysisReport(
@@ -216,7 +213,7 @@ def test_manuscript_figure_index_normalizes_project_absolute_artifact_paths() ->
     with pytest.raises(ValueError, match="matching lengths"):
         ModuleVisualizationPanel("BeeBody", ("a",), (), ("fidelity",), ("ok",))
     with pytest.raises(ValueError, match="finite"):
-        ScenarioSweepPanel("bad", (0.0, float("nan")), {"y": 1.0}, "y", (), "bad")
+        ScenarioSweepPanel("bad", (0.0, float("nan")), {"y": (0.0, 1.0)}, "bad")
 
 
 def test_methods_analysis_validation_branches_are_explicit() -> None:
@@ -254,7 +251,7 @@ def test_methods_analysis_validation_branches_are_explicit() -> None:
         ("gap",),
         "interpretation",
     )
-    sweep = ScenarioSweepPanel("x", (0.0, 1.0), {"y": 1.0}, "y", ("y",), "ok")
+    sweep = ScenarioSweepPanel("x", (0.0, 1.0), {"y": (0.0, 1.0)}, "ok")
 
     invalid_links = [
         ("BeeBody", "section", "artifact", "type", "claim", "cmd", ()),
@@ -408,11 +405,11 @@ def test_methods_analysis_validation_branches_are_explicit() -> None:
                 interpretation,
             )
     for args in (
-        ("", (0.0, 1.0), {"y": 1.0}, "y", (), "ok"),
-        ("x", (0.0,), {"y": 1.0}, "y", (), "ok"),
-        ("x", (0.0, 1.0), {"y": 1.0}, "", (), "ok"),
-        ("x", (0.0, 1.0), {"y": 1.0}, "missing", (), "ok"),
-        ("x", (0.0, 1.0), {"y": 1.0}, "y", (), ""),
+        ("", (0.0, 1.0), {"y": (0.0, 1.0)}, "ok"),
+        ("x", (0.0,), {"y": (0.0,)}, "ok"),
+        ("x", (0.0, 1.0), {}, "ok"),
+        ("x", (0.0, 1.0), {"": (0.0, 1.0)}, "ok"),
+        ("x", (0.0, 1.0), {"y": (0.0, 1.0)}, ""),
     ):
         with pytest.raises(ValueError):
             ScenarioSweepPanel(*args)
@@ -429,20 +426,17 @@ def test_methods_analysis_validation_branches_are_explicit() -> None:
             MethodsAnalysisReport(title, summary, panels, sweeps, evidence, gaps, figures, (), True)
 
 
-def test_methods_analysis_handles_missing_payloads_and_regeneration_commands() -> None:
+def test_methods_analysis_handles_nonresearch_gaps_and_regeneration_commands() -> None:
     cfg = config_from_mapping({"research": {"scenario_count": 2, "sensitivity_sweep_size": 3}})
     report = assemble_methods_analysis_report(
         cfg,
         simulation_records=(),
         simulation_summary={},
         animation_manifest={},
-        research_report={},
+        research_report=_research_report(),
         empirical_analysis={},
         integrity_review={},
     )
-    assert len(report.scenario_sweeps) == 1
-    assert report.scenario_sweeps[0].dominant_output == "not_yet_generated"
-    assert report.scenario_sweeps[0].insensitive_outputs == ("not_yet_generated",)
     assert report.top_validation_gaps
     brain = next(panel for panel in report.module_panels if panel.module == "BeeBrain")
     assert {link.availability_status for link in brain.manuscript_evidence} <= {
@@ -452,17 +446,6 @@ def test_methods_analysis_handles_missing_payloads_and_regeneration_commands() -
     markdown = methods_analysis_markdown(report)
     assert "Evidence Availability Links" in markdown
     assert "supports BeeBrain uses" not in markdown
-    fallback_paths = tuple(
-        path for panel in report.module_panels for path in panel.visualization_panel.artifact_paths
-    )
-    fallback_statuses = tuple(
-        status
-        for panel in report.module_panels
-        for status in panel.visualization_panel.validation_statuses
-    )
-    assert all("methods_evidence_gap" in path for path in fallback_paths)
-    assert "missing_methods_figure_reference" in fallback_statuses
-    assert not any("placeholder" in path for path in fallback_paths)
     paths = (
         "output/animations/a.gif",
         "output/figures/empirical/a.png",
@@ -513,7 +496,6 @@ def test_methods_analysis_handles_missing_payloads_and_regeneration_commands() -
     assert "uv run python scripts/run_methods_analysis.py" in commands
     assert "uv run python scripts/run_research_suite.py" in commands
     assert "uv run python scripts/analysis_pipeline.py" in commands
-    assert methods_figures_module._series((), "missing").tolist() == [0.0]
 
 
 def test_methods_analysis_report_figures_and_index(tmp_path: Path) -> None:
@@ -574,3 +556,152 @@ def test_methods_analysis_report_figures_and_index(tmp_path: Path) -> None:
 
 def _stable_plotly_div(path: Path) -> str:
     return f'id="beestack-{path.stem.replace("_", "-")}"'
+
+
+@pytest.mark.parametrize(
+    ("observations", "count", "output_range", "classification", "monotonic"),
+    (
+        ((None, None, None), 0, None, "unavailable_outputs", False),
+        ((0.0, None, 2.0), 2, None, "unavailable_outputs", False),
+        ((None, 0.0, None), 1, None, "unavailable_outputs", False),
+        ((0.0, 0.0, 0.0), 3, 0.0, "insensitive_outputs", False),
+        ((4.0, 4.0, 4.0), 3, 0.0, "insensitive_outputs", False),
+        ((0.0, 1.0, 2.0), 3, 2.0, "varying_outputs", True),
+        ((2.0, 0.0, 1.0), 3, 2.0, "varying_outputs", False),
+    ),
+)
+def test_sweep_summaries_preserve_observations_and_require_complete_series(
+    observations, count, output_range, classification, monotonic
+) -> None:
+    panel = ScenarioSweepPanel("x", (0.0, 1.0, 2.0), {"y": observations}, "observed sweep")
+
+    assert panel.outputs["y"] == observations
+    assert panel.observation_counts == {"y": count}
+    assert panel.output_ranges == {"y": output_range}
+    for field in ("unavailable_outputs", "insensitive_outputs", "varying_outputs"):
+        assert getattr(panel, field) == (("y",) if field == classification else ())
+    assert panel.monotonic_outputs == (("y",) if monotonic else ())
+    payload = json.loads(json.dumps(panel.as_dict(), allow_nan=False))
+    assert payload["outputs"]["y"] == list(observations)
+    assert payload["observation_counts"] == {"y": count}
+    assert payload["output_ranges"] == {"y": output_range}
+
+
+@pytest.mark.parametrize(
+    "observations",
+    (
+        (),
+        (0.0,),
+        (0.0, 1.0, 2.0),
+        (None, float("nan")),
+        (float("inf"), None),
+        (float("-inf"), 0.0),
+        ("missing", None),
+        (True, 0.0),
+        (-1e308, 1e308),
+    ),
+)
+def test_sweep_rejects_invalid_observations_or_coordinate_lengths(observations) -> None:
+    with pytest.raises(ValueError, match="length|finite"):
+        ScenarioSweepPanel("x", (0.0, 1.0), {"y": observations}, "invalid sweep")
+
+
+def test_methods_assembly_preserves_nullable_sweeps_and_renders_counts() -> None:
+    cfg = config_from_mapping({"research": {"scenario_count": 2, "sensitivity_sweep_size": 3}})
+    outputs = {
+        "absent_alignment": (None, None, None),
+        "partial_alignment": (0.0, None, 1.0),
+        "zero_alignment": (0.0, 0.0, 0.0),
+        "energy_j": (10.0, 9.0, 8.0),
+        "followers": (0.0, 100.0, 200.0),
+    }
+    research = _research_report()
+    research["sensitivity_sweeps"][0]["outputs"] = outputs
+    report = assemble_methods_analysis_report(
+        cfg,
+        simulation_records=(),
+        simulation_summary={},
+        animation_manifest={},
+        research_report=research,
+        empirical_analysis={},
+        integrity_review={},
+    )
+
+    sweep = report.scenario_sweeps[0]
+    assert sweep.outputs == outputs
+    assert sweep.output_ranges == {
+        "absent_alignment": None,
+        "partial_alignment": None,
+        "zero_alignment": 0.0,
+        "energy_j": 2.0,
+        "followers": 200.0,
+    }
+    assert sweep.varying_outputs == ("energy_j", "followers")
+    assert sweep.unavailable_outputs == ("absent_alignment", "partial_alignment")
+    assert sweep.insensitive_outputs == ("zero_alignment",)
+    assert sweep.monotonic_outputs == ("energy_j", "followers")
+    payload = json.loads(json.dumps(report.as_dict(), allow_nan=False))["scenario_sweeps"][0]
+    assert payload["outputs"]["partial_alignment"] == [0.0, None, 1.0]
+    assert payload["observation_counts"] == {
+        "absent_alignment": 0,
+        "partial_alignment": 2,
+        "zero_alignment": 3,
+        "energy_j": 3,
+        "followers": 3,
+    }
+    assert "dominant_output" not in payload
+    markdown = methods_analysis_markdown(report)
+    assert "absent_alignment=unavailable" in markdown
+    assert "partial_alignment=2/3" in markdown
+    assert "zero_alignment=0" in markdown
+    assert "Varying outputs: `energy_j, followers`" in markdown
+    assert "Dominant output" not in markdown
+
+
+@pytest.mark.parametrize("research", ({}, {"sensitivity_sweeps": []}))
+def test_methods_analysis_rejects_missing_required_research_sweeps(research) -> None:
+    with pytest.raises(ValueError, match="requires research sensitivity sweeps"):
+        assemble_methods_analysis_report(
+            config_from_mapping({}),
+            simulation_records=(),
+            simulation_summary={},
+            animation_manifest={},
+            research_report=research,
+            empirical_analysis={},
+            integrity_review={},
+        )
+
+
+@pytest.mark.parametrize("mean_separability", (None, 0.0))
+def test_reporting_omits_unobserved_odor_mean_but_preserves_measured_zero(
+    mean_separability: float | None,
+) -> None:
+    cfg = config_from_mapping({"research": {"scenario_count": 2, "sensitivity_sweep_size": 3}})
+    result = run_simulation(cfg, steps=2)
+    empirical = {"activity_summary": {"mean_odor_separability": mean_separability}}
+    integrity = stack_integrity_review(cfg).as_dict()
+    scorecards = _module_scorecards(cfg, result.summary(), {}, integrity, empirical)
+    research = {
+        "module_scorecards": [scorecard.as_dict() for scorecard in scorecards],
+        "sensitivity_sweeps": [sweep.as_dict() for sweep in run_sensitivity_sweeps(cfg)],
+    }
+    methods = assemble_methods_analysis_report(
+        cfg,
+        simulation_records=tuple(record.__dict__ for record in result.records),
+        simulation_summary=result.summary(),
+        animation_manifest={},
+        research_report=research,
+        empirical_analysis=empirical,
+        integrity_review=integrity,
+    )
+    research_metrics = next(
+        scorecard.metrics for scorecard in scorecards if scorecard.module == "BeeBrain"
+    )
+    methods_metrics = next(
+        panel.quantitative_metrics for panel in methods.module_panels if panel.module == "BeeBrain"
+    )
+    for metrics in (research_metrics, methods_metrics):
+        if mean_separability is None:
+            assert "mean_odor_separability" not in metrics
+        else:
+            assert metrics["mean_odor_separability"] == 0.0

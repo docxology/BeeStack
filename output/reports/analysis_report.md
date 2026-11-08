@@ -11,8 +11,8 @@
 - `final_comb_fraction`: 0.08333333333333333
 - `final_brood_temperature_error_c`: 2.874567201134734
 - `final_mean_pheromone`: 0.0
-- `final_empirical_odor`: geraniol
-- `final_empirical_alignment`: 0.0
+- `final_empirical_odor`: 
+- `final_empirical_alignment`: None
 - `dance_drive_provenance`: fixed synthetic reduced scenario, not sensory-decoded recruitment
 
 ## Final Task Allocation

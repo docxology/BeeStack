@@ -64,7 +64,7 @@ class SimulationRecord:
     brood_temperature_error_c: float
     mean_pheromone: float
     dominant_empirical_odor: str
-    dominant_empirical_alignment: float
+    dominant_empirical_alignment: float | None
 
 
 @dataclass(frozen=True)
@@ -76,7 +76,7 @@ class SimulationResult:
     final_state: SimulationState
     records: tuple[SimulationRecord, ...]
 
-    def summary(self) -> dict[str, float | int | str]:
+    def summary(self) -> dict[str, float | int | str | None]:
         last = self.records[-1]
         return {
             "steps": len(self.records),
@@ -233,7 +233,7 @@ def _record(
             key=lambda item: (item[1], item[0]),
         )
     else:
-        dominant_odor, dominant_alignment = "", 0.0
+        dominant_odor, dominant_alignment = "", None
     return SimulationRecord(
         step_index=state.step_index,
         selected_policy=selected_policy,
@@ -245,7 +245,9 @@ def _record(
         brood_temperature_error_c=metrics.brood_temperature_error_c,
         mean_pheromone=float(np.mean(state.pheromones.values)),
         dominant_empirical_odor=dominant_odor,
-        dominant_empirical_alignment=float(dominant_alignment),
+        dominant_empirical_alignment=(
+            None if dominant_alignment is None else float(dominant_alignment)
+        ),
     )
 
 

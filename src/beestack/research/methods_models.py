@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
 import numpy as np
@@ -11,8 +11,12 @@ from ..utils import project_relative_path, project_relative_payload
 from ..visualization.figure_registry import (
     figure_narrative_for_path,
 )
-from .methods_helpers import _looks_like_doi, _path_is_figure
-from .methods_validators import _validate_metric_map, _validate_numeric_sequence
+from .methods_helpers import _is_monotonic, _looks_like_doi, _path_is_figure
+from .methods_validators import (
+    _validate_metric_map,
+    _validate_numeric_sequence,
+    _validate_sweep_outputs,
+)
 from .suite import EVIDENCE_AVAILABILITY_STATES, ResearchValidationRecord
 
 
@@ -212,15 +216,18 @@ class ModuleMethodsPanel:
 
 @dataclass(frozen=True)
 class ScenarioSweepPanel:
-    """Compact interpretation of one deterministic scenario/sensitivity sweep."""
+    """Coordinate-preserving sweep observations and complete-series summaries."""
 
     parameter: str
     values: tuple[float, ...]
-    output_ranges: dict[str, float]
-    dominant_output: str
-    monotonic_outputs: tuple[str, ...]
+    outputs: dict[str, tuple[float | None, ...]]
     interpretation: str
-    insensitive_outputs: tuple[str, ...] = ()
+    output_ranges: dict[str, float | None] = field(init=False)
+    observation_counts: dict[str, int] = field(init=False)
+    varying_outputs: tuple[str, ...] = field(init=False)
+    unavailable_outputs: tuple[str, ...] = field(init=False)
+    monotonic_outputs: tuple[str, ...] = field(init=False)
+    insensitive_outputs: tuple[str, ...] = field(init=False)
 
     def __post_init__(self) -> None:
         if not self.parameter:
@@ -228,15 +235,39 @@ class ScenarioSweepPanel:
         if len(self.values) < 2:
             raise ValueError("scenario sweep values need at least two entries")
         _validate_numeric_sequence(self.values, f"{self.parameter} values")
-        _validate_metric_map(self.output_ranges, f"{self.parameter} ranges")
-        if not self.dominant_output:
-            raise ValueError("scenario sweep dominant_output must be nonempty")
-        if self.dominant_output not in self.output_ranges:
-            raise ValueError("scenario sweep dominant_output must exist in ranges")
+        _validate_sweep_outputs(self.outputs, len(self.values), self.parameter)
         if not self.interpretation:
             raise ValueError("scenario sweep interpretation must be nonempty")
-        if not all(output in self.output_ranges for output in self.insensitive_outputs):
-            raise ValueError("scenario sweep insensitive_outputs must exist in ranges")
+        counts = {
+            name: sum(value is not None for value in values)
+            for name, values in self.outputs.items()
+        }
+        ranges = {
+            name: float(max(values) - min(values)) if counts[name] == len(self.values) else None
+            for name, values in self.outputs.items()
+        }
+        _validate_metric_map(
+            {name: value for name, value in ranges.items() if value is not None},
+            f"{self.parameter} ranges",
+            allow_empty=True,
+        )
+        varying = tuple(name for name, value in ranges.items() if value is not None and value > 0)
+        object.__setattr__(self, "output_ranges", ranges)
+        object.__setattr__(self, "observation_counts", counts)
+        object.__setattr__(self, "varying_outputs", varying)
+        object.__setattr__(
+            self,
+            "unavailable_outputs",
+            tuple(name for name, value in ranges.items() if value is None),
+        )
+        object.__setattr__(
+            self,
+            "monotonic_outputs",
+            tuple(name for name in varying if _is_monotonic(self.outputs[name])),
+        )
+        object.__setattr__(
+            self, "insensitive_outputs", tuple(name for name, value in ranges.items() if value == 0)
+        )
 
     def as_dict(self) -> dict[str, object]:
         return asdict(self)

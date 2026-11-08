@@ -1,35 +1,54 @@
 {
-  "chart_type": "bar",
+  "chart_type": "table",
   "figure_path": "output/figures/methods/beeswarm_methods_contact_recruitment.png",
-  "labels": [
-    "final_mean_pheromone",
-    "waggle_phase_coupling_score",
-    "waggle_follower_orientation_confidence",
-    "strict_contact_scene_count",
-    "mean_recruited_followers",
-    "contact_graph_edge_count",
-    "unique_bee_contact_pair_count",
-    "waggle_follower_orientation_error_deg",
-    "agent_count",
-    "total_recruited_followers",
-    "represented_colony_size"
-  ],
   "module": "BeeSwarm",
-  "orientation": "horizontal",
+  "rows": [
+    {
+      "metric": "agent_count",
+      "value": 50.0
+    },
+    {
+      "metric": "contact_graph_edge_count",
+      "value": 10.0
+    },
+    {
+      "metric": "final_mean_pheromone",
+      "value": 0.0
+    },
+    {
+      "metric": "mean_recruited_followers",
+      "value": 7.0
+    },
+    {
+      "metric": "represented_colony_size",
+      "value": 20000.0
+    },
+    {
+      "metric": "strict_contact_scene_count",
+      "value": 3.0
+    },
+    {
+      "metric": "total_recruited_followers",
+      "value": 168.0
+    },
+    {
+      "metric": "unique_bee_contact_pair_count",
+      "value": 15.0
+    },
+    {
+      "metric": "waggle_follower_orientation_confidence",
+      "value": 0.7878249999999999
+    },
+    {
+      "metric": "waggle_follower_orientation_error_deg",
+      "value": 19.095750000000013
+    },
+    {
+      "metric": "waggle_phase_coupling_score",
+      "value": 9.148365930103435e-17
+    }
+  ],
   "schema": "beestack.figure_data.v1",
   "title": "beeswarm methods contact recruitment",
-  "validation_fraction": 1.0,
-  "values": [
-    0.0,
-    9.148365930103435e-17,
-    0.7878249999999999,
-    3.0,
-    7.0,
-    10.0,
-    15.0,
-    19.095750000000013,
-    50.0,
-    168.0,
-    20000.0
-  ]
+  "validation_fraction": 1.0
 }

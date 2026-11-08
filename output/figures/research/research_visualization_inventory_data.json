@@ -126,7 +126,7 @@
       "artifact_type": "figure",
       "availability_status": "unrecorded",
       "backend": "Matplotlib",
-      "fidelity_level": "empirical summary projected into a reduced BeeBrain contract",
+      "fidelity_level": "reduced template-alignment diagnostic; empirical inputs only when available",
       "path": "output/figures/beebrain_empirical_alignment_timeseries.png",
       "regeneration_command": "uv run python scripts/analysis_pipeline.py",
       "source_data": "output/data/simulation_records.json and module coverage records",

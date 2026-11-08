@@ -121,7 +121,7 @@ def generate_variables(
         "TOTAL_RECRUITED": str(summary.get("total_recruited_followers", "N/A")),
         "FINAL_COMB_FRACTION": _fmt(summary.get("final_comb_fraction")),
         "BROOD_TEMP_ERROR_C": _fmt(summary.get("final_brood_temperature_error_c")),
-        "FINAL_EMPIRICAL_ODOR": str(summary.get("final_empirical_odor", "N/A")),
+        "FINAL_EMPIRICAL_ODOR": str(summary.get("final_empirical_odor") or "N/A"),
         "FINAL_EMPIRICAL_ALIGNMENT": _fmt(summary.get("final_empirical_alignment")),
         "EMPIRICAL_PANEL_COUNT": _count(empirical.get("panel_count")),
         "CALCIUM_DATASET_COUNT": _count(empirical.get("calcium_dataset_count")),

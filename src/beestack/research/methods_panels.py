@@ -16,7 +16,6 @@ from .methods_helpers import (
     _count_policy_switches,
     _empirical_link_status,
     _float,
-    _is_monotonic,
     _margin,
     _module_from_path,
     _safe_max,
@@ -128,7 +127,6 @@ def _brain_panel(
         "anatomy_inventory_count": _float(anatomy.get("inventory_count")),
         "neuropil_count": _float(anatomy.get("neuropil_count")),
         "region_response_class_count": float(len(region_means)),
-        "mean_odor_separability": _float(activity.get("mean_odor_separability")),
         "calcium_dataset_count": calcium_count,
         "waggle_follower_confidence": _float(waggle.get("confidence_score")),
         "waggle_no_antennae_error_count": _float(waggle.get("no_antennae_error_count")),
@@ -136,6 +134,8 @@ def _brain_panel(
         "brain_data_parseable_fraction": _float(completeness.get("parseable_fraction")),
         "brain_source_verified_fraction": _float(completeness.get("source_verified_fraction")),
     }
+    if activity.get("mean_odor_separability") is not None:
+        metrics["mean_odor_separability"] = float(activity["mean_odor_separability"])
     if waggle.get("decoding_improvement_fraction") is not None:
         metrics["waggle_decoding_improvement"] = float(waggle["decoding_improvement_fraction"])
     checks = _scorecard_checks(scorecards, "BeeBrain") + (
@@ -634,47 +634,17 @@ def _deduplicate_records(records: list[dict[str, str]]) -> list[dict[str, str]]:
 
 
 def _scenario_sweep_panels(research_report: dict[str, Any]) -> tuple[ScenarioSweepPanel, ...]:
-    panels: list[ScenarioSweepPanel] = []
-    for sweep in research_report.get("sensitivity_sweeps", ()):
-        outputs = {
-            str(name): tuple(float(value) for value in values)
-            for name, values in dict(sweep.get("outputs", {})).items()
-        }
-        ranges = {
-            name: float(max(values) - min(values)) if values else 0.0
-            for name, values in outputs.items()
-        }
-        dominant = max(ranges, key=lambda name: ranges[name]) if ranges else "none"
-        insensitive = tuple(name for name, value_range in ranges.items() if value_range == 0.0)
-        monotonic = tuple(
-            name
-            for name, values in outputs.items()
-            if name not in insensitive and _is_monotonic(values)
-        )
-        values = tuple(float(value) for value in sweep.get("values", ()))
-        panels.append(
-            ScenarioSweepPanel(
-                parameter=str(sweep.get("parameter", "unknown_parameter")),
-                values=values,
-                output_ranges=ranges or {"none": 0.0},
-                dominant_output=dominant,
-                monotonic_outputs=monotonic,
-                interpretation=str(sweep.get("interpretation", "No interpretation recorded.")),
-                insensitive_outputs=insensitive,
-            )
-        )
-    if panels:
-        return tuple(panels)
-    return (
+    sweeps = research_report.get("sensitivity_sweeps", ())
+    if not sweeps:
+        raise ValueError("methods analysis requires research sensitivity sweeps")
+    return tuple(
         ScenarioSweepPanel(
-            parameter="research.sensitivity_sweep_size",
-            values=(1.0, 2.0),
-            output_ranges={"not_yet_generated": 0.0},
-            dominant_output="not_yet_generated",
-            monotonic_outputs=(),
-            interpretation="Sensitivity sweeps were not available when this report was assembled.",
-            insensitive_outputs=("not_yet_generated",),
-        ),
+            parameter=sweep.get("parameter", ""),
+            values=tuple(sweep.get("values", ())),
+            outputs={name: tuple(values) for name, values in sweep.get("outputs", {}).items()},
+            interpretation=sweep.get("interpretation", ""),
+        )
+        for sweep in sweeps
     )
 
 

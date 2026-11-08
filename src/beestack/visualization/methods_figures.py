@@ -111,6 +111,7 @@ def write_interactive_methods_dashboard(
     """Write optional Plotly HTML methods-analysis dashboards."""
 
     import plotly.express as px
+    import plotly.graph_objects as go
 
     output_dir.mkdir(parents=True, exist_ok=True)
     scorecard_rows = [
@@ -131,7 +132,8 @@ def write_interactive_methods_dashboard(
         color="fidelity_level",
         hover_name="module",
         range_y=(0, 1.05),
-        title="BeeStack methods-analysis validation and visualization coverage",
+        title="BeeStack methods: configured self-tests and visualization coverage",
+        labels={"validation_fraction": "Configured self-test fraction"},
     )
     write_stable_plotly_html(fig, scorecard_path)
 
@@ -140,16 +142,26 @@ def write_interactive_methods_dashboard(
         for metric, value in panel.quantitative_metrics.items():
             metric_rows.append({"module": panel.module, "metric": metric, "value": value})
     metrics_path = output_dir / "methods_module_metrics.html"
-    fig = px.bar(
-        pd.DataFrame(metric_rows),
-        x="metric",
-        y="value",
-        color="module",
-        facet_col="module",
-        facet_col_wrap=2,
-        title="BeeStack methods-analysis module metrics",
+    frame = pd.DataFrame(metric_rows)
+    fig = go.Figure(
+        data=[
+            go.Table(
+                header={"values": ["Module", "Metric", "Value (native metric units)"]},
+                cells={
+                    "values": [
+                        frame["module"],
+                        frame["metric"],
+                        ["N/A" if pd.isna(value) else value for value in frame["value"]],
+                    ]
+                },
+                columnwidth=[1, 3, 2],
+            )
+        ]
     )
-    fig.update_xaxes(tickangle=45)
+    fig.update_layout(
+        title="BeeStack module metrics: unlike units are not compared on one axis",
+        height=max(500, 26 * len(frame) + 140),
+    )
     write_stable_plotly_html(fig, metrics_path)
     return [scorecard_path, metrics_path]
 
@@ -353,42 +365,30 @@ def _module_metric_panel(
     title: str,
 ) -> Path:
     panel = _panel(report, module)
-    items = sorted(panel.quantitative_metrics.items(), key=lambda item: abs(item[1]))
-    labels = [wrap_label(item[0].replace("_", " "), width=28, max_lines=2) for item in items]
-    raw_values = np.asarray([float(item[1]) for item in items], dtype=float)
-    scaled = np.log1p(np.abs(raw_values))
-    max_scaled = float(scaled.max()) if scaled.size else 0.0
-    if max_scaled > 0:
-        scaled = scaled / max_scaled
+    items = sorted(panel.quantitative_metrics.items())
     fig = plt.figure(figsize=(11, 5.8))
     grid = fig.add_gridspec(1, 2, width_ratios=[1.55, 1.0])
     ax = fig.add_subplot(grid[0, 0])
     ax_context = fig.add_subplot(grid[0, 1])
-    y = np.arange(len(labels))
-    ax.barh(y, scaled, color=module_color(module), alpha=0.88)
-    ax.set_yticks(y, labels)
-    ax.set_xlim(0, 1.06)
-    for row_index, (scaled_value, raw_value) in enumerate(zip(scaled, raw_values, strict=False)):
-        ax.text(
-            min(1.02, float(scaled_value) + 0.025),
-            row_index,
-            f"{raw_value:.3g}",
-            va="center",
-            ha="left",
-            fontsize=7.5,
-            color="#334155",
-        )
-    apply_panel_style(
-        ax,
-        title=title,
-        xlabel="log1p-scaled metric magnitude (raw value labeled)",
-        grid_axis="x",
+    ax.axis("off")
+    table = ax.table(
+        cellText=[
+            [wrap_label(name, width=28), "N/A" if value is None else f"{value:.3g}"]
+            for name, value in items
+        ],
+        colLabels=["Metric (native units)", "Value"],
+        colWidths=[0.72, 0.28],
+        cellLoc="left",
+        bbox=(0, 0.03, 1, 0.9),
     )
+    table.auto_set_font_size(False)
+    table.set_fontsize(8)
+    ax.set_title(title)
     add_panel_label(ax, "A")
     ax_context.axis("off")
     evidence = panel.manuscript_evidence[0]
     context_lines = (
-        f"Validation fraction\n{panel.validation_panel.validation_fraction:.2f}",
+        f"Configured self-test fraction\n{panel.validation_panel.validation_fraction:.2f}",
         f"Linked visual artifacts\n{panel.visualization_panel.artifact_count}",
         f"Claim tier\n{evidence.claim_tier.replace('_', ' ')}",
         f"Availability\n{evidence.availability_status}",

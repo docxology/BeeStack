@@ -20,10 +20,11 @@ selected policy was `nurse_brood`, the final body speed was
 The final comb occupancy fraction was 0.083, and the
 brood-temperature error at the final step was
 2.875 °C from the configured 34
-°C target [@kronenberg1982colonial]. The run ended
-with empirical odor label `geraniol` selected from the
-registered odor templates, and an empirical-alignment score of
-0.000.
+°C target [@kronenberg1982colonial]. The optional template-bank diagnostic
+reports odor `N/A` and alignment
+N/A when compatible templates are supplied; without
+that bank the diagnostic is unavailable, not a measured zero. It neither drives
+the fixed synthetic dance scenario nor establishes biological validation.
 
 ## Witness figures
 

@@ -188,9 +188,9 @@ def empirical_odor_response_templates(
 ) -> dict[str, Array]:
     """Generate deterministic atlas-shaped response templates for odorants.
 
-    The templates are not a substitute for downloaded raw data. They are compact
-    priors with conserved sparse excitation plus inhibitory surround structure,
-    shaped for tests and model wiring until the Dryad matrices are loaded.
+    These synthetic priors are not downloaded raw data. They contain sparse
+    excitation and inhibitory surround for explicit counterfactual experiments;
+    process_observation never uses them as an implicit missing-data fallback.
     """
 
     odorants = cfg.empirical.odor_templates if odorants is None else odorants

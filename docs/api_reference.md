@@ -81,6 +81,14 @@ text rather than silently inflating parseable counts.
 Waggle model-error means/improvement and single-antenna means are nullable.
 Condition/channel observation counts distinguish missing evidence from measured
 zero; missing comparisons cannot increase confidence or recruitment alignment.
+
+Without an empirical template bank, `SimulationRecord.dominant_empirical_alignment`
+and summary `final_empirical_alignment` are null. Sweep output tuples preserve
+unavailable entries at their input coordinates; finite scorecard metric maps omit
+unavailable comparisons and unobserved empirical means instead of inventing zeros.
+Observed zero means remain numeric zero. Static/interactive sweep panels retain
+independent native-unit axes; mixed-unit module metrics use a native-unit table.
+
 `current_empirical_analysis(project_root, cfg)` requires a successful current
 stage, report/raw-input hashes, active configuration and implementation identity.
 Skips/failures retain historical files without publishing their measurements as
@@ -195,6 +203,25 @@ checks, visual artifacts, known gaps, and manuscript claims with explicit
 evidence availability. Scripts own file
 I/O and write `output/data/methods_analysis.json`,
 `output/reports/methods_analysis.md`, and the manuscript figure index.
+
+`ScenarioSweepPanel(parameter, values, outputs, interpretation)` retains nullable
+output observations at their original parameter coordinates. All observed values
+and coordinates must be finite; named output series must be nonempty as a map and
+each series must have exactly `len(values)` entries (including null entries).
+The panel derives `observation_counts`, `output_ranges`, `varying_outputs`,
+`unavailable_outputs`, `insensitive_outputs`, and `monotonic_outputs`; callers
+cannot supply independent counts or classifications that contradict the data.
+Any incomplete series has a null range and is unavailable for complete-series
+classification. Complete constant series, including actual measured zero, are
+insensitive; complete nonconstant series vary, and only those can be classified
+as monotonic. Ranges retain each output's native units and are not cross-unit
+dominance rankings. JSON includes the original nullable `outputs`, counts, and
+classifications; Markdown shows unavailable ranges and observed/total counts.
+
+Methods analysis requires research sensitivity sweeps. With no optional-research
+switch in `ResearchConfig`, absent or empty `sensitivity_sweeps` raises `ValueError`
+rather than creating a synthetic zero panel. Missing observations within a real
+sweep are supported without weakening the required report gates.
 
 ## Review And Documentation
 

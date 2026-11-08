@@ -1,0 +1,63 @@
+{
+  "scope": "final standalone native source, clean distribution, both installed commands and manuscript admission",
+  "steps": [
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/analysis_pipeline.py"
+      ],
+      "returncode": 0,
+      "seconds": 216.872,
+      "expected_returncode": 0
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "$PROJECT/.uv-cache/wfz-release/final_wheel_runtime.py",
+        "$PROJECT"
+      ],
+      "returncode": 0,
+      "seconds": 257.236,
+      "expected_returncode": 0
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "$PROJECT/.uv-cache/wfz-release/installed_consumer_completion.py",
+        "$PROJECT"
+      ],
+      "returncode": 0,
+      "seconds": 263.814,
+      "expected_returncode": 0
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "$PROJECT/.uv-cache/wfz-release/native_remaining_gates.py"
+      ],
+      "returncode": 1,
+      "seconds": 69.605,
+      "expected_returncode": 1
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "$PROJECT/.uv-cache/wfz-release/inspect_pdf.py"
+      ],
+      "returncode": 0,
+      "seconds": 3.998,
+      "expected_returncode": 0
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "$PROJECT/.uv-cache/wfz-release/pdf_detail_inspection.py"
+      ],
+      "returncode": 0,
+      "seconds": 1.681,
+      "expected_returncode": 0
+    }
+  ],
+  "completed": true,
+  "strict_deposit_state": "blocked only by new version-specific DOI"
+}

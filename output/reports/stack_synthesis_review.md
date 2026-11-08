@@ -6,7 +6,7 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 
 - `empirical_parseable_fraction`: 0.000
 - `known_gap_count_total`: 11.000
-- `metric_count_total`: 61.000
+- `metric_count_total`: 59.000
 - `module_artifact_coverage_fraction`: 1.000
 - `module_readiness_mean`: 0.842
 - `module_validation_mean`: 0.800
@@ -29,8 +29,8 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 | Module | Fidelity | Validation | Readiness | Metrics | Evidence | Artifacts | Gaps |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | BeeBody | FlyBody render path plus reduced closed-loop telemetry | 1.000 | 0.933 | 14 | 2 | 22 | 2 |
-| BeeBrain | empirical reduced AL-MB-CX kernel | 0.000 | 0.483 | 15 | 3 | 29 | 2 |
-| BeeMind | bounded active-inference-style policy kernel | 1.000 | 0.933 | 9 | 2 | 9 | 2 |
+| BeeBrain | empirical reduced AL-MB-CX kernel | 0.000 | 0.483 | 14 | 3 | 29 | 2 |
+| BeeMind | bounded active-inference-style policy kernel | 1.000 | 0.933 | 8 | 2 | 9 | 2 |
 | BeeSwarm | reduced communication kernel plus strict FlyBody/MuJoCo BeeBody waggle/collision scenes | 1.000 | 0.925 | 14 | 2 | 23 | 3 |
 | BeeNiche | voxel comb and thermal kernel with adapter schemas | 1.000 | 0.933 | 9 | 2 | 12 | 2 |
 

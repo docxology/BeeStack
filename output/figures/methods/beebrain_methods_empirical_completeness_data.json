@@ -1,39 +1,58 @@
 {
-  "chart_type": "bar",
+  "chart_type": "table",
   "figure_path": "output/figures/methods/beebrain_methods_empirical_completeness.png",
-  "labels": [
-    "empirical_panel_count",
-    "template_count",
-    "anatomy_inventory_count",
-    "neuropil_count",
-    "region_response_class_count",
-    "mean_odor_separability",
-    "calcium_dataset_count",
-    "waggle_follower_confidence",
-    "waggle_no_antennae_error_count",
-    "waggle_both_antennae_error_count",
-    "brain_data_parseable_fraction",
-    "brain_source_verified_fraction",
-    "enabled_dataset_count"
-  ],
   "module": "BeeBrain",
-  "orientation": "horizontal",
+  "rows": [
+    {
+      "metric": "anatomy_inventory_count",
+      "value": 0.0
+    },
+    {
+      "metric": "brain_data_parseable_fraction",
+      "value": 0.0
+    },
+    {
+      "metric": "brain_source_verified_fraction",
+      "value": 0.0
+    },
+    {
+      "metric": "calcium_dataset_count",
+      "value": 0.0
+    },
+    {
+      "metric": "empirical_panel_count",
+      "value": 0.0
+    },
+    {
+      "metric": "enabled_dataset_count",
+      "value": 10.0
+    },
+    {
+      "metric": "neuropil_count",
+      "value": 0.0
+    },
+    {
+      "metric": "region_response_class_count",
+      "value": 0.0
+    },
+    {
+      "metric": "template_count",
+      "value": 0.0
+    },
+    {
+      "metric": "waggle_both_antennae_error_count",
+      "value": 0.0
+    },
+    {
+      "metric": "waggle_follower_confidence",
+      "value": 0.0
+    },
+    {
+      "metric": "waggle_no_antennae_error_count",
+      "value": 0.0
+    }
+  ],
   "schema": "beestack.figure_data.v1",
   "title": "beebrain methods empirical completeness",
-  "validation_fraction": 0.0,
-  "values": [
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    10.0
-  ]
+  "validation_fraction": 0.0
 }

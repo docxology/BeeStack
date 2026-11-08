@@ -24,8 +24,8 @@
       "evidence_count": 3,
       "fidelity_level": "empirical reduced AL-MB-CX kernel",
       "known_gap_count": 2,
-      "log_metric_mean": 0.1388523580210967,
-      "metric_count": 15,
+      "log_metric_mean": 0.14877038359403216,
+      "metric_count": 14,
       "module": "BeeBrain",
       "readiness_score": 0.48333333333333334,
       "validation_fraction": 0.0
@@ -35,8 +35,8 @@
       "evidence_count": 2,
       "fidelity_level": "bounded active-inference-style policy kernel",
       "known_gap_count": 2,
-      "log_metric_mean": 0.4622683579184332,
-      "metric_count": 9,
+      "log_metric_mean": 0.5200519026582374,
+      "metric_count": 8,
       "module": "BeeMind",
       "readiness_score": 0.9333333333333332,
       "validation_fraction": 1.0

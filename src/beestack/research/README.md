@@ -23,6 +23,10 @@ Empirical and manuscript evidence availability is typed. Use only
 `missing_optional`; absent BeeBrain payloads must remain explicit availability
 states rather than manuscript support claims.
 
+Finite diagnostic maps omit unobserved empirical means rather than manufacturing
+measurements. Observed zero means remain present; zero counts or conservative
+evidence-credit scores do not establish an observed mean.
+
 Figure inventories use one sorted project-relative path per artifact. Orchestrators
 pass `project_root` and an `artifact_metadata` mapping of paths to authoritative
 sidecar payloads into research/methods assembly; pure assemblers never load those
@@ -32,3 +36,20 @@ Missing sidecars remain `unrecorded`/`metadata_unavailable`, not inferred valida
 The optional visualization `availability_status` is also retained end-to-end;
 the I/O owner may mark retained historical empirical figures `historical_unavailable`
 without erasing their original source/render provenance or claiming current evidence.
+
+Scenario sweep panels retain the original nullable `outputs` at every parameter
+coordinate. `observation_counts` are derived from those observations, not supplied
+independently. Output lengths must match the finite parameter coordinates, and every
+observed output must be a finite number. `output_ranges` are null for any absent or
+partial series; `unavailable_outputs` identifies those series. Only complete series
+can be `varying_outputs` (positive range), `insensitive_outputs` (zero range), or
+varying `monotonic_outputs`. A measured all-zero series is therefore insensitive;
+an all-null or partly observed series is not. Native-unit ranges are reported per
+output, never ranked across different units as a dominant signal.
+
+Methods analysis requires nonempty research sensitivity sweeps: there is no
+optional-research configuration switch, and `MethodsAnalysisReport` already
+requires scenario panels. Missing sweeps raise a clear `ValueError` before module
+assembly instead of fabricating a `not_yet_generated` zero panel. Missing empirical
+alignment within an otherwise valid sweep remains available as explicit null
+observations, not a reason to fabricate a range or weaken validation gates.

@@ -1,23 +1,26 @@
 {
-  "chart_type": "bar",
+  "chart_type": "table",
   "figure_path": "output/figures/research/beemind_policy_sensitivity.png",
-  "labels": [
-    "policy_horizon",
-    "branching_factor",
-    "risk_sensitivity",
-    "final_energy_j",
-    "final_empirical_alignment"
-  ],
   "module": "BeeMind",
-  "orientation": "horizontal",
+  "rows": [
+    {
+      "metric": "branching_factor",
+      "value": 4.0
+    },
+    {
+      "metric": "final_energy_j",
+      "value": 23.999143213986002
+    },
+    {
+      "metric": "policy_horizon",
+      "value": 10.0
+    },
+    {
+      "metric": "risk_sensitivity",
+      "value": 0.5
+    }
+  ],
   "schema": "beestack.figure_data.v1",
   "title": "beemind policy sensitivity",
-  "validation_fraction": 1.0,
-  "values": [
-    10.0,
-    4.0,
-    0.5,
-    23.999143213986002,
-    0.0
-  ]
+  "validation_fraction": 1.0
 }
