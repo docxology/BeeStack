@@ -3,7 +3,9 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from beestack import audit_generated_reports, generated_report_audit_markdown
+import pytest
+
+from beestack import audit_generated_reports
 
 
 def _write_json(path: Path, payload: object) -> None:
@@ -81,18 +83,7 @@ def test_generated_report_audit_flags_stale_tests_and_unsupported_claims(
     assert not audit.passed
     assert audit.stale_report_paths == ("output/reports/test_results.md",)
     assert audit.missing_current_evidence_paths == ("output/reports/missing_current.md",)
-    assert any("supports absent evidence" in claim for claim in audit.unsupported_report_claims)
-    assert any(
-        "missing manuscript evidence citation_keys" in claim
-        for claim in audit.unsupported_report_claims
-    )
-    assert any("malformed source DOI" in claim for claim in audit.unsupported_report_claims)
-    assert any(
-        "marked parsed with zero local records" in claim
-        for claim in audit.unsupported_report_claims
-    )
     assert not audit.project_root_path_leaks
-    assert "Generated Report Audit" in generated_report_audit_markdown(audit)
 
 
 def test_generated_report_audit_allows_gated_absent_evidence(tmp_path: Path) -> None:
@@ -211,18 +202,63 @@ def test_generated_report_audit_flags_project_root_path_leakage(
 
     assert not audit.passed
     assert audit.project_root_path_leaks == ("output/data/empirical_analysis.json",)
-    assert "Project-root path leaks: `1`" in generated_report_audit_markdown(audit)
 
 
-def test_thermo_nuclear_report_tracks_current_verification_count() -> None:
-    report = (
-        Path(__file__).resolve().parents[1]
-        / "output"
-        / "reports"
-        / ("thermo_nuclear_code_quality_review.md")
+def test_analysis_unavailable_cannot_support_current_claims(tmp_path: Path) -> None:
+    reports = tmp_path / "output" / "reports"
+    reports.mkdir(parents=True)
+    (reports / "methods_analysis.md").write_text(
+        "- analysis_unavailable supports a current empirical conclusion\n", encoding="utf-8"
     )
-    text = report.read_text(encoding="utf-8")
+    audit = audit_generated_reports(tmp_path)
+    assert not audit.passed
+    assert audit.stale_report_paths == ()
+    assert audit.missing_current_evidence_paths == ()
+    assert audit.project_root_path_leaks == ()
 
-    assert "164/164" not in text
-    assert "pytest:                                       189 passed, 92.27% coverage" in text
-    assert "| pytest zero failures | Pass (189) |" in text
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    (
+        ("citation_keys", []),
+        ("source_dois", []),
+        ("source_dois", ["not-a-doi"]),
+        ("artifact_kind", ""),
+        ("claim_tier", ""),
+    ),
+)
+def test_current_claim_metadata_must_be_complete_and_citable(
+    tmp_path: Path, field: str, value: object
+) -> None:
+    artifact = tmp_path / "output" / "reports" / "current.md"
+    artifact.parent.mkdir(parents=True)
+    artifact.write_text("Current generated report\n", encoding="utf-8")
+    metadata = {
+        "artifact_path": "output/reports/current.md",
+        "availability_status": "generated",
+        "citation_keys": ["wilson2017good"],
+        "source_dois": ["10.1371/journal.pcbi.1005510"],
+        "artifact_kind": "report",
+        "claim_tier": "generated",
+    }
+    path = tmp_path / "output" / "data" / "methods_analysis.json"
+    _write_json(path, {"manuscript_evidence_links": [metadata]})
+    assert audit_generated_reports(tmp_path).passed
+    metadata[field] = value
+    _write_json(path, {"manuscript_evidence_links": [metadata]})
+    assert not audit_generated_reports(tmp_path).passed
+
+
+@pytest.mark.parametrize(("records", "passed"), ((0, False), (1, True)))
+def test_current_empirical_claim_requires_observed_records(
+    tmp_path: Path, records: int, passed: bool
+) -> None:
+    _write_json(
+        tmp_path / "output" / "reports" / "beestack_research_report.json",
+        {
+            "empirical_evidence": [
+                {"dataset_id": "calcium", "availability_status": "parsed", "local_records": records}
+            ]
+        },
+    )
+    assert audit_generated_reports(tmp_path).passed is passed

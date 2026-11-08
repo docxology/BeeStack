@@ -11,6 +11,10 @@ Current odor-response analysis availability: `{{EMPIRICAL_AVAILABILITY}}`.
 When payloads are absent, N/A denotes unavailable current measurements.
 Retained empirical reports and figures are historical snapshots, explicitly
 marked in their sidecars/index; they do not establish current data availability.
+Research and methods rows use `analysis_unavailable` when no current aggregate
+is supplied. Their represented-record counts and parseability refer to that
+analysis, not the standalone acquisition inventory. A parsed waggle dataset can
+therefore coexist with an unavailable aggregate; confidence is not a presence test.
 
 ## Odor-panel-gated aggregate reports
 

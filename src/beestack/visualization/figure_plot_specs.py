@@ -1003,7 +1003,7 @@ def research_plot_data(path: Path, *, report: Any) -> dict[str, Any]:
         )
     if name == "research_empirical_completeness.png":
         return table_plot(
-            title="Empirical source availability (reported state)",
+            title="Current-aggregate evidence availability (reported state)",
             columns=["dataset_id", "completeness_fraction", "availability_status"],
             rows=[
                 {

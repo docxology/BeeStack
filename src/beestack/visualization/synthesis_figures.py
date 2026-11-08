@@ -122,7 +122,7 @@ def _stack_synthesis_dashboard(review: StackSynthesisReview, path: Path) -> Path
     stat_labels = [
         "Reduced thermal-error improvement",
         "Module artifact coverage",
-        "Empirical source parseability",
+        "Current-aggregate source parseability",
         "Documentation signposting",
         "Scholarship references",
     ]

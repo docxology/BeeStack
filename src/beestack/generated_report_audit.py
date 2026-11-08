@@ -9,7 +9,7 @@ from typing import Any
 
 CURRENT_EVIDENCE_STATES = frozenset({"parsed", "generated"})
 ABSENT_EVIDENCE_STATES = frozenset(
-    {"registered_absent", "network_gated_absent", "missing_optional"}
+    {"registered_absent", "network_gated_absent", "missing_optional", "analysis_unavailable"}
 )
 STALE_REPORT_NAMES = ("test_results.json", "test_results.md")
 

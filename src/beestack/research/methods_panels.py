@@ -120,6 +120,9 @@ def _brain_panel(
     completeness = empirical.get("brain_data_completeness", {})
     calcium_count = _float(empirical.get("calcium_dataset_count"))
     known_gaps = tuple(str(gap) for gap in empirical.get("known_gaps", ()))
+    analysis_available = (
+        bool(empirical) and empirical.get("availability_status") != "historical_unavailable"
+    )
     metrics = {
         "enabled_dataset_count": float(len(cfg.empirical.enabled_dataset_ids)),
         "empirical_panel_count": _float(empirical.get("panel_count")),
@@ -178,11 +181,13 @@ def _brain_panel(
         metrics["empirical_panel_count"] + metrics["anatomy_inventory_count"],
         known_gaps,
         "empirical",
+        analysis_available=analysis_available,
     )
     waggle_status = _empirical_link_status(
-        metrics["waggle_follower_confidence"],
+        float(bool(empirical.get("waggle_follower_dataset_available"))),
         known_gaps,
         "waggle-following",
+        analysis_available=analysis_available,
     )
     return _panel(
         "BeeBrain",

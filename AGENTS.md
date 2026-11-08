@@ -25,6 +25,8 @@ This project follows the research-template pattern:
    empirical traces to make reports look complete.
    Unobserved empirical means must not be filled with zero; finite diagnostic
    maps omit them while preserving actual measured zeros.
+   An unavailable current aggregate uses `analysis_unavailable`, not proof that
+   standalone payloads are absent; confidence must not stand in for presence.
 8. Digital-twin wording must stay conservative until longitudinal assimilation,
    held-out validation residuals, uncertainty, and governance artifacts exist.
 9. Source evidence is an offline contract. Manuscript citations must use Pandoc
@@ -40,6 +42,8 @@ This project follows the research-template pattern:
     `output/...` paths, not checkout-specific absolute paths.
     Every supported Markdown image format requires matching sidecar provenance;
     audit and render sealing must share the same resolved image dependencies.
+    Interactive HTML carries escaped, informative document titles; CDN-dependent
+    viewers must not be advertised as fully offline artifacts.
 11. Security posture is a code contract. Curated empirical fetch URLs must pass
     `beestack.security.validate_download_url`; zip ingest must call
     `assert_safe_zip_member`; threat model and `docs/security_posture.md` must

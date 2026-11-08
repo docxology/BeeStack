@@ -110,7 +110,11 @@ def _empirical_link_status(
     represented_value: float,
     known_gaps: tuple[str, ...],
     gap_token: str,
+    *,
+    analysis_available: bool,
 ) -> str:
+    if not analysis_available:
+        return "analysis_unavailable"
     if represented_value > 0:
         return "parsed"
     if any(gap_token in gap.lower() for gap in known_gaps):

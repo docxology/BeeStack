@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Callable
+from html import escape
 from pathlib import Path
 from typing import Any
 
@@ -43,10 +44,20 @@ def write_stable_plotly_html(
     *,
     include_plotlyjs: str | bool = "cdn",
 ) -> Path:
-    """Write Plotly HTML without random UUID churn in regenerated artifacts."""
+    """Write deterministically identified Plotly HTML with an escaped document title."""
 
     path.parent.mkdir(parents=True, exist_ok=True)
-    fig.write_html(path, include_plotlyjs=include_plotlyjs, div_id=stable_plotly_div_id(path))
+    title = escape(str(fig.layout.title.text or path.stem.replace("_", " ")))
+    fig.write_html(
+        path,
+        full_html=True,
+        include_plotlyjs=include_plotlyjs,
+        div_id=stable_plotly_div_id(path),
+    )
+    document = path.read_text(encoding="utf-8")
+    head_end = document.index("</head>")
+    document = document[:head_end] + f"<title>{title}</title>" + document[head_end:]
+    path.write_text(document.replace("<html>", '<html lang="en">', 1), encoding="utf-8")
     return path
 
 

@@ -18,10 +18,14 @@ validation, sensitivity, and applicability. Raising a module's evidence tier or
 digital-twin readiness requires matching generated artifacts and validation
 residuals, not just stronger prose.
 
-Empirical and manuscript evidence availability is typed. Use only
-`parsed`, `generated`, `registered_absent`, `network_gated_absent`, or
-`missing_optional`; absent BeeBrain payloads must remain explicit availability
-states rather than manuscript support claims.
+Empirical and manuscript evidence availability is typed: `parsed`, `generated`,
+`registered_absent`, `network_gated_absent`, `missing_optional`, and
+`analysis_unavailable`. A missing current aggregate uses `analysis_unavailable`:
+its zero represented records are not an observation that standalone files are
+absent. Report parseability and evidence credit describe supplied current analysis,
+not the raw acquisition inventory. Waggle presence uses the explicit dataset
+availability flag, never a positive confidence score. Unavailable current evidence
+cannot support manuscript claims.
 
 Finite diagnostic maps omit unobserved empirical means rather than manufacturing
 measurements. Observed zero means remain present; zero counts or conservative

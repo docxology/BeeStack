@@ -188,8 +188,10 @@ Report `as_dict(project_root)` and figure writers normalize at a known-root boun
 not ambient cwd. Inventory paths are unique; backend/fidelity/source/regeneration
 and `availability_status` survive into the manuscript index.
 `EmpiricalEvidenceRecord.availability_status` is required and must be one of
-`parsed`, `generated`, `registered_absent`, `network_gated_absent`, or
-`missing_optional`.
+`parsed`, `generated`, `registered_absent`, `network_gated_absent`,
+`missing_optional`, or `analysis_unavailable`. The latter means no supplied current
+aggregate, not absent standalone payloads. Represented-record counts/parseability
+refer to that current analysis; dataset presence is independent of confidence.
 
 ## Methods Analysis
 

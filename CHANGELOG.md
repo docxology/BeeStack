@@ -28,6 +28,9 @@ All notable changes to BeeStack are documented in this file.
 - Figure data use native-value tables and independent axes instead of mixed-unit
   normalization, remapped correlations, or unrelated angles on a shared polar plot.
   Research provenance now uses the `research_evidence_inventory` claim tier.
+- Evidence availability adds `analysis_unavailable` when no current aggregate is
+  supplied. Represented counts/parseability no longer imply standalone payload
+  absence; a parsed waggle source remains present when confidence is zero.
 
 - Executable empirical templates require complete observed grids and finite shared
   sampling rates. Source labels remain positional when biological identities are
@@ -93,6 +96,8 @@ All notable changes to BeeStack are documented in this file.
   missing measurements no longer export as observed zeros or a synthetic first step.
 - Relative-error and unit-conversion overflow fail explicitly, while streaming
   absolute-error means preserve representable results without overflowing their sums.
+- Interactive viewers now expose informative, escaped browser document titles
+  while retaining deterministic plot IDs and the documented Plotly CDN dependency.
 
 ### Release boundaries
 

@@ -310,7 +310,7 @@ def _evidence_detail(report: ResearchSuiteReport, path: Path) -> Path:
         cell.set_height(row_lines[row_index] / sum(row_lines))
     add_figure_note(
         fig,
-        "All listed report rows are shown. Source availability and configured self-tests do not establish biological validity.",
+        "All current-report rows are shown. Aggregate availability is not a standalone payload inventory or biological validation.",
         y=0.012,
     )
     fig.tight_layout(rect=(0, 0.04, 1, 0.98))
@@ -353,7 +353,7 @@ def _empirical_completeness(report: ResearchSuiteReport, path: Path) -> Path:
     row_lines = max((max(len(cell.splitlines()) for cell in row) for row in rows), default=1)
     fig, ax = plt.subplots(figsize=(11.2, max(4.4, 0.24 * (len(rows) + 1) * row_lines + 1.4)))
     ax.axis("off")
-    ax.set_title("Empirical source availability (reported state)", loc="left", pad=16)
+    ax.set_title("Current-aggregate evidence availability (reported state)", loc="left", pad=16)
     table = ax.table(
         cellText=rows,
         colLabels=["Dataset", "Completeness fraction", "Availability status"],

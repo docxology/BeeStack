@@ -50,6 +50,10 @@ evidence-count and self-test panels, and optional Plotly methods dashboards.
 Methods images and raw exports share one nullable telemetry extractor: missing or
 nonfinite values are gaps, observed zero remains zero, and an empty run adds no
 synthetic point. Raw plot-data JSON rejects nonfinite payloads before replacement.
+Interactive files carry escaped document titles from their plot headings as well
+as deterministic div IDs, so browser tabs identify the actual dashboard.
+The titled wrapper preserves Plotly's native full-document sizing and supported
+embedding modes, including copying the local bundle for `include_plotlyjs="directory"`.
 
 Any raster promoted into `manuscript/` should have a matching curated
 `FigureNarrative` and should be inserted through `manuscript_image_markdown()`.

@@ -13,6 +13,7 @@ from beestack import (
     ModuleVisualizationPanel,
     ResearchValidationRecord,
     assemble_methods_analysis_report,
+    assemble_research_suite_report,
     config_from_mapping,
     manuscript_figure_index,
     manuscript_figure_index_markdown,
@@ -21,6 +22,7 @@ from beestack import (
     run_simulation,
     stack_integrity_review,
 )
+from beestack.brain.empirical_status import current_empirical_analysis
 from beestack.research import ScenarioSweepPanel
 from beestack.research.suite import _module_scorecards
 from beestack.visualization import generate_methods_figures, write_interactive_methods_dashboard
@@ -437,15 +439,10 @@ def test_methods_analysis_handles_nonresearch_gaps_and_regeneration_commands() -
         empirical_analysis={},
         integrity_review={},
     )
-    assert report.top_validation_gaps
     brain = next(panel for panel in report.module_panels if panel.module == "BeeBrain")
-    assert {link.availability_status for link in brain.manuscript_evidence} <= {
-        "missing_optional",
-        "network_gated_absent",
+    assert {link.availability_status for link in brain.manuscript_evidence} == {
+        "analysis_unavailable"
     }
-    markdown = methods_analysis_markdown(report)
-    assert "Evidence Availability Links" in markdown
-    assert "supports BeeBrain uses" not in markdown
     paths = (
         "output/animations/a.gif",
         "output/figures/empirical/a.png",
@@ -705,3 +702,62 @@ def test_reporting_omits_unobserved_odor_mean_but_preserves_measured_zero(
             assert "mean_odor_separability" not in metrics
         else:
             assert metrics["mean_odor_separability"] == 0.0
+
+
+def test_zero_confidence_does_not_mean_waggle_source_absence() -> None:
+    cfg = config_from_mapping({"research": {"scenario_count": 2, "sensitivity_sweep_size": 3}})
+    report = assemble_methods_analysis_report(
+        cfg,
+        simulation_records=(),
+        simulation_summary={},
+        animation_manifest={},
+        research_report=_research_report(),
+        empirical_analysis={
+            "waggle_follower_dataset_available": True,
+            "activity_summary": {
+                "waggle_follower_summary": {"track_count": 1, "confidence_score": 0.0}
+            },
+        },
+        integrity_review={},
+    )
+    brain = next(panel for panel in report.module_panels if panel.module == "BeeBrain")
+    waggle = next(
+        link
+        for link in brain.manuscript_evidence
+        if link.artifact_path == "output/reports/waggle_follower_analysis.md"
+    )
+    assert waggle.availability_status == "parsed"
+
+
+def test_unavailable_producer_blocks_current_research_and_methods_claims(tmp_path: Path) -> None:
+    cfg = config_from_mapping({"research": {"scenario_count": 2, "sensitivity_sweep_size": 3}})
+    unavailable = current_empirical_analysis(tmp_path, cfg)
+    research = assemble_research_suite_report(
+        cfg,
+        simulation_summary={},
+        animation_manifest={},
+        integrity_review={},
+        empirical_analysis=unavailable,
+        figure_paths=("output/figures/beestack_graphical_abstract.png",),
+        interactive_paths=(),
+        sensitivity_sweeps=run_sensitivity_sweeps(cfg),
+        project_root=tmp_path,
+    )
+    methods = assemble_methods_analysis_report(
+        cfg,
+        simulation_records=(),
+        simulation_summary={},
+        animation_manifest={},
+        research_report=research.as_dict(),
+        empirical_analysis=unavailable,
+        integrity_review={},
+        project_root=tmp_path,
+    )
+    assert {row.availability_status for row in research.empirical_evidence} == {
+        "analysis_unavailable"
+    }
+    assert research.local_empirical_record_count == 0
+    brain = next(panel for panel in methods.module_panels if panel.module == "BeeBrain")
+    assert {link.availability_status for link in brain.manuscript_evidence} == {
+        "analysis_unavailable"
+    }

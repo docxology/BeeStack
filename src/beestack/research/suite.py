@@ -17,6 +17,7 @@ from ..utils import project_relative_path
 EVIDENCE_AVAILABILITY_STATES = frozenset(
     {
         "parsed",
+        "analysis_unavailable",
         "registered_absent",
         "network_gated_absent",
         "missing_optional",
@@ -114,7 +115,7 @@ class VisualizationArtifactRecord:
 
 @dataclass(frozen=True)
 class EmpiricalEvidenceRecord:
-    """Empirical data contribution represented in the research report."""
+    """Current-analysis contribution; not an inventory of standalone payload bytes."""
 
     dataset_id: str
     modality: str
@@ -865,7 +866,11 @@ def _empirical_evidence(
         )
         for dataset_id, modality, local_records, completeness, target, absent_status in records
         for status in (
-            _empirical_availability_status(dataset_id, local_records, completeness, absent_status),
+            "analysis_unavailable"
+            if not empirical or empirical.get("availability_status") == "historical_unavailable"
+            else _empirical_availability_status(
+                dataset_id, local_records, completeness, absent_status
+            ),
         )
     )
 
@@ -908,6 +913,8 @@ def _empirical_known_gap(
     threshold: float,
     availability_status: str,
 ) -> str:
+    if availability_status == "analysis_unavailable":
+        return "No supplied current aggregate; standalone payload availability is not assessed"
     if availability_status in {"registered_absent", "network_gated_absent", "missing_optional"}:
         return f"{availability_status.replace('_', ' ')}; below configured completeness threshold"
     if completeness < threshold:

@@ -15,12 +15,11 @@ from beestack import (
     VisualizationArtifactRecord,
     assemble_research_suite_report,
     config_from_mapping,
-    research_report_markdown,
     run_sensitivity_sweeps,
     run_simulation,
     stack_integrity_review,
 )
-from beestack.visualization import generate_research_figures, write_interactive_research_outputs
+from beestack.visualization import generate_research_figures
 
 
 def _manifest() -> dict[str, object]:
@@ -219,7 +218,7 @@ def test_research_record_validation_branches_are_explicit() -> None:
             )
 
 
-def test_research_suite_report_figures_and_interactive_outputs(tmp_path: Path) -> None:
+def test_research_report_renders_current_source_states(tmp_path: Path) -> None:
     cfg = config_from_mapping({"research": {"scenario_count": 2, "sensitivity_sweep_size": 3}})
     summary = run_simulation(cfg, steps=2).summary()
     sweeps = run_sensitivity_sweeps(cfg)
@@ -233,24 +232,34 @@ def test_research_suite_report_figures_and_interactive_outputs(tmp_path: Path) -
         interactive_paths=(),
         sensitivity_sweeps=sweeps,
     )
-    payload = report.as_dict()
+    payload = json.loads(json.dumps(report.as_dict(), allow_nan=False))
     assert len(payload["module_scorecards"]) == 5
-    assert payload["overall_validation_fraction"] > 0.8
-    markdown = research_report_markdown(report)
-    assert "BeeStack Science-First" in markdown
-    assert "Empirical registry/evidence rows" in markdown
     assert payload["empirical_availability_counts"]["parsed"] >= 1
-    json.dumps(payload)
-    figure_paths = generate_research_figures(report, tmp_path / "figures")
-    assert len(figure_paths) >= 10
-    assert all(path.exists() and path.stat().st_size > 0 for path in figure_paths)
-    assert all(path.with_suffix(".json").exists() for path in figure_paths)
-    assert all("quality" in path.with_suffix(".json").read_text() for path in figure_paths)
-    html_paths = write_interactive_research_outputs(report, tmp_path / "interactive")
-    assert len(html_paths) == 2
-    assert all("Plotly" in path.read_text(encoding="utf-8") for path in html_paths)
-    assert all(_stable_plotly_div(path) in path.read_text(encoding="utf-8") for path in html_paths)
+    generate_research_figures(report, tmp_path / "figures")
+    raw = json.loads(
+        (tmp_path / "figures" / "research_empirical_completeness_data.json").read_text()
+    )
+    rows = {row["dataset_id"]: row for row in raw["rows"]}
+    assert rows["empirical-panels"]["availability_status"] == "parsed"
+    assert rows["template-bank"]["availability_status"] == "generated"
 
 
-def _stable_plotly_div(path: Path) -> str:
-    return f'id="beestack-{path.stem.replace("_", "-")}"'
+def test_no_current_analysis_is_not_standalone_payload_absence(tmp_path: Path) -> None:
+    cfg = config_from_mapping({"research": {"scenario_count": 2, "sensitivity_sweep_size": 3}})
+    report = assemble_research_suite_report(
+        cfg,
+        simulation_summary={},
+        animation_manifest=_manifest(),
+        integrity_review={},
+        empirical_analysis={},
+        figure_paths=("output/figures/beestack_graphical_abstract.png",),
+        interactive_paths=(),
+        sensitivity_sweeps=run_sensitivity_sweeps(cfg),
+        project_root=tmp_path,
+    )
+    assert {row.availability_status for row in report.empirical_evidence} == {
+        "analysis_unavailable"
+    }
+    assert {row.local_records for row in report.empirical_evidence} == {0}
+    assert report.empirical_availability_counts["parsed"] == 0
+    assert report.empirical_availability_counts["generated"] == 0

@@ -7,9 +7,9 @@ write files here; scripts own report and artifact output.
   sensitivity analysis, and applicability limits.
 - Keep every report record JSON-serializable, finite, and tied to a
   regeneration command or source artifact.
-- Preserve explicit evidence availability states: `parsed`, `generated`,
-  `registered_absent`, `network_gated_absent`, and `missing_optional`.
-  Availability-gated BeeBrain sources may be cited as blockers, not as current
-  manuscript support.
+- Preserve typed evidence states: `parsed`, `generated`, `registered_absent`,
+  `network_gated_absent`, `missing_optional`, and `analysis_unavailable`.
+  An unavailable odor-conditioned aggregate cannot certify standalone payload
+  absence. Unavailable current evidence may be cited as a blocker, never support.
 - Do not raise digital-twin maturity or fidelity labels unless the required
   artifacts and validation residuals already exist.

@@ -108,9 +108,10 @@ uv run python scripts/verify_generated_reports.py
 - `ResearchSuiteReport` must include five module scorecards, visualization
   records, empirical registry/evidence rows, evidence availability states,
   sensitivity sweeps, and known gaps.
-- Empirical evidence rows must use one of `parsed`, `generated`,
-  `registered_absent`, `network_gated_absent`, or `missing_optional`; rows with
-  absent availability states must not be rendered as current manuscript support.
+- Evidence states are `parsed`, `generated`, `registered_absent`,
+  `network_gated_absent`, `missing_optional`, and `analysis_unavailable`.
+  An unavailable current aggregate must not imply that standalone files are absent;
+  neither unavailable analysis nor absent payload evidence supports current claims.
 - Scorecard metrics and observed sensitivity outputs must be finite, typed, JSON
   serializable, and deterministic from fixed inputs. Missing empirical sweep values
   remain null at their parameter coordinates; native units never share one axis.
