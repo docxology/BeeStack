@@ -18,8 +18,8 @@ Default behavior:
 - catalog and download the CC BY 4.0 Hadjitofi-Webb Figshare waggle-following
   CSV files through the Figshare article API;
 - download Honeybee Standard Brain anatomy assets from FU Berlin;
-- skip non-empty local files;
-- write checksums for files that are local;
+- skip only completion-verified caches bound to the original source identity;
+- record byte count, checksum, source identity, and completion status;
 - record upstream errors in JSON instead of hiding them.
 
 ## Metadata-Only Mode
@@ -37,8 +37,9 @@ large payloads.
 uv run python scripts/fetch_empirical_bee_data.py --force
 ```
 
-Use this only when local files are stale, incomplete, or deliberately being
-revalidated. Normal operation should rely on skip-if-present semantics.
+Use this when local files are stale, incomplete, or deliberately being revalidated.
+Normal operation skips only verified completion receipts; nonempty bytes alone do
+not establish completion or bind a failed refresh to a new DOI/version.
 
 ## Manifests
 
@@ -57,6 +58,10 @@ belong under `output/data/empirical_sources/` and can be regenerated with uv.
 Some upstream endpoints may reject unauthenticated archive downloads. When that
 happens, BeeStack records the HTTP response and tries file-level URLs where
 available.
+Downloads and container intake are bounded before expansion/materialization. The
+budget contracts in `security_posture.md` cover transfer bytes, archive trees,
+workbook cells, and MATLAB/HDF5 arrays/graphs. A policy refusal remains a blocker,
+never a successful empty parse or permission to bypass limits.
 
 ## After Download
 
@@ -66,6 +71,8 @@ uv run python scripts/analysis_pipeline.py
 uv run python scripts/z_generate_manuscript_variables.py
 ```
 
-The analysis script is tolerant of partial local data. It integrates what is
-available, reports missing anatomy/activity/waggle-following gaps, and never
-fabricates empirical measurements for unavailable files.
+The aggregate requires at least one parseable odor-response panel. Standalone
+waggle or supplementary-statistics parsers may have local inputs without enabling
+the odor-conditioned aggregate. Skips/failures retain historical outputs but
+invalidate current evidence; a successful stage binds raw payloads, configuration,
+implementation, and report hashes. Missing observations remain unavailable.

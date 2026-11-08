@@ -1,4 +1,4 @@
-# BeeBrain and BeeMind Methods {#sec:methods_brain_mind}
+# BeeBrain and BeeMind: Empirical Gating and Reduced Inference {#sec:methods_brain_mind}
 
 BeeBrain is a *reduced neural kernel with an empirical-data surface*.
 It implements antennal-lobe encoding, lateral inhibition, sparse Kenyon-cell
@@ -8,50 +8,55 @@ uses {{GLOMERULI}} glomeruli, {{KC_PER_HEMISPHERE}} Kenyon cells per
 hemisphere, {{ACTIVE_KC}} active Kenyon cells at the configured sparsity
 bound $\rho = {{KC_SPARSITY}}$, and {{HEADING_BINS}} heading bins.
 
-BeeMind is grouped with BeeBrain because it consumes the `BrainState`
-contract and translates source-anchored neural summaries into a bounded
-belief and policy surface. The grouping makes the current boundary
-visible: anatomy, odor maps, and waggle-follower records can guide the
-contract, but they do not yet instantiate a connectome-scale or
-calcium-validated generative model.
+BeeMind is grouped with BeeBrain to make the intended neural-to-policy boundary
+reviewable, not because that feedback currently executes. Its scorer consumes
+`BeliefState` and configuration; the current driver updates beliefs from a fixed
+synthetic `DanceVector`, without passing `BrainState` into policy selection.
+Anatomy, odor maps, and waggle-follower records can guide future interfaces, but
+do not instantiate a connectome-scale or calcium-validated generative model.
 
-## Antennal lobe (AL)
+## Antennal-lobe encoding and lateral inhibition
 
 The AL channel projects raw olfactory activity through a glomerular
 projection layer (one channel per glomerulus, matched to the
 Galizia–Sachse [@galizia1999glomerular] canonical odor maps when an
 odor template is registered) and a lateral-inhibition operator. The
-inhibition kernel is parameterized so it reproduces the contrast
-sharpening characteristic of the bee AL [@szyszka2023granger] without
-overfitting to a particular preparation. Glomerular activations are
+inhibition kernel is a reduced contrast-sharpening design motivated by
+antennal-lobe work [@szyszka2023granger], not a fitted reproduction of a
+particular preparation. Glomerular activations are
 clipped, log-scaled, and bounded so they remain serializable across runs
 even when input intensities span orders of magnitude.
 
-## Mushroom body (MB)
+## Mushroom-body sparse coding and run-owned connectivity
 
 The MB layer maps the dense AL representation onto a sparse population
 of {{KC_PER_HEMISPHERE}} Kenyon cells per hemisphere. Each Kenyon cell
-samples a small fixed fan-in of glomeruli through a seed-fixed sparse
-projection, and a $k$-Winner-Take-All rule keeps the
+samples a small fixed fan-in of glomeruli through an immutable seeded sparse
+projection owned by the simulation and reused across ticks, without a global
+connectivity cache. A $k$-Winner-Take-All rule keeps the
 {{ACTIVE_KC}} most-driven cells active across both hemispheres
 ($\rho = {{KC_SPARSITY}}$ of the whole-brain {{KC_PER_HEMISPHERE}}×2
-population). Because the active set is selected by projected drive
-rather than from the seed alone, *different odors produce different
-sparse codes* — the code is odor-specific and deterministic for a fixed
-seed, and changes in odor density do not silently inflate or collapse
-the active set. The
-class-i Kenyon-cell fraction in the configuration (`kc_class_i_fraction
-= 0.90`) tracks the gene-expression bias documented for the honey-bee MB
-[@kaneko2016kenyon].
+population). Selection depends on projected drive rather than the seed alone,
+so different odors can produce different sparse codes. Quantization does not
+guarantee a distinct code for every odor. Coding is deterministic for a fixed
+projection and sparsity budget. The configured class-i Kenyon-cell fraction
+(`kc_class_i_fraction`) tracks a gene-expression design anchor for the honey-bee
+MB [@kaneko2016kenyon], not a fitted connectivity measurement.
+The active count is the floor of the configured sparsity budget, including an
+empty code when that budget permits no active cell. A shared projection supports
+repeatable comparisons; it is not learned honeybee connectivity.
 
-## Central complex (CX)
+## Central-complex full-bearing heading integration
 
 The CX channel maintains a head-direction estimate on {{HEADING_BINS}}
 bins by integrating a sky-compass bearing and optic-flow drift, in the spirit of
 the anatomically constrained insect path-integration model
-[@stone2017central; @honkanen2019sky]. The CX state is part of every
-`BrainState` so downstream layers (BeeMind belief updates, BeeSwarm
-dance decoding) read a consistent heading.
+[@stone2017central; @honkanen2019sky]. The CX state is reported in `BrainState`.
+This makes heading available to explicit consumers, not evidence that the current
+BeeMind policy or BeeSwarm recruitment receives neural feedback. The current
+recruitment driver broadcasts its separate fixed synthetic dance.
+The bearing comes from `Observation.heading_deg` in full-bearing degrees, not
+from angular velocity or a half-turn ocellar axis.
 
 ## Optic flow and visual helpers
 
@@ -79,7 +84,7 @@ The Hadjitofi–Webb antennal-position tracks and article
 the follower-orientation diagnostics (`WaggleFollowerSummary`), not
 the distance/azimuth decode and not colony-scale recruitment validation.
 
-## Empirical registry
+## Registered empirical sources and acquisition blockers
 
 The empirical registry anchors the BeeBrain surface to public *Apis
 mellifera* sources:
@@ -109,7 +114,7 @@ public. Paoli Dryad `.mat` archives require bearer auth; set
 `DRYAD_API_TOKEN` when automating downloads. Figshare ndownloader URLs must
 not receive Dryad Authorization headers.
 
-## Parser layer
+## Typed parsers and observation completeness
 
 The parser layer converts real-format payloads into typed anatomy and
 activity records. Atlas ZIP and HTML assets become inventories,
@@ -129,8 +134,13 @@ no-antennae decoding error, straightness, and a bounded confidence
 score. These templates and diagnostics can be passed directly to
 `process_observation`, BeeSwarm recruitment diagnostics, and the
 integrated stack run.
+Missing calcium, aftersmell, and antennal activity diagnostics remain null.
+Undefined odor separability, including unavailable pair comparisons, is not zero.
+Antennal derivatives and correlations retain observation counts; an observed zero
+is distinct from an undefined statistic. Correlations and angles retain their
+signed/native values rather than being reinterpreted as phases or normalized scores.
 
-## Empirical run integration
+## Availability-gated empirical run integration
 
 The current empirical run integrates {{EMPIRICAL_PANEL_COUNT}}
 odor-response panels, {{ANATOMY_INVENTORY_COUNT}} anatomy inventories,
@@ -149,8 +159,18 @@ and the {{BRAIN_PARSEABILITY_TARGET}} parseability-readiness target is recorded 
 {{BRAIN_PARSEABILITY_TARGET_SATISFIED}} when the parseable-source fraction meets
 that threshold. Every remaining nonparseable source still must carry a DOI/source URL,
 parser status, blocker, and remediation path in the completeness panel.
+The aggregate requires a parseable odor panel and a successful analysis bound to
+raw payload, configuration, and implementation hashes. Current local odor,
+calcium, and antennal payloads are absent; standalone waggle CSVs and the
+Szyszka Table S1 statistics do not establish an odor-conditioned aggregate.
+Without an explicitly supplied compatible template bank, alignment maps are
+empty and integrated odor/alignment fields remain null, not a selected odor or
+a measured zero. Missing conditions retain observation counts and nullable
+means; executable templates require complete observed grids and explicit shared
+acquisition rates. Opt-in synthetic priors are counterfactual model inputs,
+never empirical replacements.
 
-## Anatomy-data-to-policy mapping
+## Conceptual anatomy–policy analogies
 
 The current BeeBrain-to-BeeMind bridge maps scholarly and empirical
 anchors to contract terms rather than claiming learned neural dynamics.
@@ -163,11 +183,11 @@ inference sources support the formal decomposition into beliefs,
 preferences, expected-free-energy terms, and policy scoring
 [@friston2010free; @parr2017working].
 
-[@fig:brain_mind_anatomy_policy] links BeeBrain anatomy sources to BeeMind policy contracts.
+[@fig:brain_mind_anatomy_policy] places scholarly anatomy anchors beside controller analogies, not fitted mappings or executed neural feedback.
 
-![Matplotlib beebrain to beemind anatomy-policy map shows Anatomy-to-policy map linking antennal-lobe, mushroom-body, central-complex, and waggle-follower anchors to BeeMind belief and policy contracts. Generated from source refresh ledger, BeeBrain source registry, and active-inference methods records. Sidecar validation checks raster, source routing, and registered claim tier. Does not support connectome-scale, calcium-validated, or learned generative dynamics.](../figures/beebrain_beemind_anatomy_policy_map.png){#fig:brain_mind_anatomy_policy}
+![Scholarly anatomy and neuroethology anchors beside conceptual roles and controller analogies. Dashed links do not represent fitted mappings or executed neural feedback. Generated from source refresh ledger, BeeBrain source registry, and active-inference methods records using Matplotlib. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not support connectome-scale, calcium-validated, or learned generative dynamics.](../figures/beebrain_beemind_anatomy_policy_map.png){#fig:brain_mind_anatomy_policy}
 
-## Methods-analysis pass
+## Reported Brain metrics and availability boundaries
 
 The methods-analysis pass summarizes this evidence as a Brain
 completeness panel: enabled dataset count, panel count, template count,
@@ -177,11 +197,11 @@ written to
 `output/figures/methods/beebrain_methods_empirical_completeness.png`,
 and the top gap is propagated as {{METHODS_TOP_GAP}}.
 
-[@fig:brain_methods_completeness] summarizes empirical and methods completeness for BeeBrain.
+[@fig:brain_methods_completeness] lists native Brain metrics, reported source availability, and conservative interpretation.
 
-![Matplotlib/pandas/NetworkX beebrain empirical methods completeness shows BeeBrain completeness dashboard reporting available empirical channels, parser gaps, and the absence of locally parsed calcium datasets. Generated from MethodsAnalysisReport and empirical analysis report. Sidecar validation checks raster, source routing, and registered claim tier. Does not support connectome-scale or calcium-validated dynamics.](../figures/methods/beebrain_methods_empirical_completeness.png){#fig:brain_methods_completeness}
+![BeeBrain native report metrics beside configured self-tests, reported availability, claim tier, and conservative interpretation. Generated from MethodsAnalysisReport and empirical analysis report using Matplotlib/pandas. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not support connectome-scale or calcium-validated dynamics.](../figures/methods/beebrain_methods_empirical_completeness.png){#fig:brain_methods_completeness}
 
-## Fidelity boundary
+## Reduced neural dynamics without connectome calibration
 
 BeeBrain is empirically anchored but kinetically reduced. It does not
 claim connectome-level dynamics or a heavyweight spiking core. The
@@ -190,7 +210,7 @@ contracts that BeeBrain emits (`BrainState`, `WaggleFollowerSummary`,
 current AL–MB–CX kernel without breaking BeeMind, BeeSwarm, or the
 manuscript-hydration trail.
 
-## BeeMind beliefs and caste
+## BeeMind belief state and caste priors
 
 BeeMind represents the individual bee as a bounded policy-selection
 system. It maintains a {{LATENT_DIM}}-dimensional belief state,
@@ -233,9 +253,9 @@ margin, policy-switch count, and final energy. The figure is written to
 
 [@fig:mind_methods_policy] exposes the Mind policy-landscape witness panel.
 
-![Matplotlib/pandas/NetworkX beemind policy landscape shows BeeMind policy landscape showing finite expected-free-energy terms, candidate-policy margin, and deterministic action-contract outputs. Generated from MethodsAnalysisReport and policy-selection diagnostics. Sidecar validation checks raster, source routing, and registered claim tier. Does not support a learned or biologically calibrated generative model.](../figures/methods/beemind_methods_policy_landscape.png){#fig:mind_methods_policy}
+![Native expected-free-energy, policy-margin, and action-contract metrics beside configured self-test and evidence-boundary context. Generated from MethodsAnalysisReport and policy-selection diagnostics using Matplotlib/pandas. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not support a learned or biologically calibrated generative model.](../figures/methods/beemind_methods_policy_landscape.png){#fig:mind_methods_policy}
 
-## Brain-mind fidelity boundary
+## Unlearned BeeMind transition and observation models
 
 BeeMind does not yet claim learned transition dynamics, recursive social
 inference, or calibrated observation likelihoods. Each gap is

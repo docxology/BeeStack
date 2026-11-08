@@ -5,9 +5,9 @@
 1. The root specification is the conceptual source; `src/beestack/` is the
    executable source.
 2. Business logic belongs in `src/beestack/` and should remain deterministic
-   and typed. Pure modules stay side-effect free; visualization and FlyBody
-   scene adapters may write figures, MJCF, GIF, and signpost files when called
-   from scripts.
+   and typed. Pure modules stay side-effect free; guarded empirical-acquisition
+   and presentation adapters may perform bounded I/O when invoked by scripts.
+   Preserve source-bound freshness and explicit availability through every consumer.
 3. Scripts are orchestrators only. They may load YAML, write JSON, build
    figures, and hydrate manuscript variables.
 4. Tests use real computations. Do not mock BeeStack modules.
@@ -27,13 +27,8 @@
 
 ## Before Finishing Work
 
-```bash
-uv lock --check
-uv run ruff check src tests scripts
-uv run pytest --cov=src --cov-report=term-missing
-uv run python scripts/analysis_pipeline.py
-uv run python scripts/verify_generated_reports.py
-uv run python scripts/audit_documentation.py
-uv run python scripts/signpost_project_tree.py --check
-uv run python scripts/z_generate_manuscript_variables.py
-```
+Run the complete ordered **Full Verification** recipe in
+[`README.md`](../README.md#full-verification) and the root `AGENTS.md` gates.
+Do not invoke publication-enforcing `verify_generated_reports.py` before cold
+bootstrap hydration/rendering or before the final post-audit hydration/reseal.
+A partial report refresh is not publication or release evidence.

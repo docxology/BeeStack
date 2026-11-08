@@ -1,4 +1,4 @@
-# Ethics and Governance {#sec:ethics}
+# Ethics and Governance for Data and Future Colony Coupling {#sec:ethics}
 
 BeeStack ingests public data about a living organism, and runs that
 data through a stack whose downstream applications could plausibly
@@ -81,7 +81,7 @@ plausible dual-use exposure in three directions:
 Each of these is a *future* concern, not a current capability, and
 each is named here to make the boundary explicit.
 
-## Provenance trail
+## Traceability from manuscript values to source data
 
 The provenance trail is the foundation of every other claim in this
 manuscript. The hydration pipeline links each manuscript variable to
@@ -102,7 +102,7 @@ drifted from its evidence can:
 This is the operational meaning of "honest research software":
 every step is auditable and every gap is named.
 
-## Closing note
+## Research-use boundaries for ecological and agricultural decisions
 
 Honey bees matter ecologically, economically, and scientifically
 [@menzel2012honey; @seeley2010honeybee]. Because colony models can
@@ -117,12 +117,14 @@ BeeStack is an offline research CLI, not a network service. Security work
 therefore targets **curated fetch**, **archive safety**, **dependency
 integrity**, and **auditability** rather than API perimeter controls.
 
-Empirical BeeBrain downloads use a single HTTPS module with a host allowlist
-(`datadryad.org`, Figshare endpoints, and the FU Berlin Virtual Honeybee
-Standard Brain mirror). Every fetch URL is validated before `urllib` access,
-and zip members are rejected when paths traverse outside the archive root.
-Configuration loads through `yaml.safe_load`; domain code under
-`src/beestack/` performs no network I/O.
+Empirical BeeBrain downloads use one guarded HTTPS acquisition adapter for
+registered Dryad, Figshare, FU Berlin, and MDPI sources. Authorities and every
+redirect hop are validated before dispatch; credentials stay at their authorized
+origin. Completion receipts bind bytes to the original source identity.
+Container parsers apply path, expansion, workbook, and array/graph budgets before
+materialization; refusal is not a successful empty parse. Configuration loads
+through `yaml.safe_load`. Domain kernels perform no network I/O; acquisition
+and presentation adapters are explicit side-effect boundaries.
 
 The repository ships a local threat model (`BeeStack-threat-model.md`) and a
 posture audit gate (`uv run python scripts/run_security_audit.py`) that checks

@@ -16,7 +16,7 @@ Current readiness targets:
 - BeeBody calibration gate: morphology calibration score at or above 0.85.
 - BeeSwarm waggle gate: mean follower orientation error below 35 degrees and
   orientation confidence above 0.65.
-- BeeNiche thermal gate: calibrated brood-temperature error below 3 degrees C.
+- BeeNiche reduced-kernel thermal self-test target: brood-temperature error below 3 degrees C, not biological calibration.
 - Documentation gate: zero missing output references, zero unresolved
   manuscript variables, and complete README/AGENTS signposting.
 
@@ -31,18 +31,14 @@ The central generated evidence remains:
 
 ## Tracked Follow-Ups
 
-- **Source-layer I/O (resolved by articulation, optional cleanup remains).**
-  The architectural invariant is *scientific-domain-kernel purity*: brain,
-  mind, swarm, niche, research, contracts, config, utils, orchestrator,
-  manifest, integrity, manuscript_variables, and documentation_audit perform
-  **zero** file writes, prints, or network I/O (grep-verified). The modules
-  that do write — the visualization figure layer and the `bee_mjcf` /
-  `flybody_scene` FlyBody adapters — are presentation/integration adapters
-  whose external consumers (matplotlib output files, FlyBody `walker_xml_path`,
-  MuJoCo) require filesystem artifacts; `AGENTS.md` rule 2 explicitly has the
-  thin `scripts/` orchestrators call these helpers. So this is the intended
-  design, not a violation. Pipeline regen is deterministic (24 steps / 12
-  figures / 9 animations reproducible). Optional future cleanup (not a
-  correctness or reproducibility need): a pure XML-string builder seam in
-  `bee_mjcf` for unit-testing the MJCF mutation independent of disk.
+- **Domain computation and explicit adapters.** Domain kernels remain pure;
+  guarded empirical acquisition and FlyBody/visualization presentation adapters
+  perform bounded I/O when invoked by orchestration. See `architecture.md` and
+  `security_posture.md`; source-wide purity claims are not appropriate.
+- **Current evidence versus retained snapshots.** Readiness requires current
+  source-bound reports and scoped runtime receipts. Historical step, figure,
+  animation, or PASS counts are not a new reproducibility result.
+- **Biological calibration.** Morphology cues, contact metrics, configured thermal
+  bands, and deterministic replay are engineering witnesses. Assimilation,
+  held-out residuals, uncertainty, and governance remain the twin-readiness bar.
 

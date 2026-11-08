@@ -1,9 +1,10 @@
-# Validation and Figure Evidence {#sec:validation}
+# Verification Gates, Evidence Tiers, and Figure Provenance {#sec:validation}
 
-BeeStack treats visualization as *evidence* only when the backend and
-validation status are explicit. A figure without fidelity metadata is not used
-as evidence. A figure that declares its provenance, validates its content, and
-links back to the script that produced it is reproducible evidence.
+Visualization is eligible for evidence only with explicit backend, source,
+availability, fidelity tier, and regeneration provenance. Image-integrity and
+metadata checks do not validate scientific interpretation: each claim still
+requires appropriate computation, observations, and validation. A provenance
+declaration alone is not proof of reproducibility or biological agreement.
 
 ## Animation manifest
 
@@ -26,7 +27,7 @@ registered GIF; verification scores and contact reports in
 `output/reports/bee_visual_verification.md` and
 `output/reports/flybody_contact_physics.md` bind the pixels to claim tier.
 
-## Multi-level visual checks
+## Frame, morphology, contact, and accessibility checks
 
 Visual checks operate at several levels:
 
@@ -52,7 +53,7 @@ Visual checks operate at several levels:
    animation manifest so downstream PDFs and web renders can produce
    accessible output without the human author having to retype them.
 
-## Textual and structural validation
+## Integrity, documentation, and readiness audits
 
 Validation is also textual and structural.
 
@@ -108,40 +109,40 @@ tiers, residual readiness blockers, manuscript claim routing, module-level
 methods state, and manuscript evidence links. Each insert states its backend,
 source report, sidecar validation, and blocked inference in the caption text.
 
-[@fig:beestack_evidence_ladder] ranks evidence tiers against readiness artifacts.
+[@fig:beestack_evidence_ladder] separates conceptual evidence classes and claim ceilings; it does not rank current validation.
 
-![Matplotlib beestack evidence ladder shows Visual evidence contract separating backend, claim tier, validation status, source data, and unsupported inference for current BeeStack figures. Generated from methods analysis, readiness review, and generated artifact manifests. Sidecar validation checks raster, source routing, and registered claim tier. Does not remove the assimilation, residual, uncertainty, or governance gaps.](../figures/beestack_evidence_ladder.png){#fig:beestack_evidence_ladder}
+![Conceptual guide to evidence classes, potential evidence surfaces, and unsupported inferences; it is not a current availability or validation report. Generated from conceptual evidence-class and claim-ceiling contract using Matplotlib. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not remove the assimilation, residual, uncertainty, or governance gaps.](../figures/beestack_evidence_ladder.png){#fig:beestack_evidence_ladder}
 
 [@fig:validation_readiness_residuals] lists residual blockers that still prevent digital-twin readiness.
 
-![Matplotlib beestack validation readiness and residual blockers shows Validation-readiness panel separating implemented verification checks from blocked held-out residual, uncertainty, assimilation, and governance evidence. Generated from source refresh ledger, readiness review, generated reports, and figure sidecars. Sidecar validation checks raster, source routing, and registered claim tier. Does not provide held-out residuals, uncertainty quantification, or digital-twin readiness.](../figures/beestack_validation_readiness_residuals.png){#fig:validation_readiness_residuals}
+![Conceptual checklist separating local verification contracts from absent held-out residual, uncertainty, assimilation, and governance evidence. It is not a receipt that local checks passed. Generated from declared verification, validation, and digital-twin requirements using Matplotlib. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not provide held-out residuals, uncertainty quantification, or digital-twin readiness.](../figures/beestack_validation_readiness_residuals.png){#fig:validation_readiness_residuals}
 
 [@fig:manuscript_figure_claim_map] maps registered figures by manuscript section and claim family.
 
-![Matplotlib beestack manuscript figure claim map shows Overview matrix grouping inserted primary figures by manuscript section and registered claim family. Generated from figure registry and manuscript figure index. Sidecar validation checks raster, source routing, and registered claim tier. Does not add empirical evidence beyond the registered figure sidecars.](../figures/manuscript_figure_claim_map.png){#fig:manuscript_figure_claim_map}
+![Registry-derived counts of primary figures by canonical manuscript section and declared claim family; registration is not evidence strength or insertion status. Generated from figure registry and manuscript figure index using Matplotlib. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not add empirical evidence beyond the registered figure sidecars.](../figures/manuscript_figure_claim_map.png){#fig:manuscript_figure_claim_map}
 
-[@fig:manuscript_figure_claim_detail] lists the same primary figures with source classes and explicit unsupported-inference boundaries.
+[@fig:manuscript_figure_claim_detail] groups registered primary sources and claim ceilings; full per-artifact routes remain in the raw inventory and registry.
 
-![Matplotlib beestack manuscript figure claim detail shows Split companion table listing primary figures, source-data classes, claim tiers, and unsupported-inference boundaries. Generated from figure registry and manuscript figure index. Sidecar validation checks raster, source routing, and registered claim tier. Does not add empirical evidence beyond the registered figure sidecars.](../figures/manuscript_figure_claim_detail.png){#fig:manuscript_figure_claim_detail width=98%}
+![Grouped source classes with registered artifact counts, declared claim-family counts, and conservative claim ceilings. Full per-artifact routes and unsupported inferences remain in the registry and raw inventory. Generated from figure registry and manuscript figure index using Matplotlib. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not add empirical evidence beyond the registered figure sidecars.](../figures/manuscript_figure_claim_detail.png){#fig:manuscript_figure_claim_detail width=98%}
 
-[@fig:methods_dashboard] summarizes module-level methods panels in one dashboard.
+[@fig:methods_dashboard] tabulates configured self-test fractions and native module-inventory counts.
 
-![Matplotlib/pandas/NetworkX beestack methods dashboard shows Methods dashboard summarizing per-module validation, evidence links, visual artifacts, metric counts, and explicit gap counts. Generated from MethodsAnalysisReport module panels and validation panels. Sidecar validation checks raster, source routing, and registered claim tier. Does not support biological predictive validity.](../figures/methods/methods_repo_dashboard.png){#fig:methods_dashboard}
+![Per-module configured self-test fractions and separate metric, artifact, evidence-link, and known-gap counts without normalization or a composite score. Generated from MethodsAnalysisReport module panels and validation panels using Matplotlib/pandas. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not support biological predictive validity.](../figures/methods/methods_repo_dashboard.png){#fig:methods_dashboard}
 
 [@fig:methods_dashboard_detail] expands the methods dashboard into a module table with gap and boundary text kept legible at PDF scale.
 
-![Matplotlib/pandas/NetworkX beestack methods dashboard detail shows Split companion table showing module validation fractions, visual artifact counts, evidence-link counts, gap counts, and boundaries. Generated from MethodsAnalysisReport module panels and visual QA report. Sidecar validation checks raster, source routing, and registered claim tier. Does not support biological predictive validity.](../figures/methods/methods_dashboard_detail.png){#fig:methods_dashboard_detail width=98%}
+![Module configured self-test fractions, visual-artifact counts, evidence-link counts, known-gap counts, and full report interpretations. Generated from MethodsAnalysisReport module panels and visual QA report using Matplotlib/pandas. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not support biological predictive validity.](../figures/methods/methods_dashboard_detail.png){#fig:methods_dashboard_detail width=98%}
 
-[@fig:methods_evidence_index] links manuscript sections to evidence records and regeneration commands.
+[@fig:methods_evidence_index] separates evidence-link/artifact counts from configured self-test fractions on independent axes.
 
-![Matplotlib/pandas/NetworkX beestack manuscript evidence index shows Manuscript evidence index comparing evidence-link counts, visual-artifact counts, and validation fractions by BeeStack module. Generated from MethodsAnalysisReport manuscript evidence links. Sidecar validation checks raster, source routing, and registered claim tier. Does not substitute evidence links for absent empirical support.](../figures/methods/methods_manuscript_evidence_index.png){#fig:methods_evidence_index}
+![Evidence-link and artifact counts in one panel, with configured self-test fractions on a separate axis in the companion panel. Generated from MethodsAnalysisReport manuscript evidence links using Matplotlib/pandas. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not substitute evidence links for absent empirical support.](../figures/methods/methods_manuscript_evidence_index.png){#fig:methods_evidence_index}
 
 ## Figure design, accessibility, and claim discipline
 
 The main-manuscript figures follow a reader-facing design contract:
 consistent typography and panel structure, restrained non-data ink,
-perceptually safer colour choices, contrast checks for text-like marks,
-purposeful alt text, position- and length-oriented encodings for the
+perceptually safer colour choices, configured foreground/background contrast
+diagnostics, purposeful alt text, position- and length-oriented encodings for the
 main evidence maps, and captions that name the backend, source data,
 validation status, and unsupported inference. The design rules are
 grounded in practical figure guidance, graphical-perception evidence,
@@ -155,6 +156,12 @@ classes, and claim-tier boundaries, and the figure audit fails if a
 primary manuscript caption omits the
 backend/source/validation/conservative-interpretation pattern.
 
+Automatic contrast metadata evaluates the supplied foreground/background pair,
+using the default text pair when no artifact-specific pair is supplied. It does
+not inspect all rendered colors, overlap, PDF-scale legibility, keyboard access,
+or screen-reader behavior and is not an artifact-wide WCAG certification.
+Rendered PDF and browser inspection remain separate required evidence.
+
 The inserted-figure rule is now stricter than a generic sidecar check:
 every raster image promoted into the hydrated manuscript must have a
 curated `figure_registry.py` narrative with a manuscript section, Pandoc
@@ -164,8 +171,14 @@ sidecars remain acceptable for supporting diagnostics in the gallery or
 generated reports, but not for figures that carry manuscript evidence.
 This gives the manuscript figure claim map a complete accounting surface
 instead of a partial registry with generic fallbacks.
+Raw plot-data payloads preserve unavailable observations as null and retain each
+quantity's native units. Sweep outputs use independent native-unit axes; mixed
+counts, fractions, and unlike-unit metrics belong in labeled tables or separate
+panels. Empirical correlations remain signed correlations and angles retain their
+angular units. Layout, sidecar, and nonblank checks are engineering checks, not
+new biological observations or held-out validation.
 
-## Why this matters
+## Figure-level backend and provenance traceability
 
 The combined effect of these layers is that a reader can audit *any
 figure* in this manuscript to determine: which kernel produced it,
@@ -176,7 +189,7 @@ public," but "every claim is linkable, every figure is regenerable,
 and every fidelity gap is named" [@wilson2017good;
 @lamprecht2020fairsoftware].
 
-## Failure modes that visualization catches
+## Renderer, body-plan, and contact failure checks
 
 Empirically, the visual-validation layer catches three recurring
 failure modes that pure-numerical validation does not:

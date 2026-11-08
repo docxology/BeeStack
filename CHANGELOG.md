@@ -18,6 +18,16 @@ All notable changes to BeeStack are documented in this file.
 - No implicit synthetic template bank: absent alignment remains null. Scenario
   panels retain nullable observations and derived counts/ranges; incomplete series
   are unavailable, and the cross-unit `dominant_output` ranking is removed.
+- Optional activity/antenna measurements and an empty quality conjunction stay
+  null with contributing counts. Undefined zero-norm odor cosine pairs do not
+  contribute observations; measured zero statistics remain zero.
+- Sparse waggle records retain null angle/frame/straightness measurements and
+  undefined correlations, with per-statistic support and feature/binned source.
+  The reported error-improvement ratio is not clipped when error more than doubles;
+  neutral model-drive fallbacks remain distinct from measured values.
+- Figure data use native-value tables and independent axes instead of mixed-unit
+  normalization, remapped correlations, or unrelated angles on a shared polar plot.
+  Research provenance now uses the `research_evidence_inventory` claim tier.
 
 - Executable empirical templates require complete observed grids and finite shared
   sampling rates. Source labels remain positional when biological identities are
@@ -70,6 +80,19 @@ All notable changes to BeeStack are documented in this file.
   defects without inventing observations.
 - Methods/research metrics omit unobserved odor means while retaining measured
   zero. Static and interactive module tables preserve native units.
+- The graphical abstract distinguishes the executed synthetic scenario from the
+  seven declared interfaces. Source-class count tables share one raw/render data
+  authority; claim ceilings and readiness requirements are not execution receipts.
+- Informative manuscript headings retain section IDs. Current prose no longer
+  claims BrainState/niche feedback, recruitment retasking, inferred tripod gait,
+  or full contract-edge execution. Partial refresh recipes defer final sealing
+  to the canonical bootstrap/audit/final-hydration/render/publication order.
+- Generated Matplotlib font caches are excluded from source custody without
+  excluding project guidance or relaxing test-source drift checks.
+- Methods telemetry images and raw exports share null/empty-series semantics;
+  missing measurements no longer export as observed zeros or a synthetic first step.
+- Relative-error and unit-conversion overflow fail explicitly, while streaming
+  absolute-error means preserve representable results without overflowing their sums.
 
 ### Release boundaries
 
@@ -77,7 +100,7 @@ The historical 1.0 DOI is not reused. The current version requires a separately
 assigned DOI before deposit; empirical payload availability and native-tool/runtime
 verification remain explicit in the release receipt. No calibrated colony-twin claim.
 
-### Exercised verification — 2026-11-08
+### Historical candidate verification — 03ecbebb (2026-11-08)
 
 - Python 3.12.16 on macOS arm64: 750 tests passed; combined line/branch coverage
   92.84%, with the 92% floor unchanged. Locked install, Ruff lint and format checks passed.

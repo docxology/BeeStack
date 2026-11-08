@@ -253,7 +253,7 @@ def _body_report(cfg: BeeStackConfig) -> ModuleIntegrityReport:
             "Procedural MJCF cues encode honeybee abdomen banding, four wings, hamuli, eyes, antennae, and corbiculae.",
         ),
         diagnostics=diagnostics,
-        fidelity_level="FlyBody render path plus reduced closed-loop telemetry",
+        fidelity_level="FlyBody render path plus separate reduced-scenario telemetry",
         known_gaps=(
             "Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.",
             "Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset.",

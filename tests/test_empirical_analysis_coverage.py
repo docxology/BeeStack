@@ -10,8 +10,8 @@ from beestack.brain.empirical_analysis import (  # noqa: PLC2701
     EmpiricalTemplateBank,
     _antennal_drive,
     _mean,
-    _mean_odor_separability,
     _normalize,
+    _odor_separability,
     _region_key,
     _resample,
     _sparseness_by_stimulus,
@@ -55,9 +55,9 @@ def test_region_key_all_branches() -> None:
 
 def test_antennal_drive_none_and_real() -> None:
     assert _antennal_drive(None) == {
-        "odor_on_fraction": 0.0,
-        "theta_derivative_drive": 0.0,
-        "left_right_synchrony": 0.0,
+        "odor_on_fraction": None,
+        "theta_derivative_drive": None,
+        "left_right_synchrony": None,
     }
     summary = AntennalMovementSummary(
         dataset_id="jernigan",
@@ -90,7 +90,7 @@ def test_resample_and_normalize() -> None:
 
 
 def test_mean_filters_nonfinite() -> None:
-    assert _mean([]) == 0.0
+    assert _mean([]) is None
     assert _mean([1.0, float("inf"), 3.0, float("nan")]) == 2.0
 
 
@@ -100,4 +100,4 @@ def test_mean_odor_separability_single_template() -> None:
         sources={"hexanal": ("d",)},
         quality_checks=(),
     )
-    assert _mean_odor_separability(bank) == 0.0  # < 2 templates
+    assert _odor_separability(bank) == (None, 0)

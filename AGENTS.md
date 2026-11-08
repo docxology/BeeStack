@@ -62,8 +62,18 @@ This project follows the research-template pattern:
     preserve null through records, summaries, sweeps and raw plot data. Scientific
     charts must not compare unlike native units on shared axes or label configured
     self-tests as biological validation.
+    Waggle support metadata must distinguish paired feature/binned observations,
+    per-channel values and actual frames. Undefined correlations stay null;
+    bounded model confidence must not clip the reported signed error improvement.
+    Derived observations must remain finite or fail explicitly; do not serialize
+    infinities, reclip valid degradation, or invent a methods-telemetry point for an empty run.
 15. Render the manuscript locally with `scripts/render_manuscript.py`; Pandoc and
     XeLaTeX are required. No template-root commands or sibling output writes.
+16. Declared `stack_contracts` are not executed-edge coverage. The current reduced
+    driver uses a fixed synthetic dance, does not pass BrainState to policy or
+    niche context to Body, and does not retask agents from recruitment matches.
+    Counts of repeated per-tick matches are not unique recruited bees. Describe
+    actual dispatch and separate scripted scenes without inventing feedback.
 
 The upstream instruction asked agents to read `skills/PAI/SKILL.md`. If that
 path is absent in this project checkout, use the installed PAI skill from the
@@ -77,7 +87,16 @@ uv lock --check
 uv run ruff check src tests scripts
 uv run ruff format --check src tests scripts
 uv run pytest --cov=src --cov-report=term-missing
+uv run python scripts/fetch_empirical_bee_data.py --metadata-only
+uv run python scripts/analyze_empirical_bee_data.py
 uv run python scripts/analysis_pipeline.py
+uv run python scripts/generate_animations.py
+uv run python scripts/verify_bee_render.py
+uv run python scripts/review_stack_integrity.py
+uv run python scripts/run_research_suite.py --assemble-only
+uv run python scripts/run_methods_analysis.py
+uv run python scripts/run_stack_synthesis.py
+uv run python scripts/assess_digital_twin_readiness.py
 uv run python scripts/z_generate_manuscript_variables.py
 uv run python scripts/render_manuscript.py
 uv run python scripts/signpost_project_tree.py

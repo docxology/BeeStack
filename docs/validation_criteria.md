@@ -72,6 +72,13 @@ Coverage over `src/` must remain at or above 92%.
   `0.800` parseability target remains an improvement target. Remaining blockers
   are allowed only when every curated source is DOI/source-verified and the blocker,
   parser status, and remediation path are recorded.
+- Executable empirical templates require complete observed grids and explicit,
+  shared acquisition rates. Missing means carry nulls/counts; observed zeros stay
+  numeric. A default run has no empirical bank and therefore null alignment.
+- Current evidence requires raw-payload, report, configuration, and implementation
+  identity; skipped or failed analysis cannot promote retained historical values.
+- Guarded acquisition and container intake enforce byte/expansion/workbook/array
+  budgets; policy refusal is not an empty successful parse.
 
 ## Mind, Swarm, Niche
 
@@ -85,8 +92,8 @@ Coverage over `src/` must remain at or above 92%.
   probabilities.
 - BeeNiche outputs comb occupancy, thermal metrics, foraging-environment
   metrics, and Hiveopolis/BEEHAVE-compatible adapter schemas.
-- Calibrated BeeNiche brood-temperature error should remain below 3 degrees C
-  in generated methods and research reports.
+- Reduced BeeNiche thermal self-tests target brood-temperature error below
+  3 degrees C; meeting that configured band does not establish biological calibration.
 
 ## Research Suite
 
@@ -104,8 +111,9 @@ uv run python scripts/verify_generated_reports.py
 - Empirical evidence rows must use one of `parsed`, `generated`,
   `registered_absent`, `network_gated_absent`, or `missing_optional`; rows with
   absent availability states must not be rendered as current manuscript support.
-- Scorecard metrics and sensitivity outputs must be finite, typed, JSON
-  serializable, and deterministic from a fixed config/seed.
+- Scorecard metrics and observed sensitivity outputs must be finite, typed, JSON
+  serializable, and deterministic from fixed inputs. Missing empirical sweep values
+  remain null at their parameter coordinates; native units never share one axis.
 - Research figures under `output/figures/research/` must be nonblank, and
   Plotly HTML outputs under `output/interactive/` must contain data traces.
 - The report must preserve fidelity labels: strict FlyBody/MuJoCo for Body and
@@ -129,17 +137,20 @@ uv run python scripts/verify_generated_reports.py
   source data, regeneration command, accessibility checks, and optional
   figure-design citation metadata.
 - The figure audit must pass: hydrated manuscript image paths must resolve,
-  labels must be unique, captions must be nonempty, PNG sidecars must exist,
-  curated high-priority figures must be inserted, and gap/absent figures must
+  labels must be unique, captions must be nonempty, matching sidecars must exist
+  for every supported image format, curated high-priority figures must be inserted,
+  and gap/absent figures must
   not be captioned as positive support. Sidecar labels/captions must agree with
   hydrated manuscript callouts, primary manuscript captions must name backend,
   source data, validation, and conservative interpretation, and generated
   project-local paths must not leak checkout-specific absolute prefixes. Sidecar
   `caption` fields use the same long contract text as manuscript alt-text
   (`FigureNarrative.manuscript_contract_caption()`).
-- `tests/test_manuscript_quality_guards.py` guards primary figure markdown against
-  registry drift, bans machine-flag literals in captions, and scans H2 sentence
-  case (with roadmap/reference allowlists).
+- `tests/test_manuscript_quality_guards.py` checks explicit H1 section labels,
+  same-file prose references for figure labels, and forbidden raw LaTeX macros.
+  Figure audits check hydrated provenance/caption agreement separately. These
+  structural checks do not enforce H2 sentence case or prove prose agrees with
+  executed scientific behavior; that requires source and artifact review.
 - `StackSynthesisReview` must include five module synthesis panels, finite
   simulation telemetry statistics, artifact/signposting/scholarship gates, and
   a nonblank `output/figures/research/stack_synthesis_dashboard.png` figure.

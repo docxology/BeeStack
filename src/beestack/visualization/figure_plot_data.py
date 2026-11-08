@@ -32,7 +32,9 @@ def write_figure_plot_data(
         "figure_path": project_relative_path(path, project_root),
         **normalized,
     }
-    data_path.write_text(json.dumps(body, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    data_path.write_text(
+        json.dumps(body, indent=2, sort_keys=True, allow_nan=False) + "\n", encoding="utf-8"
+    )
     return data_path
 
 
@@ -40,7 +42,7 @@ def timeseries_plot(
     *,
     title: str,
     x_key: str,
-    x: list[float] | list[int],
+    x: list[float | None] | list[int],
     series: dict[str, list[float | None]],
     chart_type: str = "timeseries",
 ) -> dict[str, Any]:
@@ -83,7 +85,7 @@ def heatmap_plot(
     title: str,
     row_labels: list[str],
     column_labels: list[str],
-    matrix: list[list[float]],
+    matrix: list[list[float | None]],
     value_label: str,
 ) -> dict[str, Any]:
     """Build a matrix heatmap payload."""
@@ -98,19 +100,14 @@ def heatmap_plot(
     }
 
 
-def polar_plot(
-    *,
-    title: str,
-    labels: list[str],
-    angles_deg: list[float],
-) -> dict[str, Any]:
-    """Build a polar scatter/phase plot payload."""
+def table_plot(*, title: str, columns: list[str], rows: list[dict[str, Any]]) -> dict[str, Any]:
+    """Keep unlike native units and explicit null observations in separate cells."""
 
     return {
-        "chart_type": "polar",
+        "chart_type": "table",
         "title": title,
-        "labels": labels,
-        "angles_deg": angles_deg,
+        "columns": columns,
+        "rows": rows,
     }
 
 

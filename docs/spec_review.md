@@ -1,7 +1,7 @@
 # BeeStack Specification Review
 
 This note records how the May 2026 BeeStack specification is represented in
-the v0 scaffold.
+the current evidence-typed scaffold.
 
 ## Preserved Architecture
 
@@ -21,8 +21,8 @@ The project implements the five named layers:
 
 ## Explicit Parameters Carried Into Code
 
-- 0.5 ms physics step and 100 Hz control loop.
-- 250 Hz dance event channel.
+- Configured 0.5 ms physics and 100 Hz control targets; the reduced loop does not substep MuJoCo.
+- Configured 250 Hz dance-event target, not a measured executed event rate.
 - 80 mg default worker mass.
 - 230 Hz wing stroke frequency.
 - 6,900 ommatidia per compound eye.
@@ -36,19 +36,24 @@ The project implements the five named layers:
   agents.
 - 32-36 C brood thermal band, with 34 C target.
 
-## Deliberate v0 Reductions
+## Reduced dynamics and separate strict scene evidence
 
 The current scaffold is executable architecture, not a full biological
 simulator. BeeBody now renders through FlyBody `WalkImitation` and
 `FlightImitationWBPG` with a generated honeybee MJCF body plan. BeeSwarm
 collision, configured waggle, and long waggle production GIFs reuse that
 generated BeeBody plan in strict multi-bee MuJoCo scenes with required contact
-metrics. Closed-loop body telemetry, non-visual swarm dynamics, and niche
-dynamics remain reduced
-deterministic kernels. Full calibrated honeybee mass/inertia validation,
+metrics. Scenario body telemetry, non-visual swarm dynamics, and niche dynamics
+remain reduced deterministic kernels, with declared feedback distinguished from
+actual dispatch. Full calibrated honeybee mass/inertia validation,
 Brian2/Nengo/SpikingJelly, BEEHAVE runtime coupling, Hiveopolis data, and a
 complete biological validation suite remain documented extension points in
 `src/beestack/manifest.py` and `docs/architecture.md`.
+Strict BeeSwarm scenes use scripted poses with real MuJoCo contact detection,
+not integrated forward dynamics. The reduced loop owns fixed seeded PN-to-KC
+connectivity and full-bearing degree headings. Optional empirical alignment
+remains null without supplied compatible templates; source freshness and bounded
+intake are separate from parseability or biological validation.
 
 ## Verification Mapping
 
@@ -59,7 +64,7 @@ complete biological validation suite remain documented extension points in
 - Strict FlyBody scene XML and contact-scene animation metadata:
   `tests/test_structure_flybody_visualization.py`.
 - BeeMind, BeeSwarm, and BeeNiche behavior: `tests/test_mind_swarm_niche.py`.
-- Integrated closed loop, model-card coverage, scripts, and manuscript tokens:
+- Reduced scenario driver, model-card coverage, scripts, and manuscript tokens:
   `tests/test_orchestrator_manifest_manuscript.py`.
 
 The generated `output/data/module_coverage.json` is the machine-readable

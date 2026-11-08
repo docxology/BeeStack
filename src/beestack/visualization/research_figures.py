@@ -6,19 +6,17 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
-from matplotlib.patches import FancyArrowPatch, Rectangle
+from matplotlib.ticker import MaxNLocator
 
 from .figure_metadata import assert_nonblank_quality
 from .figure_output import finalize_static_figures, write_stable_plotly_html
-from .figure_plot_specs import research_plot_data
+from .figure_plot_specs import research_evidence_rows, research_inventory_rows, research_plot_data
+from .figure_registry import figure_narrative_for_path
 from .style import (
     add_figure_note,
     apply_panel_style,
-    bounded_text,
     module_color,
-    status_color,
     style_context,
     wrap_label,
 )
@@ -38,10 +36,12 @@ def generate_research_figures(
     output_dir.mkdir(parents=True, exist_ok=True)
     with style_context():
         paths = [
-            _scorecard_heatmap(report, output_dir / "research_module_scorecard_heatmap.png"),
+            _module_inventory_table(report, output_dir / "research_module_scorecard_heatmap.png"),
             _validation_bars(report, output_dir / "research_validation_scorecard.png"),
             _sensitivity_sweeps(report, output_dir / "research_sensitivity_sweeps.png"),
-            _evidence_network(report, output_dir / "research_fidelity_evidence_network.png"),
+            _evidence_inventory_table(
+                report, output_dir / "research_fidelity_evidence_network.png"
+            ),
             _evidence_detail(report, output_dir / "research_evidence_detail.png"),
             _visualization_inventory(report, output_dir / "research_visualization_inventory.png"),
             _empirical_completeness(report, output_dir / "research_empirical_completeness.png"),
@@ -64,9 +64,10 @@ def generate_research_figures(
         return research_plot_data(path, report=report)
 
     def _sidecar(path: Path) -> dict[str, object]:
+        narrative = figure_narrative_for_path(path)
         return {
-            "title": path.stem.replace("_", " ").title(),
-            "backend": "Matplotlib/pandas/NetworkX",
+            "title": narrative.title if narrative is not None else _plot_data(path)["title"],
+            "backend": "Matplotlib/pandas",
             "fidelity": _research_figure_fidelity(path.name),
             "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
             "validation_status": "nonblank image, quality sidecar, and plot data passed",
@@ -83,10 +84,12 @@ def _research_figure_fidelity(filename: str) -> str:
     """Classify research-suite figures by evidence tier."""
 
     if "empirical" in filename or "beebrain" in filename:
-        return "empirical summary projected into reduced BeeBrain contracts"
+        return "empirical source inventory / parseability diagnostic; not biological validation"
     if "beebody" in filename:
-        return "FlyBody-backed render diagnostics plus reduced telemetry"
-    if "network" in filename or "inventory" in filename or "scorecard" in filename:
+        return (
+            "scripted-pose FlyBody render diagnostics plus reduced telemetry; not forward dynamics"
+        )
+    if any(token in filename for token in ("network", "inventory", "scorecard", "evidence")):
         return "research provenance diagnostic"
     return "reduced deterministic kernel diagnostic"
 
@@ -146,88 +149,46 @@ def write_interactive_research_outputs(report: ResearchSuiteReport, output_dir: 
     return [scorecard_path, sweep_path]
 
 
-def _scorecard_heatmap(report: ResearchSuiteReport, path: Path) -> Path:
-    module_keywords = {
-        "BeeBody": ("beebody", "body"),
-        "BeeBrain": ("beebrain", "brain"),
-        "BeeMind": ("beemind", "mind"),
-        "BeeSwarm": ("beeswarm", "swarm", "waggle", "collision"),
-        "BeeNiche": ("beeniche", "niche", "comb", "thermal"),
-    }
-    rows: list[dict[str, float | str]] = []
-    for scorecard in report.module_scorecards:
-        metric_values = np.asarray(tuple(scorecard.metrics.values()), dtype=float)
-        artifact_count = _artifact_count_for_module(
-            report, module_keywords.get(scorecard.module, (scorecard.module.lower(),))
-        )
-        rows.append(
-            {
-                "module": scorecard.module,
-                "validation_fraction": scorecard.validation_fraction,
-                "metric_count": float(len(metric_values)),
-                "median_log_metric": float(np.median(np.log10(np.abs(metric_values) + 1.0))),
-                "evidence_count": float(len(scorecard.evidence)),
-                "gap_closure": 1.0 / (1.0 + len(scorecard.known_gaps)),
-                "visual_artifacts": float(artifact_count),
-            }
-        )
-    frame = pd.DataFrame(rows).set_index("module")
-    normalized = frame.copy()
-    for column in normalized.columns:
-        values = frame[column].astype(float)
-        span = float(values.max() - values.min())
-        if span == 0:
-            normalized[column] = 1.0 if float(values.max()) > 0 else 0.0
-        else:
-            normalized[column] = (values - float(values.min())) / span
-    fig, ax = plt.subplots(figsize=(10.5, 5.9))
-    image = ax.imshow(normalized.to_numpy(), aspect="auto", cmap="viridis", vmin=0, vmax=1)
-    ax.set_title("BeeStack dense research method scorecard", loc="left")
-    ax.set_xticks(
-        range(len(normalized.columns)),
+def _module_inventory_table(report: ResearchSuiteReport, path: Path) -> Path:
+    rows = [
         [
-            wrap_label(column.replace("_", " "), width=16, max_lines=2)
-            for column in normalized.columns
+            row["module"],
+            f"{row['validation_fraction']:.2f}",
+            str(row["metric_count"]),
+            str(row["evidence_count"]),
+            str(row["known_gap_count"]),
+            str(row["visual_artifacts"]),
+        ]
+        for row in research_inventory_rows(report)
+    ]
+    fig, ax = plt.subplots(figsize=(10.8, max(4.2, 0.48 * len(rows) + 1.8)))
+    ax.axis("off")
+    ax.set_title("Research inventory in native units", loc="left", pad=18)
+    table = ax.table(
+        cellText=rows,
+        colLabels=[
+            "Module",
+            "Self-test\nfraction",
+            "Metrics\n(count)",
+            "Evidence\n(count)",
+            "Known gaps\n(count)",
+            "Artifacts\n(count)",
         ],
-        rotation=20,
-        ha="right",
+        colWidths=[0.19, 0.17, 0.14, 0.16, 0.18, 0.16],
+        cellLoc="center",
+        bbox=(0, 0.08, 1, 0.84),
     )
-    ax.set_yticks(range(len(normalized.index)), normalized.index)
-    for row_index, module in enumerate(frame.index):
-        for column_index, column in enumerate(frame.columns):
-            value = frame.loc[module, column]
-            ax.text(
-                column_index,
-                row_index,
-                f"{float(value):.2g}",
-                ha="center",
-                va="center",
-                fontsize=7,
-                color="white" if normalized.loc[module, column] < 0.58 else "black",
-            )
-    fig.colorbar(image, ax=ax, label="Column-normalized summary score")
-    bounded_text(
-        ax,
-        0.02,
-        -0.24,
-        "Read as a provenance scorecard: normalized cells support gap visibility and readiness review, not biological predictive validation.",
-        width=96,
-        max_lines=2,
-        fontsize=8,
+    table.auto_set_font_size(False)
+    table.set_fontsize(10)
+    add_figure_note(
+        fig,
+        "Counts are report inventory; configured self-tests are not biological validation. Unlike metrics are not combined into a score.",
+        y=0.025,
     )
-    fig.tight_layout()
+    fig.tight_layout(rect=(0, 0.07, 1, 0.98))
     fig.savefig(path, dpi=170)
     plt.close(fig)
     return path
-
-
-def _artifact_count_for_module(report: ResearchSuiteReport, keywords: tuple[str, ...]) -> int:
-    count = 0
-    for artifact in report.visualization_artifacts:
-        path_text = artifact.path.lower()
-        if any(keyword in path_text for keyword in keywords):
-            count += 1
-    return count
 
 
 def _validation_bars(report: ResearchSuiteReport, path: Path) -> Path:
@@ -240,14 +201,15 @@ def _validation_bars(report: ResearchSuiteReport, path: Path) -> Path:
         }
     )
     fig, ax = plt.subplots(figsize=(8, 4.5))
-    ax.bar(
+    bars = ax.bar(
         frame["module"],
         frame["validation_fraction"],
         color=[module_color(module) for module in frame["module"]],
     )
-    ax.set_ylim(0, 1.05)
+    ax.bar_label(bars, fmt="%.2f", padding=3)
+    ax.set_ylim(0, 1.12)
     ax.set_ylabel("Configured self-test fraction")
-    ax.set_title("Research-suite config-band self-tests")
+    ax.set_title("Configured self-tests (not biological validation)")
     apply_panel_style(ax, grid_axis="y")
     fig.tight_layout()
     fig.savefig(path, dpi=170)
@@ -262,7 +224,7 @@ def _sensitivity_sweeps(report: ResearchSuiteReport, path: Path) -> Path:
     fig, axes = plt.subplots(
         len(output_names),
         len(report.sensitivity_sweeps),
-        figsize=(12, 2.3 * len(output_names)),
+        figsize=(max(10, 3.6 * len(report.sensitivity_sweeps)), 2.6 * len(output_names)),
         squeeze=False,
     )
     for column, sweep in enumerate(report.sensitivity_sweeps):
@@ -274,9 +236,9 @@ def _sensitivity_sweeps(report: ResearchSuiteReport, path: Path) -> Path:
             else:
                 axis.text(0.5, 0.5, "Unavailable", ha="center", transform=axis.transAxes)
             if row == 0:
-                axis.set_title(wrap_label(sweep.parameter), fontsize=9)
+                axis.set_title(wrap_label(sweep.parameter, width=24), fontsize=9)
             if column == 0:
-                axis.set_ylabel(output_name, fontsize=8)
+                axis.set_ylabel(wrap_label(output_name.replace("_", " "), width=22), fontsize=8)
             axis.grid(alpha=0.22)
     fig.suptitle("Reduced-kernel sensitivity sweeps", y=0.995)
     add_figure_note(
@@ -290,207 +252,68 @@ def _sensitivity_sweeps(report: ResearchSuiteReport, path: Path) -> Path:
     return path
 
 
-def _evidence_network(report: ResearchSuiteReport, path: Path) -> Path:
-    positions = {
-        "BeeBody": (0.16, 0.68),
-        "BeeBrain": (0.38, 0.74),
-        "BeeMind": (0.60, 0.68),
-        "BeeSwarm": (0.28, 0.34),
-        "BeeNiche": (0.50, 0.34),
-    }
-    evidence_counts = {
-        scorecard.module: len(scorecard.evidence) for scorecard in report.module_scorecards
-    }
-    gap_counts = {
-        scorecard.module: len(scorecard.known_gaps) for scorecard in report.module_scorecards
-    }
-    fig, ax = plt.subplots(figsize=(10.2, 6.4))
+def _evidence_inventory_table(report: ResearchSuiteReport, path: Path) -> Path:
+    fig, ax = plt.subplots(figsize=(10.4, 5.5))
     ax.axis("off")
-    ax.set_title("BeeStack evidence network overview", loc="left", pad=12)
-    for scorecard in report.module_scorecards:
-        x, y = positions.get(scorecard.module, (0.5, 0.5))
-        radius = 950 + evidence_counts[scorecard.module] * 90
-        ax.scatter(
-            [x],
-            [y],
-            s=radius,
-            color=module_color(scorecard.module),
-            edgecolor="#111827",
-            linewidth=1.0,
-            alpha=0.92,
-            transform=ax.transAxes,
-            zorder=3,
-        )
-        ax.text(
-            x,
-            y + 0.01,
-            scorecard.module,
-            transform=ax.transAxes,
-            ha="center",
-            va="center",
-            fontsize=9.2,
-            fontweight="bold",
-            color="white",
-            zorder=4,
-        )
-        ax.text(
-            x,
-            y - 0.095,
-            f"{evidence_counts[scorecard.module]} evidence\n{gap_counts[scorecard.module]} gaps",
-            transform=ax.transAxes,
-            ha="center",
-            va="top",
-            fontsize=8,
-            color="#334155",
-        )
-    for source, target in (
-        ("BeeBody", "BeeBrain"),
-        ("BeeBrain", "BeeMind"),
-        ("BeeMind", "BeeSwarm"),
-        ("BeeSwarm", "BeeNiche"),
-        ("BeeNiche", "BeeBody"),
-    ):
-        if source not in positions or target not in positions:
-            continue
-        ax.add_patch(
-            FancyArrowPatch(
-                positions[source],
-                positions[target],
-                transform=ax.transAxes,
-                arrowstyle="-|>",
-                mutation_scale=14,
-                lw=1.2,
-                color="#64748B",
-                alpha=0.65,
-                connectionstyle="arc3,rad=0.10",
-                zorder=1,
-            )
-        )
-    empirical_count = len(report.empirical_evidence)
-    bounded_text(
-        ax,
-        0.70,
-        0.78,
-        f"Empirical records route to BeeBrain: {empirical_count}. Detail companion lists source rows and integration targets.",
-        width=38,
-        max_lines=4,
-        fontsize=8.4,
-        facecolor="#F8FAFC",
+    ax.set_title("Evidence inventory overview", loc="left", pad=16)
+    table = ax.table(
+        cellText=[
+            [
+                card.module,
+                str(len(card.evidence)),
+                str(len(card.known_gaps)),
+                wrap_label(card.fidelity_level, width=46),
+            ]
+            for card in report.module_scorecards
+        ],
+        colLabels=["Module", "Evidence rows", "Known gaps", "Reported fidelity"],
+        colWidths=[0.17, 0.15, 0.15, 0.53],
+        cellLoc="left",
+        bbox=(0, 0.08, 1, 0.84),
     )
-    bounded_text(
-        ax,
-        0.70,
-        0.42,
-        "Boundary: edge arrows show provenance routing and reduced-stack handoff, not predictive biological validation.",
-        width=38,
-        max_lines=4,
-        fontsize=8.4,
-        facecolor="#FFF7ED",
-        edgecolor="#FED7AA",
+    table.auto_set_font_size(False)
+    table.set_fontsize(9)
+    add_figure_note(
+        fig,
+        f"{len(report.empirical_evidence)} empirical source records are detailed in the companion. Counts are provenance, not measured biological connectivity or validation.",
+        y=0.02,
     )
-    fig.tight_layout()
+    fig.tight_layout(rect=(0, 0.07, 1, 0.98))
     fig.savefig(path, dpi=170)
     plt.close(fig)
     return path
 
 
 def _evidence_detail(report: ResearchSuiteReport, path: Path) -> Path:
-    rows: list[dict[str, str]] = []
-    for scorecard in report.module_scorecards:
-        rows.append(
-            {
-                "module": scorecard.module,
-                "kind": "scorecard",
-                "item": "; ".join(scorecard.evidence[:2]),
-                "status": f"{scorecard.validation_fraction:.2f} validation",
-                "boundary": "; ".join(scorecard.known_gaps[:2])
-                or "explicit gaps carried in report",
-            }
-        )
-    for record in report.empirical_evidence:
-        rows.append(
-            {
-                "module": "BeeBrain",
-                "kind": "empirical",
-                "item": record.dataset_id,
-                "status": record.availability_status,
-                "boundary": record.integration_target,
-            }
-        )
-    fig, ax = plt.subplots(figsize=(12.2, 6.6))
-    ax.axis("off")
-    ax.text(
-        0.02,
-        0.96,
-        "Research evidence detail: scorecards and empirical routing",
-        transform=ax.transAxes,
-        ha="left",
-        va="top",
-        fontsize=13,
-        fontweight="bold",
-        color="#111827",
-    )
+    rows = research_evidence_rows(report)
     headers = ("Module", "Kind", "Evidence item", "Status", "Boundary / target")
-    x_positions = (0.02, 0.13, 0.25, 0.55, 0.70)
-    for header, x in zip(headers, x_positions, strict=True):
-        ax.text(x, 0.86, header, transform=ax.transAxes, fontsize=8.5, fontweight="bold")
-    for index, row in enumerate(rows[:12]):
-        y = 0.80 - index * 0.060
-        ax.add_patch(
-            Rectangle(
-                (0.015, y - 0.025),
-                0.96,
-                0.050,
-                transform=ax.transAxes,
-                facecolor="#F8FAFC" if index % 2 == 0 else "#FFFFFF",
-                edgecolor="#E2E8F0",
-                lw=0.5,
-            )
-        )
-        ax.text(
-            x_positions[0],
-            y,
-            row["module"],
-            transform=ax.transAxes,
-            va="center",
-            fontsize=8.2,
-            color=module_color(row["module"]) if row["module"].startswith("Bee") else "#334155",
-            fontweight="bold",
-        )
-        ax.text(x_positions[1], y, row["kind"], transform=ax.transAxes, va="center", fontsize=8.0)
-        ax.text(
-            x_positions[2],
-            y,
-            wrap_label(row["item"], width=34, max_lines=2),
-            transform=ax.transAxes,
-            va="center",
-            fontsize=7.5,
-            color="#111827",
-        )
-        ax.text(
-            x_positions[3],
-            y,
-            wrap_label(row["status"], width=18, max_lines=2),
-            transform=ax.transAxes,
-            va="center",
-            fontsize=7.5,
-            color="#334155",
-        )
-        ax.text(
-            x_positions[4],
-            y,
-            wrap_label(row["boundary"], width=38, max_lines=2),
-            transform=ax.transAxes,
-            va="center",
-            fontsize=7.5,
-            color="#334155",
-        )
+    keys = ("module", "kind", "item", "status", "boundary")
+    widths = (12, 10, 38, 22, 44)
+    cells = [
+        [wrap_label(row[key], width=width) for key, width in zip(keys, widths, strict=True)]
+        for row in rows
+    ]
+    row_lines = [2, *(max(len(cell.splitlines()) for cell in row) + 1 for row in cells)]
+    fig, ax = plt.subplots(figsize=(13.2, max(5.2, 0.22 * sum(row_lines) + 1.5)))
+    ax.axis("off")
+    ax.set_title("Research evidence detail: report sources and explicit gaps", loc="left", pad=16)
+    table = ax.table(
+        cellText=cells,
+        colLabels=headers,
+        colWidths=[0.10, 0.09, 0.30, 0.17, 0.34],
+        cellLoc="left",
+        bbox=(0, 0.03, 1, 0.92),
+    )
+    table.auto_set_font_size(False)
+    table.set_fontsize(9)
+    for (row_index, _), cell in table.get_celld().items():
+        cell.set_height(row_lines[row_index] / sum(row_lines))
     add_figure_note(
         fig,
-        "Detail companion to the evidence-network overview; rows are provenance and availability witnesses only.",
-        y=0.018,
+        "All listed report rows are shown. Source availability and configured self-tests do not establish biological validity.",
+        y=0.012,
     )
-    fig.tight_layout()
+    fig.tight_layout(rect=(0, 0.04, 1, 0.98))
     fig.savefig(path, dpi=170)
     plt.close(fig)
     return path
@@ -499,11 +322,18 @@ def _evidence_detail(report: ResearchSuiteReport, path: Path) -> Path:
 def _visualization_inventory(report: ResearchSuiteReport, path: Path) -> Path:
     frame = pd.DataFrame([artifact.as_dict() for artifact in report.visualization_artifacts])
     counts = frame.groupby(["artifact_type", "fidelity_level"]).size().reset_index(name="count")
-    labels = [f"{row.artifact_type}\n{row.fidelity_level}" for row in counts.itertuples()]
-    fig, ax = plt.subplots(figsize=(9, 5))
-    ax.barh(labels[::-1], counts["count"].to_numpy()[::-1], color=module_color("BeeBody"))
-    ax.set_xlabel("Artifact count")
-    ax.set_title("Visualization artifact inventory by fidelity")
+    labels = [
+        wrap_label(f"{row.artifact_type}: {row.fidelity_level}", width=64)
+        for row in counts.itertuples()
+    ]
+    line_count = sum(max(1, len(label.splitlines())) for label in labels)
+    fig, ax = plt.subplots(figsize=(11.5, max(4.5, 0.30 * line_count + 1.4)))
+    bars = ax.barh(labels[::-1], counts["count"].to_numpy()[::-1], color=module_color("BeeBody"))
+    ax.bar_label(bars, padding=4, fmt="%g")
+    ax.margins(x=0.15)
+    ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+    ax.set_xlabel("Artifact count (inventory, not validation)")
+    ax.set_title("Visualization artifact inventory by reported fidelity")
     apply_panel_style(ax, grid_axis="x")
     fig.tight_layout()
     fig.savefig(path, dpi=170)
@@ -512,35 +342,33 @@ def _visualization_inventory(report: ResearchSuiteReport, path: Path) -> Path:
 
 
 def _empirical_completeness(report: ResearchSuiteReport, path: Path) -> Path:
-    frame = pd.DataFrame([evidence.as_dict() for evidence in report.empirical_evidence])
-    fig, ax = plt.subplots(figsize=(9, 5))
-    bars = ax.barh(
-        frame["dataset_id"][::-1],
-        frame["completeness_fraction"][::-1],
-        color=module_color("BeeBrain"),
+    rows = [
+        [
+            wrap_label(record.dataset_id, width=44),
+            f"{record.completeness_fraction:.2f}",
+            wrap_label(record.availability_status, width=44),
+        ]
+        for record in report.empirical_evidence
+    ]
+    row_lines = max((max(len(cell.splitlines()) for cell in row) for row in rows), default=1)
+    fig, ax = plt.subplots(figsize=(11.2, max(4.4, 0.24 * (len(rows) + 1) * row_lines + 1.4)))
+    ax.axis("off")
+    ax.set_title("Empirical source availability (reported state)", loc="left", pad=16)
+    table = ax.table(
+        cellText=rows,
+        colLabels=["Dataset", "Completeness fraction", "Availability status"],
+        colWidths=[0.40, 0.20, 0.40],
+        cellLoc="left",
+        bbox=(0, 0.06, 1, 0.86),
     )
-    for bar, fraction in zip(bars, frame["completeness_fraction"][::-1], strict=False):
-        status = "available" if float(fraction) >= 0.8 else "partial"
-        ax.text(
-            min(0.98, float(fraction) + 0.02),
-            bar.get_y() + bar.get_height() / 2,
-            f"{float(fraction):.2f} {status}",
-            va="center",
-            ha="left",
-            fontsize=7.8,
-            color="#111827",
-        )
-    ax.set_xlim(0, 1)
-    ax.set_xlabel("Completeness fraction")
-    ax.set_title("BeeBrain empirical evidence completeness")
-    ax.axvline(0.8, color=status_color("warning"), lw=0.9, ls="--")
-    apply_panel_style(ax, grid_axis="x")
+    table.auto_set_font_size(False)
+    table.set_fontsize(9)
     add_figure_note(
         fig,
-        "Completeness is source availability and parseability; it does not fill blocked calcium or synaptic evidence.",
-        y=0.012,
+        "Fractions describe source availability / parseability. Status comes from the report, not a numeric cutoff; neither is biological validation.",
+        y=0.018,
     )
-    fig.tight_layout()
+    fig.tight_layout(rect=(0, 0.06, 1, 0.98))
     fig.savefig(path, dpi=170)
     plt.close(fig)
     return path
@@ -549,10 +377,14 @@ def _empirical_completeness(report: ResearchSuiteReport, path: Path) -> Path:
 def _module_metric_table(report: ResearchSuiteReport, module: str, path: Path) -> Path:
     scorecard = next(item for item in report.module_scorecards if item.module == module)
     items = sorted(scorecard.metrics.items())
-    fig, ax = plt.subplots(figsize=(8, 4.8))
+    row_lines = max((len(wrap_label(name, width=34).splitlines()) for name, _ in items), default=1)
+    fig, ax = plt.subplots(figsize=(9.5, max(4.8, 0.25 * (len(items) + 1) * row_lines + 1.3)))
     ax.axis("off")
     table = ax.table(
-        cellText=[[wrap_label(name, width=34), f"{value:.3g}"] for name, value in items],
+        cellText=[
+            [wrap_label(name, width=34), "Unavailable" if value is None else f"{value:.3g}"]
+            for name, value in items
+        ],
         colLabels=["Metric (native units)", "Value"],
         colWidths=[0.75, 0.25],
         cellLoc="left",

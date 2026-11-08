@@ -1,281 +1,254 @@
-"""BeeStack publication figure builders — submodule."""
+"""Architecture and evidence-boundary schematics (not run measurements)."""
 
 from __future__ import annotations
 
 from pathlib import Path
 
 import matplotlib.pyplot as plt
-import numpy as np
-from matplotlib.patches import Circle, FancyArrowPatch, Rectangle
+from matplotlib.patches import FancyArrowPatch, Rectangle
 
-from .style import module_color
+from ..config import config_from_mapping
+from ..contracts import stack_contracts
+from .style import add_figure_note, module_color, wrap_label
 
 
 def _contract_network(path: Path) -> Path:
-    modules = ["BeeBody", "BeeBrain", "BeeMind", "BeeSwarm", "BeeNiche"]
-    payloads = [
-        ("BeeBody", "BeeBrain", "Observation"),
-        ("BeeBrain", "BeeMind", "BrainState"),
-        ("BeeMind", "BeeBody", "Action"),
-        ("BeeMind", "BeeSwarm", "BeliefState"),
-        ("BeeSwarm", "BeeNiche", "BeeAgent/PheromoneField"),
-        ("BeeNiche", "BeeMind", "CombGrid metrics"),
-    ]
-    colors = [module_color(module) for module in modules]
-    angles = np.linspace(np.pi / 2, np.pi / 2 - 2 * np.pi, len(modules), endpoint=False)
+    # Default configuration resolves endpoint/payload declarations only. No rate
+    # or timing from that configuration is presented as an executed measurement.
     positions = {
-        module: (0.5 + 0.34 * np.cos(angle), 0.52 + 0.34 * np.sin(angle))
-        for module, angle in zip(modules, angles, strict=False)
+        "BeeBody": (0.14, 0.64),
+        "BeeBrain": (0.50, 0.64),
+        "BeeMind": (0.86, 0.64),
+        "BeeSwarm": (0.71, 0.26),
+        "BeeNiche": (0.29, 0.26),
     }
-    fig, ax = plt.subplots(figsize=(6.8, 6.2))
+    fig, ax = plt.subplots(figsize=(10.8, 6.0))
     ax.axis("off")
-    for source, target, label in payloads:
-        start = positions[source]
-        end = positions[target]
+    routes = {
+        ("BeeBody", "BeeBrain"): ((0.24, 0.64), (0.40, 0.64), (0.32, 0.69), "arc3"),
+        ("BeeBrain", "BeeMind"): ((0.60, 0.64), (0.76, 0.64), (0.68, 0.69), "arc3"),
+        ("BeeMind", "BeeBody"): ((0.86, 0.72), (0.14, 0.72), (0.50, 0.91), "arc3,rad=0.20"),
+        ("BeeBrain", "BeeSwarm"): ((0.50, 0.56), (0.66, 0.34), (0.52, 0.44), "arc3"),
+        ("BeeSwarm", "BeeMind"): ((0.77, 0.34), (0.86, 0.56), (0.87, 0.43), "arc3"),
+        ("BeeSwarm", "BeeNiche"): ((0.61, 0.26), (0.39, 0.26), (0.50, 0.20), "arc3"),
+        ("BeeNiche", "BeeBody"): ((0.23, 0.34), (0.14, 0.56), (0.19, 0.43), "arc3"),
+    }
+    for edge in stack_contracts(config_from_mapping({})):
+        start, end, label_position, connection = routes[(edge.source, edge.target)]
         ax.add_patch(
             FancyArrowPatch(
                 start,
                 end,
                 transform=ax.transAxes,
-                arrowstyle="->",
-                mutation_scale=12,
-                lw=1.25,
+                arrowstyle="-|>",
+                mutation_scale=14,
+                lw=1.5,
                 color="#475569",
-                alpha=0.82,
-                connectionstyle="arc3,rad=0.16",
+                connectionstyle=connection,
             )
         )
-        mid = ((start[0] + end[0]) / 2, (start[1] + end[1]) / 2)
-        ax.text(mid[0], mid[1], label, transform=ax.transAxes, fontsize=7, ha="center")
-    for index, module in enumerate(modules):
-        x, y = positions[module]
+        ax.text(
+            *label_position,
+            wrap_label(edge.payload, width=22),
+            transform=ax.transAxes,
+            ha="center",
+            va="center",
+            fontsize=9,
+            color="#111827",
+            bbox={"facecolor": "white", "edgecolor": "none", "pad": 2.5},
+        )
+    for module, (x, y) in positions.items():
+        color = module_color(module)
         ax.add_patch(
-            Circle(
-                (x, y),
-                0.075,
+            Rectangle(
+                (x - 0.10, y - 0.08),
+                0.20,
+                0.16,
                 transform=ax.transAxes,
-                facecolor=colors[index],
-                edgecolor="#111827",
-                lw=1.1,
-                alpha=0.94,
+                facecolor="#F8FAFC",
+                edgecolor=color,
+                lw=1.8,
+            )
+        )
+        ax.add_patch(
+            Rectangle(
+                (x - 0.10, y - 0.08), 0.008, 0.16, transform=ax.transAxes, facecolor=color, lw=0
             )
         )
         ax.text(
             x,
             y,
-            module.replace("Bee", "Bee\n"),
+            module,
             transform=ax.transAxes,
             ha="center",
             va="center",
-            fontsize=8,
-            color="white",
+            fontsize=12,
+            weight="bold",
+            color="#111827",
         )
-    ax.set_title("BeeStack cross-layer API contract network")
-    fig.tight_layout()
+    ax.set_title("Declared cross-layer contracts", loc="left", pad=15)
+    add_figure_note(
+        fig,
+        "Architecture schematic: arrows name declared payloads, not measured biological causation.\nThe reduced orchestrator does not execute every declared feedback route.",
+        y=0.025,
+    )
+    fig.tight_layout(rect=(0, 0.10, 1, 1))
     fig.savefig(path, dpi=180)
     plt.close(fig)
     return path
 
 
 def _scale_ladder(path: Path) -> Path:
-    rows = [
-        ("Body", "milliseconds", "joints, wings, sensors", module_color("BeeBody")),
-        ("Brain", "10-100 ms", "AL/MB/CX activity", module_color("BeeBrain")),
-        ("Mind", "0.1-1 s", "beliefs and policies", module_color("BeeMind")),
-        ("Swarm", "seconds-minutes", "dance, pheromone, tasks", module_color("BeeSwarm")),
-        ("Niche", "minutes-days", "comb, heat, landscape", module_color("BeeNiche")),
-    ]
-    fig, ax = plt.subplots(figsize=(8, 4.4))
+    rows = (
+        ("BeeBody", "milliseconds", "joints, wings, sensors"),
+        ("BeeBrain", "10–100 ms", "AL / MB / CX abstractions"),
+        ("BeeMind", "0.1–1 s", "beliefs and policies"),
+        ("BeeSwarm", "seconds–minutes", "dance, fields, tasks"),
+        ("BeeNiche", "minutes–days", "comb, heat, landscape"),
+    )
+    fig, ax = plt.subplots(figsize=(9.0, 5.2))
     ax.axis("off")
-    for index, (level, timescale, substrate, color) in enumerate(rows):
-        y = 0.82 - index * 0.16
+    for x, header in (
+        (0.08, "Module"),
+        (0.37, "Conceptual time scale"),
+        (0.66, "Represented processes"),
+    ):
+        ax.text(x, 0.90, header, transform=ax.transAxes, fontsize=10, weight="bold")
+    for index, (module, timescale, substrate) in enumerate(rows):
+        y = 0.78 - index * 0.14
         ax.add_patch(
             Rectangle(
-                (0.08, y - 0.045), 0.84, 0.085, transform=ax.transAxes, color=color, alpha=0.82
+                (0.06, y - 0.05),
+                0.89,
+                0.10,
+                transform=ax.transAxes,
+                facecolor="#F8FAFC",
+                edgecolor="#E2E8F0",
+                lw=0.7,
             )
         )
-        ax.text(
-            0.12,
-            y,
-            f"Bee{level}",
-            transform=ax.transAxes,
-            va="center",
-            fontsize=11,
-            color="white",
-            weight="bold",
+        ax.add_patch(
+            Rectangle(
+                (0.06, y - 0.05),
+                0.008,
+                0.10,
+                transform=ax.transAxes,
+                facecolor=module_color(module),
+                lw=0,
+            )
         )
-        ax.text(0.36, y, timescale, transform=ax.transAxes, va="center", fontsize=10, color="white")
-        ax.text(0.58, y, substrate, transform=ax.transAxes, va="center", fontsize=10, color="white")
-    ax.set_title("BeeStack scale ladder")
-    fig.tight_layout()
+        for x, text in ((0.08, module), (0.37, timescale), (0.66, substrate)):
+            ax.text(
+                x,
+                y,
+                text,
+                transform=ax.transAxes,
+                va="center",
+                fontsize=10,
+                color="#111827",
+                weight="bold" if x == 0.08 else "normal",
+            )
+    ax.set_title("Conceptual biological scales — not executed timing", loc="left", pad=15)
+    add_figure_note(
+        fig,
+        "Illustrative process ranges only; rows are not a common clock or a benchmark.\nExecuted control ticks and configured rates belong to the run records/configuration.",
+        y=0.025,
+    )
+    fig.tight_layout(rect=(0, 0.11, 1, 1))
     fig.savefig(path, dpi=180)
     plt.close(fig)
     return path
 
 
 def _evidence_ladder(path: Path) -> Path:
-    rows = [
+    rows = (
         (
-            "Strict rendered physics",
-            "FlyBody/MuJoCo",
-            "contact reports + visual signature",
-            "small-scene contacts only",
-            "scene evidence",
-            module_color("BeeBody"),
+            "Scene / contact",
+            "FlyBody + MuJoCo",
+            "Pose/contact telemetry",
+            "Not forward-dynamics calibration",
+            "BeeBody",
         ),
         (
-            "Empirical availability",
-            "BeeBrain source registry",
-            "DOI/source status + parser status",
-            "availability, not synthetic traces",
-            "source evidence",
-            module_color("BeeBrain"),
+            "Source / structure",
+            "BeeBrain registry",
+            "Source and parser status",
+            "Not empirical neural dynamics",
+            "BeeBrain",
         ),
         (
-            "Reduced validated kernels",
-            "Mind, swarm, niche",
-            "finite diagnostics + scenario sweeps",
-            "kernel behavior, not calibration",
-            "kernel evidence",
-            module_color("BeeMind"),
+            "Reduced kernels",
+            "Mind / swarm / niche",
+            "Computed diagnostic traces",
+            "Not biological validation",
+            "BeeMind",
         ),
         (
-            "Compatibility summaries",
-            "BEEHAVE/Hiveopolis adapters",
-            "schema/parity report fields",
-            "compatibility, not validation",
-            "adapter evidence",
-            module_color("BeeSwarm"),
+            "Adapter contracts",
+            "BEEHAVE / Hiveopolis",
+            "Mapped summary fields",
+            "Not external simulator parity",
+            "BeeSwarm",
         ),
         (
-            "Blocked digital twin",
-            "readiness review",
-            "assimilation/residual/uncertainty gaps",
-            "target only, not ready",
-            "gap evidence",
-            "#C43C39",
+            "Digital-twin target",
+            "Readiness requirements",
+            "Assimilation / residual gaps",
+            "Not a ready digital twin",
+            "BeeNiche",
         ),
-    ]
-    fig, ax = plt.subplots(figsize=(12.2, 5.8))
+    )
+    fig, ax = plt.subplots(figsize=(12.0, 5.9))
     ax.axis("off")
-    headers = ("Evidence tier", "Backend/source", "Validation recorded", "Not supported")
-    for x, header in zip((0.07, 0.34, 0.56, 0.76), headers, strict=True):
-        ax.text(
-            x,
-            0.875,
-            header,
-            transform=ax.transAxes,
-            va="center",
-            fontsize=9,
-            color="#111827",
-            weight="bold",
-        )
-    for index, (tier, source, validation, boundary, badge, color) in enumerate(rows):
-        y = 0.78 - index * 0.135
+    columns = (
+        (0.065, "Evidence class", 22),
+        (0.285, "Source / backend", 23),
+        (0.515, "Potential evidence surface", 26),
+        (0.765, "Claim boundary", 27),
+    )
+    for x, header, _ in columns:
+        ax.text(x, 0.90, header, transform=ax.transAxes, fontsize=10, weight="bold")
+    for index, (*values, module) in enumerate(rows):
+        y = 0.78 - index * 0.145
         ax.add_patch(
             Rectangle(
-                (0.045, y - 0.050),
-                0.91,
-                0.098,
+                (0.045, y - 0.057),
+                0.92,
+                0.114,
                 transform=ax.transAxes,
-                facecolor="#F8FAFC" if index % 2 == 0 else "#FFFFFF",
-                edgecolor="#CBD5E1",
-                lw=0.8,
-            )
-        )
-        ax.add_patch(
-            Rectangle(
-                (0.045, y - 0.050),
-                0.012,
-                0.098,
-                transform=ax.transAxes,
-                facecolor=color,
-                edgecolor=color,
-                lw=0,
-            )
-        )
-        ax.text(
-            0.07,
-            y,
-            tier,
-            transform=ax.transAxes,
-            va="center",
-            fontsize=9.5,
-            color="#111827",
-            weight="bold",
-        )
-        ax.text(
-            0.34,
-            y,
-            source,
-            transform=ax.transAxes,
-            va="center",
-            fontsize=8.5,
-            color="#111827",
-        )
-        ax.text(
-            0.56,
-            y,
-            validation,
-            transform=ax.transAxes,
-            va="center",
-            fontsize=8.2,
-            color="#111827",
-        )
-        ax.text(
-            0.76,
-            y,
-            boundary,
-            transform=ax.transAxes,
-            va="center",
-            fontsize=8.0,
-            color="#111827",
-        )
-        ax.text(
-            0.20,
-            y - 0.028,
-            badge,
-            transform=ax.transAxes,
-            va="center",
-            fontsize=6.8,
-            color=color,
-            weight="bold",
-        )
-    audit_badges = ("caption contract", "sidecar metadata", "DOI/source links", "gap language")
-    for index, badge in enumerate(audit_badges):
-        x = 0.18 + index * 0.17
-        ax.add_patch(
-            Rectangle(
-                (x, 0.105),
-                0.14,
-                0.036,
-                transform=ax.transAxes,
-                facecolor="#EEF2FF",
-                edgecolor="#A5B4FC",
+                facecolor="#F8FAFC",
+                edgecolor="#E2E8F0",
                 lw=0.7,
             )
         )
-        ax.text(
-            x + 0.07,
-            0.123,
-            badge,
-            transform=ax.transAxes,
-            ha="center",
-            va="center",
-            fontsize=7.2,
-            color="#312E81",
+        ax.add_patch(
+            Rectangle(
+                (0.045, y - 0.057),
+                0.008,
+                0.114,
+                transform=ax.transAxes,
+                facecolor=module_color(module),
+                lw=0,
+            )
         )
-    ax.text(
-        0.5,
-        0.05,
-        "Reading rule: rows are evidence contracts; badges are the audit gates that keep higher-tier claims as gaps.",
-        transform=ax.transAxes,
-        ha="center",
-        fontsize=9,
-        color="#334155",
+        for value, (x, _, width) in zip(values, columns, strict=True):
+            ax.text(
+                x,
+                y,
+                wrap_label(value, width=width),
+                transform=ax.transAxes,
+                va="center",
+                fontsize=9.3,
+                color="#111827",
+                weight="bold" if x == 0.065 else "normal",
+            )
+    ax.set_title("Evidence classes and claim ceilings", loc="left", pad=15)
+    add_figure_note(
+        fig,
+        "Conceptual evidence guide, not an availability report or a ranking of validation.\nRead each artifact’s current sidecar and source record before making an evidence claim.",
+        y=0.025,
     )
-    ax.set_title("BeeStack evidence ladder: what the visuals can and cannot support")
-    fig.tight_layout()
+    fig.tight_layout(rect=(0, 0.11, 1, 1))
     fig.savefig(path, dpi=180)
     plt.close(fig)
     return path

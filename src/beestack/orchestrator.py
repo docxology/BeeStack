@@ -132,7 +132,7 @@ def step_simulation(
     empirical_drive: np.ndarray | None = None,
     empirical_antennal_vibration: np.ndarray | None = None,
 ) -> tuple[SimulationState, SimulationRecord]:
-    """Advance the complete reduced BeeStack loop by one control tick."""
+    """Advance the reduced scenario; not every declared feedback route is wired."""
 
     dance = decode_waggle(duration_s=1.2, angle_deg=35.0, sun_azimuth_deg=120.0, quality_score=0.8)
     belief = update_belief_from_dance(state.belief, dance, cfg.mind.follow_probability_threshold)

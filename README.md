@@ -1,13 +1,12 @@
 # BeeStack
 
-BeeStack is a uv-managed research-operations project for a modular honeybee
-simulation scaffold. It is organized around five typed layers:
+BeeStack is a uv-managed offline research CLI for reduced honeybee models and
+declared multiscale interfaces, not a calibrated colony digital twin. Its typed layers are:
 
 - `BeeBody`: FlyBody-backed walking and wing-beat flight rendering through
   FlyBody tasks, using a generated honeybee MJCF body plan.
-- `BeeBrain`: reduced but empirical-data-driven AL/MB/CX, odor-template,
-  antennal active-sensing, waggle-follower decoding, anatomy-inventory, and
-  report-generation methods.
+- `BeeBrain`: reduced AL/MB/CX and waggle-decoding kernels, with availability-gated
+  odor-template, calcium, antennal, follower, anatomy, and report methods.
 - `BeeMind`: active-inference-style belief and policy selection with explicit
   diagnostics.
 - `BeeSwarm`: dance recruitment, pheromone field, task allocation,
@@ -24,6 +23,15 @@ renderers when FlyBody is absent. BeeBrain downloads and analyzes curated public
 honeybee anatomy/activity data when available. Mind, the swarm recruitment
 kernel, and Niche are deterministic reduced kernels with clear contracts and
 validation surfaces.
+Strict BeeSwarm scenes reset scripted poses and measure MuJoCo geometry/contact
+at those poses; they are not integrated forward-dynamics flight or colony simulations.
+The reduced loop owns one immutable seeded PN-to-KC projection across ticks and
+consumes required full-bearing `Observation.heading_deg` in degrees; angular
+velocity remains radians/second. No empirical template bank is selected by default:
+absent bank/condition measurements remain null, while actual observed zeros remain zero.
+The driver uses a fixed synthetic dance, does not feed BrainState into policy or
+niche context into Body, and does not retask agents from recruitment matches.
+The graphical abstract distinguishes that executed scenario from declared interfaces.
 
 The long-horizon digital-twin target is broader than the present scaffold:
 a systems-biology model that assimilates observations for a managed colony and
@@ -144,6 +152,13 @@ Current empirical evidence is bound to raw payloads, configuration and implement
 parsing a published supplement is not connectivity or biological validation.
 Download completion also binds the original locator, source DOI/version and advertised
 size. Legacy byte-only receipts cannot certify a different source after a failed refresh.
+Acquisition and container parsers apply explicit byte, expansion, workbook, and
+array/graph budgets before materialization. Policy rejection is not a successful
+empty parse; see `docs/security_posture.md` for the bounded-intake contract.
+Current local odor, calcium, and antennal payloads are absent. Standalone waggle
+CSVs and Table S1 statistics are separate evidence, not a current odor-conditioned
+aggregate. Figure sidecars retain provenance and availability; `_data.json` plot
+payloads preserve nullable observations and independent native units.
 
 BeeStack is MIT licensed (`LICENSE`). Vendored/generated FlyBody assets retain their
 upstream Apache-2.0 notice; source datasets retain their own registered licenses.

@@ -32,6 +32,9 @@
   FlyBody/MuJoCo-backed witnesses from reduced kernels and empirical summaries.
 - Distinguish configured timing targets from executed reduced-loop behavior and
   limit reproducibility claims to compared artifacts and their observed runtime.
+- Declared BrainState/niche/colony-need interfaces are not executed feedback.
+  Current recruitment does not retask agents or deplete foraging patches; a
+  configured tripod-pattern policy is not a measured gait classification.
 - Optional template diagnostics must remain unavailable without supplied templates;
   do not describe a blank odor or zero-imputed alignment as an empirical selection.
 - Every curated figure callout should carry a manuscript-useful caption:

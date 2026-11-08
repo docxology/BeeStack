@@ -116,6 +116,12 @@ raw empirical payloads, not only summaries and figure names. Do not edit sealed
 inputs after rendering or substitute an old PDF. See the root README for the full
 animation, strict-render and research-assembly prerequisites. A DOI-less local PDF
 is not a deposited release; `--require-doi` requires this version's assigned DOI.
+Use the native Python 3.12.16 pin. Current empirical values require successful
+analysis bound to raw payload, report, configuration, and implementation hashes;
+retained historical figures/reports cannot supply current missing measurements.
+No default template bank is empirical: absent alignment stays null, and actual
+observed zeros retain their meaning. Plot-data payloads keep native units and
+nullable observations; schematics explain contracts rather than measured biology.
 
 ## Review Checklist
 
@@ -140,9 +146,13 @@ is not a deposited release; `--require-doi` requires this version's assigned DOI
 - **H2:** Sentence case by default (`## Source tiers`, `## Run summary`).
   Preserve module names, acronyms, and citation keys (`BeeBody`, `MuJoCo`,
   `BEEHAVE`).
-- **Numbered roadmap H2s:** `14_roadmap.md` keeps `## 1. …` through `## 9. …`
-  as the only numbered section headings.
+- **Numbered roadmap H2s:** `14_roadmap.md` preserves its numbered implementation
+  steps as the only numbered section headings.
 - **References grouping:** `99_references.md` may use bibliographic group
   headings in title case (`## Brain anatomy and activity`).
 - **Specificity:** Prefer concrete H2 titles tied to the subsection content
   (`## Empirical analysis reports` rather than `## Reports written`).
+- **Heading changes:** Keep standard roles recognizable, preserve explicit
+  `{#sec:…}` identifiers and filenames, and migrate implicit fragment links.
+  Update the section-label table in `docs/manuscript/SYNTAX.md` and any central
+  figure-registry section titles in the same cutover; do not add heading aliases.

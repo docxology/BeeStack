@@ -41,7 +41,7 @@ figures. They do not claim full atlas registration.
   Figshare CSV files with follower positions, antenna angles, binned features,
   orientation straightness, and model vector-error outputs for waggle decoding.
 
-## Implemented Calibration Surface
+## Parsing, summaries, and optional template diagnostics
 
 - `negative_delta_f_over_f()`
 - `summarize_calcium_trials()`
@@ -60,9 +60,9 @@ figures. They do not claim full atlas registration.
 - `activity_summary_from_components()`
 
 The `beestack.empirical` config section controls enabled dataset IDs, calcium
-acquisition rate, baseline/stimulus windows, trial and bee counts, tracked
-glomeruli, atlas range, odor-template names, and template
-excitation/inhibition widths.
+protocol windows, tracked glomeruli, atlas range, and opt-in synthetic-prior
+parameters. Configured odor names do not create an empirical template bank.
+Executable recordings require observed complete grids and explicit shared rates.
 
 ## Fetching Source Files
 
@@ -101,10 +101,13 @@ The analyzer writes:
 - `output/figures/empirical/brain_data_completeness_matrix.png`
 - `output/figures/empirical/bee_brain_multimodal_source_map.png`
 
-If no local empirical panels are available, the analyzer records a skip at the
-command boundary and leaves these network-gated analysis artifacts absent. That
-absence is acceptable for offline core verification only when the catalogs and
-documentation still state which sources are missing or blocked.
+If no local odor-response panel is available, the analyzer records a skip and
+invalidates current evidence. Historical files may remain, but their values do
+not become current measurements. Current odor, calcium, and antennal inputs are
+absent; standalone waggle CSVs and Table S1 statistics are separate modalities.
+Missing means and optional bank alignment remain null, with observation counts;
+actual measured zeros are preserved. Source-bound freshness requires matching
+payload, configuration, implementation, and report hashes.
 
 ## Activity Metrics
 

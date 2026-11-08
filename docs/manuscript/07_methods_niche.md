@@ -1,4 +1,4 @@
-# BeeNiche Methods and Adapter Provenance {#sec:methods_niche}
+# BeeNiche Methods: Comb, Heat, and Adapter Schemas {#sec:methods_niche}
 
 BeeNiche models the *constructed environment* of the colony. It owns a
 comb grid with {{COMB_VOXELS}} voxels (default ${{COMB_SHAPE_X}} \times {{COMB_SHAPE_Y}} \times {{COMB_SHAPE_Z}}$),
@@ -12,7 +12,7 @@ compatible with future BEEHAVE [@becher2014beehave] and Hiveopolis
 The comb kernel maintains a four-channel content field over the comb
 voxel grid. Wax deposition updates local comb occupancy, neighborhood
 density, and content metrics. The dimensionless wax deposition threshold
-(`wax_deposit_threshold = 0.35`) is a synthetic model setting, not a value
+(`wax_deposit_threshold`) is a synthetic model setting, not a value
 established by a verified comb-construction source: below the threshold, no new
 cell is produced; above it, neighborhood-coordinated deposition raises
 local occupancy. The kernel records the final comb occupancy fraction
@@ -20,7 +20,7 @@ local occupancy. The kernel records the final comb occupancy fraction
 mean over the rollout so that comb growth is auditable as a time series
 rather than only as an endpoint.
 
-## Thermal field
+## Reduced brood thermal field
 
 Thermal stepping updates brood-temperature error and supports
 fanning/heat-source witnesses. The brood-target band is
@@ -33,21 +33,21 @@ clustered around brood) and heat sinks (foragers returning from cool
 ambient) are represented as bounded scalars applied at configured grid
 locations. The kernel is not an aerodynamic CFD solver; it is a
 *measurable thermoregulation witness*.
-The sprint calibration adds a bounded thermoregulation gain of
-{{METHODS_NICHE_THERMOREGULATION_GAIN}} on occupied comb cells and
-keeps the generated methods/research scorecards pointed at a
-brood-temperature error target below 3 °C.
+The configured reduced kernel applies a bounded thermoregulation gain of
+{{METHODS_NICHE_THERMOREGULATION_GAIN}} on occupied comb cells. Generated
+methods/research scorecards compare its brood-temperature error against a
+configured target; meeting that target is not biological thermal calibration.
 
-## Foraging landscape
+## Standalone foraging-landscape summaries
 
 Landscape helpers summarize patch value, distance, nectar quality,
 seasonal forage amplitude, weather penalties, and competition pressure
-without requiring an external weather or nectar engine. The foraging
-radius spans $[1, 3]$ km, consistent with
-documented waggle-dance distance estimates [@couvillon2014waggle].
-Landscape state is read-only from BeeBody and BeeBrain (it feeds the
-forager observation channel) but writable from BeeSwarm (depletion
-through recruited foraging).
+without an external weather or nectar engine. Patch distances are model
+attributes in kilometers; waggle-dance foraging studies motivate this surface
+without calibrating its distribution [@couvillon2014waggle].
+These standalone summaries are not connected to the current Body/Brain
+observation channel or to recruitment-driven depletion. The integrated driver
+advances its reduced niche thermal state independently.
 
 ## Planned driver and forage data surfaces
 
@@ -64,19 +64,20 @@ monitoring programmes and USDA production statistics are listed in
 of these sources validate the current comb or thermal kernel until
 parsers, licenses, and held-out residuals are recorded in generated reports.
 
-## Why BeeNiche matters
+## Declared niche interfaces and currently absent feedback
 
-BeeNiche is important because it *closes the stack*. Swarm task
-pressures modify comb and thermal state; comb and thermal state feed
-back into BeeBody (proprioception against comb geometry, thermosensory
-state) and into BeeBrain (thermal context in the optic and CX
-channels). Without BeeNiche, the swarm and the body operate in an
-unspecified environment and the closed-loop semantics break down. The
-present implementation is deterministic and serializable; the next
-scientific step is seasonal forage and brood-demography coupling
-rather than merely increasing grid size.
+`stack_contracts` declares niche-to-body thermal/surface context and a
+swarm-to-niche field interface. The current `step_simulation` does not execute
+those feedback routes. It advances the comb temperature using fixed heat/fanning
+inputs, then records comb metrics independently of the Body/Brain update.
+Grid geometry and temperature are not passed into `step_body` or
+`process_observation`; Body thermosensation comes from Body state. Swarm task
+pressures do not drive the thermal update, and stored agents are not retasked.
+Closing these feedback routes requires explicit state transfer, unit and timing
+contracts, and appropriate validation; merely increasing grid size would not
+provide that evidence.
 
-## Adapter schemas
+## BEEHAVE and Hiveopolis compatibility schemas
 
 BeeNiche emits adapter-compatible payloads for BEEHAVE
 [@becher2014beehave] (colony-level forager, brood, and food-store
@@ -88,9 +89,9 @@ without breaking BeeStack's internal contracts.
 
 [@fig:niche_adapter_map] maps BeeNiche adapter schemas to niche and external-engine anchors.
 
-![Matplotlib beeniche adapter and niche map shows Adapter map placing BEEHAVE-compatible colony summaries beside comb, thermal, and forage fields without claiming full hive ecology. Generated from source refresh ledger, niche methods records, simulation records, and adapter notes. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate full ecology, real-time hive control, or thermodynamic colony dynamics.](../figures/beeniche_adapter_niche_map.png){#fig:niche_adapter_map}
+![Final comb fraction and maximum absolute thermal error from supplied reduced records, beside conceptual NicheAdapterSummary field groups. No adapter payload is supplied to this figure. Generated from source refresh ledger, niche methods records, simulation records, and adapter notes using Matplotlib. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not validate full ecology, real-time hive control, or thermodynamic colony dynamics.](../figures/beeniche_adapter_niche_map.png){#fig:niche_adapter_map}
 
-## Methods-analysis Niche panel
+## Comb and thermal methods panel
 
 The methods-analysis Niche panel tracks final and mean comb fraction,
 final and mean brood-temperature error, brood-target margin within the
@@ -101,9 +102,9 @@ claims are anchored to *quantitative traces* rather than to prose alone.
 
 [@fig:niche_methods_comb_thermal] plots comb occupancy and brood-thermal diagnostics.
 
-![Matplotlib/pandas/NetworkX beeniche comb and thermal diagnostics shows BeeNiche methods panel showing comb occupancy, brood thermal error, foraging-radius context, and deterministic niche-kernel validation. Generated from MethodsAnalysisReport and simulation records. Sidecar validation checks raster, source routing, and registered claim tier. Does not support a full ecology or hive thermodynamics engine.](../figures/methods/beeniche_methods_comb_thermal.png){#fig:niche_methods_comb_thermal}
+![BeeNiche methods panel showing comb occupancy, brood thermal error, foraging-radius context, and configured niche-kernel self-tests. Generated from MethodsAnalysisReport and simulation records using Matplotlib/pandas. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not support a full ecology or hive thermodynamics engine.](../figures/methods/beeniche_methods_comb_thermal.png){#fig:niche_methods_comb_thermal}
 
-## Fidelity boundary
+## Ecology and runtime-coupling gaps
 
 BeeNiche is a *voxel comb and thermal kernel with adapter schemas*. It
 now includes deterministic seasonal/weather forage witnesses, but it

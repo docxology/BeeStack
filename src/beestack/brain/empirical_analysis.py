@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import asdict, dataclass, field
+from itertools import combinations
 from pathlib import Path
 from typing import Any, cast
 
@@ -88,22 +89,33 @@ class EmpiricalTemplateBank:
 
 @dataclass(frozen=True)
 class BeeBrainActivitySummary:
-    """End-to-end empirical activity summary for BeeBrain reports."""
+    """Empirical activity with null unavailable measurements and contributing counts.
+
+    Calcium observation counts count finite dataset-level statistics (latency
+    remains an equal-dataset mean); aftersmell counts count finite panel means.
+    Odor counts count distinct defined cosine pairs, not self-comparisons or zero norms.
+    """
 
     panel_count: int
     calcium_dataset_count: int
     antennal_movement_summary_count: int
     template_count: int
-    all_quality_checks_passed: bool
-    mean_odor_separability: float
-    calcium_mean_latency_s: float
-    calcium_inhibitory_fraction: float
-    calcium_excitatory_fraction: float
-    aftersmell_response_mean: float
+    all_quality_checks_passed: bool | None
+    mean_odor_separability: float | None
+    calcium_mean_latency_s: float | None
+    calcium_inhibitory_fraction: float | None
+    calcium_excitatory_fraction: float | None
+    aftersmell_response_mean: float | None
     region_response_means: dict[str, float]
-    antennal_active_sensing_drive: dict[str, float]
+    antennal_active_sensing_drive: dict[str, float | None]
     neuromodulatory_defence_summary: dict[str, object]
     waggle_follower_summary: dict[str, object] = field(default_factory=dict)
+    quality_check_count: int = 0
+    odor_separability_pair_count: int = 0
+    calcium_latency_observation_count: int = 0
+    calcium_inhibitory_observation_count: int = 0
+    calcium_excitatory_observation_count: int = 0
+    aftersmell_observation_count: int = 0
 
     def as_dict(self) -> dict[str, object]:
         return asdict(self)
@@ -372,10 +384,10 @@ def template_alignment_matrix(bank: EmpiricalTemplateBank) -> dict[str, dict[str
     }
 
 
-def all_checks_passed(checks: tuple[DataQualityCheck, ...]) -> bool:
-    """Return True when every data quality check passed."""
+def all_checks_passed(checks: tuple[DataQualityCheck, ...]) -> bool | None:
+    """Return the performed checks' conjunction, or None when none were performed."""
 
-    return all(check.passed for check in checks)
+    return all(check.passed for check in checks) if checks else None
 
 
 def activity_summary_from_components(
@@ -390,11 +402,12 @@ def activity_summary_from_components(
     """Assemble a serializable BeeBrain activity summary from empirical components."""
 
     checks = quality_checks or tuple(check for row in panel_stats for check in row.quality_checks)
-    calcium_mean_latency_s = _mean(
-        float(np.nanmean(summary.peak_latency_s)) for summary in calcium_summaries
-    )
-    calcium_inhibitory = _mean(summary.inhibitory_fraction for summary in calcium_summaries)
-    calcium_excitatory = _mean(summary.excitatory_fraction for summary in calcium_summaries)
+    # Retain the existing equal-dataset weighting, not a pooled-glomerulus mean.
+    calcium_latencies = tuple(_mean(summary.peak_latency_s) for summary in calcium_summaries)
+    calcium_inhibitory = tuple(summary.inhibitory_fraction for summary in calcium_summaries)
+    calcium_excitatory = tuple(summary.excitatory_fraction for summary in calcium_summaries)
+    odor_separability, odor_pair_count = _odor_separability(bank)
+    aftersmell_values = _aftersmell_values(panel_stats)
     first_antennal = antennal_summaries[0] if antennal_summaries else None
     return BeeBrainActivitySummary(
         panel_count=len(panels),
@@ -402,17 +415,23 @@ def activity_summary_from_components(
         antennal_movement_summary_count=len(antennal_summaries),
         template_count=len(bank.templates),
         all_quality_checks_passed=all_checks_passed(checks),
-        mean_odor_separability=_mean_odor_separability(bank),
-        calcium_mean_latency_s=calcium_mean_latency_s,
-        calcium_inhibitory_fraction=calcium_inhibitory,
-        calcium_excitatory_fraction=calcium_excitatory,
-        aftersmell_response_mean=_aftersmell_response_mean(panel_stats),
+        mean_odor_separability=odor_separability,
+        calcium_mean_latency_s=_mean(calcium_latencies),
+        calcium_inhibitory_fraction=_mean(calcium_inhibitory),
+        calcium_excitatory_fraction=_mean(calcium_excitatory),
+        aftersmell_response_mean=_mean(aftersmell_values),
         region_response_means=_region_response_means(panel_stats),
         antennal_active_sensing_drive=_antennal_drive(first_antennal),
         neuromodulatory_defence_summary=_neuromodulatory_defence(panel_stats),
         waggle_follower_summary=cast(dict[str, object], waggle_follower_summary.as_dict())
         if waggle_follower_summary is not None
         else {},
+        quality_check_count=len(checks),
+        odor_separability_pair_count=odor_pair_count,
+        calcium_latency_observation_count=sum(value is not None for value in calcium_latencies),
+        calcium_inhibitory_observation_count=int(np.count_nonzero(np.isfinite(calcium_inhibitory))),
+        calcium_excitatory_observation_count=int(np.count_nonzero(np.isfinite(calcium_excitatory))),
+        aftersmell_observation_count=len(aftersmell_values),
     )
 
 
@@ -531,36 +550,42 @@ def _sparseness_by_stimulus(matrix: np.ndarray) -> dict[str, float]:
     return out
 
 
-def _mean_odor_separability(bank: EmpiricalTemplateBank) -> float:
-    labels = sorted(bank.templates)
-    if len(labels) < 2:
-        return 0.0
-    values: list[float] = []
-    alignments = template_alignment_matrix(bank)
-    for left in labels:
-        for right in labels:
-            if left != right:
-                values.append(alignments[left][right])
+def _odor_separability(bank: EmpiricalTemplateBank) -> tuple[float | None, int]:
+    """Return the clipped mean cosine complement and defined distinct-pair count."""
+
+    labels = []
+    for label, template in sorted(bank.templates.items()):
+        if not np.isfinite(template).all():
+            continue
+        norm = np.linalg.norm(template)
+        if np.isfinite(norm) and norm > 0:
+            labels.append(label)
+    values = []
+    for left, right in combinations(labels, 2):
+        alignment = empirical_alignment_score(bank.templates[left], bank.templates[right])
+        if np.isfinite(alignment):
+            values.append(alignment)
     if not values:
-        return 0.0
-    separability = 1.0 - float(np.nanmean(values))
-    return float(np.clip(separability, 0.0, 1.0))
+        return None, 0
+    return float(np.clip(1.0 - float(np.mean(values)), 0.0, 1.0)), len(values)
 
 
-def _aftersmell_response_mean(panel_stats: tuple[EmpiricalPanelStats, ...]) -> float:
-    values = [
+def _aftersmell_values(panel_stats: tuple[EmpiricalPanelStats, ...]) -> list[float]:
+    return [
         row.mean_abs_response
         for row in panel_stats
-        if "timecourse" in row.modality.lower() or "post" in row.modality.lower()
+        if ("timecourse" in row.modality.lower() or "post" in row.modality.lower())
+        and np.isfinite(row.mean_abs_response)
     ]
-    return _mean(values)
 
 
 def _region_response_means(panel_stats: tuple[EmpiricalPanelStats, ...]) -> dict[str, float]:
     grouped: dict[str, list[float]] = {}
     for row in panel_stats:
         grouped.setdefault(_region_key(row), []).append(row.mean_abs_response)
-    return {key: _mean(values) for key, values in sorted(grouped.items())}
+    return {
+        key: mean for key, values in sorted(grouped.items()) if (mean := _mean(values)) is not None
+    }
 
 
 def _region_key(row: EmpiricalPanelStats) -> str:
@@ -578,17 +603,21 @@ def _region_key(row: EmpiricalPanelStats) -> str:
     return "whole_brain_or_other"
 
 
-def _antennal_drive(summary: AntennalMovementSummary | None) -> dict[str, float]:
+def _antennal_drive(summary: AntennalMovementSummary | None) -> dict[str, float | None]:
     if summary is None:
         return {
-            "odor_on_fraction": 0.0,
-            "theta_derivative_drive": 0.0,
-            "left_right_synchrony": 0.0,
+            "odor_on_fraction": None,
+            "theta_derivative_drive": None,
+            "left_right_synchrony": None,
         }
     return {
         "odor_on_fraction": float(summary.odor_on_fraction),
-        "theta_derivative_drive": float(min(1.0, summary.mean_abs_theta_derivative / 25.0)),
-        "left_right_synchrony": float((summary.left_right_theta_correlation + 1.0) / 2.0),
+        "theta_derivative_drive": float(min(1.0, summary.mean_abs_theta_derivative / 25.0))
+        if summary.mean_abs_theta_derivative is not None
+        else None,
+        "left_right_synchrony": float((summary.left_right_theta_correlation + 1.0) / 2.0)
+        if summary.left_right_theta_correlation is not None
+        else None,
     }
 
 
@@ -609,9 +638,9 @@ def _neuromodulatory_defence(panel_stats: tuple[EmpiricalPanelStats, ...]) -> di
     }
 
 
-def _mean(values: Iterable[Any]) -> float:
-    data = [float(value) for value in values if np.isfinite(float(value))]
-    return float(np.mean(data)) if data else 0.0
+def _mean(values: Iterable[Any]) -> float | None:
+    data = [float(value) for value in values if value is not None and np.isfinite(float(value))]
+    return float(np.mean(data)) if data else None
 
 
 def _resample(vector: np.ndarray, target_size: int) -> np.ndarray:

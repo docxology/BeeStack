@@ -586,6 +586,8 @@ def test_swarm_niche_visualization_extra_methods(tmp_path: Path) -> None:
             decoding_improvement_fraction=0.45,
             straightness_mean=0.72,
             confidence_score=0.74,
+            observation_counts={},
+            follower_angle_midpoint_source="caller_supplied",
         ),
         data_completeness=BeeBrainDataCompletenessPanel(
             dataset_count=3,

@@ -12,8 +12,10 @@ uv run python scripts/z_generate_manuscript_variables.py
 ```
 
 Resolved copies are written to `output/manuscript/`.
-The hydration script removes stale generated manuscript sections before writing
-the current source sections, so renaming or splitting sections is safe.
+The hydration script resolves the complete source set before writing generated
+sections. Failed token resolution preserves the previous output. Stale sections
+are removed only after the current sections have been resolved and written;
+this is not an atomic transaction across all output files.
 
 For section roles, figure-callout rules, claim tiers, and the review checklist,
 see `docs/manuscript_development.md`. For every number derived from code,

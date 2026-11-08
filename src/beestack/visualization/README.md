@@ -2,9 +2,11 @@
 
 Deterministic figure and animation builders for BeeStack analysis outputs.
 BeeBody animation delegates to FlyBody's real MuJoCo renderer. BeeSwarm
-collision and waggle production GIFs delegate to strict MuJoCo scenes built from
-full generated BeeBody MJCF copies and validated contact reports. Brain, Mind,
-the recruitment-field Swarm view, and Niche remain Matplotlib summaries.
+collision and waggle production GIFs use strict scripted-pose MuJoCo scenes
+built from full generated BeeBody MJCF copies. Contact reports witness geometry
+and contact queries; these scenes are not forward-dynamics or biological
+validation. Brain, Mind, the recruitment-field Swarm view, and Niche remain
+Matplotlib summaries.
 Plotting belongs here or in thin scripts, never in Body/Brain/Mind/Swarm/Niche
 core logic.
 
@@ -31,17 +33,23 @@ from reduced schematic output.
 body-plan location, bee counts, motion/contact minima, and orientation targets.
 Motion is measured across adjacent frames over the entire sequence, not just
 endpoints. XML counts and actual contact metrics remain independently checked.
-`empirical_figures.py` renders empirical response heatmaps, panel-quality bars,
-BeeBrain alignment charts, and Jernigan antennal active-sensing summaries from
-validated bee datasets.
-`research_figures.py` renders scorecard heatmaps, sensitivity panels, evidence
-networks, visualization inventories, and optional Plotly HTML from the typed
-research suite.
-`synthesis_figures.py` renders the cross-stack synthesis dashboard from the
-typed `StackSynthesisReview`.
-`methods_figures.py` renders the methods dashboard, module methods panels,
-manuscript evidence index, and optional Plotly methods dashboards from the
-typed methods-analysis report.
+`empirical_figures.py` renders supplied response heatmaps, native-unit panel
+tables, BeeBrain alignment diagnostics, and antennal/waggle summaries. It requires
+an odor-response panel; locally available standalone waggle CSVs or supplementary
+S1 statistics do not satisfy that aggregate gate. Missing odor/calcium/antennal
+payloads must remain explicit blockers, not regenerated empirical evidence.
+Parser fixtures exercise implementation boundaries, not biological validity.
+`research_figures.py` renders native-unit source inventories, configured
+self-test fractions, independent sensitivity panels, evidence tables, and
+optional Plotly HTML from the typed research suite. Source status is taken from
+the report, never inferred from a completeness cutoff.
+`synthesis_figures.py` keeps counts, fractions and temperature changes in their
+own units and labels synthesized readiness as a heuristic report score.
+`methods_figures.py` renders methods inventories, module tables, separate
+evidence-count and self-test panels, and optional Plotly methods dashboards.
+Methods images and raw exports share one nullable telemetry extractor: missing or
+nonfinite values are gaps, observed zero remains zero, and an empty run adds no
+synthetic point. Raw plot-data JSON rejects nonfinite payloads before replacement.
 
 Any raster promoted into `manuscript/` should have a matching curated
 `FigureNarrative` and should be inserted through `manuscript_image_markdown()`.
@@ -63,8 +71,11 @@ RGB channels over adjacent frames, including periodic sequences with equal endpo
 Unavailable simulation template alignment remains null through summaries,
 sensitivity sweeps and raw plot data; a plot must show missing points rather
 than invent zero alignment. Sweep panels use independent native-unit axes for
-each input/output pair. Mixed-unit module metrics use a table, not a shared
-numeric bar axis. Interactive scorecards explicitly label configured self-tests,
+each input/output pair. Mixed-unit module metrics and cross-stack statistics
+use tables, not a normalized shared numeric axis or color scale. Signed source
+correlations and decoding improvements are not converted to magnitudes or clipped.
+Waggle mean angles retain their distinct source reference frames, not a shared
+polar phase. Static and interactive scorecards label configured self-tests,
 not biological validation. HTML viewers load Plotly from `cdn.plot.ly`; PNG/PDF
 artifacts support fully offline viewing.
 

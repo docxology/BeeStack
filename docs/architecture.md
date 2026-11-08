@@ -3,7 +3,7 @@
 BeeStack is implemented as a standalone project in the research-template style.
 BeeBody uses a FlyBody/MuJoCo render path, and production BeeSwarm
 waggle/collision animations reuse the same generated BeeBody MJCF inside
-strict MuJoCo contact scenes. The other v0 module backends are intentionally
+strict MuJoCo contact scenes. The other module backends are intentionally
 reduced so the five-layer contract stays executable while leaving
 higher-fidelity replacements as explicit extension points.
 
@@ -20,7 +20,7 @@ flowchart TB
 
 ## Directory Roles
 
-- `src/beestack/`: pure Python package; no project file I/O.
+- `src/beestack/`: domain computation plus explicit guarded acquisition and presentation adapters.
 - `tests/`: zero-mock unit and integration tests against source behavior.
 - `scripts/`: thin orchestration for outputs.
 - `docs/manuscript/`: paper source with `{{VARIABLE}}` tokens.
@@ -32,8 +32,15 @@ flowchart TB
 constraints. `contracts.py` defines typed BeeBody observations/actions. The
 five biological modules live in subpackages: `body/`, `brain/`, `mind/`,
 `swarm/`, and `niche/`. `visualization/` owns deterministic figures, and
-`utils/` owns cross-cutting pure helpers. `orchestrator.py` composes them into
-the reduced closed loop.
+`utils/` owns cross-cutting pure helpers. `orchestrator.py` steps a reduced
+scenario: synthetic dance drives beliefs/recruitment diagnostics, policy drives
+Body, and Body observations enter Brain; Niche temperature advances separately.
+BrainState-to-policy, niche-to-Body, and recruitment-to-task feedback are not wired.
+`SimulationState` owns immutable seeded PN-to-KC connectivity reused across ticks.
+`Observation.heading_deg` is a required full-bearing degree compass; angular
+velocity is a separate radians/second rate. Optional empirical alignment stays
+null without a supplied bank, and source-bound freshness gates prevent historical
+reports from becoming current observations after an analysis skip or failure.
 `integrity.py` provides the stack-level review surface: typed records for
 public APIs, contracts, config knobs, validations, diagnostics, empirical
 evidence, fidelity level, and known gaps.
@@ -58,6 +65,10 @@ The strict BeeSwarm scenes prefix-copy the generated
 `apis_mellifera_worker.xml` body plan into multi-bee MuJoCo XMLs, add free
 joints/contact proxies/floor geometry, step `MjData`, render with
 `mujoco.Renderer`, and write contact reports.
+These are scripted-pose scenes: MuJoCo detects contacts at imposed poses, not an
+integrated forward-dynamics simulation of multi-bee flight or colony behavior.
+State-based `FlyBodyBeeBackend.step()` remains reduced and refuses strict use;
+strict environment/render entrypoints hard-fail rather than silently downgrade.
 
 ## Evidence Traceability
 

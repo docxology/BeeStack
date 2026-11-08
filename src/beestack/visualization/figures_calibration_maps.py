@@ -1,8 +1,7 @@
-"""BeeStack publication figure builders — submodule."""
+"""Calibration boundaries and conceptual workflow diagrams."""
 
 from __future__ import annotations
 
-import textwrap
 from pathlib import Path
 from typing import Any
 
@@ -10,10 +9,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import FancyArrowPatch, Rectangle
 
-from .figures_common import (
-    _numeric_series,
-)
-from .style import PALETTE, module_color
+from .figures_common import _numeric_series
+from .style import add_figure_note, module_color, wrap_label
 
 
 def _micro_macro_calibration(records: list[dict[str, Any]], path: Path) -> Path:
@@ -21,181 +18,146 @@ def _micro_macro_calibration(records: list[dict[str, Any]], path: Path) -> Path:
     pheromone = _numeric_series(records, "mean_pheromone")
     mean_recruited = float(np.mean(recruited))
     mean_pheromone = float(np.mean(pheromone))
-    blocks = [
+    surfaces = (
         (
-            "Strict micro scene",
-            "FlyBody/MuJoCo body plan\ncontact metrics\nrender sidecars",
-            module_color("BeeBody"),
+            "Separate scene interface",
+            "Scripted pose / contact telemetry\nNo scene payload supplied here",
+            "BeeBody",
         ),
         (
-            "Waggle evidence anchors",
-            "Riley flight paths\nLandgraf dance motion\nfollower neuroethology",
-            "#0F766E",
+            "Scholarly anchors",
+            "Flight, dance and follower studies\nNo empirical tracks supplied here",
+            "BeeBrain",
         ),
         (
-            "Reduced macro summaries",
-            f"BeeSwarm followers mean {mean_recruited:.1f}\n"
-            f"pheromone mean {mean_pheromone:.2f}\nBEEHAVE-compatible fields",
-            module_color("BeeSwarm"),
+            "Supplied reduced-run records",
+            f"Mean followers: {mean_recruited:.1f}\nMean pheromone: {mean_pheromone:.2f} a.u.",
+            "BeeSwarm",
         ),
-        (
-            "Blocked calibration",
-            "no held-out recruitment residuals\nno colony-scale fit\nno causal validation",
-            "#C43C39",
-        ),
-    ]
-    fig, ax = plt.subplots(figsize=(12.6, 5.4))
+    )
+    fig, ax = plt.subplots(figsize=(11.6, 5.6))
     ax.axis("off")
-    x_positions = (0.07, 0.32, 0.57, 0.82)
-    for index, ((title, detail, color), x) in enumerate(zip(blocks, x_positions, strict=True)):
+    for index, (title, detail, module) in enumerate(surfaces):
+        x = 0.04 + index * 0.325
+        color = module_color(module)
         ax.add_patch(
             Rectangle(
-                (x, 0.42),
-                0.17,
-                0.27,
+                (x, 0.48),
+                0.29,
+                0.34,
                 transform=ax.transAxes,
-                facecolor=color,
-                edgecolor="#111827",
-                lw=1.0,
-                alpha=0.92,
+                facecolor="#F8FAFC",
+                edgecolor="#CBD5E1",
+                lw=0.8,
             )
         )
-        ax.text(
-            x + 0.085,
-            0.635,
-            title,
-            transform=ax.transAxes,
-            ha="center",
-            va="center",
-            fontsize=9.0,
-            color="white",
-            weight="bold",
+        ax.add_patch(
+            Rectangle((x, 0.48), 0.008, 0.34, transform=ax.transAxes, facecolor=color, lw=0)
         )
         ax.text(
-            x + 0.085,
-            0.515,
+            x + 0.02,
+            0.75,
+            wrap_label(title, width=26),
+            transform=ax.transAxes,
+            fontsize=11,
+            weight="bold",
+            va="center",
+            color="#111827",
+        )
+        ax.text(
+            x + 0.02,
+            0.60,
             detail,
             transform=ax.transAxes,
-            ha="center",
+            fontsize=9.2,
             va="center",
-            fontsize=7.4,
-            color="white",
+            color="#334155",
+            linespacing=1.6,
         )
-        if index < len(blocks) - 1:
-            ax.add_patch(
-                FancyArrowPatch(
-                    (x + 0.17, 0.555),
-                    (x_positions[index + 1], 0.555),
-                    transform=ax.transAxes,
-                    arrowstyle="->",
-                    mutation_scale=15,
-                    lw=1.4,
-                    color="#334155",
-                )
-            )
-    rows = (
-        ("Allowed comparison", "schema and units can be mapped across layers"),
-        ("Current evidence", "small-scene metrics and deterministic reduced swarm traces"),
-        ("Not yet evidence", "external colony calibration, prediction intervals, residual panels"),
+    ax.text(
+        0.04,
+        0.34,
+        "Calibration is a separate, unfulfilled evidence requirement",
+        transform=ax.transAxes,
+        fontsize=11,
+        weight="bold",
+        color="#991B1B",
     )
-    for index, (label, detail) in enumerate(rows):
-        y = 0.255 - index * 0.070
-        ax.text(0.12, y, label, transform=ax.transAxes, fontsize=8.4, weight="bold")
-        ax.text(0.31, y, detail, transform=ax.transAxes, fontsize=8.2, color="#334155")
-    ax.set_title("BeeBody to BeeSwarm micro-to-macro calibration boundary")
-    fig.tight_layout()
+    requirements = (
+        "Matched observables + units",
+        "Held-out recruitment residuals",
+        "Uncertainty + external colony data",
+    )
+    for index, text in enumerate(requirements):
+        ax.text(
+            0.04 + index * 0.325,
+            0.22,
+            wrap_label(text, width=27),
+            transform=ax.transAxes,
+            fontsize=10,
+            va="center",
+            color="#334155",
+        )
+    ax.set_title("Micro-to-macro comparison is not calibration", loc="left", pad=15)
+    add_figure_note(
+        fig,
+        "Independent evidence surfaces: no causal or fitted micro → colony transfer is demonstrated.\nDisplayed means are computed only from the supplied reduced-run records.",
+        y=0.025,
+    )
+    fig.tight_layout(rect=(0, 0.10, 1, 1))
     fig.savefig(path, dpi=180)
     plt.close(fig)
     return path
 
 
 def _brain_mind_anatomy_policy_map(path: Path) -> Path:
-    rows = [
-        ("Antennal lobe", "odor channels", "Observation likelihood", module_color("BeeBrain")),
-        ("Mushroom body", "learning/memory anchor", "Preferences + expected value", "#2563EB"),
-        ("Central complex", "orientation/action anchor", "Policy transition terms", "#7C3AED"),
-        ("Waggle followers", "spatial-information anchor", "Contextual policy prior", "#0F766E"),
-    ]
-    fig, ax = plt.subplots(figsize=(12.2, 5.8))
+    rows = (
+        ("Antennal lobe", "Odor representation", "Observation likelihood"),
+        ("Mushroom body", "Learning / memory", "Preferences + expected value"),
+        ("Central complex", "Orientation / action", "Policy transition terms"),
+        ("Waggle followers", "Spatial information", "Contextual policy prior"),
+    )
+    fig, ax = plt.subplots(figsize=(10.8, 5.8))
     ax.axis("off")
-    headers = ("Scholarly anchor", "Data role", "BeeMind contract")
-    for x, header in zip((0.12, 0.43, 0.72), headers, strict=True):
-        ax.text(x, 0.84, header, transform=ax.transAxes, fontsize=9.5, weight="bold")
-    for index, (anchor, role, contract, color) in enumerate(rows):
-        y = 0.72 - index * 0.145
-        for x, text, width in (
-            (0.08, anchor, 0.20),
-            (0.38, role, 0.21),
-            (0.68, contract, 0.24),
-        ):
+    columns = (
+        (0.06, "Scholarly anchor", 24),
+        (0.37, "Conceptual role", 25),
+        (0.70, "Controller analogy", 27),
+    )
+    for x, title, _ in columns:
+        ax.text(x, 0.89, title, transform=ax.transAxes, fontsize=10, weight="bold")
+    for index, row in enumerate(rows):
+        y = 0.76 - index * 0.16
+        for value, (x, _, width) in zip(row, columns, strict=True):
+            ax.text(
+                x,
+                y,
+                wrap_label(value, width=width),
+                transform=ax.transAxes,
+                va="center",
+                fontsize=10,
+                color="#111827",
+            )
+        ax.plot([0.05, 0.95], [y - 0.065] * 2, transform=ax.transAxes, color="#E2E8F0", lw=0.8)
+        for start, end in ((0.285, 0.345), (0.615, 0.675)):
             ax.add_patch(
-                Rectangle(
-                    (x, y - 0.040),
-                    width,
-                    0.080,
+                FancyArrowPatch(
+                    (start, y),
+                    (end, y),
                     transform=ax.transAxes,
-                    facecolor=color if x == 0.08 else "#F8FAFC",
-                    edgecolor="#CBD5E1",
-                    lw=0.8,
+                    arrowstyle="-",
+                    linestyle="--",
+                    color="#64748B",
+                    lw=1.2,
                 )
             )
-            ax.text(
-                x + width / 2,
-                y,
-                textwrap.fill(text, width=23),
-                transform=ax.transAxes,
-                ha="center",
-                va="center",
-                fontsize=8.0,
-                color="white" if x == 0.08 else "#111827",
-                weight="bold" if x == 0.08 else "normal",
-            )
-        ax.add_patch(
-            FancyArrowPatch(
-                (0.28, y),
-                (0.38, y),
-                transform=ax.transAxes,
-                arrowstyle="->",
-                mutation_scale=11,
-                lw=1.0,
-                color="#475569",
-            )
-        )
-        ax.add_patch(
-            FancyArrowPatch(
-                (0.59, y),
-                (0.68, y),
-                transform=ax.transAxes,
-                arrowstyle="->",
-                mutation_scale=11,
-                lw=1.0,
-                color="#475569",
-            )
-        )
-    ax.add_patch(
-        Rectangle(
-            (0.19, 0.075),
-            0.62,
-            0.080,
-            transform=ax.transAxes,
-            facecolor="#FEF2F2",
-            edgecolor="#FCA5A5",
-            lw=0.8,
-        )
+    ax.set_title("Anatomy and policy: conceptual analogies only", loc="left", pad=15)
+    add_figure_note(
+        fig,
+        "Dashed links denote analogy, not fitted anatomy → policy mappings or executed neural feedback.\nNo connectome assimilation, calcium validation, or learned generative controller is established.",
+        y=0.025,
     )
-    ax.text(
-        0.50,
-        0.116,
-        "Blocked claim: no connectome-scale assimilation, calcium-validated dynamics, or learned generative model.",
-        transform=ax.transAxes,
-        ha="center",
-        va="center",
-        fontsize=8.4,
-        color="#991B1B",
-        weight="bold",
-    )
-    ax.set_title("BeeBrain anatomy-data-to-BeeMind belief-policy mapping")
-    fig.tight_layout()
+    fig.tight_layout(rect=(0, 0.12, 1, 1))
     fig.savefig(path, dpi=180)
     plt.close(fig)
     return path
@@ -206,242 +168,215 @@ def _niche_adapter_map(records: list[dict[str, Any]], path: Path) -> Path:
     thermal = _numeric_series(records, "brood_temperature_error_c")
     final_comb = comb[-1]
     max_thermal = max(abs(value) for value in thermal)
-    nodes = {
-        "CombGrid": (0.50, 0.58, f"comb final {final_comb:.2f}", module_color("BeeNiche")),
-        "Thermal field": (0.23, 0.62, f"max error {max_thermal:.2f} C", "#DC2626"),
-        "Forage map": (0.23, 0.30, "landscape summaries", "#0F766E"),
-        "BEEHAVE adapter": (0.77, 0.62, "colony summaries", "#F59E0B"),
-        "Hiveopolis boundary": (0.77, 0.30, "interface target", "#7C3AED"),
-    }
-    fig, ax = plt.subplots(figsize=(11.4, 5.8))
-    ax.axis("off")
-    for name, (x, y, detail, color) in nodes.items():
-        ax.add_patch(
-            Rectangle(
-                (x - 0.115, y - 0.065),
-                0.23,
-                0.13,
-                transform=ax.transAxes,
-                facecolor=color,
-                edgecolor="#111827",
-                lw=1.0,
-                alpha=0.92,
-            )
+    fig, axes = plt.subplots(1, 2, figsize=(11.4, 5.5), gridspec_kw={"width_ratios": [1, 1.5]})
+    for ax in axes:
+        ax.axis("off")
+    axes[0].set_title("Supplied run witnesses", loc="left", pad=15)
+    for index, (label, value) in enumerate(
+        (
+            ("Final comb fraction", f"{final_comb:.2f}"),
+            ("Maximum absolute thermal error", f"{max_thermal:.2f} °C"),
         )
-        ax.text(
-            x,
-            y + 0.024,
-            name,
-            transform=ax.transAxes,
-            ha="center",
-            va="center",
-            fontsize=9.0,
-            color="white",
-            weight="bold",
+    ):
+        y = 0.73 - index * 0.37
+        axes[0].text(
+            0.03, y, value, transform=axes[0].transAxes, fontsize=23, weight="bold", color="#111827"
         )
-        ax.text(
-            x,
-            y - 0.030,
-            detail,
-            transform=ax.transAxes,
-            ha="center",
-            va="center",
-            fontsize=7.5,
-            color="white",
-        )
-    arrows = (
-        ("Thermal field", "CombGrid", "brood context"),
-        ("Forage map", "CombGrid", "resource context"),
-        ("CombGrid", "BEEHAVE adapter", "summary fields"),
-        ("CombGrid", "Hiveopolis boundary", "not real-time control"),
-    )
-    for source, target, label in arrows:
-        sx, sy, *_ = nodes[source]
-        tx, ty, *_ = nodes[target]
-        ax.add_patch(
-            FancyArrowPatch(
-                (sx, sy),
-                (tx, ty),
-                transform=ax.transAxes,
-                arrowstyle="->",
-                mutation_scale=13,
-                lw=1.2,
-                color="#334155",
-                shrinkA=52,
-                shrinkB=52,
-            )
-        )
-        ax.text(
-            (sx + tx) / 2,
-            (sy + ty) / 2 + 0.028,
-            label,
-            transform=ax.transAxes,
-            ha="center",
-            fontsize=7.1,
+        axes[0].text(
+            0.03,
+            y - 0.12,
+            wrap_label(label, width=29),
+            transform=axes[0].transAxes,
+            fontsize=10,
             color="#334155",
+            va="center",
         )
-    ax.text(
-        0.5,
-        0.105,
-        "Reading rule: adapters expose compatible summaries; they are not full ecology or hive-control validation.",
-        transform=ax.transAxes,
-        ha="center",
-        fontsize=8.7,
-        color="#334155",
+    axes[1].set_title("Adapter schema (conceptual)", loc="left", pad=15)
+    fields = (
+        ("CombGrid + configuration", "Comb / thermal / forage summaries", module_color("BeeNiche")),
+        (
+            "BEEHAVE-compatible fields",
+            "Resource proxy; not simulator parity",
+            module_color("BeeSwarm"),
+        ),
+        (
+            "Hiveopolis-compatible fields",
+            "Thermal band / target; not live control",
+            module_color("BeeMind"),
+        ),
     )
-    ax.set_title("BeeNiche BEEHAVE/Hiveopolis adapter and comb-thermal-forage map")
-    fig.tight_layout()
+    for index, (title, detail, color) in enumerate(fields):
+        y = 0.81 - index * 0.30
+        axes[1].add_patch(
+            Rectangle(
+                (0.04, y - 0.10),
+                0.92,
+                0.20,
+                transform=axes[1].transAxes,
+                facecolor="#F8FAFC",
+                edgecolor=color,
+                lw=1.1,
+            )
+        )
+        axes[1].text(
+            0.07,
+            y + 0.027,
+            title,
+            transform=axes[1].transAxes,
+            fontsize=10.5,
+            weight="bold",
+            color="#111827",
+            va="center",
+        )
+        axes[1].text(
+            0.07,
+            y - 0.045,
+            detail,
+            transform=axes[1].transAxes,
+            fontsize=9,
+            color="#334155",
+            va="center",
+        )
+    add_figure_note(
+        fig,
+        "Left: reduced telemetry only. Right: NicheAdapterSummary field groups; no adapter payload is supplied.\nCompatible names and units do not validate full ecology, thermodynamics, or real-time hive control.",
+        y=0.025,
+    )
+    fig.tight_layout(rect=(0, 0.13, 1, 1))
     fig.savefig(path, dpi=180)
     plt.close(fig)
     return path
 
 
 def _validation_readiness_residuals(path: Path) -> Path:
-    rows = [
-        ("Implemented", "uv/pytest/ruff gates", "local verification", "#0F766E"),
-        ("Implemented", "figure sidecars", "caption + DOI/source metadata", "#0F766E"),
-        ("Implemented", "source audit", "bibliography DOI contract", "#0F766E"),
-        ("Implemented", "availability records", "blocked empirical payloads explicit", "#0F766E"),
-        ("Blocked", "held-out residuals", "no external validation panel", "#C43C39"),
-        ("Blocked", "uncertainty quantification", "no posterior predictive interval", "#C43C39"),
-        ("Blocked", "longitudinal assimilation", "no living-colony data stream", "#C43C39"),
-        ("Blocked", "digital-twin governance", "readiness target only", "#C43C39"),
-    ]
-    fig, ax = plt.subplots(figsize=(12.4, 6.0))
-    ax.axis("off")
-    columns = (("Status", 0.09), ("Evidence or blocker", 0.28), ("Current interpretation", 0.58))
-    for header, x in columns:
-        ax.text(x, 0.86, header, transform=ax.transAxes, fontsize=9.5, weight="bold")
-    for index, (status, item, interpretation, color) in enumerate(rows):
-        y = 0.77 - index * 0.078
-        ax.add_patch(
-            Rectangle(
-                (0.055, y - 0.032),
-                0.89,
-                0.060,
-                transform=ax.transAxes,
-                facecolor="#F8FAFC" if index % 2 == 0 else "#FFFFFF",
-                edgecolor="#CBD5E1",
-                lw=0.55,
-            )
-        )
-        ax.add_patch(
-            Rectangle(
-                (0.080, y - 0.021),
-                0.130,
-                0.040,
-                transform=ax.transAxes,
-                facecolor=color,
-                edgecolor="#111827",
-                lw=0.4,
-                alpha=0.92,
-            )
-        )
-        ax.text(
-            0.145,
-            y,
-            status,
-            transform=ax.transAxes,
-            ha="center",
-            va="center",
-            fontsize=7.6,
-            color="white",
-            weight="bold",
-        )
-        ax.text(0.28, y, item, transform=ax.transAxes, va="center", fontsize=8.1)
-        ax.text(
-            0.58,
-            y,
-            interpretation,
-            transform=ax.transAxes,
-            va="center",
-            fontsize=8.1,
-            color="#334155",
-        )
-    ax.text(
-        0.50,
-        0.065,
-        "No residual bars are drawn because held-out validation residuals are not yet generated.",
-        transform=ax.transAxes,
-        ha="center",
-        fontsize=8.8,
-        color="#991B1B",
-        weight="bold",
+    rows = (
+        ("Local contract", "Verification commands", "Inspect current check receipts"),
+        ("Local contract", "Figure sidecars", "Caption + provenance metadata"),
+        ("Local contract", "Source audit", "DOI / source verification"),
+        ("Local contract", "Availability records", "Missing payloads remain explicit"),
+        ("Not supplied", "Held-out residuals", "Requires external validation data"),
+        ("Not supplied", "Uncertainty quantification", "Requires predictive intervals"),
+        ("Not supplied", "Longitudinal assimilation", "Requires colony time-series data"),
+        ("Not supplied", "Digital-twin governance", "Requires readiness evidence"),
     )
-    ax.set_title("BeeStack validation readiness and explicitly blocked residual evidence")
-    fig.tight_layout()
+    fig, ax = plt.subplots(figsize=(10.8, 6.2))
+    ax.axis("off")
+    for x, title in ((0.06, "Evidence role"), (0.28, "Requirement"), (0.61, "Interpretation")):
+        ax.text(x, 0.91, title, transform=ax.transAxes, fontsize=10, weight="bold")
+    for index, (status, item, interpretation) in enumerate(rows):
+        y = 0.81 - index * 0.092
+        ax.add_patch(
+            Rectangle(
+                (0.04, y - 0.037),
+                0.92,
+                0.074,
+                transform=ax.transAxes,
+                facecolor="#F8FAFC",
+                edgecolor="#E2E8F0",
+                lw=0.6,
+            )
+        )
+        for x, value in ((0.06, status), (0.28, item), (0.61, interpretation)):
+            ax.text(
+                x,
+                y,
+                value,
+                transform=ax.transAxes,
+                fontsize=9.4,
+                va="center",
+                color="#991B1B" if x == 0.06 and status == "Not supplied" else "#111827",
+            )
+    ax.set_title("Validation requirements — no residual data supplied", loc="left", pad=15)
+    add_figure_note(
+        fig,
+        "Conceptual readiness checklist, not a report that local checks passed.\nNo residual bars or predictive intervals are drawn without their underlying data.",
+        y=0.025,
+    )
+    fig.tight_layout(rect=(0, 0.12, 1, 1))
     fig.savefig(path, dpi=180)
     plt.close(fig)
     return path
 
 
 def _pipeline_overview(path: Path) -> Path:
-    stages = [
-        ("config", "manuscript/config.yaml", PALETTE[5]),
-        ("simulate", "analysis_pipeline.py", module_color("BeeNiche")),
-        ("render", "generate_animations.py", module_color("BeeBody")),
-        ("validate", "pytest + verify", PALETTE[6]),
-        ("publish", "reports + manuscript", module_color("BeeBrain")),
-    ]
-    fig, ax = plt.subplots(figsize=(9, 4.2))
+    stages = (
+        ("Configure", "Project configuration", "BeeNiche"),
+        ("Compute", "Reduced run + gated analyses", "BeeMind"),
+        ("Write artifacts", "Records, figures, reports", "BeeBrain"),
+        ("Audit / release", "Check receipts + manuscript", "BeeBody"),
+    )
+    fig, ax = plt.subplots(figsize=(11.2, 4.7))
     ax.axis("off")
-    for index, (title, detail, color) in enumerate(stages):
-        x = 0.08 + index * 0.21
+    for index, (title, detail, module) in enumerate(stages):
+        x = 0.025 + index * 0.25
         ax.add_patch(
             Rectangle(
-                (x, 0.42),
-                0.15,
-                0.18,
+                (x, 0.50),
+                0.205,
+                0.28,
                 transform=ax.transAxes,
-                facecolor=color,
-                edgecolor="#111827",
-                lw=1.0,
-                alpha=0.9,
+                facecolor="#F8FAFC",
+                edgecolor=module_color(module),
+                lw=1.4,
             )
         )
         ax.text(
-            x + 0.075,
-            0.535,
+            x + 0.1025,
+            0.69,
             title,
             transform=ax.transAxes,
             ha="center",
             va="center",
-            fontsize=10,
-            color="white",
+            fontsize=11,
             weight="bold",
+            color="#111827",
         )
         ax.text(
-            x + 0.075,
-            0.465,
-            detail,
+            x + 0.1025,
+            0.58,
+            wrap_label(detail, width=23),
             transform=ax.transAxes,
             ha="center",
             va="center",
-            fontsize=7,
-            color="white",
+            fontsize=9.2,
+            color="#334155",
         )
         if index < len(stages) - 1:
             ax.add_patch(
                 FancyArrowPatch(
-                    (x + 0.15, 0.51),
-                    (x + 0.205, 0.51),
+                    (x + 0.205, 0.64),
+                    (x + 0.248, 0.64),
                     transform=ax.transAxes,
-                    arrowstyle="->",
+                    arrowstyle="-|>",
                     mutation_scale=13,
                     lw=1.4,
-                    color="#334155",
+                    color="#475569",
                 )
             )
     ax.text(
-        0.5,
-        0.24,
-        "outputs: data manifests, analysis figures, BeeBody FlyBody GIFs, swarm behavior GIFs, reports, hydrated manuscript",
+        0.03,
+        0.30,
+        "Separate presentation branch",
         transform=ax.transAxes,
-        ha="center",
-        fontsize=9,
+        fontsize=10.5,
+        weight="bold",
+        color="#111827",
     )
-    ax.set_title("BeeStack research-operations pipeline")
-    fig.tight_layout()
+    ax.text(
+        0.03,
+        0.18,
+        "FlyBody / MuJoCo pose-contact scenes + animation artifacts",
+        transform=ax.transAxes,
+        fontsize=10,
+        color="#334155",
+    )
+    ax.set_title("Research artifact workflow (conceptual)", loc="left", pad=15)
+    add_figure_note(
+        fig,
+        "Workflow order is not a current execution receipt. Empirical analysis remains payload-gated.\nAnimation/contact artifacts do not substitute for calibrated forward dynamics or biological validation.",
+        y=0.025,
+    )
+    fig.tight_layout(rect=(0, 0.13, 1, 1))
     fig.savefig(path, dpi=180)
     plt.close(fig)
     return path

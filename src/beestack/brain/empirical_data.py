@@ -112,10 +112,12 @@ class AntennalMovementSummary:
     odor_on_fraction: float
     mean_abs_left_theta_deg: float | None
     mean_abs_right_theta_deg: float | None
-    mean_abs_theta_derivative: float
-    left_right_theta_correlation: float
+    mean_abs_theta_derivative: float | None
+    left_right_theta_correlation: float | None
     left_theta_observation_count: int = 0
     right_theta_observation_count: int = 0
+    theta_derivative_observation_count: int = 0
+    paired_theta_observation_count: int = 0
 
     def as_dict(self) -> dict[str, float | int | str | None]:
         return asdict(self)
@@ -163,17 +165,18 @@ class WaggleFollowerTrack:
 
     bee_id: str
     row_count: int
-    frame_min: int
-    frame_max: int
-    mean_angle_to_dancer_deg: float
-    mean_dancer_angle_to_gravity_deg: float
-    mean_left_antenna_deg: float
-    mean_right_antenna_deg: float
-    mean_antenna_midpoint_deg: float
-    mean_scape_angle_deg: float
-    left_right_antenna_synchrony: float
+    frame_min: int | None
+    frame_max: int | None
+    mean_angle_to_dancer_deg: float | None
+    mean_dancer_angle_to_gravity_deg: float | None
+    mean_left_antenna_deg: float | None
+    mean_right_antenna_deg: float | None
+    mean_antenna_midpoint_deg: float | None
+    mean_scape_angle_deg: float | None
+    left_right_antenna_synchrony: float | None
+    observation_counts: dict[str, int]
 
-    def as_dict(self) -> dict[str, float | int | str]:
+    def as_dict(self) -> dict[str, object]:
         return asdict(self)
 
 
@@ -187,26 +190,28 @@ class WaggleFollowerSummary:
     binned_row_count: int
     model_error_row_count: int
     straightness_row_count: int
-    frame_min: int
-    frame_max: int
-    mean_angle_to_dancer_deg: float
-    mean_dancer_angle_to_gravity_deg: float
-    mean_left_antenna_deg: float
-    mean_right_antenna_deg: float
-    mean_antenna_midpoint_deg: float
-    mean_scape_angle_deg: float
-    follower_angle_midpoint_correlation: float
-    left_right_antenna_synchrony: float
+    frame_min: int | None
+    frame_max: int | None
+    mean_angle_to_dancer_deg: float | None
+    mean_dancer_angle_to_gravity_deg: float | None
+    mean_left_antenna_deg: float | None
+    mean_right_antenna_deg: float | None
+    mean_antenna_midpoint_deg: float | None
+    mean_scape_angle_deg: float | None
+    follower_angle_midpoint_correlation: float | None
+    left_right_antenna_synchrony: float | None
     mean_abs_vector_error_deg: float | None
     no_antennae_mean_abs_error_deg: float | None
     both_antennae_mean_abs_error_deg: float | None
     decoding_improvement_fraction: float | None
-    straightness_mean: float
+    straightness_mean: float | None
     confidence_score: float
+    observation_counts: dict[str, int]
+    follower_angle_midpoint_source: str | None
     no_antennae_error_count: int = 0
     both_antennae_error_count: int = 0
 
-    def as_dict(self) -> dict[str, float | int | str | None]:
+    def as_dict(self) -> dict[str, object]:
         return asdict(self)
 
 
@@ -498,7 +503,7 @@ def summarize_antennal_movement_rows(
             np.sqrt(denom_left * denom_right)
         )
     else:
-        corr = 0.0
+        corr = None
     return AntennalMovementSummary(
         dataset_id=dataset_id,
         row_count=row_count,
@@ -509,10 +514,12 @@ def summarize_antennal_movement_rows(
         odor_on_fraction=odor_on / row_count,
         mean_abs_left_theta_deg=left_abs / left_count if left_count else None,
         mean_abs_right_theta_deg=right_abs / right_count if right_count else None,
-        mean_abs_theta_derivative=derivative_abs / max(derivative_count, 1),
-        left_right_theta_correlation=float(corr),
+        mean_abs_theta_derivative=derivative_abs / derivative_count if derivative_count else None,
+        left_right_theta_correlation=float(corr) if corr is not None else None,
         left_theta_observation_count=left_count,
         right_theta_observation_count=right_count,
+        theta_derivative_observation_count=derivative_count,
+        paired_theta_observation_count=corr_n,
     )
 
 
@@ -564,22 +571,34 @@ def summarize_waggle_follower_rows(
         accumulator.to_track() for _, accumulator in sorted(by_bee.items()) if accumulator.count > 0
     )
     global_track = global_acc.to_track()
-    midpoint_corr = global_acc.angle_midpoint.correlation()
-    if binned_angle_midpoint.count > global_acc.angle_midpoint.count:
-        midpoint_corr = binned_angle_midpoint.correlation()
+    midpoint_acc = global_acc.angle_midpoint
+    midpoint_source = "feature_rows"
+    if binned_angle_midpoint.count > midpoint_acc.count:
+        midpoint_acc = binned_angle_midpoint
+        midpoint_source = "binned_rows"
+    midpoint_corr = midpoint_acc.correlation()
     no_antennae_error = error_acc.mean_abs_by_feature("no_antennae")
     both_antennae_error = error_acc.mean_abs_by_feature("both_antennae")
     mean_abs_error = error_acc.mean_abs_all()
     improvement = None
     if no_antennae_error is not None and no_antennae_error > 0 and both_antennae_error is not None:
         improvement = (no_antennae_error - both_antennae_error) / no_antennae_error
-    straightness_mean = float(np.mean(straightness_values)) if straightness_values else 0.0
+        if not np.isfinite(improvement):
+            raise ValueError("waggle relative error improvement must be finite")
+    straightness_mean = float(np.mean(straightness_values)) if straightness_values else None
     confidence = float(
         np.clip(
-            0.35 * abs(midpoint_corr)
+            0.35 * abs(midpoint_corr if midpoint_corr is not None else 0.0)
             + 0.30 * (np.clip(improvement, 0.0, 1.0) if improvement is not None else 0.0)
-            + 0.20 * np.clip(straightness_mean, 0.0, 1.0)
-            + 0.15 * np.clip(global_track.left_right_antenna_synchrony, 0.0, 1.0),
+            + 0.20 * np.clip(straightness_mean if straightness_mean is not None else 0.0, 0.0, 1.0)
+            + 0.15
+            * np.clip(
+                global_track.left_right_antenna_synchrony
+                if global_track.left_right_antenna_synchrony is not None
+                else 0.0,
+                0.0,
+                1.0,
+            ),
             0.0,
             1.0,
         )
@@ -599,16 +618,20 @@ def summarize_waggle_follower_rows(
         mean_right_antenna_deg=global_track.mean_right_antenna_deg,
         mean_antenna_midpoint_deg=global_track.mean_antenna_midpoint_deg,
         mean_scape_angle_deg=global_track.mean_scape_angle_deg,
-        follower_angle_midpoint_correlation=float(midpoint_corr),
+        follower_angle_midpoint_correlation=midpoint_corr,
         left_right_antenna_synchrony=global_track.left_right_antenna_synchrony,
         mean_abs_vector_error_deg=mean_abs_error,
         no_antennae_mean_abs_error_deg=no_antennae_error,
         both_antennae_mean_abs_error_deg=both_antennae_error,
-        decoding_improvement_fraction=(
-            float(np.clip(improvement, -1.0, 1.0)) if improvement is not None else None
-        ),
+        decoding_improvement_fraction=improvement,
         straightness_mean=straightness_mean,
         confidence_score=confidence,
+        observation_counts={
+            **global_track.observation_counts,
+            "follower_angle_midpoint_correlation": midpoint_acc.count,
+            "straightness_mean": len(straightness_values),
+        },
+        follower_angle_midpoint_source=midpoint_source if midpoint_acc.count else None,
         no_antennae_error_count=error_acc.by_feature_count.get("no_antennae", 0),
         both_antennae_error_count=error_acc.by_feature_count.get("both_antennae", 0),
     )
@@ -616,20 +639,36 @@ def summarize_waggle_follower_rows(
 
 
 def antennal_vibration_from_movement(summary: AntennalMovementSummary) -> Array:
-    """Map active-sensing movement statistics to BeeBrain antennal vibration."""
+    """Map movement to modeled vibration, retaining neutral amplitude without a derivative.
 
-    amplitude = min(1.0, summary.mean_abs_theta_derivative / 25.0)
+    Missing measured derivatives remain null in the source summary; the model's
+    zero-amplitude no-drive control is not an observed zero derivative.
+    """
+
+    amplitude = (
+        min(1.0, summary.mean_abs_theta_derivative / 25.0)
+        if summary.mean_abs_theta_derivative is not None
+        else 0.0
+    )
     frequency_hz = 200.0 + 100.0 * min(1.0, summary.odor_on_fraction)
     return np.array([amplitude, frequency_hz], dtype=float)
 
 
 def waggle_vibration_from_followers(summary: WaggleFollowerSummary) -> Array:
-    """Map waggle-following confidence into a BeeBrain antennal vibration drive."""
+    """Map diagnostic confidence to a model drive, not an observed vibration.
+
+    Unavailable correlation contributes neutral drive without becoming a measured zero.
+    """
 
     amplitude = float(
         np.clip(
             0.5 * summary.confidence_score
-            + 0.3 * abs(summary.follower_angle_midpoint_correlation)
+            + 0.3
+            * abs(
+                summary.follower_angle_midpoint_correlation
+                if summary.follower_angle_midpoint_correlation is not None
+                else 0.0
+            )
             + 0.2 * max(0.0, summary.decoding_improvement_fraction or 0.0),
             0.0,
             1.0,
@@ -673,11 +712,11 @@ class _CorrelationAccumulator:
         self.sum_y2 += y * y
         self.sum_xy += x * y
 
-    def correlation(self) -> float:
+    def correlation(self) -> float | None:
         denom_x = self.count * self.sum_x2 - self.sum_x * self.sum_x
         denom_y = self.count * self.sum_y2 - self.sum_y * self.sum_y
         if self.count <= 1 or denom_x <= 0 or denom_y <= 0:
-            return 0.0
+            return None
         return float(
             (self.count * self.sum_xy - self.sum_x * self.sum_y) / np.sqrt(denom_x * denom_y)
         )
@@ -689,6 +728,7 @@ class _TrackAccumulator:
         self.count = 0
         self.frame_min: int | None = None
         self.frame_max: int | None = None
+        self.frame_count = 0
         self.sums = {key: 0.0 for key in ("angle", "dancer", "left", "right", "midpoint", "scape")}
         self.counts = {key: 0 for key in self.sums}
         self.angle_midpoint = _CorrelationAccumulator()
@@ -697,6 +737,7 @@ class _TrackAccumulator:
     def add(self, frame: float | None, values: dict[str, float]) -> None:
         self.count += 1
         if frame is not None:
+            self.frame_count += 1
             iframe = int(frame)
             self.frame_min = iframe if self.frame_min is None else min(self.frame_min, iframe)
             self.frame_max = iframe if self.frame_max is None else max(self.frame_max, iframe)
@@ -713,15 +754,15 @@ class _TrackAccumulator:
         if left is not None and right is not None:
             self.left_right.add(left, -right)
 
-    def mean(self, key: str) -> float:
-        return self.sums[key] / max(self.counts[key], 1)
+    def mean(self, key: str) -> float | None:
+        return self.sums[key] / self.counts[key] if self.counts[key] else None
 
     def to_track(self) -> WaggleFollowerTrack:
         return WaggleFollowerTrack(
             bee_id=self.bee_id,
             row_count=self.count,
-            frame_min=self.frame_min or 0,
-            frame_max=self.frame_max or 0,
+            frame_min=self.frame_min,
+            frame_max=self.frame_max,
             mean_angle_to_dancer_deg=self.mean("angle"),
             mean_dancer_angle_to_gravity_deg=self.mean("dancer"),
             mean_left_antenna_deg=self.mean("left"),
@@ -729,14 +770,24 @@ class _TrackAccumulator:
             mean_antenna_midpoint_deg=self.mean("midpoint"),
             mean_scape_angle_deg=self.mean("scape"),
             left_right_antenna_synchrony=self.left_right.correlation(),
+            observation_counts={
+                "frame": self.frame_count,
+                "mean_angle_to_dancer_deg": self.counts["angle"],
+                "mean_dancer_angle_to_gravity_deg": self.counts["dancer"],
+                "mean_left_antenna_deg": self.counts["left"],
+                "mean_right_antenna_deg": self.counts["right"],
+                "mean_antenna_midpoint_deg": self.counts["midpoint"],
+                "mean_scape_angle_deg": self.counts["scape"],
+                "left_right_antenna_synchrony": self.left_right.count,
+            },
         )
 
 
 class _ErrorAccumulator:
     def __init__(self) -> None:
         self.count = 0
-        self.all_abs_sum = 0.0
-        self.by_feature_sum: dict[str, float] = {}
+        self.all_abs_mean = 0.0
+        self.by_feature_mean: dict[str, float] = {}
         self.by_feature_count: dict[str, int] = {}
 
     def add(self, row: Mapping[str, Any]) -> None:
@@ -744,23 +795,25 @@ class _ErrorAccumulator:
         if value is None:
             value = _optional_float(row.get("mean_deg"))
         if value is None and (mean_rad := _optional_float(row.get("mean_rad"))) is not None:
-            value = float(np.degrees(mean_rad))
+            value = mean_rad * (180.0 / np.pi)
         if value is None:
             return
+        if not np.isfinite(value):
+            raise ValueError("waggle model error must be finite after unit conversion")
         feature = _source_feature(row.get("_source_file"))
         abs_value = abs(value)
         self.count += 1
-        self.all_abs_sum += abs_value
-        self.by_feature_sum[feature] = self.by_feature_sum.get(feature, 0.0) + abs_value
-        self.by_feature_count[feature] = self.by_feature_count.get(feature, 0) + 1
+        self.all_abs_mean += (abs_value - self.all_abs_mean) / self.count
+        count = self.by_feature_count.get(feature, 0) + 1
+        previous_mean = self.by_feature_mean.get(feature, 0.0)
+        self.by_feature_mean[feature] = previous_mean + (abs_value - previous_mean) / count
+        self.by_feature_count[feature] = count
 
     def mean_abs_all(self) -> float | None:
-        return self.all_abs_sum / self.count if self.count else None
+        return self.all_abs_mean if self.count else None
 
     def mean_abs_by_feature(self, feature: str) -> float | None:
-        total = self.by_feature_sum.get(feature, 0.0)
-        count = self.by_feature_count.get(feature, 0)
-        return total / count if count else None
+        return self.by_feature_mean.get(feature)
 
 
 def _source_feature(value: Any) -> str:

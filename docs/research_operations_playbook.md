@@ -19,7 +19,10 @@ backed by generated evidence.
 
 ## Regeneration Tiers
 
-Use the lightest tier that answers the question.
+Use the lightest tier that answers the question. Tiers 1–3 are partial refreshes
+of an existing snapshot, not release checks. A cold checkout or publication needs
+the complete [root Full Verification order](../README.md#full-verification).
+Refreshing reports or prose can invalidate the previous PDF seal.
 
 ### Tier 1: Text And Token Check
 
@@ -44,11 +47,11 @@ uv run python scripts/review_stack_integrity.py
 uv run python scripts/run_research_suite.py --assemble-only
 uv run python scripts/run_methods_analysis.py
 uv run python scripts/run_stack_synthesis.py
-uv run python scripts/verify_generated_reports.py
 ```
 
-`verify_generated_reports.py` also enforces the security posture audit (threat
-model, lockfile, fetch allowlist, forbidden patterns).
+After this refresh, finish the root sequence from bootstrap hydration/render
+through audits and final hydration/reseal before generated/publication checks.
+The block above alone does not certify current manuscript or release readiness.
 
 Use this when BeeBrain data, scorecards, methods figures, sensitivity sweeps,
 stack-synthesis statistics, or research reports changed. The central report is
@@ -83,11 +86,16 @@ uv run python scripts/run_research_suite.py --assemble-only
 uv run python scripts/run_methods_analysis.py
 uv run python scripts/run_stack_synthesis.py
 uv run python scripts/assess_digital_twin_readiness.py
-uv run python scripts/verify_generated_reports.py
+uv run python scripts/z_generate_manuscript_variables.py
+uv run python scripts/render_manuscript.py  # bootstrap cold-checkout PDF audits
+uv run python scripts/signpost_project_tree.py
 uv run python scripts/run_security_audit.py
 uv run python scripts/audit_documentation.py
 uv run python scripts/signpost_project_tree.py --check
 uv run python scripts/z_generate_manuscript_variables.py
+uv run python scripts/render_manuscript.py  # seal current audited inputs
+uv run python scripts/verify_generated_reports.py
+uv run python scripts/audit_publication_readiness.py --check
 ```
 
 Use this before declaring a project-wide science or manuscript sprint complete.
@@ -95,6 +103,10 @@ Use this before declaring a project-wide science or manuscript sprint complete.
 the prerequisite analysis, empirical, visual-verification, and integrity scripts
 have already run. The generated-report audit is the freshness gate for
 availability-status claims, source-claim metadata, and stale local report files.
+Rendering is repository-local with native Python 3.12.16, Pandoc, and XeLaTeX.
+Audits mutate manuscript inputs, so hydrate/render again after the audits before
+using the final source/data/figure receipt. Inspect the PDF; compilation is not
+visual or biological validation. Use the root README for the full release order.
 
 ## Claim Tiers
 
@@ -110,6 +122,12 @@ BeeStack uses the following claim vocabulary:
   gaps.
 - **Diagnostic or schematic**: explanatory figures and GIFs that are useful for
   orientation but not biomechanical or empirical evidence.
+Strict small-scene Swarm evidence means scripted poses with real MuJoCo contact
+detection, not integrated flight dynamics. Empirical status requires successful
+analysis bound to payload, configuration, implementation, and report hashes.
+Absent odor-conditioned aggregates remain unavailable even when standalone waggle
+CSVs or Table S1 statistics are local. Missing observations remain null/counts,
+not zero; signed correlations and native-unit angles are not synthetic phases.
 
 When writing manuscript prose, prefer the strongest tier that is actually
 supported by generated artifacts. Do not let the biological ambition of a module

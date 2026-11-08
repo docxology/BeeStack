@@ -12,13 +12,13 @@ import pandas as pd
 from .figure_metadata import assert_nonblank_quality
 from .figure_output import finalize_static_figures, write_stable_plotly_html
 from .figure_plot_specs import methods_plot_data
+from .figure_registry import figure_narrative_for_path
+from .figures_common import _nullable_series
 from .style import (
     PALETTE,
+    add_figure_note,
     add_panel_label,
     apply_panel_style,
-    bounded_text,
-    direct_label_bars,
-    format_compact_number,
     module_color,
     style_context,
     wrap_label,
@@ -75,8 +75,9 @@ def generate_methods_figures(
         return methods_plot_data(path, report=report, records=records)
 
     def _sidecar(path: Path) -> dict[str, object]:
+        narrative = figure_narrative_for_path(path)
         return {
-            "title": path.stem.replace("_", " ").title(),
+            "title": narrative.title if narrative is not None else _plot_data(path)["title"],
             "backend": "Matplotlib/pandas",
             "fidelity": _methods_figure_fidelity(path.name),
             "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
@@ -94,11 +95,13 @@ def _methods_figure_fidelity(filename: str) -> str:
     """Classify methods figures by evidence tier."""
 
     if "beebody" in filename:
-        return "FlyBody-backed render diagnostics plus reduced telemetry"
+        return (
+            "scripted-pose FlyBody render diagnostics plus reduced telemetry; not forward dynamics"
+        )
     if "beebrain" in filename:
         return "empirical completeness summary projected into reduced BeeBrain contracts"
     if "beeswarm" in filename:
-        return "strict scene contact/recruitment diagnostic with reduced-kernel context"
+        return "scripted-pose scene contact/recruitment diagnostic with reduced-kernel context"
     if "dashboard" in filename or "evidence_index" in filename:
         return "methods provenance diagnostic"
     return "reduced deterministic kernel diagnostic"
@@ -167,142 +170,80 @@ def write_interactive_methods_dashboard(
 
 
 def _repo_methods_dashboard(report: MethodsAnalysisReport, path: Path) -> Path:
-    rows = []
-    for panel in report.module_panels:
-        rows.append(
-            {
-                "module": panel.module,
-                "validation_fraction": panel.validation_panel.validation_fraction,
-                "metric_count": float(len(panel.quantitative_metrics)),
-                "visual_artifacts": float(panel.visualization_panel.artifact_count),
-                "evidence_links": float(len(panel.manuscript_evidence)),
-                "gap_count": float(len(panel.known_gaps)),
-            }
-        )
-    frame = pd.DataFrame(rows).set_index("module")
-    normalized = frame.copy()
-    for column in normalized.columns:
-        values = frame[column].astype(float)
-        span = float(values.max() - values.min())
-        if span == 0:
-            normalized[column] = 1.0 if float(values.max()) > 0 else 0.0
-        else:
-            normalized[column] = (values - float(values.min())) / span
-    fig, ax = plt.subplots(figsize=(10.5, 5.6))
-    image = ax.imshow(normalized.to_numpy(), aspect="auto", cmap="cividis", vmin=0, vmax=1)
-    ax.set_title("BeeStack science-first methods dashboard", loc="left")
-    ax.set_xticks(range(len(frame.columns)), frame.columns, rotation=25, ha="right")
-    ax.set_yticks(range(len(frame.index)), frame.index)
-    for row_index, module in enumerate(frame.index):
-        for column_index, column in enumerate(frame.columns):
-            raw = float(frame.loc[module, column])
-            norm = float(normalized.loc[module, column])
-            ax.text(
-                column_index,
-                row_index,
-                f"{raw:.2g}",
-                ha="center",
-                va="center",
-                color="white" if norm < 0.58 else "black",
-                fontsize=8,
-            )
-    fig.colorbar(image, ax=ax, label="Column-normalized methods score")
-    fig.tight_layout(rect=(0, 0.06, 1, 0.95))
+    rows = [
+        [
+            panel.module,
+            f"{panel.validation_panel.validation_fraction:.2f}",
+            str(len(panel.quantitative_metrics)),
+            str(panel.visualization_panel.artifact_count),
+            str(len(panel.manuscript_evidence)),
+            str(len(panel.known_gaps)),
+        ]
+        for panel in report.module_panels
+    ]
+    fig, ax = plt.subplots(figsize=(10.8, max(4.2, 0.48 * len(rows) + 1.8)))
+    ax.axis("off")
+    ax.set_title("Methods inventory in native units", loc="left", pad=18)
+    table = ax.table(
+        cellText=rows,
+        colLabels=[
+            "Module",
+            "Self-test\nfraction",
+            "Metrics\n(count)",
+            "Artifacts\n(count)",
+            "Evidence links\n(count)",
+            "Known gaps\n(count)",
+        ],
+        colWidths=[0.19, 0.17, 0.14, 0.16, 0.18, 0.16],
+        cellLoc="center",
+        bbox=(0, 0.08, 1, 0.84),
+    )
+    table.auto_set_font_size(False)
+    table.set_fontsize(10)
+    add_figure_note(
+        fig,
+        "Counts describe report inventory. Self-tests use configured bands, not biological validation; no normalized composite score.",
+        y=0.025,
+    )
+    fig.tight_layout(rect=(0, 0.07, 1, 0.98))
     fig.savefig(path, dpi=180)
     plt.close(fig)
     return path
 
 
 def _methods_dashboard_detail(report: MethodsAnalysisReport, path: Path) -> Path:
-    rows = []
-    for panel in report.module_panels:
-        rows.append(
-            {
-                "module": panel.module,
-                "validation": panel.validation_panel.validation_fraction,
-                "artifacts": panel.visualization_panel.artifact_count,
-                "evidence": len(panel.manuscript_evidence),
-                "gaps": len(panel.known_gaps),
-                "boundary": panel.interpretation,
-            }
-        )
-    fig, ax = plt.subplots(figsize=(12.4, 6.4))
+    rows = [
+        [
+            panel.module,
+            f"{panel.validation_panel.validation_fraction:.2f}",
+            str(panel.visualization_panel.artifact_count),
+            str(len(panel.manuscript_evidence)),
+            str(len(panel.known_gaps)),
+            wrap_label(panel.interpretation, width=58),
+        ]
+        for panel in report.module_panels
+    ]
+    row_lines = [2, *(max(len(cell.splitlines()) for cell in row) + 1 for row in rows)]
+    fig, ax = plt.subplots(figsize=(12.4, max(5, 0.22 * sum(row_lines) + 1.5)))
     ax.axis("off")
-    ax.text(
-        0.02,
-        0.96,
-        "Methods dashboard detail: module evidence and explicit gaps",
-        transform=ax.transAxes,
-        ha="left",
-        va="top",
-        fontsize=13,
-        fontweight="bold",
-        color="#111827",
+    ax.set_title("Methods detail: module evidence and explicit boundaries", loc="left", pad=16)
+    table = ax.table(
+        cellText=rows,
+        colLabels=["Module", "Self-test\nfraction", "Artifacts", "Evidence", "Gaps", "Boundary"],
+        colWidths=[0.11, 0.11, 0.10, 0.10, 0.07, 0.51],
+        cellLoc="left",
+        bbox=(0, 0.04, 1, 0.88),
     )
-    headers = ("Module", "Validation", "Artifacts", "Evidence", "Gaps", "Boundary")
-    widths = (0.12, 0.12, 0.12, 0.12, 0.08, 0.39)
-    x_positions = np.cumsum((0.02, *widths[:-1]))
-    for header, x in zip(headers, x_positions, strict=True):
-        ax.text(x, 0.86, header, transform=ax.transAxes, fontsize=8.5, fontweight="bold")
-    for row_index, row in enumerate(rows):
-        y = 0.79 - row_index * 0.135
-        ax.add_patch(
-            plt.Rectangle(
-                (0.015, y - 0.050),
-                0.96,
-                0.095,
-                transform=ax.transAxes,
-                facecolor="#F8FAFC" if row_index % 2 == 0 else "#FFFFFF",
-                edgecolor="#E2E8F0",
-                lw=0.5,
-            )
-        )
-        ax.text(
-            x_positions[0],
-            y,
-            str(row["module"]),
-            transform=ax.transAxes,
-            va="center",
-            fontsize=9,
-            fontweight="bold",
-            color=module_color(str(row["module"])),
-        )
-        numeric = (
-            format_compact_number(float(row["validation"])),
-            str(row["artifacts"]),
-            str(row["evidence"]),
-            str(row["gaps"]),
-        )
-        for index, value in enumerate(numeric, start=1):
-            ax.text(
-                x_positions[index],
-                y,
-                value,
-                transform=ax.transAxes,
-                va="center",
-                fontsize=8.4,
-                color="#334155",
-            )
-        bounded_text(
-            ax,
-            float(x_positions[-1]),
-            y + 0.038,
-            row["boundary"],
-            width=52,
-            max_lines=3,
-            fontsize=7.6,
-            facecolor="#FFFFFF",
-        )
-    fig.text(
-        0.5,
-        0.025,
-        "Detail companion to the normalized methods dashboard; counts are provenance and gap-routing evidence, not biological validation.",
-        ha="center",
-        va="bottom",
-        fontsize=8,
-        color="#475569",
+    table.auto_set_font_size(False)
+    table.set_fontsize(9)
+    for (row_index, _), cell in table.get_celld().items():
+        cell.set_height(row_lines[row_index] / sum(row_lines))
+    add_figure_note(
+        fig,
+        "Full report interpretation is shown; self-tests and source counts do not establish biological validity.",
+        y=0.018,
     )
-    fig.tight_layout()
+    fig.tight_layout(rect=(0, 0.06, 1, 0.98))
     fig.savefig(path, dpi=180)
     plt.close(fig)
     return path
@@ -313,10 +254,10 @@ def _body_telemetry(
     report: MethodsAnalysisReport,
     path: Path,
 ) -> Path:
-    steps = _series(records, "step_index", default=np.arange(len(records), dtype=float))
-    speed = _series(records, "body_speed_m_s")
-    wing_power = _series(records, "wing_power_mw")
-    energy = _series(records, "energy_j")
+    steps = _nullable_series(records, "step_index", default=range(len(records)))
+    speed = _nullable_series(records, "body_speed_m_s")
+    wing_power = _nullable_series(records, "wing_power_mw")
+    energy = _nullable_series(records, "energy_j")
     body_panel = _panel(report, "BeeBody")
     metrics = body_panel.quantitative_metrics
     fig, axes = plt.subplots(2, 2, figsize=(10, 6.4))
@@ -326,33 +267,36 @@ def _body_telemetry(
     apply_panel_style(axes[0, 1], title="Wingbeat power witness", ylabel="mW", grid_axis="both")
     axes[1, 0].plot(steps, energy, color=module_color("BeeBrain"), marker="^")
     apply_panel_style(axes[1, 0], title="Energy budget", ylabel="J", grid_axis="both")
-    labels = ["bee_visual_score", "bee_silhouette_score", "wingbeat_frequency_hz"]
-    raw_values = [float(metrics.get(label, 0.0)) for label in labels]
-    scaled = np.log1p(np.abs(raw_values))
-    if float(scaled.max()) > 0:
-        scaled = scaled / float(scaled.max())
-    bars = axes[1, 1].barh(
-        [wrap_label(label.replace("_", " "), width=20, max_lines=2) for label in labels[::-1]],
-        scaled[::-1],
-        color=module_color("BeeMind"),
+    labels = ("bee_visual_score", "bee_silhouette_score", "wingbeat_frequency_hz")
+    axes[1, 1].axis("off")
+    table = axes[1, 1].table(
+        cellText=[
+            [
+                wrap_label(label.replace("_", " "), width=24),
+                "Unavailable" if metrics.get(label) is None else f"{metrics[label]:.3g}",
+                "Hz" if label.endswith("_hz") else "score",
+            ]
+            for label in labels
+        ],
+        colLabels=["Render /\nconfiguration cue", "Value", "Unit"],
+        colWidths=[0.62, 0.23, 0.15],
+        cellLoc="left",
+        bbox=(0, 0.08, 1, 0.75),
     )
-    direct_label_bars(
-        axes[1, 1],
-        bars,
-        tuple(raw_values[::-1]),
-        horizontal=True,
-    )
-    axes[1, 1].set_xlim(0, 1.12)
-    apply_panel_style(
-        axes[1, 1],
-        title="Morphology and wingbeat cues",
-        xlabel="log1p-scaled value (raw label)",
-        grid_axis="x",
-    )
+    table.auto_set_font_size(False)
+    table.set_fontsize(8.5)
+    axes[1, 1].set_title("Morphology and wingbeat cues")
+    for axis in (axes[0, 0], axes[0, 1], axes[1, 0]):
+        axis.set_xlabel("Control step")
     for label, axis in zip(("A", "B", "C", "D"), axes.ravel(), strict=True):
         add_panel_label(axis, label)
     fig.suptitle("BeeBody methods telemetry and morphology diagnostics", y=0.995)
-    fig.tight_layout(rect=(0, 0.06, 1, 0.95))
+    add_figure_note(
+        fig,
+        "Reduced telemetry and scripted-pose render cues; not forward-dynamics or biological validation.",
+        y=0.012,
+    )
+    fig.tight_layout(rect=(0, 0.07, 1, 0.95))
     fig.savefig(path, dpi=180)
     plt.close(fig)
     return path
@@ -366,7 +310,8 @@ def _module_metric_panel(
 ) -> Path:
     panel = _panel(report, module)
     items = sorted(panel.quantitative_metrics.items())
-    fig = plt.figure(figsize=(11, 5.8))
+    row_lines = max((len(wrap_label(name, width=28).splitlines()) for name, _ in items), default=1)
+    fig = plt.figure(figsize=(11.8, max(6.4, 0.24 * (len(items) + 1) * row_lines + 1.2)))
     grid = fig.add_gridspec(1, 2, width_ratios=[1.55, 1.0])
     ax = fig.add_subplot(grid[0, 0])
     ax_context = fig.add_subplot(grid[0, 1])
@@ -383,7 +328,7 @@ def _module_metric_panel(
     )
     table.auto_set_font_size(False)
     table.set_fontsize(8)
-    ax.set_title(title)
+    ax.set_title(wrap_label(title, width=48), fontsize=11)
     add_panel_label(ax, "A")
     ax_context.axis("off")
     evidence = panel.manuscript_evidence[0]
@@ -394,18 +339,20 @@ def _module_metric_panel(
         f"Availability\n{evidence.availability_status}",
         "Conservative boundary\n" + panel.interpretation,
     )
-    for index, text in enumerate(context_lines):
-        bounded_text(
-            ax_context,
-            0.02,
-            0.93 - index * 0.18,
-            text,
-            width=36,
-            max_lines=3,
-            fontsize=9,
-        )
+    context = [wrap_label(text, width=42) for text in context_lines]
+    context_table = ax_context.table(
+        cellText=[[text] for text in context],
+        colWidths=[1.0],
+        cellLoc="left",
+        bbox=(0, 0.03, 1, 0.9),
+    )
+    context_table.auto_set_font_size(False)
+    context_table.set_fontsize(8.5)
+    context_heights = [len(text.splitlines()) + 1 for text in context]
+    for (row_index, _), cell in context_table.get_celld().items():
+        cell.set_height(context_heights[row_index] / sum(context_heights))
     add_panel_label(ax_context, "B")
-    fig.suptitle(f"{module}: methods evidence, validation, and claim boundary", y=0.975)
+    fig.suptitle(f"{module}: methods evidence, self-tests, and claim boundary", y=0.975)
     fig.tight_layout(rect=(0, 0.05, 1, 0.95))
     fig.savefig(path, dpi=180)
     plt.close(fig)
@@ -417,9 +364,9 @@ def _niche_comb_thermal(
     report: MethodsAnalysisReport,
     path: Path,
 ) -> Path:
-    steps = _series(records, "step_index", default=np.arange(len(records), dtype=float))
-    comb = _series(records, "comb_fraction")
-    temp_error = _series(records, "brood_temperature_error_c")
+    steps = _nullable_series(records, "step_index", default=range(len(records)))
+    comb = _nullable_series(records, "comb_fraction")
+    temp_error = _nullable_series(records, "brood_temperature_error_c")
     panel = _panel(report, "BeeNiche")
     fig, axes = plt.subplots(1, 2, figsize=(10, 4.7))
     axes[0].plot(steps, comb, marker="s", color=module_color("BeeNiche"))
@@ -441,7 +388,7 @@ def _niche_comb_thermal(
     for label, axis in zip(("A", "B"), axes, strict=True):
         add_panel_label(axis, label)
     fig.suptitle(
-        f"BeeNiche methods validation {panel.validation_panel.validation_fraction:.2f}",
+        f"BeeNiche reduced diagnostics; configured self-test fraction {panel.validation_panel.validation_fraction:.2f}",
         y=0.98,
     )
     fig.tight_layout()
@@ -463,7 +410,9 @@ def _manuscript_evidence_index(report: MethodsAnalysisReport, path: Path) -> Pat
         )
     frame = pd.DataFrame(rows)
     x = np.arange(len(frame))
-    fig, ax = plt.subplots(figsize=(9.5, 5.0))
+    fig, (ax, ax_tests) = plt.subplots(
+        1, 2, figsize=(11.2, 4.8), gridspec_kw={"width_ratios": [1.3, 1]}
+    )
     ax.bar(
         x - 0.2,
         frame["evidence_links"],
@@ -478,16 +427,28 @@ def _manuscript_evidence_index(report: MethodsAnalysisReport, path: Path) -> Pat
         label="Visual artifacts",
         color=module_color("BeeBody"),
     )
-    ax2 = ax.twinx()
-    ax2.plot(x, frame["validation_fraction"], color="#111827", marker="o", label="Validation")
     ax.set_xticks(x, frame["module"], rotation=20, ha="right")
     ax.set_ylabel("Count")
-    ax2.set_ylabel("Validation fraction")
-    ax2.set_ylim(0, 1.05)
-    ax.set_title("Manuscript evidence index by module")
+    ax.set_title("Manuscript evidence inventory")
     apply_panel_style(ax, grid_axis="y")
-    ax.legend(loc="upper left")
-    ax2.legend(loc="upper right")
+    ax.legend(loc="upper left", fontsize=8)
+    bars = ax_tests.barh(frame["module"], frame["validation_fraction"], color=PALETTE[5])
+    for bar, value in zip(bars, frame["validation_fraction"], strict=True):
+        ax_tests.text(
+            1.02,
+            bar.get_y() + bar.get_height() / 2,
+            f"{value:.2f}",
+            transform=ax_tests.get_yaxis_transform(),
+            va="center",
+            color="#334155",
+        )
+    ax_tests.set_xlim(0, 1.05)
+    apply_panel_style(
+        ax_tests,
+        title="Configured self-tests",
+        xlabel="Fraction (not biological validation)",
+        grid_axis="x",
+    )
     fig.tight_layout()
     fig.savefig(path, dpi=180)
     plt.close(fig)
@@ -496,18 +457,6 @@ def _manuscript_evidence_index(report: MethodsAnalysisReport, path: Path) -> Pat
 
 def _panel(report: MethodsAnalysisReport, module: str):
     return next(panel for panel in report.module_panels if panel.module == module)
-
-
-def _series(
-    records: tuple[dict[str, Any], ...],
-    key: str,
-    default: np.ndarray | None = None,
-) -> np.ndarray:
-    if records:
-        return np.asarray([float(row.get(key, index)) for index, row in enumerate(records)])
-    if default is not None:
-        return np.asarray(default, dtype=float)
-    return np.asarray((0.0,), dtype=float)
 
 
 def _validate_nonblank_image(path: Path) -> None:

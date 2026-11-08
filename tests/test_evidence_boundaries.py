@@ -31,7 +31,11 @@ from beestack.swarm.state import BeeAgent
 from beestack.utils import project_relative_path, project_relative_payload
 from beestack.visualization.bee_signature import analyze_bee_render_signature
 from beestack.visualization.figure_metadata import write_figure_artifacts
-from beestack.visualization.figure_plot_specs import empirical_plot_data
+from beestack.visualization.figure_plot_specs import (
+    analysis_plot_data,
+    empirical_plot_data,
+    methods_plot_data,
+)
 
 
 def _followers(errors):
@@ -101,6 +105,67 @@ def test_missing_both_antennae_cannot_supply_perfect_alignment():
     assert measured.mean_follow_probability > 0.0
 
 
+def test_unreported_alignment_remains_missing_beside_observed_zero():
+    payload = analysis_plot_data(
+        Path("beebrain_empirical_alignment_timeseries.png"),
+        records=[{"step_index": 1}, {"step_index": 2, "dominant_empirical_alignment": 0.0}],
+        module_names=[],
+    )
+    decoded = json.loads(json.dumps(payload, allow_nan=False))
+    assert decoded["series"]["dominant_empirical_alignment"] == [None, 0.0]
+
+
+@pytest.fixture(scope="module")
+def methods_report_for_telemetry():
+    cfg = config_from_mapping({})
+    research = {"sensitivity_sweeps": [sweep.as_dict() for sweep in run_sensitivity_sweeps(cfg)]}
+    return assemble_methods_analysis_report(
+        cfg,
+        simulation_records=(),
+        simulation_summary={},
+        animation_manifest={},
+        research_report=research,
+        empirical_analysis={},
+        integrity_review={},
+    )
+
+
+@pytest.mark.parametrize(
+    ("name", "fields"),
+    [
+        (
+            "beebody_methods_telemetry_dashboard.png",
+            ("body_speed_m_s", "wing_power_mw", "energy_j"),
+        ),
+        ("beeniche_methods_comb_thermal.png", ("comb_fraction", "brood_temperature_error_c")),
+    ],
+)
+@pytest.mark.parametrize("case", ("empty", "sparse", "observed_zero", "nonfinite"))
+def test_methods_telemetry_exports_preserve_actual_observations(
+    methods_report_for_telemetry, name, fields, case
+):
+    records = (
+        ()
+        if case == "empty"
+        else (
+            {
+                "step_index": 0,
+                **(
+                    {key: 0.0 if case == "observed_zero" else float("nan") for key in fields}
+                    if case in {"observed_zero", "nonfinite"}
+                    else {}
+                ),
+            },
+        )
+    )
+    payload = methods_plot_data(Path(name), report=methods_report_for_telemetry, records=records)
+    decoded = json.loads(json.dumps(payload, allow_nan=False))
+    assert decoded["x"] == ([] if case == "empty" else [0.0])
+    expected = [] if case == "empty" else [0.0 if case == "observed_zero" else None]
+    for key in fields:
+        assert decoded["series"][key] == expected
+
+
 def test_movement_channels_use_their_own_observations():
     summary = summarize_antennal_movement_rows(({"LeftTheta": 10}, {"RightTheta": 20}))
     assert summary.mean_abs_left_theta_deg == 10
@@ -110,9 +175,14 @@ def test_movement_channels_use_their_own_observations():
     assert absent.mean_abs_left_theta_deg == 0
     assert absent.mean_abs_right_theta_deg is None
     assert absent.right_theta_observation_count == 0
-    payload = _plot("empirical_antennal_movement.png", antennal_summaries=(absent,))
-    assert payload["values"][1:3] == [0.0, None]
-    json.dumps(payload, allow_nan=False)
+    payload = json.loads(
+        json.dumps(
+            _plot("empirical_antennal_movement.png", antennal_summaries=(absent,)), allow_nan=False
+        )
+    )
+    metrics = {row["metric"]: row["value"] for row in payload["rows"]}
+    assert metrics["mean_abs_left_theta_deg"] == 0.0
+    assert metrics["mean_abs_right_theta_deg"] is None
 
 
 def test_calcium_templates_require_recorded_protocol_windows():

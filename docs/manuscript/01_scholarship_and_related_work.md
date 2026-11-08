@@ -1,6 +1,6 @@
-# Scholarship and Related Work {#sec:scholarship}
+# Honeybee Models, Data Sources, and Related Software {#sec:scholarship}
 
-## Motivation: the colony as a coupled body–brain–mind–swarm–niche system
+## Colony-scale coupling across body, brain, mind, swarm, and niche
 
 BeeStack begins from a demanding biological premise: a honey bee colony is
 not just many insects in one space, but a *coupled body–brain–mind–swarm–niche
@@ -32,7 +32,7 @@ turn many imperfect choices into colony-level dynamics; and the niche
 matters because comb, heat, weather, and forage define the action space
 available to the colony.
 
-## Scholarship anchors refreshed for this draft
+## Software, recruitment, and provenance method anchors
 
 The refreshed scholarship layer adds explicit anchors for interfaces that
 BeeStack can use today and boundaries it cannot yet cross. FlyBody
@@ -177,7 +177,7 @@ the thermal field, and the foraging landscape interface
 [@kronenberg1982colonial]; its comb-growth rule is a synthetic design choice,
 not a literature-calibrated deposition law.
 
-## First-principles design stance
+## Evidence constraints and replaceable model choices
 
 The implementation is organized around a first-principles distinction:
 some constraints are non-negotiable properties of the evidence, while
@@ -213,7 +213,7 @@ through FlyBody/MuJoCo tasks; the brain layer is anchored to public
 empirical sources; the mind, communication, and niche layers ship as
 bounded reduced kernels with explicit diagnostics.
 
-## The architectural challenge: locally plausible, mutually incompatible
+## Cross-module scale, unit, and state incompatibilities
 
 The architectural challenge is not simply to add detail. A bee-shaped
 renderer, an antennal-lobe dataset, an active-inference policy, and a
@@ -242,7 +242,7 @@ BeeStack is not yet a closed-loop twin for a particular colony. It is a
 research scaffold whose APIs, provenance records, and validation reports
 make future colony-coupled work easier to audit.
 
-## How this manuscript mirrors the philosophy
+## Manuscript organization by evidence class
 
 The manuscript mirrors that philosophy. Instead of presenting BeeStack as
 one large opaque model, the sections below separate **claim ledger**,
@@ -259,7 +259,7 @@ biomechanicist can read the BeeBody methods without the dance-decoding
 details of the BeeBrain methods, and a neuroethologist can read the BeeBrain
 methods without committing to the BeeSwarm contact-physics arguments.
 
-## Claim discipline
+## Claim tiers for rendered, empirical, and reduced evidence
 
 BeeStack's central methodological move is to make every claim carry its
 evidence class. A claim about BeeBody walking or the multi-bee waggle

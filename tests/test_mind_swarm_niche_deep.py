@@ -504,6 +504,8 @@ def _waggle_summary(confidence_score: float, antenna_error_deg: float) -> Waggle
         decoding_improvement_fraction=0.0,
         straightness_mean=0.0,
         confidence_score=confidence_score,
+        observation_counts={},
+        follower_angle_midpoint_source="caller_supplied",
     )
 
 

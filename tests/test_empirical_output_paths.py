@@ -167,6 +167,7 @@ def test_waggle_markdown_reports_repo_relative_source_files() -> None:
                 mean_antenna_midpoint_deg=0.0,
                 mean_scape_angle_deg=0.0,
                 left_right_antenna_synchrony=0.0,
+                observation_counts={},
             ),
         ),
         summary=WaggleFollowerSummary(
@@ -192,6 +193,8 @@ def test_waggle_markdown_reports_repo_relative_source_files() -> None:
             decoding_improvement_fraction=0.0,
             straightness_mean=0.0,
             confidence_score=0.0,
+            observation_counts={},
+            follower_angle_midpoint_source="caller_supplied",
         ),
         source_files=(str(source_file),),
     )

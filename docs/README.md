@@ -31,7 +31,7 @@ project. Use it alongside the root `README.md` and the generated reports in
 - `beebrain_data_pipeline.md`: end-to-end download, parse, validate, analyze,
   visualize, and report workflow.
 - `data_acquisition_runbook.md`: operational guidance for full downloads,
-  skip-if-present behavior, upstream errors, and data-size caveats.
+  source-bound completion-cache behavior, upstream errors, and bounded intake.
 - `troubleshooting.md`: common failures and recovery steps.
 
 ## Body And Visualization

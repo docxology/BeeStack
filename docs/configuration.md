@@ -2,6 +2,10 @@
 
 BeeStack is driven by `docs/manuscript/config.yaml`, loaded by the thin scripts and
 validated by `src/beestack/config.py`.
+Scripts use `beestack.project_config` as the canonical read adapter. Native
+development/CI uses `.python-version` (Python 3.12.16). Configured physics, policy,
+and event rates are targets: the reduced loop chooses a policy every control tick
+without MuJoCo substeps, while strict render/environment paths are separate.
 
 ## Sections
 
@@ -97,7 +101,8 @@ beestack:
     action_dim_default: 64
 ```
 
-Limit empirical BeeBrain alignment to one odor template for a small experiment:
+Select an odor name for an explicitly supplied compatible bank; this configuration
+does not acquire data, construct a default bank, or turn synthetic priors empirical:
 
 ```yaml
 beestack:

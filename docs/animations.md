@@ -4,6 +4,9 @@ BeeStack generates module-aligned animations with explicit fidelity labels.
 Production BeeBody and BeeSwarm collision/waggle outputs are real
 FlyBody/MuJoCo 3D renders; Brain, Mind, recruitment-field Swarm, and Niche
 animations are reduced schematic summaries.
+The strict BeeSwarm scenes are scripted-pose contact witnesses: MuJoCo evaluates
+geometry/contact at imposed poses, not integrated multi-bee flight dynamics.
+The `real_flybody_3d` manifest group identifies a renderer path, not calibration.
 
 - `beebody_flybody_morphology.gif`: FlyBody `WalkImitation` rollout
   rendered from the generated `apis_mellifera_worker.xml` MJCF body plan with a
@@ -71,7 +74,7 @@ and stop-signal sensitivity come from `beestack.waggle`. Tests also call
 runs; production generation uses the longer waggle frame/fps settings.
 
 Visual QA is automated by `scripts/verify_bee_render.py` and by the analysis
-pipeline. The checker inspects both actual BeeBody GIFs for locomotion motion,
+pipeline. The checker inspects adjacent-frame change across the full GIF sequence,
 amber body color, translucent wing cues, and dark bee striping, then checks the
 generated MJCF for bee-specific morphology: four wings, corbiculae, stinger,
 abdominal banding, thorax fuzz, dark compound eyes, fuller abdomen, hamuli
@@ -80,6 +83,10 @@ visible FlyBody debug aids. The same verifier also checks that the BeeSwarm
 collision, configured waggle, and long waggle GIFs are nonblank/dynamic, backed
 by FlyBody-generated scene XMLs, rendered by MuJoCo, and supported by finite
 contact metrics.
+The historical silhouette field is a morphology/color cue heuristic, not overlap
+against a reference image; walking/flight labels are requested render modes, not
+inferred gait classifications. Print-facing manuscript contact sheets live under
+`output/figures/renders/`, with curated narratives and matching provenance sidecars.
 
 Simple Matplotlib waggle/collision glyphs are no longer production outputs.
 If diagnostic schematics are generated in the future, they must use

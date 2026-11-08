@@ -103,7 +103,7 @@ def _body_panel(
                 "strict_flybody_mujoco_witness",
             ),
         ),
-        interpretation="Body evidence combines FlyBody output with finite closed-loop telemetry.",
+        interpretation="Body evidence combines separate FlyBody output and reduced-scenario telemetry; it does not demonstrate neural or niche feedback.",
     )
 
 

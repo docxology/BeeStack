@@ -15,6 +15,9 @@ multi-bee MuJoCo scenes for BeeSwarm collision and waggle production GIFs,
 including prefixed bodies/actuators, free joints, hidden contact proxies, floor
 or comb arena geometry, contact reports, waggle phase samples, and follower
 orientation telemetry.
+Scene poses are imposed each frame: MuJoCo detects contacts at scripted poses,
+not an integrated forward-dynamics flight or colony simulation. Manuscript
+contact sheets are published under `output/figures/renders/` with sidecar provenance.
 `BEESTACK_FLYBODY_PATH` or `BeeStackConfig.flybody.local_fork_path` can point
 to a checked-out BeeStack FlyBody fork. Render size, camera, task horizon, and
 motion-validation thresholds, plus strict-scene speed/radius/altitude/substeps

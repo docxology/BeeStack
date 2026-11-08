@@ -218,6 +218,7 @@ def build_empirical_analysis_bundle(
         "waggle_follower_dataset_available": waggle_dataset is not None,
         "template_count": len(bank.templates),
         "all_quality_checks_passed": all_checks_passed(quality_checks),
+        "quality_check_count": len(quality_checks),
         "activity_summary": activity_summary.as_dict(),
         "anatomy_summary": anatomy_summary.as_dict(),
         "anatomy_inventories": [inventory.as_dict() for inventory in anatomy_inventories],

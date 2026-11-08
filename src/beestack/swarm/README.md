@@ -18,3 +18,9 @@ When an empirical summary lacks both-antennae error observations,
 probability receives no alignment credit from that missing evidence. An explicitly
 observed zero error remains a valid score of one; no empirical summary at all
 retains the separately labeled reduced scenario's unconditioned behavior.
+
+The reduced communication kernel is distinct from production FlyBody/MuJoCo
+rendering in `body.flybody_scene`: those strict small scenes impose scripted
+poses and collect real geometry/contact diagnostics, not integrated flight or
+colony-scale forward dynamics. Native-unit recruitment and contact diagnostics
+remain separate from empirical observation means and biological calibration.

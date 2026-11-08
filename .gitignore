@@ -8,6 +8,7 @@
 htmlcov/
 __pycache__/
 *.py[cod]
+.mplconfig/fontlist-*.json
 *.egg-info/
 .DS_Store
 build/

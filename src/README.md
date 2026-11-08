@@ -11,4 +11,4 @@ specification:
 - `beestack/visualization/`: figure builders and FlyBody-backed animation writers.
 - `beestack/utils/`: shared numerical helpers and explicit file-I/O adapters.
 
-`orchestrator.py` composes the modules into the deterministic reduced closed loop.
+`orchestrator.py` steps a seeded reduced scenario. It does not execute every declared feedback route: BrainState does not drive policy, niche context does not drive Body, and recruitment does not retask stored agents.

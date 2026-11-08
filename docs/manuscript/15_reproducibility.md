@@ -1,12 +1,14 @@
-# Reproducibility {#sec:reproducibility}
+# Reproducibility of Analysis and Manuscript Rendering {#sec:reproducibility}
 
-Reproducibility in BeeStack is a *property of the pipeline*, not a
-property of any individual artifact. The run is manifest-driven by
-`docs/manuscript/config.yaml`, seeded with `{{CONFIG_SEED}}`, managed
-through `uv`, and exercises every cross-layer contract from raw
-configuration to hydrated manuscript prose.
+Reproducibility is a measured comparison of named pipeline outputs, not an
+automatic property of every artifact. Configuration comes from
+`docs/manuscript/config.yaml`, the seed is `{{CONFIG_SEED}}`, and `uv` manages the
+runtime. The reduced driver executes selected interfaces; declared feedback
+routes and successful manuscript generation do not prove biological integration.
+The native interpreter is Python 3.12.16 from `.python-version`; the lockfile
+and runtime receipt define the exercised environment, not a management interpreter.
 
-## Primary verification
+## Unit, integration, and coverage verification
 
 ```bash
 uv run pytest --cov=src --cov-report=term-missing
@@ -24,42 +26,21 @@ identifier is assigned. The historical 1.0 deposit is
 `--check --require-doi` refuses a DOI-less deposit. Metadata assignment and
 repository publication are separate from numerical or biological validation.
 
-## Full regeneration
+## Full artifact regeneration
 
-```bash
-uv run python scripts/analysis_pipeline.py
-uv run python scripts/generate_animations.py
-uv run python scripts/fetch_empirical_bee_data.py
-uv run python scripts/analyze_empirical_bee_data.py
-uv run python scripts/run_research_suite.py
-uv run python scripts/run_methods_analysis.py
-uv run python scripts/run_stack_synthesis.py
-uv run python scripts/review_stack_integrity.py
-uv run python scripts/z_generate_manuscript_variables.py
-uv run python scripts/render_manuscript.py
-uv run python scripts/verify_generated_reports.py
-uv run python scripts/audit_documentation.py
-uv run python scripts/run_security_audit.py
-uv run python scripts/signpost_project_tree.py --check
-```
+The canonical ordered recipe is **Full Verification** in the root `README.md`.
+It includes locked lint/format/coverage gates, metadata-only acquisition and
+availability analysis, reduced and separate animation/render workflows, report
+assembly, a bootstrap hydration/render, documentation/security/signpost audits,
+then final hydration and PDF resealing before generated/publication checks.
+Audits change sealed inputs: rendering before the audits is not the final seal.
 
-Each script in this list is a *thin orchestrator*: it reads
-configuration, imports from `src/beestack/`, runs, and writes
-artifacts to `output/`. No script contains business logic that would
-be hidden from `src/`.
+Run every command from this checkout. Computational logic belongs to
+`src/beestack/`; scripts orchestrate configuration, execution, and `output/`
+artifacts. Network payload acquisition is a separate, explicitly gated operation,
+not a hidden requirement of an offline verification recipe.
 
-The code-quality gates that precede a Full Snapshot refresh are:
-
-```bash
-uv run ruff check src tests scripts
-uv run ruff format --check src tests scripts
-uv lock --check
-```
-
-These checks keep the source tree, lock file, and generated manuscript
-pipeline aligned before large outputs are regenerated.
-
-## What hydration does
+## Resolved-source manuscript hydration and figure binding
 
 The manuscript is hydrated from source markdown to
 `output/manuscript/`. Simulation data, empirical BeeBrain reports,
@@ -84,7 +65,7 @@ main-manuscript evidence, be represented by a curated figure-registry
 narrative. This makes figure provenance part of the reproducibility
 surface rather than a visual afterthought.
 
-## Determinism guarantees
+## Seeded numerical kernels and empirical freshness
 
 Fixed seeds determine the reduced numerical kernels and model-owned PN→KC
 connectivity. This is not a blanket byte-identity guarantee for PDFs, raster
@@ -97,13 +78,13 @@ On an offline skip or failure, retained empirical files remain historical;
 hydration and research consumers cannot reuse their numbers as current results.
 Availability is `{{EMPIRICAL_AVAILABILITY}}`; missing current values remain N/A.
 
-## Why `uv`
+## Locked dependency and interpreter management
 
 The project standardizes on `uv` rather than `pip` or `conda` for
 three reasons:
 
-1. **Lock-file determinism** — `uv.lock` pins every transitive
-   dependency, so the run is reproducible across machines.
+1. **Locked dependencies** — `uv.lock` pins dependency versions; matching
+   inputs, native libraries, and runtime remain prerequisites for comparison.
 2. **Single binary** — `uv` does not require a system Python or a
    conda environment; this lowers the entry cost for reviewers and
    downstream agents.
@@ -111,7 +92,7 @@ three reasons:
    a viable answer to "what state was the project in when this
    figure was produced?"
 
-## CI surface
+## CI quality and artifact gates
 
 The CI workflow runs `ruff check`, `ruff format --check`,
 `uv lock --check`, `pytest --cov=src`, metadata-only empirical fetches,
@@ -131,14 +112,14 @@ remain untracked. The tracked `output/` artifacts are still
 regeneratable; the distinction is that they are reviewable project
 evidence, while large raw third-party payloads are reproducible caches.
 
-## Cross-machine reproducibility
+## Cross-machine evidence requires matched inputs and runtime
 
 The CI workflow selects the same `.python-version` pin on Ubuntu; it does not
 declare a multi-version Python matrix. The source-bound verification receipt
 records the platform and interpreter actually exercised. Neither a CI recipe
 nor a previous machine's PASS report is fresh cross-machine validation.
 
-## Why behavior changes are visible
+## Behavior changes propagate through artifacts and audits
 
 Because the implementation uses deterministic seeds, pure source
 modules, and a hydrated manuscript pipeline, behavior changes are

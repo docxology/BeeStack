@@ -24,8 +24,9 @@ viewing; the scientific computation does not require a chart-sharing service.
 ## `uv run python scripts/fetch_empirical_bee_data.py` Is Slow
 
 The default fetch attempts full curated downloads. Some Dryad archives are large.
-Only cache files with a verified `<filename>.complete.json` size/SHA-256 record
-are skipped. A nonempty historical file alone does not prove transfer completion.
+Only caches with a verified `<filename>.complete.json` size/SHA-256 receipt bound
+to the original locator, DOI/version, and advertised size are skipped. Nonempty
+historical bytes alone do not prove completion or a match to a refreshed source.
 For catalog-only work use:
 
 ```bash
@@ -52,10 +53,14 @@ uv run python scripts/analyze_empirical_bee_data.py
 ```
 
 Then inspect `output/data/empirical_sources/catalog.json` and
-`output/data/empirical_sources/archives.json`. At least one workbook or direct
-file-level workbook must be local for odor-response panel analysis. If payloads
+`output/data/empirical_sources/archives.json`. At least one parseable workbook,
+CSV, or MAT odor-response panel must be local for the aggregate. Standalone
+waggle CSVs or Table S1 statistics do not enable an odor-conditioned analysis.
 are still absent, the correct next action is to improve acquisition or document
 the blocker, not to substitute synthetic empirical data.
+The skip invalidates current evidence but may retain historical files. Do not
+force their values into current manuscript tokens or fill absent alignment with zero.
+Source freshness and bounded intake are documented in `security_posture.md`.
 
 ## Anatomy Figures Are Missing
 

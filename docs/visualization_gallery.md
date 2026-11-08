@@ -32,13 +32,17 @@ follower orientation error below 35 degrees, orientation confidence above 0.65,
 finite follower-distance distributions, waggle-phase coupling, and a contact
 graph recorded in `output/animations/flybody_scenes/waggle/contact_metrics.json`
 and `output/animations/flybody_scenes/waggle_long/contact_metrics.json`.
+Strict scene bees follow scripted poses; contact detection is not integrated
+forward-dynamics flight or colony validation. BeeBody's historical silhouette
+field is a morphology/color cue heuristic, not reference-image overlap; requested
+walking/flight labels are not inferred gait classifications.
 
 ## Figures
 
 | Artifact group | Backend | Fidelity | Source / contract | Validation |
 | --- | --- | --- | --- | --- |
 | `output/figures/body_energy_timeseries.png`, `beebody_motion_power_phase.png` | Matplotlib | Reduced analytical witness | Integrated simulation records and BeeBody energetics | Analysis pipeline and tests |
-| `output/figures/beebrain_empirical_alignment_timeseries.png` | Matplotlib | Empirical summary | Empirical odor-template alignment records | Empirical analysis report |
+| `output/figures/beebrain_empirical_alignment_timeseries.png` | Matplotlib | Optional reduced-kernel alignment diagnostic | Supplied compatible template bank; absent bank remains unavailable/null | Current source-bound empirical analysis when available; no biological calibration |
 | `output/figures/beeswarm_recruitment_task_allocation.png` | Matplotlib | Reduced swarm summary | BeeSwarm recruitment/task allocation | Analysis pipeline and tests |
 | `output/figures/beeniche_thermal_comb_panel.png` | Matplotlib | Reduced niche summary | Comb and thermal fields | Analysis pipeline and tests |
 | `output/figures/beestack_graphical_abstract.png`, `beestack_contract_network.png`, `beestack_scale_ladder.png`, `beestack_evidence_ladder.png`, `beestack_first_principles_claim_audit.png`, `manuscript_figure_claim_map.png`, `manuscript_figure_claim_detail.png`, `beestack_pipeline_overview.png` | Matplotlib | Showcase architecture / evidence boundary | Public contracts, configured modules, claim-tier boundaries, first-principles claim constraints, overview/detail figure provenance, and main-figure routing | Generated-output tests plus figure sidecar, visual-quality, and primary-caption audits |
@@ -73,6 +77,11 @@ classifies manuscript-primary figures as overview, detail, dashboard, or
 contact sheet; records dimensions, caption length, label density, split-group
 membership, and readability status; and keeps `_data.json` plot-data files
 separate from narrative sidecars.
+Raw plot-data payloads preserve nulls and native units. Sweep outputs use separate
+native-unit axes, and unlike-unit module metrics remain a table rather than a
+shared quantitative scale. A successful raster/sidecar audit is engineering
+verification, not biological validation. Historical empirical figures remain
+explicitly unavailable until their generating source-bound analysis is current.
 
 ## Diagnostics And Reports
 

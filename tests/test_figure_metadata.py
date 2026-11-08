@@ -15,7 +15,7 @@ from beestack.visualization.figure_metadata import (
     write_figure_artifacts,
     write_figure_sidecar,
 )
-from beestack.visualization.figure_plot_data import figure_data_path
+from beestack.visualization.figure_plot_data import figure_data_path, write_figure_plot_data
 from beestack.visualization.style import contrast_ratio, wcag_contrast_check
 from beestack.visualization.visual_quality import visual_quality_payload
 
@@ -227,3 +227,14 @@ def test_visual_quality_report_requires_primary_role_and_readability(tmp_path: P
     assert graphical["readability_status"] in {"pass", "exception"}
     assert payload["primary_figure_count"] >= 1
     assert any("missing metadata sidecar" in blocker for blocker in payload["blockers"])
+
+
+@pytest.mark.parametrize("value", (float("nan"), float("inf"), float("-inf")))
+def test_nonfinite_plot_refresh_preserves_prior_standard_json(tmp_path: Path, value: float) -> None:
+    figure = tmp_path / "diagnostic.png"
+    path = write_figure_plot_data(figure, {"series": {"observations": [None, 0.0]}})
+    original = path.read_bytes()
+    with pytest.raises(ValueError):
+        write_figure_plot_data(figure, {"series": {"observations": [value]}})
+    assert path.read_bytes() == original
+    assert json.loads(original)["series"]["observations"] == [None, 0.0]

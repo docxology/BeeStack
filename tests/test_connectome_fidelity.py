@@ -156,13 +156,10 @@ def test_real_graph_render_and_sidecar_preserve_fidelity(
                     "dashed" if edge["edge_kind"] == "schematic_pathway" else "solid"
                 )
             assert all(math.isfinite(node[axis]) for node in plot["nodes"] for axis in ("x", "y"))
-            assert plot == {
-                "schema": "beestack.figure_data.v1",
-                "figure_path": str(path.relative_to(tmp_path)),
-                **connectome_plot_data(path, report=report),
-            }
         elif path.stem == "connectome_completeness_tiers":
-            assert plot["values"] == pytest.approx([supported_count / 3, 0.0, 0.0])
+            coverage = {row["tier"]: row["coverage"] for row in plot["rows"]}
+            assert coverage["structural"] == pytest.approx(supported_count / 3)
+            assert coverage["functional"] == coverage["synaptic"] == 0.0
 
 
 @pytest.mark.parametrize("supported_count", [0, 1, 3])

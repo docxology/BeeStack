@@ -8,7 +8,6 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 import networkx as nx
-import numpy as np
 from matplotlib.figure import Figure
 from matplotlib.patches import FancyArrowPatch
 
@@ -28,6 +27,7 @@ from .style import (
     bounded_text,
     status_color,
     style_context,
+    wrap_label,
 )
 
 
@@ -101,9 +101,9 @@ def _structural_graph(report: BeeBrainConnectomeReport, path: Path) -> Path:
 def _structural_graph_figure(report: BeeBrainConnectomeReport) -> Figure:
     graph = connectome_graph(report)
     evidence = connectome_fidelity(report)
-    fig, ax = plt.subplots(figsize=(9.8, 6.2))
+    fig, ax = plt.subplots(figsize=(11.2, 7.2))
     ax.axis("off")
-    ax.set_title(evidence["title"], loc="left", pad=12)
+    ax.set_title(wrap_label(evidence["title"], width=78), loc="left", pad=14)
     add_status_badge(
         ax,
         evidence["evidence_state"].replace("_", " "),
@@ -129,7 +129,7 @@ def _structural_graph_figure(report: BeeBrainConnectomeReport) -> Figure:
         ax.scatter(
             [x],
             [y],
-            s=980 + count * 16,
+            s=1500,
             color=status_color("structural"),
             alpha=0.90,
             edgecolor="#111827",
@@ -159,11 +159,11 @@ def _structural_graph_figure(report: BeeBrainConnectomeReport) -> Figure:
             fontsize=8.2,
             color="#334155",
         )
-    pathway_labels = {
-        ("antennal_lobe", "mushroom_body"): "ALF1",
-        ("antennal_lobe", "central_complex"): "ACT",
-        ("mushroom_body", "central_complex"): "Pe1/Pn",
-    }
+    cluster_edges = Counter(
+        (_cluster_for_node(source, graph), _cluster_for_node(target, graph), data["edge_kind"])
+        for source, target, data in graph.edges(data=True)
+        if _cluster_for_node(source, graph) != _cluster_for_node(target, graph)
+    )
     drawn: set[tuple[str, str, str]] = set()
     for source, target, data in graph.edges(data=True):
         source_cluster = _cluster_for_node(source, graph)
@@ -195,8 +195,11 @@ def _structural_graph_figure(report: BeeBrainConnectomeReport) -> Figure:
                 zorder=2,
             )
         )
-        pathway = pathway_labels.get(edge_key, "pathway")
-        label = f"{pathway} ({'schematic' if schematic else 'VRML-supported'})"
+        edge_count = cluster_edges[drawn_key]
+        kind_label = (
+            "VRML-supported structural" if kind == "structural_tract" else kind.replace("_", " ")
+        )
+        label = f"{edge_count} {kind_label} edge(s)"
         ax.text(
             (start[0] + end[0]) / 2,
             (start[1] + end[1]) / 2 + (-0.045 if schematic else 0.055),
@@ -223,7 +226,7 @@ def _structural_graph_figure(report: BeeBrainConnectomeReport) -> Figure:
             f"Report inventory: {graph.number_of_nodes()} nodes; "
             f"{evidence['edge_counts']['structural_tract']} supported structural edges; "
             f"{evidence['edge_counts']['schematic_pathway']} schematic edges. "
-            "Module-clustered links: solid = VRML-supported; dashed = schematic."
+            "Links aggregate inter-module edges; internal edges remain in the source report. Dashed = schematic; other links retain their reported kind."
         ),
         width=44,
         max_lines=6,
@@ -251,12 +254,20 @@ def _neuropil_module_map(report: BeeBrainConnectomeReport, path: Path) -> Path:
     counts = Counter(node.module_target for node in report.nodes if node.kind == "neuropil")
     modules = sorted(counts)
     values = [counts[module] for module in modules]
-    fig, ax = plt.subplots(figsize=(7, 4))
-    apply_panel_style(ax, title="Graph neuropil nodes by BeeBrain module")
-    ax.imshow(np.array([values], dtype=float), aspect="auto", cmap="YlGnBu")
-    ax.set_xticks(range(len(modules)))
-    ax.set_xticklabels(modules, rotation=35, ha="right", fontsize=8)
-    ax.set_yticks([])
+    fig, ax = plt.subplots(figsize=(8.5, max(4, 0.52 * len(modules) + 1.3)))
+    bars = ax.barh(
+        [wrap_label(module.replace("_", " "), width=34) for module in modules],
+        values,
+        color=status_color("structural"),
+    )
+    ax.bar_label(bars, fmt="%g", padding=4)
+    ax.margins(x=0.18)
+    apply_panel_style(
+        ax,
+        title="Graph neuropil-node inventory by module",
+        xlabel="Registered neuropil-node count (not neural coverage)",
+        grid_axis="x",
+    )
     fig.tight_layout()
     fig.savefig(path, dpi=160)
     plt.close(fig)
@@ -270,38 +281,37 @@ def _completeness_tiers(
 ) -> Path:
     labels = ["structural", "functional", "synaptic"]
     coverage = connectome_coverage(report, tiers)
-    fig, ax = plt.subplots(figsize=(6, 4))
-    apply_panel_style(ax, title="Connectome evidence tiers")
-    colors = [
-        status_color("structural"),
-        status_color("partial"),
-        status_color("unavailable"),
-    ]
-    bars = ax.bar(labels, coverage, color=colors)
-    for bar, value in zip(bars, coverage, strict=True):
-        status = "available" if value > 0 else "unavailable"
-        ax.text(
-            bar.get_x() + bar.get_width() / 2,
-            max(0.04, value + 0.035),
-            f"{status}\n{value:.2f}",
-            ha="center",
-            va="bottom",
-            fontsize=8,
-            color="#111827",
+    rows = []
+    for label, value in zip(labels, coverage, strict=True):
+        record = tiers.get(label, {}) or {}
+        state = record.get("tier") if isinstance(record, dict) else None
+        if state is None and label == "structural":
+            state = connectome_fidelity(report)["evidence_state"]
+        rows.append(
+            [
+                label.capitalize(),
+                "Unreported" if value is None else f"{value:.3g}",
+                wrap_label(str(state or "State not supplied"), width=40),
+            ]
         )
-    ax.set_ylim(0, 1.05)
-    ax.set_ylabel("coverage fraction")
-    bounded_text(
-        ax,
-        0.02,
-        0.96,
-        f"{connectome_fidelity(report)['evidence_state'].replace('_', ' ')}; "
-        "schematic pathways do not count toward structural coverage.",
-        width=38,
-        max_lines=3,
-        fontsize=8,
+    fig, ax = plt.subplots(figsize=(9.8, 4.6))
+    ax.axis("off")
+    ax.set_title("Connectome source-evidence tiers", loc="left", pad=16)
+    table = ax.table(
+        cellText=rows,
+        colLabels=["Evidence tier", "Coverage fraction", "Reported evidence state"],
+        colWidths=[0.23, 0.23, 0.54],
+        cellLoc="left",
+        bbox=(0, 0.08, 1, 0.78),
     )
-    fig.tight_layout()
+    table.auto_set_font_size(False)
+    table.set_fontsize(10)
+    add_figure_note(
+        fig,
+        "Coverage is the report's source-evidence inventory, not measured neural completeness. Schematic paths do not count as structural tracts; explicit zero and unreported coverage remain distinct.",
+        y=0.02,
+    )
+    fig.tight_layout(rect=(0, 0.08, 1, 0.98))
     fig.savefig(path, dpi=160)
     plt.close(fig)
     return path

@@ -1,4 +1,4 @@
-# Materials and Source Provenance {#sec:materials}
+# Materials, Source Identity, and Empirical Availability {#sec:materials}
 
 BeeStack treats scholarship, software, generated reports, and empirical
 availability records as materials. The source-refresh ledger under
@@ -21,9 +21,9 @@ are preserved even when a DOI resolves successfully.
 
 [@fig:scholarship_evidence_matrix] links scholarship anchors to verification status and manuscript targets; see also [@sec:materials].
 
-![Matplotlib beestack scholarship evidence matrix shows Scholarship evidence matrix mapping directly verified sources to manuscript sections, figure targets, DOI-bearing source records, and claim tiers. Generated from source refresh ledger, bibliography, source audit, and figure registry. Sidecar validation checks raster, source routing, and registered claim tier. Does not replace direct DOI/source verification or add empirical data.](../figures/beestack_scholarship_evidence_matrix.png){#fig:scholarship_evidence_matrix}
+![Scholarship evidence matrix mapping directly verified sources to manuscript sections, figure targets, DOI-bearing source records, and claim tiers. Generated from source refresh ledger, bibliography, source audit, and figure registry using Matplotlib. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not replace direct DOI/source verification or add empirical data.](../figures/beestack_scholarship_evidence_matrix.png){#fig:scholarship_evidence_matrix}
 
-## Source tiers
+## Scholarship, method, and validation source tiers
 
 The project separates three source tiers. **Scholarship anchors** support
 background, related-work, and governance language. **Method anchors**
@@ -44,7 +44,7 @@ mechanistic context and interface design [@riley2005flightpaths;
 @landgraf2011roboticdance; @hateren2019neuroethology]. They do not turn
 the reduced recruitment kernel into a colony-calibrated model.
 
-## Empirical availability
+## Availability-gated empirical inputs
 
 Empirical BeeBrain analysis remains data-gated. Public or licensed
 payloads are first recorded as metadata, then only downloaded and parsed
@@ -87,7 +87,7 @@ downloaded under license, parsed, and audited.
 from `output/llm/source_refresh_ledger.json`; the external registry records
 repository-level targets that remain unwired in the current implementation.
 
-## Generated materials
+## Generated artifacts and figure provenance
 
 Generated materials are produced by scripts rather than hand-edited after
 the fact. Figure sidecars preserve caption, alt text, manuscript section,
@@ -98,7 +98,7 @@ pass the figure audit. Project-local artifact paths serialize as stable
 `output/...` paths so reports can move between checkouts without leaking
 absolute filesystem locations.
 
-## Claim routing
+## Claim routing to sources, artifacts, and gaps
 
 Every current-facing claim routes to one of four surfaces: manuscript
 source with Pandoc citations, a generated JSON or Markdown report, a
@@ -113,7 +113,10 @@ Python dependencies are pinned in `uv.lock` at the project root. The
 security posture gate (`output/reports/security_posture_audit.json`) records
 whether the threat model, operations doc, lockfile, curated download
 allowlist, and forbidden-pattern scans pass before release. Empirical fetch
-uses HTTPS host allowlisting in `beestack.security`; archive ingest rejects
-zip-slip members. These controls are documented in `BeeStack-threat-model.md`,
+validates HTTPS authorities and redirect hops, scopes credentials to their origin,
+and publishes only completed transfers. Archive, workbook, and MATLAB/HDF5 intake
+applies bounded expansion and array/graph admission before materialization;
+unsafe members and unsupported structures refuse rather than becoming empty data.
+These controls are documented in `BeeStack-threat-model.md`,
 `docs/security_posture.md`, and [@sec:ethics]. They govern **software
 integrity**, not biological validation.

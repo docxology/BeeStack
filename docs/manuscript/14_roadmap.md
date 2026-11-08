@@ -1,4 +1,4 @@
-# Roadmap {#sec:roadmap}
+# Roadmap to Colony-State Assimilation and Biological Calibration {#sec:roadmap}
 
 The implementation roadmap follows the fidelity gaps exposed by the
 research suite and the readiness review. It is ordered by
@@ -8,7 +8,7 @@ downstream interpretations, while BeeBody calibration first strengthens
 the Body evidence tier and then propagates through the existing
 cross-layer contracts.
 
-## Full digital-twin target
+## Requirements for the full digital-twin target
 
 The long-horizon target is a systems-biology digital twin that spans a
 single managed colony and a population of interacting colonies, using the
@@ -178,17 +178,17 @@ HGD, BeeBDC, HAv3.1, survey portals, EPA hive matrices, and COLOSS BEEBOOK
 a target module, a blocker string, and an official DOI or HTTPS URL; the
 documentation audit reports zero stale paths to the registry file.
 
-## 11. Colony-health driver stubs
+## 11. Add provenance-bound colony-health observations
 
-Add typed placeholder fields for Varroa load, viral titers, pesticide
-burden, and microbiome summaries in the colony ledger schema—initialized to
-zero or missing with explicit provenance until calibrated against field
-data [@scientificreports2026amitraz; @wilfert2022dwv;
-@glinski2024hivematrices].
+Add typed observation fields for Varroa load, viral titers, pesticide burden,
+and microbiome summaries to the colony ledger, with units and source provenance
+[@scientificreports2026amitraz; @wilfert2022dwv; @glinski2024hivematrices].
+Unobserved quantities must remain null with observation counts; numeric zero
+requires an actual observed zero rather than a default initialization.
 
 *Acceptance criterion:* `colony_state_timeseries.json` (or successor artifact)
-includes the stub fields with units and `source_provenance: null` until
-assimilation populates them; no manuscript section claims non-zero values.
+distinguishes absent observations from measured values and binds each available
+observation to its source before assimilation or manuscript use.
 
 ## 12. Waggle communication literature regression tests
 
@@ -201,7 +201,7 @@ when run on registered Figshare deposits [@hadjitofi2024figshare;
 pass/fail against published summary statistics or tolerance bands documented
 in `output/reports/waggle_literature_regression.json`.
 
-## What is intentionally *not* in the roadmap
+## Excluded decision-support and deployment scope
 
 For clarity, the following are *not* current roadmap items:
 
@@ -214,7 +214,7 @@ For clarity, the following are *not* current roadmap items:
 Those may become legitimate downstream projects; they are not
 BeeStack's commitment.
 
-## Releasing the roadmap
+## Artifact-based acceptance of roadmap work
 
 The roadmap is not a wish list. Each item has an acceptance criterion
 expressed as a manuscript variable or methods-analysis panel. A

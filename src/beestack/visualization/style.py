@@ -143,11 +143,12 @@ def wcag_contrast_check(
     normal_threshold: float = 4.5,
     large_threshold: float = 3.0,
 ) -> dict[str, Any]:
-    """Return a lightweight WCAG 2.1 AA contrast check for text-like figure marks."""
+    """Compare the supplied color pair, not pixels or an artifact-wide WCAG audit."""
 
     ratio = contrast_ratio(foreground, background)
     return {
         "standard": "WCAG 2.1 AA contrast thresholds",
+        "scope": "supplied_foreground_background_pair_only",
         "foreground": foreground,
         "background": background,
         "contrast_ratio": ratio,

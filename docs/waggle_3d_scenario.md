@@ -35,6 +35,10 @@ waggle spacing, orientation gain, antennal sampling gain, and empirical
 follower-decoding confidence already used by BeeSwarm recruitment diagnostics.
 The scene applies BeeStack/FlyBody walking controls to legs and low-amplitude
 wing motion so the output reads as a comb-floor dance rather than a flight clip.
+Poses are imposed kinematically each frame. The contact report measures real
+MuJoCo geometry/contact at those poses; it does not report an integrated
+forward-dynamics flight or emergent colony recruitment simulation. Optional
+empirical follower summaries are separate from the fixed synthetic dance scenario.
 
 ## Validation
 

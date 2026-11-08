@@ -15,6 +15,8 @@ def _optional_number(value: float | None) -> str:
 
 def markdown_report(report: dict[str, Any], figure_paths: list[Path], project_root: Path) -> str:
     top = list(report["stack_alignment"].items())[:8]
+    quality = report["all_quality_checks_passed"]
+    quality_status = "unavailable" if quality is None else str(quality)
     lines = [
         "# Empirical Bee Data Analysis",
         "",
@@ -25,8 +27,8 @@ def markdown_report(report: dict[str, Any], figure_paths: list[Path], project_ro
         f"- Anatomy inventories parsed: `{report['anatomy_summary']['inventory_count']}`",
         f"- Neuropil abbreviations parsed: `{report['anatomy_summary']['neuropil_count']}`",
         f"- Templates integrated into BeeBrain: `{report['template_count']}`",
-        f"- All quality checks passed: `{report['all_quality_checks_passed']}`",
-        f"- Mean odor separability: `{report['activity_summary']['mean_odor_separability']:.3f}`",
+        f"- All quality checks passed: `{quality_status}`",
+        f"- Mean odor separability: `{_optional_number(report['activity_summary']['mean_odor_separability'])}`",
         f"- Empirical drive label: `{report['empirical_drive_label']}`",
         f"- Empirical antennal vibration: `{report['empirical_antennal_vibration']}`",
         f"- Final stack empirical odor: `{report['simulation_summary_with_empirical_templates']['final_empirical_odor']}`",
@@ -52,12 +54,12 @@ def markdown_report(report: dict[str, Any], figure_paths: list[Path], project_ro
     lines.extend(["", "## Activity Summary", ""])
     activity = report["activity_summary"]
     lines.append(
-        f"- Calcium latency `{activity['calcium_mean_latency_s']:.3f}` s; "
-        f"inhibitory fraction `{activity['calcium_inhibitory_fraction']:.3f}`; "
-        f"excitatory fraction `{activity['calcium_excitatory_fraction']:.3f}`."
+        f"- Calcium latency `{_optional_number(activity['calcium_mean_latency_s'])}` s; "
+        f"inhibitory fraction `{_optional_number(activity['calcium_inhibitory_fraction'])}`; "
+        f"excitatory fraction `{_optional_number(activity['calcium_excitatory_fraction'])}`."
     )
     lines.append(
-        f"- Aftersmell/post-odor response mean: `{activity['aftersmell_response_mean']:.3f}`"
+        f"- Aftersmell/post-odor response mean: `{_optional_number(activity['aftersmell_response_mean'])}`"
     )
     for region, value in sorted(activity["region_response_means"].items()):
         lines.append(f"- `{region}` mean absolute response: `{value:.3f}`")
@@ -65,9 +67,8 @@ def markdown_report(report: dict[str, Any], figure_paths: list[Path], project_ro
     for summary in report["antennal_movement_summaries"]:
         lines.append(
             "- `{dataset_id}`: rows `{row_count}`, bees `{bee_count}`, plumes `{plume_count}`, "
-            "odor-on `{odor_on_fraction:.3f}`, left/right correlation `{left_right_theta_correlation:.3f}`".format(
-                **summary
-            )
+            "odor-on `{odor_on_fraction:.3f}`, ".format(**summary)
+            + f"left/right correlation `{_optional_number(summary['left_right_theta_correlation'])}`"
         )
     if not report["antennal_movement_summaries"]:
         lines.append("- No frame-level antennal summaries were available in local archives.")
@@ -76,10 +77,10 @@ def markdown_report(report: dict[str, Any], figure_paths: list[Path], project_ro
         summary = waggle.get("summary", {})
         lines.extend(["", "## Waggle Follower Decoding", ""])
         lines.append(
-            "- Hadjitofi-Webb follower tracks `{track_count}`; confidence `{confidence_score:.3f}`; "
-            "angle/midpoint correlation `{follower_angle_midpoint_correlation:.3f}`; ".format(
+            "- Hadjitofi-Webb follower tracks `{track_count}`; confidence `{confidence_score:.3f}`; ".format(
                 **summary
             )
+            + f"angle/midpoint correlation `{_optional_number(summary.get('follower_angle_midpoint_correlation'))}`; "
             + f"decoding improvement `{_optional_number(summary.get('decoding_improvement_fraction'))}`."
         )
     completeness = report.get("brain_data_completeness", {})
@@ -143,10 +144,12 @@ def waggle_markdown(
                 f"- Feature rows: `{summary.feature_row_count}`",
                 f"- Binned rows: `{summary.binned_row_count}`",
                 f"- Model-error rows: `{summary.model_error_row_count}`",
-                f"- Follower angle/midpoint correlation: `{summary.follower_angle_midpoint_correlation:.3f}`",
+                f"- Follower angle/midpoint correlation: `{_optional_number(summary.follower_angle_midpoint_correlation)}`",
                 f"- Both-antennae decoding error: `{_optional_number(summary.both_antennae_mean_abs_error_deg)}` deg",
                 f"- No-antennae decoding error: `{_optional_number(summary.no_antennae_mean_abs_error_deg)}` deg",
                 f"- Decoding improvement fraction: `{_optional_number(summary.decoding_improvement_fraction)}`",
+                f"- Correlation source: `{summary.follower_angle_midpoint_source or 'unavailable'}`",
+                f"- Supporting observation counts: `{summary.observation_counts}`",
                 f"- Confidence score: `{summary.confidence_score:.3f}`",
                 "",
                 "## Source Files",

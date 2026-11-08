@@ -38,11 +38,21 @@ paths. BeeBrain reduced neural dynamics should not be described as full
 spiking, connectome, or standard-brain registration until those validation
 artifacts exist.
 
-Waggle model-error means and relative improvement are nullable: absence is not an
-observed zero. Per-condition observation counts accompany the means; improvement
-requires both conditions and a positive no-antennae denominator. Missing comparisons
-add no confidence or vibration credit, and cannot supply empirical recruitment
-alignment. Antennal left/right deflections use separate observed-channel denominators
+Waggle per-channel means, missing frame bounds, straightness, and undefined
+correlations remain null, not observed zero. `observation_counts` records finite
+channel values, accepted rows with frames, paired correlation values, and supplied
+straightness rows; these counts are not interchangeable biological sample sizes.
+The angle/midpoint correlation uses the larger paired feature/binned series and
+records that source rather than silently pooling them. Caller-constructed records
+must supply support metadata explicitly; an empty count map means unspecified support.
+Per-condition error counts accompany nullable means. Relative improvement requires
+both conditions and a positive no-antennae denominator; the signed result is not
+clipped and can be below -1 when error more than doubles. Bounded confidence and
+neutral model-drive fallbacks are diagnostics, not measured zero or biological
+confidence. Missing comparisons cannot supply empirical recruitment alignment.
+Unrepresentable unit conversions or relative-error ratios fail explicitly instead
+of publishing infinities; streaming absolute-error means avoid sum overflow.
+Antennal left/right deflections use separate observed-channel denominators
 and retain missing-side nulls/counts. Calcium template extraction requires baseline
 and stimulus windows to fit the actual recording, just like the strict trial summary.
 Path-bearing dataset and end-to-end report serializers accept `project_root` explicitly.
@@ -53,3 +63,18 @@ coding remains deterministic. Winner counts use the floor of the sparsity
 budget, including an empty code when the budget is below one cell. Heading
 integration consumes `Observation.heading_deg`, a reduced full-bearing compass
 in degrees, never angular velocity or a 180-degree ocellar axis as a bearing.
+
+The aggregate empirical stage requires a parseable odor-response panel. Current
+odor, calcium, and antennal inputs are absent; standalone waggle CSVs and Table S1
+statistics do not enable that aggregate. `current_empirical_analysis(project_root,
+cfg)` requires matching raw-payload, report, configuration, and implementation
+hashes after success; skips/failures keep retained artifacts historical.
+Guarded fetch/container adapters bound transfer, expansion, workbook, and
+MATLAB/HDF5 materialization; a policy rejection never becomes an empty success.
+Executable templates require complete observed grids and explicit shared rates.
+Missing calcium/aftersmell/antennal diagnostics and undefined/no-pair odor
+separability remain null. Odor pair counts include only defined finite cosine
+comparisons: both template norms must be positive and finite. Derivative and
+paired-angle counts distinguish actual zero from undefined statistics; they are
+not interchangeable biological sample sizes. Correlations and angles retain
+signed/native values in plots; counts/fractions are separate metadata.

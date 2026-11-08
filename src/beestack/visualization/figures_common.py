@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from collections.abc import Sequence
+from math import isfinite
 from typing import Any
 
 
@@ -21,6 +23,8 @@ def _analysis_figure_fidelity(filename: str) -> str:
         or "anatomy_policy" in filename
         or "adapter_niche" in filename
         or "validation_readiness" in filename
+        or "scale_ladder" in filename
+        or "claim_detail" in filename
         or "claim_map" in filename
     ):
         return "architecture schematic"
@@ -34,7 +38,7 @@ def _steps(records: list[dict[str, Any]]) -> list[int]:
 
 
 def _numeric_series(
-    records: list[dict[str, Any]], key: str, default: float = 0.0
+    records: list[dict[str, Any]], key: str, default: float | None = 0.0
 ) -> list[float | None]:
     if not records:
         return [default]
@@ -42,6 +46,23 @@ def _numeric_series(
     for row in records:
         value = row.get(key, default)
         series.append(None if value is None else float(value))
+    return series
+
+
+def _nullable_series(
+    records: Sequence[dict[str, Any]],
+    key: str,
+    default: Sequence[float] | None = None,
+) -> list[float | None]:
+    """Share actual telemetry gaps and empty-series semantics with figure exports."""
+
+    series: list[float | None] = []
+    for index, row in enumerate(records):
+        value = row.get(key)
+        if value is None and default is not None:
+            value = default[index]
+        number = float(value) if value is not None else None
+        series.append(number if number is not None and isfinite(number) else None)
     return series
 
 

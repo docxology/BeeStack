@@ -7,7 +7,7 @@ from typing import Any
 
 from .figure_output import finalize_static_figures
 from .figure_plot_specs import analysis_plot_data
-from .figure_registry import all_figure_narratives
+from .figure_registry import all_figure_narratives, figure_narrative_for_path
 from .figures_analysis_panels import (
     _body_motion_power_phase,
     _brain_empirical_alignment,
@@ -87,6 +87,7 @@ def generate_analysis_figures(
         return analysis_plot_data(path, records=records, module_names=module_names)
 
     def _sidecar(path: Path) -> dict[str, object]:
+        narrative = figure_narrative_for_path(path)
         metrics = (
             {"primary_figure_count": primary_figure_count}
             if path.name
@@ -97,7 +98,7 @@ def generate_analysis_figures(
             else None
         )
         return {
-            "title": path.stem.replace("_", " ").title(),
+            "title": narrative.title if narrative else _plot_data(path)["title"],
             "backend": "Matplotlib",
             "fidelity": _analysis_figure_fidelity(path.name),
             "source_data": "output/data/simulation_records.json and module coverage records",

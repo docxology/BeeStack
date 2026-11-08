@@ -46,6 +46,11 @@ the resulting MuJoCo frames into `beebody_flybody_morphology.gif`.
 mapping, so walking channels align with FlyBody claw/head/abdomen/leg actuator
 names and flight channels align with wing joints plus the WPG user channel. The
 older schematic BeeBody GIF path has been removed from production orchestration.
+`FlyBodyBeeBackend.step(state, action)` always runs reduced state dynamics and
+reports `backend="reduced"`; strict state-based use refuses even when FlyBody is
+installed. Real environment stepping and render entrypoints are the strict path.
+Reduced observations carry full-bearing `heading_deg` in degrees, independently
+of `angular_velocity` in radians/second.
 
 ## Strict Multi-Bee Scenes
 
@@ -57,6 +62,9 @@ sections for every bee; preserves shared mesh/material assets; adds free joints;
 adds hidden contact proxy geoms; and adds a floor or comb arena plus a camera.
 The scenes are then loaded with `mujoco.MjModel`, stepped with `mujoco.MjData`,
 and rendered with `mujoco.Renderer`.
+Bees are reset to scripted kinematic poses each frame. MuJoCo contact detection
+at those poses is real, but this does not establish integrated forward-dynamics
+flight, collision response, or colony recruitment validation.
 
 The collision scene initializes ten BeeBody models on a ring, drives them inward
 with `WingBeatPatternGenerator` wing states, and fails if MuJoCo does not report
@@ -78,12 +86,11 @@ Scene XMLs and per-scene contact reports are written under
 `output/animations/flybody_scenes/`; the combined report is
 `output/reports/flybody_contact_physics.md`.
 
-`scripts/verify_bee_render.py` separately scores the rendered GIFs and MJCF for
-bee-vs-fly silhouette cues: abdomen fullness and banding, four wings with
-hamuli coupling, eye prominence, antenna visibility, mouthpart visibility,
-waist constriction, locomotion motion, and absence of visible FlyBody debug
-aids. It also verifies that the production BeeSwarm waggle/collision GIFs are
-MuJoCo/FlyBody-backed, dynamic, XML-backed, and supported by contact metrics.
+`scripts/verify_bee_render.py` checks nonblank/moving GIFs, rendered color,
+honeybee MJCF cue names, and absence of debug aids. Its historical silhouette
+field is a cue heuristic, not reference-silhouette overlap or gait classification.
+It also checks that production BeeSwarm scenes are dynamic, XML-backed,
+MuJoCo/FlyBody-rendered, and supported by contact metrics.
 
 The render path is configurable through `beestack.flybody` and
 `beestack.visualization`: action dimension fallback, terminal center-of-mass

@@ -97,6 +97,14 @@ shared sampling rates; fractional signed-rank statistics remain floats. Structur
 coverage requires loaded supporting assets; schematic pathways are not empirical
 projectome completeness. Byte integrity, source acquisition identity, parseability
 and biological validation are separate contracts.
+Missing calcium, aftersmell, and antennal activity diagnostics are nullable.
+Undefined/no-pair odor separability is null, not a measured zero. Its pair count
+includes only defined finite cosine comparisons with positive finite template
+norms. Antennal derivative counts count finite channel cells; paired-angle
+counts count frames with both angles, even if zero variance leaves correlation
+undefined. These counts are not interchangeable biological sample sizes.
+Correlations/angles retain signed native values; counts/fractions use separate
+metadata tables rather than a shared measurement axis.
 
 The BeeBrain model consumes the resulting templates through
 `process_observation(..., odor_templates=...)` and stack orchestration through
@@ -140,7 +148,7 @@ inspection. They generate prefixed multi-bee MJCF scene XMLs from the BeeBody
 honeybee plan, step/render them with MuJoCo, and return typed artifacts
 containing scene XML, body-plan, contact-report, backend, and contact metric
 paths. They are intentionally called from scripts or visualization orchestrators,
-not from pure closed-loop domain kernels.
+not from pure reduced-scenario domain kernels.
 
 `FlyBodyBeeBackend.step(state, action)` is reduced stepping, always labeled
 `reduced`; strict state-based use refuses rather than claiming FlyBody physics.

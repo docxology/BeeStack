@@ -75,39 +75,36 @@ Every numbered manuscript H1 carries `{#sec:…}` so cross-section references su
 | File | H1 | Label |
 |---|---|---|
 | `00_abstract.md` | Abstract | `{#sec:abstract}` |
-| `01_scholarship_and_related_work.md` | Scholarship and Related Work | `{#sec:scholarship}` |
-| `02_claim_ledger.md` | Claim Ledger | `{#sec:claim_ledger}` |
-| `03_materials_and_source_provenance.md` | Materials and Source Provenance | `{#sec:materials}` |
-| `04_evidence_typed_architecture.md` | Evidence-Typed Architecture | `{#sec:architecture}` |
-| `05_methods_body_swarm.md` | BeeBody and BeeSwarm Methods | `{#sec:methods_body_swarm}` |
-| `06_methods_brain_mind.md` | BeeBrain and BeeMind Methods | `{#sec:methods_brain_mind}` |
-| `07_methods_niche.md` | BeeNiche Methods and Adapter Provenance | `{#sec:methods_niche}` |
-| `08_validation_and_figures.md` | Validation and Figure Evidence | `{#sec:validation}` |
-| `09_empirical_results.md` | Empirical Results | `{#sec:empirical_results}` |
-| `10_integrated_results.md` | Integrated Results | `{#sec:integrated_results}` |
-| `11_research_synthesis.md` | Research Synthesis | `{#sec:research_synthesis}` |
-| `12_discussion.md` | Discussion | `{#sec:discussion}` |
-| `13_limitations.md` | Limitations | `{#sec:limitations}` |
-| `14_roadmap.md` | Roadmap | `{#sec:roadmap}` |
-| `15_reproducibility.md` | Reproducibility | `{#sec:reproducibility}` |
-| `16_ethics_governance.md` | Ethics and Governance | `{#sec:ethics}` |
+| `01_scholarship_and_related_work.md` | Honeybee Models, Data Sources, and Related Software | `{#sec:scholarship}` |
+| `02_claim_ledger.md` | Claim Ledger: Executed Kernels and Unsupported Inferences | `{#sec:claim_ledger}` |
+| `03_materials_and_source_provenance.md` | Materials, Source Identity, and Empirical Availability | `{#sec:materials}` |
+| `04_evidence_typed_architecture.md` | Declared Contracts and Executed Scenario Architecture | `{#sec:architecture}` |
+| `05_methods_body_swarm.md` | BeeBody and BeeSwarm: Renders, Contacts, and Reduced Kernels | `{#sec:methods_body_swarm}` |
+| `06_methods_brain_mind.md` | BeeBrain and BeeMind: Empirical Gating and Reduced Inference | `{#sec:methods_brain_mind}` |
+| `07_methods_niche.md` | BeeNiche Methods: Comb, Heat, and Adapter Schemas | `{#sec:methods_niche}` |
+| `08_validation_and_figures.md` | Verification Gates, Evidence Tiers, and Figure Provenance | `{#sec:validation}` |
+| `09_empirical_results.md` | Empirical Results and Current Data Availability | `{#sec:empirical_results}` |
+| `10_integrated_results.md` | Integrated Results from the Reduced Scenario | `{#sec:integrated_results}` |
+| `11_research_synthesis.md` | Research Synthesis of Evidence, Sensitivity, and Readiness | `{#sec:research_synthesis}` |
+| `12_discussion.md` | Discussion: Contract Integration without Biological Calibration | `{#sec:discussion}` |
+| `13_limitations.md` | Limitations of Reduced Kernels and Scripted Contact Scenes | `{#sec:limitations}` |
+| `14_roadmap.md` | Roadmap to Colony-State Assimilation and Biological Calibration | `{#sec:roadmap}` |
+| `15_reproducibility.md` | Reproducibility of Analysis and Manuscript Rendering | `{#sec:reproducibility}` |
+| `16_ethics_governance.md` | Ethics and Governance for Data and Future Colony Coupling | `{#sec:ethics}` |
 | `99_references.md` | References | `{#sec:references}` |
 
 Reference other sections with `[@sec:integrated_results]` (parenthetical) or `@sec:integrated_results` (narrative). Do not quote section titles in prose when a stable section ID exists.
 
 ## Render workflow
 
-From the BeeStack project root:
+From the BeeStack project root, using the native Python 3.12.16 pin:
 
 ```bash
 uv run python scripts/z_generate_manuscript_variables.py
-uv run pytest tests/test_manuscript_quality_guards.py -q
+uv run python scripts/render_manuscript.py
 ```
 
-From the template repository root (WIP path resolved automatically):
-
-```bash
-uv run python scripts/pipeline/stage_03_render.py --project BeeStack
-uv run python -m infrastructure.validation.cli pdf \
-  projects_in_progress/BeeStack/output/pdf/BeeStack_combined.pdf
-```
+Pandoc/citeproc, the source-owned cross-reference filter, and XeLaTeX produce
+`output/pdf/BeeStack_combined.pdf` and its source/data/figure render receipt.
+Follow the root README's bootstrap/audit/final-seal order and inspect the actual
+PDF. No template-root command or sibling project output is part of this workflow.

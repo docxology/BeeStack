@@ -25,11 +25,9 @@ from .figure_output import finalize_static_figures
 from .figure_plot_specs import empirical_plot_data
 from .figure_registry import figure_narrative_for_path
 from .style import (
-    PALETTE,
     add_figure_note,
     apply_panel_style,
     module_color,
-    status_color,
     style_context,
     wrap_label,
 )
@@ -51,7 +49,7 @@ def generate_empirical_figures(
     *,
     project_root: Path | None = None,
 ) -> list[Path]:
-    """Generate empirical data validation and stack-integration figures."""
+    """Render supplied empirical summaries; availability is not biological validation."""
 
     if not panels:
         raise ValueError("at least one empirical panel is required")
@@ -72,12 +70,14 @@ def generate_empirical_figures(
     with style_context():
         paths = [
             _panel_heatmap(panels[0], output_dir / "empirical_panel_heatmap.png"),
-            _panel_quality_bars(panel_stats, output_dir / "empirical_panel_quality.png"),
+            _panel_quality_table(
+                panel_stats, output_dir / "empirical_panel_quality.png", source_panels=panels
+            ),
             _stack_alignment_bars(stack_alignment, output_dir / "empirical_stack_alignment.png"),
         ]
         if antennal_summaries:
             paths.append(
-                _antennal_movement_bars(
+                _antennal_movement_table(
                     antennal_summaries[0], output_dir / "empirical_antennal_movement.png"
                 )
             )
@@ -109,7 +109,7 @@ def generate_empirical_figures(
             )
         if activity_summary is not None:
             paths.append(
-                _activity_summary_bars(
+                _activity_summary_table(
                     activity_summary,
                     output_dir / "empirical_activity_summary.png",
                 )
@@ -121,7 +121,7 @@ def generate_empirical_figures(
                         waggle_summary,
                         output_dir / "waggle_follower_alignment.png",
                     ),
-                    _waggle_phase_coupling(
+                    _waggle_mean_angles(
                         waggle_summary,
                         output_dir / "waggle_phase_coupling.png",
                     ),
@@ -149,8 +149,9 @@ def generate_empirical_figures(
         return empirical_plot_data(path, **context)
 
     def _sidecar(path: Path) -> dict[str, object]:
+        narrative = figure_narrative_for_path(path)
         metadata = {
-            "title": path.stem.replace("_", " ").title(),
+            "title": narrative.title if narrative is not None else _plot_data(path)["title"],
             "backend": "Matplotlib empirical-data renderer",
             "fidelity": _empirical_figure_fidelity(path.name),
             "source_data": "output/data/empirical_analysis.json",
@@ -208,14 +209,14 @@ def _empirical_figure_fidelity(filename: str) -> str:
 
 def _panel_heatmap(panel: EmpiricalOdorResponsePanel, path: Path) -> Path:
     matrix = np.asarray(panel.response_matrix, dtype=float)
-    fig, ax = plt.subplots(figsize=(9, 5))
+    fig, ax = plt.subplots(figsize=(max(9, 0.42 * len(panel.stimulus_labels) + 3), 5.6))
     image = ax.imshow(matrix, aspect="auto", cmap="viridis")
     ax.set_title(f"Empirical response panel: {_panel_label(panel.modality)}", fontsize=11)
     ax.set_xlabel("Stimulus")
     ax.set_ylabel("Channel")
     ax.set_xticks(range(len(panel.stimulus_labels)))
     ax.set_xticklabels(panel.stimulus_labels, rotation=45, ha="right", fontsize=8)
-    channel_step = max(1, len(panel.channel_labels) // 12)
+    channel_step = max(1, int(np.ceil(len(panel.channel_labels) / 12)))
     channel_ticks = list(range(0, len(panel.channel_labels), channel_step))
     ax.set_yticks(channel_ticks)
     ax.set_yticklabels([panel.channel_labels[idx] for idx in channel_ticks], fontsize=8)
@@ -226,87 +227,112 @@ def _panel_heatmap(panel: EmpiricalOdorResponsePanel, path: Path) -> Path:
     return path
 
 
-def _panel_quality_bars(stats: tuple[EmpiricalPanelStats, ...], path: Path) -> Path:
-    top = sorted(stats, key=lambda row: row.mean_abs_response, reverse=True)[:10]
-    labels = [row.modality[:42] for row in top]
-    values = [row.mean_abs_response for row in top]
-    fig, ax = plt.subplots(figsize=(9, 5))
-    ax.barh(labels[::-1], values[::-1], color="#2a9d8f")
-    ax.set_title("Empirical panel mean absolute response")
-    ax.set_xlabel("Mean absolute response")
-    apply_panel_style(ax, grid_axis="x")
-    fig.tight_layout()
+def _panel_quality_table(
+    stats: tuple[EmpiricalPanelStats, ...],
+    path: Path,
+    *,
+    source_panels: tuple[EmpiricalOdorResponsePanel, ...] = (),
+) -> Path:
+    units_by_panel: dict[tuple[str, str], set[str]] = {}
+    for panel in source_panels:
+        if panel.units.strip():
+            units_by_panel.setdefault((panel.dataset_id, panel.modality), set()).add(panel.units)
+    rows = []
+    for row in sorted(stats, key=lambda row: (row.dataset_id, row.modality)):
+        units = units_by_panel.get((row.dataset_id, row.modality), set())
+        unit = (
+            next(iter(units))
+            if len(units) == 1
+            else "Unit ambiguous"
+            if units
+            else "Unit unavailable"
+        )
+        rows.append(
+            [
+                wrap_label(row.dataset_id, width=28),
+                wrap_label(row.modality, width=34),
+                _native_value(row.mean_abs_response),
+                wrap_label(unit, width=22),
+                _native_value(row.finite_fraction),
+            ]
+        )
+    row_lines = max((max(len(cell.splitlines()) for cell in row) for row in rows), default=1)
+    fig, ax = plt.subplots(figsize=(12, max(4.2, 0.24 * (len(rows) + 1) * row_lines + 1.6)))
+    ax.axis("off")
+    ax.set_title("Empirical panel summaries (not a cross-modality ranking)", loc="left", pad=16)
+    table = ax.table(
+        cellText=rows,
+        colLabels=[
+            "Dataset",
+            "Modality",
+            "Mean absolute\nresponse",
+            "Source unit",
+            "Finite\nfraction",
+        ],
+        colWidths=[0.24, 0.30, 0.15, 0.18, 0.13],
+        cellLoc="left",
+        bbox=(0, 0.04, 1, 0.88),
+    )
+    table.auto_set_font_size(False)
+    table.set_fontsize(9)
+    add_figure_note(
+        fig,
+        "Units join only by an unambiguous dataset/modality match. Response magnitude and finite coverage do not establish biological validity.",
+        y=0.018,
+    )
+    fig.tight_layout(rect=(0, 0.06, 1, 0.98))
     fig.savefig(path, dpi=160)
     plt.close(fig)
     return path
 
 
 def _stack_alignment_bars(stack_alignment: dict[str, float], path: Path) -> Path:
-    ranked = sorted(stack_alignment.items(), key=lambda item: item[1], reverse=True)[:12]
-    labels = [label for label, _ in ranked]
-    values = [value for _, value in ranked]
-    fig, ax = plt.subplots(figsize=(9, 5))
-    ax.barh(labels[::-1], values[::-1], color=module_color("BeeBrain"))
-    ax.set_title("BeeBrain alignment to empirical templates")
-    ax.set_xlabel("Cosine alignment")
-    ax.set_xlim(min(-1.0, min(values, default=0.0)), 1.0)
+    ranked = sorted(stack_alignment.items(), key=lambda item: item[0])
+    labels = [wrap_label(label, width=48) for label, _ in ranked]
+    values = [value if value is not None else np.nan for _, value in ranked]
+    fig, ax = plt.subplots(figsize=(10, max(4.5, 0.42 * len(labels) + 1.4)))
+    bars = ax.barh(labels[::-1], values[::-1], color=module_color("BeeBrain"))
+    for bar, (_, value) in zip(bars, ranked[::-1], strict=True):
+        ax.text(
+            1.03,
+            bar.get_y() + bar.get_height() / 2,
+            _native_value(value),
+            transform=ax.get_yaxis_transform(),
+            va="center",
+            fontsize=9,
+        )
+    ax.set_title("BeeBrain empirical-template alignment diagnostic")
+    ax.set_xlabel("Cosine alignment (not held-out validation)")
+    ax.set_xlim(-1.0, 1.0)
     ax.axvline(0, color="#222222", lw=0.8)
     apply_panel_style(ax, grid_axis="x")
-    fig.tight_layout()
+    fig.tight_layout(rect=(0, 0, 0.94, 1))
     fig.savefig(path, dpi=160)
     plt.close(fig)
     return path
 
 
-def _antennal_movement_bars(summary: AntennalMovementSummary, path: Path) -> Path:
-    values = [
-        summary.odor_on_fraction,
-        summary.mean_abs_left_theta_deg / 180.0
-        if summary.mean_abs_left_theta_deg is not None
-        else None,
-        summary.mean_abs_right_theta_deg / 180.0
-        if summary.mean_abs_right_theta_deg is not None
-        else None,
-        min(1.0, summary.mean_abs_theta_derivative / 25.0),
-        (summary.left_right_theta_correlation + 1.0) / 2.0,
-    ]
-    labels = [
-        "Odor-on fraction",
-        "Left theta deflection",
-        "Right theta deflection",
-        "Theta derivative drive",
-        "Left/right synchrony",
-    ]
-    fig, ax = plt.subplots(figsize=(9, 5))
-    ax.barh(
+def _antennal_movement_table(summary: AntennalMovementSummary, path: Path) -> Path:
+    return _native_summary_table(
         [
-            label if value is not None else f"{label} (unavailable)"
-            for label, value in zip(labels, values, strict=True)
-        ][::-1],
-        [value if value is not None else np.nan for value in values][::-1],
-        color=[
-            module_color("BeeNiche"),
-            module_color("BeeBody"),
-            module_color("BeeBody"),
-            PALETTE[6],
-            module_color("BeeBrain"),
-        ][::-1],
+            ("Odor-on fraction", summary.odor_on_fraction, "fraction"),
+            ("Mean absolute left theta", summary.mean_abs_left_theta_deg, "degrees"),
+            ("Mean absolute right theta", summary.mean_abs_right_theta_deg, "degrees"),
+            (
+                "Mean absolute theta derivative",
+                summary.mean_abs_theta_derivative,
+                "source derivative units",
+            ),
+            (
+                "Left/right theta correlation",
+                summary.left_right_theta_correlation,
+                "Pearson r (signed)",
+            ),
+        ],
+        path,
+        title="Jernigan antennal movement: native summary values",
+        note=f"{summary.row_count:,} frames; {summary.bee_count} bees; {summary.plume_count} plume classes. No rescaling or biological validation is implied.",
     )
-    ax.set_title("Jernigan empirical antennal active sensing")
-    ax.set_xlabel("Normalized summary value")
-    ax.set_xlim(0.0, 1.0)
-    apply_panel_style(ax, grid_axis="x")
-    ax.text(
-        0.01,
-        -0.18,
-        f"{summary.row_count:,} frames, {summary.bee_count} bees, {summary.plume_count} plume classes",
-        transform=ax.transAxes,
-        fontsize=9,
-    )
-    fig.tight_layout()
-    fig.savefig(path, dpi=160)
-    plt.close(fig)
-    return path
 
 
 def _anatomy_asset_bars(
@@ -317,12 +343,14 @@ def _anatomy_asset_bars(
         key=lambda inventory: inventory.total_uncompressed_bytes,
         reverse=True,
     )[:8]
-    labels = [Path(inventory.local_path).name for inventory in ranked]
+    labels = [wrap_label(Path(inventory.local_path).name, width=52) for inventory in ranked]
     values = [inventory.total_uncompressed_bytes / 1_000_000 for inventory in ranked]
-    fig, ax = plt.subplots(figsize=(9, 5))
-    ax.barh(labels[::-1], values[::-1], color="#d99a28")
-    ax.set_title("Honeybee Standard Brain atlas assets")
-    ax.set_xlabel("Uncompressed archive contents (MB)")
+    fig, ax = plt.subplots(figsize=(10.5, max(4.8, 0.5 * len(labels) + 1.2)))
+    bars = ax.barh(labels[::-1], values[::-1], color="#d99a28")
+    ax.bar_label(bars, fmt="%.3g", padding=4)
+    ax.margins(x=0.18)
+    ax.set_title("Atlas archive inventory: largest eight supplied assets")
+    ax.set_xlabel("Uncompressed archive contents (MB; decimal)")
     ax.grid(axis="x", alpha=0.2)
     ax.text(
         0.01,
@@ -334,7 +362,7 @@ def _anatomy_asset_bars(
         transform=ax.transAxes,
         fontsize=9,
     )
-    fig.tight_layout()
+    fig.tight_layout(rect=(0, 0.08, 1, 0.98))
     fig.savefig(path, dpi=160)
     plt.close(fig)
     return path
@@ -349,8 +377,8 @@ def _neuropil_coverage_bars(abbreviations: tuple[NeuropilAbbreviation, ...], pat
     values = [value for _, value in ranked]
     fig, ax = plt.subplots(figsize=(9, 5))
     ax.barh(labels[::-1], values[::-1], color="#5f7f3f")
-    ax.set_title("Honeybee Standard Brain neuropil abbreviation coverage")
-    ax.set_xlabel("Abbreviation count")
+    ax.set_title("Atlas abbreviation inventory by region class")
+    ax.set_xlabel("Registered abbreviation count (not biological coverage)")
     ax.grid(axis="x", alpha=0.2)
     fig.tight_layout()
     fig.savefig(path, dpi=160)
@@ -416,7 +444,7 @@ def _anatomy_projection(
                 xytext=source_xy,
                 arrowprops={"arrowstyle": "->", "color": "#334155", "alpha": 0.55, "lw": 1.1},
             )
-    ax.set_title(projection_title, wrap=True, fontsize=11)
+    ax.set_title(wrap_label(projection_title, width=62), fontsize=11)
     ax.set_xlabel("VRML X coordinate")
     ax.set_ylabel("VRML Y coordinate")
     ax.grid(alpha=0.2)
@@ -427,103 +455,61 @@ def _anatomy_projection(
     return path
 
 
-def _activity_summary_bars(summary: BeeBrainActivitySummary, path: Path) -> Path:
-    values = [
-        summary.mean_odor_separability,
-        summary.calcium_inhibitory_fraction,
-        summary.calcium_excitatory_fraction,
-        min(1.0, summary.aftersmell_response_mean),
-        summary.antennal_active_sensing_drive.get("theta_derivative_drive", 0.0),
-    ]
-    labels = [
-        "Odor separability",
-        "Calcium inhibitory fraction",
-        "Calcium excitatory fraction",
-        "Aftersmell response",
-        "Antennal movement drive",
-    ]
-    fig, ax = plt.subplots(figsize=(9, 5))
-    ax.barh(
-        labels[::-1],
-        values[::-1],
-        color=["#3a6ea5", "#9467bd", "#2a9d8f", "#d95d39", "#5b8e7d"][::-1],
+def _activity_summary_table(summary: BeeBrainActivitySummary, path: Path) -> Path:
+    return _native_summary_table(
+        [
+            ("Odor-template separability", summary.mean_odor_separability, "derived score"),
+            ("Calcium inhibitory fraction", summary.calcium_inhibitory_fraction, "fraction"),
+            ("Calcium excitatory fraction", summary.calcium_excitatory_fraction, "fraction"),
+            ("Aftersmell response mean", summary.aftersmell_response_mean, "source panel units"),
+            (
+                "Antennal theta derivative drive",
+                summary.antennal_active_sensing_drive.get("theta_derivative_drive"),
+                "derived model drive",
+            ),
+        ],
+        path,
+        title="BeeBrain supplied activity summaries (native values)",
+        note=f"{summary.panel_count} panels; {summary.calcium_dataset_count} calcium datasets; {summary.antennal_movement_summary_count} antennal summaries. Unavailable is not a measured zero; derived metrics are not held-out validation.",
     )
-    ax.set_title("BeeBrain empirical activity summary")
-    ax.set_xlabel("Normalized summary value")
-    ax.set_xlim(0.0, 1.0)
-    ax.grid(axis="x", alpha=0.2)
-    fig.tight_layout()
-    fig.savefig(path, dpi=160)
-    plt.close(fig)
-    return path
 
 
 def _waggle_follower_alignment(summary: WaggleFollowerSummary, path: Path) -> Path:
-    values = [
-        abs(summary.follower_angle_midpoint_correlation),
-        (summary.left_right_antenna_synchrony + 1.0) / 2.0,
-        float(np.clip(summary.decoding_improvement_fraction, 0.0, 1.0))
-        if summary.decoding_improvement_fraction is not None
-        else None,
-        summary.straightness_mean,
-        summary.confidence_score,
-    ]
-    labels = [
-        "Angle-midpoint coupling",
-        "Left/right synchrony",
-        "Decoding improvement",
-        "Follower straightness",
-        "BeeStack confidence",
-    ]
-    fig, ax = plt.subplots(figsize=(9, 5))
-    labels = [
-        label if value is not None else f"{label} (unavailable)"
-        for label, value in zip(labels, values, strict=True)
-    ]
-    ax.barh(
-        labels[::-1],
-        [value if value is not None else np.nan for value in values][::-1],
-        color="#9a6a1f",
+    return _native_summary_table(
+        [
+            (
+                "Follower angle / antenna midpoint correlation",
+                summary.follower_angle_midpoint_correlation,
+                "Pearson r (signed)",
+            ),
+            (
+                "Left/right antenna synchrony",
+                summary.left_right_antenna_synchrony,
+                "Pearson r (signed)",
+            ),
+            ("Decoding improvement", summary.decoding_improvement_fraction, "fraction (signed)"),
+            ("Follower straightness", summary.straightness_mean, "source straightness score"),
+            ("BeeStack confidence", summary.confidence_score, "derived diagnostic score"),
+        ],
+        path,
+        title="Waggle follower summary: signed, unscaled values",
+        note=f"{summary.track_count} follower tracks; {summary.feature_row_count:,} feature rows. Confidence is a BeeStack summary diagnostic, not independent biological validation.",
     )
-    ax.set_title("Waggle follower empirical antennal alignment")
-    ax.set_xlabel("Normalized score")
-    ax.set_xlim(0.0, 1.0)
-    ax.grid(axis="x", alpha=0.2)
-    ax.text(
-        0.01,
-        -0.18,
-        f"{summary.track_count} follower tracks, {summary.feature_row_count:,} feature rows",
-        transform=ax.transAxes,
-        fontsize=9,
-    )
-    fig.tight_layout()
-    fig.savefig(path, dpi=160)
-    plt.close(fig)
-    return path
 
 
-def _waggle_phase_coupling(summary: WaggleFollowerSummary, path: Path) -> Path:
-    labels = ["Left antenna", "Right antenna", "Midpoint", "Dancer gravity", "Follower angle"]
-    values = [
-        summary.mean_left_antenna_deg,
-        summary.mean_right_antenna_deg,
-        summary.mean_antenna_midpoint_deg,
-        summary.mean_dancer_angle_to_gravity_deg,
-        summary.mean_angle_to_dancer_deg,
-    ]
-    theta = np.deg2rad(values)
-    fig = plt.figure(figsize=(6, 6))
-    ax = fig.add_subplot(111, projection="polar")
-    ax.scatter(theta, np.ones(len(theta)), s=90, color="#d99a28")
-    for angle, label in zip(theta, labels, strict=True):
-        ax.plot([angle, angle], [0.0, 1.0], lw=1.2, alpha=0.65)
-        ax.text(angle, 1.12, label, fontsize=8, ha="center", va="center")
-    ax.set_title("Waggle follower phase and antenna coupling")
-    ax.set_yticks([])
-    fig.tight_layout()
-    fig.savefig(path, dpi=160)
-    plt.close(fig)
-    return path
+def _waggle_mean_angles(summary: WaggleFollowerSummary, path: Path) -> Path:
+    return _native_summary_table(
+        [
+            ("Left antenna", summary.mean_left_antenna_deg, "degrees"),
+            ("Right antenna", summary.mean_right_antenna_deg, "degrees"),
+            ("Antenna midpoint", summary.mean_antenna_midpoint_deg, "degrees"),
+            ("Dancer relative to gravity", summary.mean_dancer_angle_to_gravity_deg, "degrees"),
+            ("Follower relative to dancer", summary.mean_angle_to_dancer_deg, "degrees"),
+        ],
+        path,
+        title="Waggle follower mean angles in source reference frames",
+        note="Angles retain the parser's supplied means and distinct source reference frames. They are not a shared polar phase or a temporal coupling measurement.",
+    )
 
 
 def _waggle_recruitment_diagnostics(summary: WaggleFollowerSummary, path: Path) -> Path:
@@ -533,32 +519,36 @@ def _waggle_recruitment_diagnostics(summary: WaggleFollowerSummary, path: Path) 
         summary.both_antennae_mean_abs_error_deg,
     ]
     labels = ["No antennae", "All model rows", "Both antennae"]
-    fig, ax = plt.subplots(figsize=(8, 5))
+    fig, ax = plt.subplots(figsize=(9.4, 5.5))
     labels = [
         label if value is not None else f"{label} (unavailable)"
         for label, value in zip(labels, error_values, strict=True)
     ]
-    ax.bar(
+    bars = ax.bar(
         labels,
         [value if value is not None else np.nan for value in error_values],
         color=["#9ca3af", "#d99a28", "#2a9d8f"],
     )
-    ax.set_title("BeeSwarm waggle recruitment decoding error inputs")
+    for bar, value in zip(bars, error_values, strict=True):
+        ax.text(
+            bar.get_x() + bar.get_width() / 2,
+            (value + 1.0) if value is not None else 0.0,
+            _native_value(value),
+            ha="center",
+            va="bottom",
+            fontsize=9,
+        )
+    ax.margins(y=0.20)
+    ax.set_title("Supplied waggle decoding-model error summaries")
     ax.set_ylabel("Mean absolute vector error (deg)")
-    ax.grid(axis="y", alpha=0.2)
-    ax.text(
-        0.02,
-        0.93,
-        f"confidence={summary.confidence_score:.2f}; improvement="
-        + (
-            f"{summary.decoding_improvement_fraction:.2f}"
-            if summary.decoding_improvement_fraction is not None
-            else "unavailable"
-        ),
-        transform=ax.transAxes,
-        fontsize=9,
+    apply_panel_style(ax, grid_axis="y")
+    add_figure_note(
+        fig,
+        f"Source model rows: no antennae n={summary.no_antennae_error_count}; all n={summary.model_error_row_count}; both antennae n={summary.both_antennae_error_count}. "
+        "These are supplied model-error summaries, not new recruitment trials or matched-cohort validation.",
+        y=0.018,
     )
-    fig.tight_layout()
+    fig.tight_layout(rect=(0, 0.07, 1, 0.98))
     fig.savefig(path, dpi=160)
     plt.close(fig)
     return path
@@ -569,14 +559,14 @@ def _brain_data_completeness_matrix(panel: BeeBrainDataCompletenessPanel, path: 
     modalities = sorted({key for values in panel.module_modality_matrix.values() for key in values})
     matrix = np.array(
         [
-            [panel.module_modality_matrix[module].get(modality, 0) for modality in modalities]
+            [panel.module_modality_matrix[module].get(modality, np.nan) for modality in modalities]
             for module in modules
         ],
         dtype=float,
     )
     fig, ax = plt.subplots(figsize=(10.8, 6.1))
-    image = ax.imshow(matrix, aspect="auto", cmap="YlGnBu")
-    ax.set_title("BeeBrain curated source completeness matrix", loc="left")
+    image = ax.imshow(np.ma.masked_invalid(matrix), aspect="auto", cmap="YlGnBu")
+    ax.set_title("BeeBrain curated source inventory by module and modality", loc="left")
     ax.set_xlabel("Modality family")
     ax.set_ylabel("Module target")
     ax.set_xticks(range(len(modalities)))
@@ -588,50 +578,38 @@ def _brain_data_completeness_matrix(panel: BeeBrainDataCompletenessPanel, path: 
     )
     ax.set_yticks(range(len(modules)))
     ax.set_yticklabels([module.replace("_", " ") for module in modules], fontsize=8)
-    threshold = float(matrix.max()) * 0.52 if matrix.size else 0.0
+    finite = matrix[np.isfinite(matrix)]
+    threshold = float(finite.max()) * 0.52 if finite.size else 0.0
     for row_index, module in enumerate(modules):
         for column_index, modality in enumerate(modalities):
-            count = int(panel.module_modality_matrix[module].get(modality, 0))
+            count = panel.module_modality_matrix[module].get(modality)
             ax.text(
                 column_index,
                 row_index,
-                str(count),
+                "—" if count is None else str(count),
                 ha="center",
                 va="center",
                 fontsize=8,
                 fontweight="bold" if count else "normal",
-                color="white" if count > threshold else "#111827",
+                color="white" if count is not None and count > threshold else "#111827",
             )
     fig.colorbar(image, ax=ax, label="Curated source count")
-    badge_rows = (
-        ("downloaded", panel.downloaded_fraction, "available"),
-        ("parseable", panel.parseable_fraction, "partial"),
+    fig.text(
+        0.5,
+        0.075,
+        f"Downloaded: {panel.downloaded_dataset_count}/{panel.dataset_count}; "
+        f"parseable: {panel.parseable_dataset_count}/{panel.dataset_count}",
+        ha="center",
+        fontsize=9,
+        color="#334155",
     )
-    for index, (label, fraction, status) in enumerate(badge_rows):
-        ax.text(
-            0.02 + index * 0.22,
-            -0.24,
-            f"{label}: {fraction:.2f}",
-            transform=ax.transAxes,
-            ha="left",
-            va="top",
-            fontsize=8.5,
-            fontweight="bold",
-            color="#111827",
-            bbox={
-                "boxstyle": "round,pad=0.28",
-                "facecolor": status_color(status),
-                "edgecolor": "#111827",
-                "alpha": 0.22,
-            },
-        )
     add_figure_note(
         fig,
-        "Zero cells are availability gaps; counts are registered local source rows, not calcium-validated dynamics.",
+        "Counts are curated source records, not measured neural coverage. A dash is an unlisted module/modality pair; an explicit zero remains zero. Parseability is not biological validation.",
         width=110,
         y=0.018,
     )
-    fig.tight_layout(rect=(0, 0.10, 1, 0.98))
+    fig.tight_layout(rect=(0, 0.12, 1, 0.98))
     fig.savefig(path, dpi=160)
     plt.close(fig)
     return path
@@ -641,11 +619,52 @@ def _brain_multimodal_source_map(panel: BeeBrainDataCompletenessPanel, path: Pat
     labels = sorted(panel.modality_counts)
     values = [panel.modality_counts[label] for label in labels]
     fig, ax = plt.subplots(figsize=(9, 5))
-    ax.barh(labels[::-1], values[::-1], color="#3a6ea5")
-    ax.set_title("BeeBrain multimodal empirical source map")
-    ax.set_xlabel("Curated source count")
+    bars = ax.barh(
+        [wrap_label(label.replace("_", " "), width=42) for label in labels[::-1]],
+        values[::-1],
+        color="#3a6ea5",
+    )
+    ax.bar_label(bars, fmt="%g", padding=4)
+    ax.margins(x=0.15)
+    ax.set_title("BeeBrain curated source inventory by modality")
+    ax.set_xlabel("Registered source count (not biological validation)")
     ax.grid(axis="x", alpha=0.2)
     fig.tight_layout()
+    fig.savefig(path, dpi=160)
+    plt.close(fig)
+    return path
+
+
+def _native_value(value: float | None) -> str:
+    return "Unavailable" if value is None or not np.isfinite(value) else f"{value:.4g}"
+
+
+def _native_summary_table(
+    rows: list[tuple[str, float | None, str]],
+    path: Path,
+    *,
+    title: str,
+    note: str,
+) -> Path:
+    cells = [
+        [wrap_label(label, width=42), _native_value(value), wrap_label(unit, width=26)]
+        for label, value, unit in rows
+    ]
+    row_lines = max((max(len(cell.splitlines()) for cell in row) for row in cells), default=1)
+    fig, ax = plt.subplots(figsize=(10.5, max(4.4, 0.28 * (len(rows) + 1) * row_lines + 1.6)))
+    ax.axis("off")
+    ax.set_title(wrap_label(title, width=72), loc="left", pad=16)
+    table = ax.table(
+        cellText=cells,
+        colLabels=["Summary metric", "Value", "Native unit / interpretation"],
+        colWidths=[0.51, 0.17, 0.32],
+        cellLoc="left",
+        bbox=(0, 0.06, 1, 0.86),
+    )
+    table.auto_set_font_size(False)
+    table.set_fontsize(10)
+    add_figure_note(fig, note, y=0.018)
+    fig.tight_layout(rect=(0, 0.07, 1, 0.98))
     fig.savefig(path, dpi=160)
     plt.close(fig)
     return path

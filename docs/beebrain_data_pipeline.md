@@ -14,16 +14,23 @@ uv run python scripts/analysis_pipeline.py
 uv run python scripts/audit_documentation.py
 ```
 
-`fetch_empirical_bee_data.py` performs full curated downloads by default. It
-skips files that already exist and are non-empty. `--metadata-only` writes
-catalog manifests without downloading missing payloads. `--force` re-downloads
-local files.
+`fetch_empirical_bee_data.py` performs bounded curated downloads by default.
+It skips only caches with source-identity-bound completion receipts, not merely
+nonempty files. `--metadata-only` writes catalog manifests without downloading
+missing payloads; `--force` reacquires local files. Byte and container budgets
+reject unsupported intake explicitly; see `security_posture.md`.
 
 `analyze_empirical_bee_data.py` is intentionally network-gated. When no local
 workbook/CSV/MAT empirical panels are present, it exits successfully with a
 skip message so offline core verification can proceed. When panels are present,
 it must parse, validate, analyze, visualize, and report real payloads; it must
 not fabricate surrogate empirical traces.
+The aggregate requires a parseable odor-response panel. Current local odor,
+calcium, and antennal payloads are absent; standalone waggle CSVs and parsed
+Table S1 signed-rank statistics do not satisfy that prerequisite. Skips and
+failures invalidate current measurements without deleting historical reports.
+`current_empirical_analysis(project_root, cfg)` admits evidence only when raw
+payload, report, configuration, and implementation hashes match.
 
 ## Anatomy Sources
 
@@ -137,7 +144,7 @@ implying a parse failure.
 Scholarship refresh records community resources that BeeStack may register
 later—Hymenoptera Genome Database / HymenopteraMine (`10.1093/nar/gkab1018`),
 BeeBiome (`10.1186/s12859-025-06229-7`), and the HAv3.1 reference genome
-(`10.1186/s12864-019-5639-3`)—in
+(`10.1186/s12864-019-5642-0`)—in
 `output/data/external_dataset_registry.json`. They are **not** stages in
 `fetch_empirical_bee_data.py` until each source passes the same registration,
 license, parser, and audit contract as existing Dryad and Figshare deposits.
@@ -151,11 +158,11 @@ odor templates, calcium summaries, antennal vibration drive, waggle-follower
 decoding confidence, neuropil coverage, and region response summaries. Missing
 or blocked files are reported as gaps.
 
-The current configured gate is `brain_data_parseable_fraction >= 0.5`, set by
-`research.empirical_completeness_threshold` in `docs/manuscript/config.yaml`. The
-stricter `0.800` parseability target remains an improvement target. When a
-source cannot yet be parsed locally, the completeness panel can still pass the
-readiness gate only if the source is DOI/source-verified and the manifest
-records the precise blocker, parser status, and remediation path. This is how
-large or access-restricted sources such as Paoli calcium traces remain visible
-without being replaced by fabricated traces.
+The configured parseability gate is `brain_data_parseable_fraction >= 0.5`, set by
+`research.empirical_completeness_threshold` in `docs/manuscript/config.yaml`.
+The stricter `0.800` target remains an improvement target. Source verification,
+parser status, blockers, and remediation are tracked separately; a verified DOI
+cannot substitute for a parseable payload. Executable templates require complete
+observed condition/channel grids and explicit consistent acquisition rates.
+Absent templates leave integrated alignment unavailable, not zero; missing means
+remain nullable with observation counts and measured zeros remain numeric zeros.
