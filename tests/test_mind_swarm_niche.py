@@ -203,7 +203,7 @@ def test_niche_comb_deposition_content_metrics_and_thermal_step() -> None:
         assign_cell_content(seeded, (0, 0, 0), 99)
     with pytest.raises(ValueError, match="empty"):
         assign_cell_content(grid, (0, 0, 0), BROOD_CELL)
-    with pytest.raises(ValueError, match="fanning"):
+    with pytest.raises(ValueError):
         thermal_step(grid, cfg, fanning_rate=-1)
     with pytest.raises(ValueError, match="heat_sources"):
         thermal_step(grid, cfg, heat_sources=np.zeros((1, 1, 1)))

@@ -45,7 +45,7 @@ def test_gate_accepts_perfect_validation_with_disclosed_gaps(tmp_path: Path) -> 
 
 
 def _write_manuscript(root: Path, doi: str) -> None:
-    manuscript = root / "manuscript"
+    manuscript = root / "docs" / "manuscript"
     manuscript.mkdir(parents=True, exist_ok=True)
     (manuscript / "01_intro.md").write_text("A cited claim [@baddoi].\n", encoding="utf-8")
     (manuscript / "references.bib").write_text(

@@ -3,7 +3,11 @@
 from .path_safety import (
     MAX_ZIP_MEMBER_COUNT,
     MAX_ZIP_UNCOMPRESSED_BYTES,
+    ArchiveBudget,
+    IntakePolicyError,
     assert_safe_zip_member,
+    completed_download,
+    completion_path,
     resolve_under_root,
     safe_relative_path,
     validate_zip_archive_bounds,
@@ -18,6 +22,10 @@ from .url_policy import (
 )
 
 __all__ = [
+    "ArchiveBudget",
+    "IntakePolicyError",
+    "completed_download",
+    "completion_path",
     "ALLOWED_DOWNLOAD_HOST_SUFFIXES",
     "MAX_ZIP_MEMBER_COUNT",
     "MAX_ZIP_UNCOMPRESSED_BYTES",

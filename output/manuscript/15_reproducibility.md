@@ -2,7 +2,7 @@
 
 Reproducibility in BeeStack is a *property of the pipeline*, not a
 property of any individual artifact. The run is manifest-driven by
-`manuscript/config.yaml`, seeded with `20260513`, managed
+`docs/manuscript/config.yaml`, seeded with `20260513`, managed
 through `uv`, and exercises every cross-layer contract from raw
 configuration to hydrated manuscript prose.
 
@@ -18,10 +18,11 @@ per-file coverage trace. The coverage gate is configured at 92% in
 
 ## Publication metadata
 
-`manuscript/config.yaml` leaves `publication.doi` empty while BeeStack
-remains a scaffold checkout. When a Zenodo or journal DOI is minted,
-populate that field and regenerate hydration so the abstract and
-reproducibility sections pick up the stable identifier automatically.
+`publication.doi` is empty for this version until a version-specific deposit
+identifier is assigned. The historical 1.0 deposit is
+`10.5281/zenodo.20420557`; it must not identify a later release.
+`--check --require-doi` refuses a DOI-less deposit. Metadata assignment and
+repository publication are separate from numerical or biological validation.
 
 ## Full regeneration
 
@@ -34,10 +35,12 @@ uv run python scripts/run_research_suite.py
 uv run python scripts/run_methods_analysis.py
 uv run python scripts/run_stack_synthesis.py
 uv run python scripts/review_stack_integrity.py
+uv run python scripts/z_generate_manuscript_variables.py
+uv run python scripts/render_manuscript.py
 uv run python scripts/verify_generated_reports.py
 uv run python scripts/audit_documentation.py
+uv run python scripts/run_security_audit.py
 uv run python scripts/signpost_project_tree.py --check
-uv run python scripts/z_generate_manuscript_variables.py
 ```
 
 Each script in this list is a *thin orchestrator*: it reads
@@ -65,14 +68,12 @@ reviews, methods-analysis dashboards, and raw-data manifests are
 written under `output/`. Raw empirical downloads live in
 `output/data/empirical_sources/` and are *not* package source.
 
-Hydration fails on unsupported template variables. That failure mode
-is deliberate. If a section adds a token that
-`scripts/z_generate_manuscript_variables.py` does not produce, the
-hydration script raises `KeyError`. The pipeline therefore cannot
-silently render a manuscript with unresolved tokens. The hydration
-script also removes stale generated manuscript markdown before
-copying current source sections, so modular section renames do not
-leave obsolete output files behind.
+Hydration resolves all canonical sources before replacing any output. Missing
+sources or unsupported variables fail without deleting the prior manuscript;
+obsolete generated sections are removed only after successful resolution.
+The local Pandoc/XeLaTeX renderer uses all 18 numbered sections, resolves
+citations and cross-references, and writes a source/data/figure-bound receipt.
+Compilation and text checks do not replace visual inspection of the PDF.
 
 Figure insertion is checked at the same level. A manuscript image is not
 considered reproducible merely because the `.png` exists: the hydrated
@@ -85,21 +86,16 @@ surface rather than a visual afterthought.
 
 ## Determinism guarantees
 
-BeeStack guarantees the following invariants under a fixed seed:
+Fixed seeds determine the reduced numerical kernels and model-owned PN→KC
+connectivity. This is not a blanket byte-identity guarantee for PDFs, raster
+outputs, external datasets, native renderers or all reports across machines.
+Comparisons must bind the same inputs, configuration and runtime, and preserve
+observed deltas rather than infer reproducibility from a successful build.
 
-1. **Byte-identical manuscript variables.** Two runs with the same
-   `seed = 20260513` and the same configuration produce the
-   same `output/data/manuscript_variables.json` (up to JSON-key
-   ordering, which is normalized).
-2. **Byte-similar figures.** Figures are deterministic up to
-   rasterization tolerance (PNG compression, anti-aliasing). The
-   underlying data arrays are byte-identical.
-3. **Identical JSON reports.** Every report under
-   `output/reports/*.json` and `output/data/*.json` is regenerated
-   identically across runs.
-4. **Identical contract validations.** Every contract check in
-   `src/beestack/contracts.py` produces the same pass/fail outcome
-   under a fixed seed.
+The empirical stage seals a current report hash only after successful analysis.
+On an offline skip or failure, retained empirical files remain historical;
+hydration and research consumers cannot reuse their numbers as current results.
+Availability is `historical_unavailable`; missing current values remain N/A.
 
 ## Why `uv`
 
@@ -137,15 +133,10 @@ evidence, while large raw third-party payloads are reproducible caches.
 
 ## Cross-machine reproducibility
 
-The project has been exercised on:
-
-- macOS arm64 with Python 3.11 through `uv` (the `uv`-managed
-  interpreter; `requires-python >= 3.11`),
-- Linux x86_64 in CI across the Python 3.11–3.13 matrix.
-
-Cross-machine artifact deltas observed in practice are limited to
-PNG rasterization differences and JSON key ordering (which is
-normalized by the hydration script before comparison).
+The CI workflow selects the same `.python-version` pin on Ubuntu; it does not
+declare a multi-version Python matrix. The source-bound verification receipt
+records the platform and interpreter actually exercised. Neither a CI recipe
+nor a previous machine's PASS report is fresh cross-machine validation.
 
 ## Why behavior changes are visible
 

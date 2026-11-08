@@ -12,8 +12,11 @@ from typing import Any
 
 from PIL import Image
 
-from ..security import assert_safe_zip_member, validate_zip_archive_bounds
+from ..security import assert_safe_zip_member, completed_download, validate_zip_archive_bounds
+from ..security.path_safety import download_source_identity
 from .datasets import BeeBrainAtlasAsset
+
+VRML_PREFIX_BYTES = 5_000_000
 
 
 @dataclass(frozen=True)
@@ -137,7 +140,9 @@ def atlas_download_record_from_asset(
 ) -> AtlasDownloadRecord:
     """Create a typed local-download record for an atlas asset."""
 
-    downloaded = local_path.exists() and local_path.stat().st_size > 0
+    downloaded = completed_download(
+        local_path, source_identity=download_source_identity(asset.url, size=asset.size_bytes)
+    )
     return AtlasDownloadRecord(
         dataset_id=dataset_id,
         asset_id=asset.asset_id,
@@ -145,8 +150,8 @@ def atlas_download_record_from_asset(
         local_path=str(local_path),
         size_bytes=local_path.stat().st_size if downloaded else 0,
         downloaded=downloaded,
-        skipped_existing=skipped_existing,
-        sha256=sha256,
+        skipped_existing=skipped_existing and downloaded,
+        sha256=sha256 if downloaded else None,
         error=error,
     )
 
@@ -177,7 +182,8 @@ def atlas_inventory_from_zip(path: Path, asset_id: str | None = None) -> AtlasIn
             if image_shape is None and lowered.endswith((".tif", ".tiff", ".jpg", ".jpeg", ".png")):
                 image_shape = _image_shape_from_member(archive, info.filename)
             if lowered.endswith((".wrl", ".vrml")):
-                geometry = _vrml_geometry(archive.read(info.filename))
+                with archive.open(info) as raw:
+                    geometry = _vrml_geometry(raw.read(VRML_PREFIX_BYTES))
                 vertices = int(geometry["vertex_count"])
                 faces = int(geometry["face_count"])
                 vertex_count += vertices
@@ -335,7 +341,7 @@ def _image_shape_from_member(archive: zipfile.ZipFile, name: str) -> tuple[int, 
 
 
 def _vrml_geometry(data: bytes) -> dict[str, Any]:
-    text = data[:5_000_000].decode("utf-8", "ignore")
+    text = data[:VRML_PREFIX_BYTES].decode("utf-8", "ignore")
     point_sections = re.findall(r"point\s*\[([^\]]*)\]", text, flags=re.IGNORECASE | re.DOTALL)
     vertex_count = 0
     bounds_min: tuple[float, float, float] | None = None

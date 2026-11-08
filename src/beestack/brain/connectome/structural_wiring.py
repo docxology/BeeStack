@@ -12,11 +12,18 @@ from ..datasets import honeybee_standard_brain_assets
 from .graph import (
     BeeBrainConnectomeReport,
     ConnectomeEdge,
+    ConnectomeEdgeKind,
     ConnectomeNode,
     ConnectomeTier,
 )
 
 HSB_DOI = "10.1002/cne.20644"
+VRML_PREFIX_BYTES = 2_000_000
+PATHWAY_ASSETS = {
+    "tract:alf1-al-mb": "hsb-vrml-alf1",
+    "tract:act-antennocerebralis": "hsb-vrml-act",
+    "tract:pe1-pn-mb-intrinsic": "hsb-vrml-pe1-pn",
+}
 
 STRUCTURAL_PATHWAYS: tuple[tuple[str, str, str, str], ...] = (
     (
@@ -58,6 +65,7 @@ def build_structural_connectome(
     atlas_dir = source_dir / "virtual-honeybee-standard-brain"
     nodes: dict[str, ConnectomeNode] = {}
     edges: list[ConnectomeEdge] = []
+    loaded_assets: set[str] = set()
 
     for entry in abbreviations[:48]:
         region = entry.region_class or "neuropil"
@@ -94,6 +102,8 @@ def build_structural_connectome(
         if not zip_path.exists():
             continue
         vrml_names = _vrml_def_names_from_zip(zip_path)
+        if vrml_names:
+            loaded_assets.add(asset_id)
         for name in sorted(vrml_names)[:24]:
             node_id = f"neuron:{asset_id}:{name.lower()}"
             nodes[node_id] = ConnectomeNode(
@@ -117,6 +127,9 @@ def build_structural_connectome(
             )
 
     for edge_id, source, target, evidence in STRUCTURAL_PATHWAYS:
+        edge_kind: ConnectomeEdgeKind = (
+            "structural_tract" if PATHWAY_ASSETS[edge_id] in loaded_assets else "schematic_pathway"
+        )
         if source not in nodes:
             nodes[source] = ConnectomeNode(
                 node_id=source,
@@ -139,7 +152,7 @@ def build_structural_connectome(
             ConnectomeEdge(
                 source_id=source,
                 target_id=target,
-                edge_kind="structural_tract",
+                edge_kind=edge_kind,
                 weight=None,
                 evidence=evidence,
             )
@@ -158,7 +171,7 @@ def build_structural_connectome(
             ConnectomeEdge(
                 source_id=tract_node,
                 target_id=target,
-                edge_kind="structural_tract",
+                edge_kind=edge_kind,
                 weight=None,
                 evidence=f"{evidence} (tract node)",
             )
@@ -167,19 +180,21 @@ def build_structural_connectome(
     structural_edge_count = sum(1 for edge in edges if edge.edge_kind == "structural_tract")
     synaptic_edge_count = sum(1 for edge in edges if edge.edge_kind == "synaptic")
     completeness = {
-        "structural_coverage": min(1.0, structural_edge_count / max(1, len(STRUCTURAL_PATHWAYS))),
+        "structural_coverage": sum(
+            asset_id in loaded_assets for asset_id in PATHWAY_ASSETS.values()
+        )
+        / len(STRUCTURAL_PATHWAYS),
         "functional_coverage": 0.0,
         "synaptic_coverage": 0.0 if synaptic_edge_count == 0 else float(synaptic_edge_count),
         "neuropil_node_fraction": min(1.0, len(abbreviations) / 40.0) if abbreviations else 0.0,
     }
-    tier: ConnectomeTier = (
-        "structural_projectome" if structural_edge_count else "synaptic_unavailable"
-    )
+    tier: ConnectomeTier = "structural_projectome" if structural_edge_count else "schematic_only"
     return BeeBrainConnectomeReport(
         tier=tier,
         nodes=tuple(sorted(nodes.values(), key=lambda node: node.node_id)),
         edges=tuple(edges),
         completeness=completeness,
+        supporting_assets=tuple(sorted(loaded_assets)),
     )
 
 
@@ -191,10 +206,18 @@ def connectome_tiers_from_report(report: BeeBrainConnectomeReport) -> dict[str, 
     synaptic_edges = sum(1 for edge in report.edges if edge.edge_kind == "synaptic")
     return {
         "structural": {
-            "tier": "structural_projectome",
-            "available": structural_edges > 0,
+            "tier": "structural_projectome"
+            if structural_edges and report.supporting_assets
+            else "schematic_only",
+            "available": structural_edges > 0 and bool(report.supporting_assets),
             "edge_count": structural_edges,
-            "coverage": report.completeness.get("structural_coverage", 0.0),
+            "coverage": report.completeness.get("structural_coverage", 0.0)
+            if report.supporting_assets
+            else 0.0,
+            "supporting_assets": list(report.supporting_assets),
+            "schematic_edge_count": sum(
+                edge.edge_kind == "schematic_pathway" for edge in report.edges
+            ),
         },
         "functional": {
             "tier": "functional_partial" if functional_edges else "unavailable",
@@ -235,7 +258,8 @@ def _vrml_def_names_from_zip(zip_path: Path) -> set[str]:
             assert_safe_zip_member(info.filename)
             if not info.filename.lower().endswith((".wrl", ".vrml")):
                 continue
-            text = archive.read(info.filename)[:2_000_000].decode("utf-8", "ignore")
+            with archive.open(info) as raw:
+                text = raw.read(VRML_PREFIX_BYTES).decode("utf-8", "ignore")
             names.update(re.findall(r"\bDEF\s+([A-Za-z0-9_\-]+)", text))
             names.update(re.findall(r"\bUSE\s+([A-Za-z0-9_\-]+)", text))
     return {name for name in names if name and name.lower() not in {"scene", "world"}}

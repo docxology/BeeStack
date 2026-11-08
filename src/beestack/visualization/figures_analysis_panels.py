@@ -97,11 +97,11 @@ def _module_coverage(module_names: list[str], path: Path) -> Path:
     colors = [module_color(module) for module in modules]
     fig, ax = plt.subplots(figsize=(7, 4))
     ax.bar(modules, [1] * len(modules), color=colors[: len(modules)])
-    ax.set_ylabel("Implemented v0 contract")
+    ax.set_ylabel("Implemented module contract")
     apply_panel_style(
         ax,
         title="BeeStack module contract coverage",
-        ylabel="Implemented v0 contract",
+        ylabel="Implemented module contract",
     )
     ax.set_xticks(range(len(modules)), modules, rotation=20, ha="right")
     fig.tight_layout()

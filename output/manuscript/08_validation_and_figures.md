@@ -30,13 +30,13 @@ registered GIF; verification scores and contact reports in
 
 Visual checks operate at several levels:
 
-1. **BeeBody verification** checks non-blank dynamic frames, motion
-   pixels per second, locomotion mode (walking vs. flight),
-   honeybee MJCF cue presence, silhouette overlap with a reference
-   bee shape, and — importantly — *absence* of FlyBody debug aids
-   inconsistent with a honeybee render. The latest run reports a
-   BeeBody visual score of 0.980 and a silhouette
-   score of 1.000.
+1. **BeeBody verification** checks non-blank dynamic frames, changed RGB
+   channel values across frames, honeybee MJCF cue names, rendered color
+   statistics, and absence of cyan debug aids. Walking/flight are requested
+   render-mode labels, not inferred gait classifications. The field named
+   silhouette score is a cue heuristic, not overlap with a reference image.
+   The latest run reports visual score 0.991 and
+   MJCF/color cue score 1.000.
 2. **BeeSwarm verification** requires MuJoCo contact reports for
    strict scenes. A strict scene with zero unique contact pairs is
    rejected as evidence; the methods-analysis pass currently records
@@ -70,7 +70,7 @@ Validation is also textual and structural.
   digital-twin wording.
 - The **readiness review**
   (`output/reports/project_readiness_review.md`) records
-  72 signposted directories and
+  71 signposted directories and
   prioritizes the next-improvement backlog from the research gaps —
   the current top priority is BeeBrain calcium acquisition completion (P27).
 
@@ -81,7 +81,7 @@ figures, JSON sidecar metadata for generated methods and research figures,
 6 manuscript evidence links, and a source-claim
 crosswalk that carries module, method, configuration tokens, artifact path,
 citation keys, source DOIs, claim tier, and availability status. It also writes
-a manuscript figure index with 69 artifact rows.
+a manuscript figure index with 75 artifact rows.
 The index maps every cited figure or visual artifact to
 its backend (e.g. FlyBody, MuJoCo, Matplotlib), fidelity level (real
 3D, reduced kernel, schematic), validation status (passed/passed with

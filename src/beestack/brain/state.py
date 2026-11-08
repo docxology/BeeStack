@@ -11,6 +11,15 @@ Array = NDArray[np.float64]
 
 
 @dataclass(frozen=True)
+class KenyonProjection:
+    """One model's fixed sparse PN-to-KC connectivity, reused across ticks."""
+
+    claws: NDArray[np.int64]
+    glomeruli: int
+    seed: int
+
+
+@dataclass(frozen=True)
 class SparseCode:
     """Sparse mushroom-body code represented by active KC indices."""
 

@@ -1,0 +1,27 @@
+{
+  "argv": [
+    "$VALIDATION_STAGE/.uv-cache/wheel-smoke/bin/beestack-analysis",
+    "--project-root",
+    "$VALIDATION_STAGE"
+  ],
+  "returncode": 0,
+  "seconds": 323.108,
+  "pythonpath_removed": true,
+  "core_before": {
+    "output/data/run_summary.json": "16849fa85935ed5a8f43633a09bd31c112656f1f1fb771e44a480c354795771f",
+    "output/data/simulation_records.json": "1c4bbb442c998e1f8e76dc4be4be11b61f70705ea454211b04e1462cdc4f05ee",
+    "output/data/task_allocation.json": "d3b6256590b0739b1ec2b208c21863ff13a3ab1046eb92ac5b29edb457d610fa"
+  },
+  "core_after": {
+    "output/data/run_summary.json": "16849fa85935ed5a8f43633a09bd31c112656f1f1fb771e44a480c354795771f",
+    "output/data/simulation_records.json": "1c4bbb442c998e1f8e76dc4be4be11b61f70705ea454211b04e1462cdc4f05ee",
+    "output/data/task_allocation.json": "d3b6256590b0739b1ec2b208c21863ff13a3ab1046eb92ac5b29edb457d610fa"
+  },
+  "deterministic_core_matches": true,
+  "scope": "exact deterministic reduced simulation outputs across source and independently installed wheel; not biological or binary-render reproducibility",
+  "path_variables": {
+    "PROJECT": ".",
+    "VALIDATION_STAGE": ".uv-cache/wfz-release/stage-001"
+  },
+  "serialization_note": "Portable projection of execution paths; original exact argv remain in the source-bound GitVault launch receipts."
+}

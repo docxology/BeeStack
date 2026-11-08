@@ -6,8 +6,12 @@ from dataclasses import asdict, dataclass
 from typing import Literal
 
 ConnectomeNodeKind = Literal["neuropil", "neuron", "tract"]
-ConnectomeEdgeKind = Literal["structural_tract", "functional_granger", "synaptic"]
-ConnectomeTier = Literal["structural_projectome", "functional_partial", "synaptic_unavailable"]
+ConnectomeEdgeKind = Literal[
+    "structural_tract", "schematic_pathway", "functional_granger", "synaptic"
+]
+ConnectomeTier = Literal[
+    "structural_projectome", "schematic_only", "functional_partial", "synaptic_unavailable"
+]
 
 
 @dataclass(frozen=True)
@@ -41,6 +45,7 @@ class BeeBrainConnectomeReport:
     nodes: tuple[ConnectomeNode, ...]
     edges: tuple[ConnectomeEdge, ...]
     completeness: dict[str, float]
+    supporting_assets: tuple[str, ...] = ()
 
     def as_dict(self) -> dict[str, object]:
         return {
@@ -50,4 +55,5 @@ class BeeBrainConnectomeReport:
             "nodes": [node.as_dict() for node in self.nodes],
             "edges": [edge.as_dict() for edge in self.edges],
             "completeness": self.completeness,
+            "supporting_assets": list(self.supporting_assets),
         }

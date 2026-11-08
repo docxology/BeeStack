@@ -11,6 +11,7 @@
   },
   "alt_text": "Network-style map of empirical BeeBrain source channels and integration targets.",
   "artifact_kind": "figure",
+  "availability_status": "historical_unavailable",
   "backend": "Matplotlib empirical-data renderer",
   "caption": "Matplotlib beebrain multimodal source map shows Multimodal source map organizing anatomy, odor-response, antennal, and waggle-follower records by integration target and local availability. Generated from output/data/brain_data_completeness.json and empirical analysis report. Sidecar validation checks raster, source routing, and registered claim tier. Does not support a complete multimodal empirical assimilation pipeline.",
   "citation_keys": [
@@ -39,7 +40,7 @@
   "fidelity": "empirical dataset availability diagnostic",
   "figure_path": "output/figures/empirical/bee_brain_multimodal_source_map.png",
   "manuscript_label": "fig:brain_multimodal_source_map",
-  "manuscript_section": "manuscript/09_empirical_results.md",
+  "manuscript_section": "docs/manuscript/09_empirical_results.md",
   "plot_data_path": "output/figures/empirical/bee_brain_multimodal_source_map_data.json",
   "priority": "primary",
   "quality": {

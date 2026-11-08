@@ -11,6 +11,7 @@
   },
   "alt_text": "Bar chart of normalized BeeBrain empirical activity summary metrics.",
   "artifact_kind": "figure",
+  "availability_status": "historical_unavailable",
   "backend": "Matplotlib empirical-data renderer",
   "caption": "Matplotlib beebrain empirical activity summary shows Reduced activity summary combining odor separability, calcium fractions, aftersmell response, and antennal drive. Generated from output/data/empirical_analysis.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not support calcium-validated dynamics; parsed calcium traces are a citation anchor, not a model input.",
   "citation_keys": [
@@ -38,7 +39,7 @@
   "fidelity": "empirical panel summary diagnostic",
   "figure_path": "output/figures/empirical/empirical_activity_summary.png",
   "manuscript_label": "fig:empirical_activity_summary",
-  "manuscript_section": "manuscript/09_empirical_results.md",
+  "manuscript_section": "docs/manuscript/09_empirical_results.md",
   "plot_data_path": "output/figures/empirical/empirical_activity_summary_data.json",
   "priority": "primary",
   "quality": {

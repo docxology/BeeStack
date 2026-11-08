@@ -5,6 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
+import networkx as nx
 import numpy as np
 
 from ..brain import (
@@ -226,8 +227,12 @@ def empirical_plot_data(
             ],
             values=[
                 summary.odor_on_fraction,
-                summary.mean_abs_left_theta_deg / 180.0,
-                summary.mean_abs_right_theta_deg / 180.0,
+                summary.mean_abs_left_theta_deg / 180.0
+                if summary.mean_abs_left_theta_deg is not None
+                else None,
+                summary.mean_abs_right_theta_deg / 180.0
+                if summary.mean_abs_right_theta_deg is not None
+                else None,
                 min(1.0, summary.mean_abs_theta_derivative / 25.0),
                 (summary.left_right_theta_correlation + 1.0) / 2.0,
             ],
@@ -235,6 +240,8 @@ def empirical_plot_data(
                 "row_count": summary.row_count,
                 "bee_count": summary.bee_count,
                 "plume_count": summary.plume_count,
+                "left_theta_observation_count": summary.left_theta_observation_count,
+                "right_theta_observation_count": summary.right_theta_observation_count,
             },
         )
     if name == "empirical_anatomy_assets.png" and anatomy_summary and anatomy_inventories:
@@ -252,7 +259,7 @@ def empirical_plot_data(
                 "asset_count": anatomy_summary.asset_count,
             },
         )
-    if name == "empirical_anatomy_projection.png" and anatomy_inventories:
+    if name == "empirical_anatomy_projection.png":
         points = []
         for inventory in anatomy_inventories:
             if inventory.vrml_centroid is None:
@@ -292,13 +299,54 @@ def empirical_plot_data(
                         "x1": target_xy[0],
                         "y1": target_xy[1],
                         "kind": edge.edge_kind,
+                        "edge_kind": edge.edge_kind,
+                        "evidence": edge.evidence,
                     }
                 )
-        return schematic_plot(
-            title="Honeybee Standard Brain VRML geometry projection",
+        if edges:
+            title = "Honeybee Standard Brain VRML centroids with supported structural overlays"
+            fidelity = "source-backed VRML centroid projection with structural tract overlays"
+            claim_tier = "structural_projectome_witness"
+        elif points:
+            title = "Honeybee Standard Brain VRML centroids (no supported tract overlays)"
+            fidelity = (
+                "source-backed VRML centroid projection only; structural overlays unavailable"
+            )
+            claim_tier = "empirical_availability_diagnostic"
+        else:
+            title = "Honeybee Standard Brain geometry unavailable"
+            fidelity = "geometry unavailable; no structural overlays"
+            claim_tier = "empirical_availability_diagnostic"
+        summary = (
+            f"{len(points)} source-backed centroid points; {len(edges)} supported structural "
+            "overlay edges. Schematic pathways are excluded because they have no measured geometry."
+        )
+        payload = schematic_plot(
+            title=title,
             nodes=points,
             edges=edges,
+            annotations=[summary],
         )
+        payload.update(
+            {
+                "edges": edges,
+                "fidelity": fidelity,
+                "claim_tier": claim_tier,
+                "summary": summary,
+                "validation_status": summary,
+                "geometry_node_count": len(points),
+                "geometry_edge_count": len(edges),
+                "geometry_available": bool(points),
+                "structural_overlay_available": bool(edges),
+                "tier": connectome_report.tier if connectome_report else "unavailable",
+                "schematic_edge_count_excluded": sum(
+                    edge.edge_kind == "schematic_pathway" for edge in connectome_report.edges
+                )
+                if connectome_report
+                else 0,
+            }
+        )
+        return payload
     if name == "empirical_neuropil_coverage.png" and neuropil_abbreviations:
         counts: dict[str, int] = {}
         for entry in neuropil_abbreviations:
@@ -342,7 +390,9 @@ def empirical_plot_data(
             values=[
                 abs(summary.follower_angle_midpoint_correlation),
                 (summary.left_right_antenna_synchrony + 1.0) / 2.0,
-                float(np.clip(summary.decoding_improvement_fraction, 0.0, 1.0)),
+                float(np.clip(summary.decoding_improvement_fraction, 0.0, 1.0))
+                if summary.decoding_improvement_fraction is not None
+                else None,
                 summary.straightness_mean,
                 summary.confidence_score,
             ],
@@ -383,6 +433,8 @@ def empirical_plot_data(
             extra={
                 "confidence_score": summary.confidence_score,
                 "decoding_improvement_fraction": summary.decoding_improvement_fraction,
+                "no_antennae_error_count": summary.no_antennae_error_count,
+                "both_antennae_error_count": summary.both_antennae_error_count,
             },
         )
     if name == "brain_data_completeness_matrix.png" and data_completeness is not None:
@@ -419,6 +471,74 @@ def empirical_plot_data(
     )
 
 
+def connectome_graph(report: BeeBrainConnectomeReport) -> nx.MultiDiGraph:
+    """Retain structural and schematic edge identities for render and export."""
+
+    graph = nx.MultiDiGraph()
+    for node in report.nodes:
+        graph.add_node(node.node_id, **node.as_dict())
+    for edge in report.edges:
+        if edge.edge_kind in {"structural_tract", "schematic_pathway"}:
+            graph.add_edge(edge.source_id, edge.target_id, **edge.as_dict())
+    return graph
+
+
+def connectome_fidelity(report: BeeBrainConnectomeReport) -> dict[str, Any]:
+    """Describe runtime support without upgrading schematic paths in mixed graphs."""
+
+    counts = {
+        kind: sum(edge.edge_kind == kind for edge in report.edges)
+        for kind in ("structural_tract", "schematic_pathway")
+    }
+    if counts["structural_tract"] and counts["schematic_pathway"]:
+        state = "mixed_structural_and_schematic"
+        title = "BeeBrain mixed structural and schematic pathways"
+        fidelity = "partial HSB VRML support with explicitly schematic remaining pathways"
+        claim_tier = state
+    elif counts["structural_tract"]:
+        state = "structural_projectome"
+        title = "BeeBrain structural projectome (HSB VRML supported)"
+        fidelity = "HSB VRML-supported structural pathway diagnostic"
+        claim_tier = "structural_projectome_witness"
+    else:
+        state = "schematic_only"
+        title = "BeeBrain schematic pathways (no supported structural tracts)"
+        fidelity = "schematic pathway topology; no supported structural tracts"
+        claim_tier = state
+    summary = (
+        f"Report tier: {report.tier}; display fidelity: {state}. "
+        f"{counts['structural_tract']} source-backed structural tract edges; "
+        f"{counts['schematic_pathway']} schematic pathway edges. "
+        "Schematic pathways are not empirical tract observations."
+    )
+    return {
+        "tier": report.tier,
+        "evidence_state": state,
+        "title": title,
+        "fidelity": fidelity,
+        "claim_tier": claim_tier,
+        "edge_counts": counts,
+        "supporting_assets": list(report.supporting_assets),
+        "summary": summary,
+    }
+
+
+def connectome_coverage(report: BeeBrainConnectomeReport, tiers: dict[str, object]) -> list[float]:
+    """Keep structural coverage bound to the graph's actually supported assets."""
+
+    return [
+        float(report.completeness.get("structural_coverage", 0.0)),
+        *(
+            float(
+                (tiers.get(label, {}) or {}).get(
+                    "coverage", report.completeness.get(f"{label}_coverage", 0.0)
+                )
+            )
+            for label in ("functional", "synaptic")
+        ),
+    ]
+
+
 def connectome_plot_data(
     path: Path,
     *,
@@ -427,34 +547,37 @@ def connectome_plot_data(
 ) -> dict[str, Any]:
     """Return plottable inputs for one connectome figure."""
 
-    import networkx as nx
-
     name = path.name
     tiers = completeness_tiers or {}
+    evidence = connectome_fidelity(report)
     if name == "connectome_structural_graph.png":
-        graph = nx.DiGraph()
-        for node in report.nodes:
-            graph.add_node(node.node_id, label=node.label, kind=node.kind)
-        for edge in report.edges:
-            if edge.edge_kind == "structural_tract":
-                graph.add_edge(edge.source_id, edge.target_id)
-        positions = nx.spring_layout(graph, seed=7, k=0.9)
-        return schematic_plot(
-            title="BeeBrain structural projectome",
+        graph = connectome_graph(report)
+        positions = nx.spring_layout(graph, seed=7, k=0.9, weight=None)
+        payload = schematic_plot(
+            title=evidence["title"],
             nodes=[
                 {
+                    **graph.nodes[node],
                     "id": node,
-                    "label": graph.nodes[node]["label"][:18],
                     "x": float(positions[node][0]),
                     "y": float(positions[node][1]),
                 }
                 for node in graph.nodes
             ],
             edges=[
-                {"source": source, "target": target, "kind": "structural_tract"}
-                for source, target in graph.edges
+                {
+                    **data,
+                    "source": source,
+                    "target": target,
+                    "kind": data["edge_kind"],
+                    "line_style": "dashed" if data["edge_kind"] == "schematic_pathway" else "solid",
+                }
+                for source, target, data in graph.edges(data=True)
             ],
+            annotations=[evidence["summary"]],
         )
+        payload.update(evidence)
+        return payload
     if name == "connectome_neuropil_module_map.png":
         counts: dict[str, int] = {}
         for node in report.nodes:
@@ -462,29 +585,27 @@ def connectome_plot_data(
                 counts[node.module_target] = counts.get(node.module_target, 0) + 1
         modules = sorted(counts)
         values = [counts[module] for module in modules]
-        return heatmap_plot(
+        payload = heatmap_plot(
             title="Neuropil module map",
             row_labels=["neuropil_count"],
             column_labels=modules,
             matrix=[values],
-            value_label="abbreviation_count",
+            value_label="neuropil_node_count",
         )
+        payload.update({key: value for key, value in evidence.items() if key != "title"})
+        return payload
     if name == "connectome_completeness_tiers.png":
         labels = ["structural", "functional", "synaptic"]
-        coverage = [
-            float(
-                (tiers.get(label, {}) or {}).get(
-                    "coverage", report.completeness.get(f"{label}_coverage", 0.0)
-                )
-            )
-            for label in labels
-        ]
+        coverage = connectome_coverage(report, tiers)
         return categorical_plot(
             title="Connectome evidence tiers",
             labels=labels,
             values=coverage,
             orientation="vertical",
-            extra={"y_label": "coverage fraction"},
+            extra={
+                "y_label": "coverage fraction",
+                **{key: value for key, value in evidence.items() if key != "title"},
+            },
         )
     return schematic_plot(
         title=path.stem.replace("_", " "),

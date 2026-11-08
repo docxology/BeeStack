@@ -38,22 +38,22 @@
   "fidelity": "reduced deterministic kernel diagnostic",
   "figure_path": "output/figures/research/research_evidence_detail.png",
   "manuscript_label": "fig:research_evidence_detail",
-  "manuscript_section": "manuscript/11_research_synthesis.md",
+  "manuscript_section": "docs/manuscript/11_research_synthesis.md",
   "plot_data_path": "output/figures/research/research_evidence_detail_data.json",
   "priority": "primary",
   "quality": {
     "height_px": 1111,
     "max_intensity": 255,
-    "mean_intensity": 247.9467058410552,
+    "mean_intensity": 247.41855016001844,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 30.792802552065115,
+    "std_intensity": 32.10174217837984,
     "width_px": 2059
   },
   "regeneration_command": "uv run python scripts/run_research_suite.py",
   "schema": "beestack.figure.v1",
-  "source_data": "ResearchSuiteReport evidence records and empirical availability rows",
+  "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
   "source_dois": [
     "10.1371/journal.pcbi.1005510",
     "10.3233/DS-190026"

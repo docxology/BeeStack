@@ -11,6 +11,7 @@
   },
   "alt_text": "Scatter plot of VRML atlas centroids with optional structural tract edges.",
   "artifact_kind": "figure",
+  "availability_status": "historical_unavailable",
   "backend": "Matplotlib empirical-data renderer",
   "caption": "Matplotlib honeybee standard brain vrml projection shows VRML geometry centroids with structural tract overlays when the connectome report is available. Generated from output/data/bee_brain_connectome.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not infer functional or synaptic connectivity.",
   "citation_keys": [
@@ -37,7 +38,7 @@
   "fidelity": "empirical atlas/inventory summary diagnostic",
   "figure_path": "output/figures/empirical/empirical_anatomy_projection.png",
   "manuscript_label": "fig:empirical_anatomy_projection",
-  "manuscript_section": "manuscript/09_empirical_results.md",
+  "manuscript_section": "docs/manuscript/09_empirical_results.md",
   "plot_data_path": "output/figures/empirical/empirical_anatomy_projection_data.json",
   "priority": "primary",
   "quality": {

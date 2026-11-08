@@ -38,22 +38,22 @@
   "fidelity": "methods provenance diagnostic",
   "figure_path": "output/figures/methods/methods_manuscript_evidence_index.png",
   "manuscript_label": "fig:methods_evidence_index",
-  "manuscript_section": "manuscript/08_validation_and_figures.md",
+  "manuscript_section": "docs/manuscript/08_validation_and_figures.md",
   "plot_data_path": "output/figures/methods/methods_manuscript_evidence_index_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 884,
+    "height_px": 885,
     "max_intensity": 255,
-    "mean_intensity": 234.70833689063434,
+    "mean_intensity": 234.42870429591727,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 48.436065792430995,
+    "std_intensity": 48.959607045719714,
     "width_px": 1696
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
   "schema": "beestack.figure.v1",
-  "source_data": "MethodsAnalysisReport manuscript evidence links",
+  "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
   "source_dois": [
     "10.1371/journal.pcbi.1005510",
     "10.3233/DS-190026"
@@ -63,13 +63,13 @@
   "validation_status": "nonblank image, quality sidecar, and plot data passed",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 1.919,
+    "aspect_ratio": 1.916,
     "figure_role": "overview",
-    "height_px": 884,
+    "height_px": 885,
     "label_density": "dense",
     "manuscript_use": "manuscript_primary",
     "max_dimension_px": 1696,
-    "min_dimension_px": 884,
+    "min_dimension_px": 885,
     "readability_status": "pass",
     "width_px": 1696
   }

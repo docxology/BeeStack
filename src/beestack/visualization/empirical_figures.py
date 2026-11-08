@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from dataclasses import replace
 from pathlib import Path
 from textwrap import shorten
 
@@ -22,6 +23,7 @@ from ..brain import (
 from ..brain.connectome import BeeBrainConnectomeReport
 from .figure_output import finalize_static_figures
 from .figure_plot_specs import empirical_plot_data
+from .figure_registry import figure_narrative_for_path
 from .style import (
     PALETTE,
     add_figure_note,
@@ -46,12 +48,27 @@ def generate_empirical_figures(
     waggle_summary: WaggleFollowerSummary | None = None,
     data_completeness: BeeBrainDataCompletenessPanel | None = None,
     connectome_report: BeeBrainConnectomeReport | None = None,
+    *,
+    project_root: Path | None = None,
 ) -> list[Path]:
     """Generate empirical data validation and stack-integration figures."""
 
     if not panels:
         raise ValueError("at least one empirical panel is required")
     output_dir.mkdir(parents=True, exist_ok=True)
+    context = {
+        "panels": panels,
+        "panel_stats": panel_stats,
+        "stack_alignment": stack_alignment,
+        "antennal_summaries": antennal_summaries,
+        "anatomy_summary": anatomy_summary,
+        "anatomy_inventories": anatomy_inventories,
+        "neuropil_abbreviations": neuropil_abbreviations,
+        "activity_summary": activity_summary,
+        "waggle_summary": waggle_summary,
+        "data_completeness": data_completeness,
+        "connectome_report": connectome_report,
+    }
     with style_context():
         paths = [
             _panel_heatmap(panels[0], output_dir / "empirical_panel_heatmap.png"),
@@ -77,6 +94,9 @@ def generate_empirical_figures(
                     _anatomy_projection(
                         anatomy_inventories,
                         output_dir / "empirical_anatomy_projection.png",
+                        projection_title=empirical_plot_data(
+                            output_dir / "empirical_anatomy_projection.png", **context
+                        )["title"],
                         connectome_report=connectome_report,
                     )
                 )
@@ -124,25 +144,12 @@ def generate_empirical_figures(
                     ),
                 ]
             )
-    context = {
-        "panels": panels,
-        "panel_stats": panel_stats,
-        "stack_alignment": stack_alignment,
-        "antennal_summaries": antennal_summaries,
-        "anatomy_summary": anatomy_summary,
-        "anatomy_inventories": anatomy_inventories,
-        "neuropil_abbreviations": neuropil_abbreviations,
-        "activity_summary": activity_summary,
-        "waggle_summary": waggle_summary,
-        "data_completeness": data_completeness,
-        "connectome_report": connectome_report,
-    }
 
     def _plot_data(path: Path) -> dict[str, object]:
         return empirical_plot_data(path, **context)
 
     def _sidecar(path: Path) -> dict[str, object]:
-        return {
+        metadata = {
             "title": path.stem.replace("_", " ").title(),
             "backend": "Matplotlib empirical-data renderer",
             "fidelity": _empirical_figure_fidelity(path.name),
@@ -150,8 +157,40 @@ def generate_empirical_figures(
             "validation_status": "nonblank empirical diagnostic with plot data",
             "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
         }
+        if path.name == "empirical_anatomy_projection.png":
+            evidence = _plot_data(path)
+            narrative = figure_narrative_for_path(path)
+            assert narrative is not None
+            runtime = replace(
+                narrative,
+                title=evidence["title"],
+                caption=f"{narrative.caption} {evidence['summary']}",
+                alt_text=f"{narrative.alt_text} {evidence['summary']}",
+                claim_tier=evidence["claim_tier"],
+                fidelity_level=evidence["fidelity"],
+            )
+            metadata.update(runtime.as_sidecar_fields())
+            metadata.update(
+                title=evidence["title"],
+                fidelity=evidence["fidelity"],
+                validation_status=evidence["validation_status"],
+                metrics={
+                    key: evidence[key]
+                    for key in (
+                        "tier",
+                        "geometry_node_count",
+                        "geometry_edge_count",
+                        "geometry_available",
+                        "structural_overlay_available",
+                        "schematic_edge_count_excluded",
+                    )
+                },
+            )
+        return metadata
 
-    finalize_static_figures(paths, plot_data_for=_plot_data, sidecar_for=_sidecar)
+    finalize_static_figures(
+        paths, plot_data_for=_plot_data, sidecar_for=_sidecar, project_root=project_root
+    )
     return paths
 
 
@@ -222,8 +261,12 @@ def _stack_alignment_bars(stack_alignment: dict[str, float], path: Path) -> Path
 def _antennal_movement_bars(summary: AntennalMovementSummary, path: Path) -> Path:
     values = [
         summary.odor_on_fraction,
-        summary.mean_abs_left_theta_deg / 180.0,
-        summary.mean_abs_right_theta_deg / 180.0,
+        summary.mean_abs_left_theta_deg / 180.0
+        if summary.mean_abs_left_theta_deg is not None
+        else None,
+        summary.mean_abs_right_theta_deg / 180.0
+        if summary.mean_abs_right_theta_deg is not None
+        else None,
         min(1.0, summary.mean_abs_theta_derivative / 25.0),
         (summary.left_right_theta_correlation + 1.0) / 2.0,
     ]
@@ -236,8 +279,11 @@ def _antennal_movement_bars(summary: AntennalMovementSummary, path: Path) -> Pat
     ]
     fig, ax = plt.subplots(figsize=(9, 5))
     ax.barh(
-        labels[::-1],
-        values[::-1],
+        [
+            label if value is not None else f"{label} (unavailable)"
+            for label, value in zip(labels, values, strict=True)
+        ][::-1],
+        [value if value is not None else np.nan for value in values][::-1],
         color=[
             module_color("BeeNiche"),
             module_color("BeeBody"),
@@ -316,6 +362,7 @@ def _anatomy_projection(
     inventories: tuple[AtlasInventory, ...],
     path: Path,
     *,
+    projection_title: str,
     connectome_report: BeeBrainConnectomeReport | None = None,
 ) -> Path:
     vrml_items = [inventory for inventory in inventories if inventory.vrml_centroid is not None]
@@ -369,7 +416,7 @@ def _anatomy_projection(
                 xytext=source_xy,
                 arrowprops={"arrowstyle": "->", "color": "#334155", "alpha": 0.55, "lw": 1.1},
             )
-    ax.set_title("Honeybee Standard Brain VRML geometry projection")
+    ax.set_title(projection_title, wrap=True, fontsize=11)
     ax.set_xlabel("VRML X coordinate")
     ax.set_ylabel("VRML Y coordinate")
     ax.grid(alpha=0.2)
@@ -415,7 +462,9 @@ def _waggle_follower_alignment(summary: WaggleFollowerSummary, path: Path) -> Pa
     values = [
         abs(summary.follower_angle_midpoint_correlation),
         (summary.left_right_antenna_synchrony + 1.0) / 2.0,
-        np.clip(summary.decoding_improvement_fraction, 0.0, 1.0),
+        float(np.clip(summary.decoding_improvement_fraction, 0.0, 1.0))
+        if summary.decoding_improvement_fraction is not None
+        else None,
         summary.straightness_mean,
         summary.confidence_score,
     ]
@@ -427,7 +476,15 @@ def _waggle_follower_alignment(summary: WaggleFollowerSummary, path: Path) -> Pa
         "BeeStack confidence",
     ]
     fig, ax = plt.subplots(figsize=(9, 5))
-    ax.barh(labels[::-1], values[::-1], color="#9a6a1f")
+    labels = [
+        label if value is not None else f"{label} (unavailable)"
+        for label, value in zip(labels, values, strict=True)
+    ]
+    ax.barh(
+        labels[::-1],
+        [value if value is not None else np.nan for value in values][::-1],
+        color="#9a6a1f",
+    )
     ax.set_title("Waggle follower empirical antennal alignment")
     ax.set_xlabel("Normalized score")
     ax.set_xlim(0.0, 1.0)
@@ -477,14 +534,27 @@ def _waggle_recruitment_diagnostics(summary: WaggleFollowerSummary, path: Path) 
     ]
     labels = ["No antennae", "All model rows", "Both antennae"]
     fig, ax = plt.subplots(figsize=(8, 5))
-    ax.bar(labels, error_values, color=["#9ca3af", "#d99a28", "#2a9d8f"])
+    labels = [
+        label if value is not None else f"{label} (unavailable)"
+        for label, value in zip(labels, error_values, strict=True)
+    ]
+    ax.bar(
+        labels,
+        [value if value is not None else np.nan for value in error_values],
+        color=["#9ca3af", "#d99a28", "#2a9d8f"],
+    )
     ax.set_title("BeeSwarm waggle recruitment decoding error inputs")
     ax.set_ylabel("Mean absolute vector error (deg)")
     ax.grid(axis="y", alpha=0.2)
     ax.text(
         0.02,
         0.93,
-        f"confidence={summary.confidence_score:.2f}; improvement={summary.decoding_improvement_fraction:.2f}",
+        f"confidence={summary.confidence_score:.2f}; improvement="
+        + (
+            f"{summary.decoding_improvement_fraction:.2f}"
+            if summary.decoding_improvement_fraction is not None
+            else "unavailable"
+        ),
         transform=ax.transAxes,
         fontsize=9,
     )

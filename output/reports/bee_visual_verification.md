@@ -8,11 +8,11 @@
 - Bee silhouette score: `1.000`
 - Locomotion score: `1.000`
 - Frames: `24`
-- Motion pixels: `609447`
-- Mean adjacent motion pixels: `213356.6`
-- Amber body fraction: `0.0215`
-- Translucent wing/membrane fraction: `0.0505`
-- Dark stripe/eye fraction: `0.1763`
+- Motion pixels: `675513`
+- Mean adjacent motion pixels: `208072.1`
+- Amber body fraction: `0.0206`
+- Translucent wing/membrane fraction: `0.0533`
+- Dark stripe/eye fraction: `0.1781`
 - Debug-aid color fraction: `0.000000`
 
 ## Present Bee Cues
@@ -61,15 +61,15 @@
 - Locomotion mode: `flight`
 - GIF: `output/animations/beebody_flybody_flight.gif`
 - MJCF: `output/animations/flybody_bee/assets/apis_mellifera_worker.xml`
-- Score: `0.980`
+- Score: `0.991`
 - Bee silhouette score: `1.000`
 - Locomotion score: `1.000`
 - Frames: `24`
-- Motion pixels: `405786`
-- Mean adjacent motion pixels: `173460.1`
-- Amber body fraction: `0.0237`
-- Translucent wing/membrane fraction: `0.0167`
-- Dark stripe/eye fraction: `0.3386`
+- Motion pixels: `519027`
+- Mean adjacent motion pixels: `179441.9`
+- Amber body fraction: `0.0235`
+- Translucent wing/membrane fraction: `0.0185`
+- Dark stripe/eye fraction: `0.3381`
 - Debug-aid color fraction: `0.000000`
 
 ## Present Bee Cues
@@ -129,7 +129,11 @@
 - Frames with bee-bee contacts: `20`
 - Bee-bee contact pairs: `bee_00-bee_01, bee_00-bee_02, bee_00-bee_09, bee_01-bee_02, bee_01-bee_07, bee_01-bee_09, bee_02-bee_03, bee_03-bee_04, bee_04-bee_05, bee_05-bee_06, bee_06-bee_07, bee_07-bee_08, bee_08-bee_09`
 - Floor contact count: `5`
-- Minimum contact distance: `-0.032476391711236306`
+- Minimum contact distance: `-0.03247810612617867`
+- Mean follower orientation error: `0.000` deg
+- Follower orientation confidence: `0.000`
+- Waggle phase coupling score: `0.000`
+- Contact graph edges: `13`
 
 ## waggle
 
@@ -142,7 +146,11 @@
 - Frames with bee-bee contacts: `24`
 - Bee-bee contact pairs: `bee_01-bee_02, bee_01-bee_10, bee_02-bee_03, bee_03-bee_04, bee_04-bee_05, bee_05-bee_06, bee_06-bee_07, bee_07-bee_08, bee_08-bee_09, bee_09-bee_10`
 - Floor contact count: `22`
-- Minimum contact distance: `-0.007146013856803874`
+- Minimum contact distance: `-0.007145678300099613`
+- Mean follower orientation error: `19.096` deg
+- Follower orientation confidence: `0.788`
+- Waggle phase coupling score: `0.000`
+- Contact graph edges: `10`
 
 ## waggle_long
 
@@ -155,4 +163,8 @@
 - Frames with bee-bee contacts: `96`
 - Bee-bee contact pairs: `bee_01-bee_02, bee_01-bee_10, bee_02-bee_03, bee_03-bee_04, bee_04-bee_05, bee_05-bee_06, bee_06-bee_07, bee_07-bee_08, bee_08-bee_09, bee_09-bee_10`
 - Floor contact count: `89`
-- Minimum contact distance: `-0.007152310767314903`
+- Minimum contact distance: `-0.007151945532773438`
+- Mean follower orientation error: `19.096` deg
+- Follower orientation confidence: `0.788`
+- Waggle phase coupling score: `0.000`
+- Contact graph edges: `10`

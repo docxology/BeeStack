@@ -1,0 +1,35 @@
+{
+  "scope": "closed synthetic defensive counterexamples; not empirical observations",
+  "deleted_generating_input": {
+    "before": "current",
+    "after": "current",
+    "raw_in_render_inputs": false
+  },
+  "equivalent_path_count": {
+    "physical_files": 1,
+    "reported": 2
+  },
+  "annotation_column": {
+    "accepted": false,
+    "error": "ValueError",
+    "message": "Nouvian binary observations must be 0 or 1"
+  },
+  "following_caption": {
+    "accepted": false,
+    "error": "ValueError",
+    "message": "incomplete Table S1 statistical triplets for 1HEX"
+  },
+  "fractional_rank": {
+    "accepted": false,
+    "error": "ValueError",
+    "message": "invalid Table S1 statistical triplet for 1HEX"
+  },
+  "scipy_tied_rank_statistic": 1.5,
+  "failed_source_changing_refresh": {
+    "original_doi": "10.6084/m9.figshare.123.v1",
+    "new_doi": "10.6084/m9.figshare.123.v2",
+    "file_downloaded": true,
+    "file_error": "incomplete response: 3 of 12 bytes",
+    "preserved_bytes": "old"
+  }
+}

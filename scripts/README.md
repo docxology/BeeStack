@@ -1,9 +1,8 @@
 # Scripts
 
-Thin orchestrators. Each script only resolves the project root, parses optional
-arguments, and makes delegated calls into `src/beestack/`; the shared
-artifact-pipeline steps live in `src/beestack/pipeline.py`. Domain, plot, and
-analysis logic is not defined here, and scripts never import other scripts.
+Thin domain orchestrators delegate to `src/beestack/`; the shared artifact stages
+live in `beestack.pipeline`. Scripts may read/write project artifacts and invoke
+local manuscript tools, but never import another script or write sibling trees.
 
 ## Inventory
 
@@ -13,9 +12,9 @@ analysis logic is not defined here, and scripts never import other scripts.
 | `analyze_empirical_bee_data.py` | Empirical BeeBrain analysis when local panels exist; prints a skip message offline | `beestack.pipeline.run_empirical_stage` | `uv run python scripts/analyze_empirical_bee_data.py` |
 | `assess_digital_twin_readiness.py` | Conservative digital-twin maturity, blocker, validation-residual, and governance reports | `beestack.digital_twin.assess_digital_twin_readiness` | `uv run python scripts/assess_digital_twin_readiness.py` |
 | `audit_documentation.py` | Documentation freshness and fidelity-claim audit reports | `beestack.documentation_audit.audit_documentation` | `uv run python scripts/audit_documentation.py` |
-| `audit_publication_readiness.py` | Release 1.0 publication-readiness gate with `--check` and `--require-doi` flags | `beestack.publication_readiness.check_publication_readiness` | `uv run python scripts/audit_publication_readiness.py --check` |
+| `audit_publication_readiness.py` | Current-version PDF/source-binding, hydration, security and publication gate | `beestack.publication_readiness.check_publication_readiness` | `uv run python scripts/audit_publication_readiness.py --check` |
 | `fetch_empirical_bee_data.py` | Curated BeeBrain downloads from Dryad, Figshare, and anatomy URLs (network-gated) | `beestack.brain.empirical_fetch.fetch_empirical_sources` | `uv run python scripts/fetch_empirical_bee_data.py` |
-| `generate_animations.py` | FlyBody BeeBody locomotion GIFs, strict BeeSwarm contact scenes, visual reports | `beestack.visualization` animation builders | `uv run python scripts/generate_animations.py` |
+| `generate_animations.py` | Strict/reduced animations and verified reports | `beestack.pipeline.run_animation_pipeline` | `uv run python scripts/generate_animations.py` |
 | `review_stack_integrity.py` | Module-by-module API, contract, validation, evidence, and fidelity review | `beestack.pipeline.run_integrity_stage` | `uv run python scripts/review_stack_integrity.py` |
 | `run_methods_analysis.py` | Methods-analysis report, module methods figures, sidecars, dashboard, figure index | `beestack.pipeline.write_methods_analysis_outputs` | `uv run python scripts/run_methods_analysis.py` |
 | `run_research_suite.py` | Research suite: optional upstream stages plus research, methods, and synthesis artifacts | `beestack.pipeline` stage runners and artifact writers | `uv run python scripts/run_research_suite.py` |
@@ -26,11 +25,12 @@ analysis logic is not defined here, and scripts never import other scripts.
 | `verify_generated_reports.py` | Generated-report semantic audit plus security and publication gates | `beestack.generated_report_audit.audit_generated_reports` | `uv run python scripts/verify_generated_reports.py` |
 | `write_source_refresh_ledger.py` | External-source refresh ledger and dataset registry artifacts | `beestack.pipeline.write_source_refresh_ledger_outputs` | `uv run python scripts/write_source_refresh_ledger.py` |
 | `z_generate_manuscript_variables.py` | Hydrates `{{TOKEN}}` manuscript variables and copies sources to `output/manuscript/` | `beestack.manuscript_variables.generate_variables` | `uv run python scripts/z_generate_manuscript_variables.py` |
+| `render_manuscript.py` | All 18 hydrated sections → real combined PDF plus source/data/figure receipt | Local Pandoc/XeLaTeX and `manuscript_crossrefs.lua` | `uv run python scripts/render_manuscript.py` |
 
 ## Notes
 
 - `fetch_empirical_bee_data.py` attempts full curated BeeBrain downloads by
-  default, skips local non-empty payloads, falls back from Dryad archive
+  default, skips only completion-verified payloads, falls back from Dryad archive
   endpoints to file-level downloads where possible, catalogs Figshare
   waggle-following CSVs, and records source errors in manifests. Use
   `--metadata-only` for catalog-only runs.

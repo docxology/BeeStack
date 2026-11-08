@@ -1,0 +1,20 @@
+{
+  "scope": "old sealed stage implementation; current synthetic regression fixtures",
+  "scenarios": [
+    {
+      "scenario": "singleton_tensor_axes",
+      "returncode": 1,
+      "expected_failed_before": true
+    },
+    {
+      "scenario": "unidentified_workbook_axes",
+      "returncode": 1,
+      "expected_failed_before": true
+    },
+    {
+      "scenario": "binary_probabilities",
+      "returncode": 1,
+      "expected_failed_before": true
+    }
+  ]
+}

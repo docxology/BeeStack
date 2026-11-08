@@ -73,7 +73,7 @@ detector additionally applies a fixed 200 Hz vibration-frequency floor
 rate). The dance decoder consumes those candidates plus the CX heading
 to produce a recruitment hypothesis in the `BrainState`'s waggle field.
 The distance estimate is a reduced-kernel baseline — a nominal
-1 s ↔ 1 km identity, **not** a species-calibrated von Frisch curve.
+1 s $\leftrightarrow$ 1 km identity, **not** a species-calibrated von Frisch curve.
 The Hadjitofi–Webb antennal-position tracks and article
 [@hadjitofi2024figshare; @hadjitofi2024currentbiology] anchor only
 the follower-orientation diagnostics (`WaggleFollowerSummary`), not
@@ -132,21 +132,21 @@ integrated stack run.
 
 ## Empirical run integration
 
-The current empirical run integrates 48
-odor-response panels, 7 anatomy inventories,
-1 antennal-movement summaries, and
-24 templates. It also records
-59 waggle-follower tracks when the
+The current empirical run integrates N/A
+odor-response panels, N/A anatomy inventories,
+N/A antennal-movement summaries, and
+N/A templates. It also records
+N/A waggle-follower tracks when the
 Figshare files are local, with follower-decoding confidence
-0.289 and decoding improvement
-0.248. The brain-data parseable-source
-fraction is 0.700. The run records
-0 local calcium datasets and
+N/A and decoding improvement
+N/A. The brain-data parseable-source
+fraction is N/A. The run records
+N/A local calcium datasets and
 1 empirical known gaps, making *missing
 upstream payloads visible* instead of fabricating data.
-The source-verified fraction is 1.000,
-and the 0.800 parseability-readiness target is recorded as
-False when the parseable-source fraction meets
+The source-verified fraction is N/A,
+and the N/A parseability-readiness target is recorded as
+N/A when the parseable-source fraction meets
 that threshold. Every remaining nonparseable source still must carry a DOI/source URL,
 parser status, blocker, and remediation path in the completeness panel.
 
@@ -175,7 +175,7 @@ anatomy-inventory count, neuropil count, region-response class count,
 odor separability, and calcium-dataset availability. The figure is
 written to
 `output/figures/methods/beebrain_methods_empirical_completeness.png`,
-and the top gap is propagated as BeeBrain: brain_parseability_target.
+and the top gap is propagated as BeeBrain: template_bank.
 
 [@fig:brain_methods_completeness] summarizes empirical and methods completeness for BeeBrain.
 
@@ -246,15 +246,17 @@ other module untouched.
 
 ## Relation to connectome and omics literature
 
-Recent honey-bee brain atlases combine single-cell and spatial
-transcriptomics with behavioural context
-[@g3journal2023scrna; @naturecomm2025spatialbrain]. Reference genomes and
+Single-nucleus and spatial transcriptomics describe worker-brain gene regulatory
+networks associated with behavioural maturation [@naturecomm2025spatialbrain].
+The single-cell study of developing worker prepupae and pupae
+[@g3journal2023scrna] is developmental context, not a brain-cell atlas or a
+validation target for AL–MB–CX dynamics. Reference genomes and
 HymenopteraMine annotation [@wallberg2019hav31; @walsh2022hgd] define
 what a genome-to-circuit join could look like. BeeStack's current BeeBrain
 path instead ingests the Honey-Bee Standard Brain structural atlas and
 registered activity summaries (odor panels, antennal kinematics,
 dance-follower positioning) with parseable fraction
-0.700.
+N/A.
 
 Functional Granger connectivity from calcium imaging
 [@szyszka2023granger] remains a documented blocker when connectivity

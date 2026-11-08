@@ -339,7 +339,7 @@
     "frames_with_any_contacts": 96,
     "frames_with_bee_bee_contacts": 96,
     "frames_with_floor_contacts": 89,
-    "min_contact_distance": -0.007152310767314903,
+    "min_contact_distance": -0.007151945532773438,
     "passed": true,
     "sample_contact_geoms": [
       "floor<->bee_00__contact_core:-0.00041",

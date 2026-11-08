@@ -1,32 +1,29 @@
 # Troubleshooting
 
-## `uv sync` Fails While Building `dm-tree`
+## Interpreter or native dependency build failures
 
-`flybody` → `dm-control` → `dm-tree` 0.1.8 publishes no wheel for Python 3.14+
-and its source build fails without a CMake toolchain, so `uv sync` aborts before
-installing anything. This repository pins its interpreter in `.python-version`,
-the same file CI reads, and that pin is the first thing to check when this build
-fails. `uv.lock` resolves `dm-tree` 0.1.10 below Python 3.13 and 0.1.8 at 3.13
-and above, so an override below 3.13 selects the other branch. That is read from
-the lock rather than measured on your machine, and it is the branch to try:
+Use `uv sync --locked --all-extras` with `.python-version` (3.12.16).
+The pinned FlyBody commit requires NumPy 1.26.4; BeeStack therefore declares
+Python >=3.11,<3.13 rather than advertising unverified newer interpreters.
+The previous 3.15 CI pin attempted source builds and failed while loading HDF5
+for h5py; changing a prose recommendation or installing only CMake did not fix
+that dependency/runtime mismatch. The current pin uses compatible locked wheels.
 
-```bash
-uv sync --python 3.12
-```
-
-If your shell, editor, or CI image forces an interpreter other than the pinned
-one, override it the same way.
+Do not change the GitVault management interpreter or host configuration to
+repair a contained project's runtime. Under inherited admission rules, use the
+qualified bounded offline test runner; acquire exact dependency artifacts in a
+separate admitted step. Missing prerequisites remain explicit, not mocked out.
 
 ## `uv run python scripts/fetch_empirical_bee_data.py` Is Slow
 
 The default fetch attempts full curated downloads. Some Dryad archives are large.
-Existing non-empty files are skipped, so reruns should be much faster. Use:
+Only cache files with a verified `<filename>.complete.json` size/SHA-256 record
+are skipped. A nonempty historical file alone does not prove transfer completion.
+For catalog-only work use:
 
 ```bash
 uv run python scripts/fetch_empirical_bee_data.py --metadata-only
 ```
-
-when you only need catalogs.
 
 ## Dryad Returns 401, 405, Or Another HTTP Error
 

@@ -25,8 +25,8 @@ def test_extract_pandoc_citations_ignores_inline_code() -> None:
 
 def test_source_audit_flags_missing_keys_and_doi_mismatches(tmp_path: Path) -> None:
     project = tmp_path
-    manuscript = project / "manuscript"
-    manuscript.mkdir()
+    manuscript = project / "docs" / "manuscript"
+    manuscript.mkdir(parents=True)
     (manuscript / "01_intro.md").write_text(
         "A cited claim [@present; @missing]. A digital twin is complete.\n",
         encoding="utf-8",
@@ -53,7 +53,7 @@ def test_source_audit_flags_missing_keys_and_doi_mismatches(tmp_path: Path) -> N
     assert "missing" in audit.missing_citation_keys
     assert audit.doi_mismatches == ("present: expected 10.0000/right, found 10.0000/wrong",)
     assert audit.unconservative_digital_twin_claims == (
-        "manuscript/01_intro.md: A cited claim [@present; @missing]. A digital twin is complete.",
+        "docs/manuscript/01_intro.md: A cited claim [@present; @missing]. A digital twin is complete.",
     )
 
 
@@ -133,8 +133,8 @@ def test_external_dataset_registry_records_are_unwired_with_blockers() -> None:
 def test_source_audit_flags_figure_registry_keys_and_dois_missing_from_bib(
     tmp_path: Path,
 ) -> None:
-    manuscript = tmp_path / "manuscript"
-    manuscript.mkdir()
+    manuscript = tmp_path / "docs" / "manuscript"
+    manuscript.mkdir(parents=True)
     (manuscript / "01_intro.md").write_text("No bracket citations here.\n", encoding="utf-8")
     (manuscript / "references.bib").write_text(
         """

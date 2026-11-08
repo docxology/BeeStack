@@ -84,7 +84,7 @@ def test_write_figure_artifacts_normalizes_project_local_plot_paths(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    monkeypatch.chdir(tmp_path)
+    monkeypatch.chdir(tmp_path.parent)
     fig = _varied_png(tmp_path / "fig.png")
     sidecar = write_figure_artifacts(
         fig,
@@ -100,6 +100,7 @@ def test_write_figure_artifacts_normalizes_project_local_plot_paths(
         source_data="output/data/run_summary.json",
         validation_status="nonblank",
         regeneration_command="uv run python scripts/analysis_pipeline.py",
+        project_root=tmp_path,
     )
     data_payload = json.loads(figure_data_path(fig).read_text(encoding="utf-8"))
 

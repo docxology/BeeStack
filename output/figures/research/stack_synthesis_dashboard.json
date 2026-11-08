@@ -38,18 +38,18 @@
   "fidelity": "cross-stack synthesis diagnostic, not biological validation",
   "figure_path": "output/figures/research/stack_synthesis_dashboard.png",
   "manuscript_label": "fig:stack_synthesis_dashboard",
-  "manuscript_section": "manuscript/11_research_synthesis.md",
+  "manuscript_section": "docs/manuscript/11_research_synthesis.md",
   "plot_data_path": "output/figures/research/stack_synthesis_dashboard_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 1351,
+    "height_px": 1352,
     "max_intensity": 255,
-    "mean_intensity": 221.00976613224648,
+    "mean_intensity": 224.88031569425468,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 62.56899489160075,
-    "width_px": 2015
+    "std_intensity": 60.13539790655296,
+    "width_px": 2018
   },
   "regeneration_command": "uv run python scripts/run_research_suite.py",
   "schema": "beestack.figure.v1",
@@ -63,15 +63,15 @@
   "validation_status": "nonblank synthesis diagnostic with plot data",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 1.491,
+    "aspect_ratio": 1.493,
     "figure_role": "dashboard",
-    "height_px": 1351,
+    "height_px": 1352,
     "label_density": "dense",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 2015,
-    "min_dimension_px": 1351,
+    "max_dimension_px": 2018,
+    "min_dimension_px": 1352,
     "readability_status": "pass",
     "split_group": "stack_synthesis",
-    "width_px": 2015
+    "width_px": 2018
   }
 }

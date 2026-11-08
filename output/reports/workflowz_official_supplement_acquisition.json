@@ -1,0 +1,20 @@
+{
+  "url": "https://mdpi-res.com/d_attachment/insects/insects-14-00539/article_deploy/insects-14-00539-s001.zip",
+  "doi": "10.3390/insects14060539",
+  "http_status": 200,
+  "size": 2706232,
+  "sha256": "409246c65652cffa63122df7c3fb544b7e29e9e699d7b0cfe32ec6070cd64af9",
+  "source_identity": "85560b1d623c69662b6199c2efa2ea36a1ee8615c98ce06f93b9d8c21a2b1c61",
+  "members": [
+    {
+      "name": "insects-2398084-supplementary.pdf",
+      "size": 2941091
+    }
+  ],
+  "producer": "Qualified management-Python acquisition reuses exact source-bound stdlib URL, redirect, stream and receipt helpers; not a project-CLI or scientific-runtime proof.",
+  "source_sha256": {
+    "src/beestack/brain/empirical_fetch.py": "7c130b0f81793ff6eda50b02dade416ba96a9db50d6bae1fb0ee037530915b2f",
+    "src/beestack/security/url_policy.py": "bd6c2c9b8341decef58aeda5f09651283c35ff60abe897251c1df1e75d4ad433",
+    "src/beestack/security/path_safety.py": "4a6f9a75eaf8fdaf524a8150614d618b772149e2ba9b5596f736b3661621bc0a"
+  }
+}

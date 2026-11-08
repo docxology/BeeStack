@@ -1,15 +1,20 @@
 # Empirical Results {#sec:empirical_results}
 
-The empirical pipeline is BeeBrain's connection to real *Apis mellifera*
-data. It separates anatomy evidence from activity evidence, records
-the parseable-source fraction explicitly, and writes one JSON report
-per evidence channel so downstream consumers — the manuscript, the
-research suite, the methods-analysis pass, and the readiness review —
-can audit what was loaded, what was parsed, and what is missing.
+The aggregate empirical pipeline connects BeeBrain to local *Apis mellifera*
+data only after at least one parseable odor-response panel is present. A
+successful aggregate separates anatomy from activity evidence and writes
+channel-specific reports. With no odor panel, the aggregate remains unavailable:
+standalone parsers may still read other local modalities, but retained reports
+are not automatically promoted to current observations.
+
+Current odor-response analysis availability: `historical_unavailable`.
+When payloads are absent, N/A denotes unavailable current measurements.
+Retained empirical reports and figures are historical snapshots, explicitly
+marked in their sidecars/index; they do not establish current data availability.
 
 ## Empirical analysis reports
 
-The empirical pipeline writes:
+When that prerequisite is met, the empirical pipeline writes:
 
 - `output/data/empirical_analysis.json` — workbook, CSV, MAT,
   anatomy, and template-bank summaries plus stack-integration
@@ -26,23 +31,23 @@ The empirical pipeline writes:
   matrix;
 - `output/data/bee_brain_end_to_end_report.json` — typed BeeBrain
   anatomy and activity report;
-- `output/data/bee_brain_connectome.json` — typed structural
-  projectome graph (HSB VRML wiring; synaptic tier explicitly unavailable).
+- `output/data/bee_brain_connectome.json` — a schematic pathway graph when
+  supporting assets are absent, with separately identified structural links
+  only where local HSB VRML files support them; synaptic evidence remains unavailable.
 
 ## Connectome evidence tiers
 
 BeeStack distinguishes **structural**, **functional**, and **synaptic**
 connectome evidence. The generated connectome report tier is
-structural_projectome with 95 nodes and
-6 structural tract edges; synaptic
+N/A with N/A nodes and
+0 structural tract edges; synaptic
 edge count is 0. Structural coverage
-is 1.000 against the Honeybee Standard
+is N/A against the Honeybee Standard
 Brain assets on disk [@brandt2005standardbrain]. No public whole-brain
-synaptic connectome for *Apis mellifera* is claimed. Szyszka
-[@szyszka2023granger] MDPI supplementary Table S1 (Wilcoxon template tests)
-is parsed locally; the VAR Granger connectivity matrix remains unavailable
-on public deposit (authors provide data on request), so functional Granger
-edges are not emitted in `bee_brain_connectome.json`.
+synaptic connectome for *Apis mellifera* is claimed. A standalone parser can
+read the Szyszka [@szyszka2023granger] supplementary Table S1 Wilcoxon tests
+when that supplement is local. Those tests are not a VAR Granger matrix;
+functional Granger edges are not emitted merely from parsing the table.
 
 ## Anatomy evidence
 
@@ -55,10 +60,9 @@ Anatomy records summarize:
 - neuropil abbreviations (a vocabulary required to align activity
   panels against atlas regions).
 
-The latest run loads 7 anatomy inventories.
-These inventories are typed (`AnatomyInventory` dataclasses) and
-serialized so that downstream summaries do not have to re-parse the
-raw ZIP/HTML payloads at every analysis step.
+The current aggregate contains N/A anatomy inventories
+when available. `AtlasInventory` records serialize ZIP/VRML summaries;
+an absent aggregate does not certify that every standalone anatomy input is absent.
 
 ## Activity evidence
 
@@ -77,89 +81,51 @@ Activity records summarize:
   [@galizia1999glomerular] combined with Szyszka transient
   dynamics [@szyszka2023granger]).
 
-The latest run contains 48 empirical panels,
-1 antennal summaries, and
-24 integrated templates. The waggle-follower
-analysis contributes 59 tracks with
-confidence 0.289 when the Figshare source is
+The latest run contains N/A empirical panels,
+N/A antennal summaries, and
+N/A integrated templates. The waggle-follower
+analysis contributes N/A tracks with
+confidence N/A when the Figshare source is
 local and parseable.
 
 ## Data completeness
 
 The brain-data completeness panel reports a parseable-source fraction
-of 0.700 and a source-verified fraction of
-1.000. The parseability-readiness flag is
-False against the recorded 0.800
+of N/A and a source-verified fraction of
+N/A. The parseability-readiness flag is
+N/A against the recorded N/A
 target. That flag reflects the parseable-source fraction only; source-verified
 records with explicit blockers are tracked separately and do not substitute for
 missing parseable payloads. In the current generated evidence snapshot,
-10 curated BeeBrain sources are registered,
-8 have local payloads,
-7 are parseable, and
-3 source-verified records remain
+N/A curated BeeBrain sources are registered,
+N/A have local payloads,
+N/A are parseable, and
+N/A source-verified records remain
 blocked with explicit remediation notes. Empirically known gaps are catalogued as
-`EMPIRICAL_KNOWN_GAP_COUNT = 1`. The Paoli
-MATLAB calcium archive [@paoli2024dryad] is now downloaded and parsed
-into empirical response summaries, where it serves as a citation anchor;
-it is not yet wired as a model input or held-out validation target, so
-its contribution remains evidentiary rather than integrative. BeeStack
-preserves this distinction between registered sources, local payloads,
-parsed summaries, and model inputs rather than fabricating synthetic
-traces to claim integration it has not yet performed.
+`EMPIRICAL_KNOWN_GAP_COUNT = 1`. The current
+run records N/A parsed calcium datasets. The Paoli
+archive [@paoli2024dryad] remains acquisition-gated when the manifest records
+an authorization failure or absent payload; a registered source or downloaded
+README is not a parsed calcium recording. When compatible recordings are
+present, the pipeline can derive response templates for the integrated bank.
+Neither parsing nor template alignment establishes held-out predictive or
+biological validation. No synthetic traces replace missing empirical data.
 
-## Empirical figures
+## Figure availability
 
-Figures under `output/figures/empirical/` report panel quality, panel
-heatmaps, stack alignment, antennal movement, waggle-follower
-alignment, waggle-phase coupling, recruitment-decoding inputs, data
-completeness, anatomy assets, simplified anatomy projection, neuropil
-coverage, and activity summaries. Each figure is registered in the
-manuscript figure index with its backend, fidelity tier, and
-regeneration command.
+Historical empirical images remain under `output/figures/empirical/` for
+inspection and custody. They are not embedded here as current results while
+their generating inputs cannot be re-established. The
+[figure index](../../output/reports/manuscript_figure_index.md) records each
+artifact's availability, backend, claim tier and regeneration command.
 
-[@fig:connectome_structural_graph] shows the structural-projectome graph as an
-availability witness, not a synaptic-connectome claim.
-
-![Matplotlib beebrain structural projectome graph shows Network layout of Honeybee Standard Brain neuropils, named neuron/tract nodes, and documented structural tract edges. Generated from output/data/bee_brain_connectome.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not claim synaptic adjacency or functional Granger completeness.](../figures/empirical/connectome_structural_graph.png){#fig:connectome_structural_graph}
-
-[@fig:connectome_completeness_tiers] separates structural, functional, and
-synaptic tiers so unavailable evidence stays visible.
-
-![Matplotlib connectome evidence tiers shows Coverage bars for structural, functional, and synaptic connectome tiers with synaptic tier explicitly unavailable. Generated from output/data/brain_data_completeness.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not upgrade unavailable tiers into supported claims.](../figures/empirical/connectome_completeness_tiers.png){#fig:connectome_completeness_tiers}
-
-[@fig:empirical_panel_heatmap] gives the reader the panel-level empirical
-response surface used by the reduced BeeBrain summaries.
-
-![Matplotlib empirical odor-response panel heatmap shows Heatmap of the first registered empirical odor-response panel showing channel responses across stimuli. Generated from output/data/empirical_analysis.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not support connectome-scale or calcium-validated dynamics.](../figures/empirical/empirical_panel_heatmap.png){#fig:empirical_panel_heatmap}
-
-[@fig:empirical_stack_alignment] reports alignment between available empirical
-templates and the reduced module contracts without claiming biological
-ground-truth calibration.
-
-![Matplotlib beebrain empirical stack alignment shows Alignment scores between empirical templates and reduced BeeBrain module contracts. Generated from output/data/empirical_analysis.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not calibrate reduced kernels to biological ground truth.](../figures/empirical/empirical_stack_alignment.png){#fig:empirical_stack_alignment}
-
-[@fig:empirical_anatomy_projection] projects Honeybee Standard Brain geometry
-into a manuscript-visible atlas witness.
-
-![Matplotlib honeybee standard brain vrml projection shows VRML geometry centroids with structural tract overlays when the connectome report is available. Generated from output/data/bee_brain_connectome.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not infer functional or synaptic connectivity.](../figures/empirical/empirical_anatomy_projection.png){#fig:empirical_anatomy_projection}
-
-[@fig:empirical_activity_summary] condenses the current activity evidence while
-preserving the calcium-availability boundary.
-
-![Matplotlib beebrain empirical activity summary shows Reduced activity summary combining odor separability, calcium fractions, aftersmell response, and antennal drive. Generated from output/data/empirical_analysis.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not support calcium-validated dynamics; parsed calcium traces are a citation anchor, not a model input.](../figures/empirical/empirical_activity_summary.png){#fig:empirical_activity_summary}
-
-[@fig:waggle_follower_alignment] maps local Hadjitofi-Webb follower summaries
-to BeeStack decoding confidence without validating colony-scale recruitment.
-
-![Matplotlib waggle follower empirical alignment shows Hadjitofi–Webb follower antennal alignment metrics mapped to BeeStack decoding confidence. Generated from output/data/waggle_follower_analysis.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate colony-scale recruitment.](../figures/empirical/waggle_follower_alignment.png){#fig:waggle_follower_alignment}
-
-[@fig:brain_data_completeness_matrix] summarizes parseable empirical panels and known gaps.
-
-![Matplotlib brain data completeness matrix shows Empirical completeness matrix showing which BeeBrain source rows are registered, locally available, parseable, and source-verified. Generated from output/data/brain_data_completeness.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not replace absent calcium payloads with synthetic traces.](../figures/empirical/brain_data_completeness_matrix.png){#fig:brain_data_completeness_matrix}
-
-[@fig:brain_multimodal_source_map] maps multimodal BeeBrain sources to assimilation status.
-
-![Matplotlib beebrain multimodal source map shows Multimodal source map organizing anatomy, odor-response, antennal, and waggle-follower records by integration target and local availability. Generated from output/data/brain_data_completeness.json and empirical analysis report. Sidecar validation checks raster, source routing, and registered claim tier. Does not support a complete multimodal empirical assimilation pipeline.](../figures/empirical/bee_brain_multimodal_source_map.png){#fig:brain_multimodal_source_map}
+Panel heatmaps and alignment plots require current odor-response inputs.
+Anatomy projections require actual geometry; documented schematic pathways do
+not acquire measured coordinates. Waggle plots require the corresponding
+follower records, and calcium summaries require compatible recordings. A
+retained PNG, successful parse or readable sidecar does not satisfy those
+scientific prerequisites. Newly generated synthetic/model figures elsewhere
+in this manuscript remain explicitly separate from biological observations.
 
 ## Why the gap honesty matters
 
@@ -167,7 +133,7 @@ A reduced BeeBrain that substitutes synthetic values for missing calcium
 traces would still produce a complete-looking manuscript. The gap-explicit
 design here deliberately makes incompleteness visible in the hydrated
 manuscript: `BRAIN_DATA_PARSEABLE_FRACTION =
-0.700` and `EMPIRICAL_KNOWN_GAP_COUNT =
+N/A` and `EMPIRICAL_KNOWN_GAP_COUNT =
 1` are not editorial choices; they are
 the same values the readiness review and research-suite scorecards
 read. A reviewer can read the manuscript, the JSON reports, and the

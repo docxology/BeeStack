@@ -23,7 +23,7 @@ every record has a contract that pinned tests check at every commit.
   waggle-decoding, and empirical-alignment fields. The AL channel
   preserves 170 glomeruli; the MB carries
   170,000 Kenyon cells per hemisphere at $\rho =
-  0.02$ sparsity (≈ 6,800 active across the
+  0.02$ sparsity ($\approx$ 6,800 active across the
   whole-brain 170,000×2 population); the
   CX uses 32 heading bins
   [@stone2017central; @honkanen2019sky].
@@ -40,7 +40,7 @@ every record has a contract that pinned tests check at every commit.
   scenes with contact metrics.
 - **BeeNiche** maintains comb (864 voxels), thermal field,
   and foraging-context state, with explicit BEEHAVE
-  [@becher2014beehave] and Hiveopolis [@narsicht2020hiveopolis]
+  [@becher2014beehave] and Hiveopolis [@hiveopolis2019project]
   adapter schemas to support future runtime coupling.
 
 ## The cross-layer contracts
@@ -68,12 +68,13 @@ same data contracts before it can enter the closed loop.
 
 ## Timing and scale
 
-The default configuration uses a 100 Hz
-observation–action boundary, 10 Hz policy cadence
-(typical: every 10 control steps), and 0.5 ms physics
-step. These are interface and integration choices that keep the layer
-contracts aligned with FlyBody/MuJoCo stepping; they should not be read
-as calibrated honey-bee sensorimotor latency estimates.
+The configuration declares a 100 Hz control boundary,
+10 Hz target policy cadence (every
+10 control steps), and 0.5 ms physics
+setting. The current reduced loop instead selects a policy once per control
+tick and does not execute MuJoCo substeps. Strict FlyBody/MuJoCo scenes are
+separate evidence paths. The target policy and physics settings are not
+measurements of executed reduced-loop cadence or calibrated honey-bee latency.
 
 The biological scale assumptions that shape the current reduced
 kernels are recorded in `config.yaml` and propagated as manuscript
@@ -95,13 +96,14 @@ variables:
 
 ## Determinism and reproducibility
 
-Every kernel reads a single integer `seed = 20260513` from
-`config.yaml` and derives all randomness from it. Wall-clock effects
-(parallelism, GPU non-determinism) are avoided: BeeStack runs on CPU
-through `numpy` [@millman2020scientific] for deterministic tensor
-operations, and MuJoCo physics is stepped deterministically. Re-running
-the same seed produces byte-identical manuscript variables, byte-similar
-figures (up to rasterization), and identical JSON reports.
+Run-owned random projections and agent initialization derive their seeds from
+`seed = 20260513` using NumPy [@millman2020scientific]. A clean,
+independently installed wheel rerun from a different working directory reproduced
+byte-identical `run_summary.json`, `simulation_records.json`, and
+`task_allocation.json`; the hashes and execution scope are recorded in
+`output/reports/workflowz_final_wheel_runtime.json`. This does not establish
+identical rendering, dependency environments, metadata timestamps, or empirical
+collection state across platforms.
 
 ## The analysis pipeline
 
@@ -113,7 +115,7 @@ records what level of evidence backs each claim. The animation manifest
 currently contains 9 animations
 (5 FlyBody, 4
 reduced schematic), and the manuscript figure index links
-69 figures and visual artifacts to their
+75 figures and visual artifacts to their
 backend, fidelity tier, validation status, and regeneration command.
 
 [@fig:beestack_graphical_abstract] summarizes module coverage and stack contracts at a glance.

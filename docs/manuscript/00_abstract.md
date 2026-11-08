@@ -28,29 +28,31 @@ deterministic kernels with explicit contracts and labeled gaps.
 
 Field-scale colony-health stressors—mites, viruses, pesticides, and
 survey-documented losses—motivate the roadmap's colony ledger and assimilation
-surfaces [@sec:roadmap], but BeeStack v0 does not model those drivers as
+surfaces [@sec:roadmap], but the current BeeStack implementation does not model those drivers as
 typed state.
 
-The stack is seeded with `{{CONFIG_SEED}}`, runs a {{CONTROL_RATE_HZ}} Hz
-observation–action boundary on top of a {{PHYSICS_DT_MS}} ms physics step,
-and hydrates this manuscript from variables generated at run time. The
+The stack is seeded with `{{CONFIG_SEED}}` and hydrates this manuscript from
+variables generated at run time. Its reduced loop advances at a configured
+{{CONTROL_RATE_HZ}} Hz control boundary; the {{PHYSICS_DT_MS}} ms physics
+setting is not executed as MuJoCo substeps inside that loop. The
 default configuration preserves {{GLOMERULI}} antennal-lobe glomeruli,
 {{KC_PER_HEMISPHERE}} Kenyon cells per hemisphere with sparse mushroom-body
 activity at $\rho = {{KC_SPARSITY}}$ (yielding {{ACTIVE_KC}} active Kenyon
 cells across both hemispheres), {{HEADING_BINS}} central-complex heading bins
 [@stone2017central; @honkanen2019sky], and a {{WING_STROKE_HZ}} Hz wing
-stroke. The empirical run currently integrates {{EMPIRICAL_PANEL_COUNT}}
-response panels, {{ANATOMY_INVENTORY_COUNT}} anatomy inventories,
-{{ANTENNAL_SUMMARY_COUNT}} antennal-movement summaries, and
-{{EMPIRICAL_TEMPLATE_COUNT}} odor templates, with a parseable-source
-fraction of {{BRAIN_DATA_PARSEABLE_FRACTION}}. The research suite reports
+stroke. Empirical availability is `{{EMPIRICAL_AVAILABILITY}}`. When
+local payloads support a fresh analysis, its inventory contains
+{{EMPIRICAL_PANEL_COUNT}} response panels, {{ANATOMY_INVENTORY_COUNT}}
+anatomy inventories, {{ANTENNAL_SUMMARY_COUNT}} antennal summaries, and
+{{EMPIRICAL_TEMPLATE_COUNT}} odor templates; unavailable values remain N/A.
+The parseable-source fraction is {{BRAIN_DATA_PARSEABLE_FRACTION}}. The research suite reports
 {{RESEARCH_VISUALIZATION_COUNT}} visualization artifacts,
 {{RESEARCH_SWEEP_COUNT}} deterministic sensitivity sweeps, and
-{{RESEARCH_EVIDENCE_COUNT}} empirical evidence records. All module
-contract self-tests pass — a config-band self-test rate of
-{{RESEARCH_VALIDATION_FRACTION}} — measured alongside
-{{RESEARCH_KNOWN_GAP_COUNT}} explicitly catalogued open gaps, so this
-rate denotes contract conformance rather than biological validation. The methods-analysis
+{{RESEARCH_EVIDENCE_COUNT}} empirical evidence records. Registered module
+contract checks yield a config-band self-test rate of
+{{RESEARCH_VALIDATION_FRACTION}}, measured alongside
+{{RESEARCH_KNOWN_GAP_COUNT}} explicitly catalogued open gaps. This
+rate measures configured contract checks, not biological validation. The methods-analysis
 pass adds {{METHODS_PANEL_COUNT}} module dashboards,
 {{METHODS_FIGURE_COUNT}} static methods figures, and
 {{METHODS_EVIDENCE_LINK_COUNT}} manuscript-evidence cross-links.

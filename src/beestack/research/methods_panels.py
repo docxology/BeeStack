@@ -91,7 +91,7 @@ def _body_panel(
         evidence=(
             ManuscriptEvidenceLink(
                 "BeeBody",
-                "manuscript/05_methods_body_swarm.md",
+                "docs/manuscript/05_methods_body_swarm.md",
                 "output/reports/bee_visual_verification.md",
                 "visual_validation",
                 "BeeBody animations are FlyBody-backed and bee-like under cue scoring.",
@@ -131,10 +131,13 @@ def _brain_panel(
         "mean_odor_separability": _float(activity.get("mean_odor_separability")),
         "calcium_dataset_count": calcium_count,
         "waggle_follower_confidence": _float(waggle.get("confidence_score")),
-        "waggle_decoding_improvement": _float(waggle.get("decoding_improvement_fraction")),
+        "waggle_no_antennae_error_count": _float(waggle.get("no_antennae_error_count")),
+        "waggle_both_antennae_error_count": _float(waggle.get("both_antennae_error_count")),
         "brain_data_parseable_fraction": _float(completeness.get("parseable_fraction")),
         "brain_source_verified_fraction": _float(completeness.get("source_verified_fraction")),
     }
+    if waggle.get("decoding_improvement_fraction") is not None:
+        metrics["waggle_decoding_improvement"] = float(waggle["decoding_improvement_fraction"])
     checks = _scorecard_checks(scorecards, "BeeBrain") + (
         _check(
             "empirical_panels_present",
@@ -197,7 +200,7 @@ def _brain_panel(
         evidence=(
             ManuscriptEvidenceLink(
                 "BeeBrain",
-                "manuscript/06_methods_brain_mind.md",
+                "docs/manuscript/06_methods_brain_mind.md",
                 "output/reports/empirical_analysis.md",
                 "empirical_analysis",
                 "BeeBrain uses real downloaded or cataloged anatomy/activity sources where present.",
@@ -229,7 +232,7 @@ def _brain_panel(
             ),
             ManuscriptEvidenceLink(
                 "BeeBrain",
-                "manuscript/06_methods_brain_mind.md",
+                "docs/manuscript/06_methods_brain_mind.md",
                 "output/reports/waggle_follower_analysis.md",
                 "waggle_follower_analysis",
                 "BeeBrain integrates curated waggle follower antennal-position decoding evidence when local.",
@@ -299,7 +302,7 @@ def _mind_panel(
         evidence=(
             ManuscriptEvidenceLink(
                 "BeeMind",
-                "manuscript/06_methods_brain_mind.md",
+                "docs/manuscript/06_methods_brain_mind.md",
                 "output/figures/methods/beemind_methods_policy_landscape.png",
                 "policy_diagnostic",
                 "BeeMind exposes selected and competing policies with finite EFE terms.",
@@ -403,7 +406,7 @@ def _swarm_panel(
         evidence=(
             ManuscriptEvidenceLink(
                 "BeeSwarm",
-                "manuscript/05_methods_body_swarm.md",
+                "docs/manuscript/05_methods_body_swarm.md",
                 "output/reports/flybody_contact_physics.md",
                 "strict_contact_physics",
                 "BeeSwarm production waggle/collision scenes record actual MuJoCo contacts.",
@@ -479,15 +482,15 @@ def _niche_panel(
         evidence=(
             ManuscriptEvidenceLink(
                 "BeeNiche",
-                "manuscript/07_methods_niche.md",
+                "docs/manuscript/07_methods_niche.md",
                 "output/figures/methods/beeniche_methods_comb_thermal.png",
                 "niche_diagnostic",
                 "BeeNiche reports comb, thermal, and forage metrics through deterministic kernels.",
                 "uv run python scripts/run_methods_analysis.py",
                 ("FINAL_COMB_FRACTION", "BROOD_TEMP_ERROR_C"),
                 "generated",
-                ("kronenberg1982colonial", "johnson2009self", "becher2014beehave"),
-                ("10.1111/1365-2664.12222",),
+                ("kronenberg1982colonial", "becher2014beehave"),
+                ("10.1007/BF00688889", "10.1111/1365-2664.12222"),
                 "methods_figure",
                 "reduced_validated_kernel",
             ),
@@ -531,6 +534,13 @@ def _panel(
             backends=tuple(record["backend"] for record in visual_records),
             fidelity_levels=tuple(record["fidelity_level"] for record in visual_records),
             validation_statuses=tuple(record["validation_status"] for record in visual_records),
+            source_data=tuple(record.get("source_data", "unrecorded") for record in visual_records),
+            regeneration_commands=tuple(
+                record.get("regeneration_command", "unrecorded") for record in visual_records
+            ),
+            availability_statuses=tuple(
+                record.get("availability_status", "unrecorded") for record in visual_records
+            ),
         ),
         manuscript_evidence=evidence,
         known_gaps=tuple(str(gap) for gap in scorecard.get("known_gaps", ()))
@@ -599,20 +609,28 @@ def _visual_record_from_artifact(artifact: dict[str, Any]) -> dict[str, str]:
         "path": project_relative_path(
             str(artifact.get("path") or artifact.get("gif_path") or "unknown_artifact")
         ),
-        "backend": str(artifact.get("backend") or artifact.get("render_backend") or "matplotlib"),
-        "fidelity_level": str(artifact.get("fidelity_level", "diagnostic")),
+        "backend": str(artifact.get("backend") or artifact.get("render_backend") or "unrecorded"),
+        "fidelity_level": str(
+            artifact.get("fidelity") or artifact.get("fidelity_level") or "unrecorded"
+        ),
         "validation_status": str(artifact.get("validation_status", "generated")),
+        "source_data": str(
+            artifact.get("source_data")
+            or artifact.get("source")
+            or artifact.get("scene_xml")
+            or "unrecorded"
+        ),
+        "regeneration_command": str(artifact.get("regeneration_command") or "unrecorded"),
+        "availability_status": str(artifact.get("availability_status") or "unrecorded"),
     }
 
 
 def _deduplicate_records(records: list[dict[str, str]]) -> list[dict[str, str]]:
-    seen: set[str] = set()
-    unique = []
+    # Research records already retain authoritative sidecar provenance.
+    unique: dict[str, dict[str, str]] = {}
     for record in records:
-        if record["path"] not in seen:
-            unique.append(record)
-            seen.add(record["path"])
-    return unique
+        unique.setdefault(record["path"], record)
+    return [unique[path] for path in sorted(unique)]
 
 
 def _scenario_sweep_panels(research_report: dict[str, Any]) -> tuple[ScenarioSweepPanel, ...]:

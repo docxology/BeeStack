@@ -40,13 +40,14 @@ longitudinal assimilation, held-out validation residuals, and a generated
 artifact in `output/data/` or `output/reports/`.
 
 Scholarship refresh hooks for those axes include: **axis 1** — BeeBiome
-SRA metadata and pathogen-assay parsers [@rechlaval2025beebiome]; **axis 4**
-— spatial/snRNA-seq validation tasks against reduced AL–MB–CX backends
-[@naturecomm2025spatialbrain; @g3journal2023scrna]; **axis 6** — EPA hive
+SRA metadata and pathogen-assay parsers [@rechlaval2025beebiome], with
+developmental whole-worker single-cell context [@g3journal2023scrna]; **axis 4**
+— brain spatial/snRNA-seq validation tasks against reduced AL–MB–CX backends
+[@naturecomm2025spatialbrain]; **axis 6** — EPA hive
 matrices, landscape pesticide exposure, and forage metabarcoding
 [@epa2024hivematrices; @hisamoto2024landscape; @chege2025forage]; **axis 7**
 — Auburn/AIA and COLOSS-style colony-loss surveys as assimilation targets
-with held-out residuals [@auburn2025survey; @colossbeebook], not as v0
+with held-out residuals [@auburn2025survey; @colossbeebook], not as current
 model outputs.
 
 ## 1. Build the colony-state ledger
@@ -75,23 +76,19 @@ posterior predictive checks.
 posterior artifact is written, with a `forecast_skill.md` report describing
 held-out residuals and uncertainty intervals.
 
-## 3. Integrate the acquired BeeBrain calcium evidence
+## 3. Acquire and validate BeeBrain calcium evidence
 
-The Paoli MAT calcium archive [@paoli2024dryad] is now downloaded and
-parsed into empirical response summaries, so acquisition and parsing are
-complete and the modality is reported as parseable rather than
-blocker-documented. The highest-leverage near-term move is to advance it
-from a citation anchor to a model input: wire the parsed calcium
-responses into the AL→MB encoding fidelity claim, expose them through the
-empirical alignment metric in the integrated results, and raise the
-calcium modality completeness beyond its current partial coverage in the
-methods-analysis panel.
+The Paoli MAT source [@paoli2024dryad] is registered, but registration does
+not establish acquisition or parsing. The current run records
+{{CALCIUM_DATASET_COUNT}} parsed calcium datasets; inspect the acquisition
+manifest for authorization and missing-payload blockers. The implemented
+pipeline can turn compatible local recordings into AL–MB response templates.
+The scientific upgrade is a held-out model-side residual, not merely another
+parsed panel or a higher source-completeness count.
 
-*Acceptance criterion:* the parsed calcium dataset feeds at least one
-model-side AL→MB validation residual (not just a reporting panel), and
-the calcium modality completeness recorded in
-`output/data/brain_data_completeness.json` rises above its current
-citation-anchor level.
+*Acceptance criterion:* a genuinely acquired, provenance-bound recording is
+parsed with valid protocol windows, enters a model-side comparison, and yields
+a held-out residual with uncertainty and explicit train/validation separation.
 
 ## 4. Calibrate BeeBody beyond visual MJCF
 
@@ -150,8 +147,9 @@ counts, with traceable provenance for each.
 
 Calibrate BeeNiche seasonal forage witnesses, add brood demography, and
 extend sparse 3D comb voxels while preserving the current adapter schemas
-[@johnson2009self; @kronenberg1982colonial]. Live Hiveopolis runtime
-coupling [@narsicht2020hiveopolis] is a longer-horizon target that
+[@kronenberg1982colonial]. Comb-growth parameters still require independent
+calibration; the unidentified comb-construction citation does not supply it.
+Live Hiveopolis runtime coupling [@hiveopolis2019project] is a longer-horizon target that
 this step enables.
 
 *Acceptance criterion:* a methods-analysis Niche panel that reports
@@ -205,7 +203,7 @@ in `output/reports/waggle_literature_regression.json`.
 
 ## What is intentionally *not* in the roadmap
 
-For clarity, the following are *not* roadmap items in v0:
+For clarity, the following are *not* current roadmap items:
 
 - a colony-health decision-support API;
 - a real-time hive sensor dashboard;

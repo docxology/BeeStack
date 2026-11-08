@@ -82,7 +82,7 @@ The scorecards make fidelity labels first-class.
   communication kernel.
 - **BeeNiche** is a voxel comb and thermal kernel with BEEHAVE and
   Hiveopolis adapter schemas [@becher2014beehave;
-  @narsicht2020hiveopolis].
+  @hiveopolis2019project].
 
 Each module also exposes contract coverage, validation pass count,
 empirical-evidence count, and known-gap count, so the heatmap row for
@@ -93,10 +93,10 @@ a module is interpretable without the surrounding prose.
 The sensitivity sweeps are deterministic: each sweep varies a single
 configuration knob over a fixed grid, records the resulting BeeStack
 diagnostics, and serializes the result to
-`output/data/sensitivity/<knob>.json`. The default sweep size is 5
-samples per knob, which is the smallest grid that produces a visible
-monotone signal on every recorded diagnostic without inflating CI
-wall-time. The sweeps are *not* a substitute for a Bayesian
+`output/data/sensitivity/sensitivity_sweeps.json`. The configured sweep grid
+supports inspection of parameter responses, including flat or non-monotone
+responses; it does not establish global sensitivity or calibrated uncertainty.
+The sweeps are *not* a substitute for a Bayesian
 calibration; they are a *contract-stability witness* that says: when
 the kernel is asked to change one parameter at a time, the
 intermediate states and final outputs respond consistently and within

@@ -2,17 +2,21 @@
 
 BeeStack keeps domain behavior in `src/beestack/` and keeps scripts thin. The
 public package surface is exported lazily from `beestack/__init__.py` via
-`_public_exports.py` (203 symbols). The objects below are the stable public
-surface used by orchestration and tests.
+`_public_exports.py`. The objects below are used by orchestration and tests.
 
 ## Core Contracts
 
-- `Observation`: sensor vector passed from BeeBody/Niche/Swarm into BeeBrain.
+- `Observation`: finite sensor vectors plus required full-bearing `heading_deg` (degrees); `angular_velocity` is radians/second, never orientation.
 - `Action`: body command selected through BeeMind and emitted to BeeBody.
 - `BrainState`: AL/MB/CX/dance/empirical-alignment output.
 - `BeliefState`: BeeMind latent colony/body/world belief record.
 - `BeeAgent` and `PheromoneField`: BeeSwarm agent and communication fields.
 - `CombGrid`: BeeNiche comb occupancy/thermal substrate.
+- `SimulationState.kenyon_projection`: model-owned immutable PN→KC connectivity, fixed across ticks for a model seed.
+
+Configuration rejects non-finite scalars, non-integral dimensions, invalid
+three-axis grids and unsupported thermal coefficients before state updates.
+Two-DOF wings have no pitch channel; missing channels cannot borrow another wing.
 
 ## BeeBrain Dataset Registry
 
@@ -74,6 +78,18 @@ large or access-restricted upstream payloads may be documented as
 source-verified blockers, but they must include parser status and remediation
 text rather than silently inflating parseable counts.
 
+Waggle model-error means/improvement and single-antenna means are nullable.
+Condition/channel observation counts distinguish missing evidence from measured
+zero; missing comparisons cannot increase confidence or recruitment alignment.
+`current_empirical_analysis(project_root, cfg)` requires a successful current
+stage, report/raw-input hashes, active configuration and implementation identity.
+Skips/failures retain historical files without publishing their measurements as
+current. Executable templates require complete observed grids and explicit finite
+shared sampling rates; fractional signed-rank statistics remain floats. Structural
+coverage requires loaded supporting assets; schematic pathways are not empirical
+projectome completeness. Byte integrity, source acquisition identity, parseability
+and biological validation are separate contracts.
+
 The BeeBrain model consumes the resulting templates through
 `process_observation(..., odor_templates=...)` and stack orchestration through
 `run_simulation(..., empirical_odor_templates=...)`.
@@ -118,6 +134,12 @@ containing scene XML, body-plan, contact-report, backend, and contact metric
 paths. They are intentionally called from scripts or visualization orchestrators,
 not from pure closed-loop domain kernels.
 
+`FlyBodyBeeBackend.step(state, action)` is reduced stepping, always labeled
+`reduced`; strict state-based use refuses rather than claiming FlyBody physics.
+Real environment/render methods remain the strict path.
+`run_bee_render_verification(project_root, cfg)` requires the resolved configuration
+for scene counts, paths and thresholds; periodic A→B→A motion is valid.
+
 ## BeeSwarm Waggle Recruitment
 
 - `DanceRecruitment`
@@ -145,6 +167,10 @@ evidence, visualization provenance, deterministic reduced-kernel sensitivity
 sweeps, and known gaps. Scripts own file I/O and use this API to write
 `output/reports/beestack_research_report.md` and
 `output/reports/beestack_research_report.json`.
+Assemblers accept explicit `project_root` and `artifact_metadata` sidecar mappings.
+Report `as_dict(project_root)` and figure writers normalize at a known-root boundary,
+not ambient cwd. Inventory paths are unique; backend/fidelity/source/regeneration
+and `availability_status` survive into the manuscript index.
 `EmpiricalEvidenceRecord.availability_status` is required and must be one of
 `parsed`, `generated`, `registered_absent`, `network_gated_absent`, or
 `missing_optional`.

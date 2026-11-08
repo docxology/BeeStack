@@ -7,7 +7,7 @@ from csv import DictReader
 from io import BytesIO, TextIOWrapper
 from pathlib import Path
 
-from ...security import assert_safe_zip_member, validate_zip_archive_bounds
+from ...security import ArchiveBudget, assert_safe_zip_member, validate_zip_archive_bounds
 from ..empirical_data import AntennalMovementSummary, summarize_antennal_movement_rows
 
 
@@ -32,8 +32,13 @@ def antennal_summaries_from_archive(
     dataset_id: str,
     archive: zipfile.ZipFile,
     prefix: str = "",
+    *,
+    budget: ArchiveBudget | None = None,
+    depth: int = 0,
 ) -> list[AntennalMovementSummary]:
     summaries: list[AntennalMovementSummary] = []
+    budget = budget if budget is not None else ArchiveBudget()
+    budget.enter(archive, depth)
     required_columns = {"Bee", "Plume", "Frame", "Odor_detector", "LeftTheta", "RightTheta"}
     for info in archive.infolist():
         if info.is_dir():
@@ -42,6 +47,7 @@ def antennal_summaries_from_archive(
         member_name = f"{prefix}{info.filename}"
         lowered = info.filename.lower()
         if lowered.endswith(".csv"):
+            budget.consume(info)
             with (
                 archive.open(info) as raw,
                 TextIOWrapper(raw, encoding="utf-8-sig", newline="") as text,
@@ -51,9 +57,11 @@ def antennal_summaries_from_archive(
                 if required_columns <= fieldnames:
                     summaries.append(summarize_antennal_movement_rows(rows, dataset_id=dataset_id))
         elif lowered.endswith(".zip"):
+            budget.consume(info)
             with zipfile.ZipFile(BytesIO(archive.read(info))) as nested:
-                validate_zip_archive_bounds(nested)
                 summaries.extend(
-                    antennal_summaries_from_archive(dataset_id, nested, prefix=f"{member_name}/")
+                    antennal_summaries_from_archive(
+                        dataset_id, nested, prefix=f"{member_name}/", budget=budget, depth=depth + 1
+                    )
                 )
     return summaries

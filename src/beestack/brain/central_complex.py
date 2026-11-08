@@ -24,6 +24,12 @@ def heading_ring(
     flow = np.asarray(optic_flow, dtype=float)
     if flow.shape != (2,):
         raise ValueError("optic_flow must have shape (2,)")
+    if not np.isfinite(flow).all() or not all(
+        math.isfinite(x) for x in (current_heading_deg, sky_compass_deg)
+    ):
+        raise ValueError("heading cues must be finite")
+    if not isinstance(cfg.brain.heading_bins, int) or cfg.brain.heading_bins <= 0:
+        raise ValueError("heading_bins must be a positive integer")
     flow_angle = (
         math.degrees(math.atan2(flow[1], flow[0]))
         if np.linalg.norm(flow) > 0
@@ -48,5 +54,7 @@ def heading_estimate_deg(distribution: Array) -> float:
     probs = np.asarray(distribution, dtype=float)
     if probs.ndim != 1 or probs.size == 0:
         raise ValueError("distribution must be a nonempty vector")
+    if not np.isfinite(probs).all() or np.any(probs < 0) or probs.sum() <= 0:
+        raise ValueError("distribution must be finite, nonnegative and have positive mass")
     bins = np.linspace(0.0, 360.0, probs.size, endpoint=False)
     return circular_mean_deg(list(bins), list(probs / probs.sum()))

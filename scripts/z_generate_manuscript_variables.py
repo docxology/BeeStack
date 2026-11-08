@@ -8,73 +8,45 @@ sources to `output/manuscript/` with `{{TOKEN}}` values resolved.
 from __future__ import annotations
 
 import json
-import re
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
-from beestack.manuscript_variables import generate_variables  # noqa: E402
-from beestack.pipeline import load_config  # noqa: E402
-
-TOKEN_RE = re.compile(r"\{\{([A-Z0-9_]+)\}\}")
+from beestack.manuscript_variables import hydrate_text  # noqa: E402
+from beestack.pipeline import manuscript_variables_for_project  # noqa: E402
 
 
-def load_summary() -> dict:
-    path = PROJECT_ROOT / "output" / "data" / "run_summary.json"
-    if not path.exists():
-        return {}
-    return json.loads(path.read_text(encoding="utf-8"))
+def hydrate_manuscript(project_root: Path, variables: dict[str, str]) -> None:
+    """Resolve every source before replacing or removing any hydrated section."""
 
-
-def load_artifacts() -> dict:
-    paths = {
-        "empirical_analysis": PROJECT_ROOT / "output" / "data" / "empirical_analysis.json",
-        "animation_manifest": PROJECT_ROOT / "output" / "data" / "animation_manifest.json",
-        "research_report": PROJECT_ROOT / "output" / "reports" / "beestack_research_report.json",
-        "methods_analysis": PROJECT_ROOT / "output" / "data" / "methods_analysis.json",
-        "manuscript_figure_index": PROJECT_ROOT
-        / "output"
-        / "data"
-        / "manuscript_figure_index.json",
-        "readiness_report": PROJECT_ROOT / "output" / "reports" / "project_readiness_review.json",
-        "stack_synthesis": PROJECT_ROOT / "output" / "data" / "stack_synthesis_review.json",
-        "digital_twin_readiness": PROJECT_ROOT / "output" / "data" / "digital_twin_readiness.json",
+    source_dir = project_root / "docs" / "manuscript"
+    sources = sorted(
+        path for path in source_dir.iterdir() if path.suffix in {".md", ".bib", ".yaml"}
+    )
+    if not any(path.name[:2].isdigit() and path.suffix == ".md" for path in sources):
+        raise ValueError("canonical manuscript has no numbered sections")
+    rendered = {
+        path.name: hydrate_text(path.read_text(encoding="utf-8"), variables)
+        if path.suffix == ".md"
+        else path.read_text(encoding="utf-8")
+        for path in sources
     }
-    artifacts = {}
-    for key, path in paths.items():
-        artifacts[key] = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
-    return artifacts
-
-
-def hydrate_text(text: str, variables: dict[str, str]) -> str:
-    def replace(match: re.Match[str]) -> str:
-        key = match.group(1)
-        if key not in variables:
-            raise KeyError(f"Unresolved manuscript variable: {key}")
-        return variables[key]
-
-    return TOKEN_RE.sub(replace, text)
+    out_dir = project_root / "output" / "manuscript"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    for name, text in rendered.items():
+        (out_dir / name).write_text(text, encoding="utf-8")
+    for stale in out_dir.iterdir():
+        if stale.suffix in {".md", ".bib", ".yaml"} and stale.name not in rendered:
+            stale.unlink()
 
 
 def main() -> None:
-    cfg = load_config(PROJECT_ROOT)
-    variables = generate_variables(cfg, load_summary(), load_artifacts())
+    variables = manuscript_variables_for_project(PROJECT_ROOT)
+    hydrate_manuscript(PROJECT_ROOT, variables)
     data_path = PROJECT_ROOT / "output" / "data" / "manuscript_variables.json"
     data_path.parent.mkdir(parents=True, exist_ok=True)
     data_path.write_text(json.dumps(variables, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
-    out_dir = PROJECT_ROOT / "output" / "manuscript"
-    out_dir.mkdir(parents=True, exist_ok=True)
-    for pattern in ("*.md", "*.bib", "*.yaml"):
-        for stale in out_dir.glob(pattern):
-            stale.unlink()
-    for path in sorted((PROJECT_ROOT / "manuscript").glob("*.md")):
-        resolved = hydrate_text(path.read_text(encoding="utf-8"), variables)
-        (out_dir / path.name).write_text(resolved, encoding="utf-8")
-    for path in sorted((PROJECT_ROOT / "manuscript").glob("*.bib")):
-        (out_dir / path.name).write_text(path.read_text(encoding="utf-8"), encoding="utf-8")
-    for path in sorted((PROJECT_ROOT / "manuscript").glob("*.yaml")):
-        (out_dir / path.name).write_text(path.read_text(encoding="utf-8"), encoding="utf-8")
     print(f"Wrote {len(variables)} manuscript variables")
 
 

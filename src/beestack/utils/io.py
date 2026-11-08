@@ -1,7 +1,8 @@
-"""Shared JSON I/O helpers for scripts and package writers."""
+"""Shared artifact I/O helpers for scripts and package writers."""
 
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 from typing import Any
@@ -25,3 +26,9 @@ def read_json(path: Path, default: Any | None = None) -> Any:
     if not path.exists():
         return {} if default is None else default
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def sha256_file(path: Path) -> str:
+    """Hash artifacts and large raw inputs without materializing their bytes."""
+    with path.open("rb") as stream:
+        return hashlib.file_digest(stream, "sha256").hexdigest()

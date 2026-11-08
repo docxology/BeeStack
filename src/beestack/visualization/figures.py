@@ -38,7 +38,11 @@ from .style import style_context
 
 
 def generate_analysis_figures(
-    records: list[dict[str, Any]], module_names: list[str], fig_dir: Path
+    records: list[dict[str, Any]],
+    module_names: list[str],
+    fig_dir: Path,
+    *,
+    project_root: Path | None = None,
 ) -> list[Path]:
     """Generate deterministic module diagnostics and whole-stack abstracts."""
 
@@ -102,5 +106,7 @@ def generate_analysis_figures(
             "metrics": metrics,
         }
 
-    finalize_static_figures(paths, plot_data_for=_plot_data, sidecar_for=_sidecar)
+    finalize_static_figures(
+        paths, plot_data_for=_plot_data, sidecar_for=_sidecar, project_root=project_root
+    )
     return paths

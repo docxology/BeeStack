@@ -24,12 +24,12 @@
   "quality": {
     "height_px": 740,
     "max_intensity": 255,
-    "mean_intensity": 238.13100533654674,
+    "mean_intensity": 238.1575018780901,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 48.44869938004508,
-    "width_px": 1570
+    "std_intensity": 48.405741170330025,
+    "width_px": 1547
   },
   "regeneration_command": "uv run python scripts/analysis_pipeline.py",
   "schema": "beestack.figure.v1",
@@ -40,14 +40,14 @@
   "validation_status": "nonblank quality sidecar and plot data generated",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 2.122,
+    "aspect_ratio": 2.091,
     "figure_role": "overview",
     "height_px": 740,
     "label_density": "moderate",
     "manuscript_use": "indexed_gallery",
-    "max_dimension_px": 1570,
+    "max_dimension_px": 1547,
     "min_dimension_px": 740,
     "readability_status": "gallery",
-    "width_px": 1570
+    "width_px": 1547
   }
 }

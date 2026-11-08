@@ -2,6 +2,85 @@
 
 All notable changes to BeeStack are documented in this file.
 
+## [2.0.0] — unreleased candidate
+
+### Breaking contracts
+
+- Required full-bearing `Observation.heading_deg` (degrees) and model-owned fixed
+  `SimulationState.kenyon_projection`; angular velocity remains radians/second.
+- Missing empirical error/antenna conditions are null with observation counts,
+  not zero error or fictitious confidence. Reports and recruitment preserve missingness.
+- State-based adapter stepping is explicitly reduced; strict requests cannot be
+  mislabeled as FlyBody physics. Strict environment/render paths remain separate.
+- Python >=3.11,<3.13, pinned development runtime 3.12.16, and exact FlyBody commit.
+- Download caches require verified completion records; arbitrary Lambda/AWS targets
+  are not curated origins. Container/array budgets apply before expansion/allocation.
+
+- Executable empirical templates require complete observed grids and finite shared
+  sampling rates. Source labels remain positional when biological identities are
+  absent; missing values are never silently imputed. Published Wilcoxon W retains
+  valid fractional ranks; annotations and figure captions are not table conditions.
+
+### Corrected
+
+- Canonical `docs/manuscript` readers, preflight hydration custody, citation/image
+  discovery, real source-bound PDF readiness and installed-wheel console entrypoints.
+- Numerical dimensions/finiteness, heading units, wing DOFs, sparsity ceilings,
+  configured/time-aware thermal dynamics, coherent patch belief and full-twin coverage.
+- Per-hop redirect admission and credential scoping, atomic bounded downloads,
+  nested ZIP/XLSX/MAT/HDF5 intake, bounded VRML prefixes and asset-backed structural coverage.
+- Unique evidence inventories with authoritative provenance and cwd-independent paths;
+  skipped empirical stages cannot revive retained reports as current measurements.
+- Configured render-verification counts/paths/thresholds and periodic motion detection.
+- Manuscript claims now distinguish current availability, historical empirical figures,
+  cue heuristics, configured self-tests and biological validation.
+- Source-bound download completion and current-analysis/render receipts prevent
+  failed refreshes or changed raw inputs/configuration/code from reviving old proof.
+- Refused download locators no longer disclose credentials/query values in policy
+  diagnostics or acquisition catalogs. File hashing streams bounded chunks.
+- The registered publisher supplement was acquired and parsed through the actual
+  loader; this is published-statistics availability, not connectivity or biological
+  validation. Missing calcium/panel payloads remain explicit.
+- Local Pandoc/XeLaTeX rendering, fail-closed cross-references, cold-checkout audit
+  ordering, MIT license text and preserved Apache-2.0 FlyBody asset notices.
+- Every supported Markdown image dependency and sidecar is sealed, including JPEG/
+  vector images outside the figures folder. Figure provenance is format-independent.
+- Malformed provider locators remain per-file errors even in metadata-only mode;
+  following dataset/file observations are preserved.
+- Offline figure admission no longer demands historical empirical plots: core
+  primaries remain mandatory, current empirical primaries remain required, and
+  stale empirical references fail. Canonical config reading moved cleanly to
+  `beestack.project_config.load_config` to avoid an orchestration dependency cycle.
+- The local compiler now resolves images from the same origin as figure admission,
+  records working directories, and wraps literal provenance paths in table cells.
+  Current prose/figures no longer carry obsolete implementation-version labels;
+  this does not promote their scientific fidelity or calibration status.
+- Signposting excludes transient `build/` and `dist/` trees, preventing generated
+  folder guides from leaking into subsequently built distribution artifacts.
+- Manuscript timing now separates configured policy/physics targets from the
+  executed reduced loop; reproducibility claims name the three compared JSON
+  artifacts rather than promising identical rendering or timestamped reports.
+
+### Release boundaries
+
+The historical 1.0 DOI is not reused. The current version requires a separately
+assigned DOI before deposit; empirical payload availability and native-tool/runtime
+verification remain explicit in the release receipt. No calibrated colony-twin claim.
+
+### Exercised verification — 2026-11-08
+
+- Python 3.12.16 on macOS arm64: 727 tests passed; combined line/branch coverage
+  92.80%, with the 92% floor unchanged. Locked install, Ruff lint and format checks passed.
+- Both non-editable wheel console commands ran real workflows from unrelated
+  working directories. All 206 lazy exports resolved; the sdist rebuilt 119
+  byte-identical packaged files. The three reduced-core JSON outputs reproduced exactly.
+- Native FlyBody/MuJoCo render/contact checks and manuscript/document/security
+  gates ran. The combined 56-page PDF was visually inspected, with zero missing
+  glyphs and zero overfull boxes. Strict deposit admission remains blocked by the
+  absent new version-specific DOI; no 2.0 tag or release has been published.
+- Evidence, superseded failures, scientific limitations and unexercised surfaces:
+  [Workflowz release audit](output/reports/workflowz_release_audit.json).
+
 ## [1.0.0] — 2026-05-25
 
 First publication-ready manuscript and package release.

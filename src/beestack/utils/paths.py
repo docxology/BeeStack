@@ -7,12 +7,14 @@ from typing import Any
 
 
 def project_relative_path(path: str | Path, project_root: Path | None = None) -> str:
-    """Return a stable repo-relative path when ``path`` is inside ``project_root``."""
+    """Normalize only against an explicit root; without one preserve absolute paths."""
 
     path_obj = Path(path)
     if not path_obj.is_absolute():
         return path_obj.as_posix() if isinstance(path, Path) else path
-    root = Path.cwd() if project_root is None else project_root
+    if project_root is None:
+        return path_obj.as_posix()
+    root = project_root
     try:
         return path_obj.resolve().relative_to(root.resolve()).as_posix()
     except ValueError:

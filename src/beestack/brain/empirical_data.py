@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import asdict, dataclass
+from pathlib import Path
 from typing import Any
 
 import numpy as np
@@ -31,8 +32,12 @@ class EmpiricalCalciumDataset:
     def __post_init__(self) -> None:
         if self.traces.ndim != 5:
             raise ValueError("calcium traces must have axes bee, odor, trial, time, glomerulus")
-        if self.acquisition_hz <= 0:
-            raise ValueError("acquisition_hz must be positive")
+        if (
+            isinstance(self.acquisition_hz, (bool, np.bool_))
+            or not np.isfinite(self.acquisition_hz)
+            or self.acquisition_hz <= 0
+        ):
+            raise ValueError("acquisition_hz must be finite and positive")
         if len(self.odor_labels) != self.traces.shape[1]:
             raise ValueError("odor_labels must match trace odor axis")
         if len(self.glomerulus_labels) != self.traces.shape[-1]:
@@ -105,12 +110,14 @@ class AntennalMovementSummary:
     frame_min: int
     frame_max: int
     odor_on_fraction: float
-    mean_abs_left_theta_deg: float
-    mean_abs_right_theta_deg: float
+    mean_abs_left_theta_deg: float | None
+    mean_abs_right_theta_deg: float | None
     mean_abs_theta_derivative: float
     left_right_theta_correlation: float
+    left_theta_observation_count: int = 0
+    right_theta_observation_count: int = 0
 
-    def as_dict(self) -> dict[str, float | int | str]:
+    def as_dict(self) -> dict[str, float | int | str | None]:
         return asdict(self)
 
 
@@ -122,7 +129,7 @@ class SzyszkaTemplateTestRow:
     condition_index: int
     original_p: float
     fdr_p: float
-    signed_rank_w: int
+    signed_rank_w: float
 
     def as_dict(self) -> dict[str, float | int | str]:
         return asdict(self)
@@ -190,14 +197,16 @@ class WaggleFollowerSummary:
     mean_scape_angle_deg: float
     follower_angle_midpoint_correlation: float
     left_right_antenna_synchrony: float
-    mean_abs_vector_error_deg: float
-    no_antennae_mean_abs_error_deg: float
-    both_antennae_mean_abs_error_deg: float
-    decoding_improvement_fraction: float
+    mean_abs_vector_error_deg: float | None
+    no_antennae_mean_abs_error_deg: float | None
+    both_antennae_mean_abs_error_deg: float | None
+    decoding_improvement_fraction: float | None
     straightness_mean: float
     confidence_score: float
+    no_antennae_error_count: int = 0
+    both_antennae_error_count: int = 0
 
-    def as_dict(self) -> dict[str, float | int | str]:
+    def as_dict(self) -> dict[str, float | int | str | None]:
         return asdict(self)
 
 
@@ -210,14 +219,15 @@ class EmpiricalWaggleFollowerDataset:
     summary: WaggleFollowerSummary
     source_files: tuple[str, ...] = ()
 
-    def as_dict(self) -> dict[str, object]:
+    def as_dict(self, project_root: Path | None = None) -> dict[str, object]:
         return project_relative_payload(
             {
                 "dataset_id": self.dataset_id,
                 "tracks": [track.as_dict() for track in self.tracks],
                 "summary": self.summary.as_dict(),
                 "source_files": self.source_files,
-            }
+            },
+            project_root,
         )
 
 
@@ -262,28 +272,28 @@ def parse_paoli_matlab_payload(payload: Mapping[str, Any]) -> EmpiricalCalciumDa
     arrays = _bee_entries_to_arrays(bee_entries)
     if not arrays:
         raise ValueError("Paoli payload must contain at least one db.bee array")
+    if any(array.ndim != 4 or 0 in array.shape for array in arrays):
+        raise ValueError(
+            "each Paoli db.bee entry requires nonempty glomerulus x odor x trial x time axes"
+        )
+    fs = _shared_acquisition_rate(_field(db, "fs"))
     max_glomeruli = max(int(array.shape[0]) for array in arrays)
     normalized = []
     for array in arrays:
-        if array.ndim != 4:
-            raise ValueError("each Paoli db.bee entry must be glomerulus x odor x trial x time")
         padded = array
         if array.shape[0] < max_glomeruli:
             pad_width = ((0, max_glomeruli - array.shape[0]), (0, 0), (0, 0), (0, 0))
             padded = np.pad(array, pad_width, mode="constant", constant_values=np.nan)
         normalized.append(np.moveaxis(np.asarray(padded, dtype=float), 0, -1))
     traces = np.stack(normalized, axis=0)
-    fs = _scalar_or_mean(_field(db, "fs", 100.0))
-    # If upstream label vectors are absent or length-mismatched we fall back to
-    # deterministic positional labels (odor_N / glomerulus_N). This is an
-    # explicit, reproducible fallback — not silent corruption — and the
-    # synthesized labels are distinguishable from real ones by their pattern;
-    # provenance of the parsed fields is recorded in `source_variables` below.
+    # Positional identifiers do not establish measured odor/anatomical identities.
     odors = _string_tuple(_field(db, "odors", ()))
-    if len(odors) != traces.shape[1]:
+    observed_odors = len(odors) == traces.shape[1]
+    if not observed_odors:
         odors = tuple(f"odor_{idx}" for idx in range(traces.shape[1]))
     glomeruli = _string_tuple(_field(db, "glomeruli", ()))
-    if len(glomeruli) != traces.shape[-1]:
+    observed_glomeruli = len(glomeruli) == traces.shape[-1]
+    if not observed_glomeruli:
         glomeruli = tuple(f"glomerulus_{idx}" for idx in range(traces.shape[-1]))
     return calcium_dataset_from_trial_array(
         "dryad-paoli-2024-al-calcium",
@@ -291,7 +301,12 @@ def parse_paoli_matlab_payload(payload: Mapping[str, Any]) -> EmpiricalCalciumDa
         fs,
         odors,
         glomeruli,
-        source_variables=("db.bee", "db.fs", "db.odors", "db.gls", "db.xy"),
+        source_variables=(
+            "db.bee",
+            "db.fs",
+            *(("db.odors",) if observed_odors else ()),
+            *(("db.glomeruli",) if observed_glomeruli else ()),
+        ),
     )
 
 
@@ -302,12 +317,15 @@ def response_templates_from_calcium_dataset(
 ) -> dict[str, Array]:
     """Build atlas-length odor templates from real calcium-imaging traces."""
 
+    if not np.isfinite(dataset.traces).all():
+        raise ValueError(
+            "calcium templates require complete finite traces; align missing observations explicitly"
+        )
     protocol = protocol or dataset.protocol(cfg)
-    baseline_frames = min(protocol.baseline_frames, dataset.traces.shape[-2])
-    normalized = negative_delta_f_over_f(dataset.traces, baseline_frames)
+    normalized = negative_delta_f_over_f(dataset.traces, protocol.baseline_frames)
     start, stop = protocol.stimulus_frame_window
-    start = min(max(start, 0), normalized.shape[-2] - 1)
-    stop = min(max(stop, start + 1), normalized.shape[-2])
+    if not 0 <= start < stop <= normalized.shape[-2]:
+        raise ValueError("stimulus frame window must fit trace length")
     window = normalized[..., start:stop, :]
     odor_by_glomerulus = np.mean(window, axis=(0, 2, 3))
     templates: dict[str, Array] = {}
@@ -362,11 +380,15 @@ def parse_tabular_odor_response_rows(
             )
         cidx = channel_index[str(row[channel_key])]
         sidx = stimulus_index[str(row[stimulus_key])]
-        matrix[cidx, sidx] += response_value
-        counts[cidx, sidx] += 1.0
+        count = counts[cidx, sidx] + 1.0
+        matrix[cidx, sidx] += response_value / count - matrix[cidx, sidx] / count
+        counts[cidx, sidx] = count
     if not np.any(counts):
         raise ValueError("rows must contain at least one numeric response")
-    matrix = np.divide(matrix, counts, out=np.zeros_like(matrix), where=counts > 0)
+    if not counts.all():
+        raise ValueError(
+            f"{dataset_id}: incomplete channel by stimulus panel; missing responses cannot become zero"
+        )
     return EmpiricalOdorResponsePanel(
         dataset_id=dataset_id,
         response_matrix=matrix,
@@ -425,7 +447,7 @@ def summarize_antennal_movement_rows(
     left_abs = 0.0
     right_abs = 0.0
     derivative_abs = 0.0
-    theta_count = 0
+    left_count = right_count = 0
     derivative_count = 0
     corr_n = 0
     sum_left = sum_right = sum_left_sq = sum_right_sq = sum_cross = 0.0
@@ -446,10 +468,10 @@ def summarize_antennal_movement_rows(
         right = _optional_float(row.get("RightTheta"))
         if left is not None:
             left_abs += _abs_angle_deg(left)
+            left_count += 1
         if right is not None:
             right_abs += _abs_angle_deg(right)
-        if left is not None or right is not None:
-            theta_count += 1
+            right_count += 1
         dleft = _optional_float(row.get("deriv1LeftTheta"))
         dright = _optional_float(row.get("deriv1RightTheta"))
         if dleft is not None:
@@ -485,10 +507,12 @@ def summarize_antennal_movement_rows(
         frame_min=frame_min or 0,
         frame_max=frame_max or 0,
         odor_on_fraction=odor_on / row_count,
-        mean_abs_left_theta_deg=left_abs / max(theta_count, 1),
-        mean_abs_right_theta_deg=right_abs / max(theta_count, 1),
+        mean_abs_left_theta_deg=left_abs / left_count if left_count else None,
+        mean_abs_right_theta_deg=right_abs / right_count if right_count else None,
         mean_abs_theta_derivative=derivative_abs / max(derivative_count, 1),
         left_right_theta_correlation=float(corr),
+        left_theta_observation_count=left_count,
+        right_theta_observation_count=right_count,
     )
 
 
@@ -546,14 +570,14 @@ def summarize_waggle_follower_rows(
     no_antennae_error = error_acc.mean_abs_by_feature("no_antennae")
     both_antennae_error = error_acc.mean_abs_by_feature("both_antennae")
     mean_abs_error = error_acc.mean_abs_all()
-    improvement = 0.0
-    if no_antennae_error > 0 and both_antennae_error >= 0:
+    improvement = None
+    if no_antennae_error is not None and no_antennae_error > 0 and both_antennae_error is not None:
         improvement = (no_antennae_error - both_antennae_error) / no_antennae_error
     straightness_mean = float(np.mean(straightness_values)) if straightness_values else 0.0
     confidence = float(
         np.clip(
             0.35 * abs(midpoint_corr)
-            + 0.30 * np.clip(improvement, 0.0, 1.0)
+            + 0.30 * (np.clip(improvement, 0.0, 1.0) if improvement is not None else 0.0)
             + 0.20 * np.clip(straightness_mean, 0.0, 1.0)
             + 0.15 * np.clip(global_track.left_right_antenna_synchrony, 0.0, 1.0),
             0.0,
@@ -580,9 +604,13 @@ def summarize_waggle_follower_rows(
         mean_abs_vector_error_deg=mean_abs_error,
         no_antennae_mean_abs_error_deg=no_antennae_error,
         both_antennae_mean_abs_error_deg=both_antennae_error,
-        decoding_improvement_fraction=float(np.clip(improvement, -1.0, 1.0)),
+        decoding_improvement_fraction=(
+            float(np.clip(improvement, -1.0, 1.0)) if improvement is not None else None
+        ),
         straightness_mean=straightness_mean,
         confidence_score=confidence,
+        no_antennae_error_count=error_acc.by_feature_count.get("no_antennae", 0),
+        both_antennae_error_count=error_acc.by_feature_count.get("both_antennae", 0),
     )
     return EmpiricalWaggleFollowerDataset(dataset_id, tracks, summary)
 
@@ -602,7 +630,7 @@ def waggle_vibration_from_followers(summary: WaggleFollowerSummary) -> Array:
         np.clip(
             0.5 * summary.confidence_score
             + 0.3 * abs(summary.follower_angle_midpoint_correlation)
-            + 0.2 * max(0.0, summary.decoding_improvement_fraction),
+            + 0.2 * max(0.0, summary.decoding_improvement_fraction or 0.0),
             0.0,
             1.0,
         )
@@ -726,13 +754,13 @@ class _ErrorAccumulator:
         self.by_feature_sum[feature] = self.by_feature_sum.get(feature, 0.0) + abs_value
         self.by_feature_count[feature] = self.by_feature_count.get(feature, 0) + 1
 
-    def mean_abs_all(self) -> float:
-        return self.all_abs_sum / max(self.count, 1)
+    def mean_abs_all(self) -> float | None:
+        return self.all_abs_sum / self.count if self.count else None
 
-    def mean_abs_by_feature(self, feature: str) -> float:
+    def mean_abs_by_feature(self, feature: str) -> float | None:
         total = self.by_feature_sum.get(feature, 0.0)
         count = self.by_feature_count.get(feature, 0)
-        return total / count if count else 0.0
+        return total / count if count else None
 
 
 def _source_feature(value: Any) -> str:
@@ -784,11 +812,26 @@ def _bee_entries_to_arrays(entries: Any) -> list[Array]:
     return [np.asarray(entries, dtype=float)]
 
 
-def _scalar_or_mean(value: Any) -> float:
-    arr = np.asarray(value, dtype=float)
-    if arr.size == 0:
-        return 100.0
-    return float(np.mean(arr))
+def _shared_acquisition_rate(value: Any) -> float:
+    raw = np.asarray(value)
+    if value is None or raw.size == 0 or raw.dtype.kind in "bc":
+        raise ValueError("db.fs must contain an observed real acquisition rate")
+    if raw.dtype.kind == "O" and any(
+        isinstance(item, (bool, np.bool_, complex)) for item in raw.flat
+    ):
+        raise ValueError("db.fs must contain real numeric measurements")
+    try:
+        rates = np.asarray(value, dtype=float)
+    except (TypeError, ValueError) as exc:
+        raise ValueError("db.fs must contain real numeric measurements") from exc
+    if not np.isfinite(rates).all() or np.any(rates <= 0):
+        raise ValueError("db.fs must contain finite positive acquisition rates")
+    rate = float(rates.flat[0])
+    if np.any(rates != rate):
+        raise ValueError(
+            "db.fs rates differ; align the time axes explicitly before combining records"
+        )
+    return rate
 
 
 def _string_tuple(value: Any) -> tuple[str, ...]:
@@ -810,7 +853,7 @@ def _string_tuple(value: Any) -> tuple[str, ...]:
 
 
 def _optional_float(value: Any) -> float | None:
-    if value in (None, "", "NA"):
+    if isinstance(value, (bool, np.bool_)) or value in (None, "", "NA"):
         return None
     try:
         out = float(value)

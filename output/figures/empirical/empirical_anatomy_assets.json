@@ -11,6 +11,7 @@
   },
   "alt_text": "Bar chart of Honeybee Standard Brain atlas asset sizes.",
   "artifact_kind": "figure",
+  "availability_status": "historical_unavailable",
   "backend": "Matplotlib empirical-data renderer",
   "caption": "Matplotlib honeybee standard brain atlas assets shows Downloaded Honeybee Standard Brain ZIP inventories ranked by uncompressed size. Generated from output/data/bee_brain_end_to_end_report.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not claim synaptic adjacency from atlas geometry alone.",
   "citation_keys": [
@@ -37,7 +38,7 @@
   "fidelity": "empirical atlas/inventory summary diagnostic",
   "figure_path": "output/figures/empirical/empirical_anatomy_assets.png",
   "manuscript_label": "fig:empirical_anatomy_assets",
-  "manuscript_section": "manuscript/09_empirical_results.md",
+  "manuscript_section": "docs/manuscript/09_empirical_results.md",
   "plot_data_path": "output/figures/empirical/empirical_anatomy_assets_data.json",
   "priority": "supporting",
   "quality": {

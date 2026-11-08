@@ -58,25 +58,6 @@
   },
   {
     "archive_downloaded": false,
-    "dataset_id": "szyszka-2023-granger-al-network",
-    "doi": "10.3390/insects14060539",
-    "download_url": "https://mdpi-res.com/d_attachment/insects/insects-14-00539/article_deploy/insects-14-00539-s001.zip",
-    "file_downloaded": true,
-    "file_error": null,
-    "file_sha256": "409246c65652cffa63122df7c3fb544b7e29e9e699d7b0cfe32ec6070cd64af9",
-    "license": "See source repository or publisher terms.",
-    "local_archive": null,
-    "local_file": "output/data/empirical_sources/szyszka-2023-granger-al-network/supplementary/insects-14-00539-s001.zip",
-    "mime_type": null,
-    "parser_status": "supported_publisher_supplement",
-    "path": "insects-14-00539-s001.zip",
-    "size": 2706232,
-    "source_repository": "publisher",
-    "source_url": "https://www.mdpi.com/2075-4450/14/6/539",
-    "title": "Transient calcium dynamics in the honey bee antennal lobe network"
-  },
-  {
-    "archive_downloaded": false,
     "dataset_id": "kaneko-2016-kenyon-subtypes",
     "doi": "10.1186/s40851-016-0051-6",
     "download_url": "https://zoologicalletters.biomedcentral.com/articles/10.1186/s40851-016-0051-6",
@@ -834,5 +815,24 @@
     "size": 5120,
     "source_repository": "figshare",
     "title": "Honeybee antennal positioning data when following dances"
+  },
+  {
+    "archive_downloaded": false,
+    "dataset_id": "szyszka-2023-granger-al-network",
+    "doi": "10.3390/insects14060539",
+    "download_url": "https://mdpi-res.com/d_attachment/insects/insects-14-00539/article_deploy/insects-14-00539-s001.zip",
+    "file_downloaded": true,
+    "file_error": null,
+    "file_sha256": "409246c65652cffa63122df7c3fb544b7e29e9e699d7b0cfe32ec6070cd64af9",
+    "license": "See source repository or publisher terms.",
+    "local_archive": null,
+    "local_file": "output/data/empirical_sources/szyszka-2023-granger-al-network/supplementary/insects-14-00539-s001.zip",
+    "mime_type": null,
+    "parser_status": "supported_publisher_supplement",
+    "path": "insects-14-00539-s001.zip",
+    "size": null,
+    "source_repository": "publisher",
+    "source_url": "https://www.mdpi.com/2075-4450/14/6/539",
+    "title": "Transient calcium dynamics in the honey bee antennal lobe network"
   }
 ]

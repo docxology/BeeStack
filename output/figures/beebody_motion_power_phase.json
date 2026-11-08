@@ -12,7 +12,7 @@
   "alt_text": "Three-panel BeeBody motion, wing power, and phase diagnostic chart.",
   "artifact_kind": "figure",
   "backend": "Matplotlib",
-  "caption": "Matplotlib beebody motion, wing power, and phase witness shows Integrated-run witness linking COM-speed proxy, wing-power trace, and stroke-phase diagnostics for the reduced BeeBody energetics kernel. Generated from output/data/simulation_records.json and methods analysis. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate measured honeybee metabolic rates or aerodynamic coefficients.",
+  "caption": "Matplotlib beebody motion, wing power, and phase witness shows Integrated-run witness linking COM-speed proxy, wing-power trace, and a speed-versus-power phase portrait for the reduced BeeBody energetics kernel. Generated from output/data/simulation_records.json and methods analysis. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate measured honeybee metabolic rates or aerodynamic coefficients.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
@@ -38,22 +38,22 @@
   "fidelity": "reduced deterministic kernel diagnostic",
   "figure_path": "output/figures/beebody_motion_power_phase.png",
   "manuscript_label": "fig:body_motion_power_phase",
-  "manuscript_section": "manuscript/05_methods_body_swarm.md",
+  "manuscript_section": "docs/manuscript/05_methods_body_swarm.md",
   "plot_data_path": "output/figures/beebody_motion_power_phase_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 741,
+    "height_px": 738,
     "max_intensity": 255,
-    "mean_intensity": 247.07297310473353,
+    "mean_intensity": 247.22487541898445,
     "min_intensity": 24,
     "mode": "RGBA",
     "nonzero_histogram_bins": 232,
-    "std_intensity": 36.488535765958694,
-    "width_px": 1218
+    "std_intensity": 35.863315143396015,
+    "width_px": 1216
   },
   "regeneration_command": "uv run python scripts/analysis_pipeline.py",
   "schema": "beestack.figure.v1",
-  "source_data": "output/data/simulation_records.json and methods analysis",
+  "source_data": "output/data/simulation_records.json and module coverage records",
   "source_dois": [
     "10.1371/journal.pcbi.1005510",
     "10.3233/DS-190026"
@@ -63,14 +63,14 @@
   "validation_status": "nonblank quality sidecar and plot data generated",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 1.644,
+    "aspect_ratio": 1.648,
     "figure_role": "overview",
-    "height_px": 741,
+    "height_px": 738,
     "label_density": "compact",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 1218,
-    "min_dimension_px": 741,
+    "max_dimension_px": 1216,
+    "min_dimension_px": 738,
     "readability_status": "pass",
-    "width_px": 1218
+    "width_px": 1216
   }
 }

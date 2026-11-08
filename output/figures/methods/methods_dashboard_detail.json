@@ -38,22 +38,22 @@
   "fidelity": "methods provenance diagnostic",
   "figure_path": "output/figures/methods/methods_dashboard_detail.png",
   "manuscript_label": "fig:methods_dashboard_detail",
-  "manuscript_section": "manuscript/08_validation_and_figures.md",
+  "manuscript_section": "docs/manuscript/08_validation_and_figures.md",
   "plot_data_path": "output/figures/methods/methods_dashboard_detail_data.json",
   "priority": "primary",
   "quality": {
     "height_px": 1136,
     "max_intensity": 255,
-    "mean_intensity": 249.49372521228455,
+    "mean_intensity": 249.51223297592415,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 27.331481723312063,
+    "std_intensity": 27.021901918941072,
     "width_px": 2216
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
   "schema": "beestack.figure.v1",
-  "source_data": "MethodsAnalysisReport module panels and visual QA report",
+  "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
   "source_dois": [
     "10.1371/journal.pcbi.1005510",
     "10.3233/DS-190026"

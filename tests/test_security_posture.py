@@ -44,10 +44,28 @@ def test_validate_download_url_rejects_non_https() -> None:
         validate_download_url("http://datadryad.org/api/v2/files/1/download")
 
 
-def test_validate_download_url_rejects_missing_host_and_accepts_dryad_lambda() -> None:
+def test_validate_download_url_rejects_missing_host_and_unregistered_lambda() -> None:
     with pytest.raises(ValueError, match="missing host"):
         validate_download_url("https:///payload.zip", context="unit")
-    validate_download_url("https://example.lambda-url.us-west-2.on.aws/payload.zip")
+    with pytest.raises(ValueError, match="allowlist"):
+        validate_download_url("https://example.lambda-url.us-west-2.on.aws/payload.zip")
+
+
+@pytest.mark.parametrize(
+    "url",
+    [
+        "https://attacker.s3.amazonaws.com/pfigshare-u-files/a",
+        "https://s3-eu-west-1.amazonaws.com/attacker/pfigshare-u-files/a",
+        "https://s3-eu-west-1.amazonaws.com/pfigshare-u-files-evil/a",
+        "https://dryad-assetstore-evil.amazonaws.com/a",
+        "https://dryad-assetstore-merritt-west.attacker.amazonaws.com/a",
+        "https://datadryad.org@figshare.com/a",
+        "https://datadryad.org:444/a",
+    ],
+)
+def test_storage_policy_does_not_authorize_other_accounts(url: str) -> None:
+    with pytest.raises(ValueError):
+        validate_download_url(url)
 
 
 def test_safe_relative_path_strips_traversal() -> None:

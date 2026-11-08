@@ -22,14 +22,14 @@
   "plot_data_path": "output/figures/research/beebody_method_diagnostics_data.json",
   "priority": "indexed",
   "quality": {
-    "height_px": 799,
+    "height_px": 800,
     "max_intensity": 255,
-    "mean_intensity": 243.3722687213183,
+    "mean_intensity": 243.40444765275709,
     "min_intensity": 24,
     "mode": "RGBA",
-    "nonzero_histogram_bins": 232,
-    "std_intensity": 37.03789902829535,
-    "width_px": 1344
+    "nonzero_histogram_bins": 230,
+    "std_intensity": 36.88103056048573,
+    "width_px": 1342
   },
   "regeneration_command": "uv run python scripts/run_research_suite.py",
   "schema": "beestack.figure.v1",
@@ -40,14 +40,14 @@
   "validation_status": "nonblank image, quality sidecar, and plot data passed",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 1.682,
+    "aspect_ratio": 1.677,
     "figure_role": "overview",
-    "height_px": 799,
+    "height_px": 800,
     "label_density": "moderate",
     "manuscript_use": "indexed_gallery",
-    "max_dimension_px": 1344,
-    "min_dimension_px": 799,
+    "max_dimension_px": 1342,
+    "min_dimension_px": 800,
     "readability_status": "gallery",
-    "width_px": 1344
+    "width_px": 1342
   }
 }

@@ -1,0 +1,1785 @@
+{
+  "schema": "beestack.workflowz.release_audit.v1",
+  "observed_at": "2026-11-08T05:58:45.099772+00:00",
+  "repository": "docxology/BeeStack",
+  "candidate_package_version": "2.0.0",
+  "manuscript_version": "2.0",
+  "state": "implemented and locally validated candidate; publication blocked, not released",
+  "source_binding": {
+    "base_commit": "015550a26d57a36e45bbada018daf126b5332d93",
+    "branch": "work/wfz-beestack-release-20261107",
+    "aggregate_sha256": "22586c9b092fe472259a34448ef6312269eea3c8cac1f8a406b662e564165b20",
+    "records": [
+      {
+        "path": ".gitattributes",
+        "sha256": "d5e9aa56681b49839af0b5269c450bc0d72a0b1360c6c5637ade6d8a23336d6b",
+        "size": 200
+      },
+      {
+        "path": ".github/AGENTS.md",
+        "sha256": "3f42c896a43f678b3485f54e83394a2d7e885867f52c7c3d357ac2858aa74b20",
+        "size": 268
+      },
+      {
+        "path": ".github/README.md",
+        "sha256": "e3c6e201b4c988b20e150de8c891e18f39cc6918d6ac8d77ef0c391844013046",
+        "size": 259
+      },
+      {
+        "path": ".github/dependabot.yml",
+        "sha256": "5c3fa444faf98052aa77a2cd21b02322b4c35d3c9ce9640f19b18d0632153011",
+        "size": 292
+      },
+      {
+        "path": ".github/workflows/AGENTS.md",
+        "sha256": "6cb877e61f6ccbed134de997d4390148e41564ecdb03c9f155b3342b49a797c6",
+        "size": 429
+      },
+      {
+        "path": ".github/workflows/README.md",
+        "sha256": "cdef924e548908daae237bd5ae4243f0c8251842bb7fc70ccdca527602b4abda",
+        "size": 304
+      },
+      {
+        "path": ".github/workflows/ci.yml",
+        "sha256": "6ea13d17c576ed371b6a14c75b366671acb60d65780bf4f9972fad19f7a2f361",
+        "size": 4336
+      },
+      {
+        "path": ".gitignore",
+        "sha256": "48c8c2024e9ed11ae83501385bd3f818cbf49f18d944b3f39fa3f276ffd84cfc",
+        "size": 1875
+      },
+      {
+        "path": ".python-version",
+        "sha256": "a05e0074505ce29f25abf3aebe4f7218d28e98411822f199e3272740be4e363c",
+        "size": 8
+      },
+      {
+        "path": "AGENTS.md",
+        "sha256": "7decbb066d27157ba8091f07cd0927e7b467fe15d8eef3bbba27ca7e51ffc4f2",
+        "size": 5672
+      },
+      {
+        "path": "BeeStack-threat-model.md",
+        "sha256": "abc6b0bf0d62ccf41638a712c35ddc90d6c9f2fc44bb372f4557d8719dce141e",
+        "size": 12319
+      },
+      {
+        "path": "CHANGELOG.md",
+        "sha256": "ee9b9e2074d20ad06e5e060d1173a933ab4e99980b7ce1fc5c86e955bed91e2b",
+        "size": 8589
+      },
+      {
+        "path": "ISA.md",
+        "sha256": "e19e50eb87eae3890bbf8b16d248ba5b1f3082fc4a90e4cc0c24b34cc79c8e61",
+        "size": 77675
+      },
+      {
+        "path": "LICENSE",
+        "sha256": "30d5e4b15b69e9029e3e552d3e7f9a89f3347648170ea0ebdd41157abd32d3be",
+        "size": 1103
+      },
+      {
+        "path": "README.md",
+        "sha256": "65e58b07660d74f25de2776391385e97976fc62e144d5540cb0260419a745421",
+        "size": 17463
+      },
+      {
+        "path": "docs/AGENTS.md",
+        "sha256": "19f16d810db4a6a6fc49543dfeb48658bbf5b7ebf46c3ce865c58b2ee4f0c170",
+        "size": 703
+      },
+      {
+        "path": "docs/README.md",
+        "sha256": "64685fee878e3758f7ba4a97ee5530868907add4d094c8122fe40276abc23243",
+        "size": 3412
+      },
+      {
+        "path": "docs/agent_instructions.md",
+        "sha256": "a927408ba3574f8ab2f6b44b25f4620fdd8c4a65c611dfe1bc90c0256685624c",
+        "size": 1871
+      },
+      {
+        "path": "docs/animations.md",
+        "sha256": "c3e7f2da83167c109fed9dc15073b14bd24f36d04d16f47808c90f8746e86d46",
+        "size": 4701
+      },
+      {
+        "path": "docs/api_reference.md",
+        "sha256": "59760a1c099d9b6bff4d2329f77a1bae10a8eb1711ec11500f9275e881ad6416",
+        "size": 9074
+      },
+      {
+        "path": "docs/architecture.md",
+        "sha256": "fcf85bb26997c57bf5e9e3d9575fbbfd132e4c318d05370292eb9a3dc827c235",
+        "size": 4426
+      },
+      {
+        "path": "docs/baseline_readiness.md",
+        "sha256": "55a92f6d3d075fe5595881dfcd3e316d8eb8138cd68ea854bb9fc266f357550a",
+        "size": 2533
+      },
+      {
+        "path": "docs/beebrain_data_pipeline.md",
+        "sha256": "187635f55c8eab806fad4090e5ec00faa60c33f92346aff46e2cfd725cee7080",
+        "size": 7424
+      },
+      {
+        "path": "docs/configuration.md",
+        "sha256": "54a1bafac837d41b30fb20102dd3dee4ebc50217e56d29b5c1a28dae157935fa",
+        "size": 4822
+      },
+      {
+        "path": "docs/data_acquisition_runbook.md",
+        "sha256": "68453b2d13ebec22fb8e9404c572345fbb499c4235e4b95b24286fcd7a00de95",
+        "size": 2506
+      },
+      {
+        "path": "docs/digital_twin_path.md",
+        "sha256": "5fd1e6ff151c3aa9f4d902482fd8eb91043cda9e5f25ba8a400d6556bc979eec",
+        "size": 5395
+      },
+      {
+        "path": "docs/empirical_beebrain.md",
+        "sha256": "88323f6e076948493d102fa1bf4e2139882febabdef0c65f1e8a9a37b18f5aa4",
+        "size": 5628
+      },
+      {
+        "path": "docs/flybody_integration.md",
+        "sha256": "5e00c730f72e6e11e8826f28d5624793a3586e6bbe865fb9a0330ae6d458c5b6",
+        "size": 5489
+      },
+      {
+        "path": "docs/generated_outputs.md",
+        "sha256": "07c4fd22a1e8d99abd33c91c08f60b805b950fd869847adfdc7c1f5e3e75d58d",
+        "size": 13342
+      },
+      {
+        "path": "docs/manuscript/00_abstract.md",
+        "sha256": "0cf3b2db13969bcc3e4f2a473c1bbdc2c8793e9a914df153a7e6f79ddf1965c1",
+        "size": 4479
+      },
+      {
+        "path": "docs/manuscript/01_scholarship_and_related_work.md",
+        "sha256": "3e0deddef275eb1de2f2506cf8f21ca8bc23a63b3704de55754bfdce7d787926",
+        "size": 16802
+      },
+      {
+        "path": "docs/manuscript/02_claim_ledger.md",
+        "sha256": "e029fd5b54ed46478f0ecd6048da377c7657ac874b0635323829256b33e3ec35",
+        "size": 9255
+      },
+      {
+        "path": "docs/manuscript/03_materials_and_source_provenance.md",
+        "sha256": "abe4ed13a2f8d2adbb2d0e53cefcd2714eec85d64cc2e348fdc6043ff30b7dc1",
+        "size": 7725
+      },
+      {
+        "path": "docs/manuscript/04_evidence_typed_architecture.md",
+        "sha256": "eda9f05c60c61da8cb40b34bb8099a8916c90efe7bf50914ece3e70fbb422583",
+        "size": 8168
+      },
+      {
+        "path": "docs/manuscript/05_methods_body_swarm.md",
+        "sha256": "6010f079299bc07518806d70ab3ac404c244def670d9a4e1d70387f4f6b2390c",
+        "size": 17182
+      },
+      {
+        "path": "docs/manuscript/06_methods_brain_mind.md",
+        "sha256": "d8b756c6272c406fab7fcef3ccdd20080159279d34e06570196d5e5cfd60b497",
+        "size": 15069
+      },
+      {
+        "path": "docs/manuscript/07_methods_niche.md",
+        "sha256": "1a3d04fa6acd302142224511871fbcab6771c7587e21b4a09f525ed2973a3c2d",
+        "size": 6803
+      },
+      {
+        "path": "docs/manuscript/08_validation_and_figures.md",
+        "sha256": "f4f912e00740644d7a642b256bb0faed0c2347d779555fbe18fd86effc5be416",
+        "size": 13252
+      },
+      {
+        "path": "docs/manuscript/09_empirical_results.md",
+        "sha256": "fad484c3ffb8172b8bfba71f086de510ee474b5a636e9fa5f8bf2d511f05dfe6",
+        "size": 7732
+      },
+      {
+        "path": "docs/manuscript/10_integrated_results.md",
+        "sha256": "5868b65980bac90bbc675bf24b95ec3b12c1f33553320ce2c03ef667bf4ca426",
+        "size": 6208
+      },
+      {
+        "path": "docs/manuscript/11_research_synthesis.md",
+        "sha256": "b2ef85e77e57227612349adc083a55ac8b4932bf986267eb727035fe2ad8e80f",
+        "size": 10678
+      },
+      {
+        "path": "docs/manuscript/12_discussion.md",
+        "sha256": "eeb6f005fb8fba6aa75db58c1fc4b4c6b0e2eb9f6cd2909b60e3432ba062c09d",
+        "size": 10247
+      },
+      {
+        "path": "docs/manuscript/13_limitations.md",
+        "sha256": "e9532e6df770052e6c71bae1da6deddd363b24e1d12cb187b50b035f5953a885",
+        "size": 7489
+      },
+      {
+        "path": "docs/manuscript/14_roadmap.md",
+        "sha256": "0da27773b24e6819255a25097ee060499301a0a7b2975502a3454e7b21645405",
+        "size": 10561
+      },
+      {
+        "path": "docs/manuscript/15_reproducibility.md",
+        "sha256": "cfd33a708c8b4d3b43196d0d0ac5cb0927f9cce2acee185a0098ac51024fc01f",
+        "size": 7043
+      },
+      {
+        "path": "docs/manuscript/16_ethics_governance.md",
+        "sha256": "e294ab10f77fc7f0c8f7bd8ea0a414a630b67f5b781da0f75b1e7aa70bec7556",
+        "size": 7237
+      },
+      {
+        "path": "docs/manuscript/99_references.md",
+        "sha256": "a4ba737d2ccbecee10afd5548e06661404cc0a106e152d28b850d0d1975a701c",
+        "size": 254
+      },
+      {
+        "path": "docs/manuscript/AGENTS.md",
+        "sha256": "ea58dc87274c4e9abe464784c502b01a61382de31ecaa301c1b57cc608d8096f",
+        "size": 3218
+      },
+      {
+        "path": "docs/manuscript/MANUSCRIPT_STATUS.md",
+        "sha256": "8bf5a7825f6b3a45ca30b7a7ca1ac7794ac83c306a25bef349ef282b867d841b",
+        "size": 524
+      },
+      {
+        "path": "docs/manuscript/README.md",
+        "sha256": "c0266f1b689fc3982fb1d9283abd21f0c2f4fae17decc8155989c893c200f2e9",
+        "size": 1679
+      },
+      {
+        "path": "docs/manuscript/SYNTAX.md",
+        "sha256": "78d34ac71dcb32d7c15f08662db4710a747785c89f0d8e488882664bb8c5eba9",
+        "size": 7709
+      },
+      {
+        "path": "docs/manuscript/config.yaml",
+        "sha256": "88a57c4acda9c41922a7003e26cf383d16980e9a828f1731646525943422e5b3",
+        "size": 5275
+      },
+      {
+        "path": "docs/manuscript/preamble.md",
+        "sha256": "ef91f02ffffd2345e185821d23c508df9d7b66ff6d1d8509451e75381c25e2fb",
+        "size": 694
+      },
+      {
+        "path": "docs/manuscript/references.bib",
+        "sha256": "678614a07b1681d6fc77a5d7211c4be39ea44c65cfc9a769d0e06c9d382db8d8",
+        "size": 34444
+      },
+      {
+        "path": "docs/manuscript_development.md",
+        "sha256": "5ffe15d4dcb59b392d7a20802f4d7498f1aaf366d664ff24f483c14cebf87241",
+        "size": 8214
+      },
+      {
+        "path": "docs/research_operations_playbook.md",
+        "sha256": "9dd71e3bde1e30ba49e9b70fb3078222b9cda9e14e72eb3177a3edc3c07ad3e4",
+        "size": 7848
+      },
+      {
+        "path": "docs/security_posture.md",
+        "sha256": "15dbd852a0027f6ce7940f6f90e2cd5c4b253e171971591bb47e90f37f1fbaec",
+        "size": 5644
+      },
+      {
+        "path": "docs/signposting.md",
+        "sha256": "f8ba4baf2d6285189c7eb52bf23a4c102e6acf07fde936f1738e767a8e5ef06e",
+        "size": 1854
+      },
+      {
+        "path": "docs/spec_review.md",
+        "sha256": "1ce735e44095dacbe4e35012b0a39e8e7ce57cf6d4fb42f22288e3a25c2bde40",
+        "size": 3509
+      },
+      {
+        "path": "docs/stack_contracts.md",
+        "sha256": "b39821de4df9bd8bf3eb47271de5fd56d26ccf602d82da0417ba28b4d9b32571",
+        "size": 1068
+      },
+      {
+        "path": "docs/testing_philosophy.md",
+        "sha256": "fab8ac3328a83d18d3ccf4ddb23b8ac5ed8a40b15caa9bbf87a5f19a36c2d7e1",
+        "size": 1823
+      },
+      {
+        "path": "docs/troubleshooting.md",
+        "sha256": "57194f6aa42602f492cb79b822e97898718f2402e7aa0997cc9dfd2915794ba1",
+        "size": 4878
+      },
+      {
+        "path": "docs/validation_criteria.md",
+        "sha256": "57de2892a5f8086333297e87ba5fd153b768c0bcb04e972bb6e2f6752868af1e",
+        "size": 9849
+      },
+      {
+        "path": "docs/visualization_gallery.md",
+        "sha256": "ebfe55e700994831f82867962c95bf029128c3602a8db7e4b46b369a71ea6f4c",
+        "size": 9687
+      },
+      {
+        "path": "docs/waggle_3d_scenario.md",
+        "sha256": "fb3126398c9536a377d7fc185ecf51e501f70a66f685587635aa8349384537ae",
+        "size": 2666
+      },
+      {
+        "path": "pyproject.toml",
+        "sha256": "d28908bbfed9f99ef8931d2e31b389655e88e14e474b513fe1cdd83d007e5c2e",
+        "size": 2038
+      },
+      {
+        "path": "scripts/AGENTS.md",
+        "sha256": "19434c1ddc87758e5076b6ba9dcb90054162a5a7b7a1da969739f1f2a48c143d",
+        "size": 4408
+      },
+      {
+        "path": "scripts/README.md",
+        "sha256": "02505d6a1e8d1784cfb27c411b633c7594f010ba6b7d989eed0c82eeae6dc35e",
+        "size": 5281
+      },
+      {
+        "path": "scripts/analysis_pipeline.py",
+        "sha256": "7b4f79228cfac34149130e3ed4ba701ab4bccabbc17c4edc30514d59ee9b9606",
+        "size": 464
+      },
+      {
+        "path": "scripts/analyze_empirical_bee_data.py",
+        "sha256": "b4f450198392bb03adff30c13b12356b2825f757f56d5a1ddb6054b1462e2f09",
+        "size": 353
+      },
+      {
+        "path": "scripts/assess_digital_twin_readiness.py",
+        "sha256": "4b67bff216ae850fd185d93ffc9c67b0b29ba2630db8bcdcaa4ce877af70edef",
+        "size": 1116
+      },
+      {
+        "path": "scripts/audit_documentation.py",
+        "sha256": "10193acf43b2c9d4068bcb56bdcd474977cd1f6f7082e8708924b9e35eb8c3ea",
+        "size": 959
+      },
+      {
+        "path": "scripts/audit_publication_readiness.py",
+        "sha256": "593395ac0c9b2c645e31331b03baeeaab5a1f964e36e9a671899d022ec8c1e96",
+        "size": 1445
+      },
+      {
+        "path": "scripts/fetch_empirical_bee_data.py",
+        "sha256": "99f208546730217056ee5fb72da37b0663e50ed53728f2bfa2c4e8ff80e1d20f",
+        "size": 1621
+      },
+      {
+        "path": "scripts/generate_animations.py",
+        "sha256": "fae6ef7d6f7733513f75330c69c432eed3e8042756b30199f9ea1fac678dc8b2",
+        "size": 356
+      },
+      {
+        "path": "scripts/manuscript_crossrefs.lua",
+        "sha256": "508f7ab0290cd0e6a590d124bc392c9fab62c01edf4345208d5133417472195a",
+        "size": 1688
+      },
+      {
+        "path": "scripts/render_manuscript.py",
+        "sha256": "402bc64870415959332bdfab3fbc86d3d65f21133e5ba49d7602f275b62e9faa",
+        "size": 7154
+      },
+      {
+        "path": "scripts/review_stack_integrity.py",
+        "sha256": "1c383d39d8076838275b945c47be59dde04b3a4bbe72b41be0e944da283b2260",
+        "size": 328
+      },
+      {
+        "path": "scripts/run_methods_analysis.py",
+        "sha256": "645ca2afb0d1298d65a7252a1478c2453458ee075fb7c6a35a0f3be9e56e5996",
+        "size": 666
+      },
+      {
+        "path": "scripts/run_research_suite.py",
+        "sha256": "e43053f906d3c9063002fad97cc33af823a844db130cbc7da63c1f3b7920a722",
+        "size": 1838
+      },
+      {
+        "path": "scripts/run_security_audit.py",
+        "sha256": "1e8e0edfba17abdbfa44c8fbb5621a2c0600f506de7cef7b32dd403976ce2b62",
+        "size": 986
+      },
+      {
+        "path": "scripts/run_stack_synthesis.py",
+        "sha256": "637938935403e0d5fc9abe816eb6bb0c2f9dd0d4efa7e2b0fdf885d5f6880aff",
+        "size": 542
+      },
+      {
+        "path": "scripts/signpost_project_tree.py",
+        "sha256": "cd1c734d1d3855c0f21026a2b9c04498904d07066bd671bc9d489b26f43ac1d9",
+        "size": 1257
+      },
+      {
+        "path": "scripts/verify_bee_render.py",
+        "sha256": "3156a0a85c8744d8fea2a0a4e1525c27afb4900384903692050ef3cf01dcc040",
+        "size": 365
+      },
+      {
+        "path": "scripts/verify_generated_reports.py",
+        "sha256": "91af532042b524323fe1af1a1c1cd86071f9a3cae4e979e967cc686bc9698946",
+        "size": 1849
+      },
+      {
+        "path": "scripts/write_source_refresh_ledger.py",
+        "sha256": "eb5f1d3d9ed2731f7a0f5e9824c6ce62216dfbb5c603738523fe8fa0f7781082",
+        "size": 566
+      },
+      {
+        "path": "scripts/z_generate_manuscript_variables.py",
+        "sha256": "87ea1831ec3b5b55925978d449bad4ea95b1e3f975851aa8654761cfcc89be9c",
+        "size": 2055
+      },
+      {
+        "path": "src/AGENTS.md",
+        "sha256": "27b8d9f7c0746ccf25ad8f05c82ef8a2b6fd9d4da51cd7128861b656371c13fa",
+        "size": 536
+      },
+      {
+        "path": "src/README.md",
+        "sha256": "09b4b54a5b3a1bec0df5cb31874cbf351c8c6f7d9e1b3eb0d7129f9ac155f986",
+        "size": 750
+      },
+      {
+        "path": "src/STYLE.md",
+        "sha256": "3354c4d4b7517df4ee62d3ca8b2943464a89406ee3c12f53350ae6134b10475b",
+        "size": 361
+      },
+      {
+        "path": "src/beestack/AGENTS.md",
+        "sha256": "8a9103c805c6a7322ba9ce3de01ee00c71e807fbc2c1cd1149a03f2d61deb176",
+        "size": 532
+      },
+      {
+        "path": "src/beestack/README.md",
+        "sha256": "4260dc38566f7eb7edbfebf911756ddbf4d4acf0dd0c6713141ea964bf4d4f0d",
+        "size": 1231
+      },
+      {
+        "path": "src/beestack/__init__.py",
+        "sha256": "0eade16921bae075ac8b250fa3d0eb6709e1a0a0317933ecfbba3014b89034e0",
+        "size": 276
+      },
+      {
+        "path": "src/beestack/_public_exports.py",
+        "sha256": "977f1001099c8c599f2d90aa9073647167f3842cb20af3f8b057fe996d54dd4a",
+        "size": 10912
+      },
+      {
+        "path": "src/beestack/body/AGENTS.md",
+        "sha256": "25c50f725ce6b28a5a7584589984df00f6817a859a687e25968085d633acd893",
+        "size": 617
+      },
+      {
+        "path": "src/beestack/body/README.md",
+        "sha256": "dca005138adc2a2ef9f9476933117415a5fff9211dca8f6c8f8164a7db6c3e67",
+        "size": 2482
+      },
+      {
+        "path": "src/beestack/body/__init__.py",
+        "sha256": "d91705cc9dedb458de408fdeb5040f284a2259229d4ae2a14ecc50b22dcb3f16",
+        "size": 3049
+      },
+      {
+        "path": "src/beestack/body/bee_mjcf.py",
+        "sha256": "d2503413bc426e785bb2c4e914fe45d8b9a7050a35959da7d392a865e8c2802b",
+        "size": 24505
+      },
+      {
+        "path": "src/beestack/body/energetics.py",
+        "sha256": "f6268d9fe10783e6e9ad1b4124e2e314ef0261a55666766e9d0149cace255b0b",
+        "size": 3190
+      },
+      {
+        "path": "src/beestack/body/flybody_adapter.py",
+        "sha256": "564bd93cc7cd04e1ed96fd7c34721683aa6adfa74fa1bde2796086f5b572d165",
+        "size": 29084
+      },
+      {
+        "path": "src/beestack/body/flybody_scene.py",
+        "sha256": "ee654b771e2440ce846d618c9eb00d9b6caca8fb2a5939e754ef09ac8be48223",
+        "size": 36757
+      },
+      {
+        "path": "src/beestack/body/flybody_scene_signpost.py",
+        "sha256": "9e2be1502ffc211e1c26c0ba1b37360415334599c56729fde9c44953f51173a7",
+        "size": 2948
+      },
+      {
+        "path": "src/beestack/body/morphology.py",
+        "sha256": "17874aa9e594cc40b8fc46648b22b69b6c1f1740baf5e3859c23836beeffe8e3",
+        "size": 7369
+      },
+      {
+        "path": "src/beestack/body/simulation.py",
+        "sha256": "40a2ee74d9f0e08da4209f0e07e722968ee3de01b61216c0f0d2c9ccb0c573cc",
+        "size": 4956
+      },
+      {
+        "path": "src/beestack/body/state.py",
+        "sha256": "b66d5574832f4cb835439095976ae099a6ace7782c7fc829c8ed6fe8e475141c",
+        "size": 729
+      },
+      {
+        "path": "src/beestack/brain/AGENTS.md",
+        "sha256": "4474ea7f4486759488f1585015987216bf2b94b28935884d351d7aa2ee440d87",
+        "size": 628
+      },
+      {
+        "path": "src/beestack/brain/README.md",
+        "sha256": "3ce8bc79800f3a0c16073d16138e823a7ab93b92741edf122b290e161daa3a94",
+        "size": 3107
+      },
+      {
+        "path": "src/beestack/brain/__init__.py",
+        "sha256": "47b12588bfa338a22f8f88e4d09cc04d1c29fdab91aac2d82d0e4cd82e8499fc",
+        "size": 5525
+      },
+      {
+        "path": "src/beestack/brain/anatomy.py",
+        "sha256": "efdbb5fae84093f567e335dde4eae2c1560c3b2ee7475a769d3ed622def60171",
+        "size": 16198
+      },
+      {
+        "path": "src/beestack/brain/central_complex.py",
+        "sha256": "47f0e37245f0f5e680c36386bb80483a69bea3ba9b3f3762f789e51c70eaad63",
+        "size": 2241
+      },
+      {
+        "path": "src/beestack/brain/connectome/AGENTS.md",
+        "sha256": "06e3e8c31c155b0064d3c014d38f417eb573288aabf7a8b040a35b2fe0116605",
+        "size": 634
+      },
+      {
+        "path": "src/beestack/brain/connectome/README.md",
+        "sha256": "8caa0b444f6974e46b339f0dbcd29726a641ed76773620f7ea2bf69c145d1fbc",
+        "size": 796
+      },
+      {
+        "path": "src/beestack/brain/connectome/__init__.py",
+        "sha256": "0ec9c5973de243c9280af6727ece1537a7d961735e2f8bfaf1153ac30e779240",
+        "size": 399
+      },
+      {
+        "path": "src/beestack/brain/connectome/graph.py",
+        "sha256": "82583c0887d285172cc8daf57eb331ca98e3d5e96afbe5985d1da5bf3096865c",
+        "size": 1636
+      },
+      {
+        "path": "src/beestack/brain/connectome/structural_wiring.py",
+        "sha256": "189d9872a1f8486ca9c1ec50408b2395c7fbf8eb99df5ffced980a92562dc3c0",
+        "size": 10081
+      },
+      {
+        "path": "src/beestack/brain/datasets.py",
+        "sha256": "a6a86203dddadd225c4a389c7663aebf570a603b0c5a6bbacee2d964ddd378d3",
+        "size": 14483
+      },
+      {
+        "path": "src/beestack/brain/empirical.py",
+        "sha256": "67e36bb716cc4816fa25a21a137433ee2ad15e9745c369fc28a8dc10c4079262",
+        "size": 8973
+      },
+      {
+        "path": "src/beestack/brain/empirical_analysis.py",
+        "sha256": "711b70a632da1bcf5d717e71a11a1b70692d02404de94dc02c75a38cc6527fdb",
+        "size": 23288
+      },
+      {
+        "path": "src/beestack/brain/empirical_data.py",
+        "sha256": "9b3e2d80c8e898942798c4812fe76421d8e73a3545e3d33df626c65653182ac6",
+        "size": 33516
+      },
+      {
+        "path": "src/beestack/brain/empirical_fetch.py",
+        "sha256": "a48426378c3db198bc784741c772c9ceee7b8f8563f18eeda7f8440bb5295f83",
+        "size": 31121
+      },
+      {
+        "path": "src/beestack/brain/empirical_ingest.py",
+        "sha256": "b2922d8d8092f5ba9c128d053cfdca2842f877af4d1518253d6b4c46e382f0e5",
+        "size": 1034
+      },
+      {
+        "path": "src/beestack/brain/empirical_ingest_reports.py",
+        "sha256": "7a9b794a8c0ae35cdfe92307992bd6d8d33ad6da75f9c919d0ddbdc3f613478b",
+        "size": 8784
+      },
+      {
+        "path": "src/beestack/brain/empirical_parsers/AGENTS.md",
+        "sha256": "3a8a5cc18a04320ab795bd72c1fc18ec2b5816da75d14728bf0f0bd21dfc8c3e",
+        "size": 757
+      },
+      {
+        "path": "src/beestack/brain/empirical_parsers/README.md",
+        "sha256": "abcf12319051438afa12102ad14a9b15ef67b975c393fc5c7a9315aa1c6f0418",
+        "size": 2136
+      },
+      {
+        "path": "src/beestack/brain/empirical_parsers/__init__.py",
+        "sha256": "9411307979e5298a30c4393e1dc2141d4af21d3a8cad54377b623ab96028074e",
+        "size": 654
+      },
+      {
+        "path": "src/beestack/brain/empirical_parsers/anatomy_loader.py",
+        "sha256": "a9940fc67eca8be3ec5adabde790d9168ef4446cbe275a5f9e4bab3f9c6d4de4",
+        "size": 1618
+      },
+      {
+        "path": "src/beestack/brain/empirical_parsers/antennal.py",
+        "sha256": "2ad220f4464dc45a889daf10e14633f0fac02210e16c1d9b39695d13d5cd12af",
+        "size": 2840
+      },
+      {
+        "path": "src/beestack/brain/empirical_parsers/calcium.py",
+        "sha256": "5d944415cc4fc672d5ac65e6203d800e525fb321053f2a5f268cd258f48817ba",
+        "size": 12472
+      },
+      {
+        "path": "src/beestack/brain/empirical_parsers/common.py",
+        "sha256": "f0c8b460b2e126e83e3ec6601dc3cf192dbc2c59f2da5db676dc0a34b858d045",
+        "size": 13160
+      },
+      {
+        "path": "src/beestack/brain/empirical_parsers/nouvian.py",
+        "sha256": "d3715d198285cd61b71af9d166f9a7fb2c219875db603ce1a065c6915ec89d5c",
+        "size": 6828
+      },
+      {
+        "path": "src/beestack/brain/empirical_parsers/panels.py",
+        "sha256": "eed2bc471334a34d3af79143d84ce956604a0ee075909513a97013b88b360419",
+        "size": 11250
+      },
+      {
+        "path": "src/beestack/brain/empirical_parsers/szyszka.py",
+        "sha256": "64400d70221588df29daf3028f75014a0103c323479adb3d573a6b02769c497a",
+        "size": 5512
+      },
+      {
+        "path": "src/beestack/brain/empirical_parsers/waggle.py",
+        "sha256": "a3626883cec3626390ce1ab6383e900a8f522280857ea3c22ce85d234968c19c",
+        "size": 1968
+      },
+      {
+        "path": "src/beestack/brain/empirical_pipeline.py",
+        "sha256": "e1401ef34b3872ce6d29409b582a35a8b5199a3be671160f1d4e453f84285854",
+        "size": 11250
+      },
+      {
+        "path": "src/beestack/brain/empirical_status.py",
+        "sha256": "d652552fab623c6e256e377d971af4c6a0ea0df21560d82365eeb966cb90330a",
+        "size": 12771
+      },
+      {
+        "path": "src/beestack/brain/mushroom_body.py",
+        "sha256": "8766b5f8dfacd48f11826104993dd970d5cf26eeab3fd7dc113aa8923bf6f4e2",
+        "size": 4773
+      },
+      {
+        "path": "src/beestack/brain/olfaction.py",
+        "sha256": "d997cfaad7fdf3a7b7c0a28db5ec75702c1cecaef4e9c00531899ab7c541aa12",
+        "size": 1348
+      },
+      {
+        "path": "src/beestack/brain/pipeline.py",
+        "sha256": "fec21b1c60de386c12a78206da3d8b7358c8433941b11d67a423dcfdf2fe73cf",
+        "size": 2327
+      },
+      {
+        "path": "src/beestack/brain/state.py",
+        "sha256": "2c1e0f1d1aa4c2288e35d94f2baa4fef220611697c8936b43f11043e19f8842f",
+        "size": 1260
+      },
+      {
+        "path": "src/beestack/brain/vision.py",
+        "sha256": "118c5d004c0b9d7b108e4c8bf1a5a36f93b82ee120b0fdfaaff6496f63e25434",
+        "size": 1041
+      },
+      {
+        "path": "src/beestack/brain/waggle.py",
+        "sha256": "2349b37bd35e87a575b78255d83f130b71bedaa033c147449cd24cf7a45a25a3",
+        "size": 6650
+      },
+      {
+        "path": "src/beestack/cli.py",
+        "sha256": "e5c89edd74b7c8604387b16469e919ee37ce2ffcaf05deb6a53dc338dbde1771",
+        "size": 895
+      },
+      {
+        "path": "src/beestack/config.py",
+        "sha256": "0f793cd272181df932ffdc85c63ba6a408f48d124d642248ad6c45d358effd43",
+        "size": 25034
+      },
+      {
+        "path": "src/beestack/contracts.py",
+        "sha256": "13fef12ced75fc9cf16124e4b1009e0b05485cc5608646a31e6c4ef7803a9a37",
+        "size": 10230
+      },
+      {
+        "path": "src/beestack/digital_twin/AGENTS.md",
+        "sha256": "610f1069234c87588ab8cc00277e9901f44ac2f1ed7cb4eb8618920961a05de6",
+        "size": 494
+      },
+      {
+        "path": "src/beestack/digital_twin/README.md",
+        "sha256": "295db22929e508f5450604a0be6671581d5df05d44775dbbac86ca72a37d6f9c",
+        "size": 937
+      },
+      {
+        "path": "src/beestack/digital_twin/__init__.py",
+        "sha256": "fcc8f2441dc2de16120b532607981f91a9f56c3fbf0e49bfb45fd6ca5793df67",
+        "size": 530
+      },
+      {
+        "path": "src/beestack/digital_twin/readiness.py",
+        "sha256": "d695956ab0c2f21dce1ed40faa065339679d59a74136c9ca3c3c6bdfdf403bef",
+        "size": 20945
+      },
+      {
+        "path": "src/beestack/documentation_audit.py",
+        "sha256": "4300d608b97cd6f0bc0c931376adc805a02e9cf8c614521cdbe98a596d73575d",
+        "size": 10565
+      },
+      {
+        "path": "src/beestack/documentation_signpost.py",
+        "sha256": "df1d2dc1f40c8164e4d00df02361fd1267ae8fd5aa5d5075f8c5f45da10f2b81",
+        "size": 32084
+      },
+      {
+        "path": "src/beestack/figure_audit.py",
+        "sha256": "b21766291e7d1ee3096b9f5436ab4251a7c563c49fbe1153062536503026130a",
+        "size": 13341
+      },
+      {
+        "path": "src/beestack/generated_report_audit.py",
+        "sha256": "960ffabf96c4ee3c601504ab08e2ac54305840d72e954033e26b0a1ba1a60af4",
+        "size": 7945
+      },
+      {
+        "path": "src/beestack/integrity.py",
+        "sha256": "2001bddcd4ed74a16573d319664764e0b0859721c3d31085a291d08adb676362",
+        "size": 23286
+      },
+      {
+        "path": "src/beestack/manifest.py",
+        "sha256": "366bb51ae1836f7f22626ae794232777494879cbfecfc6de7324a23990b8f760",
+        "size": 6749
+      },
+      {
+        "path": "src/beestack/manuscript_variables.py",
+        "sha256": "cbba8027e2e0a5f01ffb1fdb294d7e0a68c5ac2401bf7849fe13c3764266fbc4",
+        "size": 14808
+      },
+      {
+        "path": "src/beestack/mind/AGENTS.md",
+        "sha256": "6b8a0cd93c219c111463a84cbe086acd2f7b46a77e26cb2481dc81e918b52d6d",
+        "size": 222
+      },
+      {
+        "path": "src/beestack/mind/README.md",
+        "sha256": "b6a65dcbcdb8bfcecec654d73a7d47d4520dd1d17592e988d0d3975a2fd6a607",
+        "size": 281
+      },
+      {
+        "path": "src/beestack/mind/__init__.py",
+        "sha256": "bddae02d780d4840e36cfc34900e205cb867b0bbafa953fed6a901a3ad70bd0e",
+        "size": 853
+      },
+      {
+        "path": "src/beestack/mind/caste.py",
+        "sha256": "62bd78c967ca5bf5d145c9ae130efcaa1bbe071622250f871fc2cb16855a82cd",
+        "size": 2028
+      },
+      {
+        "path": "src/beestack/mind/dance.py",
+        "sha256": "45aa06980a4972a05b54d124a3fa6aefd44874e79b718351767ba723f0a585da",
+        "size": 2802
+      },
+      {
+        "path": "src/beestack/mind/policy.py",
+        "sha256": "5cca12505daa81fdc887cca6ce0e8b58ebdf4375472f5ba1cc5518870f5f7e47",
+        "size": 6122
+      },
+      {
+        "path": "src/beestack/mind/state.py",
+        "sha256": "ed6bdc0ebabb6483a187a990799151e67b0a1e46b02302bb9de8c2c463691efd",
+        "size": 1030
+      },
+      {
+        "path": "src/beestack/niche/AGENTS.md",
+        "sha256": "3a1a5d420138781fc0863ea0ab7289526510a8c6f120ad1b331271a4f7b7ad4d",
+        "size": 266
+      },
+      {
+        "path": "src/beestack/niche/README.md",
+        "sha256": "a0a7e007b7acc0518e1845a7a3102bdf9a274ff0e3146ecebff4642cc104c6d1",
+        "size": 736
+      },
+      {
+        "path": "src/beestack/niche/__init__.py",
+        "sha256": "5ee0c641cf09876637b1e5a7e6d6ed1edef107e7833a33d736c1765cbcd88811",
+        "size": 1128
+      },
+      {
+        "path": "src/beestack/niche/comb.py",
+        "sha256": "83f3a748df35aa5b5dfb1f8d2a206ee1a9b9c4fd3c65701da9eee2249cae5111",
+        "size": 2858
+      },
+      {
+        "path": "src/beestack/niche/landscape.py",
+        "sha256": "ab1537fc53dc7d1db56781f8e19c1eb6627f18e37023e2050778715ead7f56c2",
+        "size": 2078
+      },
+      {
+        "path": "src/beestack/niche/metrics.py",
+        "sha256": "9cdeebd2181f403b3fa1f052edb41b43b2a448c2c022363b7b9b186ff1e13a93",
+        "size": 3669
+      },
+      {
+        "path": "src/beestack/niche/state.py",
+        "sha256": "aabf7e55ff18ba1743b30a96ffcea7abea15c13f279dcf598cb47005af57cb59",
+        "size": 667
+      },
+      {
+        "path": "src/beestack/niche/thermal.py",
+        "sha256": "2d4bb64569c6acf097b0752f7e21cd139594f3418ee99f681eafe75719222ee0",
+        "size": 3300
+      },
+      {
+        "path": "src/beestack/orchestrator.py",
+        "sha256": "8e3c12643130cefa1f13ceddc5e04c0b01261c9d88905f2072a26218ddbe1b00",
+        "size": 10762
+      },
+      {
+        "path": "src/beestack/pipeline.py",
+        "sha256": "5787cd9e7afb249013db52af24e94d32e0ff63f3b5049a50c9d2815a09db7a81",
+        "size": 29179
+      },
+      {
+        "path": "src/beestack/project_config.py",
+        "sha256": "2f3a2f15d6463bd320c07da3136a3942cf6c26b161db91f82e909308142cc398",
+        "size": 553
+      },
+      {
+        "path": "src/beestack/publication_readiness.py",
+        "sha256": "994239f60b45e5a259d209c7e0d3490281a1609765bd04e849374b8d21010883",
+        "size": 11161
+      },
+      {
+        "path": "src/beestack/research/AGENTS.md",
+        "sha256": "23f6c71a435e4a56de06d3e9713e4888547641e5a7f4023226e393b02e478e5c",
+        "size": 774
+      },
+      {
+        "path": "src/beestack/research/README.md",
+        "sha256": "8eba958e357a679a168a670948e8d697c6ff48ee43ee7393de21fc485b6bb647",
+        "size": 2045
+      },
+      {
+        "path": "src/beestack/research/__init__.py",
+        "sha256": "63f46c5200824257baf5cf097efb24b12ddd7916a6b421495b8f58534b7cda31",
+        "size": 1622
+      },
+      {
+        "path": "src/beestack/research/methods.py",
+        "sha256": "f920a670b10496a0c1992a363e8d8c4c4e66b5e031dfc05f66c8bcc7d9db7ef1",
+        "size": 788
+      },
+      {
+        "path": "src/beestack/research/methods_assembly.py",
+        "sha256": "163e4a90a460b9655870fe38545535b386634c57732a3254101e0b36ea45285e",
+        "size": 12982
+      },
+      {
+        "path": "src/beestack/research/methods_helpers.py",
+        "sha256": "3dfe3f7a6b52ed124231ae42e3e642ba60eb5f9247cdd2748f35c84c8b5e06f4",
+        "size": 5407
+      },
+      {
+        "path": "src/beestack/research/methods_models.py",
+        "sha256": "841ce1a41f09b2e0e266d4c716f8b1535c380e03ce1e5211d1b074c0888c15cf",
+        "size": 15454
+      },
+      {
+        "path": "src/beestack/research/methods_panels.py",
+        "sha256": "868dd6b26be65d26e547fb0976545566039c687195fc06d541933667d6bc335e",
+        "size": 28326
+      },
+      {
+        "path": "src/beestack/research/methods_validators.py",
+        "sha256": "5bc8c1e25736bbceb79354710f5f66fb91ecd1bc6b079a3138db0c889a11e261",
+        "size": 791
+      },
+      {
+        "path": "src/beestack/research/suite.py",
+        "sha256": "4c6c58b577a3663f5fe3c45de0e34d4e0cd65b798b35a8424492b4e869694948",
+        "size": 37128
+      },
+      {
+        "path": "src/beestack/research/synthesis.py",
+        "sha256": "41f61c246cfe8bbe88865f755e9aef8d4749f79f7651e6ba26d6b11d87aefbab",
+        "size": 20520
+      },
+      {
+        "path": "src/beestack/security/AGENTS.md",
+        "sha256": "59a85d9be96bf774f8ce89a1b41540c0e0600b1086d441389c6a0ec178fc8e4a",
+        "size": 932
+      },
+      {
+        "path": "src/beestack/security/README.md",
+        "sha256": "3dec274b40d0d417f61aa191fe06e9f591b1991a07fd13265cc3636b38a37dd8",
+        "size": 2063
+      },
+      {
+        "path": "src/beestack/security/__init__.py",
+        "sha256": "c846de04689eaff7e35b6ef2c5ab7ae35f36abbaa3c841ef9040dffa2c643a29",
+        "size": 1183
+      },
+      {
+        "path": "src/beestack/security/path_safety.py",
+        "sha256": "4a6f9a75eaf8fdaf524a8150614d618b772149e2ba9b5596f736b3661621bc0a",
+        "size": 5424
+      },
+      {
+        "path": "src/beestack/security/posture.py",
+        "sha256": "d4bd8c7e6a4856651b4763c7992fff0bad00a59b818544d5d837ae6173c915dd",
+        "size": 4646
+      },
+      {
+        "path": "src/beestack/security/url_policy.py",
+        "sha256": "b27eb9ed5ceb6f40b0849c6d306a450b4d46bef6f35bf6bf3fdb2b59ee269010",
+        "size": 3965
+      },
+      {
+        "path": "src/beestack/source_audit.py",
+        "sha256": "058bd1f718ed2f363d94f17ebeabfb69798544cf70bc36deb1635056607b8ffb",
+        "size": 14851
+      },
+      {
+        "path": "src/beestack/source_refresh.py",
+        "sha256": "75d9b9edf8ae03f73bcd619c9ea3cd98d37e0998b333d31f5635dd45edbc1a76",
+        "size": 28968
+      },
+      {
+        "path": "src/beestack/swarm/AGENTS.md",
+        "sha256": "684a27375e6e6653b26fad0be09e61508b18d7270ae209e7bd29fa479b80e399",
+        "size": 304
+      },
+      {
+        "path": "src/beestack/swarm/README.md",
+        "sha256": "ac84e99996faded46c5bd2b028a0ddfde21f7ac65d34d57177cf3540cc4c8b86",
+        "size": 917
+      },
+      {
+        "path": "src/beestack/swarm/__init__.py",
+        "sha256": "87708d6bac3ff172e1f14cc10bb72d18fa8a8e06aa846eb622692a7d6516fe70",
+        "size": 1017
+      },
+      {
+        "path": "src/beestack/swarm/agents.py",
+        "sha256": "6fa5cc34ad34f0eeab6b766e274b1a2c49f9c266003e16753c8f9f2586fa616a",
+        "size": 2115
+      },
+      {
+        "path": "src/beestack/swarm/communication.py",
+        "sha256": "7076d1b45e4229ae839f38c5ded7b65f61c525909c7bbf850de43083bf22868c",
+        "size": 3942
+      },
+      {
+        "path": "src/beestack/swarm/metrics.py",
+        "sha256": "599520a156aa5d4d90ab65d19a4f52cd08838b886d5d42506a7f1665fbf18e47",
+        "size": 3732
+      },
+      {
+        "path": "src/beestack/swarm/pheromones.py",
+        "sha256": "e678b3743adbc3ac3f3d0fdc19a3b91765c3390c1dbd4424e157312d3ebbc16e",
+        "size": 4199
+      },
+      {
+        "path": "src/beestack/swarm/state.py",
+        "sha256": "f3c3e67f3218f0963e639af0c1adcdf1cde43d3c0dfcdf620f5582f59fb3d0e2",
+        "size": 2049
+      },
+      {
+        "path": "src/beestack/utils/AGENTS.md",
+        "sha256": "fa67a31c6cb251d9d97a7793f297ff056f312fa496067335d3464eab2338d03b",
+        "size": 199
+      },
+      {
+        "path": "src/beestack/utils/README.md",
+        "sha256": "cd7de58f127415a452cf773c81a1fe1e3baa5b21f102ebbfb6e246e924b46e00",
+        "size": 370
+      },
+      {
+        "path": "src/beestack/utils/__init__.py",
+        "sha256": "0aa74cb11dd2a250d640ab63ef06c70785347c325bc8715158ca197bde6c6eb9",
+        "size": 420
+      },
+      {
+        "path": "src/beestack/utils/io.py",
+        "sha256": "99b5c0604e9656605484f8bf9d11ad60181ef07003db2a570c208be2fe40ed98",
+        "size": 1145
+      },
+      {
+        "path": "src/beestack/utils/math.py",
+        "sha256": "a759eaba06afbc7bf54b14364f24f351276e6236cac14c80a6e31ccf9d52a68c",
+        "size": 922
+      },
+      {
+        "path": "src/beestack/utils/paths.py",
+        "sha256": "cbd441e0e80509b422c63c859b2cae9f807f44a2199039c62d2ba830d6f88eb5",
+        "size": 1467
+      },
+      {
+        "path": "src/beestack/version.py",
+        "sha256": "5d27ba74f3cf1b0e5a930081d8613d5bd6cfe7be310e54b8319b4d88a41467b4",
+        "size": 117
+      },
+      {
+        "path": "src/beestack/visualization/AGENTS.md",
+        "sha256": "51b3de805336f3f41bb1308ab48fee7b33e17c94608f1c148b2c0067dfa0b21e",
+        "size": 1502
+      },
+      {
+        "path": "src/beestack/visualization/README.md",
+        "sha256": "638f6276669b24560aa9fb80beabd060cb4aa08bf6619fda0226b8ca6678ade3",
+        "size": 4618
+      },
+      {
+        "path": "src/beestack/visualization/__init__.py",
+        "sha256": "da68661a1ba2851bd637df6c70a1d2064acdedb3933b067eaaaf00f6d012841e",
+        "size": 2635
+      },
+      {
+        "path": "src/beestack/visualization/animation_manifest.py",
+        "sha256": "f009ebae98c6b404f8e0707f8a2fd77aec84e29e3a337b509e679955f8b41825",
+        "size": 6947
+      },
+      {
+        "path": "src/beestack/visualization/animations.py",
+        "sha256": "05d927ee935887718dbbf9890591e7e796eb6f9c37c65c8367c4fb2ba8b770f2",
+        "size": 29179
+      },
+      {
+        "path": "src/beestack/visualization/bee_render_verification.py",
+        "sha256": "48d34ab62631267c10c0df657a0a085173922209359d756c8171a77b0bb2a550",
+        "size": 10656
+      },
+      {
+        "path": "src/beestack/visualization/bee_signature.py",
+        "sha256": "2d8a8c9b2bfdf7b9c14d83953a76e56b4abae42e3836b32a9439c2bce42ac91d",
+        "size": 9538
+      },
+      {
+        "path": "src/beestack/visualization/connectome_figures.py",
+        "sha256": "5b133091c462b58fb731d53c841cf8c0b9dd3d4b00fe851f072de0ad17f9cf4d",
+        "size": 10814
+      },
+      {
+        "path": "src/beestack/visualization/empirical_figures.py",
+        "sha256": "ac6cbb9a126c128d58a90ab31fe646592abeb8a9a7ec82455f7b8a5a32d1337c",
+        "size": 26473
+      },
+      {
+        "path": "src/beestack/visualization/figure_metadata.py",
+        "sha256": "261627f486ab3217db1b551608ae7eab1c9ac5fb8dc0455900fd8e5dd95f31d1",
+        "size": 13277
+      },
+      {
+        "path": "src/beestack/visualization/figure_output.py",
+        "sha256": "8f7a850b11c0b12cc4906b6360f8fa42cfa333a6f388305f86a0df551aeda25b",
+        "size": 4372
+      },
+      {
+        "path": "src/beestack/visualization/figure_plot_data.py",
+        "sha256": "08dbc3e922564f9e646cf04bb5fbeee4bb57634ee47dca3de99c05687c606ac4",
+        "size": 3724
+      },
+      {
+        "path": "src/beestack/visualization/figure_plot_specs.py",
+        "sha256": "6200bf4b8093398db64eab8dad3cf0dc072a862e669d4adbc1f159707c2ffa15",
+        "size": 33763
+      },
+      {
+        "path": "src/beestack/visualization/figure_registry.py",
+        "sha256": "9e88a46611f89675292c5d317f9e496ba020c214f44f1f8a9b91d38079700215",
+        "size": 63013
+      },
+      {
+        "path": "src/beestack/visualization/figures.py",
+        "sha256": "4e112cb1dad0e37e9a8e369b2c58c77d46913f7f6bcd731ed6c8fda5a3d93021",
+        "size": 4689
+      },
+      {
+        "path": "src/beestack/visualization/figures_analysis_panels.py",
+        "sha256": "a930506c6e387cbd231c8bc704329aa0e090368a2176adf314656608311928db",
+        "size": 13695
+      },
+      {
+        "path": "src/beestack/visualization/figures_calibration_maps.py",
+        "sha256": "58f952f1d9b3aec7be37e00db89488ab31a42766a75965781ccb7824162d26fa",
+        "size": 14447
+      },
+      {
+        "path": "src/beestack/visualization/figures_claim_audit.py",
+        "sha256": "c022eab5d39d879b0fac76321536293e6753e4f92d4efa2babbe1b88a0246e13",
+        "size": 21069
+      },
+      {
+        "path": "src/beestack/visualization/figures_common.py",
+        "sha256": "f9a07acfad1fa8ce91c973b2b053227496a17ea1ce1654f4f42f011c6d5dfbac",
+        "size": 1619
+      },
+      {
+        "path": "src/beestack/visualization/figures_overview.py",
+        "sha256": "fbd9e09ebc2c4a608d2ca98c87b2adce84b6a79618f9b055952d048edb6a6ad8",
+        "size": 8503
+      },
+      {
+        "path": "src/beestack/visualization/methods_figures.py",
+        "sha256": "54771bfe11eebd83a7cbf109de49e1bf619b1cddc7cc3ea91c092ba200c8b757",
+        "size": 18094
+      },
+      {
+        "path": "src/beestack/visualization/render_stills.py",
+        "sha256": "a811c8eea63360f1619a1ef90e3ce49333c35c65059618b4da001dafaad5fedd",
+        "size": 2342
+      },
+      {
+        "path": "src/beestack/visualization/research_figures.py",
+        "sha256": "5507794d7cfe370de6e6ad048919d5140a65912aaa7ac0d8deb1fbc81e295774",
+        "size": 19325
+      },
+      {
+        "path": "src/beestack/visualization/style.py",
+        "sha256": "6750a85ff24240bc65bb0b89cb83bae8ed4ef33d31b2f231f5eee822ff123489",
+        "size": 9979
+      },
+      {
+        "path": "src/beestack/visualization/synthesis_figures.py",
+        "sha256": "f20c49f09d78d4bbfc93e7978252f54eff7761d710d28cab58a91c1995e3d9f6",
+        "size": 9176
+      },
+      {
+        "path": "src/beestack/visualization/visual_quality.py",
+        "sha256": "bff69f448e1f8be173e79c6525fa237e9c64f337ab7a89fdf841efa9b1ad887d",
+        "size": 5652
+      },
+      {
+        "path": "src/beestack/waggle_literature_regression.py",
+        "sha256": "706955f930bd50d773edd4bb6e5bac2e304d362cf3902d11da96fb25eea5a593",
+        "size": 6345
+      },
+      {
+        "path": "tests/AGENTS.md",
+        "sha256": "572dc7bb9b8ced0e7696fa526cee9f05ef41e0ea35bdb784e057318d99be7bd1",
+        "size": 524
+      },
+      {
+        "path": "tests/README.md",
+        "sha256": "bded386f7ced4bec9cbc2ec3e4f14c7a02a8c473ee0b822133c429c77df55e1c",
+        "size": 549
+      },
+      {
+        "path": "tests/__init__.py",
+        "sha256": "ceb16ea3bd605bfaceb5a47b83e56df2ab9f9c2fb6941a1674a9f1991d39d127",
+        "size": 22
+      },
+      {
+        "path": "tests/conftest.py",
+        "sha256": "920f24811841ff7e91d5548cbb6e067f1b3aa6bdf908985a9640abd9aa3631aa",
+        "size": 1265
+      },
+      {
+        "path": "tests/test_animations_helpers.py",
+        "sha256": "327a82cd958c43421fbe9a7038bbd5b8a14e8607cc217b31d6f19712f1a8a3a6",
+        "size": 2307
+      },
+      {
+        "path": "tests/test_bee_signature.py",
+        "sha256": "08b955071bb7e9ee64d0ea93f584a508b4f8934cab83bb547963e8f709b9d5d9",
+        "size": 4462
+      },
+      {
+        "path": "tests/test_body_brain.py",
+        "sha256": "9e9c5fe9cf8a1033490b9e0cea4580b38e46f7db023de251aff13b881953fe77",
+        "size": 26559
+      },
+      {
+        "path": "tests/test_build_artifact_custody.py",
+        "sha256": "9756fd9f0009af64c679d050de29512cbfbda563dc725224a67b63dfbd880b98",
+        "size": 1147
+      },
+      {
+        "path": "tests/test_config_contracts.py",
+        "sha256": "ee943e1c8e35e004bdc33fea18ef4111ceefc8613a7f0857d769472ba755a0e6",
+        "size": 14571
+      },
+      {
+        "path": "tests/test_connectome_fidelity.py",
+        "sha256": "1674604d8e01de22cf8e52aeda9c86a4da9d96a3f64cfbfddb428b8abd4cd9dd",
+        "size": 10652
+      },
+      {
+        "path": "tests/test_connectome_structural.py",
+        "sha256": "ceffcb60fc311bcd650d97b38a6254833eea654a6ba3289d4c6f9d0beb94581b",
+        "size": 3398
+      },
+      {
+        "path": "tests/test_determinism.py",
+        "sha256": "043858cfe7e26913175a8938b03db2a9295cf43f8457f10a4d1cc90349f10184",
+        "size": 2868
+      },
+      {
+        "path": "tests/test_digital_twin_readiness.py",
+        "sha256": "43887b3bd8683a59e52488eea90d693bf18e8caae55d62cc5d812e9ac9bf49c4",
+        "size": 3064
+      },
+      {
+        "path": "tests/test_download_observations.py",
+        "sha256": "7ed4aaf2a36494888b2320a9e9970c6d7c25f44dcdc91ecbd067861c0b13326a",
+        "size": 6153
+      },
+      {
+        "path": "tests/test_download_source_identity.py",
+        "sha256": "4aca69c85248b26f366504705f0f35af6307a0ffdfc4a91ca7b36e4dfc94bfd0",
+        "size": 14970
+      },
+      {
+        "path": "tests/test_empirical_analysis_coverage.py",
+        "sha256": "4e576d1102a26f5dbe4b4a9c48565a8ce4c739f324214694f979691d7d2e2cf2",
+        "size": 3501
+      },
+      {
+        "path": "tests/test_empirical_data_coverage.py",
+        "sha256": "6148fd544efce69f1cbcbb051caee5e883d7baf254b169d339776aac74bfa536",
+        "size": 4304
+      },
+      {
+        "path": "tests/test_empirical_fetch_headers.py",
+        "sha256": "e9118078d5e8d3732398e174c3c77d3bd787275daba4ae811e09181590ae0f19",
+        "size": 1709
+      },
+      {
+        "path": "tests/test_empirical_figure_admission.py",
+        "sha256": "5afedb49f3318285fe332bbdef58dda0754b4bcdf38fddab66cddc231446cb9e",
+        "size": 1987
+      },
+      {
+        "path": "tests/test_empirical_freshness.py",
+        "sha256": "67e5b298894398e79b873b1cd3ff62eb956faec88d0aa7479827467496069909",
+        "size": 6678
+      },
+      {
+        "path": "tests/test_empirical_input_boundaries.py",
+        "sha256": "0fc5d1d7f25510060de1d36d53eb2469aafa0eaada8ffaca41a0c4864d311061",
+        "size": 21910
+      },
+      {
+        "path": "tests/test_empirical_output_paths.py",
+        "sha256": "4378d69dfe552fd2df305ad5f67410dac03d7d2d246c3a14f341e16e3f593355",
+        "size": 7238
+      },
+      {
+        "path": "tests/test_empirical_pipeline_integration.py",
+        "sha256": "c7589a64d70b60dca898ce118d2c4f90cff77487c273eb55a16e873b778f46da",
+        "size": 15172
+      },
+      {
+        "path": "tests/test_evidence_boundaries.py",
+        "sha256": "c51d66dcf9b6a2999f538fc6efd03843c904d1fbc8b5669ac54072146a2715dc",
+        "size": 14339
+      },
+      {
+        "path": "tests/test_figure_metadata.py",
+        "sha256": "c46df36d0e2c1b15c3163b7ade9936f9358dfabf1c9aff2e05de208ffbb78e3f",
+        "size": 9149
+      },
+      {
+        "path": "tests/test_figure_registry_audit.py",
+        "sha256": "b32ebb269fc5d215f20e45de9403d1806b7135e3b065ecd22624fbb2ac4c275f",
+        "size": 11135
+      },
+      {
+        "path": "tests/test_figures_generation.py",
+        "sha256": "00997ddb9a28348ca19893232260434e45ad3d3b8d1bae6569f8d0c0c2b8b187",
+        "size": 3443
+      },
+      {
+        "path": "tests/test_generated_report_audit.py",
+        "sha256": "fa22ccac9f6b92bf200b6f21d133e9eda319e2e1bae02f4f9c5450f4a1059006",
+        "size": 8220
+      },
+      {
+        "path": "tests/test_intake_mitigation.py",
+        "sha256": "fd5a37f54c1571e4ec969be168af7e05714545c19d4a51d33c2aaec00fb22e8d",
+        "size": 10986
+      },
+      {
+        "path": "tests/test_manuscript_boundaries.py",
+        "sha256": "a571a7ccdb4a2b466fdb1eac02869486cba7bd3a13f3233ce7b504564128c192",
+        "size": 11767
+      },
+      {
+        "path": "tests/test_manuscript_crossrefs.py",
+        "sha256": "5bae92dfd766f8656f273e88f3aa555aa96584456ec6d76f0962efcd004505cf",
+        "size": 1765
+      },
+      {
+        "path": "tests/test_manuscript_quality_guards.py",
+        "sha256": "eb84b25dd24c5a8315ffe5b8a3132d8f846eda55927afb4d8b315cc0e5c32202",
+        "size": 1684
+      },
+      {
+        "path": "tests/test_manuscript_variables.py",
+        "sha256": "26d43b8e869906603986becceffb4a54963f38fbf004c1c0a7cb839bfd2ac2ba",
+        "size": 5848
+      },
+      {
+        "path": "tests/test_methods_analysis.py",
+        "sha256": "7ad2c7e1e05f954f5e634c47ada4c4a1e332e8cbad4db8bdc2b3269f78af6030",
+        "size": 19666
+      },
+      {
+        "path": "tests/test_mind_swarm_niche.py",
+        "sha256": "c53676c23c97955236882069735aa87ac29d92fe77257e65a2f4f13473d9c235",
+        "size": 9434
+      },
+      {
+        "path": "tests/test_mind_swarm_niche_deep.py",
+        "sha256": "e4688c65e21e32d65594c3288bb16cd316bffebcabd1d8a23f4d181c32c6965a",
+        "size": 27727
+      },
+      {
+        "path": "tests/test_nonfinite_guards.py",
+        "sha256": "b87bd4db25c47d01c31d661f42268401c3b5b912947681533ef159e5600bb222",
+        "size": 2514
+      },
+      {
+        "path": "tests/test_oracle_hardening.py",
+        "sha256": "a0aaca5992ec181fbe89a0ce6ca01670aad37264713cabf537416820bab919ab",
+        "size": 3274
+      },
+      {
+        "path": "tests/test_orchestrator_manifest_manuscript.py",
+        "sha256": "b7a5bb128c0e6e319d48742c7dec4c8a086646a9764c5701704b2edaaacd4619",
+        "size": 8325
+      },
+      {
+        "path": "tests/test_publication_readiness.py",
+        "sha256": "8534fb68bdacbe35850edbd41181f393967fab10578902d786dfa38a356571ed",
+        "size": 1511
+      },
+      {
+        "path": "tests/test_render_stills.py",
+        "sha256": "67da958caa35471809c71980f2c81b52b166edeb0993144e0a48c322de870f5b",
+        "size": 918
+      },
+      {
+        "path": "tests/test_research_headline_honesty.py",
+        "sha256": "4915f08b48cc7f06dd1c43c421936ed85f6b7a6fe42667ffb99a586b94fb7503",
+        "size": 1307
+      },
+      {
+        "path": "tests/test_research_suite.py",
+        "sha256": "fce132d43c16c8054df9dbae1e74a1b544ed4132615b7ac6ed57bc4359ee6d45",
+        "size": 9663
+      },
+      {
+        "path": "tests/test_runtime_boundaries.py",
+        "sha256": "440c82895762c2832db0c4f38497dcab4bfabc8ec4624802cbf00461eff6b0f5",
+        "size": 15987
+      },
+      {
+        "path": "tests/test_security_posture.py",
+        "sha256": "668226b10c435ec4df245e2b4325605496f3ff8b36f8f535c438c52895228204",
+        "size": 6087
+      },
+      {
+        "path": "tests/test_signposting_readiness.py",
+        "sha256": "67cf663065d0b18a7bae793ccf8ba52802febe87112e743fc242d38d58c11c0f",
+        "size": 7787
+      },
+      {
+        "path": "tests/test_source_audit.py",
+        "sha256": "9f2de38d6a6d86eba84126ba8177a7ed5ec85905a552753cce2f90602aff6a9c",
+        "size": 5548
+      },
+      {
+        "path": "tests/test_stack_synthesis.py",
+        "sha256": "43f6c7fbcccdb9ea9322d572700853bde222fa527fc15eb801fc6557aa3d274b",
+        "size": 7947
+      },
+      {
+        "path": "tests/test_structure_flybody_visualization.py",
+        "sha256": "ec85509735f22619f0719b56d956e6d77c0b1982fa72d40be27fa095ea56b690",
+        "size": 30185
+      },
+      {
+        "path": "tests/test_supplement_calcium_scientific_boundaries.py",
+        "sha256": "356844edf04b0d0dce9f0e2eebfc6b9ea3e6d9c0622876eb169e0b81ae7ff8b0",
+        "size": 17034
+      },
+      {
+        "path": "tests/test_synthesis_coverage.py",
+        "sha256": "cbe5838731756e70d1117e51e501f2930c27a41893dd0b96fe69c8a70892580d",
+        "size": 4424
+      },
+      {
+        "path": "tests/test_szyszka_supplement.py",
+        "sha256": "c2b635682a9cdb2f2272d17c6c173eafd986742b7f530787e1ef25fb7b8708a2",
+        "size": 717
+      },
+      {
+        "path": "tests/test_url_diagnostic_privacy.py",
+        "sha256": "9f4403e8358d6cb64eded133d46aab9e14315555ab14ac83b3d4f32f6d21529f",
+        "size": 3140
+      },
+      {
+        "path": "tests/test_visual_verification_schema.py",
+        "sha256": "7a106454233a48677b38e9b500ba788b263bdf056b05ef9a541c487f6c2ddd1d",
+        "size": 12417
+      },
+      {
+        "path": "tests/test_waggle_literature_regression.py",
+        "sha256": "798dca7e4002f4e1cead861f17cbe4b6ba871b14ede8596263465ed78d63d26a",
+        "size": 4575
+      },
+      {
+        "path": "tests/test_workbook_scientific_boundaries.py",
+        "sha256": "69c83afda7109b70cf96b8b2fdda7b42c69409127cef36e473c97fe0392d5e02",
+        "size": 19292
+      },
+      {
+        "path": "uv.lock",
+        "sha256": "172f6c1bfa45c95c02cd7d7a458504bd56f53e060853b4bf310836830cc3af6c",
+        "size": 208208
+      }
+    ],
+    "scope": "software, tests, native CI, canonical docs/manuscript and root contracts; generated outputs are separately sealed"
+  },
+  "acceptance": [
+    {
+      "outcome": "Preserve custody and isolate execution",
+      "result": "Owned branch from clean main; no stash/reset/force push, sibling or manager/configuration changes. Bounded source-bound qualified launches, repository-local stage/environments and guarded short mutations."
+    },
+    {
+      "outcome": "Audit and independently refute material risks",
+      "result": "Numerical/API, empirical intake/security, packaging/release and scholarly lenses; distinct refutation/completeness critic, narrowed exploit claims and repeated real mitigation checks."
+    },
+    {
+      "outcome": "Correct consumer-visible root causes and migrate contracts",
+      "result": "Required heading/connectivity ABI, explicit missingness/provenance, bounded intake/cache identity, real installed CLIs, canonical staged hydration and source-bound PDF admission."
+    },
+    {
+      "outcome": "Prove native integrated behavior",
+      "result": "727 tests, unchanged 92% floor, both installed console workflows, clean distributions, actual strict rendering/contact verification and inspected source-bound PDF."
+    },
+    {
+      "outcome": "Publish validated main/tag/release/assets",
+      "result": "BLOCKED by version DOI/authentication and governed publication admission; no remote mutation claimed."
+    }
+  ],
+  "workpools": [
+    {
+      "name": "WfzBeeAudit",
+      "workers": 3
+    },
+    {
+      "name": "WfzBeeRefutation",
+      "workers": 3
+    },
+    {
+      "name": "WfzBeeRepair",
+      "workers": 3
+    },
+    {
+      "name": "WfzBeeMitigation",
+      "workers": 2
+    },
+    {
+      "name": "WfzBeeFinalRepair",
+      "workers": 3
+    },
+    {
+      "name": "WfzBeeParserProof",
+      "workers": 2
+    },
+    {
+      "name": "WfzBeeFinalRefutation",
+      "workers": 2
+    },
+    {
+      "name": "WfzBeeFinalClosure",
+      "workers": 2
+    },
+    {
+      "name": "WfzBeeReleaseProof2",
+      "workers": 2
+    }
+  ],
+  "adversary_model": {
+    "access": "Compromised curated upstream redirects/metadata/archive/table/array bytes; supported caller configurations/public APIs; researcher reuse of generated claims.",
+    "excluded": "No arbitrary local source/configuration changes, privileged host compromise or manager-mutation permission.",
+    "method": "CogSecSkills Red-Team Review: access/capabilities, trust boundaries, compound failures, peer refutation and exercised mitigation regressions.",
+    "narrowed_or_rejected_claims": [
+      "OAuth client-secret redirect-body replay was not established; credential scoping/refusal were fixed without claiming that exploit.",
+      "Small Content-Length normally clips reads; actual bounded completion and source identity remain mandatory.",
+      "Reduced models, nominal distance conversion and scripted scenes are not inherently defects; their fidelity/provenance must be truthful.",
+      "Nested work amplification is not simultaneous worst-case RAM proof; no peak-RSS certification is claimed.",
+      "Approximate atlas registry sizes cannot universally become exact integrity requirements."
+    ]
+  },
+  "material_surfaces": [
+    "Configuration and numerical contracts; deterministic Body\u2013Brain\u2013Mind\u2013Swarm\u2013Niche state, kernels and all lazy public exports.",
+    "Reduced body adapter versus strict FlyBody/MuJoCo environment/render/contact paths and motion/threshold verification.",
+    "Curated transport/auth/cache, recursive ZIP/XLSX/MAT/HDF5/CSV/PDF/VRML readers, empirical source identity/inventory.",
+    "Observed conditions/missingness/rates/axes/templates, anatomy geometry, schematic/structural graphs and literature-comparison coverage.",
+    "CLI/project roots, installed wheel/source distribution, lock/runtime/CI and licensing.",
+    "Canonical 18 sections, staged hydration, scholarly identity/citations, figure sidecars, local rendering, docs/signposting and publication gates."
+  ],
+  "findings_closed": [
+    {
+      "paths": [
+        "src/beestack/contracts.py",
+        "src/beestack/config.py",
+        "src/beestack/orchestrator.py",
+        "src/beestack/brain/mushroom_body.py"
+      ],
+      "impact": "Heading/shape errors and per-tick changing model connectivity corrupted interpretation. Required degree heading, finite/integer/shape checks and a fixed read-only run-owned projection define the major-version ABI."
+    },
+    {
+      "paths": [
+        "src/beestack/brain/empirical_data.py",
+        "src/beestack/brain/empirical_parsers/panels.py",
+        "src/beestack/brain/empirical_parsers/calcium.py"
+      ],
+      "impact": "Absent conditions/rates could become zero errors, invented confidence or executable templates. Missingness/counts, complete grids, preserved axes and explicit consistent finite rates now determine usability."
+    },
+    {
+      "paths": [
+        "src/beestack/brain/empirical_fetch.py",
+        "src/beestack/security/url_policy.py",
+        "src/beestack/security/path_safety.py"
+      ],
+      "impact": "Redirect/auth, broad storage origins, partial/stale cache bytes and recursive resources crossed trust/evidence boundaries. Per-hop admission, credential scoping, bounded atomic verified completion and source identity fail closed."
+    },
+    {
+      "paths": [
+        "src/beestack/brain/anatomy.py",
+        "src/beestack/brain/connectome/structural_wiring.py",
+        "src/beestack/brain/empirical_status.py"
+      ],
+      "impact": "Cached summaries or semantic links could imply nonexistent geometry/current data. Actual asset/raw/config/code bindings determine availability; structural and schematic evidence remain separate."
+    },
+    {
+      "paths": [
+        "src/beestack/publication_readiness.py",
+        "src/beestack/project_config.py",
+        "scripts/z_generate_manuscript_variables.py"
+      ],
+      "impact": "Immutable original source confirms manuscript/config.yaml instead of canonical docs/manuscript/config.yaml. Canonical-only readers and preflight/staged hydration now preserve prior output on failure and require all 18 sections."
+    },
+    {
+      "paths": [
+        "src/beestack/cli.py",
+        "src/beestack/pipeline.py",
+        "pyproject.toml"
+      ],
+      "impact": "Installed commands depended on uninstalled checkout scripts. Packaged callables now use an explicit root; both noneditable console commands ran real workflows outside the caller working directory."
+    },
+    {
+      "paths": [
+        "src/beestack/figure_audit.py",
+        "src/beestack/publication_readiness.py",
+        "scripts/render_manuscript.py",
+        "scripts/manuscript_crossrefs.lua"
+      ],
+      "impact": "Non-PNG dependencies escaped PDF sealing, compiler cwd disagreed with admission and offline historical figures were demanded. All referenced image formats/sidecars are sealed, compiler origin agrees, core/current-empirical requirements remain and stale empirical references fail."
+    },
+    {
+      "paths": [
+        "src/beestack/documentation_audit.py",
+        "src/beestack/documentation_signpost.py"
+      ],
+      "impact": "Transient build/lib signposting contaminated later wheels with stale guides. Build/dist are excluded; preservation regression and clean package/sdist byte comparisons close the defect."
+    },
+    {
+      "paths": [
+        "docs/manuscript/00_abstract.md",
+        "docs/manuscript/04_evidence_typed_architecture.md",
+        "docs/manuscript/09_empirical_results.md",
+        "docs/manuscript/13_limitations.md",
+        "docs/manuscript/references.bib"
+      ],
+      "impact": "Claims now distinguish configured timing, executed reduced ticks, measured reproducibility, missing aggregates and biological validation. Incorrect citation identities/topics were corrected or removed; version DOI is not fabricated."
+    }
+  ],
+  "verification": {
+    "runtime": {
+      "python": "3.12.16",
+      "platform": "macOS arm64",
+      "uv": "0.13.7",
+      "ruff": "0.17.3",
+      "pytest": "9.2.0",
+      "coverage": "7.17.2",
+      "pandoc": "3.13",
+      "xelatex": "TeX Live 2026",
+      "flybody_commit": "d015e9bfe441bd90ae431bac24c55cb74bdbce26"
+    },
+    "tests_passed": 727,
+    "coverage": {
+      "covered_lines": 10858,
+      "num_statements": 11435,
+      "percent_covered": 92.80498425671601,
+      "percent_covered_display": "92.80",
+      "missing_lines": 577,
+      "excluded_lines": 12,
+      "percent_statements_covered": 94.954088325317,
+      "percent_statements_covered_display": "94.95",
+      "num_branches": 3492,
+      "num_partial_branches": 415,
+      "covered_branches": 2995,
+      "missing_branches": 497,
+      "percent_branches_covered": 85.76746849942727,
+      "percent_branches_covered_display": "85.77"
+    },
+    "coverage_floor_percent": 92,
+    "unit_commands": "output/reports/workflowz_unit_gates.json",
+    "native_commands_and_failure_history": "output/reports/workflowz_native_gates.json",
+    "distribution_proof": "output/reports/workflowz_final_wheel_runtime.json",
+    "installed_consumer_proof": "output/reports/workflowz_installed_consumer_completion.json",
+    "lazy_exports_resolved": 206,
+    "sdist_roundtrip": {
+      "package_files": 119,
+      "package_bytes_identical": true
+    },
+    "core_sha256": {
+      "run_summary.json": "16849fa85935ed5a8f43633a09bd31c112656f1f1fb771e44a480c354795771f",
+      "simulation_records.json": "1c4bbb442c998e1f8e76dc4be4be11b61f70705ea454211b04e1462cdc4f05ee",
+      "task_allocation.json": "d3b6256590b0739b1ec2b208c21863ff13a3ab1046eb92ac5b29edb457d610fa"
+    },
+    "artifacts": [
+      {
+        "path": "dist/beestack-2.0.0-py3-none-any.whl",
+        "size": 326584,
+        "sha256": "45c5e5b7b8c082d6bd1c1599aadf8b1d057d2eedf3ae4192797608b2176f3331"
+      },
+      {
+        "path": "dist/beestack-2.0.0.tar.gz",
+        "size": 381755,
+        "sha256": "a0db6eac65d2d2078c15aaa9b560344c3a9692b1570c05550fdc3a298d8bc9c3"
+      },
+      {
+        "path": "output/pdf/BeeStack_combined.pdf",
+        "size": 7179855,
+        "sha256": "ecdb0246efbfe7414b7fee4f0061d6e2d0ea8e468811d3349b783bd82447fcdf"
+      }
+    ],
+    "visual_proof": "output/reports/workflowz_pdf_inspection.json",
+    "local_link_proof": "output/reports/workflowz_document_links.json",
+    "dependency_observation": "output/reports/workflowz_dependency_observation.json"
+  },
+  "qualified_receipts": [
+    {
+      "id": "wfz-beestack-integrated-final-native-unit-gates/17001-a7e0792cd5c846aaad2ebc63b09eabe1",
+      "outcome": "SUCCEEDED"
+    },
+    {
+      "id": "wfz-beestack-clean-wheel-real-runtime/16905-3019a554974648259f28f04b5f30cddb",
+      "outcome": "SUCCEEDED"
+    },
+    {
+      "id": "wfz-beestack-installed-consumer-completion/17060-bf47c3dbe2964793ba540fa2f56ed084",
+      "outcome": "SUCCEEDED"
+    },
+    {
+      "id": "wfz-beestack-post-installed-consumer-final-manuscript/17091-5b6922310040426e8cb38750ab794725",
+      "outcome": "Strict DOI step blocked only; all preceding normal gates succeeded"
+    },
+    {
+      "id": "wfz-beestack-final-all-page-and-detail-visual-proof/17098-8971185bb7e340c394b0c0008511032e",
+      "outcome": "SUCCEEDED"
+    },
+    {
+      "id": "wfz-beestack-readonly-baseline-config-proof/17089-9a812f219cb44a3cbdb4a442c5993254",
+      "outcome": "SUCCEEDED; immutable original config-path defect"
+    },
+    {
+      "id": "wfz-beestack-final-release-counterexamples-corrected/16410-247cdb85b40c47059e6548f428077608",
+      "outcome": "Before: edited JPEG retained proof; malformed locator aborted peers"
+    },
+    {
+      "id": "wfz-beestack-final-release-counterexamples-after/16454-37481abac3cb4cfaaeab14bfb29bfe7a",
+      "outcome": "After: edited JPEG invalidates proof; malformed locator preserves peers"
+    },
+    {
+      "id": "wfz-beestack-build-artifact-contamination-before/16882-6e8c5dbe3fef4dc1a5f25ee2f3b75bfc",
+      "outcome": "Before: four transient build guides generated; clean artifact and preservation regression subsequently passed"
+    }
+  ],
+  "empirical": {
+    "availability_report": "output/reports/workflowz_available_payloads.json",
+    "official_acquisition": "output/reports/workflowz_official_supplement_acquisition.json",
+    "official_parser": "output/reports/workflowz_official_supplement_parser.json",
+    "observed": "Retained waggle CSVs, 48 published supplement-statistic rows and 22 anatomy abbreviation records parse. No local odor/calcium/antennal payloads or atlas geometry assets. Aggregate odor analysis is unavailable, not zero.",
+    "runtime_scope": "Publisher acquisition used qualified source-bound stdlib transport under management Python; the actual scientific loader ran separately under native Python 3.12. This is not a live native acquisition-CLI proof.",
+    "limit": "Published statistics, parsing, identity, template alignment and config-band self-tests are not biological validation or a calibrated colony digital twin."
+  },
+  "scholarship": {
+    "report": "output/reports/workflowz_source_verification.json",
+    "scope": "92 records and 76 DOI identity observations, not independent full-text claim verification; Seeley 1989 primary access unavailable and three uncited/nonrequired records outside the handoff verification set."
+  },
+  "unexamined_or_not_exercised": [
+    "Python 3.11, Linux execution and remote CI.",
+    "No separately configured standalone type gate; runtime/lint/tests are not formal type proof.",
+    "No held-out biological validation, longitudinal assimilation, calibrated colony dynamics or synaptic connectome.",
+    "Absent empirical payloads were not synthesized; full modality analyses cannot be certified.",
+    "No exhaustive decompressor fuzzing, worst-case peak-RSS proof or full third-party/native bundled-library audit. OSV returned zero findings for 73 exact PyPI lock versions only.",
+    "No comparable performance benchmark or cross-platform binary/render reproducibility claim.",
+    "All 56 PDF pages were visually inspected; not every scientific citation/parameter was independently full-text verified.",
+    "Historical ISA 119/119 and May PASS statements are not today\u2019s criterion-by-criterion proof.",
+    "Authenticated deposit, remote main/tag/release/assets and post-push CI not performed."
+  ],
+  "failures_and_superseded_evidence": [
+    "Intermediate coverage, manuscript path/cwd, offline-figure, typography and build-contamination failures were fixed and re-exercised; native command history retains failed attempts.",
+    "The first supplement probe used an unrecognized private lane; corrected supplementary-lane acquisition and actual-loader proof supersede it.",
+    "Earlier installed-wheel/packaging reports are historical; final_wheel_runtime and installed_consumer_completion reports identify current artifacts.",
+    "Direct system-Git executable launch refused hardlink aliases; authorized offline reader subsequently proved original source.",
+    "A concurrent intent write waited behind an active repository test lease and was interrupted; no baseline command launched in that attempt."
+  ],
+  "custody_note": "Initial dependency-cache bootstrap let Git discover the ancestor repository from an empty cache path. Guarded corrective fetch restored nonshallow history; original HEAD/origin/branches were preserved, without stash/reset/history rewrite or unrelated checkout mutation.",
+  "publication": {
+    "remote_main_observed": "015550a26d57a36e45bbada018daf126b5332d93",
+    "merged_to_remote_main": false,
+    "new_tag": null,
+    "new_release_url": null,
+    "pr_url": null,
+    "published": false,
+    "historical_release": "https://github.com/docxology/BeeStack/releases/tag/v1.0.0",
+    "historical_doi": "10.5281/zenodo.20420557",
+    "new_doi": null,
+    "live_zenodo": "Concept 20420556 has one public record, version 1.0 (20420557); not reused for 2.0.",
+    "blockers": [
+      "Strict --check --require-doi refuses the absent version DOI; no Zenodo token or reachable authenticated owner browser session.",
+      "Governed GitHub config enables only issues; release writes disabled and installed asset continuation does not authorize BeeStack PDF uploads. No raw gh/HTTP/CI bypass.",
+      "Default-branch push requires a frozen one-repository plan and exact PUSH 1 OWNED REPOSITORIES confirmation; no confirmed candidate plan available."
+    ],
+    "operator_prerequisites": "Reserve the version DOI with authenticated owner access and provide an approved governed release/asset route, then rerender/reseal and obtain exact frozen push confirmation. Manager/configuration changes are outside this task."
+  }
+}

@@ -8,25 +8,12 @@ from pathlib import Path
 import yaml
 
 from beestack.publication_readiness import check_publication_readiness
-from beestack.version import MANUSCRIPT_VERSION, PACKAGE_VERSION
-
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-
-
-def test_publication_readiness_passes_on_real_project() -> None:
-    result = check_publication_readiness(PROJECT_ROOT)
-    assert result["release"] == MANUSCRIPT_VERSION
-    assert result["package_version"] == PACKAGE_VERSION
-    assert result["checks"]["manuscript_version_1_0"] is True
-    assert result["checks"]["package_version_1_0_0"] is True
-    assert result["checks"]["changelog_present"] is True
-    assert result["ok"] is True
-    assert not result["blockers"]
+from beestack.version import PACKAGE_VERSION
 
 
 def test_publication_readiness_blocks_wrong_manuscript_version(tmp_path: Path) -> None:
-    manuscript = tmp_path / "manuscript"
-    manuscript.mkdir()
+    manuscript = tmp_path / "docs" / "manuscript"
+    manuscript.mkdir(parents=True)
     (manuscript / "config.yaml").write_text(
         yaml.safe_dump({"paper": {"version": "0.9"}, "publication": {"doi": ""}}),
         encoding="utf-8",

@@ -53,6 +53,7 @@ def publish_flybody_render_stills(project_root: Path) -> tuple[str, ...]:
             source_data=source_rel,
             validation_status="nonblank contact sheet with plot data",
             regeneration_command="uv run python scripts/generate_animations.py",
+            project_root=project_root,
         )
         published.append(dest_rel)
     return tuple(published)

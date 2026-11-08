@@ -20,3 +20,13 @@ see `docs/manuscript_development.md`. For every number derived from code,
 configuration, or generated reports, prefer a supported template token over a
 literal value. For every fidelity claim, state whether the evidence is strict
 FlyBody/MuJoCo, empirical reduced, reduced validated, or diagnostic/schematic.
+
+Configured timing targets are not proof of executed cadence: the reduced loop
+selects a policy each control tick and does not substep MuJoCo. Reproducibility
+claims must identify the actual compared outputs and environment, not promise
+byte-identical rendering or timestamped reports from a shared seed alone.
+
+Primary-source identity evidence and unresolved retrieval gaps are retained in
+`output/reports/workflowz_source_verification.json`. Its registry observations
+do not establish manuscript claim validity or biological validation; consult
+the recorded scope limits before reusing a citation.

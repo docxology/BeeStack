@@ -99,7 +99,7 @@ def _write_scene_xml(path: Path, expected_bees: int) -> None:
     )
 
 
-def _write_contact_report(path: Path, *, collision: bool) -> None:
+def _write_contact_report(path: Path, *, collision: bool, bee_count: int | None = None) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(
         json.dumps(
@@ -112,7 +112,7 @@ def _write_contact_report(path: Path, *, collision: bool) -> None:
                 "render_backend": "MuJoCo FlyBody",
                 "metrics": {
                     "passed": True,
-                    "bee_count": 10 if collision else 11,
+                    "bee_count": bee_count if bee_count is not None else (10 if collision else 11),
                     "bee_bee_contact_pairs": ["bee_0-bee_1"] if collision else [],
                     "bee_bee_contact_count": 1 if collision else 0,
                     "frames_with_bee_bee_contacts": 2 if collision else 0,
@@ -238,7 +238,7 @@ def test_swarm_scene_verification_uses_local_gifs_xml_and_contact_metrics(tmp_pa
         _write_scene_xml(scene_dir / xml_name, expected_bees)
         _write_contact_report(scene_dir / "contact_metrics.json", collision=collision)
 
-    report = verify_swarm_scenes(tmp_path)
+    report = verify_swarm_scenes(tmp_path, BeeStackConfig())
     markdown = swarm_report_markdown(report)
 
     assert report["passed"] is True
@@ -254,3 +254,75 @@ def test_swarm_scene_verification_uses_local_gifs_xml_and_contact_metrics(tmp_pa
     )["passed"]
     assert "BeeSwarm Strict FlyBody Contact Verification" in markdown
     assert "waggle_long" in markdown
+
+
+def test_nondefault_render_configuration_drives_independent_checks(tmp_path: Path) -> None:
+    from dataclasses import replace
+
+    from beestack.config import config_from_mapping
+    from beestack.visualization.bee_render_verification import run_bee_render_verification
+
+    cfg = config_from_mapping(
+        {
+            "visualization": {
+                "swarm_collision_bee_count": 12,
+                "waggle_dance_followers": 4,
+                "body_plan_subdir": "custom_bee_plan",
+            },
+            "waggle": {"orientation_error_target_deg": 15, "orientation_confidence_target": 0.85},
+        }
+    )
+    for scene, gif_name, count, collision in (
+        ("collision", "beeswarm_10_beebody_collision.gif", 12, True),
+        ("waggle", "beeswarm_waggle_dance_configured.gif", 5, False),
+        ("waggle_long", "beeswarm_waggle_dance_long.gif", 5, False),
+    ):
+        _write_two_frame_gif(tmp_path / "output" / "animations" / gif_name)
+        directory = tmp_path / "output" / "animations" / "flybody_scenes" / scene
+        _write_scene_xml(directory / f"{scene}_flybody_scene.xml", count)
+        _write_contact_report(
+            directory / "contact_metrics.json", collision=collision, bee_count=count
+        )
+    assert verify_swarm_scenes(tmp_path, cfg)["passed"]
+    assert not verify_swarm_scenes(tmp_path, BeeStackConfig())["passed"]
+    for stricter in (
+        replace(cfg, waggle=replace(cfg.waggle, orientation_error_target_deg=10)),
+        replace(cfg, waggle=replace(cfg.waggle, orientation_confidence_target=0.95)),
+        replace(
+            cfg,
+            visualization=replace(cfg.visualization, swarm_collision_min_actual_contact_pairs=2),
+        ),
+        replace(cfg, flybody=replace(cfg.flybody, min_dynamic_pixels=193)),
+    ):
+        assert not verify_swarm_scenes(tmp_path, stricter)["passed"]
+
+    # Exercise resolved body-plan lookup and signature thresholds on real files.
+    xml_path = (
+        tmp_path
+        / "output"
+        / "animations"
+        / "custom_bee_plan"
+        / "assets"
+        / "apis_mellifera_worker.xml"
+    )
+    xml_path.parent.mkdir(parents=True)
+    xml_path.write_text("<mujoco model='fixture'/>", encoding="utf-8")
+    for stem in ("beebody_flybody_morphology", "beebody_flybody_flight"):
+        _write_two_frame_gif(tmp_path / "output" / "animations" / f"{stem}.gif")
+        Image.new("RGB", (8, 8)).save(
+            tmp_path / "output" / "animations" / f"{stem}_contact_sheet.png"
+        )
+    strict_motion = replace(cfg, flybody=replace(cfg.flybody, min_dynamic_pixels=400))
+    result = run_bee_render_verification(tmp_path, strict_motion)
+    assert all(
+        animation["mjcf"].startswith("output/animations/custom_bee_plan/")
+        for animation in result["report"]["animations"]
+    )
+    assert all(0 < signature.locomotion_score < 1 for _, _, _, signature in result["signatures"])
+
+    collision_dir = tmp_path / "output" / "animations" / "flybody_scenes" / "collision"
+    _write_contact_report(collision_dir / "contact_metrics.json", collision=True, bee_count=11)
+    assert not verify_swarm_scenes(tmp_path, cfg)["passed"]
+    _write_contact_report(collision_dir / "contact_metrics.json", collision=True, bee_count=12)
+    _write_scene_xml(collision_dir / "collision_flybody_scene.xml", 11)
+    assert not verify_swarm_scenes(tmp_path, cfg)["passed"]

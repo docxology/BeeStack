@@ -1,24 +1,24 @@
 {
   "checks": [
     {
-      "bound": "> 0 (antennae reduce vector error vs no-antennae baseline)",
+      "bound": "> 0 with both comparison conditions observed",
       "citation_keys": [
         "hadjitofi2024figshare",
         "hadjitofi2024currentbiology"
       ],
       "name": "hadjitofi_antenna_decoding_improvement",
-      "notes": "Hadjitofi\u2013Webb Figshare summary: both-antennae decoding beats no-antennae control.",
+      "notes": "Local antenna/no-antenna comparison; unavailable conditions are not zero error.",
       "observed": 0.24776741229159377,
       "passed": true
     },
     {
-      "bound": "< no_antennae_mean_abs_error_deg (80.000)",
+      "bound": "< observed no-antennae error (79.99983885415868)",
       "citation_keys": [
         "hadjitofi2024figshare",
         "hadjitofi2024currentbiology"
       ],
       "name": "hadjitofi_both_antennae_beat_no_antennae",
-      "notes": "Published follower kinematics show antenna-mediated error reduction.",
+      "notes": "Requires observed errors for both conditions, not an inferred missing-condition baseline.",
       "observed": 60.178485797519286,
       "passed": true
     },
@@ -28,13 +28,57 @@
         "hadjitofi2024figshare"
       ],
       "name": "hadjitofi_parsed_track_count",
-      "notes": "Regression requires a registered local Figshare deposit parse.",
+      "notes": "Local parsed deposit coverage, not biological validation.",
       "observed": 59,
+      "passed": true
+    },
+    {
+      "bound": "<= 35.0 deg (configured maximum)",
+      "citation_keys": [
+        "hadjitofi2024currentbiology",
+        "dong2023wagglesocial"
+      ],
+      "name": "beeswarm_orientation_error_target",
+      "notes": "Strict scene telemetry versus a configured, literature-motivated engineering bound.",
+      "observed": 19.095750000000013,
+      "passed": true
+    },
+    {
+      "bound": ">= 0.65 (configured minimum)",
+      "citation_keys": [
+        "hadjitofi2024currentbiology",
+        "pnas2026waggleaudience"
+      ],
+      "name": "beeswarm_orientation_confidence_target",
+      "notes": "Configured scene heuristic; no measured audience-effect magnitude is established.",
+      "observed": 0.7878249999999999,
       "passed": true
     }
   ],
   "data_sources": [
-    "output/data/waggle_follower_analysis.json",
+    "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-24-binned.csv",
+    "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-48-binned.csv",
+    "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-features.csv",
+    "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-full_antenna_len-120-binned.csv",
+    "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-full_antenna_len-48-binned.csv",
+    "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-both_antennae_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv",
+    "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-both_antennae_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv",
+    "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-left_only_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv",
+    "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-left_only_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv",
+    "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-errors.csv",
+    "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv",
+    "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-binned_errors.csv",
+    "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-errors.csv",
+    "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv",
+    "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-4bins-errors.csv",
+    "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-no_antennae_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-errors.csv",
+    "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-no_antennae_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-errors.csv",
+    "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-no_antennae_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv",
+    "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-right_only_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv",
+    "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-right_only_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv",
+    "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-mid_antenna_len-120-binned.csv",
+    "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-mid_antenna_len-48-binned.csv",
+    "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/orientation_straightness.csv",
     "output/data/methods_analysis.json"
   ],
   "literature_anchors": [

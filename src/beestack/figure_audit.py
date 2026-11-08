@@ -7,11 +7,13 @@ import re
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
+from .brain.empirical_status import current_empirical_analysis
+from .project_config import load_config
 from .visualization.figure_registry import high_priority_figure_artifacts
 
 _MANUSCRIPT_AUDIT_SKIP = frozenset({"README.md", "SYNTAX.md", "AGENTS.md"})
 _IMAGE_RE = re.compile(
-    r"!\[(?P<caption>[^\]]*)\]\((?P<path>[^)]+)\)\{#fig:(?P<label>[^}\s]+)[^}]*\}"
+    r"!\[(?P<caption>[^\]]*)\]\((?P<path>[^)]+)\)(?:[ \t]*\{[^}]*#fig:(?P<label>[^}\s]*)[^}]*\})?"
 )
 _POSITIVE_CLAIM_RE = re.compile(r"\b(supports?|validates?|validated|proves?|confirms?)\b", re.I)
 _REQUIRED_SIDECAR_FIELDS = (
@@ -43,6 +45,7 @@ class FigureAudit:
     sidecar_manuscript_mismatches: tuple[str, ...] = ()
     primary_caption_contract_failures: tuple[str, ...] = ()
     absolute_path_leaks: tuple[str, ...] = ()
+    unavailable_empirical_references: tuple[str, ...] = ()
 
     @property
     def passed(self) -> bool:
@@ -58,6 +61,7 @@ class FigureAudit:
             or self.sidecar_manuscript_mismatches
             or self.primary_caption_contract_failures
             or self.absolute_path_leaks
+            or self.unavailable_empirical_references
         )
 
     def as_dict(self) -> dict[str, object]:
@@ -93,7 +97,7 @@ def audit_figures(
     """Check hydrated manuscript figure references and curated registry coverage."""
 
     project_root = project_root.resolve()
-    references = _manuscript_image_references(project_root)
+    references = manuscript_image_references(project_root)
     missing_images: list[str] = []
     missing_labels: list[str] = []
     missing_captions: list[str] = []
@@ -103,6 +107,16 @@ def audit_figures(
     references_by_artifact: dict[str, FigureReference] = {}
     absent_positive_claims: list[str] = []
     absent_set = set(absent_artifacts)
+    unavailable_empirical_references: list[str] = []
+    empirical_current = False
+    try:
+        cfg = load_config(project_root)
+    except FileNotFoundError:
+        pass  # A figure-only fixture/project without config cannot certify current data.
+    else:
+        empirical_current = (
+            current_empirical_analysis(project_root, cfg).get("availability_status") == "current"
+        )
 
     for reference in references:
         label = reference.label
@@ -116,12 +130,13 @@ def audit_figures(
             missing_images.append(_reference_id(project_root, reference))
             continue
         artifact = reference.artifact_path(project_root)
+        if artifact.startswith("output/figures/empirical/") and not empirical_current:
+            unavailable_empirical_references.append(_reference_id(project_root, reference))
         referenced_artifacts.add(artifact)
         references_by_artifact[artifact] = reference
-        if reference.resolved_path.suffix.lower() == ".png":
-            sidecar = reference.resolved_path.with_suffix(".json")
-            if not sidecar.exists():
-                missing_sidecars.append(_relative(project_root, sidecar))
+        sidecar = reference.resolved_path.with_suffix(".json")
+        if not sidecar.is_file():
+            missing_sidecars.append(_relative(project_root, sidecar))
         if artifact in absent_set and _POSITIVE_CLAIM_RE.search(reference.line):
             absent_positive_claims.append(
                 f"{_relative(project_root, reference.markdown_path)}:{reference.line.strip()}"
@@ -133,6 +148,10 @@ def audit_figures(
         if required_primary_artifacts is None
         else required_primary_artifacts
     )
+    if required_primary_artifacts is None and not empirical_current:
+        required = tuple(
+            path for path in required if not path.startswith("output/figures/empirical/")
+        )
     missing_primary = tuple(
         artifact for artifact in required if artifact not in referenced_artifacts
     )
@@ -155,10 +174,12 @@ def audit_figures(
         sidecar_manuscript_mismatches=sidecar_mismatches,
         primary_caption_contract_failures=primary_caption_failures,
         absolute_path_leaks=absolute_path_leaks,
+        unavailable_empirical_references=tuple(sorted(set(unavailable_empirical_references))),
     )
 
 
-def _manuscript_image_references(project_root: Path) -> tuple[FigureReference, ...]:
+def manuscript_image_references(project_root: Path) -> tuple[FigureReference, ...]:
+    """Resolve the supported Markdown image inputs shared by audit and render sealing."""
     manuscript_dir = project_root / "output" / "manuscript"
     references: list[FigureReference] = []
     for markdown_path in sorted(manuscript_dir.glob("*.md")):
@@ -192,39 +213,43 @@ def _audit_sidecars(
     mismatches: list[str] = []
     primary_caption_failures: list[str] = []
     absolute_leaks: list[str] = []
-    for sidecar in sorted((project_root / "output" / "figures").rglob("*.json")):
+    references_by_sidecar: dict[Path, list[FigureReference]] = {}
+    for reference in references_by_artifact.values():
+        references_by_sidecar.setdefault(reference.resolved_path.with_suffix(".json"), []).append(
+            reference
+        )
+    sidecars = set((project_root / "output" / "figures").rglob("*.json"))
+    sidecars.update(path for path in references_by_sidecar if path.is_file())
+    for sidecar in sorted(sidecars):
         sidecar_id = _relative(project_root, sidecar)
         try:
             payload = json.loads(sidecar.read_text(encoding="utf-8"))
         except json.JSONDecodeError:
             required_failures.append(f"{sidecar_id}:invalid_json")
             continue
+        references = references_by_sidecar.get(sidecar.resolve(), [])
         absolute_leaks.extend(_absolute_path_leaks(project_root, sidecar_id, payload))
-        if not _is_metadata_sidecar(sidecar, payload):
+        if not references and not _is_metadata_sidecar(sidecar, payload):
             continue
         for field in _REQUIRED_SIDECAR_FIELDS:
             if not payload.get(field):
                 required_failures.append(f"{sidecar_id}:{field}")
-        figure_path = sidecar.with_suffix(".png")
-        artifact = _relative(project_root, figure_path)
-        reference = references_by_artifact.get(artifact)
-        if reference is None:
-            continue
-        if str(payload.get("priority", "")) == "indexed":
-            continue
-        sidecar_label = str(payload.get("manuscript_label", ""))
-        reference_label = (
-            reference.label if reference.label.startswith("fig:") else f"fig:{reference.label}"
-        )
-        if sidecar_label != reference_label:
-            mismatches.append(f"{sidecar_id}:manuscript_label")
-        sidecar_caption = str(payload.get("caption", ""))
-        if sidecar_caption and not _captions_agree(sidecar_caption, reference.caption):
-            mismatches.append(f"{sidecar_id}:caption")
-        if str(payload.get("priority", "")) == "primary" and not _primary_caption_contract_ok(
-            reference.caption, payload
-        ):
-            primary_caption_failures.append(f"{sidecar_id}:caption_contract")
+        for reference in references:
+            if str(payload.get("priority", "")) == "indexed":
+                continue
+            sidecar_label = str(payload.get("manuscript_label", ""))
+            reference_label = (
+                reference.label if reference.label.startswith("fig:") else f"fig:{reference.label}"
+            )
+            if sidecar_label != reference_label:
+                mismatches.append(f"{sidecar_id}:manuscript_label")
+            sidecar_caption = str(payload.get("caption", ""))
+            if sidecar_caption and not _captions_agree(sidecar_caption, reference.caption):
+                mismatches.append(f"{sidecar_id}:caption")
+            if str(payload.get("priority", "")) == "primary" and not _primary_caption_contract_ok(
+                reference.caption, payload
+            ):
+                primary_caption_failures.append(f"{sidecar_id}:caption_contract")
     return (
         tuple(sorted(dict.fromkeys(required_failures))),
         tuple(sorted(dict.fromkeys(mismatches))),

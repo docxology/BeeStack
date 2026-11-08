@@ -100,7 +100,7 @@ def test_signpost_writer_excludes_caches_and_creates_context(tmp_path: Path) -> 
 
 def test_documentation_audit_reports_missing_signposts_and_outputs(tmp_path: Path) -> None:
     (tmp_path / "docs").mkdir()
-    (tmp_path / "manuscript").mkdir()
+    (tmp_path / "docs" / "manuscript").mkdir()
     (tmp_path / "scripts").mkdir()
     (tmp_path / "src" / "beestack" / "body").mkdir(parents=True)
     (tmp_path / "output" / "manuscript").mkdir(parents=True)

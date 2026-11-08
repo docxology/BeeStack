@@ -11,6 +11,7 @@
   },
   "alt_text": "Directed graph of BeeBrain structural connectome nodes and tract edges.",
   "artifact_kind": "figure",
+  "availability_status": "historical_unavailable",
   "backend": "matplotlib/networkx connectome renderer",
   "caption": "Matplotlib beebrain structural projectome graph shows Network layout of Honeybee Standard Brain neuropils, named neuron/tract nodes, and documented structural tract edges. Generated from output/data/bee_brain_connectome.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not claim synaptic adjacency or functional Granger completeness.",
   "citation_keys": [
@@ -37,7 +38,7 @@
   "fidelity": "Honeybee Standard Brain structural projectome diagnostic",
   "figure_path": "output/figures/empirical/connectome_structural_graph.png",
   "manuscript_label": "fig:connectome_structural_graph",
-  "manuscript_section": "manuscript/09_empirical_results.md",
+  "manuscript_section": "docs/manuscript/09_empirical_results.md",
   "plot_data_path": "output/figures/empirical/connectome_structural_graph_data.json",
   "priority": "primary",
   "quality": {

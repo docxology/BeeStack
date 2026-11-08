@@ -11,6 +11,7 @@
   },
   "alt_text": "Bar chart of Jernigan antennal active-sensing summary metrics.",
   "artifact_kind": "figure",
+  "availability_status": "historical_unavailable",
   "backend": "Matplotlib empirical-data renderer",
   "caption": "Matplotlib empirical antennal active sensing shows Jernigan antennal kinematics summary: odor-on fraction, theta deflection, and left-right synchrony. Generated from output/data/empirical_analysis.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate full antennal biomechanics.",
   "citation_keys": [
@@ -37,7 +38,7 @@
   "fidelity": "empirical panel summary diagnostic",
   "figure_path": "output/figures/empirical/empirical_antennal_movement.png",
   "manuscript_label": "fig:empirical_antennal_movement",
-  "manuscript_section": "manuscript/09_empirical_results.md",
+  "manuscript_section": "docs/manuscript/09_empirical_results.md",
   "plot_data_path": "output/figures/empirical/empirical_antennal_movement_data.json",
   "priority": "supporting",
   "quality": {

@@ -54,7 +54,6 @@ from beestack.niche import (
     seed_hex_comb,
     thermal_step,
 )
-from beestack.niche.thermal import PASSIVE_COOLING_COEFF
 from beestack.swarm import (
     BeeAgent,
     beehave_colony_summary,
@@ -242,7 +241,7 @@ def test_thermal_step_matches_closed_form_one_step_update() -> None:
         grid_temp
         + 0.12 * (neighbor_mean - grid_temp)
         + heat
-        + PASSIVE_COOLING_COEFF * (cfg.niche.ambient_temperature_c - grid_temp)
+        + cfg.niche.passive_cooling_rate * (cfg.niche.ambient_temperature_c - grid_temp)
     )
     assert np.allclose(out.temperature_c, expected)
 
@@ -270,7 +269,7 @@ def test_thermal_step_closed_form_multiple_steps() -> None:
             t
             + 0.12 * (neighbor_mean - t)
             + heat
-            + PASSIVE_COOLING_COEFF * (cfg.niche.ambient_temperature_c - t)
+            + cfg.niche.passive_cooling_rate * (cfg.niche.ambient_temperature_c - t)
         )
 
     running = grid
@@ -297,8 +296,8 @@ def test_thermal_step_passive_cooling_bounds_sustained_heating() -> None:
     assert np.isfinite(running.temperature_c).all()
     assert peak < 100.0, f"thermal runaway: peak {peak:.1f} degC after 500 steps"
     # Energy balance: cell far from source/diffusion gradients sits near
-    # equilibrium T = ambient + q / passive_cooling_coeff (q = 5.0 W/cell).
-    equilibrium = cfg.niche.ambient_temperature_c + 5.0 / PASSIVE_COOLING_COEFF
+    # Source units are degrees C per step, not watts per cell.
+    equilibrium = cfg.niche.ambient_temperature_c + 5.0 / cfg.niche.passive_cooling_rate
     assert peak < equilibrium + 25.0
 
 
@@ -653,10 +652,9 @@ def test_readiness_mean_maturity_and_scale_grouping() -> None:
 
 
 def test_readiness_empty_axis_list_is_rejected() -> None:
-    # A genuinely empty iterable (generator) must be rejected. An empty tuple
-    # falls through to the default catalog because of `axes or catalog`.
-    with pytest.raises(ValueError, match="at least one"):
-        assess_digital_twin_readiness(iter(()))
+    for axes in ([], (), iter(())):
+        with pytest.raises(ValueError, match="at least one"):
+            assess_digital_twin_readiness(axes)
 
 
 def test_readiness_markdown_and_serialization_round_trip() -> None:

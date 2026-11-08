@@ -27,7 +27,7 @@ class ModuleCoverage:
 
 
 def module_coverage(cfg: BeeStackConfig) -> tuple[ModuleCoverage, ...]:
-    """Return the v0 implementation coverage matrix."""
+    """Return the current implementation coverage matrix, not biological validation."""
 
     return (
         ModuleCoverage(

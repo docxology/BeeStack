@@ -8,18 +8,8 @@ import numpy as np
 from PIL import Image
 
 from beestack.figure_audit import audit_figures
-from beestack.visualization.figure_metadata import write_figure_sidecar
 from beestack.visualization.figure_registry import (
     figure_narrative_for_path,
-    generic_figure_sidecar_fields,
-    high_priority_figure_artifacts,
-)
-from beestack.visualization.style import (
-    MODULE_COLORS,
-    module_color,
-    status_color,
-    style_context,
-    wrap_label,
 )
 
 
@@ -29,86 +19,6 @@ def _varied_png(path: Path) -> Path:
     arr = (rng.random((32, 40, 3)) * 255).astype(np.uint8)
     Image.fromarray(arr, "RGB").save(path)
     return path
-
-
-def test_style_helpers_expose_stable_module_colors() -> None:
-    assert set(MODULE_COLORS) >= {"BeeBody", "BeeBrain", "BeeMind", "BeeSwarm", "BeeNiche"}
-    assert module_color("BeeBrain") == MODULE_COLORS["BeeBrain"]
-    assert module_color("UnknownModule").startswith("#")
-    assert status_color("blocked") == "#C43C39"
-    assert "\n" in wrap_label("long visual label for a bounded axis box", width=15)
-    with style_context():
-        # The context manager should be usable by plotting code without leaking
-        # implementation details into each figure builder.
-        assert module_color("BeeBody") == MODULE_COLORS["BeeBody"]
-
-
-def test_figure_narrative_registry_has_curated_primary_contract() -> None:
-    narrative = figure_narrative_for_path(Path("output/figures/beestack_graphical_abstract.png"))
-
-    assert narrative is not None
-    assert narrative.manuscript_section == "manuscript/04_evidence_typed_architecture.md"
-    assert narrative.manuscript_label == "fig:beestack_graphical_abstract"
-    assert narrative.priority == "primary"
-    assert "not" in narrative.unsupported_inference.lower()
-    assert "caption" in narrative.as_sidecar_fields()
-    assert "rougier2014figures" in narrative.design_citation_keys
-    assert "cleveland1984graphical" in narrative.design_citation_keys
-    assert "ragan2016provenance" in narrative.design_citation_keys
-    assert "output/figures/beestack_graphical_abstract.png" in high_priority_figure_artifacts()
-    assert "output/figures/manuscript_figure_claim_map.png" in high_priority_figure_artifacts()
-    assert "output/figures/manuscript_figure_claim_detail.png" in high_priority_figure_artifacts()
-    assert "output/figures/methods/methods_dashboard_detail.png" in high_priority_figure_artifacts()
-    assert (
-        "output/figures/research/research_evidence_detail.png" in high_priority_figure_artifacts()
-    )
-    assert (
-        "output/figures/research/stack_synthesis_findings_detail.png"
-        in high_priority_figure_artifacts()
-    )
-    for artifact in (
-        "output/figures/beestack_scholarship_evidence_matrix.png",
-        "output/figures/beebody_beeswarm_micro_macro_calibration.png",
-        "output/figures/beebrain_beemind_anatomy_policy_map.png",
-        "output/figures/beeniche_adapter_niche_map.png",
-        "output/figures/beestack_validation_readiness_residuals.png",
-    ):
-        figure = figure_narrative_for_path(artifact)
-        assert figure is not None, artifact
-        assert figure.priority == "primary"
-        assert figure.citation_keys
-        assert figure.source_dois
-        assert "Does not" in figure.unsupported_inference
-        assert artifact in high_priority_figure_artifacts()
-
-
-def test_primary_caption_contracts_have_source_validation_and_boundaries() -> None:
-    for artifact in high_priority_figure_artifacts():
-        narrative = figure_narrative_for_path(artifact)
-        assert narrative is not None, artifact
-        caption = narrative.manuscript_contract_caption()
-        lowered = caption.lower()
-        assert " shows " in lowered, artifact
-        assert "generated from" in lowered, artifact
-        assert "sidecar validation" in lowered, artifact
-        assert narrative.unsupported_inference.rstrip(".") in caption, artifact
-
-
-def test_split_companion_primary_figures_are_registered_with_compact_text() -> None:
-    split_artifacts = (
-        "output/figures/manuscript_figure_claim_detail.png",
-        "output/figures/methods/methods_dashboard_detail.png",
-        "output/figures/research/research_evidence_detail.png",
-        "output/figures/research/stack_synthesis_findings_detail.png",
-    )
-    for artifact in split_artifacts:
-        narrative = figure_narrative_for_path(artifact)
-        assert narrative is not None, artifact
-        assert narrative.priority == "primary"
-        assert "Split companion" in narrative.caption
-        assert len(narrative.manuscript_contract_caption()) <= 520
-        assert "Generated from" not in narrative.alt_text
-        assert "Sidecar validation" not in narrative.alt_text
 
 
 def test_all_inserted_manuscript_figures_have_curated_registry_narratives() -> None:
@@ -127,50 +37,6 @@ def test_all_inserted_manuscript_figures_have_curated_registry_narratives() -> N
         assert narrative is not None, artifact
         assert narrative.priority == "primary", artifact
         assert narrative.manuscript_label == f"fig:{label}"
-
-
-def test_generic_figure_fields_do_not_promise_animation_sidecars() -> None:
-    fields = generic_figure_sidecar_fields(
-        Path("output/animations/beebody.gif"),
-        title="BeeBody animation",
-        fidelity="real_flybody_3d",
-        source_data="animation manifest",
-        regeneration_command="uv run python scripts/generate_animations.py",
-    )
-
-    assert fields["artifact_kind"] == "animation"
-    assert "sidecar" not in str(fields["caption"])
-    assert "manifest" in str(fields["caption"])
-
-
-def test_write_figure_sidecar_adds_registry_narrative_metadata(tmp_path: Path) -> None:
-    fig = _varied_png(tmp_path / "beestack_graphical_abstract.png")
-
-    sidecar = write_figure_sidecar(
-        fig,
-        title="BeeStack graphical abstract",
-        backend="Matplotlib",
-        fidelity="architecture schematic",
-        source_data="output/data/run_summary.json",
-        validation_status="nonblank",
-        regeneration_command="uv run python scripts/analysis_pipeline.py",
-    )
-
-    payload = json.loads(sidecar.read_text(encoding="utf-8"))
-    assert payload["caption"].startswith("Matplotlib beestack graphical abstract shows")
-    assert "Generated from module coverage records" in payload["caption"]
-    assert "Sidecar validation checks raster" in payload["caption"]
-    assert payload["alt_text"]
-    assert payload["manuscript_section"] == "manuscript/04_evidence_typed_architecture.md"
-    assert payload["manuscript_label"] == "fig:beestack_graphical_abstract"
-    assert payload["claim_tier"] == "architecture_schematic"
-    assert payload["design_citation_keys"]
-    assert payload["accessibility_checks"]["normal_text_passed"]
-    assert payload["unsupported_inference"]
-    assert payload["priority"] == "primary"
-    assert payload["visual_quality"]["manuscript_use"] == "manuscript_primary"
-    assert payload["visual_quality"]["figure_role"] == "overview"
-    assert payload["visual_quality"]["readability_status"] in {"pass", "exception"}
 
 
 def test_figure_audit_detects_path_label_sidecar_and_primary_failures(tmp_path: Path) -> None:

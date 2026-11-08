@@ -22,14 +22,14 @@
   "plot_data_path": "output/figures/research/beebrain_empirical_evidence_map_data.json",
   "priority": "indexed",
   "quality": {
-    "height_px": 799,
+    "height_px": 800,
     "max_intensity": 255,
-    "mean_intensity": 234.19741126221905,
+    "mean_intensity": 242.31071202531646,
     "min_intensity": 24,
     "mode": "RGBA",
-    "nonzero_histogram_bins": 232,
-    "std_intensity": 54.750755432819055,
-    "width_px": 1345
+    "nonzero_histogram_bins": 230,
+    "std_intensity": 44.205269346202485,
+    "width_px": 1343
   },
   "regeneration_command": "uv run python scripts/run_research_suite.py",
   "schema": "beestack.figure.v1",
@@ -40,14 +40,14 @@
   "validation_status": "nonblank image, quality sidecar, and plot data passed",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 1.683,
+    "aspect_ratio": 1.679,
     "figure_role": "overview",
-    "height_px": 799,
+    "height_px": 800,
     "label_density": "moderate",
     "manuscript_use": "indexed_gallery",
-    "max_dimension_px": 1345,
-    "min_dimension_px": 799,
+    "max_dimension_px": 1343,
+    "min_dimension_px": 800,
     "readability_status": "gallery",
-    "width_px": 1345
+    "width_px": 1343
   }
 }

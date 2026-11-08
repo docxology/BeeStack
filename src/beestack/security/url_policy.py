@@ -13,26 +13,38 @@ ALLOWED_DOWNLOAD_HOST_SUFFIXES: tuple[str, ...] = (
 )
 
 
-def _is_dryad_asset_store_host(host: str) -> bool:
-    """True for Dryad Merritt S3 presigned redirect targets (not generic AWS)."""
+# Exact curated bucket authorities, never a generic AWS account predicate.
+DRYAD_ASSET_HOSTS = frozenset(
+    {
+        "dryad-assetstore-merritt-west.s3.us-west-2.amazonaws.com",
+        "dryad-assetstore-merritt-west.s3-us-west-2.amazonaws.com",
+        "dryad-assetstore-merritt-west.s3.amazonaws.com",
+    }
+)
+FIGSHARE_PATH_HOSTS = frozenset({"s3-eu-west-1.amazonaws.com", "s3.eu-west-1.amazonaws.com"})
+FIGSHARE_BUCKETS = frozenset({"pfigshare-u-files", "pfigshare-u-files-eu"})
 
-    lowered = host.lower()
-    return lowered.startswith("dryad-assetstore") and lowered.endswith(".amazonaws.com")
+
+def authorized_dryad_origin(url: str) -> bool:
+    parsed = urllib.parse.urlsplit(url)
+    return (
+        parsed.scheme == "https"
+        and parsed.hostname == "datadryad.org"
+        and parsed.port in (None, 443)
+        and parsed.username is None
+    )
 
 
-def _is_dryad_lambda_download_host(host: str) -> bool:
-    """True for Dryad zip-assembly Lambda redirect targets."""
-
-    return host.lower().endswith(".lambda-url.us-west-2.on.aws")
-
-
-def _is_figshare_asset_store_host(host: str, path: str) -> bool:
-    """True for Figshare ndownloader presigned S3 redirect targets."""
-
-    lowered = host.lower()
-    if not lowered.endswith(".amazonaws.com"):
-        return False
-    return "pfigshare" in path.lower()
+def _is_storage_url(host: str, path: str) -> bool:
+    if host in DRYAD_ASSET_HOSTS:
+        return True
+    bucket = path.split("/", 2)[1] if path.startswith("/") else ""
+    if host in FIGSHARE_PATH_HOSTS and bucket in FIGSHARE_BUCKETS:
+        return True
+    return any(
+        host in {f"{name}.s3.amazonaws.com", f"{name}.s3.eu-west-1.amazonaws.com"}
+        for name in FIGSHARE_BUCKETS
+    )
 
 
 def validate_download_url(url: str, *, context: str = "") -> None:
@@ -46,24 +58,25 @@ def validate_download_url(url: str, *, context: str = "") -> None:
         ValueError: When the URL scheme or host is not permitted.
     """
 
-    parsed = urllib.parse.urlparse(url.strip())
+    detail = f" ({context})" if context else ""
+    try:
+        parsed = urllib.parse.urlparse(url.strip())
+        host = (parsed.hostname or "").lower()
+        port = parsed.port
+    except ValueError:
+        raise ValueError(f"download URL has invalid authority{detail}") from None
     if parsed.scheme != "https":
-        detail = f" ({context})" if context else ""
-        raise ValueError(f"download URL must use HTTPS{detail}: {url!r}")
-    host = (parsed.hostname or "").lower()
+        raise ValueError(f"download URL must use HTTPS{detail}")
     if not host:
-        detail = f" ({context})" if context else ""
-        raise ValueError(f"download URL missing host{detail}: {url!r}")
-    if _is_dryad_asset_store_host(host) or _is_dryad_lambda_download_host(host):
-        return
-    parsed_path = parsed.path or ""
-    if _is_figshare_asset_store_host(host, parsed_path):
+        raise ValueError(f"download URL missing host{detail}")
+    if parsed.username is not None or parsed.password is not None or port not in (None, 443):
+        raise ValueError(f"download URL has credentials or non-HTTPS port{detail}")
+    if _is_storage_url(host, parsed.path):
         return
     if not any(
         host == suffix or host.endswith(f".{suffix}") for suffix in ALLOWED_DOWNLOAD_HOST_SUFFIXES
     ):
-        detail = f" ({context})" if context else ""
-        raise ValueError(f"download host not in empirical allowlist{detail}: {host!r} for {url!r}")
+        raise ValueError(f"download host not in empirical allowlist{detail}")
 
 
 def registered_fetch_urls() -> tuple[str, ...]:

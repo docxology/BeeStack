@@ -11,6 +11,7 @@
   },
   "alt_text": "Matrix of BeeBrain source availability, parser status, and verification state.",
   "artifact_kind": "figure",
+  "availability_status": "historical_unavailable",
   "backend": "Matplotlib empirical-data renderer",
   "caption": "Matplotlib brain data completeness matrix shows Empirical completeness matrix showing which BeeBrain source rows are registered, locally available, parseable, and source-verified. Generated from output/data/brain_data_completeness.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not replace absent calcium payloads with synthetic traces.",
   "citation_keys": [
@@ -39,7 +40,7 @@
   "fidelity": "empirical dataset availability diagnostic",
   "figure_path": "output/figures/empirical/brain_data_completeness_matrix.png",
   "manuscript_label": "fig:brain_data_completeness_matrix",
-  "manuscript_section": "manuscript/09_empirical_results.md",
+  "manuscript_section": "docs/manuscript/09_empirical_results.md",
   "plot_data_path": "output/figures/empirical/brain_data_completeness_matrix_data.json",
   "priority": "primary",
   "quality": {

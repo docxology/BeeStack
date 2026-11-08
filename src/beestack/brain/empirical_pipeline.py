@@ -10,6 +10,7 @@ import numpy as np
 
 from ..config import BeeStackConfig
 from ..contracts import zero_observation
+from ..utils import project_relative_payload
 from .anatomy import (
     AtlasDownloadRecord,
     AtlasInventory,
@@ -57,7 +58,6 @@ from .empirical_parsers import (
 )
 from .empirical_parsers.common import normalize_label
 from .empirical_status import (
-    anatomy_download_status,
     archive_status,
     catalog_status,
     downloaded_dataset_ids,
@@ -174,9 +174,9 @@ def build_empirical_analysis_bundle(
         waggle_follower_summary=waggle_dataset.summary if waggle_dataset is not None else None,
         quality_checks=quality_checks,
     )
-    archive_rows = archive_status(source_dir)
-    anatomy_rows = anatomy_download_status(source_dir)
-    catalog_rows = catalog_status(source_dir)
+    archive_rows = archive_status(source_dir, project_root=project_root)
+    anatomy_rows = [record.as_dict() for record in anatomy_records]
+    catalog_rows = catalog_status(source_dir, project_root=project_root)
     downloaded_ids = downloaded_dataset_ids(archive_rows, catalog_rows, anatomy_rows)
     parseable_ids = parseable_dataset_ids(
         panels,
@@ -245,6 +245,7 @@ def build_empirical_analysis_bundle(
         "known_gaps": list(gap_list),
         "connectome": connectome_report.as_dict(),
     }
+    report = project_relative_payload(report, project_root)
     return EmpiricalAnalysisBundle(
         panels=panels,
         stats=stats,

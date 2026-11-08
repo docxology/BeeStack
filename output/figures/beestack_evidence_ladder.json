@@ -38,22 +38,22 @@
   "fidelity": "architecture schematic",
   "figure_path": "output/figures/beestack_evidence_ladder.png",
   "manuscript_label": "fig:beestack_evidence_ladder",
-  "manuscript_section": "manuscript/08_validation_and_figures.md",
+  "manuscript_section": "docs/manuscript/08_validation_and_figures.md",
   "plot_data_path": "output/figures/beestack_evidence_ladder_data.json",
   "priority": "primary",
   "quality": {
     "height_px": 1028,
     "max_intensity": 255,
-    "mean_intensity": 246.27065335736978,
+    "mean_intensity": 246.25897128119087,
     "min_intensity": 24,
     "mode": "RGBA",
     "nonzero_histogram_bins": 232,
-    "std_intensity": 34.71647967207314,
+    "std_intensity": 34.46160893546166,
     "width_px": 2180
   },
   "regeneration_command": "uv run python scripts/analysis_pipeline.py",
   "schema": "beestack.figure.v1",
-  "source_data": "methods analysis, readiness review, and generated artifact manifests",
+  "source_data": "output/data/simulation_records.json and module coverage records",
   "source_dois": [
     "10.1371/journal.pcbi.1005510",
     "10.3233/DS-190026"

@@ -1,0 +1,13 @@
+{
+  "scope": "final reviewer counterexamples executed before fixes; format parsing is not biology",
+  "jpeg_replacement": {
+    "current_before": true,
+    "current_after": true,
+    "jpeg_sealed": false
+  },
+  "malformed_locator": {
+    "rows": 0,
+    "error_type": "ValueError",
+    "error": "Invalid IPv6 URL"
+  }
+}

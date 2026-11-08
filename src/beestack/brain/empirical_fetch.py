@@ -3,16 +3,28 @@
 from __future__ import annotations
 
 import hashlib
+import http.client
 import json
 import os
+import tempfile
 import urllib.error
 import urllib.parse
 import urllib.request
+from contextvars import ContextVar
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from ..security import safe_relative_path, validate_download_url
+from .. import utils
+from ..security import (
+    IntakePolicyError,
+    completed_download,
+    completion_path,
+    safe_relative_path,
+    validate_download_url,
+)
+from ..security.path_safety import download_source_identity
+from ..security.url_policy import authorized_dryad_origin
 from ..utils import write_json
 from .anatomy import atlas_download_record_from_asset
 from .datasets import BeeBrainAtlasAsset, empirical_anatomy_datasets, empirical_brain_datasets
@@ -42,17 +54,17 @@ def _dryad_oauth_token() -> str:
             "client_secret": client_secret,
         }
     ).encode("utf-8")
-    request = urllib.request.Request(
+    with _open_validated_response(
         f"{DRYAD_API_ROOT}/oauth/token",
+        context="OAuth",
+        timeout=60,
         data=payload,
         headers={
             "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
             "User-Agent": USER_AGENT,
         },
-        method="POST",
-    )
-    with urllib.request.urlopen(request, timeout=60) as response:
-        token_payload = json.loads(response.read().decode("utf-8"))
+    ) as response:
+        token_payload = _response_json(response)
     return str(token_payload.get("access_token") or "").strip()
 
 
@@ -63,14 +75,6 @@ def _dryad_bearer_token() -> str:
     return _dryad_oauth_token()
 
 
-def _dryad_auth_headers() -> dict[str, str]:
-    headers = {"User-Agent": USER_AGENT, "Accept": "application/json"}
-    token = _dryad_bearer_token()
-    if token:
-        headers["Authorization"] = f"Bearer {token}"
-    return headers
-
-
 def _download_headers_for_url(url: str) -> dict[str, str]:
     """Return HTTP headers for a download URL.
 
@@ -79,11 +83,55 @@ def _download_headers_for_url(url: str) -> dict[str, str]:
     """
 
     headers = {"User-Agent": USER_AGENT}
-    if "datadryad.org" in url:
+    if authorized_dryad_origin(url):
         token = _dryad_bearer_token()
         if token:
             headers["Authorization"] = f"Bearer {token}"
     return headers
+
+
+class ValidatedRedirectHandler(urllib.request.HTTPRedirectHandler):
+    """Validate each resolved hop before urllib can dispatch it."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        target = urllib.parse.urljoin(req.full_url, newurl)
+        try:
+            validate_download_url(target, context="redirect")
+            # OAuth exchanges never redirect (including same-origin GET rewrites).
+            if req.data is not None:
+                raise ValueError("credential exchange redirects are forbidden")
+            redirected = super().redirect_request(req, fp, code, msg, headers, target)
+            if redirected is not None:
+                old = urllib.parse.urlsplit(req.full_url)
+                new = urllib.parse.urlsplit(target)
+                same_origin = (old.scheme, old.hostname, old.port or 443) == (
+                    new.scheme,
+                    new.hostname,
+                    new.port or 443,
+                )
+                if not same_origin or not authorized_dryad_origin(target):
+                    for name in ("Authorization", "Cookie", "Proxy-authorization"):
+                        redirected.remove_header(name)
+            return redirected
+        except BaseException:
+            fp.close()
+            raise
+
+
+@dataclass
+class TransferBudget:
+    max_bytes: int = 12_000_000_000
+    used: int = 0
+
+    def consume(self, count: int) -> None:
+        self.used += count
+        if self.used > self.max_bytes:
+            raise IntakePolicyError("fetch operation exceeds transfer byte cap")
+
+
+_TRANSFER_BUDGET: ContextVar[TransferBudget | None] = ContextVar("transfer_budget", default=None)
+MAX_METADATA_BYTES = 8_000_000
+MAX_DOWNLOAD_BYTES = 2_000_000_000
 
 
 def _open_validated_response(
@@ -92,16 +140,62 @@ def _open_validated_response(
     context: str,
     timeout: float,
     headers: dict[str, str] | None = None,
+    data: bytes | None = None,
 ):
-    """Open an HTTPS response and re-validate the post-redirect URL (TM-002)."""
-
     validate_download_url(url, context=context)
-    request_headers = dict(_dryad_auth_headers() if headers is None else headers)
-    request = urllib.request.Request(url, headers=request_headers)
-    response = urllib.request.urlopen(request, timeout=timeout)
-    final_url = response.geturl()
-    validate_download_url(final_url, context=f"{context} redirect")
+    request_headers = _download_headers_for_url(url) if headers is None else dict(headers)
+    if not authorized_dryad_origin(url):
+        request_headers = {
+            key: value
+            for key, value in request_headers.items()
+            if key.lower() not in {"authorization", "cookie", "proxy-authorization"}
+        }
+    request = urllib.request.Request(url, headers=request_headers, data=data)
+    opener = urllib.request.build_opener(ValidatedRedirectHandler())
+    try:
+        response = opener.open(request, timeout=timeout)
+    except urllib.error.HTTPError as exc:
+        exc.close()
+        raise
+    try:
+        validate_download_url(response.geturl(), context=f"{context} response")
+    except BaseException:
+        response.close()
+        raise
     return response
+
+
+def _response_chunks(response, max_bytes: int):
+    declared = response.headers.get("Content-Length")
+    expected = None
+    if declared is not None:
+        try:
+            expected = int(declared)
+        except ValueError as exc:
+            raise IntakePolicyError("invalid Content-Length") from exc
+        if expected < 0 or expected > max_bytes:
+            raise IntakePolicyError("response exceeds declared byte cap")
+    total = 0
+    budget = _TRANSFER_BUDGET.get()
+    while True:
+        remaining = max_bytes - total
+        if budget is not None:
+            remaining = min(remaining, max(0, budget.max_bytes - budget.used))
+        chunk = response.read(min(1024 * 1024, remaining + 1))
+        if not chunk:
+            break
+        total += len(chunk)
+        if total > max_bytes:
+            raise IntakePolicyError("response exceeds actual byte cap")
+        if budget is not None:
+            budget.consume(len(chunk))
+        yield chunk
+    if expected is not None and total != expected:
+        raise IntakePolicyError(f"incomplete response: {total} of {expected} bytes")
+
+
+def _response_json(response) -> dict[str, Any]:
+    return json.loads(b"".join(_response_chunks(response, MAX_METADATA_BYTES)).decode("utf-8"))
 
 
 @dataclass(frozen=True)
@@ -126,64 +220,63 @@ def figshare_article_url(dataset: dict[str, Any]) -> str:
 
 def read_json(url: str) -> dict[str, Any]:
     with _open_validated_response(url, context="read_json", timeout=90) as response:
-        return json.loads(response.read().decode("utf-8"))
+        return _response_json(response)
 
 
-def _stream_response_to_path(response: urllib.response.addinfourl, path: Path) -> None:
-    with path.open("wb") as handle:
-        while chunk := response.read(1024 * 1024):
-            handle.write(chunk)
-
-
-def _download_presigned_redirect(url: str, path: Path, *, auth_headers: dict[str, str]) -> None:
-    """Fetch Dryad file URLs that 302 to S3 without forwarding Bearer auth."""
-
-    validate_download_url(url, context="download_url")
+def _stream_response_to_path(
+    response,
+    path: Path,
+    *,
+    max_bytes: int | None = None,
+    source_identity: str | None = None,
+) -> None:
+    """Publish only completed transfers; failed refreshes leave the old cache intact."""
+    if source_identity is None:
+        source_identity = download_source_identity(response.geturl())
     path.parent.mkdir(parents=True, exist_ok=True)
-
-    class _NoRedirect(urllib.request.HTTPRedirectHandler):
-        def redirect_request(self, req, fp, code, msg, headers, newurl):  # type: ignore[no-untyped-def]
-            return None
-
-    opener = urllib.request.build_opener(_NoRedirect)
-    request = urllib.request.Request(url, headers=auth_headers)
+    temporary = None
+    marker_temporary = None
     try:
-        with opener.open(request, timeout=300) as response:
-            final_url = response.geturl()
-            validate_download_url(final_url, context="download_url redirect")
-            _stream_response_to_path(response, path)
-            return
-    except urllib.error.HTTPError as exc:
-        if exc.code not in {301, 302, 303, 307, 308}:
-            raise
-        location = exc.headers.get("Location")
-        if not location:
-            raise
-        validate_download_url(location, context="download_url redirect")
-        plain_headers = {"User-Agent": USER_AGENT}
-        with urllib.request.urlopen(
-            urllib.request.Request(location, headers=plain_headers),
-            timeout=300,
-        ) as response:
-            _stream_response_to_path(response, path)
+        digest = hashlib.sha256()
+        size = 0
+        with tempfile.NamedTemporaryFile(
+            dir=path.parent, prefix=f".{path.name}.", delete=False
+        ) as handle:
+            temporary = Path(handle.name)
+            for chunk in _response_chunks(
+                response, MAX_DOWNLOAD_BYTES if max_bytes is None else max_bytes
+            ):
+                handle.write(chunk)
+                digest.update(chunk)
+                size += len(chunk)
+            if not size:
+                raise IntakePolicyError("empty download")
+            handle.flush()
+            os.fsync(handle.fileno())
+        with tempfile.NamedTemporaryFile(
+            mode="w",
+            dir=path.parent,
+            prefix=f".{path.name}.completion.",
+            encoding="utf-8",
+            delete=False,
+        ) as marker:
+            marker_temporary = Path(marker.name)
+            json.dump(
+                {"size": size, "sha256": digest.hexdigest(), "source_identity": source_identity},
+                marker,
+            )
+        os.replace(temporary, path)
+        os.replace(marker_temporary, completion_path(path))
+    finally:
+        for candidate in (temporary, marker_temporary):
+            if candidate is not None:
+                candidate.unlink(missing_ok=True)
 
 
-def download_url(url: str, path: Path) -> None:
-    auth_headers = _download_headers_for_url(url)
-    if "datadryad.org" in url and auth_headers.get("Authorization"):
-        _download_presigned_redirect(url, path, auth_headers=auth_headers)
-        return
-    validate_download_url(url, context="download_url")
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with _open_validated_response(
-        url,
-        context="download_url",
-        timeout=300,
-        headers=auth_headers,
-    ) as response:
-        final_url = response.geturl()
-        validate_download_url(final_url, context="download_url redirect")
-        _stream_response_to_path(response, path)
+def download_url(url: str, path: Path, *, doi: str | None = None, size: int | None = None) -> None:
+    source_identity = download_source_identity(url, doi=doi, size=size)
+    with _open_validated_response(url, context="download_url", timeout=300) as response:
+        _stream_response_to_path(response, path, source_identity=source_identity)
 
 
 def _dryad_download_remediation(error_text: str) -> str:
@@ -211,28 +304,30 @@ def _process_publisher_supplement_dataset(
     catalog: list[dict[str, Any]] = []
     for file_name, url in tuple(dataset.get("supplementary_downloads") or ()):
         local_path = output_dir / dataset_id / "supplementary" / safe_relative_path(file_name)
+        source_identity = download_source_identity(str(url), doi=dataset.get("doi"))
         file_error: str | None = None
-        if _needs_download(local_path, force=force, metadata_only=metadata_only):
+        if _needs_download(
+            local_path, force=force, metadata_only=metadata_only, source_identity=source_identity
+        ):
             try:
-                download_url(str(url), local_path)
-            except (TimeoutError, urllib.error.URLError, urllib.error.HTTPError, ValueError) as exc:
+                download_url(str(url), local_path, doi=dataset.get("doi"))
+            except (OSError, ValueError, http.client.HTTPException) as exc:
                 file_error = _error_text(exc)
-                local_path.unlink(missing_ok=True)
-        file_downloaded = local_path.exists() and local_path.stat().st_size > 0
+        file_downloaded = completed_download(local_path, source_identity=source_identity)
         catalog.append(
             {
                 "dataset_id": dataset_id,
                 "doi": dataset.get("doi"),
                 "title": dataset.get("title"),
                 "path": file_name,
-                "size": local_path.stat().st_size if file_downloaded else 0,
+                "size": None,
                 "mime_type": None,
-                "download_url": url,
+                "download_url": _catalog_download_url(str(url)),
                 "local_archive": None,
                 "archive_downloaded": False,
                 "local_file": str(local_path) if file_downloaded else None,
                 "file_downloaded": file_downloaded,
-                "file_sha256": sha256_file(local_path) if file_downloaded else None,
+                "file_sha256": utils.sha256_file(local_path) if file_downloaded else None,
                 "file_error": file_error,
                 "source_repository": "publisher",
                 "source_url": dataset.get("source_url"),
@@ -285,26 +380,32 @@ def _process_dryad_dataset(
         version_href = dataset_payload["_links"]["stash:version"]["href"]
         files_payload = read_json(f"{DRYAD_API_ROOT}{version_href}/files")
         file_rows = list(files_payload["_embedded"]["stash:files"])
-    except (KeyError, TimeoutError, urllib.error.URLError, urllib.error.HTTPError) as exc:
+    except (KeyError, OSError, ValueError, http.client.HTTPException) as exc:
         return [], _archive_record(
             dataset,
             storage_size=0,
             archive_path=archive_path,
+            archive_download_url=None,
             archive_error=_error_text(exc),
             file_rows=[],
             file_downloads=[],
             metadata_only=metadata_only,
         )
     storage_size = int(dataset_payload.get("storageSize") or 0)
+    archive_url = f"{DRYAD_API_ROOT}{version_href}/download"
+    archive_identity = download_source_identity(archive_url, doi=doi, size=storage_size)
     archive_error: str | None = None
-    archive_preexisting = archive_path.exists() and archive_path.stat().st_size > 0 and not force
-    if _needs_download(archive_path, force=force, metadata_only=metadata_only):
+    archive_preexisting = (
+        completed_download(archive_path, source_identity=archive_identity) and not force
+    )
+    if _needs_download(
+        archive_path, force=force, metadata_only=metadata_only, source_identity=archive_identity
+    ):
         try:
-            download_url(f"{DRYAD_API_ROOT}{version_href}/download", archive_path)
-        except (TimeoutError, urllib.error.URLError, urllib.error.HTTPError) as exc:
+            download_url(archive_url, archive_path, doi=doi, size=storage_size)
+        except (OSError, ValueError, http.client.HTTPException) as exc:
             archive_error = _error_text(exc)
-            archive_path.unlink(missing_ok=True)
-    archive_downloaded = archive_path.exists() and archive_path.stat().st_size > 0
+    archive_downloaded = completed_download(archive_path, source_identity=archive_identity)
     file_catalog, file_downloads = _process_dryad_files(
         dataset,
         file_rows,
@@ -313,11 +414,14 @@ def _process_dryad_dataset(
         force=force,
         archive_path=archive_path if archive_downloaded else None,
         archive_downloaded=archive_downloaded,
+        archive_download_url=archive_url,
+        archive_expected_size_bytes=storage_size,
     )
     record = _archive_record(
         dataset,
         storage_size=storage_size,
         archive_path=archive_path,
+        archive_download_url=archive_url,
         archive_error=archive_error,
         file_rows=file_rows,
         file_downloads=file_downloads,
@@ -336,6 +440,8 @@ def _process_dryad_files(
     force: bool,
     archive_path: Path | None,
     archive_downloaded: bool,
+    archive_download_url: str | None,
+    archive_expected_size_bytes: int | None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     dataset_id = str(dataset["dataset_id"])
     catalog: list[dict[str, Any]] = []
@@ -345,29 +451,45 @@ def _process_dryad_files(
         local_path = output_dir / dataset_id / "files" / safe_relative_path(remote_path)
         download_href = file_payload.get("_links", {}).get("stash:download", {}).get("href")
         download_url_text = f"{DRYAD_API_ROOT}{download_href}" if download_href else None
+        advertised_size = int(file_payload.get("size") or 0)
+        source_identity = (
+            download_source_identity(download_url_text, doi=dataset["doi"], size=advertised_size)
+            if download_url_text
+            else None
+        )
         file_error: str | None = None
         if (
             not archive_downloaded
             and download_url_text
-            and _needs_download(local_path, force=force, metadata_only=metadata_only)
+            and _needs_download(
+                local_path,
+                force=force,
+                metadata_only=metadata_only,
+                source_identity=source_identity,
+            )
         ):
             try:
-                download_url(download_url_text, local_path)
-            except (TimeoutError, urllib.error.URLError, urllib.error.HTTPError) as exc:
+                download_url(
+                    download_url_text, local_path, doi=dataset["doi"], size=advertised_size
+                )
+            except (OSError, ValueError, http.client.HTTPException) as exc:
                 file_error = _error_text(exc)
-                local_path.unlink(missing_ok=True)
-        file_downloaded = local_path.exists() and local_path.stat().st_size > 0
-        checksum = sha256_file(local_path) if file_downloaded else None
+        file_downloaded = source_identity is not None and completed_download(
+            local_path, source_identity=source_identity
+        )
+        checksum = utils.sha256_file(local_path) if file_downloaded else None
         row = {
             "dataset_id": dataset_id,
             "doi": dataset["doi"],
             "title": dataset["title"],
             "path": remote_path,
-            "size": int(file_payload.get("size") or 0),
+            "size": advertised_size,
             "mime_type": file_payload.get("mimeType"),
-            "download_url": download_url_text,
+            "download_url": _catalog_download_url(download_url_text),
             "local_archive": str(archive_path) if archive_downloaded and archive_path else None,
             "archive_downloaded": archive_downloaded,
+            "archive_download_url": archive_download_url,
+            "archive_expected_size_bytes": archive_expected_size_bytes,
             "local_file": str(local_path) if file_downloaded else None,
             "file_downloaded": file_downloaded,
             "file_sha256": checksum,
@@ -401,7 +523,7 @@ def _process_figshare_dataset(
         file_rows = list(payload.get("files", ()))
         license_payload = payload.get("license") or {}
         article_doi = str(payload.get("doi") or dataset["doi"])
-    except (ValueError, TimeoutError, urllib.error.URLError, urllib.error.HTTPError) as exc:
+    except (OSError, ValueError, http.client.HTTPException) as exc:
         return [
             {
                 "dataset_id": dataset_id,
@@ -426,30 +548,40 @@ def _process_figshare_dataset(
         remote_name = str(file_payload.get("name") or file_payload.get("id") or "payload.csv")
         local_path = output_dir / dataset_id / "files" / safe_relative_path(remote_name)
         download_url_text = str(file_payload.get("download_url") or "")
+        advertised_size = int(file_payload.get("size") or 0)
+        source_identity = None
         file_error: str | None = None
-        if download_url_text and _needs_download(
-            local_path, force=force, metadata_only=metadata_only
+        try:
+            if download_url_text:
+                source_identity = download_source_identity(
+                    download_url_text, doi=article_doi, size=advertised_size
+                )
+        except ValueError as exc:
+            file_error = _error_text(exc)
+        if source_identity is not None and _needs_download(
+            local_path, force=force, metadata_only=metadata_only, source_identity=source_identity
         ):
             try:
-                download_url(download_url_text, local_path)
-            except (TimeoutError, urllib.error.URLError, urllib.error.HTTPError) as exc:
+                download_url(download_url_text, local_path, doi=article_doi, size=advertised_size)
+            except (OSError, ValueError, http.client.HTTPException) as exc:
                 file_error = _error_text(exc)
-                local_path.unlink(missing_ok=True)
-        file_downloaded = local_path.exists() and local_path.stat().st_size > 0
+        file_downloaded = source_identity is not None and completed_download(
+            local_path, source_identity=source_identity
+        )
         rows.append(
             {
                 "dataset_id": dataset_id,
                 "doi": article_doi,
                 "title": dataset["title"],
                 "path": remote_name,
-                "size": int(file_payload.get("size") or 0),
+                "size": advertised_size,
                 "mime_type": file_payload.get("mime_type"),
-                "download_url": download_url_text or None,
+                "download_url": _catalog_download_url(download_url_text),
                 "local_archive": None,
                 "archive_downloaded": False,
                 "local_file": str(local_path) if file_downloaded else None,
                 "file_downloaded": file_downloaded,
-                "file_sha256": sha256_file(local_path) if file_downloaded else None,
+                "file_sha256": utils.sha256_file(local_path) if file_downloaded else None,
                 "file_error": file_error,
                 "source_repository": "figshare",
                 "license": license_payload.get("name") or dataset.get("license_note"),
@@ -472,17 +604,21 @@ def _process_anatomy_dataset(
     for asset in dataset["assets"]:
         asset_obj = _asset_from_dict(asset)
         local_path = output_dir / dataset_id / asset_obj.file_name
+        source_identity = download_source_identity(asset_obj.url, size=asset_obj.size_bytes)
         error: str | None = None
-        skipped_existing = local_path.exists() and local_path.stat().st_size > 0 and not force
-        if _needs_download(local_path, force=force, metadata_only=metadata_only):
+        skipped_existing = (
+            completed_download(local_path, source_identity=source_identity) and not force
+        )
+        if _needs_download(
+            local_path, force=force, metadata_only=metadata_only, source_identity=source_identity
+        ):
             try:
-                download_url(asset_obj.url, local_path)
-            except (TimeoutError, urllib.error.URLError, urllib.error.HTTPError) as exc:
+                download_url(asset_obj.url, local_path, size=asset_obj.size_bytes)
+            except (OSError, ValueError, http.client.HTTPException) as exc:
                 error = _error_text(exc)
-                local_path.unlink(missing_ok=True)
         sha = (
-            sha256_file(local_path)
-            if local_path.exists() and local_path.stat().st_size > 0
+            utils.sha256_file(local_path)
+            if completed_download(local_path, source_identity=source_identity)
             else None
         )
         record = atlas_download_record_from_asset(
@@ -539,24 +675,32 @@ def _archive_record(
     *,
     storage_size: int,
     archive_path: Path,
+    archive_download_url: str | None,
     archive_error: str | None,
     file_rows: list[dict[str, Any]],
     file_downloads: list[dict[str, Any]],
     metadata_only: bool,
     skipped_existing: bool = False,
 ) -> dict[str, Any]:
-    archive_downloaded = archive_path.exists() and archive_path.stat().st_size > 0
+    archive_downloaded = archive_download_url is not None and completed_download(
+        archive_path,
+        source_identity=download_source_identity(
+            archive_download_url, doi=dataset["doi"], size=storage_size
+        ),
+    )
     return {
         "dataset_id": dataset["dataset_id"],
         "doi": dataset["doi"],
         "title": dataset["title"],
         "storage_size": storage_size,
+        "archive_download_url": archive_download_url,
+        "archive_expected_size_bytes": storage_size,
         "full_download_requested": not metadata_only,
         "archive_downloaded": archive_downloaded,
         "archive_skipped_existing": skipped_existing,
         "local_archive": str(archive_path) if archive_downloaded else None,
         "archive_size_bytes": archive_path.stat().st_size if archive_downloaded else 0,
-        "archive_sha256": sha256_file(archive_path) if archive_downloaded else None,
+        "archive_sha256": utils.sha256_file(archive_path) if archive_downloaded else None,
         "archive_error": archive_error,
         "cataloged_file_count": len(file_rows),
         "file_downloaded_count": len(file_downloads),
@@ -578,20 +722,14 @@ def _asset_from_dict(payload: dict[str, Any]) -> BeeBrainAtlasAsset:
     )
 
 
-def _needs_download(path: Path, *, force: bool, metadata_only: bool) -> bool:
+def _needs_download(
+    path: Path, *, force: bool, metadata_only: bool, source_identity: str | None = None
+) -> bool:
     if metadata_only:
         return False
     if force:
         return True
-    return not (path.exists() and path.stat().st_size > 0)
-
-
-def sha256_file(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        while chunk := handle.read(1024 * 1024):
-            digest.update(chunk)
-    return digest.hexdigest()
+    return not completed_download(path, source_identity=source_identity)
 
 
 def _error_text(exc: BaseException) -> str:
@@ -600,11 +738,42 @@ def _error_text(exc: BaseException) -> str:
     return str(exc)
 
 
+def _catalog_download_url(url: str | None) -> str | None:
+    """Do not publish refused credential-bearing/invalid acquisition locators."""
+    if not url:
+        return None
+    try:
+        validate_download_url(url, context="catalog acquisition")
+    except ValueError:
+        return None
+    return url
+
+
 def fetch_empirical_sources(
     output_dir: Path,
     *,
     metadata_only: bool = False,
     force: bool = False,
+    project_root: Path | None = None,
+) -> EmpiricalFetchSummary:
+    token = _TRANSFER_BUDGET.set(TransferBudget())
+    try:
+        return _fetch_empirical_sources(
+            output_dir.resolve(),
+            metadata_only=metadata_only,
+            force=force,
+            project_root=project_root,
+        )
+    finally:
+        _TRANSFER_BUDGET.reset(token)
+
+
+def _fetch_empirical_sources(
+    output_dir: Path,
+    *,
+    metadata_only: bool = False,
+    force: bool = False,
+    project_root: Path | None = None,
 ) -> EmpiricalFetchSummary:
     """Catalog and optionally download all curated empirical BeeBrain sources."""
 
@@ -656,13 +825,9 @@ def fetch_empirical_sources(
                 force=force,
             )
         )
-    # Serialize download manifests with repo-relative paths (AGENTS.md rule 10):
-    # local paths are provenance-only here, so normalize them off the checkout root
-    # rather than leaking absolute home-directory paths into tracked, publishable JSON.
-    manifest_root = output_dir.parents[2]
-    write_json(output_dir / "catalog.json", catalog, project_root=manifest_root)
-    write_json(output_dir / "archives.json", archives, project_root=manifest_root)
-    write_json(output_dir / "anatomy_downloads.json", anatomy_downloads, project_root=manifest_root)
+    write_json(output_dir / "catalog.json", catalog, project_root=project_root)
+    write_json(output_dir / "archives.json", archives, project_root=project_root)
+    write_json(output_dir / "anatomy_downloads.json", anatomy_downloads, project_root=project_root)
     return EmpiricalFetchSummary(
         catalog_count=len(catalog),
         downloaded_archives=sum(1 for row in archives if row.get("archive_downloaded")),

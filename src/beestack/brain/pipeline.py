@@ -7,7 +7,7 @@ from collections.abc import Mapping
 import numpy as np
 
 from ..config import BeeStackConfig
-from ..contracts import Observation
+from ..contracts import Observation, validate_observation
 from .central_complex import heading_ring
 from .empirical import (
     empirical_alignment_score,
@@ -16,7 +16,7 @@ from .empirical import (
 )
 from .mushroom_body import kenyon_sparse_code
 from .olfaction import glomerular_encode, lateral_inhibition
-from .state import BrainState
+from .state import BrainState, KenyonProjection
 from .waggle import decode_waggle, johnston_event_detected
 
 
@@ -25,6 +25,7 @@ def process_observation(
     cfg: BeeStackConfig,
     seed: int,
     odor_templates: Mapping[str, np.ndarray] | None = None,
+    projection: KenyonProjection | None = None,
 ) -> BrainState:
     """Run the AL -> MB -> CX reduced pipeline for one observation.
 
@@ -34,9 +35,11 @@ def process_observation(
     configured deterministic empirical priors.
     """
 
+    validate_observation(obs, cfg)
     glomeruli = lateral_inhibition(glomerular_encode(obs.antennal_channels, cfg))
-    sparse = kenyon_sparse_code(glomeruli, cfg, seed=seed)
-    heading = heading_ring(obs.angular_velocity[2], obs.ocelli[1], obs.optic_flow, cfg)
+    sparse = kenyon_sparse_code(glomeruli, cfg, seed=seed, projection=projection)
+    # Reduced full-bearing compass; ocelli retain their 180-degree axis cue.
+    heading = heading_ring(obs.heading_deg, obs.heading_deg, obs.optic_flow, cfg)
     templates = (
         dict(odor_templates)
         if odor_templates is not None

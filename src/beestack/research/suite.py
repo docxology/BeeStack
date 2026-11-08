@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import asdict, dataclass, replace
+from pathlib import Path
 from typing import Any
 
 import numpy as np
@@ -96,16 +98,17 @@ class VisualizationArtifactRecord:
     source_data: str
     regeneration_command: str
     validation_status: str
+    availability_status: str = "unrecorded"
 
     def __post_init__(self) -> None:
         for field_name, value in asdict(self).items():
             if not isinstance(value, str) or not value:
                 raise ValueError(f"visualization {field_name} must be a nonempty string")
 
-    def as_dict(self) -> dict[str, str]:
+    def as_dict(self, project_root: Path | None = None) -> dict[str, str]:
         payload = asdict(self)
-        payload["path"] = project_relative_path(self.path)
-        payload["source_data"] = project_relative_path(self.source_data)
+        payload["path"] = project_relative_path(self.path, project_root)
+        payload["source_data"] = project_relative_path(self.source_data, project_root)
         return payload
 
 
@@ -197,13 +200,13 @@ class ResearchSuiteReport:
         if not self.known_gaps:
             raise ValueError("research report known_gaps must not be empty")
 
-    def as_dict(self) -> dict[str, object]:
+    def as_dict(self, project_root: Path | None = None) -> dict[str, object]:
         return {
             "title": self.title,
             "summary": self.summary,
             "module_scorecards": [scorecard.as_dict() for scorecard in self.module_scorecards],
             "visualization_artifacts": [
-                artifact.as_dict() for artifact in self.visualization_artifacts
+                artifact.as_dict(project_root) for artifact in self.visualization_artifacts
             ],
             "empirical_evidence": [evidence.as_dict() for evidence in self.empirical_evidence],
             "empirical_availability_counts": self.empirical_availability_counts,
@@ -277,6 +280,8 @@ def assemble_research_suite_report(
     figure_paths: tuple[str, ...],
     interactive_paths: tuple[str, ...],
     sensitivity_sweeps: tuple[SensitivitySweepResult, ...] | None = None,
+    project_root: Path | None = None,
+    artifact_metadata: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> ResearchSuiteReport:
     """Assemble a unified research report from existing generated payloads."""
 
@@ -288,7 +293,13 @@ def assemble_research_suite_report(
         integrity_review,
         empirical_analysis,
     )
-    artifacts = _visualization_artifacts(animation_manifest, figure_paths, interactive_paths)
+    artifacts = _visualization_artifacts(
+        animation_manifest,
+        figure_paths,
+        interactive_paths,
+        project_root=project_root,
+        artifact_metadata=artifact_metadata,
+    )
     evidence = _empirical_evidence(cfg, empirical_analysis)
     validation_values = [
         validation.passed for scorecard in scorecards for validation in scorecard.validations
@@ -688,53 +699,77 @@ def _scorecard(
     )
 
 
+def _visualization_path(path: str, project_root: Path | None = None) -> str:
+    """Canonicalize an artifact identity only against its explicitly known root."""
+
+    value = Path(path)
+    if project_root is not None and not value.is_absolute():
+        value = project_root / value
+    return project_relative_path(value, project_root)
+
+
 def _visualization_artifacts(
     manifest: dict[str, Any],
     figure_paths: tuple[str, ...],
     interactive_paths: tuple[str, ...],
+    *,
+    project_root: Path | None = None,
+    artifact_metadata: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> tuple[VisualizationArtifactRecord, ...]:
-    records: list[VisualizationArtifactRecord] = []
-    for artifact in manifest.get("animations", []):
-        records.append(
-            VisualizationArtifactRecord(
-                path=project_relative_path(str(artifact["path"])),
-                artifact_type="animation",
-                backend=str(
-                    artifact.get("render_backend") or artifact.get("backend") or "matplotlib"
+    """Inventory unique paths, retaining sidecar provenance supplied by the I/O owner."""
+
+    metadata: dict[str, Mapping[str, Any]] = {}
+    for path, payload in (artifact_metadata or {}).items():
+        key = _visualization_path(path, project_root)
+        if key in metadata and metadata[key] != payload:
+            raise ValueError(f"conflicting authoritative metadata for {key}")
+        metadata[key] = payload
+    records: dict[str, VisualizationArtifactRecord] = {}
+    candidates = [
+        (str(artifact["path"]), "animation", artifact)
+        for artifact in manifest.get("animations", ())
+    ]
+    candidates.extend((path, "figure", {}) for path in figure_paths)
+    candidates.extend((path, "interactive_html", {}) for path in interactive_paths)
+    for path, artifact_type, artifact in candidates:
+        key = _visualization_path(path, project_root)
+        payload = metadata.get(key, artifact)
+        record = VisualizationArtifactRecord(
+            path=key,
+            artifact_type=artifact_type,
+            backend=str(payload.get("backend") or payload.get("render_backend") or "unrecorded"),
+            fidelity_level=str(
+                payload.get("fidelity") or payload.get("fidelity_level") or "unrecorded"
+            ),
+            source_data=project_relative_path(
+                str(
+                    payload.get("source_data")
+                    or payload.get("source")
+                    or payload.get("scene_xml")
+                    or "unrecorded"
                 ),
-                fidelity_level=str(artifact.get("fidelity_level", "unknown")),
-                source_data=project_relative_path(
-                    str(artifact.get("source") or artifact.get("scene_xml") or "generated state")
-                ),
-                regeneration_command="uv run python scripts/generate_animations.py",
-                validation_status="verified" if artifact.get("contact_sheet") else "generated",
-            )
+                project_root,
+            ),
+            regeneration_command=str(
+                payload.get("regeneration_command")
+                or (
+                    "uv run python scripts/generate_animations.py"
+                    if artifact_type == "animation"
+                    else "unrecorded"
+                )
+            ),
+            validation_status=str(
+                payload.get("validation_status")
+                or ("generated" if artifact else "metadata_unavailable")
+            ),
+            availability_status=str(payload.get("availability_status") or "unrecorded"),
         )
-    for path in figure_paths:
-        records.append(
-            VisualizationArtifactRecord(
-                path=project_relative_path(path),
-                artifact_type="figure",
-                backend="matplotlib/networkx/scikit-image",
-                fidelity_level="research_diagnostic",
-                source_data="research_suite_report",
-                regeneration_command="uv run python scripts/run_research_suite.py",
-                validation_status="nonblank_static_figure",
-            )
-        )
-    for path in interactive_paths:
-        records.append(
-            VisualizationArtifactRecord(
-                path=project_relative_path(path),
-                artifact_type="interactive_html",
-                backend="plotly",
-                fidelity_level="research_diagnostic",
-                source_data="research_suite_report",
-                regeneration_command="uv run python scripts/run_research_suite.py",
-                validation_status="html_trace_present",
-            )
-        )
-    return tuple(records)
+        if key in records:
+            if records[key] != record:
+                raise ValueError(f"conflicting visualization records for {key}")
+        else:
+            records[key] = record
+    return tuple(records[key] for key in sorted(records))
 
 
 def _empirical_evidence(

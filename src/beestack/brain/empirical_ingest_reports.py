@@ -9,6 +9,10 @@ from ..utils import project_relative_path
 from .empirical_data import EmpiricalWaggleFollowerDataset
 
 
+def _optional_number(value: float | None) -> str:
+    return "unavailable" if value is None else f"{value:.3f}"
+
+
 def markdown_report(report: dict[str, Any], figure_paths: list[Path], project_root: Path) -> str:
     top = list(report["stack_alignment"].items())[:8]
     lines = [
@@ -73,8 +77,10 @@ def markdown_report(report: dict[str, Any], figure_paths: list[Path], project_ro
         lines.extend(["", "## Waggle Follower Decoding", ""])
         lines.append(
             "- Hadjitofi-Webb follower tracks `{track_count}`; confidence `{confidence_score:.3f}`; "
-            "angle/midpoint correlation `{follower_angle_midpoint_correlation:.3f}`; "
-            "decoding improvement `{decoding_improvement_fraction:.3f}`.".format(**summary)
+            "angle/midpoint correlation `{follower_angle_midpoint_correlation:.3f}`; ".format(
+                **summary
+            )
+            + f"decoding improvement `{_optional_number(summary.get('decoding_improvement_fraction'))}`."
         )
     completeness = report.get("brain_data_completeness", {})
     if completeness:
@@ -138,9 +144,9 @@ def waggle_markdown(
                 f"- Binned rows: `{summary.binned_row_count}`",
                 f"- Model-error rows: `{summary.model_error_row_count}`",
                 f"- Follower angle/midpoint correlation: `{summary.follower_angle_midpoint_correlation:.3f}`",
-                f"- Both-antennae decoding error: `{summary.both_antennae_mean_abs_error_deg:.3f}` deg",
-                f"- No-antennae decoding error: `{summary.no_antennae_mean_abs_error_deg:.3f}` deg",
-                f"- Decoding improvement fraction: `{summary.decoding_improvement_fraction:.3f}`",
+                f"- Both-antennae decoding error: `{_optional_number(summary.both_antennae_mean_abs_error_deg)}` deg",
+                f"- No-antennae decoding error: `{_optional_number(summary.no_antennae_mean_abs_error_deg)}` deg",
+                f"- Decoding improvement fraction: `{_optional_number(summary.decoding_improvement_fraction)}`",
                 f"- Confidence score: `{summary.confidence_score:.3f}`",
                 "",
                 "## Source Files",

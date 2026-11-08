@@ -18,11 +18,14 @@ def finalize_static_figures(
     *,
     plot_data_for: Callable[[Path], dict[str, Any]],
     sidecar_for: Callable[[Path], dict[str, Any]],
+    project_root: Path | None = None,
 ) -> list[Path]:
     """Write sidecars and raw plot data for each rendered static figure."""
 
     for path in paths:
-        write_figure_artifacts(path, plot_data_for(path), **sidecar_for(path))
+        write_figure_artifacts(
+            path, plot_data_for(path), project_root=project_root, **sidecar_for(path)
+        )
     return paths
 
 

@@ -1,8 +1,8 @@
 paper:
   title: "BeeStack: An Evidence-Typed Scaffold for Whole-Colony Honeybee Simulation"
   subtitle: "A Body–Brain–Mind–Swarm–Niche Substrate for Auditable Apis mellifera Modeling"
-  version: "1.0"
-  date: "May 2026"
+  version: "2.0"
+  date: "November 2026"
 
 authors:
   - name: "Daniel Ari Friedman"
@@ -16,7 +16,7 @@ authors:
     corresponding: false
 
 publication:
-  doi: "10.5281/zenodo.20420557"
+  doi: ""
   journal: ""
   year: "2026"
 
@@ -39,7 +39,7 @@ keywords:
 metadata:
   license: "MIT"
   language: "en"
-  manuscript_dir: "manuscript"
+  manuscript_dir: "docs/manuscript"
   geometry: "margin=0.15in"
 
 beestack:

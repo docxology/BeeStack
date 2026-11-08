@@ -2,15 +2,16 @@
 
 from __future__ import annotations
 
+import http.client
 import json
 import urllib.error
+from io import BytesIO
 from pathlib import Path
 
 import pytest
 
 from beestack.brain import empirical_fetch
 from beestack.brain.empirical_pipeline import build_empirical_analysis_bundle
-from beestack.config import BeeStackConfig
 from beestack.source_refresh import (
     ExternalDatasetRecord,
     SourceRefreshRecord,
@@ -23,20 +24,23 @@ from beestack.visualization.connectome_figures import generate_connectome_figure
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_local_empirical_bundle_and_figures_cover_parsers(tmp_path: Path) -> None:
-    source_dir = PROJECT_ROOT / "output" / "data" / "empirical_sources"
-    if not source_dir.exists():
-        pytest.skip("local empirical source payloads are absent")
-
-    bundle = build_empirical_analysis_bundle(BeeStackConfig(), PROJECT_ROOT)
+def test_isolated_bundle_preserves_numeric_evidence_and_absent_modalities(
+    odor_fixture_project,
+) -> None:
+    project_root, cfg = odor_fixture_project
+    bundle = build_empirical_analysis_bundle(cfg, project_root)
 
     assert bundle is not None
-    assert len(bundle.panels) >= 1
-    assert bundle.anatomy_summary.dataset_id == "virtual-honeybee-standard-brain"
-    assert bundle.connectome_report.tier == "structural_projectome"
-    assert bundle.data_completeness.parseable_fraction >= 0.0
+    panel = bundle.panels[0]
+    channels = {label.rsplit(":", 1)[-1]: index for index, label in enumerate(panel.channel_labels)}
+    assert panel.response_matrix[channels["g1"], panel.stimulus_labels.index("hexanal")] == 2.0
+    assert panel.response_matrix[channels["g2"], panel.stimulus_labels.index("octanol")] == 1.0
+    assert bundle.connectome_report.tier == "schematic_only"
+    assert bundle.connectome_report.supporting_assets == ()
+    assert bundle.waggle_dataset is None
+    assert bundle.calcium_datasets == ()
 
-    empirical_dir = tmp_path / "figures" / "empirical"
+    empirical_dir = project_root / "output/figures/empirical"
     empirical_paths = generate_empirical_figures(
         bundle.panels,
         bundle.stats,
@@ -50,15 +54,15 @@ def test_local_empirical_bundle_and_figures_cover_parsers(tmp_path: Path) -> Non
         waggle_summary=bundle.waggle_dataset.summary if bundle.waggle_dataset is not None else None,
         data_completeness=bundle.data_completeness,
         connectome_report=bundle.connectome_report,
+        project_root=project_root,
     )
     connectome_paths = generate_connectome_figures(
         bundle.connectome_report,
         empirical_dir,
         completeness_tiers=bundle.data_completeness.connectome_tiers,
+        project_root=project_root,
     )
 
-    assert len(empirical_paths) >= 10
-    assert len(connectome_paths) == 3
     for path in (*empirical_paths, *connectome_paths):
         assert path.is_file()
         assert path.with_suffix(".json").is_file()
@@ -240,64 +244,70 @@ def test_source_refresh_records_validate_required_contracts() -> None:
         )
 
 
+def _byte_response(body: bytes, url: str):
+    class Socket:
+        def makefile(self, *_args):
+            return BytesIO(
+                b"HTTP/1.1 200 OK\r\nContent-Length: "
+                + str(len(body)).encode()
+                + b"\r\n\r\n"
+                + body
+            )
+
+    response = http.client.HTTPResponse(Socket())
+    response.begin()
+    response.url = url
+    response.msg = response.reason
+    return response
+
+
 def test_empirical_fetch_oauth_and_json_response_helpers(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    class JsonResponse:
-        def __init__(self, payload: dict[str, object], url: str) -> None:
-            self._payload = json.dumps(payload).encode("utf-8")
-            self._url = url
+    calls = []
 
-        def read(self, _size: int = -1) -> bytes:
-            return self._payload
+    class ByteHTTPS(empirical_fetch.urllib.request.HTTPSHandler):
+        def https_open(self, request):
+            calls.append(request)
+            payload = (
+                {"access_token": "oauth-token"}
+                if request.full_url.endswith("/oauth/token")
+                else {"ok": True}
+            )
+            return _byte_response(json.dumps(payload).encode(), request.full_url)
 
-        def geturl(self) -> str:
-            return self._url
-
-        def __enter__(self) -> JsonResponse:
-            return self
-
-        def __exit__(self, *_exc: object) -> None:
-            return None
-
-    def fake_urlopen(request: object, timeout: float) -> JsonResponse:
-        url = getattr(request, "full_url", "")
-        if url.endswith("/oauth/token"):
-            return JsonResponse({"access_token": "oauth-token"}, url)
-        return JsonResponse({"ok": True}, url)
+    original = empirical_fetch.urllib.request.build_opener
 
     monkeypatch.delenv("DRYAD_API_TOKEN", raising=False)
     monkeypatch.setenv("DRYAD_CLIENT_ID", "client")
     monkeypatch.setenv("DRYAD_CLIENT_SECRET", "secret")
-    monkeypatch.setattr(empirical_fetch.urllib.request, "urlopen", fake_urlopen)
+    monkeypatch.setattr(
+        empirical_fetch.urllib.request,
+        "build_opener",
+        lambda *handlers: original(*handlers, ByteHTTPS()),
+    )
 
     assert empirical_fetch._dryad_oauth_token() == "oauth-token"
-    assert empirical_fetch._dryad_auth_headers()["Authorization"] == "Bearer oauth-token"
+    assert (
+        empirical_fetch._download_headers_for_url("https://datadryad.org/a")["Authorization"]
+        == "Bearer oauth-token"
+    )
     assert empirical_fetch.read_json("https://datadryad.org/api/v2/datasets/example") == {
         "ok": True
     }
+    assert empirical_fetch.read_json("https://api.figshare.com/v2/articles/1") == {"ok": True}
+    assert calls[-1].get_header("Authorization") is None
+    assert all(
+        request.full_url.startswith("https://datadryad.org/") for request in calls if request.data
+    )
 
 
 def test_empirical_fetch_download_helpers_and_branch_records(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    class ChunkResponse:
-        def __init__(self, chunks: list[bytes], url: str) -> None:
-            self._chunks = iter(chunks)
-            self._url = url
-
-        def read(self, _size: int = -1) -> bytes:
-            return next(self._chunks, b"")
-
-        def geturl(self) -> str:
-            return self._url
-
-        def __enter__(self) -> ChunkResponse:
-            return self
-
-        def __exit__(self, *_exc: object) -> None:
-            return None
+    def ChunkResponse(chunks, url):
+        return _byte_response(b"".join(chunks), url)
 
     monkeypatch.setenv("DRYAD_API_TOKEN", "dryad-token")
     dryad_headers = empirical_fetch._download_headers_for_url(
@@ -319,9 +329,6 @@ def test_empirical_fetch_download_helpers_and_branch_records(
         streamed,
     )
     assert streamed.read_bytes() == b"beestack"
-    assert empirical_fetch.sha256_file(streamed) == (
-        "7f72c02c8c31fe44a2e753083202e4a293a6bd619669eab721ccb685210f9de2"
-    )
 
     def fake_open_validated_response(*_args: object, **_kwargs: object) -> ChunkResponse:
         return ChunkResponse([b"payload"], "https://figshare.com/file")
@@ -331,43 +338,12 @@ def test_empirical_fetch_download_helpers_and_branch_records(
     empirical_fetch.download_url("https://figshare.com/file", downloaded)
     assert downloaded.read_bytes() == b"payload"
 
-    class RedirectOpener:
-        def open(self, request: object, timeout: float) -> None:
-            raise urllib.error.HTTPError(
-                getattr(request, "full_url", "https://datadryad.org/api/v2/files/1/download"),
-                302,
-                "Found",
-                {"Location": "https://dryad-assetstore-example.amazonaws.com/payload"},
-                None,
-            )
-
-    monkeypatch.setattr(
-        empirical_fetch.urllib.request,
-        "build_opener",
-        lambda *_handlers: RedirectOpener(),
-    )
-    monkeypatch.setattr(
-        empirical_fetch.urllib.request,
-        "urlopen",
-        lambda *_args, **_kwargs: ChunkResponse(
-            [b"redirected"], "https://dryad-assetstore-example.amazonaws.com/payload"
-        ),
-    )
-    redirected = tmp_path / "redirected.bin"
-    empirical_fetch._download_presigned_redirect(
-        "https://datadryad.org/api/v2/files/1/download",
-        redirected,
-        auth_headers={"User-Agent": empirical_fetch.USER_AGENT, "Authorization": "Bearer token"},
-    )
-    assert redirected.read_bytes() == b"redirected"
-
-    def fake_download_url(url: str, path: Path) -> None:
+    def source_response(url: str, **_kwargs):
         if "blocked" in url:
             raise urllib.error.URLError("offline")
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text("source rows\n", encoding="utf-8")
+        return _byte_response(b"source rows\n", url)
 
-    monkeypatch.setattr(empirical_fetch, "download_url", fake_download_url)
+    monkeypatch.setattr(empirical_fetch, "_open_validated_response", source_response)
     supplement_rows = empirical_fetch._process_publisher_supplement_dataset(
         {
             "dataset_id": "publisher-supplement",

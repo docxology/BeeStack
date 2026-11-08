@@ -1,37 +1,37 @@
 {
   "annotations": [
-    "Weakest synthesized module is BeeBrain (readiness 0.821; gaps 2).",
-    "Cross-stack validation mean is 0.950 with 11 catalogued module gaps.",
+    "Weakest synthesized module is BeeBrain (readiness 0.483; gaps 2).",
+    "Cross-stack validation mean is 0.800 with 11 catalogued module gaps.",
     "Integrated simulation improved brood-temperature error by 3.964 C over 24 steps.",
-    "All synthesis validation gates passed in the latest generated run."
+    "Open synthesis validation gates: validation_target, empirical_parseability."
   ],
   "chart_type": "schematic",
   "figure_path": "output/figures/research/stack_synthesis_findings_detail.png",
   "nodes": [
     {
-      "artifact_count": 23,
+      "artifact_count": 22,
       "evidence_count": 2,
       "fidelity_level": "FlyBody render path plus reduced closed-loop telemetry",
       "known_gap_count": 2,
-      "log_metric_mean": 0.812684896150744,
+      "log_metric_mean": 0.8128488265126244,
       "metric_count": 14,
       "module": "BeeBody",
       "readiness_score": 0.9333333333333332,
       "validation_fraction": 1.0
     },
     {
-      "artifact_count": 30,
+      "artifact_count": 29,
       "evidence_count": 3,
       "fidelity_level": "empirical reduced AL-MB-CX kernel",
       "known_gap_count": 2,
-      "log_metric_mean": 0.6812445791845987,
-      "metric_count": 14,
+      "log_metric_mean": 0.1388523580210967,
+      "metric_count": 15,
       "module": "BeeBrain",
-      "readiness_score": 0.8208333333333334,
-      "validation_fraction": 0.75
+      "readiness_score": 0.48333333333333334,
+      "validation_fraction": 0.0
     },
     {
-      "artifact_count": 10,
+      "artifact_count": 9,
       "evidence_count": 2,
       "fidelity_level": "bounded active-inference-style policy kernel",
       "known_gap_count": 2,
@@ -42,7 +42,7 @@
       "validation_fraction": 1.0
     },
     {
-      "artifact_count": 24,
+      "artifact_count": 23,
       "evidence_count": 2,
       "fidelity_level": "reduced communication kernel plus strict FlyBody/MuJoCo BeeBody waggle/collision scenes",
       "known_gap_count": 3,
@@ -53,7 +53,7 @@
       "validation_fraction": 1.0
     },
     {
-      "artifact_count": 13,
+      "artifact_count": 12,
       "evidence_count": 2,
       "fidelity_level": "voxel comb and thermal kernel with adapter schemas",
       "known_gap_count": 2,
@@ -75,7 +75,7 @@
     },
     {
       "name": "empirical_parseable_fraction",
-      "value": 0.7
+      "value": 0.0
     },
     {
       "name": "signposting_fraction",
@@ -83,7 +83,7 @@
     },
     {
       "name": "scholarship_reference_count",
-      "value": 95.0
+      "value": 93.0
     }
   ],
   "schema": "beestack.figure_data.v1",

@@ -5,29 +5,29 @@
   ],
   "module_panels": [
     {
-      "artifact_count": 23,
+      "artifact_count": 22,
       "evidence_count": 2,
       "fidelity_level": "FlyBody render path plus reduced closed-loop telemetry",
       "known_gap_count": 2,
-      "log_metric_mean": 0.812684896150744,
+      "log_metric_mean": 0.8128488265126244,
       "metric_count": 14,
       "module": "BeeBody",
       "readiness_score": 0.9333333333333332,
       "validation_fraction": 1.0
     },
     {
-      "artifact_count": 30,
+      "artifact_count": 29,
       "evidence_count": 3,
       "fidelity_level": "empirical reduced AL-MB-CX kernel",
       "known_gap_count": 2,
-      "log_metric_mean": 0.6812445791845987,
-      "metric_count": 14,
+      "log_metric_mean": 0.1388523580210967,
+      "metric_count": 15,
       "module": "BeeBrain",
-      "readiness_score": 0.8208333333333334,
-      "validation_fraction": 0.75
+      "readiness_score": 0.48333333333333334,
+      "validation_fraction": 0.0
     },
     {
-      "artifact_count": 10,
+      "artifact_count": 9,
       "evidence_count": 2,
       "fidelity_level": "bounded active-inference-style policy kernel",
       "known_gap_count": 2,
@@ -38,7 +38,7 @@
       "validation_fraction": 1.0
     },
     {
-      "artifact_count": 24,
+      "artifact_count": 23,
       "evidence_count": 2,
       "fidelity_level": "reduced communication kernel plus strict FlyBody/MuJoCo BeeBody waggle/collision scenes",
       "known_gap_count": 3,
@@ -49,7 +49,7 @@
       "validation_fraction": 1.0
     },
     {
-      "artifact_count": 13,
+      "artifact_count": 12,
       "evidence_count": 2,
       "fidelity_level": "voxel comb and thermal kernel with adapter schemas",
       "known_gap_count": 2,
@@ -61,12 +61,12 @@
     }
   ],
   "prioritized_findings": [
-    "Weakest synthesized module is BeeBrain (readiness 0.821; gaps 2).",
-    "Cross-stack validation mean is 0.950 with 11 catalogued module gaps.",
+    "Weakest synthesized module is BeeBrain (readiness 0.483; gaps 2).",
+    "Cross-stack validation mean is 0.800 with 11 catalogued module gaps.",
     "Integrated simulation improved brood-temperature error by 3.964 C over 24 steps.",
-    "All synthesis validation gates passed in the latest generated run."
+    "Open synthesis validation gates: validation_target, empirical_parseability."
   ],
-  "readiness_fraction": 0.9091666666666667,
+  "readiness_fraction": 0.8416666666666666,
   "scholarship_keys": [
     "ahsan2025neonic",
     "andreu2025alarmor",
@@ -104,10 +104,10 @@
     "heer2012interactive",
     "highfield2009dwv",
     "hisamoto2024landscape",
+    "hiveopolis2019project",
     "honeybee2006genome",
     "honkanen2019sky",
     "jernigan2026dryad",
-    "johnson2009self",
     "johnson2010temporal",
     "kaneko2016kenyon",
     "khamassi2020bio",
@@ -125,7 +125,6 @@
     "mitchell2019modelcards",
     "mondet2018hygienic",
     "nagari2017waggle",
-    "narsicht2020hiveopolis",
     "naturecomm2025metagenomics",
     "naturecomm2025spatialbrain",
     "nouvian2017dryad",
@@ -157,7 +156,6 @@
     "wallberg2019hav31",
     "walsh2022hgd",
     "wario2015automatic",
-    "wcislo2003respiratory",
     "webb2020waggle",
     "wilfert2022dwv",
     "wilkinson2016fair",
@@ -165,17 +163,17 @@
     "zheng2018mbio"
   ],
   "statistics": {
-    "empirical_parseable_fraction": 0.7,
+    "empirical_parseable_fraction": 0.0,
     "known_gap_count_total": 11.0,
-    "metric_count_total": 60.0,
+    "metric_count_total": 61.0,
     "module_artifact_coverage_fraction": 1.0,
-    "module_readiness_mean": 0.9091666666666667,
-    "module_validation_mean": 0.95,
-    "module_validation_min": 0.75,
-    "module_validation_std": 0.09999999999999999,
+    "module_readiness_mean": 0.8416666666666666,
+    "module_validation_mean": 0.8,
+    "module_validation_min": 0.0,
+    "module_validation_std": 0.4000000000000001,
     "real_flybody_animation_count": 5.0,
     "reduced_schematic_animation_count": 4.0,
-    "scholarship_reference_count": 95.0,
+    "scholarship_reference_count": 93.0,
     "signposting_fraction": 1.0,
     "simulation_energy_drop_j": 0.0008210865967477332,
     "simulation_mean_wing_power_mw": 58.2914264719619,
@@ -183,11 +181,11 @@
     "simulation_recruited_total": 168.0,
     "simulation_step_count": 24.0,
     "simulation_thermal_error_improvement_c": 3.9640439099763785,
-    "visualization_artifact_count": 87.0
+    "visualization_artifact_count": 75.0
   },
   "summary": "Statistical synthesis of module readiness, simulation telemetry, visualization evidence, documentation signposting, empirical coverage, and manuscript scholarship.",
   "title": "BeeStack Cross-Stack Synthesis Review",
-  "validation_fraction": 1.0,
+  "validation_fraction": 0.75,
   "validations": [
     {
       "detail": "Body, Brain, Mind, Swarm, and Niche all appear in synthesis.",
@@ -197,11 +195,11 @@
       "value": 5
     },
     {
-      "detail": "Mean module validation fraction meets synthesis target.",
+      "detail": "Mean module validation fraction does not meet synthesis target.",
       "name": "validation_target",
-      "passed": true,
+      "passed": false,
       "threshold": 0.9,
-      "value": 0.95
+      "value": 0.8
     },
     {
       "detail": "Each module has visualization or evidence artifacts.",
@@ -218,11 +216,11 @@
       "value": 1.0
     },
     {
-      "detail": "BeeBrain parseable-source fraction clears configured minimum.",
+      "detail": "BeeBrain parseable-source fraction does not clear configured minimum.",
       "name": "empirical_parseability",
-      "passed": true,
+      "passed": false,
       "threshold": 0.5,
-      "value": 0.7
+      "value": 0.0
     },
     {
       "detail": "Body energy does not increase during the deterministic integrated run.",
@@ -243,7 +241,7 @@
       "name": "scholarship_minimum",
       "passed": true,
       "threshold": 7,
-      "value": 95
+      "value": 93
     }
   ]
 }

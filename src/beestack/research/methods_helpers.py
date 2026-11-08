@@ -143,10 +143,7 @@ def _scalar(value: Any) -> float | int | str | bool:
 
 
 def _artifact_key(path: str) -> str:
-    parts = Path(path).as_posix().split("/")
-    if "output" in parts:
-        return "/".join(parts[parts.index("output") :])
-    return Path(path).name
+    return Path(path).as_posix()
 
 
 def _backend_from_artifact_path(path: str) -> str:

@@ -26,7 +26,7 @@ class SignpostWriteResult:
 
 
 def write_signposts(project_root: Path, *, overwrite: bool = False) -> SignpostWriteResult:
-    """Create missing README.md and AGENTS.md files for every non-cache directory."""
+    """Create missing guides outside caches and transient distribution/build trees."""
 
     directories = signposted_directories(project_root)
     readme_written: list[str] = []
@@ -201,17 +201,17 @@ def _title_purpose_scope(parts: tuple[str, ...]) -> tuple[str, str, str]:
         )
     if parts[0] == "tests":
         return ("Tests", "Real-computation test suite for BeeStack.", "Unit and integration tests.")
+    if parts[:2] == ("docs", "manuscript"):
+        return (
+            "Manuscript",
+            "Canonical manuscript source with hydratable variable tokens.",
+            "Paper prose and manuscript configuration.",
+        )
     if parts[0] == "docs":
         return (
             "Documentation",
             "Research-operations documentation, runbooks, API references, and validation guides.",
             "Human-readable project operations and fidelity language.",
-        )
-    if parts[0] == "manuscript":
-        return (
-            "Manuscript",
-            "Canonical manuscript source with hydratable variable tokens.",
-            "Paper prose and manuscript configuration.",
         )
     if parts[0] == ".github":
         return (

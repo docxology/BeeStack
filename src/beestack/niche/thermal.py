@@ -10,12 +10,6 @@ from .state import CombGrid
 
 Array = NDArray[np.float64]
 
-#: Fraction of the temperature difference to ambient lost per step to passive
-#: heat exchange with the surroundings (dimensionless per-step coefficient).
-#: At steady state with a uniform source density ``q`` (in degC per step),
-#: the local equilibrium is ``ambient + q / passive_cooling_coeff``.
-PASSIVE_COOLING_COEFF = 0.02
-
 
 def thermal_step(
     grid: CombGrid,
@@ -24,18 +18,40 @@ def thermal_step(
     fanning_rate: float = 0.0,
     passive_cooling_coeff: float | None = None,
 ) -> CombGrid:
-    """Run one simple heat diffusion, passive cooling, and fanning step."""
+    """Explicit per-step heat update, with nonnegative convex-mixing coefficients.
 
-    if fanning_rate < 0:
-        raise ValueError("fanning_rate must be nonnegative")
+    The sufficient maximum-principle domain is diffusion (0.12) + passive +
+    ventilation (0.03*fanning) + applicable occupied-cell regulation <= 1.
+    Sources add degrees C per step; these are not per-second coefficients.
+    """
+
     if passive_cooling_coeff is None:
-        passive_cooling_coeff = PASSIVE_COOLING_COEFF
-    if passive_cooling_coeff < 0:
-        raise ValueError("passive_cooling_coeff must be nonnegative")
+        passive_cooling_coeff = cfg.niche.passive_cooling_rate
+    coefficients = (fanning_rate, passive_cooling_coeff, cfg.niche.thermoregulation_gain)
+    if not np.isfinite(coefficients).all() or any(x < 0 for x in coefficients):
+        raise ValueError("thermal coefficients must be finite and nonnegative")
     temp = grid.temperature_c
+    if temp.ndim != 3 or grid.occupancy.shape != temp.shape:
+        raise ValueError(
+            "comb temperature and occupancy must have the same three-dimensional shape"
+        )
     sources = np.zeros_like(temp) if heat_sources is None else np.asarray(heat_sources, dtype=float)
     if sources.shape != temp.shape:
         raise ValueError("heat_sources must match comb shape")
+    if (
+        not np.isfinite(temp).all()
+        or not np.isfinite(sources).all()
+        or not np.isfinite(grid.occupancy).all()
+    ):
+        raise ValueError("comb state and heat_sources must be finite")
+    if not np.isfinite(
+        (cfg.niche.ambient_temperature_c, cfg.niche.brood_temperature_target_c)
+    ).all():
+        raise ValueError("thermal targets must be finite")
+    occupied = grid.occupancy != 0
+    regulation_gain = cfg.niche.thermoregulation_gain if np.any(occupied) else 0.0
+    if 0.12 + passive_cooling_coeff + 0.03 * fanning_rate + regulation_gain > 1.0:
+        raise ValueError("thermal coefficients exceed the explicit-step stability domain")
     neighbor_mean = (
         np.roll(temp, 1, axis=0)
         + np.roll(temp, -1, axis=0)
@@ -48,7 +64,7 @@ def thermal_step(
     ambient_offset = cfg.niche.ambient_temperature_c - temp
     passive_cooling = passive_cooling_coeff * ambient_offset
     ventilation = fanning_rate * 0.03 * ambient_offset
-    occupied = grid.occupancy != 0
+    # Regulation applies only to occupied cells.
     regulation = np.zeros_like(temp)
     if np.any(occupied):
         regulation[occupied] = cfg.niche.thermoregulation_gain * (

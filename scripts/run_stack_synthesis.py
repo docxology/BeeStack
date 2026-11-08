@@ -4,7 +4,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from beestack.pipeline import load_config, write_stack_synthesis_outputs
+from beestack.pipeline import write_stack_synthesis_outputs
+from beestack.project_config import load_config
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 

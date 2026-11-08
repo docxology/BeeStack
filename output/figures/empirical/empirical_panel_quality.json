@@ -11,6 +11,7 @@
   },
   "alt_text": "Bar chart of mean absolute empirical panel responses by modality.",
   "artifact_kind": "figure",
+  "availability_status": "historical_unavailable",
   "backend": "Matplotlib empirical-data renderer",
   "caption": "Matplotlib empirical panel quality bars shows Mean absolute response by empirical panel modality for parser-quality review. Generated from output/data/empirical_analysis.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not replace absent calcium payloads with synthetic traces.",
   "citation_keys": [
@@ -38,7 +39,7 @@
   "fidelity": "empirical panel summary diagnostic",
   "figure_path": "output/figures/empirical/empirical_panel_quality.png",
   "manuscript_label": "fig:empirical_panel_quality",
-  "manuscript_section": "manuscript/09_empirical_results.md",
+  "manuscript_section": "docs/manuscript/09_empirical_results.md",
   "plot_data_path": "output/figures/empirical/empirical_panel_quality_data.json",
   "priority": "supporting",
   "quality": {

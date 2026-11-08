@@ -12,13 +12,14 @@ import os
 from dataclasses import asdict, dataclass
 from importlib import import_module
 from importlib.util import find_spec
+from itertools import pairwise
 from pathlib import Path
 from typing import Any, Literal
 
 import numpy as np
 
 from ..config import BeeStackConfig
-from ..contracts import Action, Observation
+from ..contracts import Action, Observation, validate_action
 from .bee_mjcf import (
     BeeBodyPlanArtifact,
     BeeBodyPlanError,
@@ -96,8 +97,17 @@ def action_to_flybody_action(action: Action, flybody_action_dim: int = 59) -> np
     FlyBody environment dimension.
     """
 
-    if flybody_action_dim <= 0:
-        raise ValueError("flybody_action_dim must be positive")
+    if (
+        isinstance(flybody_action_dim, bool)
+        or not isinstance(flybody_action_dim, int)
+        or flybody_action_dim <= 0
+    ):
+        raise ValueError("flybody_action_dim must be a positive integer")
+    if not all(
+        np.isfinite(value).all()
+        for value in (action.legs, action.wings, action.mandibles, action.proboscis)
+    ):
+        raise ValueError("action channels must be finite")
     scalars = np.array([action.mandibles, action.proboscis, float(action.stinger)], dtype=float)
     bee_vector = np.concatenate([action.legs, action.wings, scalars]).astype(float)
     if bee_vector.size >= flybody_action_dim:
@@ -121,6 +131,7 @@ def action_to_flybody_named_action(
     Body action contract aligned with those FlyBody task APIs.
     """
 
+    validate_action(action, cfg)
     shape = getattr(action_spec, "shape", None)
     if not shape:
         return action_to_flybody_action(action, cfg.flybody.action_dim_default)
@@ -175,14 +186,14 @@ def bee_flight_cycle_action(cfg: BeeStackConfig, step_index: int, cycle_steps: i
     for wing_index in range(4):
         side_phase = phase if wing_index % 2 == 0 else phase + np.pi
         base = wing_index * cfg.body.wing_dof_per_wing
-        wings[base : base + 3] = np.array(
+        wings[base : base + cfg.body.wing_dof_per_wing] = np.array(
             [
                 0.22 * np.sin(side_phase),
                 0.18 * np.cos(side_phase),
                 0.14 * np.sin(side_phase + np.pi / 3.0),
             ],
             dtype=float,
-        )
+        )[: cfg.body.wing_dof_per_wing]
     return Action(legs=np.zeros(cfg.body.leg_dof, dtype=float), wings=wings)
 
 
@@ -205,19 +216,29 @@ def validate_rendered_frames(frames: list[np.ndarray], min_dynamic_pixels: int =
 
     if not frames:
         raise ValueError("rendered frames must not be empty")
-    if min_dynamic_pixels <= 0:
-        raise ValueError("min_dynamic_pixels must be positive")
+    if (
+        isinstance(min_dynamic_pixels, bool)
+        or not isinstance(min_dynamic_pixels, int)
+        or min_dynamic_pixels <= 0
+    ):
+        raise ValueError("min_dynamic_pixels must be a positive integer")
     first_shape = frames[0].shape
     if len(first_shape) != 3 or first_shape[2] < 3:
         raise ValueError("rendered frames must be RGB/RGBA images")
     for frame in frames:
         if frame.shape != first_shape:
             raise ValueError("rendered frames must have consistent shape")
-    if len(frames) > 1:
-        changed = int(np.count_nonzero(frames[-1][..., :3] != frames[0][..., :3]))
-        if changed < min_dynamic_pixels:
-            raise ValueError("rendered frames do not contain enough motion")
-    if float(np.std(frames[0][..., :3])) == 0.0:
+        if not np.isfinite(frame).all():
+            raise ValueError("rendered frames must be finite")
+    if len(frames) < 2:
+        raise ValueError("rendered frames do not contain enough motion")
+    # Count channels changing anywhere in the sequence, including closed loops.
+    changed_mask = np.zeros(first_shape[:2] + (3,), dtype=bool)
+    for before, after in pairwise(frames):
+        changed_mask |= before[..., :3] != after[..., :3]
+    if int(np.count_nonzero(changed_mask)) < min_dynamic_pixels:
+        raise ValueError("rendered frames do not contain enough motion")
+    if all(float(np.std(frame[..., :3])) == 0.0 for frame in frames):
         raise ValueError("rendered frames appear blank")
 
 
@@ -266,12 +287,15 @@ class FlyBodyBeeBackend:
         cfg: BeeStackConfig,
         fork_path: Path | None = None,
         allow_reduced_fallback: bool = True,
+        *,
+        project_root: Path | None = None,
     ) -> None:
         self.cfg = cfg
         env_path = os.environ.get(FlyBodyForkSpec.local_path_env)
         configured_path = Path(cfg.flybody.local_fork_path) if cfg.flybody.local_fork_path else None
         self.fork_path = fork_path or configured_path or (Path(env_path) if env_path else None)
         self.allow_reduced_fallback = allow_reduced_fallback
+        self.project_root = project_root
 
     @property
     def available(self) -> bool:
@@ -303,7 +327,9 @@ class FlyBodyBeeBackend:
         """Write the custom honeybee MJCF body plan used by FlyBody runs."""
 
         try:
-            artifact = write_modified_bee_body_plan(self.cfg, output_dir, self.fork_path)
+            artifact = write_modified_bee_body_plan(
+                self.cfg, output_dir, self.fork_path, project_root=self.project_root
+            )
             validate_bee_body_plan_xml(Path(artifact.xml_path))
             return artifact
         except BeeBodyPlanError as exc:
@@ -547,23 +573,17 @@ class FlyBodyBeeBackend:
     def step(
         self, state: BodyState, action: Action
     ) -> tuple[BodyState, Observation, BodyTelemetry]:
-        """Run one BeeBody step through FlyBody when installed, otherwise fallback."""
+        """Run the explicitly reduced state backend, never a physics environment.
 
-        if not self.available and not self.allow_reduced_fallback:
+        Strict callers must use the environment stepping/rendering APIs instead.
+        Dependency/path availability does not identify the backend executed.
+        """
+
+        if not self.allow_reduced_fallback:
             raise FlyBodyUnavailableError(
-                "FlyBody is not importable and no BEESTACK_FLYBODY_PATH fork is available."
+                "State-based stepping is reduced; strict physics requires a real FlyBody environment."
             )
-        next_state, observation, telemetry = step_body(state, action, self.cfg)
-        backend = self.runtime_status().execution_mode
-        telemetry = BodyTelemetry(
-            telemetry.speed_m_s,
-            telemetry.wing_power_mw,
-            telemetry.walking_power_mw,
-            telemetry.cost_of_transport,
-            telemetry.actuator_load,
-            backend=backend,
-        )
-        return next_state, observation, telemetry
+        return step_body(state, action, self.cfg)
 
 
 def adapter_smoke_rollout(
@@ -670,6 +690,9 @@ def _wing_value_for_name(name: str, action: Action, cfg: BeeStackConfig) -> floa
         axis_index = 1
     elif "_pitch_" in name:
         axis_index = 2
+    # Two-DOF wings have yaw/roll only. Absent pitch is neutral, not next-wing yaw.
+    if axis_index >= cfg.body.wing_dof_per_wing:
+        return 0.0
     fore = action.wings[side_offset + axis_index]
     hind = (
         action.wings[hind_offset + axis_index]

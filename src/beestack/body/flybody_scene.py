@@ -130,8 +130,8 @@ class FlyBodySceneArtifact:
     metrics: FlyBodyContactMetrics
     config: FlyBodySceneRenderConfig
 
-    def as_dict(self) -> dict[str, object]:
-        payload = project_relative_payload(asdict(self))
+    def as_dict(self, project_root: Path | None = None) -> dict[str, object]:
+        payload = project_relative_payload(asdict(self), project_root)
         payload["metrics"] = self.metrics.as_dict()
         payload["config"] = self.config.as_dict()
         return payload
@@ -142,6 +142,8 @@ def render_flybody_swarm_collision_scene(
     animations_dir: Path,
     frames: int | None = None,
     fps: int | None = None,
+    *,
+    project_root: Path | None = None,
 ) -> FlyBodySceneArtifact:
     """Render ten strict BeeBody 3D bees flying into actual MuJoCo contacts."""
 
@@ -156,6 +158,7 @@ def render_flybody_swarm_collision_scene(
         render_cfg.bee_count,
         floor_z=render_cfg.altitude_m - 0.12,
         include_comb=False,
+        project_root=project_root,
     )
     frames_rgb, metrics = _render_scene_frames(
         cfg,
@@ -177,6 +180,7 @@ def render_flybody_swarm_collision_scene(
         body_plan,
         frames_rgb,
         metrics,
+        project_root=project_root,
     )
 
 
@@ -185,6 +189,8 @@ def render_flybody_waggle_scene(
     animations_dir: Path,
     frames: int | None = None,
     fps: int | None = None,
+    *,
+    project_root: Path | None = None,
 ) -> FlyBodySceneArtifact:
     """Render a strict BeeBody 3D waggle dancer and followers in MuJoCo."""
 
@@ -199,6 +205,7 @@ def render_flybody_waggle_scene(
         render_cfg.bee_count,
         floor_z=render_cfg.altitude_m - 0.06,
         include_comb=True,
+        project_root=project_root,
     )
     frames_rgb, metrics = _render_scene_frames(cfg, scene_xml, render_cfg, "waggle")
     _validate_waggle_scene_metrics(cfg, metrics)
@@ -211,6 +218,7 @@ def render_flybody_waggle_scene(
         body_plan,
         frames_rgb,
         metrics,
+        project_root=project_root,
     )
 
 
@@ -219,6 +227,8 @@ def render_flybody_long_waggle_scene(
     animations_dir: Path,
     frames: int | None = None,
     fps: int | None = None,
+    *,
+    project_root: Path | None = None,
 ) -> FlyBodySceneArtifact:
     """Render the long strict BeeBody 3D waggle dancer and follower scene."""
 
@@ -235,6 +245,7 @@ def render_flybody_long_waggle_scene(
         render_cfg.bee_count,
         floor_z=render_cfg.altitude_m - 0.06,
         include_comb=True,
+        project_root=project_root,
     )
     frames_rgb, metrics = _render_scene_frames(cfg, scene_xml, render_cfg, "waggle_long")
     _validate_waggle_scene_metrics(cfg, metrics)
@@ -247,6 +258,7 @@ def render_flybody_long_waggle_scene(
         body_plan,
         frames_rgb,
         metrics,
+        project_root=project_root,
     )
 
 
@@ -275,6 +287,7 @@ def write_prefixed_multi_bee_scene_xml(
     *,
     floor_z: float,
     include_comb: bool,
+    project_root: Path | None = None,
 ) -> tuple[Path, BeeBodyPlanArtifact]:
     """Write a MuJoCo scene with prefixed full BeeBody copies and contact geoms."""
 
@@ -282,15 +295,20 @@ def write_prefixed_multi_bee_scene_xml(
         raise ValueError("bee_count must be positive")
     scene_dir.mkdir(parents=True, exist_ok=True)
     _write_scene_readmes(scene_dir, scene_name)
-    body_plan = FlyBodyBeeBackend(cfg, allow_reduced_fallback=False).write_modified_body_plan(
-        scene_dir / "body_plan"
-    )
-    source_root = ET.parse(body_plan.xml_path).getroot()
+    body_plan = FlyBodyBeeBackend(
+        cfg, allow_reduced_fallback=False, project_root=project_root
+    ).write_modified_body_plan(scene_dir / "body_plan")
+    source_root = ET.parse(
+        body_plan.xml_path, parser=ET.XMLParser(target=ET.TreeBuilder(insert_comments=True))
+    ).getroot()
     source_body = source_root.find("worldbody/body")
     if source_body is None:
         raise FlyBodyUnavailableError("BeeBody source MJCF has no root worldbody/body")
 
     scene = ET.Element("mujoco", {"model": f"beestack_{scene_name}_flybody_scene"})
+    for element in source_root:
+        if element.tag is ET.Comment:
+            scene.append(copy.deepcopy(element))
     compiler = copy.deepcopy(source_root.find("compiler"))
     if compiler is not None:
         compiler.set("meshdir", "body_plan/assets")
@@ -769,6 +787,8 @@ def _write_scene_artifacts(
     body_plan: BeeBodyPlanArtifact,
     frames: list[np.ndarray],
     metrics: FlyBodyContactMetrics,
+    *,
+    project_root: Path | None,
 ) -> FlyBodySceneArtifact:
     gif_path.parent.mkdir(parents=True, exist_ok=True)
     _save_frames_as_gif(frames, gif_path, render_cfg.fps)
@@ -788,7 +808,7 @@ def _write_scene_artifacts(
         config=render_cfg,
     )
     Path(artifact.contact_report_path).write_text(
-        json.dumps(artifact.as_dict(), indent=2, sort_keys=True) + "\n",
+        json.dumps(artifact.as_dict(project_root), indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
     )
     return artifact

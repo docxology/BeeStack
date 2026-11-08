@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
+from pathlib import Path
 from typing import Any
 
 import numpy as np
@@ -94,7 +95,12 @@ class StackSynthesisReview:
     def readiness_fraction(self) -> float:
         return float(np.mean([panel.readiness_score for panel in self.module_panels]))
 
-    def with_figures(self, figure_paths: tuple[str, ...]) -> StackSynthesisReview:
+    def with_figures(
+        self,
+        figure_paths: tuple[str, ...],
+        *,
+        project_root: Path | None = None,
+    ) -> StackSynthesisReview:
         return StackSynthesisReview(
             self.title,
             self.summary,
@@ -103,10 +109,10 @@ class StackSynthesisReview:
             self.validations,
             self.prioritized_findings,
             self.scholarship_keys,
-            tuple(project_relative_path(path) for path in figure_paths),
+            tuple(project_relative_path(path, project_root) for path in figure_paths),
         )
 
-    def as_dict(self) -> dict[str, object]:
+    def as_dict(self, project_root: Path | None = None) -> dict[str, object]:
         return project_relative_payload(
             {
                 "title": self.title,
@@ -119,7 +125,8 @@ class StackSynthesisReview:
                 "prioritized_findings": self.prioritized_findings,
                 "scholarship_keys": self.scholarship_keys,
                 "figure_paths": self.figure_paths,
-            }
+            },
+            project_root,
         )
 
 
@@ -195,7 +202,11 @@ def assemble_stack_synthesis_review(
     )
 
 
-def stack_synthesis_markdown(review: StackSynthesisReview) -> str:
+def stack_synthesis_markdown(
+    review: StackSynthesisReview,
+    *,
+    project_root: Path | None = None,
+) -> str:
     """Render the cross-stack synthesis review as Markdown."""
 
     lines = [
@@ -232,7 +243,9 @@ def stack_synthesis_markdown(review: StackSynthesisReview) -> str:
     lines.extend(f"- `@{key}`" for key in review.scholarship_keys)
     if review.figure_paths:
         lines.extend(["", "## Figures", ""])
-        lines.extend(f"- `{project_relative_path(path)}`" for path in review.figure_paths)
+        lines.extend(
+            f"- `{project_relative_path(path, project_root)}`" for path in review.figure_paths
+        )
     return "\n".join(lines) + "\n"
 
 

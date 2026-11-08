@@ -21,3 +21,20 @@ motion-validation thresholds, plus strict-scene speed/radius/altitude/substeps
 and contact requirements, are controlled by `BeeStackConfig.flybody` and
 `BeeStackConfig.visualization`. Domain waggle kinematics are controlled by
 `BeeStackConfig.waggle`.
+
+State-based `FlyBodyBeeBackend.step` always executes reduced dynamics and reports
+`backend="reduced"`; strict mode rejects this API regardless of installed packages
+or fork-path availability. Actual physics uses environment stepping or strict
+render methods. Reduced observations carry `heading_deg` as a full-bearing
+compass in degrees and `angular_velocity` in radians/second (zero for constant
+heading). Reduced body heating/cooling are elapsed-time rates, calibrated only
+to preserve the original nominal 100 Hz increments. Motion checks examine
+adjacent frames across the whole sequence, including closed movement cycles.
+
+Pass `project_root` through render/export entrypoints and serializers to obtain
+location-independent manifests; without a known root, standalone records retain
+their absolute paths rather than guessing from the process working directory.
+Generated MJCF retains source copyright comments and records copied upstream
+LICENSE/NOTICE files in `source_notice_paths`. An empty list means those notices
+were not resolved; it is not license clearance for a custom fork. This does not
+assign a license to BeeStack's own source.

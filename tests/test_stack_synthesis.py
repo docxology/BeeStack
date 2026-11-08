@@ -117,8 +117,8 @@ def test_stack_synthesis_review_normalizes_project_local_figure_paths() -> None:
         bibliography_keys=("seeley1989superorganism", "saltelli2008global"),
     ).with_figures((str(project_root / "output" / "figures" / "research" / "stack_synthesis.png"),))
 
-    payload = review.as_dict()
-    markdown = stack_synthesis_markdown(review)
+    payload = review.as_dict(project_root)
+    markdown = stack_synthesis_markdown(review, project_root=project_root)
 
     assert payload["figure_paths"] == ("output/figures/research/stack_synthesis.png",)
     assert str(project_root) not in markdown

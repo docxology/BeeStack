@@ -38,22 +38,22 @@
   "fidelity": "real_flybody_3d contact sheet",
   "figure_path": "output/figures/renders/beeswarm_10_beebody_collision_contact_sheet.png",
   "manuscript_label": "fig:beeswarm_10_beebody_collision",
-  "manuscript_section": "manuscript/05_methods_body_swarm.md",
+  "manuscript_section": "docs/manuscript/05_methods_body_swarm.md",
   "plot_data_path": "output/figures/renders/beeswarm_10_beebody_collision_contact_sheet_data.json",
   "priority": "primary",
   "quality": {
     "height_px": 608,
     "max_intensity": 255,
-    "mean_intensity": 201.49301215277777,
+    "mean_intensity": 201.50744129203215,
     "min_intensity": 0,
     "mode": "RGB",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 75.99284569858418,
+    "std_intensity": 75.94352913518892,
     "width_px": 1440
   },
   "regeneration_command": "uv run python scripts/generate_animations.py",
   "schema": "beestack.figure.v1",
-  "source_data": "animation manifest, flybody_scenes/collision contact report, and scene XML",
+  "source_data": "output/animations/beeswarm_10_beebody_collision_contact_sheet.png",
   "source_dois": [
     "10.1038/s41586-025-09029-4",
     "10.1109/IROS.2012.6386109"

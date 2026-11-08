@@ -71,7 +71,7 @@ neural simulators.
 
 This has two consequences. First, empirical coverage metrics are not
 administrative bookkeeping; they are part of the scientific result.
-`0.700` tells the reader how much of the
+`N/A` tells the reader how much of the
 registered brain evidence is actually usable by the current pipeline.
 Second, missing or partial sources must remain visible. A calcium trace
 that is registered but unavailable locally is not converted into a
@@ -80,17 +80,18 @@ methods-analysis report, and roadmap.
 
 ## Field crisis vs scaffold fidelity
 
-Recent U.S. colony-loss surveys and beekeeper triage reports document
-compound stressors—*Varroa*, viral co-infections, treatment resistance,
-and genetic bottlenecks in managed stocks
-[@aurell2024survey; @scitotenv2025triage; @scientificreports2026amitraz;
-@chen2016genomic]. Those findings explain why BeeStack prioritizes a
+U.S. colony-loss surveys and beekeeper triage reports provide field context
+[@aurell2024survey; @scitotenv2025triage], alongside separate studies of
+treatment resistance [@scientificreports2026amitraz] and western honey bee
+demographic history [@cridland2017demography]. The subspecies adaptation study
+[@chen2016genomic] does not establish managed-U.S. genetic bottlenecks.
+Those findings explain why BeeStack prioritizes a
 conserving colony-state ledger, driver ingestion, and assimilation
 surfaces on the roadmap [@sec:roadmap] rather than cosmetic neural detail.
 
 BeeStack is not competing with BEEHAVE [@becher2014beehave] or COLOSS
 survey infrastructure [@colossbeebook] as a colony-health forecaster in
-v0. Its contribution is narrower: typed contracts, empirical
+the reduced baseline. Its contribution is narrower: typed contracts, empirical
 traceability where datasets exist, and explicit blockers everywhere else.
 Pollination economics and production statistics motivate the societal
 stakes [@pollination2016value] without turning BeeStack into an
@@ -148,7 +149,7 @@ reports, validation checks, and artifact provenance
 [@wilkinson2016fair; @lamprecht2020fairsoftware]. It does not yet have live colony calibration or
 closed-loop assimilation.
 
-This is a useful place to stop in v0. A premature twin claim would make
+This is the present fidelity boundary. A premature twin claim would make
 the system sound stronger while making it less scientific. The current
 claim is narrower and more durable: BeeStack establishes a modular,
 auditable, evidence-typed substrate on which higher-fidelity modules can

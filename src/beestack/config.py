@@ -6,6 +6,7 @@ specification while staying lightweight enough for deterministic tests.
 
 from __future__ import annotations
 
+import math
 from dataclasses import asdict, dataclass, field
 from typing import Any, Literal
 
@@ -82,7 +83,7 @@ class BrainConfig:
 
     @property
     def active_kenyon_cells(self) -> int:
-        return round(self.total_kenyon_cells * self.kc_sparsity)
+        return math.floor(self.total_kenyon_cells * self.kc_sparsity)
 
 
 @dataclass(frozen=True)
@@ -317,7 +318,7 @@ def config_from_mapping(values: dict[str, Any] | None) -> BeeStackConfig:
         if unknown:
             raise ValueError(f"Unknown BeeStackConfig fields: {', '.join(unknown)}")
         cfg = BeeStackConfig(
-            seed=int(values.get("seed", BeeStackConfig.seed)),
+            seed=values.get("seed", BeeStackConfig.seed),
             timing=_overlay_dataclass(TimingConfig, values.get("timing")),
             body=_overlay_dataclass(BodyConfig, values.get("body")),
             brain=_overlay_dataclass(BrainConfig, values.get("brain")),
@@ -336,6 +337,55 @@ def config_from_mapping(values: dict[str, Any] | None) -> BeeStackConfig:
 
 def validate_config(cfg: BeeStackConfig) -> None:
     """Raise ValueError when configuration violates BeeStack constraints."""
+
+    # Dataclass annotations define discrete sizes: never silently truncate them.
+    def validate_numbers(section: Any, prefix: str = "") -> None:
+        for name, spec in section.__dataclass_fields__.items():
+            value = getattr(section, name)
+            label = f"{prefix}{name}"
+            if hasattr(value, "__dataclass_fields__"):
+                validate_numbers(value, label + ".")
+            elif spec.type in (int, "int"):
+                if isinstance(value, bool) or not isinstance(value, int):
+                    raise ValueError(f"{label} must be an integer")
+                if (
+                    name != "seed"
+                    and value <= 0
+                    and name not in {"waggle_dance_followers", "synthesis_min_scholarship_refs"}
+                ):
+                    raise ValueError(f"{label} must be positive")
+            elif spec.type in (float, "float"):
+                if (
+                    isinstance(value, bool)
+                    or not isinstance(value, (int, float))
+                    or not math.isfinite(value)
+                ):
+                    raise ValueError(f"{label} must be a finite number")
+            elif isinstance(value, (tuple, dict)):
+                items = value.values() if isinstance(value, dict) else value
+                for item in items:
+                    if isinstance(item, (int, float)) and not math.isfinite(item):
+                        raise ValueError(f"{label} must contain finite values")
+                if str(spec.type).startswith("tuple[int,") and any(
+                    isinstance(x, bool) or not isinstance(x, int) or x <= 0 for x in value
+                ):
+                    raise ValueError(f"{label} must contain positive integers")
+
+    validate_numbers(cfg)
+    for label, shape in (
+        ("niche.comb_shape", cfg.niche.comb_shape),
+        ("swarm.pheromone_grid_shape", cfg.swarm.pheromone_grid_shape),
+    ):
+        if len(shape) != 3:
+            raise ValueError(f"{label} must have exactly three positive integer axes")
+    if not cfg.swarm.pheromone_components:
+        raise ValueError("swarm.pheromone_components must not be empty")
+    if cfg.seed < 0:
+        raise ValueError("seed must be nonnegative")
+    if cfg.niche.passive_cooling_rate < 0:
+        raise ValueError("niche.passive_cooling_rate must be nonnegative")
+    if 0.12 + cfg.niche.passive_cooling_rate + cfg.niche.thermoregulation_gain > 1:
+        raise ValueError("niche thermal coefficients exceed the explicit-step stability domain")
 
     if cfg.timing.physics_dt_s <= 0:
         raise ValueError("physics_dt_s must be positive")

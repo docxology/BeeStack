@@ -11,6 +11,7 @@
   },
   "alt_text": "Heatmap of neuropil counts by BeeBrain module.",
   "artifact_kind": "figure",
+  "availability_status": "historical_unavailable",
   "backend": "matplotlib/networkx connectome renderer",
   "caption": "Matplotlib connectome neuropil module map shows Heatmap of neuropil abbreviation counts mapped onto BeeBrain module targets. Generated from output/data/bee_brain_connectome.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not infer functional connectivity.",
   "citation_keys": [
@@ -37,7 +38,7 @@
   "fidelity": "Honeybee Standard Brain structural projectome diagnostic",
   "figure_path": "output/figures/empirical/connectome_neuropil_module_map.png",
   "manuscript_label": "fig:connectome_neuropil_module_map",
-  "manuscript_section": "manuscript/09_empirical_results.md",
+  "manuscript_section": "docs/manuscript/09_empirical_results.md",
   "plot_data_path": "output/figures/empirical/connectome_neuropil_module_map_data.json",
   "priority": "supporting",
   "quality": {

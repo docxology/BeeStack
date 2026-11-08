@@ -38,7 +38,7 @@ def dance_recruitment_diagnostics(
     if stop_signal_rate < 0:
         raise ValueError("stop_signal_rate must be nonnegative")
     empirical_confidence = waggle_summary.confidence_score if waggle_summary is not None else 1.0
-    if waggle_summary is not None:
+    if waggle_summary is not None and waggle_summary.both_antennae_mean_abs_error_deg is not None:
         follower_alignment_score = float(
             np.clip(
                 1.0
@@ -49,7 +49,7 @@ def dance_recruitment_diagnostics(
             )
         )
     else:
-        follower_alignment_score = 1.0
+        follower_alignment_score = None if waggle_summary is not None else 1.0
     stop_factor = 1.0 / (1.0 + cfg.waggle.stop_signal_sensitivity * stop_signal_rate)
     probabilities: list[float] = []
     recruited: list[int] = []
@@ -66,7 +66,7 @@ def dance_recruitment_diagnostics(
             np.clip(
                 dance.confidence
                 * empirical_confidence
-                * follower_alignment_score
+                * (follower_alignment_score if follower_alignment_score is not None else 0.0)
                 * (0.55 + food_need)
                 * caste_drive
                 * 2.0

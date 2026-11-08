@@ -15,8 +15,7 @@
   "caption": "Matplotlib beeniche adapter and niche map shows Adapter map placing BEEHAVE-compatible colony summaries beside comb, thermal, and forage fields without claiming full hive ecology. Generated from source refresh ledger, niche methods records, simulation records, and adapter notes. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate full ecology, real-time hive control, or thermodynamic colony dynamics.",
   "citation_keys": [
     "becher2014beehave",
-    "narsicht2020hiveopolis",
-    "johnson2009self",
+    "hiveopolis2019project",
     "kronenberg1982colonial"
   ],
   "claim_tier": "adapter_boundary_diagnostic",
@@ -40,24 +39,26 @@
   "fidelity": "architecture schematic",
   "figure_path": "output/figures/beeniche_adapter_niche_map.png",
   "manuscript_label": "fig:niche_adapter_map",
-  "manuscript_section": "manuscript/07_methods_niche.md",
+  "manuscript_section": "docs/manuscript/07_methods_niche.md",
   "plot_data_path": "output/figures/beeniche_adapter_niche_map_data.json",
   "priority": "primary",
   "quality": {
     "height_px": 1028,
     "max_intensity": 255,
-    "mean_intensity": 233.85654139879065,
+    "mean_intensity": 233.88136834641816,
     "min_intensity": 24,
     "mode": "RGBA",
     "nonzero_histogram_bins": 232,
-    "std_intensity": 52.453201185237624,
+    "std_intensity": 52.33242748876625,
     "width_px": 2036
   },
   "regeneration_command": "uv run python scripts/analysis_pipeline.py",
   "schema": "beestack.figure.v1",
-  "source_data": "source refresh ledger, niche methods records, simulation records, and adapter notes",
+  "source_data": "output/data/simulation_records.json and module coverage records",
   "source_dois": [
-    "10.1111/1365-2664.12222"
+    "10.1111/1365-2664.12222",
+    "10.3030/824069",
+    "10.1007/BF00688889"
   ],
   "title": "Beeniche Adapter Niche Map",
   "unsupported_inference": "Does not validate full ecology, real-time hive control, or thermodynamic colony dynamics.",

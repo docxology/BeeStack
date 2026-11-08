@@ -4,10 +4,12 @@ from __future__ import annotations
 
 import json
 import xml.etree.ElementTree as ET
+from itertools import pairwise
 from pathlib import Path
 
 import numpy as np
 
+from beestack.config import BeeStackConfig
 from beestack.utils import project_relative_path, project_relative_payload
 from beestack.visualization.animation_manifest import load_gif_frames
 from beestack.visualization.bee_signature import (
@@ -15,11 +17,8 @@ from beestack.visualization.bee_signature import (
     bee_render_report_markdown,
 )
 
-WAGGLE_ERROR_TARGET_DEG = 35.0
-WAGGLE_CONFIDENCE_TARGET = 0.65
 
-
-def verify_swarm_scenes(project_root: Path) -> dict[str, object]:
+def verify_swarm_scenes(project_root: Path, cfg: BeeStackConfig) -> dict[str, object]:
     scene_specs = (
         (
             "collision",
@@ -36,7 +35,7 @@ def verify_swarm_scenes(project_root: Path) -> dict[str, object]:
             / "flybody_scenes"
             / "collision"
             / "contact_metrics.json",
-            10,
+            cfg.visualization.swarm_collision_bee_count,
         ),
         (
             "waggle",
@@ -53,7 +52,7 @@ def verify_swarm_scenes(project_root: Path) -> dict[str, object]:
             / "flybody_scenes"
             / "waggle"
             / "contact_metrics.json",
-            11,
+            cfg.visualization.waggle_dance_followers + 1,
         ),
         (
             "waggle_long",
@@ -70,7 +69,7 @@ def verify_swarm_scenes(project_root: Path) -> dict[str, object]:
             / "flybody_scenes"
             / "waggle_long"
             / "contact_metrics.json",
-            11,
+            cfg.visualization.waggle_dance_followers + 1,
         ),
     )
     scenes = []
@@ -82,20 +81,25 @@ def verify_swarm_scenes(project_root: Path) -> dict[str, object]:
         motion_pixels = motion_pixels_between_frames(frames)
         backend = report["render_backend"].lower()
         if scene_name == "collision":
-            required_contacts = bool(metrics["bee_bee_contact_pairs"]) and (
-                metrics["bee_bee_contact_count"] > 0
+            required_contacts = (
+                len(set(metrics["bee_bee_contact_pairs"]))
+                >= cfg.visualization.swarm_collision_min_actual_contact_pairs
+                and metrics["bee_bee_contact_count"] > 0
             )
             waggle_quality = True
         else:
             required_contacts = metrics["floor_contact_count"] > 0
             waggle_quality = (
-                metrics.get("follower_orientation_error_mean_deg", 999.0) < WAGGLE_ERROR_TARGET_DEG
-                and metrics.get("follower_orientation_confidence", 0.0) > WAGGLE_CONFIDENCE_TARGET
+                metrics.get("follower_orientation_error_mean_deg", 999.0)
+                < cfg.waggle.orientation_error_target_deg
+                and metrics.get("follower_orientation_confidence", 0.0)
+                > cfg.waggle.orientation_confidence_target
                 and bool(metrics.get("waggle_phase_samples"))
             )
         scene_passed = bool(
             frames
-            and motion_pixels > 0
+            and motion_pixels >= cfg.flybody.min_dynamic_pixels
+            and metrics["bee_count"] == expected_bees
             and metrics["passed"]
             and required_contacts
             and waggle_quality
@@ -169,7 +173,15 @@ def scene_xml_checks(path: Path, expected_bees: int) -> dict[str, object]:
 def motion_pixels_between_frames(frames: list[np.ndarray]) -> int:
     if len(frames) < 2:
         return 0
-    return int(np.count_nonzero(np.abs(frames[-1].astype(int) - frames[0].astype(int)) > 8))
+    shape = frames[0].shape
+    if len(shape) != 3 or shape[2] < 3:
+        raise ValueError("motion frames must be RGB/RGBA images")
+    if any(frame.shape != shape or not np.isfinite(frame).all() for frame in frames):
+        raise ValueError("motion frames must have consistent shape and finite values")
+    changed = np.zeros(shape[:2] + (3,), dtype=bool)
+    for before, after in pairwise(frames):
+        changed |= np.abs(after[..., :3].astype(int) - before[..., :3].astype(int)) > 8
+    return int(np.count_nonzero(changed))
 
 
 def swarm_report_markdown(report: dict[str, object]) -> str:
@@ -202,12 +214,12 @@ def swarm_report_markdown(report: dict[str, object]) -> str:
     return "\n".join(lines)
 
 
-def run_bee_render_verification(project_root: Path) -> dict[str, object]:
+def run_bee_render_verification(project_root: Path, cfg: BeeStackConfig) -> dict[str, object]:
     xml_path = (
         project_root
         / "output"
         / "animations"
-        / "flybody_bee"
+        / cfg.visualization.body_plan_subdir
         / "assets"
         / "apis_mellifera_worker.xml"
     )
@@ -233,6 +245,7 @@ def run_bee_render_verification(project_root: Path) -> dict[str, object]:
                 load_gif_frames(gif_path),
                 xml_text,
                 locomotion_mode=mode,
+                min_motion_pixels=cfg.flybody.min_dynamic_pixels,
             ),
         )
         for mode, gif_path, contact_sheet in targets
@@ -241,7 +254,7 @@ def run_bee_render_verification(project_root: Path) -> dict[str, object]:
         signature.bee_like and contact_sheet.exists()
         for _, _, contact_sheet, signature in signatures
     )
-    swarm_report = project_relative_payload(verify_swarm_scenes(project_root), project_root)
+    swarm_report = project_relative_payload(verify_swarm_scenes(project_root, cfg), project_root)
     passed = body_passed and swarm_report["passed"]
     report = project_relative_payload(
         {

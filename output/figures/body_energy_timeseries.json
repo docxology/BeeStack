@@ -38,22 +38,22 @@
   "fidelity": "reduced deterministic kernel diagnostic",
   "figure_path": "output/figures/body_energy_timeseries.png",
   "manuscript_label": "fig:body_energy",
-  "manuscript_section": "manuscript/10_integrated_results.md",
+  "manuscript_section": "docs/manuscript/10_integrated_results.md",
   "plot_data_path": "output/figures/body_energy_timeseries_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 706,
+    "height_px": 702,
     "max_intensity": 255,
-    "mean_intensity": 248.89979180176798,
+    "mean_intensity": 248.96671056783416,
     "min_intensity": 24,
     "mode": "RGBA",
     "nonzero_histogram_bins": 232,
-    "std_intensity": 32.7035820888969,
-    "width_px": 1245
+    "std_intensity": 32.195787015222706,
+    "width_px": 1246
   },
   "regeneration_command": "uv run python scripts/analysis_pipeline.py",
   "schema": "beestack.figure.v1",
-  "source_data": "output/data/simulation_records.json",
+  "source_data": "output/data/simulation_records.json and module coverage records",
   "source_dois": [
     "10.1371/journal.pcbi.1005510",
     "10.3233/DS-190026"
@@ -63,14 +63,14 @@
   "validation_status": "nonblank quality sidecar and plot data generated",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 1.763,
+    "aspect_ratio": 1.775,
     "figure_role": "overview",
-    "height_px": 706,
+    "height_px": 702,
     "label_density": "compact",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 1245,
-    "min_dimension_px": 706,
+    "max_dimension_px": 1246,
+    "min_dimension_px": 702,
     "readability_status": "pass",
-    "width_px": 1245
+    "width_px": 1246
   }
 }

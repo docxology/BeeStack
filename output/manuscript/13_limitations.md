@@ -1,6 +1,6 @@
 # Limitations {#sec:limitations}
 
-BeeStack v0 should be read as *executable architecture*. Its strongest
+The current BeeStack implementation should be read as *executable architecture*. Its strongest
 claim is not biological prediction, but disciplined integration: each
 module can be run, tested, visualized, audited, and replaced behind
 explicit contracts. The honest framing of the limitations is therefore
@@ -22,26 +22,26 @@ calibrated against a honey-bee biomechanics dataset:
 - contact friction at thoracic and abdominal surfaces,
 - antennal stiffness and damping at the scape and pedicel.
 
-The visual scoring (BeeBody visual score 0.980,
-silhouette score 1.000) certifies that the
-*rendering* looks like a bee. It does *not* certify that the
-*kinetics* match a bee.
+The visual score 0.991 and MJCF/color cue score
+1.000 are engineering heuristics. They check declared
+morphology cues and rendered color/motion statistics, not reference-silhouette
+overlap, gait classification, or biological kinetics.
 
 ## BeeBrain: dynamical fidelity
 
 The primary BeeBrain limitation is **dynamical fidelity**. BeeBrain
 can acquire, parse, summarize, and integrate real honey-bee anatomy
-and activity sources — currently 48 panels,
-7 inventories, 1
-antennal summaries, and 24 templates with
-parseable fraction 0.700. But the default
+and activity sources — currently N/A panels,
+N/A inventories, N/A
+antennal summaries, and N/A templates with
+parseable fraction N/A. But the default
 neural model remains a reduced AL–MB–CX and dance-decoding kernel.
 It does not claim connectome-level dynamics, a heavyweight spiking
-simulator, or learned synaptic plasticity. The Paoli MATLAB calcium
-traces [@paoli2024dryad] are now parsed and serve as a citation anchor,
-but are not yet wired as a predictive model input, so the empirical
-alignment metric currently sits closer to "structural-match witness"
-than to "predictive likelihood".
+simulator, or learned synaptic plasticity. The run records
+N/A parsed calcium datasets. Paoli recordings
+[@paoli2024dryad] enter response-template construction only when compatible
+payloads are actually local; unavailable payloads remain explicit blockers.
+Template alignment is not a held-out predictive likelihood.
 
 ## BeeMind: generative-model depth
 
@@ -88,16 +88,16 @@ The primary BeeNiche limitation is **ecology**. Comb, thermal, and
 deterministic seasonal/weather forage witnesses are executable, but
 the following remain explicit gaps:
 
-- calibrated external nectar/weather observations
-  [@wcislo2003respiratory],
+- calibrated external nectar/weather observations (an implementation gap, not
+  a claim supported by the unidentified respiratory-physiology citation),
 - brood demography (egg-to-emergence aging within voxels),
 - 3D pollen storage with depletion kinetics,
 - live Hiveopolis or BEEHAVE runtime coupling
-  [@narsicht2020hiveopolis; @becher2014beehave].
+  [@hiveopolis2019project; @becher2014beehave].
 
-## Colony-health stressors not modeled in v0
+## Colony-health stressors not modeled in the reduced baseline
 
-BeeStack v0 does not represent the following field drivers as typed state
+The current BeeStack implementation does not represent the following field drivers as typed state
 variables. Each item cites the scholarship context and points to
 [@sec:roadmap] for the intended integration surface.
 
@@ -116,9 +116,9 @@ variables. Each item cites the scholarship context and points to
 - **Commercial colony-loss statistics** — national surveys and triage
   reports [@aurell2024survey; @scitotenv2025triage]; assimilation targets
   in roadmap axis 7, not present-tense model outputs.
-- **Managed-population genetic diversity** — demographic history and
-  bottleneck literature [@chen2016genomic; @cridland2017demography]; no
-  apiary-genetics state in v0.
+- **Population genetic diversity** — demographic history and subspecies
+  adaptation literature [@cridland2017demography; @chen2016genomic]; no
+  apiary-genetics state or measured managed-U.S. bottleneck in the reduced baseline.
 
 ## Stack-wide limitations
 
@@ -131,9 +131,9 @@ explicit acknowledgement.
 2. **Determinism is not realism.** Pinned seeds and reproducible
    artifacts are necessary for scientific accountability, but the
    stack is currently *too smooth*: real colonies experience
-   noise, disease, and individual variability that BeeStack v0
+   noise, disease, and individual variability that the reduced baseline
    does not represent.
-3. **Visualization fidelity ≠ scientific fidelity.** The MuJoCo
+3. **Visualization fidelity is not scientific fidelity.** The MuJoCo
    contact scenes, the BeeBody MJCF cues, and the silhouette
    matching are visual evidence. They do not substitute for
    quantitative biological calibration.

@@ -107,17 +107,15 @@ def analyze_bee_render_signature(
     dark = (red < 70) & (green < 60) & (blue < 55)
     debug_aid = (red < 60) & (green > 160) & (blue > 150)
 
-    motion_pixels = (
-        int(np.count_nonzero(arrays[-1][..., :3] != arrays[0][..., :3])) if len(arrays) > 1 else 0
-    )
-    adjacent_motion = (
-        [
-            int(np.count_nonzero(arrays[idx + 1][..., :3] != arrays[idx][..., :3]))
-            for idx in range(len(arrays) - 1)
-        ]
-        if len(arrays) > 1
-        else [0]
-    )
+    changed_channels = np.zeros(shape[:2] + (3,), dtype=bool)
+    adjacent_motion = []
+    for left, right in zip(arrays, arrays[1:], strict=False):
+        changed = left[..., :3] != right[..., :3]
+        changed_channels |= changed
+        adjacent_motion.append(int(np.count_nonzero(changed)))
+    motion_pixels = int(np.count_nonzero(changed_channels))
+    if not adjacent_motion:
+        adjacent_motion.append(0)
     mean_adjacent_motion = float(np.mean(adjacent_motion))
     present, missing = mjcf_bee_features(mjcf_xml)
     silhouette_present, silhouette_missing = mjcf_bee_silhouette_features(mjcf_xml)

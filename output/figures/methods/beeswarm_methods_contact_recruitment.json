@@ -39,22 +39,22 @@
   "fidelity": "strict scene contact/recruitment diagnostic with reduced-kernel context",
   "figure_path": "output/figures/methods/beeswarm_methods_contact_recruitment.png",
   "manuscript_label": "fig:swarm_methods_contact",
-  "manuscript_section": "manuscript/05_methods_body_swarm.md",
+  "manuscript_section": "docs/manuscript/05_methods_body_swarm.md",
   "plot_data_path": "output/figures/methods/beeswarm_methods_contact_recruitment_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 977,
+    "height_px": 974,
     "max_intensity": 255,
-    "mean_intensity": 239.82373906683486,
+    "mean_intensity": 239.82974371059063,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 45.958563239102375,
-    "width_px": 1962
+    "std_intensity": 45.57995798943668,
+    "width_px": 1978
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
   "schema": "beestack.figure.v1",
-  "source_data": "MethodsAnalysisReport, animation manifest, and simulation records",
+  "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
   "source_dois": [
     "10.1109/IROS.2012.6386109",
     "10.1111/1365-2664.12222",
@@ -65,14 +65,14 @@
   "validation_status": "nonblank image, quality sidecar, and plot data passed",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 2.008,
+    "aspect_ratio": 2.031,
     "figure_role": "overview",
-    "height_px": 977,
+    "height_px": 974,
     "label_density": "moderate",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 1962,
-    "min_dimension_px": 977,
+    "max_dimension_px": 1978,
+    "min_dimension_px": 974,
     "readability_status": "pass",
-    "width_px": 1962
+    "width_px": 1978
   }
 }

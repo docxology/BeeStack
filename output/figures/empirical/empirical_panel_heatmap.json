@@ -11,6 +11,7 @@
   },
   "alt_text": "Heatmap of empirical odor response channels versus stimuli.",
   "artifact_kind": "figure",
+  "availability_status": "historical_unavailable",
   "backend": "Matplotlib empirical-data renderer",
   "caption": "Matplotlib empirical odor-response panel heatmap shows Heatmap of the first registered empirical odor-response panel showing channel responses across stimuli. Generated from output/data/empirical_analysis.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not support connectome-scale or calcium-validated dynamics.",
   "citation_keys": [
@@ -38,7 +39,7 @@
   "fidelity": "empirical panel summary diagnostic",
   "figure_path": "output/figures/empirical/empirical_panel_heatmap.png",
   "manuscript_label": "fig:empirical_panel_heatmap",
-  "manuscript_section": "manuscript/09_empirical_results.md",
+  "manuscript_section": "docs/manuscript/09_empirical_results.md",
   "plot_data_path": "output/figures/empirical/empirical_panel_heatmap_data.json",
   "priority": "primary",
   "quality": {

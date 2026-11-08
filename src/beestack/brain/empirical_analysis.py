@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import asdict, dataclass, field
+from pathlib import Path
 from typing import Any, cast
 
 import numpy as np
@@ -205,7 +206,7 @@ class BeeBrainEndToEndReport:
     anatomy_downloads: tuple[dict[str, object], ...]
     known_gaps: tuple[str, ...]
 
-    def as_dict(self) -> dict[str, object]:
+    def as_dict(self, project_root: Path | None = None) -> dict[str, object]:
         return project_relative_payload(
             {
                 "anatomy": self.anatomy.as_dict(),
@@ -215,7 +216,8 @@ class BeeBrainEndToEndReport:
                 "archive_status": self.archive_status,
                 "anatomy_downloads": self.anatomy_downloads,
                 "known_gaps": self.known_gaps,
-            }
+            },
+            project_root,
         )
 
 

@@ -1,20 +1,20 @@
 # Manuscript Syntax Reference (BeeStack)
 
-Project overlay on the template guide `docs/guides/manuscript-semantics.md` in the sibling `template/` checkout (not resolvable from this tree).
+The canonical sources are this directory; rendering is repository-local.
 
 ## Margins and preamble
 
-PDF margins are **0.15in on all sides**, declared in [`preamble.md`](preamble.md) via `\usepackage[margin=0.15in]{geometry}` and mirrored in [`config.yaml`](config.yaml) as `metadata.geometry: "margin=0.15in"`. The preamble also loads `hyperref` (red `colorlinks`), `natbib`, and `cleveref` for clickable citations and cross-references.
+PDF geometry is `margin=0.15in` in `config.yaml`. The local Pandoc/XeLaTeX pipeline uses citeproc for references and a source-owned Lua filter for section/figure links; no sibling template packages are required.
 
 ## Citation syntax (Pandoc)
 
 ```markdown
 [@friedman2026beestack]
 [@brandt2005standardbrain; @rybak2010digital]
-@friston2010free argued that...
+The free-energy formulation [@friston2010free] motivates the reduced policy witness.
 ```
 
-Keys must exist in [`references.bib`](references.bib). Pandoc renders with `--natbib`. **Do not** write raw LaTeX citation or reference macros in Markdown source.
+Keys must exist in [`references.bib`](references.bib). Author manuscript citations in bracket syntax. The audit also recognizes narrative citations so unsupported keys cannot evade checking. Do not use raw LaTeX citation/reference macros in Markdown.
 
 ## Figure references
 

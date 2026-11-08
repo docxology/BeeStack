@@ -11,6 +11,7 @@
   },
   "alt_text": "Bar chart of neuropil abbreviation counts by region class.",
   "artifact_kind": "figure",
+  "availability_status": "historical_unavailable",
   "backend": "Matplotlib empirical-data renderer",
   "caption": "Matplotlib honeybee standard brain neuropil coverage shows Neuropil abbreviation counts grouped by region class from atlas HTML inventory. Generated from output/data/bee_brain_end_to_end_report.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not map every glomerulus to a functional edge.",
   "citation_keys": [
@@ -37,7 +38,7 @@
   "fidelity": "empirical atlas/inventory summary diagnostic",
   "figure_path": "output/figures/empirical/empirical_neuropil_coverage.png",
   "manuscript_label": "fig:empirical_neuropil_coverage",
-  "manuscript_section": "manuscript/09_empirical_results.md",
+  "manuscript_section": "docs/manuscript/09_empirical_results.md",
   "plot_data_path": "output/figures/empirical/empirical_neuropil_coverage_data.json",
   "priority": "supporting",
   "quality": {

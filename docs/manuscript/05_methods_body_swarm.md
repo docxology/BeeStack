@@ -26,10 +26,10 @@ abdomen with dark tergite bands, enlarged compound eyes, antennae,
 mouthparts, a stinger, thoracic fuzz, corbiculae on the hind legs, and a
 constricted petiolar waist. These cues are not treated as proof of
 calibrated biomechanics. They are an auditable *visual* body-plan layer
-on top of the FlyBody execution path: the verification script measures
-non-blank dynamic frames, motion pixels, locomotion mode, MJCF cue
-presence, silhouette overlap with a reference bee shape, and the
-*absence* of FlyBody debug aids inconsistent with the honeybee render.
+on top of the FlyBody execution path: verification measures non-blank
+dynamic frames, adjacent-frame changed RGB channels, MJCF cue names,
+color statistics, and absence of cyan debug aids. Requested walking/flight
+labels are provenance, not measured gait classification or silhouette overlap.
 
 ## Walking and flight tasks
 
@@ -88,17 +88,17 @@ into leg torques ({{BODY_LEG_DOF_PER_LEG}} DOF/leg, {{BODY_LEG_COUNT}} legs), wi
 coupled hamuli at the wing root), antennal pose, and mandible state.
 Energy accounting is multiplicative and reference-anchored, not a
 fitted aerodynamic model: hovering wing power is pinned to a fixed
-~{{WING_POWER_REFERENCE_MW}} mW worker reference (≈{{WING_POWER_REFERENCE_MASS_MG}} mg body mass, ≈{{WING_POWER_REFERENCE_STROKE_HZ}} Hz stroke) and scaled
+~{{WING_POWER_REFERENCE_MW}} mW worker reference ($\approx$ {{WING_POWER_REFERENCE_MASS_MG}} mg body mass, $\approx$ {{WING_POWER_REFERENCE_STROKE_HZ}} Hz stroke) and scaled
 by dimensionless terms — a mass$^{0.75}$ allometric factor, a *linear*
 stroke-frequency ratio, and load/wing-wear penalties. Leg power scales
 with foot-strike load and resting metabolic rate is a floor. The integrated run reports a mean wing power of
 {{MEAN_WING_POWER_MW}} mW and a final body-frame energy budget of
 {{FINAL_ENERGY_J}} J after {{SIMULATION_STEPS}} control steps.
 
-[@fig:body_motion_power_phase] links COM-speed proxy, wing-power trace,
-and stroke-phase diagnostics from the same integrated run.
+[@fig:body_motion_power_phase] links the COM-speed proxy and wing-power
+trace to a speed-versus-power phase portrait colored by simulation step.
 
-![Matplotlib beebody motion, wing power, and phase witness shows Integrated-run witness linking COM-speed proxy, wing-power trace, and stroke-phase diagnostics for the reduced BeeBody energetics kernel. Generated from output/data/simulation_records.json and methods analysis. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate measured honeybee metabolic rates or aerodynamic coefficients.](../figures/beebody_motion_power_phase.png){#fig:body_motion_power_phase}
+![Matplotlib beebody motion, wing power, and phase witness shows Integrated-run witness linking COM-speed proxy, wing-power trace, and a speed-versus-power phase portrait for the reduced BeeBody energetics kernel. Generated from output/data/simulation_records.json and methods analysis. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate measured honeybee metabolic rates or aerodynamic coefficients.](../figures/beebody_motion_power_phase.png){#fig:body_motion_power_phase}
 
 ## Methods telemetry panel
 

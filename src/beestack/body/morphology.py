@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass
 
 from ..config import BeeStackConfig
@@ -111,10 +112,10 @@ def bee_body_calibration_summary(cfg: BeeStackConfig) -> BeeBodyCalibrationSumma
     """Summarize current calibrated BeeBody targets for scorecards and manifests."""
 
     targets = honeybee_calibration_targets(cfg)
-    finite = all(target.value == target.value and target.value > 0 for target in targets)
+    finite = all(math.isfinite(target.value) and target.value > 0 for target in targets)
     abdomen_ratio = 1.35
     wing_pair_count = (
-        2 if cfg.body.wing_model == "coupled_hamuli" and cfg.body.wing_dof == 12 else 1
+        2 if cfg.body.wing_model == "coupled_hamuli" and cfg.body.wing_dof_per_wing in (2, 3) else 1
     )
     contact_proxy_count = 3
     mass_score = min(1.0, cfg.body.body_mass_mg / 80.0, 80.0 / cfg.body.body_mass_mg)

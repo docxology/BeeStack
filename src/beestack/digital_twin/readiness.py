@@ -372,15 +372,19 @@ def digital_twin_axis_catalog() -> tuple[TwinReadinessAxis, ...]:
 def assess_digital_twin_readiness(
     axes: Iterable[TwinReadinessAxis] | None = None,
 ) -> DigitalTwinReadinessReview:
-    """Assess BeeStack against the full digital-twin target."""
+    """Assess full-target readiness; partial reviews are allowed, empty ones are not."""
 
-    axis_tuple = tuple(axes or digital_twin_axis_catalog())
+    axis_tuple = tuple(digital_twin_axis_catalog() if axes is None else axes)
     if not axis_tuple:
         raise ValueError("at least one digital-twin readiness axis is required")
+    if any(not 0 <= axis.maturity <= 1 for axis in axis_tuple):
+        raise ValueError("axis maturity must be finite and in [0, 1]")
+    canonical = {(axis.axis_id, axis.scale) for axis in digital_twin_axis_catalog()}
+    supplied = {(axis.axis_id, axis.scale) for axis in axis_tuple}
     scale_readiness = _summarize_scales(axis_tuple)
     mean_maturity = round(sum(axis.maturity for axis in axis_tuple) / len(axis_tuple), 3)
     top_axes = tuple(sorted(axis_tuple, key=lambda axis: (axis.priority, axis.maturity)))[:5]
-    population_ready = all(
+    population_ready = canonical.issubset(supplied) and all(
         axis.maturity >= 0.8
         and axis.current_tier in {EvidenceTier.PHYSICS_BACKED, EvidenceTier.VALIDATED_ASSIMILATIVE}
         for axis in axis_tuple

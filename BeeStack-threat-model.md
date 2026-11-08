@@ -104,7 +104,7 @@ flowchart LR
 
 - Substitute malicious PyPI/wheel packages if lockfile or index is compromised
 - Trick operator into fetching from attacker-controlled URL if allowlist fails
-- Ship zip-slip or polyglot archives that escape `output/data/empirical_sources/`
+- Supply hostile nested ZIP/XLSX/MAT/HDF5 payloads or misleading empirical shapes
 - Misuse reduced dance/pheromone outputs for dual-use planning (non-technical)
 
 ### Non-capabilities (without changed assumptions)
@@ -120,15 +120,15 @@ flowchart LR
 | Shell CLI | `uv run python scripts/...` | Operator → scripts | Primary control plane | `scripts/*.py` |
 | YAML config | `docs/manuscript/config.yaml` | Operator → config | Drives simulation parameters | `src/beestack/config.py` |
 | HTTPS fetch | empirical pipeline | Internet → fetch | Curated hosts only | `empirical_fetch.py` |
-| Zip ingest | post-download analysis | Remote archive → parser | Zip-slip risk | `empirical_ingest.py` |
+| Container ingest | post-download analysis | Remote bytes/shapes → parser | Resource/schema bounds before expansion; no filesystem extraction | `empirical_parsers/` |
 | FlyBody/MuJoCo | animation scripts | Local toolchain → render | Native code dependency | `body/flybody_adapter.py` |
 | Hydrated manuscript | PDF stage | Local files → renderer | Claim injection if audits skipped | `docs/manuscript/*.md` |
 
 ## Top abuse paths
 
 1. **Dependency confusion** — attacker publishes typosquat package → operator `uv sync` → arbitrary code at import → read local empirical data and manuscript drafts.
-2. **SSRF via fetch URL** — malicious registry edit or API response redirects fetch to internal metadata service → exfiltration (low likelihood while allowlist enforced).
-3. **Zip-slip ingest** — crafted Dryad archive member `../../.ssh/authorized_keys` → parser writes outside target dir (mitigated by member checks; verify on every nested archive).
+2. **Redirect/auth boundary** — a compromised curated endpoint redirects toward an unlisted/internal authority or another origin. Each resolved hop is admitted before dispatch; Dryad credentials do not cross origins.
+3. **Container amplification** — nested ZIP/XLSX dimensions or sparse HDF5 logical arrays exceed physical payload size. Shared tree/cell/array budgets reject before expansion; no filesystem extraction path was found.
 4. **Artifact tampering** — operator replaces `output/data/*.json` without rerunning pipeline → manuscript hydrates false numbers → incorrect published claims.
 5. **Dual-use misread** — reader treats waggle contact-sheet figures as calibrated biosecurity tooling → harmful field decisions (governance, not CVE).
 
@@ -137,12 +137,12 @@ flowchart LR
 | Threat ID | Threat source | Prerequisites | Threat action | Impact | Impacted assets | Existing controls (evidence) | Gaps | Recommended mitigations | Detection ideas | Likelihood | Impact severity | Priority |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | TM-001 | Supply-chain actor | Compromised dependency or index | Trojans build or runtime via pip/uv | RCE on workstation | lockfile, source tree | `uv.lock`, no `shell=True` scan in posture audit | No Sigstore/cosign verification | Pin index; periodic `uv lock --check`; optional SBOM export | Fail posture audit on forbidden imports | medium | high | high |
-| TM-002 | Network attacker | Allowlist bypass or HTTP downgrade | Fetch internal or malicious payload | Data poison, SSRF | empirical archives | `validate_download_url` HTTPS + host suffixes; post-redirect re-validation in `empirical_fetch._open_validated_response` | Redirect chains to unlisted hosts if validation skipped | Keep redirect check on every response; extend tests when adding hosts | Log rejected URLs; compare sha256 manifests | low | high | low |
-| TM-003 | Malicious archive author | Archive accepted into ingest | Zip-slip or billion-file zip DoS | FS escape, DoS | workstation, output | `assert_safe_zip_member`; `validate_zip_archive_bounds` (5k members / 5GB uncompressed per archive) | Nested depth not capped separately | Monitor ingest timing; tighten caps if abuse observed | Ingest timing metrics | low | medium | low |
+| TM-002 | Compromised curated endpoint | Control of redirect/metadata | Unintended requests or credential forwarding | Data poison, request/auth exposure | fetch/credentials | Pre-dispatch per-hop HTTPS policy, exact-origin auth, scoped storage routes | DNS/proxy/TLS/native trust remains outside these checks | Retest each new authority and redirect chain | Behavioral rejection/credential regressions | low after mitigation | high | medium |
+| TM-003 | Malicious data publisher | Input accepted for parsing | Nested/logical expansion or invalid paths | Resource exhaustion, invalid analysis | workstation, outputs | Shared tree/XLSX/MAT/HDF5 budgets, path checks, bounded VRML reads | Limits are not peak-memory measurements; large acquisitions may be rejected | Preserve explicit errors and calibrate against supported real payloads | Real small-budget container regressions | low after mitigation | medium | medium |
 | TM-004 | Insider / operator | Write access to repo or output | Edit JSON artifacts or disable audits before PDF | False scientific claims | manuscript, PDF | documentation + figure + source + security posture audits via `analysis_pipeline.py` and `verify_generated_reports.py` | No signed-artifact or SBOM gate yet | Run full pipeline before PDF; diff `output/reports/*.json` | Diff report JSON against pipeline logs | medium | medium | medium |
 | TM-005 | Misuse reader | Interprets reduced model as operational | Applies dance/pheromone outputs to field biosecurity | Ecological/agricultural harm | reputation, bees | ethics section, unsupported_inference captions | No runtime “not for operations” banner in CLI | Keep governance prose; readiness JSON names gaps | N/A (governance) | medium | medium | medium |
 | TM-006 | APT (nation-state) | Long-term access to dev machine | Tamper FlyBody/MuJoCo binaries or GPU drivers | Silent wrong physics evidence | render artifacts | FlyBody hard-fail without backend | No code-signing verification of MuJoCo install | Verify toolchain checksums on install docs | Visual verification reports | low | high | medium |
-| TM-007 | APT supply chain | Compromise upstream FlyBody | Malicious task code at render | RCE during animation | workstation | Optional FlyBody group in template | External dep outside BeeStack lock | Document trusted install path; isolate render in container | Hash FlyBody checkout tag | low | high | medium |
+| TM-007 | Upstream supply-chain actor | Compromise FlyBody/native dependencies | Malicious task code at render | Workstation compromise | workstation | Mandatory dependency, exact FlyBody commit and locked artifacts | No publisher-signature verification | Preserve source/artifact identities and isolated verification | Source-bound build/render receipts | low | high | medium |
 | TM-008 | Future integrator | Adds hive API credentials | Stores tokens in config/repo | Credential leak | future hive data | Not implemented | No secret scanner in BeeStack-local hooks | Use env vars + secret scan if APIs added | gitleaks on commit | low | high | low (conditional) |
 
 ## Criticality calibration

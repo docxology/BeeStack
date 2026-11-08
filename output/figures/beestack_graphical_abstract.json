@@ -38,22 +38,22 @@
   "fidelity": "architecture schematic",
   "figure_path": "output/figures/beestack_graphical_abstract.png",
   "manuscript_label": "fig:beestack_graphical_abstract",
-  "manuscript_section": "manuscript/04_evidence_typed_architecture.md",
+  "manuscript_section": "docs/manuscript/04_evidence_typed_architecture.md",
   "plot_data_path": "output/figures/beestack_graphical_abstract_data.json",
   "priority": "primary",
   "quality": {
     "height_px": 956,
     "max_intensity": 255,
-    "mean_intensity": 237.71771093240181,
+    "mean_intensity": 237.27569719012706,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 49.313880821058966,
+    "std_intensity": 49.86418705186189,
     "width_px": 2180
   },
   "regeneration_command": "uv run python scripts/analysis_pipeline.py",
   "schema": "beestack.figure.v1",
-  "source_data": "module coverage records and stack contract definitions",
+  "source_data": "output/data/simulation_records.json and module coverage records",
   "source_dois": [
     "10.1371/journal.pcbi.1005510",
     "10.3233/DS-190026"

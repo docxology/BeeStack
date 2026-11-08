@@ -11,6 +11,7 @@
   },
   "alt_text": "Bar chart of structural, functional, and synaptic connectome tier coverage.",
   "artifact_kind": "figure",
+  "availability_status": "historical_unavailable",
   "backend": "matplotlib/networkx connectome renderer",
   "caption": "Matplotlib connectome evidence tiers shows Coverage bars for structural, functional, and synaptic connectome tiers with synaptic tier explicitly unavailable. Generated from output/data/brain_data_completeness.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not upgrade unavailable tiers into supported claims.",
   "citation_keys": [
@@ -38,7 +39,7 @@
   "fidelity": "Honeybee Standard Brain structural projectome diagnostic",
   "figure_path": "output/figures/empirical/connectome_completeness_tiers.png",
   "manuscript_label": "fig:connectome_completeness_tiers",
-  "manuscript_section": "manuscript/09_empirical_results.md",
+  "manuscript_section": "docs/manuscript/09_empirical_results.md",
   "plot_data_path": "output/figures/empirical/connectome_completeness_tiers_data.json",
   "priority": "primary",
   "quality": {

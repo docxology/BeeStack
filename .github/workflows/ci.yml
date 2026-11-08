@@ -10,6 +10,9 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    env:
+      MUJOCO_GL: egl
+      MPLBACKEND: Agg
     steps:
       - name: Check out repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v7.0.1
@@ -18,6 +21,7 @@ jobs:
         uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # astral-sh/setup-uv@v10.3.3
         with:
           enable-cache: true
+          version: "0.13.7"
 
       - name: Set up Python
         uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # actions/setup-python@v7.1.0
@@ -26,6 +30,11 @@ jobs:
 
       - name: Install dependencies
         run: uv sync --locked --all-extras
+
+      - name: Install local manuscript and headless rendering tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-xetex texlive-latex-extra texlive-fonts-recommended libegl1
 
       - name: Lint
         run: uv run ruff check src tests scripts
@@ -39,14 +48,26 @@ jobs:
       - name: Test with coverage
         run: uv run pytest --cov=src --cov-report=term-missing
 
+      - name: Build package artifacts
+        run: uv build --wheel --sdist
+
+      - name: Install independent wheel environment from locked dependencies
+        run: |
+          uv venv .uv-cache/wheel-smoke
+          uv export --locked --no-dev --no-emit-project --no-hashes --output-file .uv-cache/wheel-smoke-requirements.txt
+          uv pip install --python .uv-cache/wheel-smoke/bin/python -r .uv-cache/wheel-smoke-requirements.txt
+          uv pip install --python .uv-cache/wheel-smoke/bin/python --no-deps dist/*.whl
+          env -u PYTHONPATH .uv-cache/wheel-smoke/bin/python -c 'from pathlib import Path; import beestack; assert Path(beestack.__file__).resolve().is_relative_to(Path(".uv-cache/wheel-smoke").resolve())'
+          env -u PYTHONPATH .uv-cache/wheel-smoke/bin/beestack-animations --help
+
       - name: Refresh empirical metadata manifests
         run: uv run python scripts/fetch_empirical_bee_data.py --metadata-only
 
       - name: Analyze empirical payloads when local
         run: uv run python scripts/analyze_empirical_bee_data.py
 
-      - name: Generate core analysis artifacts
-        run: uv run python scripts/analysis_pipeline.py
+      - name: Exercise installed wheel analysis CLI
+        run: env -u PYTHONPATH .uv-cache/wheel-smoke/bin/beestack-analysis --project-root .
 
       - name: Verify BeeBody and BeeSwarm render evidence
         run: uv run python scripts/verify_bee_render.py
@@ -66,14 +87,32 @@ jobs:
       - name: Assess digital-twin readiness
         run: uv run python scripts/assess_digital_twin_readiness.py
 
-      - name: Generated-report audit
-        run: uv run python scripts/verify_generated_reports.py
+      - name: Hydrate canonical manuscript
+        run: uv run python scripts/z_generate_manuscript_variables.py
+
+      - name: Bootstrap combined PDF for first-checkout documentation checks
+        run: uv run python scripts/render_manuscript.py
+
+      - name: Complete generated-output signposting
+        run: uv run python scripts/signpost_project_tree.py
 
       - name: Documentation audit
         run: uv run python scripts/audit_documentation.py
 
+      - name: Security posture audit
+        run: uv run python scripts/run_security_audit.py
+
       - name: Signposting check
         run: uv run python scripts/signpost_project_tree.py --check
 
-      - name: Hydrate manuscript
+      - name: Rehydrate after readiness reports stabilize
         run: uv run python scripts/z_generate_manuscript_variables.py
+
+      - name: Seal final source-data-figure bound combined PDF
+        run: uv run python scripts/render_manuscript.py
+
+      - name: Generated-report and publication audit
+        run: uv run python scripts/verify_generated_reports.py
+
+      - name: Publication readiness
+        run: uv run python scripts/audit_publication_readiness.py --check

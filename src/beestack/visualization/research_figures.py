@@ -27,7 +27,12 @@ if TYPE_CHECKING:
     from ..research import ResearchSuiteReport
 
 
-def generate_research_figures(report: ResearchSuiteReport, output_dir: Path) -> list[Path]:
+def generate_research_figures(
+    report: ResearchSuiteReport,
+    output_dir: Path,
+    *,
+    project_root: Path | None = None,
+) -> list[Path]:
     """Generate science-first research report figures."""
 
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -68,7 +73,9 @@ def generate_research_figures(report: ResearchSuiteReport, output_dir: Path) -> 
             "regeneration_command": "uv run python scripts/run_research_suite.py",
         }
 
-    finalize_static_figures(paths, plot_data_for=_plot_data, sidecar_for=_sidecar)
+    finalize_static_figures(
+        paths, plot_data_for=_plot_data, sidecar_for=_sidecar, project_root=project_root
+    )
     return paths
 
 

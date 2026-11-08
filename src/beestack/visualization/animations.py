@@ -22,6 +22,7 @@ from ..body import (
 from ..brain import decode_waggle
 from ..config import BeeStackConfig, Caste
 from ..mind import caste_prior
+from ..utils import project_relative_payload
 from .figure_output import finalize_contact_sheet, save_annotated_contact_sheet
 
 
@@ -44,8 +45,8 @@ class AnimationArtifact:
     contact_report: str = ""
     render_backend: str = ""
 
-    def as_dict(self) -> dict[str, str | int]:
-        return asdict(self)
+    def as_dict(self, project_root: Path | None = None) -> dict[str, str | int]:
+        return project_relative_payload(asdict(self), project_root)
 
 
 @dataclass(frozen=True)
@@ -95,6 +96,8 @@ def generate_module_animations(
     output_dir: Path,
     frames: int | None = None,
     fps: int | None = None,
+    *,
+    project_root: Path | None = None,
 ) -> list[AnimationArtifact]:
     """Generate GIF animations for Body, Brain, Mind, Swarm, and Niche."""
 
@@ -105,7 +108,7 @@ def generate_module_animations(
     if fps <= 0:
         raise ValueError("fps must be positive")
     output_dir.mkdir(parents=True, exist_ok=True)
-    builders: tuple[Callable[[BeeStackConfig, Path, int, int], AnimationArtifact], ...] = (
+    builders: tuple[Callable[..., AnimationArtifact], ...] = (
         _animate_body,
         _animate_body_flight,
         _animate_brain,
@@ -116,7 +119,9 @@ def generate_module_animations(
         _animate_waggle_dance_long,
         _animate_niche,
     )
-    return [builder(cfg, output_dir, frames, fps) for builder in builders]
+    return [
+        builder(cfg, output_dir, frames, fps, project_root=project_root) for builder in builders
+    ]
 
 
 def _save(fig, update: Callable[[int], object], frames: int, fps: int, path: Path) -> None:
@@ -126,12 +131,17 @@ def _save(fig, update: Callable[[int], object], frames: int, fps: int, path: Pat
 
 
 def _animate_body(
-    cfg: BeeStackConfig, output_dir: Path, frames: int, fps: int
+    cfg: BeeStackConfig,
+    output_dir: Path,
+    frames: int,
+    fps: int,
+    *,
+    project_root: Path | None = None,
 ) -> AnimationArtifact:
     path = output_dir / "beebody_flybody_morphology.gif"
     try:
         rendered_frames, body_plan = FlyBodyBeeBackend(
-            cfg, allow_reduced_fallback=False
+            cfg, allow_reduced_fallback=False, project_root=project_root
         ).render_bee_walk_frames(
             output_dir / cfg.visualization.body_plan_subdir,
             steps=frames,
@@ -155,6 +165,7 @@ def _animate_body(
         title="BeeBody FlyBody morphology contact sheet",
         fidelity="real_flybody_3d contact sheet",
         source_data=body_plan.xml_path,
+        project_root=project_root,
     )
     return AnimationArtifact(
         "BeeBody",
@@ -173,12 +184,17 @@ def _animate_body(
 
 
 def _animate_body_flight(
-    cfg: BeeStackConfig, output_dir: Path, frames: int, fps: int
+    cfg: BeeStackConfig,
+    output_dir: Path,
+    frames: int,
+    fps: int,
+    *,
+    project_root: Path | None = None,
 ) -> AnimationArtifact:
     path = output_dir / "beebody_flybody_flight.gif"
     try:
         rendered_frames, body_plan = FlyBodyBeeBackend(
-            cfg, allow_reduced_fallback=False
+            cfg, allow_reduced_fallback=False, project_root=project_root
         ).render_bee_flight_frames(
             output_dir / cfg.visualization.body_plan_subdir,
             steps=frames,
@@ -202,6 +218,7 @@ def _animate_body_flight(
         title="BeeBody FlyBody flight contact sheet",
         fidelity="real_flybody_3d contact sheet",
         source_data=body_plan.xml_path,
+        project_root=project_root,
     )
     return AnimationArtifact(
         "BeeBody",
@@ -256,6 +273,7 @@ def _write_contact_sheet_bundle(
     title: str,
     fidelity: str,
     source_data: str,
+    project_root: Path | None = None,
 ) -> None:
     finalize_contact_sheet(
         contact_sheet,
@@ -267,6 +285,7 @@ def _write_contact_sheet_bundle(
         source_data=source_data,
         validation_status="nonblank contact sheet with plot data",
         regeneration_command="uv run python scripts/generate_animations.py",
+        project_root=project_root,
     )
 
 
@@ -296,7 +315,12 @@ def _ring_layout(center: tuple[float, float], count: int, spread: float) -> np.n
 
 
 def _animate_brain(
-    cfg: BeeStackConfig, output_dir: Path, frames: int, fps: int
+    cfg: BeeStackConfig,
+    output_dir: Path,
+    frames: int,
+    fps: int,
+    *,
+    project_root: Path | None = None,
 ) -> AnimationArtifact:
     path = output_dir / "beebrain_neural_anatomy.gif"
     fig, ax = plt.subplots(figsize=(6, 4))
@@ -354,6 +378,7 @@ def _animate_brain(
         title="BeeBrain neural anatomy contact sheet",
         fidelity="reduced_schematic contact sheet",
         source_data="Honeybee Standard Brain module layout (AL/MB/CX atlas-derived schematic)",
+        project_root=project_root,
     )
     return AnimationArtifact(
         "BeeBrain",
@@ -368,7 +393,12 @@ def _animate_brain(
 
 
 def _animate_mind(
-    cfg: BeeStackConfig, output_dir: Path, frames: int, fps: int
+    cfg: BeeStackConfig,
+    output_dir: Path,
+    frames: int,
+    fps: int,
+    *,
+    project_root: Path | None = None,
 ) -> AnimationArtifact:
     path = output_dir / "beemind_policy_beliefs.gif"
     fig, ax = plt.subplots(figsize=(6, 4))
@@ -405,6 +435,7 @@ def _animate_mind(
         title="BeeMind policy beliefs contact sheet",
         fidelity="reduced_schematic contact sheet",
         source_data="BeeStackConfig mind policy parameters",
+        project_root=project_root,
     )
     return AnimationArtifact(
         "BeeMind",
@@ -419,7 +450,12 @@ def _animate_mind(
 
 
 def _animate_swarm(
-    cfg: BeeStackConfig, output_dir: Path, frames: int, fps: int
+    cfg: BeeStackConfig,
+    output_dir: Path,
+    frames: int,
+    fps: int,
+    *,
+    project_root: Path | None = None,
 ) -> AnimationArtifact:
     path = output_dir / "beeswarm_dance_pheromone.gif"
     fig, ax = plt.subplots(figsize=(5, 5))
@@ -469,6 +505,7 @@ def _animate_swarm(
         title="BeeSwarm dance pheromone contact sheet",
         fidelity="reduced_schematic contact sheet",
         source_data="BeeStackConfig swarm parameters",
+        project_root=project_root,
     )
     return AnimationArtifact(
         "BeeSwarm",
@@ -483,9 +520,16 @@ def _animate_swarm(
 
 
 def _animate_swarm_collision(
-    cfg: BeeStackConfig, output_dir: Path, frames: int, fps: int
+    cfg: BeeStackConfig,
+    output_dir: Path,
+    frames: int,
+    fps: int,
+    *,
+    project_root: Path | None = None,
 ) -> AnimationArtifact:
-    scene = render_flybody_swarm_collision_scene(cfg, output_dir, frames=frames, fps=fps)
+    scene = render_flybody_swarm_collision_scene(
+        cfg, output_dir, frames=frames, fps=fps, project_root=project_root
+    )
     _write_contact_sheet_bundle(
         Path(scene.contact_sheet_path),
         source_gif=Path(scene.gif_path),
@@ -493,6 +537,7 @@ def _animate_swarm_collision(
         title="BeeSwarm 10-BeeBody collision contact sheet",
         fidelity="real_flybody_3d contact sheet",
         source_data=scene.body_plan_xml_path,
+        project_root=project_root,
     )
     return AnimationArtifact(
         "BeeSwarm",
@@ -513,9 +558,16 @@ def _animate_swarm_collision(
 
 
 def _animate_waggle_dance(
-    cfg: BeeStackConfig, output_dir: Path, frames: int, fps: int
+    cfg: BeeStackConfig,
+    output_dir: Path,
+    frames: int,
+    fps: int,
+    *,
+    project_root: Path | None = None,
 ) -> AnimationArtifact:
-    scene = render_flybody_waggle_scene(cfg, output_dir, frames=frames, fps=fps)
+    scene = render_flybody_waggle_scene(
+        cfg, output_dir, frames=frames, fps=fps, project_root=project_root
+    )
     _write_contact_sheet_bundle(
         Path(scene.contact_sheet_path),
         source_gif=Path(scene.gif_path),
@@ -523,6 +575,7 @@ def _animate_waggle_dance(
         title="BeeSwarm configured waggle dance contact sheet",
         fidelity="real_flybody_3d contact sheet",
         source_data=scene.body_plan_xml_path,
+        project_root=project_root,
     )
     return AnimationArtifact(
         "BeeSwarm",
@@ -543,7 +596,12 @@ def _animate_waggle_dance(
 
 
 def _animate_waggle_dance_long(
-    cfg: BeeStackConfig, output_dir: Path, frames: int, fps: int
+    cfg: BeeStackConfig,
+    output_dir: Path,
+    frames: int,
+    fps: int,
+    *,
+    project_root: Path | None = None,
 ) -> AnimationArtifact:
     long_frames = (
         cfg.visualization.long_waggle_animation_frames
@@ -560,6 +618,7 @@ def _animate_waggle_dance_long(
         output_dir,
         frames=long_frames,
         fps=long_fps,
+        project_root=project_root,
     )
     _write_contact_sheet_bundle(
         Path(scene.contact_sheet_path),
@@ -568,6 +627,7 @@ def _animate_waggle_dance_long(
         title="BeeSwarm long waggle dance contact sheet",
         fidelity="real_flybody_3d contact sheet",
         source_data=scene.body_plan_xml_path,
+        project_root=project_root,
     )
     return AnimationArtifact(
         "BeeSwarm",
@@ -694,7 +754,12 @@ def _draw_bee(
 
 
 def _animate_niche(
-    cfg: BeeStackConfig, output_dir: Path, frames: int, fps: int
+    cfg: BeeStackConfig,
+    output_dir: Path,
+    frames: int,
+    fps: int,
+    *,
+    project_root: Path | None = None,
 ) -> AnimationArtifact:
     path = output_dir / "beeniche_comb_thermal.gif"
     fig, ax = plt.subplots(figsize=(6, 4))
@@ -746,6 +811,7 @@ def _animate_niche(
         title="BeeNiche comb thermal contact sheet",
         fidelity="reduced_schematic contact sheet",
         source_data="BeeStackConfig niche thermal parameters",
+        project_root=project_root,
     )
     return AnimationArtifact(
         "BeeNiche",

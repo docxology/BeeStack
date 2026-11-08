@@ -26,10 +26,10 @@ abdomen with dark tergite bands, enlarged compound eyes, antennae,
 mouthparts, a stinger, thoracic fuzz, corbiculae on the hind legs, and a
 constricted petiolar waist. These cues are not treated as proof of
 calibrated biomechanics. They are an auditable *visual* body-plan layer
-on top of the FlyBody execution path: the verification script measures
-non-blank dynamic frames, motion pixels, locomotion mode, MJCF cue
-presence, silhouette overlap with a reference bee shape, and the
-*absence* of FlyBody debug aids inconsistent with the honeybee render.
+on top of the FlyBody execution path: verification measures non-blank
+dynamic frames, adjacent-frame changed RGB channels, MJCF cue names,
+color statistics, and absence of cyan debug aids. Requested walking/flight
+labels are provenance, not measured gait classification or silhouette overlap.
 
 ## Walking and flight tasks
 
@@ -45,7 +45,7 @@ from the FlyBody defaults; deviating from them changes the imitation
 loss landscape, so they are pinned in `config.yaml`.
 
 The latest verification run reports a BeeBody visual score of
-0.980 (cue coverage) and a silhouette score of
+0.991 (cue coverage) and a silhouette score of
 1.000 (shape overlap). These are perceptual scores
 on the rendered GIF, not biomechanical scores; they certify that the
 output *looks like a bee*, not that it *moves like one*.
@@ -88,17 +88,17 @@ into leg torques (4 DOF/leg, 6 legs), wing kinematics (3 DOF/wing,
 coupled hamuli at the wing root), antennal pose, and mandible state.
 Energy accounting is multiplicative and reference-anchored, not a
 fitted aerodynamic model: hovering wing power is pinned to a fixed
-~58 mW worker reference (≈80 mg body mass, ≈230 Hz stroke) and scaled
+~58 mW worker reference ($\approx$ 80 mg body mass, $\approx$ 230 Hz stroke) and scaled
 by dimensionless terms — a mass$^{0.75}$ allometric factor, a *linear*
 stroke-frequency ratio, and load/wing-wear penalties. Leg power scales
 with foot-strike load and resting metabolic rate is a floor. The integrated run reports a mean wing power of
 58.291 mW and a final body-frame energy budget of
 23.999 J after 24 control steps.
 
-[@fig:body_motion_power_phase] links COM-speed proxy, wing-power trace,
-and stroke-phase diagnostics from the same integrated run.
+[@fig:body_motion_power_phase] links the COM-speed proxy and wing-power
+trace to a speed-versus-power phase portrait colored by simulation step.
 
-![Matplotlib beebody motion, wing power, and phase witness shows Integrated-run witness linking COM-speed proxy, wing-power trace, and stroke-phase diagnostics for the reduced BeeBody energetics kernel. Generated from output/data/simulation_records.json and methods analysis. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate measured honeybee metabolic rates or aerodynamic coefficients.](../figures/beebody_motion_power_phase.png){#fig:body_motion_power_phase}
+![Matplotlib beebody motion, wing power, and phase witness shows Integrated-run witness linking COM-speed proxy, wing-power trace, and a speed-versus-power phase portrait for the reduced BeeBody energetics kernel. Generated from output/data/simulation_records.json and methods analysis. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate measured honeybee metabolic rates or aerodynamic coefficients.](../figures/beebody_motion_power_phase.png){#fig:body_motion_power_phase}
 
 ## Methods telemetry panel
 

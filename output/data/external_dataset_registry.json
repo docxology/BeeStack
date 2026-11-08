@@ -51,7 +51,7 @@
       "wired_in_beestack": false
     },
     {
-      "blocker": "No NASS parser or assimilation surface in v0.",
+      "blocker": "No NASS parser or assimilation surface in the current implementation.",
       "name": "USDA NASS honey production statistics",
       "official_doi": "",
       "official_url": "https://esmis.nal.usda.gov/publication/honey",
@@ -61,7 +61,7 @@
       "wired_in_beestack": false
     },
     {
-      "blocker": "Pesticide burden not a typed BeeNiche state variable in v0.",
+      "blocker": "Pesticide burden is not a typed BeeNiche state variable in the reduced baseline.",
       "name": "EPA pesticide residue concentrations in hive matrices",
       "official_doi": "10.23719/1523343",
       "official_url": "https://catalog.data.gov/dataset/pesticide-residue-concentration-in-honey-bee-hive-matrices",

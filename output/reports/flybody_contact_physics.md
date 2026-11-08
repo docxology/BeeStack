@@ -14,7 +14,11 @@
 - Frames with bee-bee contacts: `20`
 - Bee-bee contact pairs: `bee_00-bee_01, bee_00-bee_02, bee_00-bee_09, bee_01-bee_02, bee_01-bee_07, bee_01-bee_09, bee_02-bee_03, bee_03-bee_04, bee_04-bee_05, bee_05-bee_06, bee_06-bee_07, bee_07-bee_08, bee_08-bee_09`
 - Floor contact count: `5`
-- Minimum contact distance: `-0.032476391711236306`
+- Minimum contact distance: `-0.03247810612617867`
+- Mean follower orientation error: `0.000` deg
+- Follower orientation confidence: `0.000`
+- Waggle phase coupling score: `0.000`
+- Contact graph edges: `13`
 
 ## waggle
 
@@ -27,7 +31,11 @@
 - Frames with bee-bee contacts: `24`
 - Bee-bee contact pairs: `bee_01-bee_02, bee_01-bee_10, bee_02-bee_03, bee_03-bee_04, bee_04-bee_05, bee_05-bee_06, bee_06-bee_07, bee_07-bee_08, bee_08-bee_09, bee_09-bee_10`
 - Floor contact count: `22`
-- Minimum contact distance: `-0.007146013856803874`
+- Minimum contact distance: `-0.007145678300099613`
+- Mean follower orientation error: `19.096` deg
+- Follower orientation confidence: `0.788`
+- Waggle phase coupling score: `0.000`
+- Contact graph edges: `10`
 
 ## waggle_long
 
@@ -40,4 +48,8 @@
 - Frames with bee-bee contacts: `96`
 - Bee-bee contact pairs: `bee_01-bee_02, bee_01-bee_10, bee_02-bee_03, bee_03-bee_04, bee_04-bee_05, bee_05-bee_06, bee_06-bee_07, bee_07-bee_08, bee_08-bee_09, bee_09-bee_10`
 - Floor contact count: `89`
-- Minimum contact distance: `-0.007152310767314903`
+- Minimum contact distance: `-0.007151945532773438`
+- Mean follower orientation error: `19.096` deg
+- Follower orientation confidence: `0.788`
+- Waggle phase coupling score: `0.000`
+- Contact graph edges: `10`

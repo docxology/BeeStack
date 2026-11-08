@@ -6,7 +6,6 @@ import argparse
 from pathlib import Path
 
 from beestack.pipeline import (
-    load_config,
     run_analysis_pipeline,
     run_bee_render_stage,
     run_empirical_stage,
@@ -15,6 +14,7 @@ from beestack.pipeline import (
     write_research_suite_outputs,
     write_stack_synthesis_outputs,
 )
+from beestack.project_config import load_config
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 

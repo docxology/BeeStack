@@ -11,6 +11,7 @@
   },
   "alt_text": "Polar plot of waggle follower antenna and dancer phase metrics.",
   "artifact_kind": "figure",
+  "availability_status": "historical_unavailable",
   "backend": "Matplotlib empirical-data renderer",
   "caption": "Matplotlib waggle follower phase coupling shows Polar summary of follower antenna phase, midpoint, dancer gravity, and follower angle. Generated from output/data/waggle_follower_analysis.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not prove biological recruitment mechanisms.",
   "citation_keys": [
@@ -37,7 +38,7 @@
   "fidelity": "empirical waggle/follower summary diagnostic",
   "figure_path": "output/figures/empirical/waggle_phase_coupling.png",
   "manuscript_label": "fig:waggle_phase_coupling",
-  "manuscript_section": "manuscript/09_empirical_results.md",
+  "manuscript_section": "docs/manuscript/09_empirical_results.md",
   "plot_data_path": "output/figures/empirical/waggle_phase_coupling_data.json",
   "priority": "supporting",
   "quality": {

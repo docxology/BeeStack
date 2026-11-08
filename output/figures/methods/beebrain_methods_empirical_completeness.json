@@ -39,22 +39,22 @@
   "fidelity": "empirical completeness summary projected into reduced BeeBrain contracts",
   "figure_path": "output/figures/methods/beebrain_methods_empirical_completeness.png",
   "manuscript_label": "fig:brain_methods_completeness",
-  "manuscript_section": "manuscript/06_methods_brain_mind.md",
+  "manuscript_section": "docs/manuscript/06_methods_brain_mind.md",
   "plot_data_path": "output/figures/methods/beebrain_methods_empirical_completeness_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 977,
+    "height_px": 974,
     "max_intensity": 255,
-    "mean_intensity": 235.4060757253737,
+    "mean_intensity": 245.93815751500594,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 51.53240882561931,
-    "width_px": 1962
+    "std_intensity": 37.82421279709658,
+    "width_px": 1978
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
   "schema": "beestack.figure.v1",
-  "source_data": "MethodsAnalysisReport and empirical analysis report",
+  "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
   "source_dois": [
     "10.1038/8144",
     "10.1002/cne.20644",
@@ -65,14 +65,14 @@
   "validation_status": "nonblank image, quality sidecar, and plot data passed",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 2.008,
+    "aspect_ratio": 2.031,
     "figure_role": "overview",
-    "height_px": 977,
+    "height_px": 974,
     "label_density": "moderate",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 1962,
-    "min_dimension_px": 977,
+    "max_dimension_px": 1978,
+    "min_dimension_px": 974,
     "readability_status": "pass",
-    "width_px": 1962
+    "width_px": 1978
   }
 }

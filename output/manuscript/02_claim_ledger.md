@@ -18,10 +18,10 @@ biological realism, and the project is explicit about that asymmetry.
   [@todorov2012mujoco].
 - **Empirical claims** are tied to the BeeBrain data registry and to
   downloaded payloads on disk. The current empirical run integrates
-  48 response panels, 7
-  anatomy inventories, 1 antennal-movement
-  summaries, and 24 integrated odor templates,
-  with parseable-source fraction 0.700.
+  N/A response panels, N/A
+  anatomy inventories, N/A antennal-movement
+  summaries, and N/A integrated odor templates,
+  with parseable-source fraction N/A.
 - **BeeMind**, the non-visual portion of BeeSwarm, and **BeeNiche** are
   explicitly *reduced kernels*. Their value is contract integration,
   diagnostic transparency, and extensibility, not biological prediction.
@@ -80,10 +80,10 @@ The implementation follows the research-template separation of concerns
 that the surrounding repository enforces: `src/beestack/` contains
 importable module logic with no filesystem or network side effects;
 `scripts/` owns I/O, downloads, and orchestration; `tests/` uses real
-computations with no mocks; `manuscript/` holds tokenized prose hydrated
+computations with no mocks; `docs/manuscript/` holds tokenized prose hydrated
 from real run-time values; and `output/` contains regeneratable
 artifacts. Every non-cache directory is signposted, with
-72 directories covered by local README and
+71 directories covered by local README and
 AGENTS files so that downstream agents — human or LLM — can pick up the
 project without rediscovering its structure.
 
@@ -105,11 +105,11 @@ Executability is enforced at three levels.
 
 The research suite assembles five module scorecards, empirical evidence
 records, visualization inventories, deterministic sensitivity sweeps,
-and known gaps. It currently reports 87
+and known gaps. It currently reports 75
 visualization artifacts, 3 sensitivity sweeps,
 5 empirical evidence records,
 11 explicitly catalogued gaps, and an overall
-validation fraction of 0.938. The readiness
+validation fraction of 0.750. The readiness
 review currently prioritizes **BeeBrain calcium acquisition completion (P27)** as the top
 follow-up item, making the next pass a *scientific decision* rather than
 an unstructured refactor.

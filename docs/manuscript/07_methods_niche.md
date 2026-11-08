@@ -5,15 +5,15 @@ comb grid with {{COMB_VOXELS}} voxels (default ${{COMB_SHAPE_X}} \times {{COMB_S
 content fields (brood, food, wax, empty), a thermal field, a foraging
 landscape summary, and adapter-style outputs intended to stay
 compatible with future BEEHAVE [@becher2014beehave] and Hiveopolis
-[@narsicht2020hiveopolis] runtime coupling.
+[@hiveopolis2019project] runtime coupling.
 
 ## Comb construction
 
 The comb kernel maintains a four-channel content field over the comb
 voxel grid. Wax deposition updates local comb occupancy, neighborhood
-density, and content metrics. The wax deposition threshold
-(`wax_deposit_threshold = 0.35`) is taken from the bee-comb
-construction literature [@johnson2009self]: below the threshold, no new
+density, and content metrics. The dimensionless wax deposition threshold
+(`wax_deposit_threshold = 0.35`) is a synthetic model setting, not a value
+established by a verified comb-construction source: below the threshold, no new
 cell is produced; above it, neighborhood-coordinated deposition raises
 local occupancy. The kernel records the final comb occupancy fraction
 ({{FINAL_COMB_FRACTION}} at the end of the integrated run) and the
@@ -51,7 +51,7 @@ through recruited foraging).
 
 ## Planned driver and forage data surfaces
 
-BeeNiche v0 uses deterministic seasonal/weather witnesses rather than
+The reduced BeeNiche baseline uses deterministic seasonal/weather witnesses rather than
 external observations. The scholarship refresh identifies adapter targets
 that should enter only through typed driver ingestion (see [@sec:roadmap]
 step 2): EPA and peer-reviewed hive-matrix pesticide residues
@@ -80,7 +80,7 @@ rather than merely increasing grid size.
 
 BeeNiche emits adapter-compatible payloads for BEEHAVE
 [@becher2014beehave] (colony-level forager, brood, and food-store
-summaries) and Hiveopolis [@narsicht2020hiveopolis] (sensor-stream
+summaries) and Hiveopolis [@hiveopolis2019project] (sensor-stream
 abstractions over the comb grid). The adapter shape is not load-bearing
 in the current run — no downstream BEEHAVE or Hiveopolis runtime is
 invoked — but the schema is preserved so that coupling can happen

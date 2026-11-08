@@ -14,6 +14,8 @@ def encode_waggle(
 ) -> DanceVector:
     """Encode an agent belief as a waggle vector."""
 
+    if not np.isfinite((distance_km, azimuth_deg, sun_azimuth_deg, quality)).all():
+        raise ValueError("waggle coordinates and quality must be finite")
     if distance_km < 0:
         raise ValueError("distance_km must be nonnegative")
     if quality < 0:
@@ -32,8 +34,13 @@ def update_belief_from_dance(
 ) -> BeliefState:
     """Apply a decoded waggle dance as a prior update."""
 
-    if follow_threshold < 0 or follow_threshold > 1:
-        raise ValueError("follow_threshold must be in [0, 1]")
+    if not np.isfinite(follow_threshold) or not 0 <= follow_threshold <= 1:
+        raise ValueError("follow_threshold must be finite and in [0, 1]")
+    values = (dance.distance_km, dance.azimuth_deg, dance.quality_score, dance.confidence)
+    if not np.isfinite(values).all() or dance.distance_km < 0 or dance.quality_score < 0:
+        raise ValueError("dance coordinates and quality must be finite and nonnegative")
+    if not 0 <= dance.confidence <= 1:
+        raise ValueError("dance confidence must be in [0, 1]")
     if dance.confidence < follow_threshold:
         return belief
     return BeliefState(
@@ -42,7 +49,7 @@ def update_belief_from_dance(
         caste_probs=belief.caste_probs,
         known_patch_distance_km=dance.distance_km,
         known_patch_azimuth_deg=dance.azimuth_deg,
-        known_patch_quality=max(belief.known_patch_quality, dance.quality_score),
+        known_patch_quality=dance.quality_score,
         colony_need=belief.colony_need,
     )
 
@@ -52,6 +59,10 @@ def dance_alignment_score(
 ) -> float:
     """Score decoded waggle accuracy against a known target."""
 
+    if not np.isfinite(
+        (dance.distance_km, dance.azimuth_deg, target_distance_km, target_azimuth_deg)
+    ).all():
+        raise ValueError("dance alignment coordinates must be finite")
     if target_distance_km < 0:
         raise ValueError("target_distance_km must be nonnegative")
     distance_error = abs(dance.distance_km - target_distance_km) / max(1.0, target_distance_km)

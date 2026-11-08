@@ -9,6 +9,6 @@ specification:
 - `beestack/swarm/`: BeeSwarm multi-agent communication and pheromone dynamics.
 - `beestack/niche/`: BeeNiche comb, thermal, and landscape dynamics.
 - `beestack/visualization/`: figure builders and FlyBody-backed animation writers.
-- `beestack/utils/`: pure shared helpers.
+- `beestack/utils/`: shared numerical helpers and explicit file-I/O adapters.
 
-`orchestrator.py` composes the modules into the deterministic v0 closed loop.
+`orchestrator.py` composes the modules into the deterministic reduced closed loop.

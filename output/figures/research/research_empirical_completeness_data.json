@@ -12,10 +12,10 @@
   "schema": "beestack.figure_data.v1",
   "title": "Research empirical completeness",
   "values": [
-    1.0,
     0.0,
-    0.8,
-    1.0,
-    0.28875178634201437
+    0.0,
+    0.0,
+    0.0,
+    0.0
   ]
 }

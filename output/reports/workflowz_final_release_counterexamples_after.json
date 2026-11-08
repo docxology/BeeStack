@@ -1,0 +1,19 @@
+{
+  "scope": "Actual after-fix execution of the image-dependency and malformed-provider counterexamples.",
+  "jpeg_replacement": {
+    "current_before": true,
+    "current_after": false,
+    "jpeg_sealed": true
+  },
+  "malformed_locator": {
+    "rows": 2,
+    "error": null
+  },
+  "original_harness_scope_label": "final reviewer counterexamples executed before fixes; format parsing is not biology",
+  "execution_receipt": "wfz-beestack-final-release-counterexamples-after/16454-37481abac3cb4cfaaeab14bfb29bfe7a",
+  "path_variables": {
+    "PROJECT": ".",
+    "VALIDATION_STAGE": ".uv-cache/wfz-release/stage-001"
+  },
+  "serialization_note": "Portable path projection only; original exact arguments/output remain in source-bound GitVault launch receipts."
+}

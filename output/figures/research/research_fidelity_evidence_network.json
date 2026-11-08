@@ -38,22 +38,22 @@
   "fidelity": "research provenance diagnostic",
   "figure_path": "output/figures/research/research_fidelity_evidence_network.png",
   "manuscript_label": "fig:research_network",
-  "manuscript_section": "manuscript/11_research_synthesis.md",
+  "manuscript_section": "docs/manuscript/11_research_synthesis.md",
   "plot_data_path": "output/figures/research/research_fidelity_evidence_network_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 1073,
+    "height_px": 1072,
     "max_intensity": 255,
-    "mean_intensity": 250.75435057896448,
+    "mean_intensity": 250.64343042640203,
     "min_intensity": 24,
     "mode": "RGBA",
     "nonzero_histogram_bins": 232,
-    "std_intensity": 25.475758085769687,
-    "width_px": 1717
+    "std_intensity": 25.621880883851137,
+    "width_px": 1719
   },
   "regeneration_command": "uv run python scripts/run_research_suite.py",
   "schema": "beestack.figure.v1",
-  "source_data": "ResearchSuiteReport evidence records",
+  "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
   "source_dois": [
     "10.1371/journal.pcbi.1005510",
     "10.3233/DS-190026"
@@ -63,15 +63,15 @@
   "validation_status": "nonblank image, quality sidecar, and plot data passed",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 1.6,
+    "aspect_ratio": 1.604,
     "figure_role": "overview",
-    "height_px": 1073,
+    "height_px": 1072,
     "label_density": "dense",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 1717,
-    "min_dimension_px": 1073,
+    "max_dimension_px": 1719,
+    "min_dimension_px": 1072,
     "readability_status": "pass",
     "split_group": "research_evidence",
-    "width_px": 1717
+    "width_px": 1719
   }
 }

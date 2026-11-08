@@ -1,6 +1,6 @@
 # BeeBrain
 
-BeeBrain implements the v0 functional neural architecture:
+BeeBrain implements the reduced functional neural architecture:
 
 - antennal-lobe glomerular encoding and lateral inhibition,
 - mushroom-body sparse Kenyon-cell coding and associative readout,
@@ -33,3 +33,19 @@ skipped by scripts, while present payloads must pass real parser and validation
 paths. BeeBrain reduced neural dynamics should not be described as full
 spiking, connectome, or standard-brain registration until those validation
 artifacts exist.
+
+Waggle model-error means and relative improvement are nullable: absence is not an
+observed zero. Per-condition observation counts accompany the means; improvement
+requires both conditions and a positive no-antennae denominator. Missing comparisons
+add no confidence or vibration credit, and cannot supply empirical recruitment
+alignment. Antennal left/right deflections use separate observed-channel denominators
+and retain missing-side nulls/counts. Calcium template extraction requires baseline
+and stimulus windows to fit the actual recording, just like the strict trial summary.
+Path-bearing dataset and end-to-end report serializers accept `project_root` explicitly.
+
+The integrated simulation owns one fixed, seeded PN-to-KC projection and reuses
+it across ticks; no global connectivity cache grows with runs. One-shot sparse
+coding remains deterministic. Winner counts use the floor of the sparsity
+budget, including an empty code when the budget is below one cell. Heading
+integration consumes `Observation.heading_deg`, a reduced full-bearing compass
+in degrees, never angular velocity or a 180-degree ocellar axis as a bearing.

@@ -38,22 +38,22 @@
   "fidelity": "FlyBody-backed render diagnostics plus reduced telemetry",
   "figure_path": "output/figures/methods/beebody_methods_telemetry_dashboard.png",
   "manuscript_label": "fig:body_methods_dashboard",
-  "manuscript_section": "manuscript/05_methods_body_swarm.md",
+  "manuscript_section": "docs/manuscript/05_methods_body_swarm.md",
   "plot_data_path": "output/figures/methods/beebody_methods_telemetry_dashboard_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 1088,
+    "height_px": 1085,
     "max_intensity": 255,
-    "mean_intensity": 243.53910161138924,
+    "mean_intensity": 243.62149970618253,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 42.004337629874485,
-    "width_px": 1786
+    "std_intensity": 41.591275895246625,
+    "width_px": 1788
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
   "schema": "beestack.figure.v1",
-  "source_data": "MethodsAnalysisReport and simulation records",
+  "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
   "source_dois": [
     "10.1038/s41586-025-09029-4",
     "10.1109/IROS.2012.6386109"
@@ -63,14 +63,14 @@
   "validation_status": "nonblank image, quality sidecar, and plot data passed",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 1.642,
+    "aspect_ratio": 1.648,
     "figure_role": "dashboard",
-    "height_px": 1088,
+    "height_px": 1085,
     "label_density": "dense",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 1786,
-    "min_dimension_px": 1088,
+    "max_dimension_px": 1788,
+    "min_dimension_px": 1085,
     "readability_status": "pass",
-    "width_px": 1786
+    "width_px": 1788
   }
 }

@@ -37,6 +37,7 @@ def main() -> int:
         args.output_dir,
         metadata_only=args.metadata_only,
         force=args.force,
+        project_root=project_root,
     )
     print(
         f"Cataloged {summary.catalog_count} files; "

@@ -1,0 +1,56 @@
+{
+  "scope": "actual registered publisher supplement; format parsing is not biological or connectivity validation",
+  "parser": {
+    "status": "unrecognized",
+    "rows": 0,
+    "first": null,
+    "last": null,
+    "var_connectivity_available": false
+  },
+  "url_diagnostic_counterexamples": [
+    {
+      "case": "userinfo",
+      "function": "validate_download_url",
+      "rejected": true,
+      "diagnostic_contains_fixture_secret": true
+    },
+    {
+      "case": "userinfo",
+      "function": "download_source_identity",
+      "rejected": false
+    },
+    {
+      "case": "scheme_query",
+      "function": "validate_download_url",
+      "rejected": true,
+      "diagnostic_contains_fixture_secret": true
+    },
+    {
+      "case": "scheme_query",
+      "function": "download_source_identity",
+      "rejected": false
+    },
+    {
+      "case": "foreign_query",
+      "function": "validate_download_url",
+      "rejected": true,
+      "diagnostic_contains_fixture_secret": true
+    },
+    {
+      "case": "foreign_query",
+      "function": "download_source_identity",
+      "rejected": false
+    },
+    {
+      "case": "invalid_port",
+      "function": "validate_download_url",
+      "rejected": true,
+      "diagnostic_contains_fixture_secret": true
+    },
+    {
+      "case": "invalid_port",
+      "function": "download_source_identity",
+      "rejected": false
+    }
+  ]
+}

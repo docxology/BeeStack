@@ -30,9 +30,45 @@ class BeeBodyPlanArtifact:
     patch_count: int
     patches: tuple[str, ...]
     calibration_summary: dict[str, Any] | None = None
+    source_notice_paths: tuple[str, ...] = ()
 
-    def as_dict(self) -> dict[str, Any]:
-        return project_relative_payload(asdict(self))
+    def as_dict(self, project_root: Path | None = None) -> dict[str, Any]:
+        return project_relative_payload(asdict(self), project_root)
+
+
+def _copy_source_notices(source_xml: Path, asset_dir: Path) -> tuple[str, ...]:
+    notices = []
+    if source_xml.parent.name == "assets" and source_xml.parents[2].name == "flybody":
+        notices = [
+            source_xml.parents[3] / name
+            for name in ("LICENSE", "NOTICE")
+            if (source_xml.parents[3] / name).is_file()
+        ]
+    if not notices:
+        from importlib.metadata import PackageNotFoundError, distribution
+
+        try:
+            dist = distribution("flybody")
+        except PackageNotFoundError:
+            return ()
+        files = dist.files or ()
+        if any(
+            Path(entry).name == source_xml.name
+            and Path(dist.locate_file(entry)).resolve() == source_xml.resolve()
+            for entry in files
+        ):
+            notices = [
+                Path(dist.locate_file(entry))
+                for entry in files
+                if Path(entry).name in {"LICENSE", "NOTICE"}
+                and any(part.endswith(".dist-info") for part in Path(entry).parts)
+            ]
+    copied = []
+    for notice in notices:
+        destination = asset_dir / f"{notice.name}.flybody"
+        shutil.copy2(notice, destination)
+        copied.append(str(destination))
+    return tuple(copied)
 
 
 def locate_flybody_body_plan(fork_path: Path | None = None) -> Path:
@@ -65,6 +101,8 @@ def write_modified_bee_body_plan(
     cfg: BeeStackConfig,
     output_dir: Path,
     fork_path: Path | None = None,
+    *,
+    project_root: Path | None = None,
 ) -> BeeBodyPlanArtifact:
     """Write a modified FlyBody MJCF asset set for an *Apis mellifera* worker.
 
@@ -82,8 +120,29 @@ def write_modified_bee_body_plan(
         if asset.suffix.lower() in {".obj", ".xml", ".stl"}:
             shutil.copy2(asset, asset_dir / asset.name)
 
-    tree = ET.parse(source_xml)
-    root = tree.getroot()
+    events = ET.iterparse(
+        source_xml,
+        events=("start", "comment"),
+        parser=ET.XMLParser(target=ET.TreeBuilder(insert_comments=True)),
+    )
+    preamble = []
+    started = False
+    for event, element in events:
+        if event == "start":
+            started = True
+        elif not started:
+            preamble.append(element)
+    root = events.root
+    for comment in reversed(preamble):
+        root.insert(0, comment)
+    root.insert(
+        0,
+        ET.Comment(
+            "Modified by BeeStack from the source model; retained source notices are recorded in the body-plan manifest."
+        ),
+    )
+    tree = ET.ElementTree(root)
+    source_notices = _copy_source_notices(source_xml, asset_dir)
     patches: list[str] = []
     _set(root, "model", cfg.body.species, patches, "model renamed to Apis worker target")
     asset_root = _required(root, "asset")
@@ -229,9 +288,11 @@ def write_modified_bee_body_plan(
         patch_count=len(patches),
         patches=tuple(patches),
         calibration_summary=bee_body_calibration_summary(cfg).as_dict(),
+        source_notice_paths=source_notices,
     )
     manifest_path.write_text(
-        json.dumps(artifact.as_dict(), indent=2, sort_keys=True) + "\n", encoding="utf-8"
+        json.dumps(artifact.as_dict(project_root), indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
     )
     return artifact
 

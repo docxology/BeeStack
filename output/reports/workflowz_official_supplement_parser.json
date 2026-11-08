@@ -1,0 +1,22 @@
+{
+  "scope": "actual registered publisher supplement; format parsing is not biological or connectivity validation",
+  "parser": {
+    "status": "parsed",
+    "rows": 48,
+    "first": {
+      "odor": "1HEX",
+      "condition_index": 0,
+      "original_p": 0.0001,
+      "fdr_p": 0.0004,
+      "signed_rank_w": 119.0
+    },
+    "last": {
+      "odor": "BZDA",
+      "condition_index": 7,
+      "original_p": 0.71,
+      "fdr_p": 0.71,
+      "signed_rank_w": 54.0
+    },
+    "var_connectivity_available": false
+  }
+}

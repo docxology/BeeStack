@@ -27,3 +27,25 @@ def test_download_headers_include_bearer_only_for_dryad(
         "https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/neurobiologie/ag_menzel/beebrain/download/_hsb/HBSGrey.zip"
     )
     assert "Authorization" not in anatomy
+
+
+@pytest.mark.parametrize(
+    "url",
+    [
+        "https://figshare.com/payload?source=datadryad.org",
+        "https://figshare.com/datadryad.org/payload",
+        "https://datadryad.org@figshare.com/payload",
+        "https://datadryad.org:444/payload",
+    ],
+)
+def test_headers_use_authorized_origin_not_substring(monkeypatch, url):
+    monkeypatch.setenv("DRYAD_API_TOKEN", "sentinel")
+    assert "Authorization" not in empirical_fetch._download_headers_for_url(url)
+
+
+def test_explicit_default_https_port_is_authorized(monkeypatch):
+    monkeypatch.setenv("DRYAD_API_TOKEN", "sentinel")
+    assert (
+        empirical_fetch._download_headers_for_url("https://datadryad.org:443/a")["Authorization"]
+        == "Bearer sentinel"
+    )

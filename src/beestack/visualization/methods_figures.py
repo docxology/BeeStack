@@ -32,6 +32,8 @@ def generate_methods_figures(
     report: MethodsAnalysisReport,
     records: tuple[dict[str, Any], ...],
     output_dir: Path,
+    *,
+    project_root: Path | None = None,
 ) -> list[Path]:
     """Generate publication-oriented methods-analysis figures."""
 
@@ -82,7 +84,9 @@ def generate_methods_figures(
             "regeneration_command": "uv run python scripts/run_methods_analysis.py",
         }
 
-    finalize_static_figures(paths, plot_data_for=_plot_data, sidecar_for=_sidecar)
+    finalize_static_figures(
+        paths, plot_data_for=_plot_data, sidecar_for=_sidecar, project_root=project_root
+    )
     return paths
 
 

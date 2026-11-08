@@ -210,7 +210,7 @@ def test_manuscript_figure_index_normalizes_project_absolute_artifact_paths() ->
         True,
     )
 
-    rows = manuscript_figure_index(report)
+    rows = manuscript_figure_index(report, project_root=project_root)
 
     assert rows[0]["artifact_path"] == "output/figures/beebody_motion_power_phase.png"
     with pytest.raises(ValueError, match="matching lengths"):
@@ -476,6 +476,14 @@ def test_methods_analysis_handles_missing_payloads_and_regeneration_commands() -
         ("b",) * len(paths),
         ("f",) * len(paths),
         ("ok",) * len(paths),
+        source_data=("fixture source",) * len(paths),
+        regeneration_commands=(
+            "uv run python scripts/generate_animations.py",
+            "uv run python scripts/analyze_empirical_bee_data.py",
+            "uv run python scripts/run_methods_analysis.py",
+            "uv run python scripts/run_research_suite.py",
+            "uv run python scripts/analysis_pipeline.py",
+        ),
     )
     panel = report.module_panels[0].__class__(
         "BeeBody",

@@ -23,7 +23,7 @@ licenses from publication/atlas access notes.
 | Nouvian biogenic amines [@nouvian2017dryad] | 10.5061/dryad.rj10c | Dryad CC0 |
 | Hadjitofi–Webb dance follower kinematics [@hadjitofi2024figshare] | 10.6084/m9.figshare.24715977.v1 | Figshare CC BY 4.0 |
 | Honey-Bee Standard Brain ecosystem [@rybak2010digital] | — | Atlas, public |
-| Galizia glomerular code [@galizia1999glomerular] | 10.1038/6406 | Nature Neuroscience |
+| Galizia glomerular code [@galizia1999glomerular] | 10.1038/8144 | Nature Neuroscience |
 | Szyszka Granger AL dynamics [@szyszka2023granger] | 10.3390/insects14060539 | MDPI open access |
 | Kaneko Kenyon-cell subtypes [@kaneko2016kenyon] | 10.1186/s40851-016-0051-6 | Zoological Letters open access |
 
@@ -35,7 +35,7 @@ sections that use the data, and in the bibliography.
 
 External repositories listed in `output/data/external_dataset_registry.json`
 (BeeBiome, BeeBDC, EPA hive matrices, survey portals) are scholarship and
-roadmap targets only in v0. SRA and open-government datasets carry their
+roadmap targets only in the current implementation. SRA and open-government datasets carry their
 host terms; survey microdata must not be ingested without explicit license
 and governance review even when summary statistics are public
 [@rechlaval2025beebiome; @epa2024hivematrices; @auburn2025survey].
@@ -67,7 +67,7 @@ plausible dual-use exposure in three directions:
    in either direction, and the limitations enumeration makes this
    explicit.
 2. **Wildlife monitoring.** Sensor-stream coupling through the
-   Hiveopolis adapter [@narsicht2020hiveopolis] could expose
+   Hiveopolis adapter [@hiveopolis2019project] could expose
    individually-monitored hives. The current code path emits adapter
    *schemas* only and does not exfiltrate any sensor data.
 3. **Biosecurity.** Detailed dance-decoding or pheromone-coupling

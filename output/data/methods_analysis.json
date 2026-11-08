@@ -2,9 +2,9 @@
   "all_validations_passed": false,
   "evidence_availability_counts": {
     "generated": 4,
-    "missing_optional": 0,
-    "network_gated_absent": 0,
-    "parsed": 2,
+    "missing_optional": 1,
+    "network_gated_absent": 1,
+    "parsed": 0,
     "registered_absent": 0
   },
   "figure_paths": [
@@ -33,7 +33,7 @@
       "claim": "BeeBody animations are FlyBody-backed and bee-like under cue scoring.",
       "claim_tier": "strict_flybody_mujoco_witness",
       "evidence_type": "visual_validation",
-      "manuscript_section": "manuscript/05_methods_body_swarm.md",
+      "manuscript_section": "docs/manuscript/05_methods_body_swarm.md",
       "module": "BeeBody",
       "regeneration_command": "uv run python scripts/verify_bee_render.py",
       "source_dois": [
@@ -48,7 +48,7 @@
     {
       "artifact_kind": "empirical_report",
       "artifact_path": "output/reports/empirical_analysis.md",
-      "availability_status": "parsed",
+      "availability_status": "network_gated_absent",
       "citation_keys": [
         "brandt2005standardbrain",
         "rybak2010digital",
@@ -62,7 +62,7 @@
       "claim": "BeeBrain uses real downloaded or cataloged anatomy/activity sources where present.",
       "claim_tier": "empirical_reduced_or_availability_gated",
       "evidence_type": "empirical_analysis",
-      "manuscript_section": "manuscript/06_methods_brain_mind.md",
+      "manuscript_section": "docs/manuscript/06_methods_brain_mind.md",
       "module": "BeeBrain",
       "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
       "source_dois": [
@@ -83,7 +83,7 @@
     {
       "artifact_kind": "empirical_report",
       "artifact_path": "output/reports/waggle_follower_analysis.md",
-      "availability_status": "parsed",
+      "availability_status": "missing_optional",
       "citation_keys": [
         "hadjitofi2024figshare",
         "hadjitofi2024currentbiology"
@@ -91,7 +91,7 @@
       "claim": "BeeBrain integrates curated waggle follower antennal-position decoding evidence when local.",
       "claim_tier": "follower_antennal_positioning_evidence",
       "evidence_type": "waggle_follower_analysis",
-      "manuscript_section": "manuscript/06_methods_brain_mind.md",
+      "manuscript_section": "docs/manuscript/06_methods_brain_mind.md",
       "module": "BeeBrain",
       "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
       "source_dois": [
@@ -114,7 +114,7 @@
       "claim": "BeeMind exposes selected and competing policies with finite EFE terms.",
       "claim_tier": "reduced_validated_kernel",
       "evidence_type": "policy_diagnostic",
-      "manuscript_section": "manuscript/06_methods_brain_mind.md",
+      "manuscript_section": "docs/manuscript/06_methods_brain_mind.md",
       "module": "BeeMind",
       "regeneration_command": "uv run python scripts/run_methods_analysis.py",
       "source_dois": [
@@ -139,7 +139,7 @@
       "claim": "BeeSwarm production waggle/collision scenes record actual MuJoCo contacts.",
       "claim_tier": "strict_small_scene_not_colony_dynamics",
       "evidence_type": "strict_contact_physics",
-      "manuscript_section": "manuscript/05_methods_body_swarm.md",
+      "manuscript_section": "docs/manuscript/05_methods_body_swarm.md",
       "module": "BeeSwarm",
       "regeneration_command": "uv run python scripts/verify_bee_render.py",
       "source_dois": [
@@ -159,16 +159,16 @@
       "availability_status": "generated",
       "citation_keys": [
         "kronenberg1982colonial",
-        "johnson2009self",
         "becher2014beehave"
       ],
       "claim": "BeeNiche reports comb, thermal, and forage metrics through deterministic kernels.",
       "claim_tier": "reduced_validated_kernel",
       "evidence_type": "niche_diagnostic",
-      "manuscript_section": "manuscript/07_methods_niche.md",
+      "manuscript_section": "docs/manuscript/07_methods_niche.md",
       "module": "BeeNiche",
       "regeneration_command": "uv run python scripts/run_methods_analysis.py",
       "source_dois": [
+        "10.1007/BF00688889",
         "10.1111/1365-2664.12222"
       ],
       "variable_tokens": [
@@ -198,7 +198,7 @@
           "claim": "BeeBody animations are FlyBody-backed and bee-like under cue scoring.",
           "claim_tier": "strict_flybody_mujoco_witness",
           "evidence_type": "visual_validation",
-          "manuscript_section": "manuscript/05_methods_body_swarm.md",
+          "manuscript_section": "docs/manuscript/05_methods_body_swarm.md",
           "module": "BeeBody",
           "regeneration_command": "uv run python scripts/verify_bee_render.py",
           "source_dois": [
@@ -220,7 +220,7 @@
       ],
       "quantitative_metrics": {
         "bee_silhouette_score": 1.0,
-        "bee_visual_score": 0.9804109700520833,
+        "bee_visual_score": 0.9909041341145833,
         "contact_proxy_count": 3.0,
         "energy_drop_j": 0.0008210865967477332,
         "inertia_rescaling_score": 0.82,
@@ -238,7 +238,7 @@
             "name": "bee_visual_signature",
             "passed": true,
             "threshold": ">= 0.8",
-            "value": 0.9804109700520833
+            "value": 0.9909041341145833
           },
           {
             "detail": "Configured worker wingbeat remains honeybee-like",
@@ -293,8 +293,8 @@
         "animation_count": 3,
         "artifact_count": 11,
         "artifact_paths": [
-          "output/animations/beebody_flybody_morphology.gif",
           "output/animations/beebody_flybody_flight.gif",
+          "output/animations/beebody_flybody_morphology.gif",
           "output/animations/beeswarm_10_beebody_collision.gif",
           "output/figures/beebody_beeswarm_micro_macro_calibration.png",
           "output/figures/beebody_motion_power_phase.png",
@@ -305,46 +305,85 @@
           "output/figures/renders/beeswarm_10_beebody_collision_contact_sheet.png",
           "output/figures/research/beebody_method_diagnostics.png"
         ],
+        "availability_statuses": [
+          "unrecorded",
+          "unrecorded",
+          "unrecorded",
+          "unrecorded",
+          "unrecorded",
+          "unrecorded",
+          "unrecorded",
+          "unrecorded",
+          "unrecorded",
+          "unrecorded",
+          "unrecorded"
+        ],
         "backends": [
-          "flybody.walk_imitation+rollout_and_render",
           "flybody.flight_imitation.WingBeatPatternGenerator+rollout_and_render",
+          "flybody.walk_imitation+rollout_and_render",
           "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image"
+          "Matplotlib",
+          "Matplotlib",
+          "Matplotlib",
+          "Matplotlib/pandas",
+          "FlyBody/MuJoCo",
+          "FlyBody/MuJoCo",
+          "FlyBody/MuJoCo",
+          "Matplotlib/pandas/NetworkX"
         ],
         "fidelity_levels": [
           "real_flybody_3d",
           "real_flybody_3d",
           "real_flybody_3d_contact_physics",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic"
+          "architecture schematic",
+          "reduced deterministic kernel diagnostic",
+          "reduced deterministic kernel diagnostic",
+          "FlyBody-backed render diagnostics plus reduced telemetry",
+          "real_flybody_3d contact sheet",
+          "real_flybody_3d contact sheet",
+          "real_flybody_3d contact sheet",
+          "FlyBody-backed render diagnostics plus reduced telemetry"
         ],
         "figure_count": 8,
         "module": "BeeBody",
+        "regeneration_commands": [
+          "uv run python scripts/generate_animations.py",
+          "uv run python scripts/generate_animations.py",
+          "uv run python scripts/generate_animations.py",
+          "uv run python scripts/analysis_pipeline.py",
+          "uv run python scripts/analysis_pipeline.py",
+          "uv run python scripts/analysis_pipeline.py",
+          "uv run python scripts/run_methods_analysis.py",
+          "uv run python scripts/generate_animations.py",
+          "uv run python scripts/generate_animations.py",
+          "uv run python scripts/generate_animations.py",
+          "uv run python scripts/run_research_suite.py"
+        ],
+        "source_data": [
+          "output/animations/flybody_bee/assets/apis_mellifera_worker.xml",
+          "output/animations/flybody_bee/assets/apis_mellifera_worker.xml",
+          "output/animations/flybody_scenes/collision/body_plan/assets/apis_mellifera_worker.xml",
+          "output/data/simulation_records.json and module coverage records",
+          "output/data/simulation_records.json and module coverage records",
+          "output/data/simulation_records.json and module coverage records",
+          "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+          "output/animations/beebody_flybody_flight_contact_sheet.png",
+          "output/animations/beebody_flybody_morphology_contact_sheet.png",
+          "output/animations/beeswarm_10_beebody_collision_contact_sheet.png",
+          "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory"
+        ],
         "validation_statuses": [
-          "verified",
-          "verified",
-          "verified",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure"
+          "generated",
+          "generated",
+          "generated",
+          "nonblank quality sidecar and plot data generated",
+          "nonblank quality sidecar and plot data generated",
+          "nonblank quality sidecar and plot data generated",
+          "nonblank image, quality sidecar, and plot data passed",
+          "nonblank contact sheet with plot data",
+          "nonblank contact sheet with plot data",
+          "nonblank contact sheet with plot data",
+          "nonblank image, quality sidecar, and plot data passed"
         ]
       }
     },
@@ -359,7 +398,7 @@
         {
           "artifact_kind": "empirical_report",
           "artifact_path": "output/reports/empirical_analysis.md",
-          "availability_status": "parsed",
+          "availability_status": "network_gated_absent",
           "citation_keys": [
             "brandt2005standardbrain",
             "rybak2010digital",
@@ -373,7 +412,7 @@
           "claim": "BeeBrain uses real downloaded or cataloged anatomy/activity sources where present.",
           "claim_tier": "empirical_reduced_or_availability_gated",
           "evidence_type": "empirical_analysis",
-          "manuscript_section": "manuscript/06_methods_brain_mind.md",
+          "manuscript_section": "docs/manuscript/06_methods_brain_mind.md",
           "module": "BeeBrain",
           "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
           "source_dois": [
@@ -394,7 +433,7 @@
         {
           "artifact_kind": "empirical_report",
           "artifact_path": "output/reports/waggle_follower_analysis.md",
-          "availability_status": "parsed",
+          "availability_status": "missing_optional",
           "citation_keys": [
             "hadjitofi2024figshare",
             "hadjitofi2024currentbiology"
@@ -402,7 +441,7 @@
           "claim": "BeeBrain integrates curated waggle follower antennal-position decoding evidence when local.",
           "claim_tier": "follower_antennal_positioning_evidence",
           "evidence_type": "waggle_follower_analysis",
-          "manuscript_section": "manuscript/06_methods_brain_mind.md",
+          "manuscript_section": "docs/manuscript/06_methods_brain_mind.md",
           "module": "BeeBrain",
           "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
           "source_dois": [
@@ -424,100 +463,109 @@
         "AL/MB/CX reduced kernel validation"
       ],
       "quantitative_metrics": {
-        "anatomy_inventory_count": 7.0,
-        "brain_data_parseable_fraction": 0.7,
-        "brain_source_verified_fraction": 1.0,
+        "anatomy_inventory_count": 0.0,
+        "brain_data_parseable_fraction": 0.0,
+        "brain_source_verified_fraction": 0.0,
         "calcium_dataset_count": 0.0,
-        "empirical_panel_count": 48.0,
+        "empirical_panel_count": 0.0,
         "enabled_dataset_count": 10.0,
-        "mean_odor_separability": 0.6511059958748603,
-        "neuropil_count": 22.0,
-        "region_response_class_count": 6.0,
-        "template_count": 24.0,
-        "waggle_decoding_improvement": 0.24776741229159377,
-        "waggle_follower_confidence": 0.28875178634201437
+        "mean_odor_separability": 0.0,
+        "neuropil_count": 0.0,
+        "region_response_class_count": 0.0,
+        "template_count": 0.0,
+        "waggle_both_antennae_error_count": 0.0,
+        "waggle_follower_confidence": 0.0,
+        "waggle_no_antennae_error_count": 0.0
       },
       "validation_panel": {
         "checks": [
           {
             "detail": "Empirical templates are available for stack integration",
             "name": "template_bank",
-            "passed": true,
+            "passed": false,
             "threshold": ">= 2",
-            "value": 24.0
+            "value": 0.0
           },
           {
             "detail": "Honeybee Standard Brain assets are inventoried when local",
             "name": "anatomy_inventory",
-            "passed": true,
+            "passed": false,
             "threshold": "> 0",
-            "value": 7
+            "value": 0
           },
           {
             "detail": "Hadjitofi-Webb waggle-following data is parsed or explicitly gapped",
             "name": "waggle_follower_source",
-            "passed": true,
+            "passed": false,
             "threshold": "present or declared gap",
-            "value": true
+            "value": false
           },
           {
             "detail": "Curated BeeBrain sources are parseable or source-verified blockers",
             "name": "brain_parseability_target",
             "passed": false,
             "threshold": ">= 0.8 or all blockers source-verified",
-            "value": 0.7
+            "value": 0
           },
           {
             "detail": "empirical panels present",
             "name": "empirical_panels_present",
-            "passed": true,
+            "passed": false,
             "threshold": "> 0",
-            "value": 48.0
+            "value": 0.0
           },
           {
             "detail": "template bank present",
             "name": "template_bank_present",
-            "passed": true,
+            "passed": false,
             "threshold": "> 0",
-            "value": 24.0
+            "value": 0.0
           },
           {
             "detail": "anatomy inventory present",
             "name": "anatomy_inventory_present",
-            "passed": true,
+            "passed": false,
             "threshold": "> 0",
-            "value": 7.0
+            "value": 0.0
           },
           {
             "detail": "calcium gap declared",
             "name": "calcium_gap_declared",
-            "passed": true,
+            "passed": false,
             "threshold": "present or declared gap",
             "value": 0.0
           },
           {
             "detail": "waggle gap declared",
             "name": "waggle_gap_declared",
-            "passed": true,
+            "passed": false,
             "threshold": "present or declared gap",
-            "value": 0.28875178634201437
+            "value": 0.0
           },
           {
             "detail": "parseability target satisfied",
             "name": "parseability_target_satisfied",
             "passed": false,
             "threshold": ">= 0.8 or source-verified blockers",
-            "value": 0.7
+            "value": 0.0
           }
         ],
         "failed_checks": [
+          "template_bank",
+          "anatomy_inventory",
+          "waggle_follower_source",
           "brain_parseability_target",
+          "empirical_panels_present",
+          "template_bank_present",
+          "anatomy_inventory_present",
+          "calcium_gap_declared",
+          "waggle_gap_declared",
           "parseability_target_satisfied"
         ],
         "module": "BeeBrain",
-        "passed_count": 8,
+        "passed_count": 0,
         "validation_count": 10,
-        "validation_fraction": 0.8
+        "validation_fraction": 0.0
       },
       "visualization_panel": {
         "animation_count": 1,
@@ -546,79 +594,151 @@
           "output/figures/research/beebrain_empirical_evidence_map.png",
           "output/figures/research/research_empirical_completeness.png"
         ],
+        "availability_statuses": [
+          "unrecorded",
+          "unrecorded",
+          "unrecorded",
+          "historical_unavailable",
+          "historical_unavailable",
+          "historical_unavailable",
+          "historical_unavailable",
+          "historical_unavailable",
+          "historical_unavailable",
+          "historical_unavailable",
+          "historical_unavailable",
+          "historical_unavailable",
+          "historical_unavailable",
+          "historical_unavailable",
+          "historical_unavailable",
+          "historical_unavailable",
+          "historical_unavailable",
+          "historical_unavailable",
+          "historical_unavailable",
+          "unrecorded",
+          "unrecorded",
+          "unrecorded"
+        ],
         "backends": [
           "matplotlib.funcanimation",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image"
+          "Matplotlib",
+          "Matplotlib",
+          "Matplotlib empirical-data renderer",
+          "Matplotlib empirical-data renderer",
+          "Matplotlib empirical-data renderer",
+          "matplotlib/networkx connectome renderer",
+          "matplotlib/networkx connectome renderer",
+          "matplotlib/networkx connectome renderer",
+          "Matplotlib empirical-data renderer",
+          "Matplotlib empirical-data renderer",
+          "Matplotlib empirical-data renderer",
+          "Matplotlib empirical-data renderer",
+          "Matplotlib empirical-data renderer",
+          "Matplotlib empirical-data renderer",
+          "Matplotlib empirical-data renderer",
+          "Matplotlib empirical-data renderer",
+          "Matplotlib empirical-data renderer",
+          "Matplotlib empirical-data renderer",
+          "Matplotlib/pandas",
+          "Matplotlib/pandas/NetworkX",
+          "Matplotlib/pandas/NetworkX"
         ],
         "fidelity_levels": [
           "reduced_schematic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic"
+          "architecture schematic",
+          "empirical summary projected into a reduced BeeBrain contract",
+          "empirical dataset availability diagnostic",
+          "empirical waggle/follower summary diagnostic",
+          "empirical dataset availability diagnostic",
+          "Honeybee Standard Brain structural projectome diagnostic",
+          "Honeybee Standard Brain structural projectome diagnostic",
+          "Honeybee Standard Brain structural projectome diagnostic",
+          "empirical panel summary diagnostic",
+          "empirical atlas/inventory summary diagnostic",
+          "empirical atlas/inventory summary diagnostic",
+          "empirical panel summary diagnostic",
+          "empirical atlas/inventory summary diagnostic",
+          "empirical panel summary diagnostic",
+          "empirical panel summary diagnostic",
+          "empirical panel summary diagnostic",
+          "empirical waggle/follower summary diagnostic",
+          "empirical waggle/follower summary diagnostic",
+          "empirical completeness summary projected into reduced BeeBrain contracts",
+          "empirical summary projected into reduced BeeBrain contracts",
+          "empirical summary projected into reduced BeeBrain contracts"
         ],
         "figure_count": 21,
         "module": "BeeBrain",
+        "regeneration_commands": [
+          "uv run python scripts/generate_animations.py",
+          "uv run python scripts/analysis_pipeline.py",
+          "uv run python scripts/analysis_pipeline.py",
+          "uv run python scripts/analyze_empirical_bee_data.py",
+          "uv run python scripts/analyze_empirical_bee_data.py",
+          "uv run python scripts/analyze_empirical_bee_data.py",
+          "uv run python scripts/analyze_empirical_bee_data.py",
+          "uv run python scripts/analyze_empirical_bee_data.py",
+          "uv run python scripts/analyze_empirical_bee_data.py",
+          "uv run python scripts/analyze_empirical_bee_data.py",
+          "uv run python scripts/analyze_empirical_bee_data.py",
+          "uv run python scripts/analyze_empirical_bee_data.py",
+          "uv run python scripts/analyze_empirical_bee_data.py",
+          "uv run python scripts/analyze_empirical_bee_data.py",
+          "uv run python scripts/analyze_empirical_bee_data.py",
+          "uv run python scripts/analyze_empirical_bee_data.py",
+          "uv run python scripts/analyze_empirical_bee_data.py",
+          "uv run python scripts/analyze_empirical_bee_data.py",
+          "uv run python scripts/analyze_empirical_bee_data.py",
+          "uv run python scripts/run_methods_analysis.py",
+          "uv run python scripts/run_research_suite.py",
+          "uv run python scripts/run_research_suite.py"
+        ],
+        "source_data": [
+          "unrecorded",
+          "output/data/simulation_records.json and module coverage records",
+          "output/data/simulation_records.json and module coverage records",
+          "output/data/brain_data_completeness.json and empirical analysis report",
+          "output/data/waggle_follower_analysis.json",
+          "output/data/brain_data_completeness.json",
+          "output/data/brain_data_completeness.json",
+          "output/data/bee_brain_connectome.json",
+          "output/data/bee_brain_connectome.json",
+          "output/data/empirical_analysis.json",
+          "output/data/bee_brain_end_to_end_report.json",
+          "output/data/bee_brain_connectome.json",
+          "output/data/empirical_analysis.json",
+          "output/data/bee_brain_end_to_end_report.json",
+          "output/data/empirical_analysis.json",
+          "output/data/empirical_analysis.json",
+          "output/data/empirical_analysis.json",
+          "output/data/waggle_follower_analysis.json",
+          "output/data/waggle_follower_analysis.json",
+          "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+          "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+          "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory"
+        ],
         "validation_statuses": [
-          "verified",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure"
+          "generated",
+          "nonblank quality sidecar and plot data generated",
+          "nonblank quality sidecar and plot data generated",
+          "nonblank empirical diagnostic with plot data",
+          "nonblank empirical diagnostic with plot data",
+          "nonblank empirical diagnostic with plot data",
+          "structural connectome tier witness with plot data",
+          "structural connectome tier witness with plot data",
+          "structural connectome tier witness with plot data",
+          "nonblank empirical diagnostic with plot data",
+          "nonblank empirical diagnostic with plot data",
+          "nonblank empirical diagnostic with plot data",
+          "nonblank empirical diagnostic with plot data",
+          "nonblank empirical diagnostic with plot data",
+          "nonblank empirical diagnostic with plot data",
+          "nonblank empirical diagnostic with plot data",
+          "nonblank empirical diagnostic with plot data",
+          "nonblank empirical diagnostic with plot data",
+          "nonblank empirical diagnostic with plot data",
+          "nonblank image, quality sidecar, and plot data passed",
+          "nonblank image, quality sidecar, and plot data passed",
+          "nonblank image, quality sidecar, and plot data passed"
         ]
       }
     },
@@ -641,7 +761,7 @@
           "claim": "BeeMind exposes selected and competing policies with finite EFE terms.",
           "claim_tier": "reduced_validated_kernel",
           "evidence_type": "policy_diagnostic",
-          "manuscript_section": "manuscript/06_methods_brain_mind.md",
+          "manuscript_section": "docs/manuscript/06_methods_brain_mind.md",
           "module": "BeeMind",
           "regeneration_command": "uv run python scripts/run_methods_analysis.py",
           "source_dois": [
@@ -723,25 +843,43 @@
           "output/figures/methods/beemind_methods_policy_landscape.png",
           "output/figures/research/beemind_policy_sensitivity.png"
         ],
+        "availability_statuses": [
+          "unrecorded",
+          "unrecorded",
+          "unrecorded",
+          "unrecorded"
+        ],
         "backends": [
           "matplotlib.funcanimation",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image"
+          "Matplotlib",
+          "Matplotlib/pandas",
+          "Matplotlib/pandas/NetworkX"
         ],
         "fidelity_levels": [
           "reduced_schematic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic"
+          "reduced deterministic kernel diagnostic",
+          "reduced deterministic kernel diagnostic",
+          "reduced deterministic kernel diagnostic"
         ],
         "figure_count": 3,
         "module": "BeeMind",
+        "regeneration_commands": [
+          "uv run python scripts/generate_animations.py",
+          "uv run python scripts/analysis_pipeline.py",
+          "uv run python scripts/run_methods_analysis.py",
+          "uv run python scripts/run_research_suite.py"
+        ],
+        "source_data": [
+          "unrecorded",
+          "output/data/simulation_records.json and module coverage records",
+          "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+          "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory"
+        ],
         "validation_statuses": [
-          "verified",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure"
+          "generated",
+          "nonblank quality sidecar and plot data generated",
+          "nonblank image, quality sidecar, and plot data passed",
+          "nonblank image, quality sidecar, and plot data passed"
         ]
       }
     },
@@ -767,7 +905,7 @@
           "claim": "BeeSwarm production waggle/collision scenes record actual MuJoCo contacts.",
           "claim_tier": "strict_small_scene_not_colony_dynamics",
           "evidence_type": "strict_contact_physics",
-          "manuscript_section": "manuscript/05_methods_body_swarm.md",
+          "manuscript_section": "docs/manuscript/05_methods_body_swarm.md",
           "module": "BeeSwarm",
           "regeneration_command": "uv run python scripts/verify_bee_render.py",
           "source_dois": [
@@ -886,6 +1024,7 @@
         "animation_count": 4,
         "artifact_count": 9,
         "artifact_paths": [
+          "output/animations/beeswarm_10_beebody_collision.gif",
           "output/animations/beeswarm_dance_pheromone.gif",
           "output/animations/beeswarm_waggle_dance_configured.gif",
           "output/animations/beeswarm_waggle_dance_long.gif",
@@ -893,43 +1032,75 @@
           "output/figures/methods/beeswarm_methods_contact_recruitment.png",
           "output/figures/renders/beeswarm_waggle_dance_configured_contact_sheet.png",
           "output/figures/renders/beeswarm_waggle_dance_long_contact_sheet.png",
-          "output/figures/research/beeswarm_contact_recruitment_scorecard.png",
-          "output/animations/beeswarm_10_beebody_collision.gif"
+          "output/figures/research/beeswarm_contact_recruitment_scorecard.png"
+        ],
+        "availability_statuses": [
+          "unrecorded",
+          "unrecorded",
+          "unrecorded",
+          "unrecorded",
+          "unrecorded",
+          "unrecorded",
+          "unrecorded",
+          "unrecorded",
+          "unrecorded"
         ],
         "backends": [
+          "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer",
           "matplotlib.funcanimation",
           "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer",
           "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer"
+          "Matplotlib",
+          "Matplotlib/pandas",
+          "FlyBody/MuJoCo",
+          "FlyBody/MuJoCo",
+          "Matplotlib/pandas/NetworkX"
         ],
         "fidelity_levels": [
+          "real_flybody_3d_contact_physics",
           "reduced_schematic",
           "real_flybody_3d_contact_physics",
           "real_flybody_3d_contact_physics",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "real_flybody_3d_contact_physics"
+          "reduced deterministic kernel diagnostic",
+          "strict scene contact/recruitment diagnostic with reduced-kernel context",
+          "real_flybody_3d contact sheet",
+          "real_flybody_3d contact sheet",
+          "research provenance diagnostic"
         ],
         "figure_count": 5,
         "module": "BeeSwarm",
+        "regeneration_commands": [
+          "unrecorded",
+          "uv run python scripts/generate_animations.py",
+          "uv run python scripts/generate_animations.py",
+          "uv run python scripts/generate_animations.py",
+          "uv run python scripts/analysis_pipeline.py",
+          "uv run python scripts/run_methods_analysis.py",
+          "uv run python scripts/generate_animations.py",
+          "uv run python scripts/generate_animations.py",
+          "uv run python scripts/run_research_suite.py"
+        ],
+        "source_data": [
+          "output/animations/flybody_scenes/collision/body_plan/assets/apis_mellifera_worker.xml",
+          "unrecorded",
+          "output/animations/flybody_scenes/waggle/body_plan/assets/apis_mellifera_worker.xml",
+          "output/animations/flybody_scenes/waggle_long/body_plan/assets/apis_mellifera_worker.xml",
+          "output/data/simulation_records.json and module coverage records",
+          "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+          "output/animations/beeswarm_waggle_dance_configured_contact_sheet.png",
+          "output/animations/beeswarm_waggle_dance_long_contact_sheet.png",
+          "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory"
+        ],
         "validation_statuses": [
-          "verified",
-          "verified",
-          "verified",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "generated"
+          "generated",
+          "generated",
+          "generated",
+          "generated",
+          "nonblank quality sidecar and plot data generated",
+          "nonblank image, quality sidecar, and plot data passed",
+          "nonblank contact sheet with plot data",
+          "nonblank contact sheet with plot data",
+          "nonblank image, quality sidecar, and plot data passed"
         ]
       }
     },
@@ -947,16 +1118,16 @@
           "availability_status": "generated",
           "citation_keys": [
             "kronenberg1982colonial",
-            "johnson2009self",
             "becher2014beehave"
           ],
           "claim": "BeeNiche reports comb, thermal, and forage metrics through deterministic kernels.",
           "claim_tier": "reduced_validated_kernel",
           "evidence_type": "niche_diagnostic",
-          "manuscript_section": "manuscript/07_methods_niche.md",
+          "manuscript_section": "docs/manuscript/07_methods_niche.md",
           "module": "BeeNiche",
           "regeneration_command": "uv run python scripts/run_methods_analysis.py",
           "source_dois": [
+            "10.1007/BF00688889",
             "10.1111/1365-2664.12222"
           ],
           "variable_tokens": [
@@ -1051,36 +1222,60 @@
           "output/figures/methods/beeniche_methods_comb_thermal.png",
           "output/figures/research/beeniche_thermal_comb_scorecard.png"
         ],
+        "availability_statuses": [
+          "unrecorded",
+          "unrecorded",
+          "unrecorded",
+          "unrecorded",
+          "unrecorded",
+          "unrecorded"
+        ],
         "backends": [
           "matplotlib.funcanimation",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image",
-          "matplotlib/networkx/scikit-image"
+          "Matplotlib",
+          "Matplotlib",
+          "Matplotlib",
+          "Matplotlib/pandas",
+          "Matplotlib/pandas/NetworkX"
         ],
         "fidelity_levels": [
           "reduced_schematic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic",
-          "research_diagnostic"
+          "architecture schematic",
+          "reduced deterministic kernel diagnostic",
+          "reduced deterministic kernel diagnostic",
+          "reduced deterministic kernel diagnostic",
+          "research provenance diagnostic"
         ],
         "figure_count": 5,
         "module": "BeeNiche",
+        "regeneration_commands": [
+          "uv run python scripts/generate_animations.py",
+          "uv run python scripts/analysis_pipeline.py",
+          "uv run python scripts/analysis_pipeline.py",
+          "uv run python scripts/analysis_pipeline.py",
+          "uv run python scripts/run_methods_analysis.py",
+          "uv run python scripts/run_research_suite.py"
+        ],
+        "source_data": [
+          "unrecorded",
+          "output/data/simulation_records.json and module coverage records",
+          "output/data/simulation_records.json and module coverage records",
+          "output/data/simulation_records.json and module coverage records",
+          "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+          "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory"
+        ],
         "validation_statuses": [
-          "verified",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure",
-          "nonblank_static_figure"
+          "generated",
+          "nonblank quality sidecar and plot data generated",
+          "nonblank quality sidecar and plot data generated",
+          "nonblank quality sidecar and plot data generated",
+          "nonblank image, quality sidecar, and plot data passed",
+          "nonblank image, quality sidecar, and plot data passed"
         ]
       }
     }
   ],
-  "overall_validation_fraction": 0.96,
+  "overall_validation_fraction": 0.8,
   "scenario_sweeps": [
     {
       "dominant_output": "final_comb_fraction",
@@ -1176,7 +1371,7 @@
       ],
       "figure_alt_text": "BeeBody animations are FlyBody-backed and bee-like under cue scoring.",
       "figure_caption": "BeeBody animations are FlyBody-backed and bee-like under cue scoring.",
-      "manuscript_section": "manuscript/05_methods_body_swarm.md",
+      "manuscript_section": "docs/manuscript/05_methods_body_swarm.md",
       "method": "FlyBody task render path; reduced telemetry witness; bee morphology cue scoring; strict scene contact provenance",
       "module": "BeeBody",
       "source_dois": [
@@ -1188,7 +1383,7 @@
     {
       "artifact_kind": "empirical_report",
       "artifact_path": "output/reports/empirical_analysis.md",
-      "availability_status": "parsed",
+      "availability_status": "network_gated_absent",
       "citation_keys": [
         "brandt2005standardbrain",
         "rybak2010digital",
@@ -1207,7 +1402,7 @@
       ],
       "figure_alt_text": "BeeBrain uses real downloaded or cataloged anatomy/activity sources where present.",
       "figure_caption": "BeeBrain uses real downloaded or cataloged anatomy/activity sources where present.",
-      "manuscript_section": "manuscript/06_methods_brain_mind.md",
+      "manuscript_section": "docs/manuscript/06_methods_brain_mind.md",
       "method": "empirical anatomy inventory; workbook/CSV activity parsing; waggle follower antennal-position parsing; odor-template bank projection; AL/MB/CX reduced kernel validation",
       "module": "BeeBrain",
       "source_dois": [
@@ -1225,7 +1420,7 @@
     {
       "artifact_kind": "empirical_report",
       "artifact_path": "output/reports/waggle_follower_analysis.md",
-      "availability_status": "parsed",
+      "availability_status": "missing_optional",
       "citation_keys": [
         "hadjitofi2024figshare",
         "hadjitofi2024currentbiology"
@@ -1238,7 +1433,7 @@
       ],
       "figure_alt_text": "BeeBrain integrates curated waggle follower antennal-position decoding evidence when local.",
       "figure_caption": "BeeBrain integrates curated waggle follower antennal-position decoding evidence when local.",
-      "manuscript_section": "manuscript/06_methods_brain_mind.md",
+      "manuscript_section": "docs/manuscript/06_methods_brain_mind.md",
       "method": "empirical anatomy inventory; workbook/CSV activity parsing; waggle follower antennal-position parsing; odor-template bank projection; AL/MB/CX reduced kernel validation",
       "module": "BeeBrain",
       "source_dois": [
@@ -1263,7 +1458,7 @@
       ],
       "figure_alt_text": "BeeMind policy diagnostics with finite policy metrics and validation status.",
       "figure_caption": "BeeMind policy landscape showing finite expected-free-energy terms, candidate-policy margin, and deterministic action-contract outputs.",
-      "manuscript_section": "manuscript/06_methods_brain_mind.md",
+      "manuscript_section": "docs/manuscript/06_methods_brain_mind.md",
       "method": "expected-free-energy term decomposition; competing-policy margin analysis; belief and colony-need sensitivity; deterministic action contract mapping",
       "module": "BeeMind",
       "source_dois": [
@@ -1290,7 +1485,7 @@
       ],
       "figure_alt_text": "BeeSwarm production waggle/collision scenes record actual MuJoCo contacts.",
       "figure_caption": "BeeSwarm production waggle/collision scenes record actual MuJoCo contacts.",
-      "manuscript_section": "manuscript/05_methods_body_swarm.md",
+      "manuscript_section": "docs/manuscript/05_methods_body_swarm.md",
       "method": "strict FlyBody/MuJoCo contact scenes; BeeBody waggle follower-orientation telemetry; dance recruitment sensitivity; pheromone field stability; BEEHAVE-compatible colony summaries",
       "module": "BeeSwarm",
       "source_dois": [
@@ -1307,7 +1502,6 @@
       "availability_status": "generated",
       "citation_keys": [
         "kronenberg1982colonial",
-        "johnson2009self",
         "becher2014beehave"
       ],
       "claim": "BeeNiche reports comb, thermal, and forage metrics through deterministic kernels.",
@@ -1318,10 +1512,11 @@
       ],
       "figure_alt_text": "BeeNiche methods panel with comb, thermal, and forage-context diagnostics.",
       "figure_caption": "BeeNiche methods panel showing comb occupancy, brood thermal error, foraging-radius context, and deterministic niche-kernel validation.",
-      "manuscript_section": "manuscript/07_methods_niche.md",
+      "manuscript_section": "docs/manuscript/07_methods_niche.md",
       "method": "voxel comb occupancy metrics; brood thermal stability witness; forage landscape scenario fields; Hiveopolis/BEEHAVE adapter schemas",
       "module": "BeeNiche",
       "source_dois": [
+        "10.1007/BF00688889",
         "10.1111/1365-2664.12222"
       ],
       "unsupported_inference": "Does not support a full ecology or hive thermodynamics engine."
@@ -1330,14 +1525,766 @@
   "summary": "Science-first per-module methods panels connecting quantitative diagnostics, validation scorecards, visualization provenance, and manuscript evidence availability.",
   "title": "BeeStack Methods Analysis",
   "top_validation_gaps": [
+    "BeeBrain: template_bank",
+    "BeeBrain: anatomy_inventory",
+    "BeeBrain: waggle_follower_source",
     "BeeBrain: brain_parseability_target",
-    "BeeBrain: parseability_target_satisfied",
-    "Paoli MATLAB calcium traces are not yet local or parseable",
-    "Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.",
-    "Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset.",
-    "No heavyweight spiking simulator is required in the default path.",
-    "The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics.",
-    "No learned transition model or recursive social-belief inference yet."
+    "BeeBrain: empirical_panels_present",
+    "BeeBrain: template_bank_present",
+    "BeeBrain: anatomy_inventory_present",
+    "BeeBrain: calcium_gap_declared"
+  ],
+  "visualization_artifacts": [
+    {
+      "artifact_type": "animation",
+      "availability_status": "unrecorded",
+      "backend": "flybody.flight_imitation.WingBeatPatternGenerator+rollout_and_render",
+      "fidelity_level": "real_flybody_3d",
+      "path": "output/animations/beebody_flybody_flight.gif",
+      "regeneration_command": "uv run python scripts/generate_animations.py",
+      "source_data": "output/animations/flybody_bee/assets/apis_mellifera_worker.xml",
+      "validation_status": "generated"
+    },
+    {
+      "artifact_type": "animation",
+      "availability_status": "unrecorded",
+      "backend": "flybody.walk_imitation+rollout_and_render",
+      "fidelity_level": "real_flybody_3d",
+      "path": "output/animations/beebody_flybody_morphology.gif",
+      "regeneration_command": "uv run python scripts/generate_animations.py",
+      "source_data": "output/animations/flybody_bee/assets/apis_mellifera_worker.xml",
+      "validation_status": "generated"
+    },
+    {
+      "artifact_type": "animation",
+      "availability_status": "unrecorded",
+      "backend": "matplotlib.funcanimation",
+      "fidelity_level": "reduced_schematic",
+      "path": "output/animations/beebrain_neural_anatomy.gif",
+      "regeneration_command": "uv run python scripts/generate_animations.py",
+      "source_data": "unrecorded",
+      "validation_status": "generated"
+    },
+    {
+      "artifact_type": "animation",
+      "availability_status": "unrecorded",
+      "backend": "matplotlib.funcanimation",
+      "fidelity_level": "reduced_schematic",
+      "path": "output/animations/beemind_policy_beliefs.gif",
+      "regeneration_command": "uv run python scripts/generate_animations.py",
+      "source_data": "unrecorded",
+      "validation_status": "generated"
+    },
+    {
+      "artifact_type": "animation",
+      "availability_status": "unrecorded",
+      "backend": "matplotlib.funcanimation",
+      "fidelity_level": "reduced_schematic",
+      "path": "output/animations/beeniche_comb_thermal.gif",
+      "regeneration_command": "uv run python scripts/generate_animations.py",
+      "source_data": "unrecorded",
+      "validation_status": "generated"
+    },
+    {
+      "artifact_type": "animation",
+      "availability_status": "unrecorded",
+      "backend": "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer",
+      "fidelity_level": "real_flybody_3d_contact_physics",
+      "path": "output/animations/beeswarm_10_beebody_collision.gif",
+      "regeneration_command": "uv run python scripts/generate_animations.py",
+      "source_data": "output/animations/flybody_scenes/collision/body_plan/assets/apis_mellifera_worker.xml",
+      "validation_status": "generated"
+    },
+    {
+      "artifact_type": "animation",
+      "availability_status": "unrecorded",
+      "backend": "matplotlib.funcanimation",
+      "fidelity_level": "reduced_schematic",
+      "path": "output/animations/beeswarm_dance_pheromone.gif",
+      "regeneration_command": "uv run python scripts/generate_animations.py",
+      "source_data": "unrecorded",
+      "validation_status": "generated"
+    },
+    {
+      "artifact_type": "animation",
+      "availability_status": "unrecorded",
+      "backend": "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer",
+      "fidelity_level": "real_flybody_3d_contact_physics",
+      "path": "output/animations/beeswarm_waggle_dance_configured.gif",
+      "regeneration_command": "uv run python scripts/generate_animations.py",
+      "source_data": "output/animations/flybody_scenes/waggle/body_plan/assets/apis_mellifera_worker.xml",
+      "validation_status": "generated"
+    },
+    {
+      "artifact_type": "animation",
+      "availability_status": "unrecorded",
+      "backend": "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer",
+      "fidelity_level": "real_flybody_3d_contact_physics",
+      "path": "output/animations/beeswarm_waggle_dance_long.gif",
+      "regeneration_command": "uv run python scripts/generate_animations.py",
+      "source_data": "output/animations/flybody_scenes/waggle_long/body_plan/assets/apis_mellifera_worker.xml",
+      "validation_status": "generated"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib",
+      "fidelity_level": "architecture schematic",
+      "path": "output/figures/beebody_beeswarm_micro_macro_calibration.png",
+      "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "validation_status": "nonblank quality sidecar and plot data generated"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib",
+      "fidelity_level": "reduced deterministic kernel diagnostic",
+      "path": "output/figures/beebody_motion_power_phase.png",
+      "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "validation_status": "nonblank quality sidecar and plot data generated"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib",
+      "fidelity_level": "architecture schematic",
+      "path": "output/figures/beebrain_beemind_anatomy_policy_map.png",
+      "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "validation_status": "nonblank quality sidecar and plot data generated"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib",
+      "fidelity_level": "empirical summary projected into a reduced BeeBrain contract",
+      "path": "output/figures/beebrain_empirical_alignment_timeseries.png",
+      "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "validation_status": "nonblank quality sidecar and plot data generated"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib",
+      "fidelity_level": "reduced deterministic kernel diagnostic",
+      "path": "output/figures/beemind_policy_timeline.png",
+      "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "validation_status": "nonblank quality sidecar and plot data generated"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib",
+      "fidelity_level": "architecture schematic",
+      "path": "output/figures/beeniche_adapter_niche_map.png",
+      "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "validation_status": "nonblank quality sidecar and plot data generated"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib",
+      "fidelity_level": "reduced deterministic kernel diagnostic",
+      "path": "output/figures/beeniche_thermal_comb_panel.png",
+      "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "validation_status": "nonblank quality sidecar and plot data generated"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib",
+      "fidelity_level": "architecture schematic",
+      "path": "output/figures/beestack_contract_network.png",
+      "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "validation_status": "nonblank quality sidecar and plot data generated"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib",
+      "fidelity_level": "architecture schematic",
+      "path": "output/figures/beestack_evidence_ladder.png",
+      "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "validation_status": "nonblank quality sidecar and plot data generated"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib",
+      "fidelity_level": "architecture schematic",
+      "path": "output/figures/beestack_first_principles_claim_audit.png",
+      "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "validation_status": "nonblank quality sidecar and plot data generated"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib",
+      "fidelity_level": "architecture schematic",
+      "path": "output/figures/beestack_graphical_abstract.png",
+      "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "validation_status": "nonblank quality sidecar and plot data generated"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib",
+      "fidelity_level": "architecture schematic",
+      "path": "output/figures/beestack_pipeline_overview.png",
+      "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "validation_status": "nonblank quality sidecar and plot data generated"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib",
+      "fidelity_level": "reduced deterministic kernel diagnostic",
+      "path": "output/figures/beestack_scale_ladder.png",
+      "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "validation_status": "nonblank quality sidecar and plot data generated"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib",
+      "fidelity_level": "architecture schematic",
+      "path": "output/figures/beestack_scholarship_evidence_matrix.png",
+      "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "validation_status": "nonblank quality sidecar and plot data generated"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib",
+      "fidelity_level": "architecture schematic",
+      "path": "output/figures/beestack_validation_readiness_residuals.png",
+      "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "validation_status": "nonblank quality sidecar and plot data generated"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib",
+      "fidelity_level": "reduced deterministic kernel diagnostic",
+      "path": "output/figures/beeswarm_recruitment_task_allocation.png",
+      "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "validation_status": "nonblank quality sidecar and plot data generated"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib",
+      "fidelity_level": "reduced deterministic kernel diagnostic",
+      "path": "output/figures/body_energy_timeseries.png",
+      "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "validation_status": "nonblank quality sidecar and plot data generated"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib",
+      "fidelity_level": "reduced deterministic kernel diagnostic",
+      "path": "output/figures/comb_fraction_timeseries.png",
+      "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "validation_status": "nonblank quality sidecar and plot data generated"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "historical_unavailable",
+      "backend": "Matplotlib empirical-data renderer",
+      "fidelity_level": "empirical dataset availability diagnostic",
+      "path": "output/figures/empirical/bee_brain_multimodal_source_map.png",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "source_data": "output/data/brain_data_completeness.json and empirical analysis report",
+      "validation_status": "nonblank empirical diagnostic with plot data"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "historical_unavailable",
+      "backend": "Matplotlib empirical-data renderer",
+      "fidelity_level": "empirical waggle/follower summary diagnostic",
+      "path": "output/figures/empirical/beeswarm_waggle_recruitment_diagnostics.png",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "source_data": "output/data/waggle_follower_analysis.json",
+      "validation_status": "nonblank empirical diagnostic with plot data"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "historical_unavailable",
+      "backend": "Matplotlib empirical-data renderer",
+      "fidelity_level": "empirical dataset availability diagnostic",
+      "path": "output/figures/empirical/brain_data_completeness_matrix.png",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "source_data": "output/data/brain_data_completeness.json",
+      "validation_status": "nonblank empirical diagnostic with plot data"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "historical_unavailable",
+      "backend": "matplotlib/networkx connectome renderer",
+      "fidelity_level": "Honeybee Standard Brain structural projectome diagnostic",
+      "path": "output/figures/empirical/connectome_completeness_tiers.png",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "source_data": "output/data/brain_data_completeness.json",
+      "validation_status": "structural connectome tier witness with plot data"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "historical_unavailable",
+      "backend": "matplotlib/networkx connectome renderer",
+      "fidelity_level": "Honeybee Standard Brain structural projectome diagnostic",
+      "path": "output/figures/empirical/connectome_neuropil_module_map.png",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "source_data": "output/data/bee_brain_connectome.json",
+      "validation_status": "structural connectome tier witness with plot data"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "historical_unavailable",
+      "backend": "matplotlib/networkx connectome renderer",
+      "fidelity_level": "Honeybee Standard Brain structural projectome diagnostic",
+      "path": "output/figures/empirical/connectome_structural_graph.png",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "source_data": "output/data/bee_brain_connectome.json",
+      "validation_status": "structural connectome tier witness with plot data"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "historical_unavailable",
+      "backend": "Matplotlib empirical-data renderer",
+      "fidelity_level": "empirical panel summary diagnostic",
+      "path": "output/figures/empirical/empirical_activity_summary.png",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "source_data": "output/data/empirical_analysis.json",
+      "validation_status": "nonblank empirical diagnostic with plot data"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "historical_unavailable",
+      "backend": "Matplotlib empirical-data renderer",
+      "fidelity_level": "empirical atlas/inventory summary diagnostic",
+      "path": "output/figures/empirical/empirical_anatomy_assets.png",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "source_data": "output/data/bee_brain_end_to_end_report.json",
+      "validation_status": "nonblank empirical diagnostic with plot data"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "historical_unavailable",
+      "backend": "Matplotlib empirical-data renderer",
+      "fidelity_level": "empirical atlas/inventory summary diagnostic",
+      "path": "output/figures/empirical/empirical_anatomy_projection.png",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "source_data": "output/data/bee_brain_connectome.json",
+      "validation_status": "nonblank empirical diagnostic with plot data"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "historical_unavailable",
+      "backend": "Matplotlib empirical-data renderer",
+      "fidelity_level": "empirical panel summary diagnostic",
+      "path": "output/figures/empirical/empirical_antennal_movement.png",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "source_data": "output/data/empirical_analysis.json",
+      "validation_status": "nonblank empirical diagnostic with plot data"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "historical_unavailable",
+      "backend": "Matplotlib empirical-data renderer",
+      "fidelity_level": "empirical atlas/inventory summary diagnostic",
+      "path": "output/figures/empirical/empirical_neuropil_coverage.png",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "source_data": "output/data/bee_brain_end_to_end_report.json",
+      "validation_status": "nonblank empirical diagnostic with plot data"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "historical_unavailable",
+      "backend": "Matplotlib empirical-data renderer",
+      "fidelity_level": "empirical panel summary diagnostic",
+      "path": "output/figures/empirical/empirical_panel_heatmap.png",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "source_data": "output/data/empirical_analysis.json",
+      "validation_status": "nonblank empirical diagnostic with plot data"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "historical_unavailable",
+      "backend": "Matplotlib empirical-data renderer",
+      "fidelity_level": "empirical panel summary diagnostic",
+      "path": "output/figures/empirical/empirical_panel_quality.png",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "source_data": "output/data/empirical_analysis.json",
+      "validation_status": "nonblank empirical diagnostic with plot data"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "historical_unavailable",
+      "backend": "Matplotlib empirical-data renderer",
+      "fidelity_level": "empirical panel summary diagnostic",
+      "path": "output/figures/empirical/empirical_stack_alignment.png",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "source_data": "output/data/empirical_analysis.json",
+      "validation_status": "nonblank empirical diagnostic with plot data"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "historical_unavailable",
+      "backend": "Matplotlib empirical-data renderer",
+      "fidelity_level": "empirical waggle/follower summary diagnostic",
+      "path": "output/figures/empirical/waggle_follower_alignment.png",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "source_data": "output/data/waggle_follower_analysis.json",
+      "validation_status": "nonblank empirical diagnostic with plot data"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "historical_unavailable",
+      "backend": "Matplotlib empirical-data renderer",
+      "fidelity_level": "empirical waggle/follower summary diagnostic",
+      "path": "output/figures/empirical/waggle_phase_coupling.png",
+      "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+      "source_data": "output/data/waggle_follower_analysis.json",
+      "validation_status": "nonblank empirical diagnostic with plot data"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib",
+      "fidelity_level": "reduced deterministic kernel diagnostic",
+      "path": "output/figures/manuscript_figure_claim_detail.png",
+      "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "validation_status": "nonblank quality sidecar and plot data generated"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib",
+      "fidelity_level": "architecture schematic",
+      "path": "output/figures/manuscript_figure_claim_map.png",
+      "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "validation_status": "nonblank quality sidecar and plot data generated"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib/pandas",
+      "fidelity_level": "FlyBody-backed render diagnostics plus reduced telemetry",
+      "path": "output/figures/methods/beebody_methods_telemetry_dashboard.png",
+      "regeneration_command": "uv run python scripts/run_methods_analysis.py",
+      "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+      "validation_status": "nonblank image, quality sidecar, and plot data passed"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib/pandas",
+      "fidelity_level": "empirical completeness summary projected into reduced BeeBrain contracts",
+      "path": "output/figures/methods/beebrain_methods_empirical_completeness.png",
+      "regeneration_command": "uv run python scripts/run_methods_analysis.py",
+      "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+      "validation_status": "nonblank image, quality sidecar, and plot data passed"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib/pandas",
+      "fidelity_level": "reduced deterministic kernel diagnostic",
+      "path": "output/figures/methods/beemind_methods_policy_landscape.png",
+      "regeneration_command": "uv run python scripts/run_methods_analysis.py",
+      "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+      "validation_status": "nonblank image, quality sidecar, and plot data passed"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib/pandas",
+      "fidelity_level": "reduced deterministic kernel diagnostic",
+      "path": "output/figures/methods/beeniche_methods_comb_thermal.png",
+      "regeneration_command": "uv run python scripts/run_methods_analysis.py",
+      "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+      "validation_status": "nonblank image, quality sidecar, and plot data passed"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib/pandas",
+      "fidelity_level": "strict scene contact/recruitment diagnostic with reduced-kernel context",
+      "path": "output/figures/methods/beeswarm_methods_contact_recruitment.png",
+      "regeneration_command": "uv run python scripts/run_methods_analysis.py",
+      "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+      "validation_status": "nonblank image, quality sidecar, and plot data passed"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib/pandas",
+      "fidelity_level": "methods provenance diagnostic",
+      "path": "output/figures/methods/methods_dashboard_detail.png",
+      "regeneration_command": "uv run python scripts/run_methods_analysis.py",
+      "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+      "validation_status": "nonblank image, quality sidecar, and plot data passed"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib/pandas",
+      "fidelity_level": "methods provenance diagnostic",
+      "path": "output/figures/methods/methods_manuscript_evidence_index.png",
+      "regeneration_command": "uv run python scripts/run_methods_analysis.py",
+      "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+      "validation_status": "nonblank image, quality sidecar, and plot data passed"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib/pandas",
+      "fidelity_level": "methods provenance diagnostic",
+      "path": "output/figures/methods/methods_repo_dashboard.png",
+      "regeneration_command": "uv run python scripts/run_methods_analysis.py",
+      "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+      "validation_status": "nonblank image, quality sidecar, and plot data passed"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib",
+      "fidelity_level": "architecture schematic",
+      "path": "output/figures/module_contract_coverage.png",
+      "regeneration_command": "uv run python scripts/analysis_pipeline.py",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "validation_status": "nonblank quality sidecar and plot data generated"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "FlyBody/MuJoCo",
+      "fidelity_level": "real_flybody_3d contact sheet",
+      "path": "output/figures/renders/beebody_flybody_flight_contact_sheet.png",
+      "regeneration_command": "uv run python scripts/generate_animations.py",
+      "source_data": "output/animations/beebody_flybody_flight_contact_sheet.png",
+      "validation_status": "nonblank contact sheet with plot data"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "FlyBody/MuJoCo",
+      "fidelity_level": "real_flybody_3d contact sheet",
+      "path": "output/figures/renders/beebody_flybody_morphology_contact_sheet.png",
+      "regeneration_command": "uv run python scripts/generate_animations.py",
+      "source_data": "output/animations/beebody_flybody_morphology_contact_sheet.png",
+      "validation_status": "nonblank contact sheet with plot data"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "FlyBody/MuJoCo",
+      "fidelity_level": "real_flybody_3d contact sheet",
+      "path": "output/figures/renders/beeswarm_10_beebody_collision_contact_sheet.png",
+      "regeneration_command": "uv run python scripts/generate_animations.py",
+      "source_data": "output/animations/beeswarm_10_beebody_collision_contact_sheet.png",
+      "validation_status": "nonblank contact sheet with plot data"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "FlyBody/MuJoCo",
+      "fidelity_level": "real_flybody_3d contact sheet",
+      "path": "output/figures/renders/beeswarm_waggle_dance_configured_contact_sheet.png",
+      "regeneration_command": "uv run python scripts/generate_animations.py",
+      "source_data": "output/animations/beeswarm_waggle_dance_configured_contact_sheet.png",
+      "validation_status": "nonblank contact sheet with plot data"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "FlyBody/MuJoCo",
+      "fidelity_level": "real_flybody_3d contact sheet",
+      "path": "output/figures/renders/beeswarm_waggle_dance_long_contact_sheet.png",
+      "regeneration_command": "uv run python scripts/generate_animations.py",
+      "source_data": "output/animations/beeswarm_waggle_dance_long_contact_sheet.png",
+      "validation_status": "nonblank contact sheet with plot data"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib/pandas/NetworkX",
+      "fidelity_level": "FlyBody-backed render diagnostics plus reduced telemetry",
+      "path": "output/figures/research/beebody_method_diagnostics.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+      "validation_status": "nonblank image, quality sidecar, and plot data passed"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib/pandas/NetworkX",
+      "fidelity_level": "empirical summary projected into reduced BeeBrain contracts",
+      "path": "output/figures/research/beebrain_empirical_evidence_map.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+      "validation_status": "nonblank image, quality sidecar, and plot data passed"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib/pandas/NetworkX",
+      "fidelity_level": "reduced deterministic kernel diagnostic",
+      "path": "output/figures/research/beemind_policy_sensitivity.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+      "validation_status": "nonblank image, quality sidecar, and plot data passed"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib/pandas/NetworkX",
+      "fidelity_level": "research provenance diagnostic",
+      "path": "output/figures/research/beeniche_thermal_comb_scorecard.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+      "validation_status": "nonblank image, quality sidecar, and plot data passed"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib/pandas/NetworkX",
+      "fidelity_level": "research provenance diagnostic",
+      "path": "output/figures/research/beeswarm_contact_recruitment_scorecard.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+      "validation_status": "nonblank image, quality sidecar, and plot data passed"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib/pandas/NetworkX",
+      "fidelity_level": "empirical summary projected into reduced BeeBrain contracts",
+      "path": "output/figures/research/research_empirical_completeness.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+      "validation_status": "nonblank image, quality sidecar, and plot data passed"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib/pandas/NetworkX",
+      "fidelity_level": "reduced deterministic kernel diagnostic",
+      "path": "output/figures/research/research_evidence_detail.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+      "validation_status": "nonblank image, quality sidecar, and plot data passed"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib/pandas/NetworkX",
+      "fidelity_level": "research provenance diagnostic",
+      "path": "output/figures/research/research_fidelity_evidence_network.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+      "validation_status": "nonblank image, quality sidecar, and plot data passed"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib/pandas/NetworkX",
+      "fidelity_level": "research provenance diagnostic",
+      "path": "output/figures/research/research_module_scorecard_heatmap.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+      "validation_status": "nonblank image, quality sidecar, and plot data passed"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib/pandas/NetworkX",
+      "fidelity_level": "reduced deterministic kernel diagnostic",
+      "path": "output/figures/research/research_sensitivity_sweeps.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+      "validation_status": "nonblank image, quality sidecar, and plot data passed"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib/pandas/NetworkX",
+      "fidelity_level": "research provenance diagnostic",
+      "path": "output/figures/research/research_validation_scorecard.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+      "validation_status": "nonblank image, quality sidecar, and plot data passed"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib/pandas/NetworkX",
+      "fidelity_level": "research provenance diagnostic",
+      "path": "output/figures/research/research_visualization_inventory.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+      "validation_status": "nonblank image, quality sidecar, and plot data passed"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib/pandas synthesis dashboard",
+      "fidelity_level": "cross-stack synthesis diagnostic, not biological validation",
+      "path": "output/figures/research/stack_synthesis_dashboard.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "output/reports/stack_synthesis_review.json",
+      "validation_status": "nonblank synthesis diagnostic with plot data"
+    },
+    {
+      "artifact_type": "figure",
+      "availability_status": "unrecorded",
+      "backend": "Matplotlib/pandas synthesis dashboard",
+      "fidelity_level": "cross-stack synthesis diagnostic, not biological validation",
+      "path": "output/figures/research/stack_synthesis_findings_detail.png",
+      "regeneration_command": "uv run python scripts/run_research_suite.py",
+      "source_data": "output/reports/stack_synthesis_review.json",
+      "validation_status": "nonblank synthesis diagnostic with plot data"
+    },
+    {
+      "artifact_type": "interactive_html",
+      "availability_status": "unrecorded",
+      "backend": "unrecorded",
+      "fidelity_level": "unrecorded",
+      "path": "output/interactive/research_scorecards.html",
+      "regeneration_command": "unrecorded",
+      "source_data": "unrecorded",
+      "validation_status": "metadata_unavailable"
+    },
+    {
+      "artifact_type": "interactive_html",
+      "availability_status": "unrecorded",
+      "backend": "unrecorded",
+      "fidelity_level": "unrecorded",
+      "path": "output/interactive/research_sensitivity_sweeps.html",
+      "regeneration_command": "unrecorded",
+      "source_data": "unrecorded",
+      "validation_status": "metadata_unavailable"
+    }
   ],
   "visualization_count": 52
 }

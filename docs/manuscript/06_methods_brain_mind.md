@@ -73,7 +73,7 @@ detector additionally applies a fixed {{JOHNSTON_EVENT_MIN_FREQUENCY_HZ}} Hz vib
 rate). The dance decoder consumes those candidates plus the CX heading
 to produce a recruitment hypothesis in the `BrainState`'s waggle field.
 The distance estimate is a reduced-kernel baseline — a nominal
-1 s ↔ 1 km identity, **not** a species-calibrated von Frisch curve.
+1 s $\leftrightarrow$ 1 km identity, **not** a species-calibrated von Frisch curve.
 The Hadjitofi–Webb antennal-position tracks and article
 [@hadjitofi2024figshare; @hadjitofi2024currentbiology] anchor only
 the follower-orientation diagnostics (`WaggleFollowerSummary`), not
@@ -246,9 +246,11 @@ other module untouched.
 
 ## Relation to connectome and omics literature
 
-Recent honey-bee brain atlases combine single-cell and spatial
-transcriptomics with behavioural context
-[@g3journal2023scrna; @naturecomm2025spatialbrain]. Reference genomes and
+Single-nucleus and spatial transcriptomics describe worker-brain gene regulatory
+networks associated with behavioural maturation [@naturecomm2025spatialbrain].
+The single-cell study of developing worker prepupae and pupae
+[@g3journal2023scrna] is developmental context, not a brain-cell atlas or a
+validation target for AL–MB–CX dynamics. Reference genomes and
 HymenopteraMine annotation [@wallberg2019hav31; @walsh2022hgd] define
 what a genome-to-circuit join could look like. BeeStack's current BeeBrain
 path instead ingests the Honey-Bee Standard Brain structural atlas and

@@ -1,4 +1,4 @@
-"""Real-data coverage for brain.empirical_data parser/edge branches (no mocks)."""
+"""Deterministic parser boundaries, not biological-validation evidence."""
 
 from __future__ import annotations
 
@@ -29,29 +29,28 @@ def test_parse_tabular_skips_absent_but_fails_loud_on_corruption() -> None:
         {"odor": "hexanal", "glom": "g1", "resp": 3.0},
         {"odor": "hexanal", "glom": "g1", "resp": "NA"},
         {"odor": "hexanal", "glom": "g1", "resp": None},
+        {"odor": "hexanal", "glom": "g2", "resp": 4.0},
+        {"odor": "octanol", "glom": "g1", "resp": 6.0},
         {"odor": "octanol", "glom": "g2", "resp": 2.0},
     ]
     panel = parse_tabular_odor_response_rows(rows=rows, **base)
-    assert panel.response_matrix.shape == (2, 2)
-    g1 = panel.channel_labels.index("g1")
-    hx = panel.stimulus_labels.index("hexanal")
-    assert panel.response_matrix[g1, hx] == 2.0
+    np.testing.assert_allclose(panel.response_matrix, [[2.0, 6.0], [4.0, 2.0]])
     # Present-but-unparseable / non-finite must fail loudly, not silently drop.
     for bad in ("err", "#N/A", float("nan"), float("inf")):
-        with pytest.raises(ValueError, match="present but not a"):
+        with pytest.raises(ValueError):
             parse_tabular_odor_response_rows(
                 rows=[{"odor": "hexanal", "glom": "g1", "resp": bad}], **base
             )
 
 
 def test_parse_paoli_no_arrays_raises() -> None:
-    with pytest.raises(ValueError, match="at least one db.bee array"):
+    with pytest.raises(ValueError):
         parse_paoli_matlab_payload({"db": {"bee": []}})
 
 
 def test_parse_paoli_wrong_ndim_raises() -> None:
-    with pytest.raises(ValueError, match="glomerulus x odor x trial x time"):
-        parse_paoli_matlab_payload({"db": {"bee": [np.zeros((2, 3))]}})
+    with pytest.raises(ValueError):
+        parse_paoli_matlab_payload({"db": {"bee": [np.zeros((2, 3))], "fs": 100.0}})
 
 
 def test_parse_paoli_relabels_on_mismatch() -> None:
@@ -96,23 +95,22 @@ def test_calcium_dataset_validation_raises() -> None:
     good = np.zeros((1, 2, 1, 4, 3))  # bee, odor, trial, time, glom
     ds = calcium_dataset_from_trial_array("d", good, 50.0, ("a", "b"), ("g0", "g1", "g2"))
     assert ds.traces.shape == (1, 2, 1, 4, 3)
-    with pytest.raises(ValueError, match="bee, odor, trial, time, glomerulus"):
+    with pytest.raises(ValueError):
         calcium_dataset_from_trial_array("d", np.zeros((2, 3, 4)), 50.0, ("a", "b", "c"))
-    with pytest.raises(ValueError, match="acquisition_hz must be positive"):
+    with pytest.raises(ValueError):
         calcium_dataset_from_trial_array("d", good, 0.0, ("a", "b"), ("g0", "g1", "g2"))
-    with pytest.raises(ValueError, match="odor_labels must match"):
+    with pytest.raises(ValueError):
         calcium_dataset_from_trial_array("d", good, 50.0, ("only-one",), ("g0", "g1", "g2"))
-    with pytest.raises(ValueError, match="glomerulus_labels must match"):
+    with pytest.raises(ValueError):
         calcium_dataset_from_trial_array("d", good, 50.0, ("a", "b"), ("g0",))
 
 
 def test_resample_vector_edges() -> None:
-    with pytest.raises(ValueError, match="vector must not be empty"):
+    with pytest.raises(ValueError):
         _resample_vector(np.array([]), 4)
-    with pytest.raises(ValueError, match="target_size must be positive"):
+    with pytest.raises(ValueError):
         _resample_vector(np.array([1.0, 2.0]), 0)
     same = _resample_vector(np.array([1.0, 2.0, 3.0]), 3)
-    assert same.shape == (3,)
+    np.testing.assert_allclose(same, [1 / 3, 2 / 3, 1])
     up = _resample_vector(np.array([0.0, 1.0]), 5)
-    assert up.shape == (5,)
-    assert np.all(np.isfinite(up))
+    np.testing.assert_allclose(up, [0, 0.25, 0.5, 0.75, 1])

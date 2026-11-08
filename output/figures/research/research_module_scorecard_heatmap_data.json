@@ -13,7 +13,7 @@
       ],
       "metrics": {
         "bee_silhouette_score": 1.0,
-        "bee_visual_score": 0.9804109700520833,
+        "bee_visual_score": 0.9909041341145833,
         "body_mass_mg": 80.0,
         "contact_proxy_count": 3.0,
         "inertia_rescaling_score": 0.82,
@@ -29,7 +29,7 @@
           "name": "bee_visual_signature",
           "passed": true,
           "threshold": ">= 0.8",
-          "value": 0.9804109700520833
+          "value": 0.9909041341145833
         },
         {
           "detail": "Configured worker wingbeat remains honeybee-like",
@@ -57,45 +57,45 @@
         "The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics."
       ],
       "metrics": {
-        "anatomy_inventory_count": 7.0,
-        "brain_data_parseable_fraction": 0.7,
-        "empirical_panel_count": 48.0,
-        "mean_odor_separability": 0.6511059958748603,
+        "anatomy_inventory_count": 0.0,
+        "brain_data_parseable_fraction": 0.0,
+        "empirical_panel_count": 0.0,
+        "mean_odor_separability": 0.0,
         "registered_dataset_count": 10.0,
-        "source_verified_fraction": 1.0,
-        "template_count": 24.0,
-        "waggle_follower_confidence": 0.28875178634201437
+        "source_verified_fraction": 0.0,
+        "template_count": 0.0,
+        "waggle_follower_confidence": 0.0
       },
       "module": "BeeBrain",
-      "validation_fraction": 0.75,
+      "validation_fraction": 0.0,
       "validations": [
         {
           "detail": "Empirical templates are available for stack integration",
           "name": "template_bank",
-          "passed": true,
+          "passed": false,
           "threshold": ">= 2",
-          "value": 24.0
+          "value": 0.0
         },
         {
           "detail": "Honeybee Standard Brain assets are inventoried when local",
           "name": "anatomy_inventory",
-          "passed": true,
+          "passed": false,
           "threshold": "> 0",
-          "value": 7
+          "value": 0
         },
         {
           "detail": "Hadjitofi-Webb waggle-following data is parsed or explicitly gapped",
           "name": "waggle_follower_source",
-          "passed": true,
+          "passed": false,
           "threshold": "present or declared gap",
-          "value": true
+          "value": false
         },
         {
           "detail": "Curated BeeBrain sources are parseable or source-verified blockers",
           "name": "brain_parseability_target",
           "passed": false,
           "threshold": ">= 0.8 or all blockers source-verified",
-          "value": 0.7
+          "value": 0
         }
       ]
     },

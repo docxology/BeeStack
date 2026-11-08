@@ -1,10 +1,10 @@
 {
   "animations": [
     {
-      "amber_fraction": 0.021544596354166667,
+      "amber_fraction": 0.020641818576388887,
       "bee_like": true,
       "contact_sheet": "output/animations/beebody_flybody_morphology_contact_sheet.png",
-      "dark_fraction": 0.17631103515625,
+      "dark_fraction": 0.17811564127604165,
       "debug_aid_fraction": 0.0,
       "frame_count": 24,
       "gif": "output/animations/beebody_flybody_morphology.gif",
@@ -15,8 +15,8 @@
       ],
       "locomotion_mode": "walk",
       "locomotion_score": 1.0,
-      "mean_adjacent_motion_pixels": 213356.60869565216,
-      "membrane_fraction": 0.050507134331597224,
+      "mean_adjacent_motion_pixels": 208072.08695652173,
+      "membrane_fraction": 0.05331312391493056,
       "mjcf": "output/animations/flybody_bee/assets/apis_mellifera_worker.xml",
       "mjcf_features_missing": [],
       "mjcf_features_present": [
@@ -35,7 +35,7 @@
         "left antenna",
         "right antenna"
       ],
-      "motion_pixels": 609447,
+      "motion_pixels": 675513,
       "score": 1.0,
       "silhouette_features_missing": [],
       "silhouette_features_present": [
@@ -55,10 +55,10 @@
       "silhouette_score": 1.0
     },
     {
-      "amber_fraction": 0.023692762586805555,
+      "amber_fraction": 0.023505181206597222,
       "bee_like": true,
       "contact_sheet": "output/animations/beebody_flybody_flight_contact_sheet.png",
-      "dark_fraction": 0.33862806532118056,
+      "dark_fraction": 0.3381159125434028,
       "debug_aid_fraction": 0.0,
       "frame_count": 24,
       "gif": "output/animations/beebody_flybody_flight.gif",
@@ -69,8 +69,8 @@
       ],
       "locomotion_mode": "flight",
       "locomotion_score": 1.0,
-      "mean_adjacent_motion_pixels": 173460.13043478262,
-      "membrane_fraction": 0.01673516167534722,
+      "mean_adjacent_motion_pixels": 179441.86956521738,
+      "membrane_fraction": 0.018484022352430556,
       "mjcf": "output/animations/flybody_bee/assets/apis_mellifera_worker.xml",
       "mjcf_features_missing": [],
       "mjcf_features_present": [
@@ -89,8 +89,8 @@
         "left antenna",
         "right antenna"
       ],
-      "motion_pixels": 405786,
-      "score": 0.9804109700520833,
+      "motion_pixels": 519027,
+      "score": 0.9909041341145833,
       "silhouette_features_missing": [],
       "silhouette_features_present": [
         "fuller amber abdomen",
@@ -111,7 +111,7 @@
   ],
   "bee_like": true,
   "body_visual_passed": true,
-  "score": 0.9804109700520833,
+  "score": 0.9909041341145833,
   "silhouette_score": 1.0,
   "swarm": {
     "passed": true,
@@ -223,7 +223,7 @@
           "frames_with_any_contacts": 20,
           "frames_with_bee_bee_contacts": 20,
           "frames_with_floor_contacts": 3,
-          "min_contact_distance": -0.032476391711236306,
+          "min_contact_distance": -0.03247810612617867,
           "passed": true,
           "sample_contact_geoms": [
             "bee_00__contact_core<->bee_01__contact_core:-0.00073",
@@ -381,7 +381,7 @@
           "frames_with_any_contacts": 24,
           "frames_with_bee_bee_contacts": 24,
           "frames_with_floor_contacts": 22,
-          "min_contact_distance": -0.007146013856803874,
+          "min_contact_distance": -0.007145678300099613,
           "passed": true,
           "sample_contact_geoms": [
             "floor<->bee_00__contact_core:-0.00041",
@@ -767,7 +767,7 @@
           "frames_with_any_contacts": 96,
           "frames_with_bee_bee_contacts": 96,
           "frames_with_floor_contacts": 89,
-          "min_contact_distance": -0.007152310767314903,
+          "min_contact_distance": -0.007151945532773438,
           "passed": true,
           "sample_contact_geoms": [
             "floor<->bee_00__contact_core:-0.00041",

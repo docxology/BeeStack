@@ -1,0 +1,52 @@
+{
+  "scope": "isolated synthetic counterexamples, not empirical evidence",
+  "acquisition_rates": [
+    {
+      "case": "missing",
+      "accepted": true,
+      "acquisition_hz_repr": "100.0"
+    },
+    {
+      "case": "empty",
+      "accepted": true,
+      "acquisition_hz_repr": "100.0"
+    },
+    {
+      "case": "unequal",
+      "accepted": true,
+      "acquisition_hz_repr": "150.0"
+    },
+    {
+      "case": "nonfinite",
+      "accepted": true,
+      "acquisition_hz_repr": "nan"
+    }
+  ],
+  "unobserved_panel_cells": {
+    "response_matrix": [
+      [
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        2.0
+      ]
+    ],
+    "invented_zero_cells": 2
+  },
+  "ragged_templates": {
+    "returned": true,
+    "all_finite": false
+  },
+  "historical_waggle_without_raw_inputs": {
+    "passed": true,
+    "passed_checks": [
+      "hadjitofi_antenna_decoding_improvement",
+      "hadjitofi_both_antennae_beat_no_antennae",
+      "hadjitofi_parsed_track_count",
+      "beeswarm_orientation_error_target",
+      "beeswarm_orientation_confidence_target"
+    ]
+  }
+}

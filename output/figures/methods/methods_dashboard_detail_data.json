@@ -15,9 +15,9 @@
       "evidence_links": 2.0,
       "gap_count": 2.0,
       "id": "BeeBrain",
-      "metric_count": 12.0,
+      "metric_count": 13.0,
       "module": "BeeBrain",
-      "validation_fraction": 0.8,
+      "validation_fraction": 0.0,
       "visual_artifacts": 22.0
     },
     {

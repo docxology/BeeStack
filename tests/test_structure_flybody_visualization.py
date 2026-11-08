@@ -98,7 +98,7 @@ def test_source_and_project_directories_have_readme_and_agents() -> None:
 def test_body_and_scene_artifact_dicts_use_repo_relative_paths(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    monkeypatch.chdir(tmp_path)
+    monkeypatch.chdir(tmp_path.parent)
     body_plan = BeeBodyPlanArtifact(
         xml_path=str(tmp_path / "output" / "animations" / "bee" / "assets" / "bee.xml"),
         source_xml_path=str(tmp_path / ".venv" / "lib" / "flybody" / "fruitfly.xml"),
@@ -109,7 +109,7 @@ def test_body_and_scene_artifact_dicts_use_repo_relative_paths(
         calibration_summary={"wing_stroke_hz": 230.0},
     )
 
-    body_payload = body_plan.as_dict()
+    body_payload = body_plan.as_dict(project_root=tmp_path)
     assert body_payload["xml_path"] == "output/animations/bee/assets/bee.xml"
     assert body_payload["manifest_path"] == "output/animations/bee/manifest.json"
     assert body_payload["source_xml_path"] == ".venv/lib/flybody/fruitfly.xml"
@@ -166,7 +166,7 @@ def test_body_and_scene_artifact_dicts_use_repo_relative_paths(
         config=config,
     )
 
-    scene_payload = scene.as_dict()
+    scene_payload = scene.as_dict(project_root=tmp_path)
     assert scene_payload["gif_path"] == "output/animations/collision.gif"
     assert scene_payload["body_plan_xml_path"] == "output/animations/bee/assets/bee.xml"
     assert scene_payload["contact_report_path"] == "output/animations/contact_metrics.json"
@@ -186,7 +186,7 @@ def test_flybody_modification_plan_and_fallback_backend(
     assert {feature.name for feature in features} >= {"four_wing_hamuli", "apis_sensory_head"}
     rollout = adapter_smoke_rollout(cfg, zero_action(cfg), steps=2)
     assert len(rollout) == 2
-    assert rollout[-1]["backend"] in {"flybody", "fork-path", "reduced-fallback"}
+    assert rollout[-1]["backend"] == "reduced"
     with pytest.raises(ValueError, match="steps"):
         adapter_smoke_rollout(cfg, zero_action(cfg), steps=0)
     backend = FlyBodyBeeBackend(cfg, allow_reduced_fallback=False)
@@ -223,17 +223,17 @@ def test_flybody_modification_plan_and_fallback_backend(
     }
     with pytest.raises(ValueError, match="flybody_action_dim"):
         action_to_flybody_action(zero_action(cfg), flybody_action_dim=0)
+    with pytest.raises(FlyBodyUnavailableError):
+        backend.step(backend_step_state(), zero_action(cfg))
     if not backend.available:
-        with pytest.raises(FlyBodyUnavailableError):
-            backend.step(backend_step_state(), zero_action(cfg))
         with pytest.raises(FlyBodyUnavailableError):
             backend.create_walk_imitation_env()
 
     fork_backend = FlyBodyBeeBackend(cfg, fork_path=tmp_path, allow_reduced_fallback=True)
     if not flybody_adapter_module.flybody_available():
         assert fork_backend.runtime_status().execution_mode == "fork-path"
-        _, _, telemetry = fork_backend.step(backend_step_state(), zero_action(cfg))
-        assert telemetry.backend == "fork-path"
+    _, _, telemetry = fork_backend.step(backend_step_state(), zero_action(cfg))
+    assert telemetry.backend == "reduced"
     configured_fork_backend = FlyBodyBeeBackend(
         config_from_mapping({"flybody": {"local_fork_path": str(tmp_path)}})
     )

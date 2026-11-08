@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Thin orchestrator: publication readiness gate for BeeStack release 1.0."""
+"""Thin orchestrator: publication readiness gate for the current BeeStack release."""
 
 from __future__ import annotations
 

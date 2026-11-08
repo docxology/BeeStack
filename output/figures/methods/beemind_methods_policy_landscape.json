@@ -38,22 +38,22 @@
   "fidelity": "reduced deterministic kernel diagnostic",
   "figure_path": "output/figures/methods/beemind_methods_policy_landscape.png",
   "manuscript_label": "fig:mind_methods_policy",
-  "manuscript_section": "manuscript/06_methods_brain_mind.md",
+  "manuscript_section": "docs/manuscript/06_methods_brain_mind.md",
   "plot_data_path": "output/figures/methods/beemind_methods_policy_landscape_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 977,
+    "height_px": 974,
     "max_intensity": 255,
-    "mean_intensity": 236.8920849429909,
+    "mean_intensity": 236.891351796454,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 47.56960513212024,
-    "width_px": 1963
+    "std_intensity": 47.336201248297094,
+    "width_px": 1970
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
   "schema": "beestack.figure.v1",
-  "source_data": "MethodsAnalysisReport and policy-selection diagnostics",
+  "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
   "source_dois": [
     "10.1038/nrn2787",
     "10.1038/s41598-017-15249-0"
@@ -63,14 +63,14 @@
   "validation_status": "nonblank image, quality sidecar, and plot data passed",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 2.009,
+    "aspect_ratio": 2.023,
     "figure_role": "overview",
-    "height_px": 977,
+    "height_px": 974,
     "label_density": "moderate",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 1963,
-    "min_dimension_px": 977,
+    "max_dimension_px": 1970,
+    "min_dimension_px": 974,
     "readability_status": "pass",
-    "width_px": 1963
+    "width_px": 1970
   }
 }

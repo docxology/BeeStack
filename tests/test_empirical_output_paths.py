@@ -121,7 +121,7 @@ def test_bee_brain_end_to_end_report_normalizes_project_local_paths() -> None:
         known_gaps=(),
     )
 
-    payload = report.as_dict()
+    payload = report.as_dict(project_root)
 
     assert payload["figure_paths"] == ("output/figures/empirical/panel.png",)
     assert payload["anatomy_downloads"][0]["local_path"] == (

@@ -1,4 +1,4 @@
-# BeeStack v0 Analysis Report
+# BeeStack Analysis Report
 
 ## Simulation Summary
 
@@ -13,6 +13,7 @@
 - `final_mean_pheromone`: 0.0
 - `final_empirical_odor`: geraniol
 - `final_empirical_alignment`: 0.0
+- `dance_drive_provenance`: fixed synthetic reduced scenario, not sensory-decoded recruitment
 
 ## Final Task Allocation
 

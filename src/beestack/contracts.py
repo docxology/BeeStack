@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any
 
 import numpy as np
 from numpy.typing import NDArray
@@ -16,7 +15,7 @@ DomainName = str
 
 @dataclass(frozen=True)
 class Observation:
-    """BeeBody observation at the 100 Hz control boundary."""
+    """Control observation; heading is full-bearing degrees, angular velocity rad/s."""
 
     compound_eye_left: Array
     compound_eye_right: Array
@@ -34,6 +33,7 @@ class Observation:
     body_temperature_k: float
     linear_acceleration: Array
     angular_velocity: Array
+    heading_deg: float
 
 
 @dataclass(frozen=True)
@@ -79,6 +79,7 @@ def observation_schema(cfg: BeeStackConfig) -> dict[str, tuple[int, ...] | str]:
         "body_temperature_k": "kelvin",
         "linear_acceleration": (3,),
         "angular_velocity": (3,),
+        "heading_deg": "degrees [0, 360)",
     }
 
 
@@ -230,6 +231,7 @@ def zero_observation(cfg: BeeStackConfig, temperature_k: float = 307.15) -> Obse
         body_temperature_k=float(temperature_k),
         linear_acceleration=np.zeros(3, dtype=float),
         angular_velocity=np.zeros(3, dtype=float),
+        heading_deg=0.0,
     )
 
 
@@ -262,6 +264,7 @@ def flatten_observation(obs: Observation) -> Array:
         np.array([obs.body_temperature_k], dtype=float),
         obs.linear_acceleration,
         obs.angular_velocity,
+        np.array([obs.heading_deg], dtype=float),
     ]
     return np.concatenate(arrays).astype(float)
 
@@ -269,17 +272,16 @@ def flatten_observation(obs: Observation) -> Array:
 def validate_observation(obs: Observation, cfg: BeeStackConfig) -> None:
     """Validate an observation against the configured I/O contract."""
 
-    expected = observation_schema(cfg)
-    actual: dict[str, Any] = {
-        name: getattr(obs, name) for name in expected if name != "body_temperature_k"
-    }
-    for name, shape in expected.items():
-        if name == "body_temperature_k":
-            if obs.body_temperature_k <= 0:
-                raise ValueError("body_temperature_k must be positive")
-            continue
-        if actual[name].shape != shape:
-            raise ValueError(f"{name} shape {actual[name].shape} != {shape}")
+    for name, shape in observation_schema(cfg).items():
+        value = getattr(obs, name)
+        if not np.isfinite(value).all():
+            raise ValueError(f"{name} must be finite")
+        if isinstance(shape, tuple) and value.shape != shape:
+            raise ValueError(f"{name} shape {value.shape} != {shape}")
+    if obs.body_temperature_k <= 0:
+        raise ValueError("body_temperature_k must be positive")
+    if not 0 <= obs.heading_deg < 360:
+        raise ValueError("heading_deg must be in [0, 360)")
 
 
 def validate_action(action: Action, cfg: BeeStackConfig) -> None:
@@ -289,5 +291,10 @@ def validate_action(action: Action, cfg: BeeStackConfig) -> None:
         raise ValueError("legs action dimension does not match BodyConfig")
     if action.wings.shape != (cfg.body.wing_dof,):
         raise ValueError("wings action dimension does not match BodyConfig")
+    for name in ("legs", "wings", "mandibles", "proboscis"):
+        if not np.isfinite(getattr(action, name)).all():
+            raise ValueError(f"{name} must be finite")
+    if not isinstance(action.stinger, (bool, np.bool_)):
+        raise ValueError("stinger must be boolean")
     if action.proboscis < 0 or action.proboscis > 1:
         raise ValueError("proboscis must stay in [0, 1]")

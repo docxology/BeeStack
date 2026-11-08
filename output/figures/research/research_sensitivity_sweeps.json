@@ -38,22 +38,22 @@
   "fidelity": "reduced deterministic kernel diagnostic",
   "figure_path": "output/figures/research/research_sensitivity_sweeps.png",
   "manuscript_label": "fig:research_sweeps",
-  "manuscript_section": "manuscript/11_research_synthesis.md",
+  "manuscript_section": "docs/manuscript/11_research_synthesis.md",
   "plot_data_path": "output/figures/research/research_sensitivity_sweeps_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 1360,
+    "height_px": 1362,
     "max_intensity": 255,
-    "mean_intensity": 245.7232377208309,
+    "mean_intensity": 245.95636993944183,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 38.75674098468061,
-    "width_px": 1515
+    "std_intensity": 38.02267607516904,
+    "width_px": 1516
   },
   "regeneration_command": "uv run python scripts/run_research_suite.py",
   "schema": "beestack.figure.v1",
-  "source_data": "ResearchSuiteReport sensitivity sweeps",
+  "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
   "source_dois": [
     "10.1371/journal.pcbi.1005510",
     "10.3233/DS-190026"
@@ -63,14 +63,14 @@
   "validation_status": "nonblank image, quality sidecar, and plot data passed",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 1.114,
+    "aspect_ratio": 1.113,
     "figure_role": "overview",
-    "height_px": 1360,
+    "height_px": 1362,
     "label_density": "moderate",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 1515,
-    "min_dimension_px": 1360,
+    "max_dimension_px": 1516,
+    "min_dimension_px": 1362,
     "readability_status": "pass",
-    "width_px": 1515
+    "width_px": 1516
   }
 }

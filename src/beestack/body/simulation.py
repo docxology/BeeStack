@@ -7,7 +7,7 @@ import math
 import numpy as np
 
 from ..config import BeeStackConfig
-from ..contracts import Action, Observation, zero_observation
+from ..contracts import Action, Observation, validate_action, zero_observation
 from .energetics import GRAVITY_M_S2, cost_of_transport, walking_power_mw, wing_power_mw
 from .state import BodyState, BodyTelemetry
 
@@ -21,8 +21,10 @@ def step_body(
     """Advance the reduced BeeBody backend by one control step."""
 
     dt = cfg.timing.control_dt_s if dt_s is None else dt_s
-    if dt <= 0:
-        raise ValueError("dt_s must be positive")
+    if not math.isfinite(dt) or dt <= 0:
+        raise ValueError("dt_s must be finite and positive")
+    validate_action(action, cfg)
+    _validate_body_state(state)
 
     leg_drive = float(np.tanh(np.mean(action.legs))) if action.legs.size else 0.0
     wing_drive = float(np.tanh(np.mean(np.abs(action.wings)))) if action.wings.size else 0.0
@@ -46,7 +48,8 @@ def step_body(
     walk_power = walking_power_mw(cfg.body.body_mass_mg, forward_speed)
     total_power = flight_power if wing_drive > 0.05 else walk_power
     energy_j = max(0.0, state.energy_j - (total_power / 1000.0) * dt)
-    temperature_k = state.body_temperature_k + 0.002 * actuator_load - 0.001
+    # Rates preserve the original nominal 100 Hz increment, independent of dt.
+    temperature_k = state.body_temperature_k + (0.2 * actuator_load - 0.1) * dt
 
     next_state = BodyState(
         position_m=next_position.astype(float),
@@ -72,6 +75,7 @@ def step_body(
 def observation_from_state(state: BodyState, cfg: BeeStackConfig) -> Observation:
     """Project reduced body state into the BeeBody observation contract."""
 
+    _validate_body_state(state)
     obs = zero_observation(cfg, temperature_k=state.body_temperature_k)
     optic_flow = np.array(
         [state.velocity_m_s[0] * 100.0, state.velocity_m_s[1] * 100.0], dtype=float
@@ -93,8 +97,21 @@ def observation_from_state(state: BodyState, cfg: BeeStackConfig) -> Observation
         antennal_vibration=obs.antennal_vibration,
         body_temperature_k=state.body_temperature_k,
         linear_acceleration=imu,
-        angular_velocity=np.array([0.0, 0.0, math.radians(state.heading_deg)], dtype=float),
+        angular_velocity=np.zeros(3, dtype=float),
+        heading_deg=state.heading_deg % 360.0,
     )
+
+
+def _validate_body_state(state: BodyState) -> None:
+    for name in ("position_m", "velocity_m_s"):
+        value = getattr(state, name)
+        if value.shape != (3,) or not np.isfinite(value).all():
+            raise ValueError(f"{name} must be a finite three-vector")
+    for name in ("heading_deg", "body_temperature_k", "energy_j"):
+        if not math.isfinite(getattr(state, name)):
+            raise ValueError(f"{name} must be finite")
+    if state.body_temperature_k <= 0 or state.energy_j < 0:
+        raise ValueError("body temperature must be positive and energy nonnegative")
 
 
 def initial_body_state(seed: int = 0) -> BodyState:

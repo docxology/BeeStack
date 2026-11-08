@@ -5,7 +5,8 @@ from __future__ import annotations
 from pathlib import Path
 
 from beestack.documentation_signpost import finalize_project_outputs
-from beestack.pipeline import load_config, write_methods_analysis_outputs
+from beestack.pipeline import write_methods_analysis_outputs
+from beestack.project_config import load_config
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 

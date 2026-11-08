@@ -30,13 +30,13 @@ registered GIF; verification scores and contact reports in
 
 Visual checks operate at several levels:
 
-1. **BeeBody verification** checks non-blank dynamic frames, motion
-   pixels per second, locomotion mode (walking vs. flight),
-   honeybee MJCF cue presence, silhouette overlap with a reference
-   bee shape, and — importantly — *absence* of FlyBody debug aids
-   inconsistent with a honeybee render. The latest run reports a
-   BeeBody visual score of {{BEE_VISUAL_SCORE}} and a silhouette
-   score of {{BEE_SILHOUETTE_SCORE}}.
+1. **BeeBody verification** checks non-blank dynamic frames, changed RGB
+   channel values across frames, honeybee MJCF cue names, rendered color
+   statistics, and absence of cyan debug aids. Walking/flight are requested
+   render-mode labels, not inferred gait classifications. The field named
+   silhouette score is a cue heuristic, not overlap with a reference image.
+   The latest run reports visual score {{BEE_VISUAL_SCORE}} and
+   MJCF/color cue score {{BEE_SILHOUETTE_SCORE}}.
 2. **BeeSwarm verification** requires MuJoCo contact reports for
    strict scenes. A strict scene with zero unique contact pairs is
    rejected as evidence; the methods-analysis pass currently records

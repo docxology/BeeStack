@@ -9,7 +9,7 @@ Thin-orchestrator contract:
   `src/beestack/pipeline.py`. Never import another script; promote shared
   behavior into `src/beestack/` and have both callers delegate to it.
 - Do not add simulation equations, scientific policy logic, BibTeX parsing, or
-  config loading directly in scripts. `beestack.pipeline.load_config` is the
+  config loading directly in scripts. `beestack.project_config.load_config` is the
   shared manuscript config loader.
 - `analysis_pipeline.py` generates both static figures and module animations
   through `beestack.pipeline.run_analysis_pipeline`.

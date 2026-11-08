@@ -41,7 +41,7 @@ reduced-kernel diagnostic with an explicit sidecar boundary.
 
 [@fig:module_coverage] renders module contract coverage from the integrated run.
 
-![Matplotlib beestack module contract coverage shows Contract-coverage witness showing the implemented v0 module contracts that participate in the integrated run. Generated from output/data/module_coverage.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not prove scientific validation completeness.](../figures/module_contract_coverage.png){#fig:module_coverage}
+![Matplotlib beestack module contract coverage shows Contract-coverage witness showing the implemented module contracts that participate in the integrated run. Generated from output/data/module_coverage.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not prove scientific validation completeness.](../figures/module_contract_coverage.png){#fig:module_coverage}
 
 ## Artifact trace
 

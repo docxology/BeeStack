@@ -32,13 +32,13 @@
       "artifact_path": "output/figures/manuscript_figure_claim_map.png",
       "caption_length": 362,
       "figure_role": "overview",
-      "height_px": 1006,
+      "height_px": 1003,
       "label_density": "dense",
       "manuscript_label": "fig:manuscript_figure_claim_map",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "manuscript_figure_claims",
-      "width_px": 1929
+      "width_px": 1915
     },
     {
       "alt_text_length": 93,
@@ -136,13 +136,13 @@
       "artifact_path": "output/figures/methods/methods_repo_dashboard.png",
       "caption_length": 386,
       "figure_role": "dashboard",
-      "height_px": 882,
+      "height_px": 881,
       "label_density": "dense",
       "manuscript_label": "fig:methods_dashboard",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "methods_dashboard",
-      "width_px": 1743
+      "width_px": 1746
     },
     {
       "alt_text_length": 119,
@@ -162,7 +162,7 @@
       "artifact_path": "output/figures/methods/methods_manuscript_evidence_index.png",
       "caption_length": 400,
       "figure_role": "overview",
-      "height_px": 884,
+      "height_px": 885,
       "label_density": "dense",
       "manuscript_label": "fig:methods_evidence_index",
       "readability_exception": "",
@@ -175,13 +175,13 @@
       "artifact_path": "output/figures/methods/beebody_methods_telemetry_dashboard.png",
       "caption_length": 402,
       "figure_role": "dashboard",
-      "height_px": 1088,
+      "height_px": 1085,
       "label_density": "dense",
       "manuscript_label": "fig:body_methods_dashboard",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 1786
+      "width_px": 1788
     },
     {
       "alt_text_length": 96,
@@ -212,15 +212,15 @@
     {
       "alt_text_length": 67,
       "artifact_path": "output/figures/beebody_motion_power_phase.png",
-      "caption_length": 431,
+      "caption_length": 442,
       "figure_role": "overview",
-      "height_px": 741,
+      "height_px": 738,
       "label_density": "compact",
       "manuscript_label": "fig:body_motion_power_phase",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 1218
+      "width_px": 1216
     },
     {
       "alt_text_length": 108,
@@ -266,72 +266,72 @@
       "artifact_path": "output/figures/methods/beebrain_methods_empirical_completeness.png",
       "caption_length": 419,
       "figure_role": "overview",
-      "height_px": 977,
+      "height_px": 974,
       "label_density": "moderate",
       "manuscript_label": "fig:brain_methods_completeness",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 1962
+      "width_px": 1978
     },
     {
       "alt_text_length": 76,
       "artifact_path": "output/figures/methods/beemind_methods_policy_landscape.png",
       "caption_length": 413,
       "figure_role": "overview",
-      "height_px": 977,
+      "height_px": 974,
       "label_density": "moderate",
       "manuscript_label": "fig:mind_methods_policy",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 1963
+      "width_px": 1970
     },
     {
       "alt_text_length": 75,
       "artifact_path": "output/figures/methods/beeswarm_methods_contact_recruitment.png",
       "caption_length": 420,
       "figure_role": "overview",
-      "height_px": 977,
+      "height_px": 974,
       "label_density": "moderate",
       "manuscript_label": "fig:swarm_methods_contact",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 1962
+      "width_px": 1978
     },
     {
       "alt_text_length": 74,
       "artifact_path": "output/figures/methods/beeniche_methods_comb_thermal.png",
       "caption_length": 407,
       "figure_role": "overview",
-      "height_px": 840,
+      "height_px": 837,
       "label_density": "moderate",
       "manuscript_label": "fig:niche_methods_comb_thermal",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 1785
+      "width_px": 1787
     },
     {
       "alt_text_length": 63,
       "artifact_path": "output/figures/body_energy_timeseries.png",
       "caption_length": 320,
       "figure_role": "overview",
-      "height_px": 706,
+      "height_px": 702,
       "label_density": "compact",
       "manuscript_label": "fig:body_energy",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 1245
+      "width_px": 1246
     },
     {
       "alt_text_length": 66,
       "artifact_path": "output/figures/comb_fraction_timeseries.png",
       "caption_length": 323,
       "figure_role": "overview",
-      "height_px": 705,
+      "height_px": 702,
       "label_density": "compact",
       "manuscript_label": "fig:comb_fraction",
       "readability_exception": "",
@@ -340,17 +340,17 @@
       "width_px": 1245
     },
     {
-      "alt_text_length": 72,
+      "alt_text_length": 69,
       "artifact_path": "output/figures/module_contract_coverage.png",
-      "caption_length": 337,
+      "caption_length": 334,
       "figure_role": "overview",
-      "height_px": 704,
+      "height_px": 705,
       "label_density": "compact",
       "manuscript_label": "fig:module_coverage",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 1245
+      "width_px": 1244
     },
     {
       "alt_text_length": 59,
@@ -474,39 +474,39 @@
       "artifact_path": "output/figures/research/research_module_scorecard_heatmap.png",
       "caption_length": 386,
       "figure_role": "dashboard",
-      "height_px": 984,
+      "height_px": 985,
       "label_density": "moderate",
       "manuscript_label": "fig:research_scorecard",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 1652
+      "width_px": 1653
     },
     {
       "alt_text_length": 69,
       "artifact_path": "output/figures/research/research_sensitivity_sweeps.png",
       "caption_length": 388,
       "figure_role": "overview",
-      "height_px": 1360,
+      "height_px": 1362,
       "label_density": "moderate",
       "manuscript_label": "fig:research_sweeps",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 1515
+      "width_px": 1516
     },
     {
       "alt_text_length": 80,
       "artifact_path": "output/figures/research/research_fidelity_evidence_network.png",
       "caption_length": 351,
       "figure_role": "overview",
-      "height_px": 1073,
+      "height_px": 1072,
       "label_density": "dense",
       "manuscript_label": "fig:research_network",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "research_evidence",
-      "width_px": 1717
+      "width_px": 1719
     },
     {
       "alt_text_length": 104,
@@ -526,26 +526,26 @@
       "artifact_path": "output/figures/research/stack_synthesis_dashboard.png",
       "caption_length": 380,
       "figure_role": "dashboard",
-      "height_px": 1351,
+      "height_px": 1352,
       "label_density": "dense",
       "manuscript_label": "fig:stack_synthesis_dashboard",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "stack_synthesis",
-      "width_px": 2015
+      "width_px": 2018
     },
     {
       "alt_text_length": 82,
       "artifact_path": "output/figures/research/stack_synthesis_findings_detail.png",
       "caption_length": 341,
       "figure_role": "detail",
-      "height_px": 1044,
+      "height_px": 1046,
       "label_density": "moderate",
       "manuscript_label": "fig:stack_synthesis_findings_detail",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "stack_synthesis",
-      "width_px": 1991
+      "width_px": 1990
     }
   ],
   "passed": true,

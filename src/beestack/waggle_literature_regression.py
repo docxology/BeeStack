@@ -13,6 +13,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
+from .brain.empirical_parsers import load_waggle_follower_dataset
 from .config import BeeStackConfig
 
 
@@ -56,7 +57,11 @@ def _load_json(path: Path) -> dict[str, Any]:
 def _beeswarm_metrics(methods_payload: Mapping[str, Any]) -> dict[str, float]:
     for panel in methods_payload.get("module_panels", ()) or ():
         if panel.get("module") == "BeeSwarm":
-            return {str(key): float(value) for key, value in panel.get("metrics", {}).items()}
+            return {
+                str(key): float(value)
+                for key, value in panel.get("quantitative_metrics", {}).items()
+                if isinstance(value, int | float)
+            }
     return {}
 
 
@@ -64,105 +69,81 @@ def build_waggle_literature_regression_report(
     project_root: Path,
     cfg: BeeStackConfig,
 ) -> WaggleLiteratureRegressionReport:
-    """Build regression checks from local waggle follower and methods artifacts."""
+    """Keep every required check visible; missing empirical data never pass."""
 
-    waggle_path = project_root / "output" / "data" / "waggle_follower_analysis.json"
-    methods_path = project_root / "output" / "data" / "methods_analysis.json"
-    waggle_payload = _load_json(waggle_path)
-    methods_payload = _load_json(methods_path)
-    summary = waggle_payload.get("summary", {})
-    beeswarm = _beeswarm_metrics(methods_payload)
-
-    checks: list[LiteratureRegressionCheck] = []
-
-    improvement = summary.get("decoding_improvement_fraction")
-    if improvement is not None:
-        checks.append(
-            LiteratureRegressionCheck(
-                name="hadjitofi_antenna_decoding_improvement",
-                passed=float(improvement) > 0.0,
-                observed=float(improvement),
-                bound="> 0 (antennae reduce vector error vs no-antennae baseline)",
-                citation_keys=("hadjitofi2024figshare", "hadjitofi2024currentbiology"),
-                notes="Hadjitofi–Webb Figshare summary: both-antennae decoding beats no-antennae control.",
-            )
-        )
-
-    both_error = summary.get("both_antennae_mean_abs_error_deg")
-    no_antennae_error = summary.get("no_antennae_mean_abs_error_deg")
-    if both_error is not None and no_antennae_error is not None:
-        checks.append(
-            LiteratureRegressionCheck(
-                name="hadjitofi_both_antennae_beat_no_antennae",
-                passed=float(both_error) < float(no_antennae_error),
-                observed=float(both_error),
-                bound=f"< no_antennae_mean_abs_error_deg ({float(no_antennae_error):.3f})",
-                citation_keys=("hadjitofi2024figshare", "hadjitofi2024currentbiology"),
-                notes="Published follower kinematics show antenna-mediated error reduction.",
-            )
-        )
-
-    track_count = summary.get("track_count")
-    if track_count is not None:
-        checks.append(
-            LiteratureRegressionCheck(
-                name="hadjitofi_parsed_track_count",
-                passed=int(track_count) >= 1,
-                observed=int(track_count),
-                bound=">= 1 parsed follower track",
-                citation_keys=("hadjitofi2024figshare",),
-                notes="Regression requires a registered local Figshare deposit parse.",
-            )
-        )
-
-    orientation_error = beeswarm.get("waggle_follower_orientation_error_deg")
-    if orientation_error is not None:
-        target = cfg.waggle.orientation_error_target_deg
-        checks.append(
-            LiteratureRegressionCheck(
-                name="beeswarm_orientation_error_target",
-                passed=orientation_error < target,
-                observed=orientation_error,
-                bound=f"< {target} deg (BeeStack waggle orientation_error_target_deg)",
-                citation_keys=("hadjitofi2024currentbiology", "dong2023wagglesocial"),
-                notes="Strict MuJoCo follower-orientation telemetry vs configured literature-motivated bound.",
-            )
-        )
-
-    orientation_confidence = beeswarm.get("waggle_follower_orientation_confidence")
-    if orientation_confidence is not None:
-        target = cfg.waggle.orientation_confidence_target
-        checks.append(
-            LiteratureRegressionCheck(
-                name="beeswarm_orientation_confidence_target",
-                passed=orientation_confidence > target,
-                observed=orientation_confidence,
-                bound=f"> {target} (BeeStack waggle orientation_confidence_target)",
-                citation_keys=("hadjitofi2024currentbiology", "pnas2026waggleaudience"),
-                notes="Audience and follower-alignment scholarship motivates a non-trivial confidence floor.",
-            )
-        )
-
-    data_sources = tuple(
-        path
-        for path in (
-            "output/data/waggle_follower_analysis.json",
-            "output/data/methods_analysis.json",
-        )
-        if (project_root / path).exists()
+    dataset = load_waggle_follower_dataset(
+        project_root / "output/data/empirical_sources", project_root=project_root
     )
-    passed = bool(checks) and all(check.passed for check in checks)
+    methods_path = project_root / "output/data/methods_analysis.json"
+    summary = dataset.summary.as_dict() if dataset is not None else {}
+    beeswarm = _beeswarm_metrics(_load_json(methods_path))
+    improvement = summary.get("decoding_improvement_fraction")
+    both_error = summary.get("both_antennae_mean_abs_error_deg")
+    no_error = summary.get("no_antennae_mean_abs_error_deg")
+    tracks = summary.get("track_count")
+    orientation_error = beeswarm.get("waggle_follower_orientation_error_deg")
+    confidence = beeswarm.get("waggle_follower_orientation_confidence")
+    checks = (
+        LiteratureRegressionCheck(
+            "hadjitofi_antenna_decoding_improvement",
+            improvement is not None and float(improvement) > 0.0,
+            float(improvement) if improvement is not None else None,
+            "> 0 with both comparison conditions observed",
+            ("hadjitofi2024figshare", "hadjitofi2024currentbiology"),
+            "Local antenna/no-antenna comparison; unavailable conditions are not zero error.",
+        ),
+        LiteratureRegressionCheck(
+            "hadjitofi_both_antennae_beat_no_antennae",
+            both_error is not None and no_error is not None and float(both_error) < float(no_error),
+            float(both_error) if both_error is not None else None,
+            f"< observed no-antennae error ({no_error if no_error is not None else 'unavailable'})",
+            ("hadjitofi2024figshare", "hadjitofi2024currentbiology"),
+            "Requires observed errors for both conditions, not an inferred missing-condition baseline.",
+        ),
+        LiteratureRegressionCheck(
+            "hadjitofi_parsed_track_count",
+            tracks is not None and int(tracks) >= 1,
+            int(tracks) if tracks is not None else None,
+            ">= 1 parsed follower track",
+            ("hadjitofi2024figshare",),
+            "Local parsed deposit coverage, not biological validation.",
+        ),
+        LiteratureRegressionCheck(
+            "beeswarm_orientation_error_target",
+            orientation_error is not None
+            and orientation_error <= cfg.waggle.orientation_error_target_deg,
+            orientation_error,
+            f"<= {cfg.waggle.orientation_error_target_deg} deg (configured maximum)",
+            ("hadjitofi2024currentbiology", "dong2023wagglesocial"),
+            "Strict scene telemetry versus a configured, literature-motivated engineering bound.",
+        ),
+        LiteratureRegressionCheck(
+            "beeswarm_orientation_confidence_target",
+            confidence is not None and confidence >= cfg.waggle.orientation_confidence_target,
+            confidence,
+            f">= {cfg.waggle.orientation_confidence_target} (configured minimum)",
+            ("hadjitofi2024currentbiology", "pnas2026waggleaudience"),
+            "Configured scene heuristic; no measured audience-effect magnitude is established.",
+        ),
+    )
     return WaggleLiteratureRegressionReport(
         schema="beestack.waggle_literature_regression.v1",
-        passed=passed,
-        checks=tuple(checks),
+        passed=all(check.passed for check in checks),
+        checks=checks,
         literature_anchors=(
             "hadjitofi2024figshare",
             "hadjitofi2024currentbiology",
             "dong2023wagglesocial",
             "pnas2026waggleaudience",
         ),
-        data_sources=data_sources,
+        data_sources=(
+            *(dataset.source_files if dataset is not None else ()),
+            *(
+                (methods_path.relative_to(project_root).as_posix(),)
+                if methods_path.is_file()
+                else ()
+            ),
+        ),
     )
 
 

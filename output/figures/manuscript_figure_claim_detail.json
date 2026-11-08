@@ -38,7 +38,7 @@
   "fidelity": "reduced deterministic kernel diagnostic",
   "figure_path": "output/figures/manuscript_figure_claim_detail.png",
   "manuscript_label": "fig:manuscript_figure_claim_detail",
-  "manuscript_section": "manuscript/08_validation_and_figures.md",
+  "manuscript_section": "docs/manuscript/08_validation_and_figures.md",
   "metrics": {
     "primary_figure_count": 42
   },
@@ -47,16 +47,16 @@
   "quality": {
     "height_px": 2014,
     "max_intensity": 255,
-    "mean_intensity": 244.30653514075095,
+    "mean_intensity": 244.7334160133906,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 36.908466359954446,
+    "std_intensity": 35.4193637277201,
     "width_px": 2684
   },
   "regeneration_command": "uv run python scripts/analysis_pipeline.py",
   "schema": "beestack.figure.v1",
-  "source_data": "figure registry and manuscript figure index",
+  "source_data": "output/data/simulation_records.json and module coverage records",
   "source_dois": [
     "10.1371/journal.pcbi.1005510",
     "10.3233/DS-190026"

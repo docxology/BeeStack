@@ -52,7 +52,7 @@ _ENTRY_RE = re.compile(
 _INLINE_CODE_RE = re.compile(r"`[^`\n]*`")
 _FENCED_CODE_RE = re.compile(r"```.*?```", re.DOTALL)
 _CITATION_CLUSTER_RE = re.compile(r"\[(?:[^\]]*?@[^]]+?)\]")
-_CITATION_KEY_RE = re.compile(r"@([A-Za-z0-9_:-]+)")
+_CITATION_KEY_RE = re.compile(r"(?<![\\\w@.+/-])-?@([A-Za-z0-9_][A-Za-z0-9_:-]*)")
 _CROSSREF_PREFIXES = ("fig:", "sec:", "eq:", "tbl:")
 _TOKEN_RE = re.compile(r"\{\{[A-Z0-9_]+\}\}")
 
@@ -132,7 +132,7 @@ def audit_sources(
     """Audit manuscript citations, bibliography metadata, and conservative claims."""
 
     project_root = project_root.resolve()
-    manuscript_dir = project_root / "manuscript"
+    manuscript_dir = project_root / "docs" / "manuscript"
     manuscript_files = tuple(sorted(manuscript_dir.glob("*.md")))
     manuscript_text_by_path = {
         path: path.read_text(encoding="utf-8", errors="replace") for path in manuscript_files
@@ -186,17 +186,16 @@ def audit_sources(
 
 
 def extract_pandoc_citation_keys(text: str) -> tuple[str, ...]:
-    """Extract Pandoc citation keys from bracket citation clusters."""
+    """Extract bracketed and narrative Pandoc keys, excluding code/emails/cross-refs."""
 
     stripped = _strip_code(text)
-    keys: list[str] = []
-    for cluster in _CITATION_CLUSTER_RE.findall(stripped):
-        keys.extend(
+    return tuple(
+        dict.fromkeys(
             key
-            for key in _CITATION_KEY_RE.findall(cluster)
+            for key in _CITATION_KEY_RE.findall(stripped)
             if not key.startswith(_CROSSREF_PREFIXES)
         )
-    return tuple(dict.fromkeys(keys))
+    )
 
 
 def parse_bibtex_entries(text: str) -> dict[str, dict[str, str]]:
@@ -393,6 +392,7 @@ def _unconservative_digital_twin_claims(
 def _claim_scan_text(text: str) -> str:
     text = _INLINE_CODE_RE.sub("", text)
     text = _CITATION_CLUSTER_RE.sub("", text)
+    text = _CITATION_KEY_RE.sub("", text)
     text = _TOKEN_RE.sub("", text)
     return text
 

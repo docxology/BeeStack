@@ -11,6 +11,7 @@
   },
   "alt_text": "Bar chart of BeeBrain alignment scores to empirical templates.",
   "artifact_kind": "figure",
+  "availability_status": "historical_unavailable",
   "backend": "Matplotlib empirical-data renderer",
   "caption": "Matplotlib beebrain empirical stack alignment shows Alignment scores between empirical templates and reduced BeeBrain module contracts. Generated from output/data/empirical_analysis.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not calibrate reduced kernels to biological ground truth.",
   "citation_keys": [
@@ -38,7 +39,7 @@
   "fidelity": "empirical panel summary diagnostic",
   "figure_path": "output/figures/empirical/empirical_stack_alignment.png",
   "manuscript_label": "fig:empirical_stack_alignment",
-  "manuscript_section": "manuscript/09_empirical_results.md",
+  "manuscript_section": "docs/manuscript/09_empirical_results.md",
   "plot_data_path": "output/figures/empirical/empirical_stack_alignment_data.json",
   "priority": "primary",
   "quality": {

@@ -38,22 +38,22 @@
   "fidelity": "real_flybody_3d contact sheet",
   "figure_path": "output/figures/renders/beebody_flybody_morphology_contact_sheet.png",
   "manuscript_label": "fig:beebody_flybody_morphology",
-  "manuscript_section": "manuscript/05_methods_body_swarm.md",
+  "manuscript_section": "docs/manuscript/05_methods_body_swarm.md",
   "plot_data_path": "output/figures/renders/beebody_flybody_morphology_contact_sheet_data.json",
   "priority": "primary",
   "quality": {
     "height_px": 608,
     "max_intensity": 255,
-    "mean_intensity": 81.1496824744152,
+    "mean_intensity": 82.47322505482457,
     "min_intensity": 0,
     "mode": "RGB",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 68.65888122168701,
+    "std_intensity": 69.86097861200604,
     "width_px": 1440
   },
   "regeneration_command": "uv run python scripts/generate_animations.py",
   "schema": "beestack.figure.v1",
-  "source_data": "animation manifest, bee visual verification, and apis_mellifera_worker MJCF",
+  "source_data": "output/animations/beebody_flybody_morphology_contact_sheet.png",
   "source_dois": [
     "10.1038/s41586-025-09029-4",
     "10.1109/IROS.2012.6386109"

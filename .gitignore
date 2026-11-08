@@ -4,11 +4,14 @@
 .ruff_cache/
 .uv-cache/
 .coverage
+.coverage.*
 htmlcov/
 __pycache__/
 *.py[cod]
 *.egg-info/
 .DS_Store
+build/
+dist/
 output/pdf/*
 output/.checkpoints/*
 output/diagnostics/*

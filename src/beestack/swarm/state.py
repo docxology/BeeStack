@@ -55,7 +55,7 @@ class DanceRecruitmentDiagnostics:
     recruited_agent_ids: tuple[int, ...]
     mean_follow_probability: float
     empirical_confidence: float
-    follower_alignment_score: float
+    follower_alignment_score: float | None
     stop_signal_rate: float
     stop_signal_factor: float
     colony_food_need_mean: float

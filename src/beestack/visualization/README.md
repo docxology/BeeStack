@@ -26,6 +26,11 @@ so visualization checks can fail when the render loses honeybee-specific cues.
 Animation artifact metadata includes fidelity level, backend, contact sheet,
 scene XML, and contact-report paths so reports can separate FlyBody output
 from reduced schematic output.
+`run_bee_render_verification(project_root, cfg)` and
+`verify_swarm_scenes(project_root, cfg)` require the resolved configuration for
+body-plan location, bee counts, motion/contact minima, and orientation targets.
+Motion is measured across adjacent frames over the entire sequence, not just
+endpoints. XML counts and actual contact metrics remain independently checked.
 `empirical_figures.py` renders empirical response heatmaps, panel-quality bars,
 BeeBrain alignment charts, and Jernigan antennal active-sensing summaries from
 validated bee datasets.
@@ -45,3 +50,24 @@ companions instead of hiding unreadable tables in a single canvas. Generic
 sidecar metadata is only for supporting diagnostics that remain in generated
 reports or the visualization gallery. Raw `*_data.json` plot-data files are
 plot data, not narrative sidecars.
+
+Figure generators and sidecar/raw-data writers accept an explicit `project_root`.
+Supply it at the orchestration boundary for cwd-invariant project-local paths;
+without a known root absolute paths are preserved for a later root-aware writer.
+Curated narratives annotate, but never overwrite, the generating backend,
+fidelity, source, validation status, or regeneration command. Missing empirical
+antenna conditions are plotted as unavailable gaps and serialized as nulls, not
+zero-error observations. Signature `motion_pixels` counts the union of changed
+RGB channels over adjacent frames, including periodic sequences with equal endpoints.
+
+`connectome_figures.py` and `figure_plot_specs.py` share the typed structural/
+schematic graph boundary. Source-backed structural tract edges remain solid;
+unsupported semantic pathways remain dashed with their actual `edge_kind` in
+plot data. Runtime sidecars record report tier, mixed/schematic/structural
+display fidelity, separate edge counts, and supporting assets instead of
+inheriting a structural claim from the static narrative registry. Module nodes
+and pathway layouts are semantic topology, not measured anatomy. Spatial VRML
+projections retain only source-backed centroid geometry and supported tract
+overlays; absent geometry/overlays remain explicitly unavailable, never filled
+with schematic coordinates. Synthetic parser fixtures test these boundaries,
+not biological validity.

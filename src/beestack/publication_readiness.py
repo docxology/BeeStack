@@ -1,16 +1,23 @@
-"""Publication readiness gate for BeeStack 1.0 manuscript release."""
+"""Publication readiness gate for the current BeeStack manuscript release."""
 
 from __future__ import annotations
 
 import json
-import re
+import tomllib
 from pathlib import Path
 from typing import Any
 
 import yaml
+from pypdf import PdfReader
+from pypdf.errors import PdfReadError
 
+from beestack.brain.empirical_status import current_empirical_analysis, empirical_input_paths
+from beestack.config import config_from_mapping
+from beestack.figure_audit import manuscript_image_references
 from beestack.generated_report_audit import audit_generated_reports
+from beestack.manuscript_variables import MANUSCRIPT_ARTIFACT_PATHS
 from beestack.security.posture import audit_security_posture
+from beestack.utils import sha256_file
 from beestack.version import MANUSCRIPT_VERSION, PACKAGE_VERSION
 
 _COMBINED_PDF = "BeeStack_combined.pdf"
@@ -24,7 +31,7 @@ def _read_json(path: Path) -> dict[str, Any]:
 
 
 def _read_manuscript_config(project_root: Path) -> dict[str, Any]:
-    config_path = project_root / "manuscript" / "config.yaml"
+    config_path = project_root / "docs" / "manuscript" / "config.yaml"
     if not config_path.is_file():
         return {}
     return yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
@@ -34,8 +41,69 @@ def _pyproject_version(project_root: Path) -> str:
     pyproject = project_root / "pyproject.toml"
     if not pyproject.is_file():
         return ""
-    match = re.search(r'^version\s*=\s*"([^"]+)"', pyproject.read_text(encoding="utf-8"), re.M)
-    return match.group(1) if match else ""
+    return str(
+        tomllib.loads(pyproject.read_text(encoding="utf-8")).get("project", {}).get("version", "")
+    )
+
+
+def manuscript_render_inputs(project_root: Path) -> tuple[Path, ...]:
+    """Exact source/data/figure inputs sealed by the local manuscript renderer."""
+
+    inputs = [project_root / name for name in ("pyproject.toml", "uv.lock", ".python-version")]
+    inputs.extend(empirical_input_paths(project_root))
+    for reference in manuscript_image_references(project_root):
+        # Use the same resolved dependencies as figure preflight, regardless of
+        # image format or project-local directory. Outside-root paths refuse
+        # when receipt keys are constructed, rather than escaping the seal.
+        inputs.append(reference.resolved_path)
+        sidecar = reference.resolved_path.with_suffix(".json")
+        if sidecar.is_file():
+            inputs.append(sidecar)
+    for directory, pattern in (
+        ("docs/manuscript", "*.md"),
+        ("docs/manuscript", "*.yaml"),
+        ("docs/manuscript", "*.bib"),
+        ("output/manuscript", "*.md"),
+        ("output/manuscript", "*.yaml"),
+        ("output/manuscript", "*.bib"),
+        ("src", "*.py"),
+        ("scripts", "*.py"),
+        ("scripts", "*.lua"),
+        ("output/data", "*.json"),
+        ("output/figures", "*.png"),
+        ("output/figures", "*.json"),
+    ):
+        inputs.extend((project_root / directory).rglob(pattern))
+    inputs.extend(
+        project_root / relative
+        for relative in MANUSCRIPT_ARTIFACT_PATHS.values()
+        if (project_root / relative).is_file()
+    )
+    return tuple(sorted(set(inputs)))
+
+
+def _render_is_current(root: Path, pdf: Path) -> bool:
+    try:
+        receipt = _read_json(root / "output/reports/manuscript_render.json")
+        if not isinstance(receipt, dict):
+            return False
+        expected = {
+            path.relative_to(root).as_posix(): path for path in manuscript_render_inputs(root)
+        }
+        hashes = receipt.get("source_sha256")
+        if not isinstance(hashes, dict) or hashes.keys() != expected.keys() or not pdf.is_file():
+            return False
+        return (
+            receipt.get("schema") == "beestack.manuscript_render.v1"
+            and receipt.get("pdf") == "output/pdf/BeeStack_combined.pdf"
+            and receipt.get("pdf_sha256") == sha256_file(pdf)
+            and all(
+                path.is_file() and hashes[name] == sha256_file(path)
+                for name, path in expected.items()
+            )
+        )
+    except (OSError, ValueError, RuntimeError):
+        return False
 
 
 def check_publication_readiness(
@@ -43,7 +111,7 @@ def check_publication_readiness(
     *,
     require_doi: bool = False,
 ) -> dict[str, object]:
-    """Return structured gate results for a BeeStack 1.0 release."""
+    """Return structured checks; a real, source-bound combined PDF is mandatory."""
 
     root = project_root.resolve()
     checks: dict[str, bool] = {}
@@ -52,16 +120,16 @@ def check_publication_readiness(
 
     config = _read_manuscript_config(root)
     paper_version = str((config.get("paper") or {}).get("version", "")).strip()
-    checks["manuscript_version_1_0"] = paper_version == MANUSCRIPT_VERSION
-    if not checks["manuscript_version_1_0"]:
+    checks["manuscript_version"] = paper_version == MANUSCRIPT_VERSION
+    if not checks["manuscript_version"]:
         blockers.append(
-            f"manuscript/config.yaml paper.version must be {MANUSCRIPT_VERSION!r} "
+            f"docs/manuscript/config.yaml paper.version must be {MANUSCRIPT_VERSION!r} "
             f"(found {paper_version!r})"
         )
 
     pyproject_version = _pyproject_version(root)
-    checks["package_version_1_0_0"] = pyproject_version == PACKAGE_VERSION
-    if not checks["package_version_1_0_0"]:
+    checks["package_version"] = pyproject_version == PACKAGE_VERSION
+    if not checks["package_version"]:
         blockers.append(
             f"pyproject.toml version must be {PACKAGE_VERSION!r} (found {pyproject_version!r})"
         )
@@ -69,16 +137,26 @@ def check_publication_readiness(
     doi = str((config.get("publication") or {}).get("doi", "")).strip()
     checks["doi_configured"] = bool(doi)
     if not checks["doi_configured"]:
-        message = "publication.doi not set in manuscript/config.yaml"
+        message = "publication.doi not set in docs/manuscript/config.yaml"
         if require_doi:
             blockers.append(message)
         else:
             warnings.append(f"{message} (mint Zenodo DOI before public deposit)")
 
     combined_pdf = root / "output" / "pdf" / _COMBINED_PDF
-    checks["combined_pdf"] = combined_pdf.is_file()
+    try:
+        checks["combined_pdf"] = combined_pdf.is_file() and bool(
+            PdfReader(combined_pdf, strict=True).pages
+        )
+    except (OSError, PdfReadError, ValueError):
+        checks["combined_pdf"] = False
     if not checks["combined_pdf"]:
-        blockers.append(f"missing output/pdf/{_COMBINED_PDF}")
+        blockers.append(f"missing or unreadable output/pdf/{_COMBINED_PDF}")
+    checks["manuscript_render_current"] = _render_is_current(root, combined_pdf)
+    if not checks["manuscript_render_current"]:
+        blockers.append(
+            "combined PDF lacks a current source/data/figure-bound manuscript render receipt"
+        )
 
     legacy_pdf = root / "output" / "pdf" / _LEGACY_PDF
     if legacy_pdf.is_file():
@@ -99,6 +177,14 @@ def check_publication_readiness(
     else:
         checks["manuscript_variables_hydrated"] = False
         blockers.append("missing output/data/manuscript_variables.json")
+    sources = tuple((root / "docs/manuscript").glob("[0-9][0-9]_*.md"))
+    checks["manuscript_sections_hydrated"] = len(sources) == 18 and all(
+        (rendered := root / "output/manuscript" / source.name).is_file()
+        and "{{" not in rendered.read_text(encoding="utf-8")
+        for source in sources
+    )
+    if not checks["manuscript_sections_hydrated"]:
+        blockers.append("missing or unresolved hydrated manuscript sections")
 
     security = audit_security_posture(root)
     checks["security_posture"] = security.passed
@@ -110,7 +196,13 @@ def check_publication_readiness(
     if not generated.passed:
         blockers.append("generated report audit failed")
 
-    completeness = _read_json(root / "output" / "data" / "brain_data_completeness.json")
+    empirical = current_empirical_analysis(root, config_from_mapping(config.get("beestack", {})))
+    checks["empirical_analysis_current"] = empirical.get("availability_status") == "current"
+    if not checks["empirical_analysis_current"]:
+        warnings.append(
+            "No current odor-response panel analysis; retained empirical figures/reports are historical and manuscript values are unavailable, not zero."
+        )
+    completeness = empirical.get("brain_data_completeness", {})
     parseable_fraction = completeness.get("parseable_fraction")
     parseability_target = completeness.get("parseability_target")
     parseability_satisfied = bool(completeness.get("parseability_target_satisfied"))
@@ -162,7 +254,7 @@ def check_publication_readiness(
     changelog = root / "CHANGELOG.md"
     checks["changelog_present"] = changelog.is_file()
     if not checks["changelog_present"]:
-        blockers.append("missing CHANGELOG.md for release 1.0")
+        blockers.append("missing CHANGELOG.md for the current release")
 
     ok = not blockers
     return {

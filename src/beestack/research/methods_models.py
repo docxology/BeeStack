@@ -3,10 +3,11 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
+from pathlib import Path
 
 import numpy as np
 
-from ..utils import project_relative_path
+from ..utils import project_relative_path, project_relative_payload
 from ..visualization.figure_registry import (
     figure_narrative_for_path,
 )
@@ -105,6 +106,9 @@ class ModuleVisualizationPanel:
     backends: tuple[str, ...]
     fidelity_levels: tuple[str, ...]
     validation_statuses: tuple[str, ...]
+    source_data: tuple[str, ...] = ()
+    regeneration_commands: tuple[str, ...] = ()
+    availability_statuses: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
         if not self.module:
@@ -117,6 +121,9 @@ class ModuleVisualizationPanel:
         }
         if len(lengths) != 1:
             raise ValueError("visualization panel fields must have matching lengths")
+        for values in (self.source_data, self.regeneration_commands, self.availability_statuses):
+            if values and len(values) != len(self.artifact_paths):
+                raise ValueError("visualization provenance fields must have matching lengths")
         if not self.artifact_paths:
             raise ValueError("visualization panel artifact_paths must not be empty")
         for values in (
@@ -150,6 +157,9 @@ class ModuleVisualizationPanel:
             "backends": self.backends,
             "fidelity_levels": self.fidelity_levels,
             "validation_statuses": self.validation_statuses,
+            "source_data": self.source_data,
+            "regeneration_commands": self.regeneration_commands,
+            "availability_statuses": self.availability_statuses,
         }
 
 
@@ -245,6 +255,7 @@ class MethodsAnalysisReport:
     figure_paths: tuple[str, ...]
     interactive_paths: tuple[str, ...]
     all_validations_passed: bool
+    visualization_artifacts: tuple[dict[str, str], ...] = ()
 
     def __post_init__(self) -> None:
         if not self.title:
@@ -292,29 +303,34 @@ class MethodsAnalysisReport:
             figure_paths=figure_paths,
             interactive_paths=interactive_paths,
             all_validations_passed=self.all_validations_passed,
+            visualization_artifacts=self.visualization_artifacts,
         )
 
-    def as_dict(self) -> dict[str, object]:
-        return {
-            "title": self.title,
-            "summary": self.summary,
-            "module_count": self.module_count,
-            "overall_validation_fraction": self.overall_validation_fraction,
-            "visualization_count": self.visualization_count,
-            "all_validations_passed": self.all_validations_passed,
-            "module_panels": [panel.as_dict() for panel in self.module_panels],
-            "scenario_sweeps": [sweep.as_dict() for sweep in self.scenario_sweeps],
-            "manuscript_evidence_links": [
-                link.as_dict() for link in self.manuscript_evidence_links
-            ],
-            "source_claim_crosswalk": self.source_claim_crosswalk,
-            "evidence_availability_counts": self.evidence_availability_counts,
-            "top_validation_gaps": self.top_validation_gaps,
-            "figure_paths": tuple(project_relative_path(path) for path in self.figure_paths),
-            "interactive_paths": tuple(
-                project_relative_path(path) for path in self.interactive_paths
-            ),
-        }
+    def as_dict(self, project_root: Path | None = None) -> dict[str, object]:
+        return project_relative_payload(
+            {
+                "title": self.title,
+                "summary": self.summary,
+                "module_count": self.module_count,
+                "overall_validation_fraction": self.overall_validation_fraction,
+                "visualization_count": self.visualization_count,
+                "all_validations_passed": self.all_validations_passed,
+                "visualization_artifacts": self.visualization_artifacts,
+                "module_panels": [panel.as_dict() for panel in self.module_panels],
+                "scenario_sweeps": [sweep.as_dict() for sweep in self.scenario_sweeps],
+                "manuscript_evidence_links": [
+                    link.as_dict() for link in self.manuscript_evidence_links
+                ],
+                "source_claim_crosswalk": self.source_claim_crosswalk,
+                "evidence_availability_counts": self.evidence_availability_counts,
+                "top_validation_gaps": self.top_validation_gaps,
+                "figure_paths": tuple(project_relative_path(path) for path in self.figure_paths),
+                "interactive_paths": tuple(
+                    project_relative_path(path) for path in self.interactive_paths
+                ),
+            },
+            project_root,
+        )
 
     @property
     def evidence_availability_counts(self) -> dict[str, int]:

@@ -34,7 +34,7 @@
 - `output/figures/methods/beebody_methods_telemetry_dashboard.png` `dashboard` `dense` `pass` split=`none` caption=`402` alt=`80`
 - `output/figures/renders/beebody_flybody_morphology_contact_sheet.png` `contact_sheet` `frame_strip` `pass` split=`none` caption=`498` alt=`96`
 - `output/figures/renders/beebody_flybody_flight_contact_sheet.png` `contact_sheet` `frame_strip` `pass` split=`none` caption=`492` alt=`95`
-- `output/figures/beebody_motion_power_phase.png` `overview` `compact` `pass` split=`none` caption=`431` alt=`67`
+- `output/figures/beebody_motion_power_phase.png` `overview` `compact` `pass` split=`none` caption=`442` alt=`67`
 - `output/figures/renders/beeswarm_10_beebody_collision_contact_sheet.png` `contact_sheet` `frame_strip` `pass` split=`none` caption=`460` alt=`108`
 - `output/figures/renders/beeswarm_waggle_dance_configured_contact_sheet.png` `contact_sheet` `frame_strip` `pass` split=`none` caption=`461` alt=`100`
 - `output/figures/renders/beeswarm_waggle_dance_long_contact_sheet.png` `contact_sheet` `frame_strip` `pass` split=`none` caption=`504` alt=`123`
@@ -44,7 +44,7 @@
 - `output/figures/methods/beeniche_methods_comb_thermal.png` `overview` `moderate` `pass` split=`none` caption=`407` alt=`74`
 - `output/figures/body_energy_timeseries.png` `overview` `compact` `pass` split=`none` caption=`320` alt=`63`
 - `output/figures/comb_fraction_timeseries.png` `overview` `compact` `pass` split=`none` caption=`323` alt=`66`
-- `output/figures/module_contract_coverage.png` `overview` `compact` `pass` split=`none` caption=`337` alt=`72`
+- `output/figures/module_contract_coverage.png` `overview` `compact` `pass` split=`none` caption=`334` alt=`69`
 - `output/figures/empirical/empirical_panel_heatmap.png` `dashboard` `moderate` `exception` split=`none` caption=`352` alt=`59`
 - `output/figures/empirical/empirical_stack_alignment.png` `overview` `moderate` `pass` split=`none` caption=`327` alt=`62`
 - `output/figures/empirical/empirical_anatomy_projection.png` `overview` `moderate` `pass` split=`none` caption=`335` alt=`74`

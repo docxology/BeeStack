@@ -17,12 +17,21 @@ def figure_data_path(path: Path) -> Path:
     return path.with_name(f"{path.stem}_data.json")
 
 
-def write_figure_plot_data(path: Path, payload: dict[str, Any]) -> Path:
+def write_figure_plot_data(
+    path: Path,
+    payload: dict[str, Any],
+    *,
+    project_root: Path | None = None,
+) -> Path:
     """Write plottable series or schematic structure for one figure."""
 
     data_path = figure_data_path(path)
-    normalized = project_relative_payload(payload)
-    body = {"schema": FIGURE_DATA_SCHEMA, "figure_path": project_relative_path(path), **normalized}
+    normalized = project_relative_payload(payload, project_root)
+    body = {
+        "schema": FIGURE_DATA_SCHEMA,
+        "figure_path": project_relative_path(path, project_root),
+        **normalized,
+    }
     data_path.write_text(json.dumps(body, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return data_path
 
@@ -50,7 +59,7 @@ def categorical_plot(
     *,
     title: str,
     labels: list[str],
-    values: list[float],
+    values: list[float | None],
     orientation: str = "horizontal",
     chart_type: str = "bar",
     extra: dict[str, Any] | None = None,

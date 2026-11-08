@@ -20,6 +20,8 @@ EXCLUDED_SIGNPOST_DIR_NAMES = frozenset(
         ".venv",
         "__pycache__",
         "htmlcov",
+        "build",
+        "dist",
     }
 )
 
@@ -227,7 +229,7 @@ def documentation_audit_markdown(audit: DocumentationAudit) -> str:
 
 
 def signposted_directories(project_root: Path) -> tuple[Path, ...]:
-    """Return non-cache project directories expected to carry signpost files."""
+    """Return non-transient project directories expected to carry signpost files."""
 
     project_root = project_root.resolve()
     directories: list[Path] = []
@@ -260,7 +262,7 @@ def _documentation_files(project_root: Path) -> tuple[Path, ...]:
     roots = (
         project_root / "README.md",
         project_root / "docs",
-        project_root / "manuscript",
+        project_root / "docs" / "manuscript",
         project_root / "scripts" / "README.md",
         project_root / "output" / "README.md",
         project_root / "output" / "reports" / "README.md",

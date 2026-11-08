@@ -8,7 +8,7 @@ from typing import Any, TypedDict, cast
 
 from PIL import Image, ImageStat
 
-from ..utils import project_relative_path
+from ..utils import project_relative_path, project_relative_payload
 from .figure_plot_data import write_figure_plot_data
 from .figure_registry import figure_narrative_for_path, generic_figure_sidecar_fields
 from .style import wcag_contrast_check
@@ -152,10 +152,11 @@ def write_figure_artifacts(
     unsupported_inference: str | None = None,
     priority: str | None = None,
     artifact_kind: str = "figure",
+    project_root: Path | None = None,
 ) -> Path:
     """Write raw plot data and metadata sidecar for one figure."""
 
-    data_path = write_figure_plot_data(path, plot_data)
+    data_path = write_figure_plot_data(path, plot_data, project_root=project_root)
     return write_figure_sidecar(
         path,
         title=title,
@@ -178,7 +179,8 @@ def write_figure_artifacts(
         unsupported_inference=unsupported_inference,
         priority=priority,
         artifact_kind=artifact_kind,
-        plot_data_path=project_relative_path(data_path),
+        plot_data_path=project_relative_path(data_path, project_root),
+        project_root=project_root,
     )
 
 
@@ -206,6 +208,7 @@ def write_figure_sidecar(
     unsupported_inference: str | None = None,
     priority: str | None = None,
     artifact_kind: str = "figure",
+    project_root: Path | None = None,
 ) -> Path:
     """Write a JSON sidecar describing figure provenance and validation."""
 
@@ -227,11 +230,11 @@ def write_figure_sidecar(
     effective_kind = artifact_kind or str(narrative_fields.get("artifact_kind", "figure"))
     payload: dict[str, Any] = {
         "schema": "beestack.figure.v1",
-        "figure_path": project_relative_path(path),
+        "figure_path": project_relative_path(path, project_root),
         "title": title,
         "backend": backend,
         "fidelity": fidelity,
-        "source_data": project_relative_path(source_data),
+        "source_data": project_relative_path(source_data, project_root),
         "validation_status": validation_status,
         "regeneration_command": regeneration_command,
         "quality": quality,
@@ -246,6 +249,16 @@ def write_figure_sidecar(
         "accessibility_checks": accessibility_checks or wcag_contrast_check(),
     }
     payload.update(narrative_fields)
+    # Narrative text annotates evidence; it cannot replace execution provenance.
+    payload.update(
+        {
+            "backend": backend,
+            "fidelity": fidelity,
+            "source_data": project_relative_path(source_data, project_root),
+            "validation_status": validation_status,
+            "regeneration_command": regeneration_command,
+        }
+    )
     overrides: dict[str, object | None] = {
         "caption": caption,
         "alt_text": alt_text,
@@ -269,6 +282,7 @@ def write_figure_sidecar(
         payload["metrics"] = metrics
     if plot_data_path:
         payload["plot_data_path"] = plot_data_path
+    payload = project_relative_payload(payload, project_root)
     sidecar = path.with_suffix(".json")
     sidecar.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return sidecar

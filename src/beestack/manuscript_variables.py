@@ -2,12 +2,36 @@
 
 from __future__ import annotations
 
+import re
 from typing import Any
 
 from .body.energetics import REFERENCE_MASS_MG, REFERENCE_STROKE_HZ, REFERENCE_WING_POWER_MW
 from .brain.waggle import JOHNSTON_EVENT_MIN_FREQUENCY_HZ
 from .config import BeeStackConfig
 from .manifest import module_coverage
+
+MANUSCRIPT_ARTIFACT_PATHS = {
+    "animation_manifest": "output/data/animation_manifest.json",
+    "research_report": "output/reports/beestack_research_report.json",
+    "methods_analysis": "output/data/methods_analysis.json",
+    "manuscript_figure_index": "output/data/manuscript_figure_index.json",
+    "readiness_report": "output/reports/project_readiness_review.json",
+    "stack_synthesis": "output/data/stack_synthesis_review.json",
+    "digital_twin_readiness": "output/data/digital_twin_readiness.json",
+}
+_TOKEN_RE = re.compile(r"\{\{([A-Z0-9_]+)\}\}")
+
+
+def hydrate_text(text: str, variables: dict[str, str]) -> str:
+    """Resolve tokens with the same strict transformation used by render preflight."""
+
+    def replace(match: re.Match[str]) -> str:
+        key = match.group(1)
+        if key not in variables:
+            raise KeyError(f"Unresolved manuscript variable: {key}")
+        return variables[key]
+
+    return _TOKEN_RE.sub(replace, text)
 
 
 def generate_variables(
@@ -44,6 +68,7 @@ def generate_variables(
         else f"{cfg.empirical.calcium_acquisition_hz:.0f}"
     )
     return {
+        "EMPIRICAL_AVAILABILITY": str(empirical.get("availability_status", "not recorded")),
         "CONFIG_SEED": str(cfg.seed),
         "CONTROL_RATE_HZ": str(cfg.timing.control_rate_hz),
         "PHYSICS_DT_MS": f"{cfg.timing.physics_dt_s * 1000:.1f}",

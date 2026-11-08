@@ -1,0 +1,13 @@
+{
+  "scope": "source-owned signposting contaminates transient package trees before repair",
+  "transient_guides_written": [
+    "build/README.md",
+    "build/lib/README.md",
+    "build/lib/example/README.md",
+    "dist/README.md"
+  ],
+  "source_guides_written": [
+    "src/README.md",
+    "src/example/README.md"
+  ]
+}

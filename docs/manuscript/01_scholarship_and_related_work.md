@@ -76,10 +76,12 @@ triage reports documenting unusually high commercial losses in early 2025
 Parallel field threads sharpen the motivation for a colony-state ledger rather
 than a dance-only demo. *Varroa destructor* treatment efficacy is under pressure
 from amitraz resistance [@scientificreports2026amitraz; @scitotenv2024varroameta].
-Managed U.S. stocks show low mitochondrial diversity relative to Old World ranges
-[@chen2016genomic; @cridland2017demography]. Deformed wing virus remains a major
+Genomic studies address western honey bee demographic history
+[@cridland2017demography] and temperate adaptation in the subspecies
+*Apis mellifera sinisxinyuan* [@chen2016genomic]; neither is used here as
+evidence of low mitochondrial diversity in managed U.S. stocks. Deformed wing virus remains a major
 overwintering risk [@wilfert2022dwv; @highfield2009dwv]. BeeStack does **not**
-model Varroa titers, viral loads, or survey-derived loss rates in v0; this
+model Varroa titers, viral loads, or survey-derived loss rates in the reduced baseline; this
 section records why those variables belong on the roadmap, not in present-tense
 results.
 
@@ -88,8 +90,10 @@ results.
 The reference genome for *Apis mellifera* now spans chromosome-length assemblies
 (HAv3.1) [@wallberg2019hav31; @honeybee2006genome] with community annotation
 through the Hymenoptera Genome Database and HymenopteraMine [@walsh2022hgd].
-Single-cell and spatial transcriptomic atlases are mapping worker-brain cell
-types and behavioural states [@g3journal2023scrna; @naturecomm2025spatialbrain].
+Single-nucleus and spatial transcriptomics map worker-brain regulatory networks
+associated with behavioural maturation [@naturecomm2025spatialbrain]. A separate
+single-cell study maps developing worker prepupal and pupal cell types, not a
+worker-brain atlas [@g3journal2023scrna].
 
 BeeStack's BeeBrain surface is anchored differently: the Honey-Bee Standard Brain
 atlas and registered empirical panels (odor maps, antennal kinematics,
@@ -105,15 +109,17 @@ of synthetic connectome edges.
 
 Adult worker guts carry a conserved core microbiome of bee-adapted bacterial
 clusters transmitted socially [@kwong2016gutmicrobiome; @zheng2018mbio;
-@naturecomm2025metagenomics]. Microbiome composition correlates with winter
-survival and colony genetic diversity in field studies
-[@microbiome2024winter; @lactobacilli2025winter; @geneticdiversity2022microbiome].
-Honey bees also carry a reduced individual immune gene repertoire relative to
-solitary insects, with colony-level defences including hygienic behaviour,
-royal-jelly-mediated pathogen sharing, and altruistic eviction
-[@evans2006immune; @mondet2018hygienic; @brown2021royaljelly].
+@naturecomm2025metagenomics]. Field microbiome profiles are associated with
+winter colony loss in northern Virginia [@microbiome2024winter], while another
+study describes winter lactobacillus abundance rather than establishing a
+survival predictor [@lactobacilli2025winter]. Colony genetic diversity predicts
+individual gut bacterial diversity [@geneticdiversity2022microbiome]. Honey bees
+also carry a reduced individual immune gene repertoire, alongside colony-level
+defences including hygienic behaviour and royal-jelly-mediated transfer of
+bacterial pathogen fragments [@evans2006immune; @mondet2018hygienic;
+@brown2021royaljelly]. These findings do not establish general causal survival effects.
 
-None of these processes are state variables in BeeStack v0. They inform the
+None of these processes are state variables in the current BeeStack implementation. They inform the
 colony ledger and BeeNiche driver surfaces described in [@sec:roadmap]: pathogen
 loads, pesticide burden, and microbiome summaries should enter only with typed
 units, provenance, and held-out validation—not as narrative filler.
@@ -168,7 +174,8 @@ policies in the spirit of the free-energy framework [@friston2010free;
 pheromones, and task pressures [@free1987pheromones;
 @johnson2010temporal]. **BeeNiche** represents the constructed comb,
 the thermal field, and the foraging landscape interface
-[@johnson2009self; @kronenberg1982colonial].
+[@kronenberg1982colonial]; its comb-growth rule is a synthetic design choice,
+not a literature-calibrated deposition law.
 
 ## First-principles design stance
 
@@ -197,7 +204,7 @@ are hard evidence, which are scaffolding, and which are roadmap items.
 
 ## From specification to executable scaffold
 
-The v0 codebase turns those five layers into tested contracts rather than
+The current codebase turns those five layers into tested contracts rather than
 prose only. This is deliberately modest and structural: the initial
 backend is deterministic and reduced, while the APIs are designed so that
 higher-fidelity engines can replace individual modules without rewriting

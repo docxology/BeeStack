@@ -88,9 +88,16 @@ inserted into the hydrated manuscript.
 
 ```bash
 uv run python scripts/analysis_pipeline.py
-uv run python scripts/verify_generated_reports.py
 uv run python scripts/z_generate_manuscript_variables.py
+uv run python scripts/render_manuscript.py
+uv run python scripts/signpost_project_tree.py
 uv run python scripts/audit_documentation.py
+uv run python scripts/run_security_audit.py
+uv run python scripts/signpost_project_tree.py --check
+uv run python scripts/z_generate_manuscript_variables.py
+uv run python scripts/render_manuscript.py
+uv run python scripts/verify_generated_reports.py
+uv run python scripts/audit_publication_readiness.py --check
 ```
 
 After a manuscript edit, inspect:
@@ -102,6 +109,13 @@ After a manuscript edit, inspect:
 The hydration script raises an error for unsupported tokens, and the
 documentation audit fails when resolved manuscript sections still contain
 unresolved placeholders.
+
+The first render bootstraps cold-checkout audits. Audits change generated inputs;
+the final hydration/render seals their current bytes. The receipt includes current
+raw empirical payloads, not only summaries and figure names. Do not edit sealed
+inputs after rendering or substitute an old PDF. See the root README for the full
+animation, strict-render and research-assembly prerequisites. A DOI-less local PDF
+is not a deposited release; `--require-doi` requires this version's assigned DOI.
 
 ## Review Checklist
 

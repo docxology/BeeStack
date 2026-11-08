@@ -489,8 +489,8 @@ def test_honeybee_standard_brain_anatomy_parsers(tmp_path: Path) -> None:
         skipped_existing=True,
         sha256="fixture",
     )
-    assert asset_record.downloaded
-    assert atlas_download_records_from_dicts((asset_record.as_dict(),))[0].sha256 == "fixture"
+    assert not asset_record.downloaded  # A local parse is not proof of transfer completion.
+    assert atlas_download_records_from_dicts((asset_record.as_dict(),))[0].sha256 is None
     assert record.as_dict()["downloaded"] is True
     assert inventory.as_dict()["vrml_count"] == 1
     assert abbreviations[0].as_dict()["abbreviation"]

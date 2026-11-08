@@ -2,12 +2,22 @@
 
 BeeStack treats scholarship, software, generated reports, and empirical
 availability records as materials. The source-refresh ledger under
-`output/llm/source_refresh_ledger.json` records the current public-source
-refresh: each row carries a citation key, DOI or official source URL,
-direct-verification status, claim tier, availability state, manuscript
-targets, and figure targets. Perplexity/web research is allowed only as a
-discovery channel. A source can influence manuscript claims only after it
-enters the offline ledger with direct DOI or official-source verification.
+`output/llm/source_refresh_ledger.json` records selected scholarship anchors.
+The broader primary-source identity audit is retained in
+`output/reports/workflowz_source_verification.json`: each record preserves the
+encountered citation, exact official registry/publisher/project URL, observed
+identity, disposition, and unresolved gaps. Web search is discovery only.
+Registry identity verification establishes bibliographic routing, not the truth
+of a manuscript claim, access to underlying data, or biological validation.
+
+The audit inspects all 92 cited-or-required records. Inaccessible historical
+publisher metadata remains unavailable, not invalid. Two unidentified article
+records were removed from the bibliography and their unsupported claims were
+withdrawn; the HIVEOPOLIS background citation now identifies the official
+CORDIS project rather than an unconfirmed journal article. The G3 developmental
+pupa study is not a worker-brain atlas, and the Chen subspecies-adaptation study
+is not evidence for managed-U.S. mitochondrial bottlenecks. These distinctions
+are preserved even when a DOI resolves successfully.
 
 [@fig:scholarship_evidence_matrix] links scholarship anchors to verification status and manuscript targets; see also [@sec:materials].
 
@@ -75,7 +85,7 @@ downloaded under license, parsed, and audited.
 
 [@fig:scholarship_evidence_matrix] maps directly verified scholarship anchors
 from `output/llm/source_refresh_ledger.json`; the external registry records
-repository-level targets that remain unwired in v0.
+repository-level targets that remain unwired in the current implementation.
 
 ## Generated materials
 

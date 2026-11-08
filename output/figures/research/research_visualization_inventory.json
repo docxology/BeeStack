@@ -22,14 +22,14 @@
   "plot_data_path": "output/figures/research/research_visualization_inventory_data.json",
   "priority": "indexed",
   "quality": {
-    "height_px": 831,
+    "height_px": 833,
     "max_intensity": 255,
-    "mean_intensity": 240.71865811184733,
+    "mean_intensity": 238.4969854956324,
     "min_intensity": 24,
     "mode": "RGBA",
     "nonzero_histogram_bins": 232,
-    "std_intensity": 40.06464932705866,
-    "width_px": 1513
+    "std_intensity": 45.599407310437115,
+    "width_px": 1534
   },
   "regeneration_command": "uv run python scripts/run_research_suite.py",
   "schema": "beestack.figure.v1",
@@ -40,14 +40,14 @@
   "validation_status": "nonblank image, quality sidecar, and plot data passed",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 1.821,
+    "aspect_ratio": 1.842,
     "figure_role": "overview",
-    "height_px": 831,
+    "height_px": 833,
     "label_density": "moderate",
     "manuscript_use": "indexed_gallery",
-    "max_dimension_px": 1513,
-    "min_dimension_px": 831,
+    "max_dimension_px": 1534,
+    "min_dimension_px": 833,
     "readability_status": "gallery",
-    "width_px": 1513
+    "width_px": 1534
   }
 }

@@ -49,34 +49,25 @@ rather than treating the target as a present-tense result.
 ## Quickstart
 
 ```bash
-uv sync   # interpreter as pinned in .python-version (also the file CI reads); see docs/troubleshooting.md if the dm-tree build fails
-uv run pytest --cov=src --cov-report=term-missing
-uv run python scripts/analysis_pipeline.py
-uv run python scripts/generate_animations.py
-uv run python scripts/verify_bee_render.py
-uv run python scripts/review_stack_integrity.py
-uv run python scripts/fetch_empirical_bee_data.py
-uv run python scripts/analyze_empirical_bee_data.py
-uv run python scripts/run_research_suite.py --assemble-only
-uv run python scripts/run_methods_analysis.py
-uv run python scripts/run_stack_synthesis.py
-uv run python scripts/assess_digital_twin_readiness.py
-uv run python scripts/verify_generated_reports.py
-uv run python scripts/signpost_project_tree.py --check
-uv run python scripts/audit_documentation.py
-uv run python scripts/run_security_audit.py
+uv sync --locked --all-extras
+uv run beestack-analysis --project-root .
 uv run python scripts/z_generate_manuscript_variables.py
-uv run python scripts/audit_publication_readiness.py --check
+uv run python scripts/render_manuscript.py
+uv run python scripts/verify_generated_reports.py
 ```
 
-`scripts/fetch_empirical_bee_data.py` now attempts full curated downloads by
-default and skips local files that already exist. Use `--metadata-only` when you
-only want manifests and source catalogs. Large raw data are written to
-`output/data/empirical_sources/` and are treated as regeneratable outputs, not
-package source.
+`scripts/fetch_empirical_bee_data.py` attempts curated acquisition by default.
+Only completion-verified caches are skipped. Use `--metadata-only` for manifests;
+large raw payloads stay under `output/data/empirical_sources/`, not package source.
 If no workbook/CSV/MAT empirical panels are local, `scripts/analyze_empirical_bee_data.py`
 is allowed to skip the optional empirical-analysis stage while the offline core
 analysis, reports, signposting, and manuscript hydration continue.
+
+Installed wheels provide `beestack-analysis --project-root /path/to/BeeStack`
+and `beestack-animations --project-root /path/to/BeeStack`; they call package
+APIs, not checkout-only scripts. The checkout owns canonical configuration/data
+and every generated output. Skipped empirical stages preserve historical files
+but invalidate current measurements through `output/data/empirical_availability.json`.
 
 ## Snapshot Policy
 
@@ -96,7 +87,7 @@ uv run ruff check src tests scripts
 uv run ruff format --check src tests scripts
 uv lock --check
 uv run pytest --cov=src --cov-report=term-missing
-uv run python scripts/fetch_empirical_bee_data.py
+uv run python scripts/fetch_empirical_bee_data.py --metadata-only
 uv run python scripts/analyze_empirical_bee_data.py
 uv run python scripts/analysis_pipeline.py
 uv run python scripts/generate_animations.py
@@ -106,17 +97,26 @@ uv run python scripts/run_research_suite.py --assemble-only
 uv run python scripts/run_methods_analysis.py
 uv run python scripts/run_stack_synthesis.py
 uv run python scripts/assess_digital_twin_readiness.py
-uv run python scripts/verify_generated_reports.py
-uv run python scripts/audit_documentation.py
-uv run python scripts/signpost_project_tree.py --check
 uv run python scripts/z_generate_manuscript_variables.py
+uv run python scripts/render_manuscript.py  # bootstrap PDF for cold-checkout audits
+uv run python scripts/signpost_project_tree.py
+uv run python scripts/audit_documentation.py
+uv run python scripts/run_security_audit.py
+uv run python scripts/signpost_project_tree.py --check
+# Audits update manuscript inputs: hydrate and seal the final PDF afterwards.
+uv run python scripts/z_generate_manuscript_variables.py
+uv run python scripts/render_manuscript.py
+uv run python scripts/verify_generated_reports.py
 uv run python scripts/audit_publication_readiness.py --check
 ```
 
-## Release 1.0
+## Release 2.0 candidate
 
-Version identifiers: `docs/manuscript/config.yaml` → `paper.version: "1.0"`;
-`pyproject.toml` → `1.0.0`; `src/beestack/version.py` is the package source of truth.
+Version authority: `src/beestack/version.py`; package metadata is `2.0.0` and
+`docs/manuscript/config.yaml` declares manuscript `2.0`. This is a major API
+cutover: required full-bearing heading/model connectivity, explicit missing
+empirical values, root-aware provenance, and verified download-completion records.
+Python support is >=3.11,<3.13; the development/CI pin is 3.12.16.
 
 Publication gate (after full verification above):
 
@@ -126,9 +126,27 @@ uv run python scripts/audit_publication_readiness.py --check
 uv run python scripts/audit_publication_readiness.py --check --require-doi
 ```
 
-Combined PDF: `output/pdf/BeeStack_combined.pdf` (render from template root with
-`uv run python scripts/pipeline/stage_03_render.py --project BeeStack`). See `CHANGELOG.md`
-for scope and known gaps. Mint `publication.doi` at Zenodo before public deposit.
+Combined PDF: `output/pdf/BeeStack_combined.pdf`, generated **inside this checkout**
+by `uv run python scripts/render_manuscript.py` using Pandoc and XeLaTeX.
+The gate requires a real readable PDF and a matching source/data/figure render
+receipt. All supported Markdown image references and sidecars are sealed, regardless
+of image format or project-local folder. No sibling template checkout is used.
+Core primary figures remain mandatory. Empirical primary figures require current,
+data-bound analysis; retained historical empirical images are rejected from the manuscript.
+`10.5281/zenodo.20420557` identifies the historical 1.0 deposit, not 2.0;
+the new `publication.doi` stays empty until a version-specific DOI is assigned.
+Never reuse the older DOI. See `CHANGELOG.md` for contracts and limitations.
+
+Empirical intake requires complete observed channel/condition grids and explicit,
+consistent acquisition rates; it never fills absent observations with zeros or
+invented sampling rates. Published signed-rank statistics retain fractional ranks.
+Current empirical evidence is bound to raw payloads, configuration and implementation;
+parsing a published supplement is not connectivity or biological validation.
+Download completion also binds the original locator, source DOI/version and advertised
+size. Legacy byte-only receipts cannot certify a different source after a failed refresh.
+
+BeeStack is MIT licensed (`LICENSE`). Vendored/generated FlyBody assets retain their
+upstream Apache-2.0 notice; source datasets retain their own registered licenses.
 
 ## Output Map
 

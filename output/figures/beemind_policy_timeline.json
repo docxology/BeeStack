@@ -22,14 +22,14 @@
   "plot_data_path": "output/figures/beemind_policy_timeline_data.json",
   "priority": "indexed",
   "quality": {
-    "height_px": 669,
+    "height_px": 666,
     "max_intensity": 255,
-    "mean_intensity": 250.60958151030664,
+    "mean_intensity": 250.69531681568017,
     "min_intensity": 24,
     "mode": "RGBA",
     "nonzero_histogram_bins": 232,
-    "std_intensity": 27.560911612843302,
-    "width_px": 1316
+    "std_intensity": 26.982181409906755,
+    "width_px": 1321
   },
   "regeneration_command": "uv run python scripts/analysis_pipeline.py",
   "schema": "beestack.figure.v1",
@@ -40,14 +40,14 @@
   "validation_status": "nonblank quality sidecar and plot data generated",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 1.967,
+    "aspect_ratio": 1.983,
     "figure_role": "overview",
-    "height_px": 669,
+    "height_px": 666,
     "label_density": "compact",
     "manuscript_use": "indexed_gallery",
-    "max_dimension_px": 1316,
-    "min_dimension_px": 669,
+    "max_dimension_px": 1321,
+    "min_dimension_px": 666,
     "readability_status": "gallery",
-    "width_px": 1316
+    "width_px": 1321
   }
 }

@@ -13,10 +13,10 @@ The research suite writes
 `output/reports/beestack_research_report.json`, and
 `output/data/research_suite_report.json`. It reports five module
 scorecards, 5 empirical evidence records,
-87 visualization artifacts,
+75 visualization artifacts,
 3 deterministic sensitivity sweeps, and
 11 known gaps. The overall validation
-fraction is 0.938. The scorecard heatmap,
+fraction is 0.750. The scorecard heatmap,
 sensitivity sweeps, evidence network overview, and evidence detail table below
 are Matplotlib/pandas or NetworkX diagnostics from the typed research report;
 each sidecar states what the figure does not prove.
@@ -50,14 +50,14 @@ writes `output/reports/stack_synthesis_review.md`,
 findings companion.
 
 The latest synthesis reports validation fraction
-1.000, synthesized readiness fraction
-0.909, artifact coverage
+0.750, synthesized readiness fraction
+0.842, artifact coverage
 1.000, and
-95 bibliography anchors. The digital-twin
+93 bibliography anchors. The digital-twin
 readiness gate remains `False` in the generated readiness
 review. The integrated run improved brood-temperature error by
 3.964 °C. The top
-synthesis finding is: **Weakest synthesized module is BeeBrain (readiness 0.821; gaps 2).**
+synthesis finding is: **Weakest synthesized module is BeeBrain (readiness 0.483; gaps 2).**
 
 [@fig:stack_synthesis_dashboard] summarizes cross-stack synthesis metrics and readiness fractions.
 
@@ -82,7 +82,7 @@ The scorecards make fidelity labels first-class.
   communication kernel.
 - **BeeNiche** is a voxel comb and thermal kernel with BEEHAVE and
   Hiveopolis adapter schemas [@becher2014beehave;
-  @narsicht2020hiveopolis].
+  @hiveopolis2019project].
 
 Each module also exposes contract coverage, validation pass count,
 empirical-evidence count, and known-gap count, so the heatmap row for
@@ -93,10 +93,10 @@ a module is interpretable without the surrounding prose.
 The sensitivity sweeps are deterministic: each sweep varies a single
 configuration knob over a fixed grid, records the resulting BeeStack
 diagnostics, and serializes the result to
-`output/data/sensitivity/<knob>.json`. The default sweep size is 5
-samples per knob, which is the smallest grid that produces a visible
-monotone signal on every recorded diagnostic without inflating CI
-wall-time. The sweeps are *not* a substitute for a Bayesian
+`output/data/sensitivity/sensitivity_sweeps.json`. The configured sweep grid
+supports inspection of parameter responses, including flat or non-monotone
+responses; it does not establish global sensitivity or calibrated uncertainty.
+The sweeps are *not* a substitute for a Bayesian
 calibration; they are a *contract-stability witness* that says: when
 the kernel is asked to change one parameter at a time, the
 intermediate states and final outputs respond consistently and within
@@ -113,7 +113,7 @@ structurally insensitive under the current reduced kernel
 The readiness review writes
 `output/reports/project_readiness_review.md` and
 `output/reports/project_readiness_review.json`. It currently reports
-strict signposting coverage for 72
+strict signposting coverage for 71
 directories and keeps the next-improvement backlog tied to the
 research-suite gaps. The top prioritized improvement is
 **BeeBrain calcium acquisition completion (P27)**.
@@ -135,9 +135,9 @@ The methods-analysis report writes
 5 module methods panels,
 3 scenario-sweep panels,
 52 linked visualization records, and an
-overall methods validation fraction of 0.960.
+overall methods validation fraction of 0.800.
 Its `all_validations_passed` flag is False,
-and its highest-priority visible gap is **BeeBrain: brain_parseability_target**.
+and its highest-priority visible gap is **BeeBrain: template_bank**.
 
 ## What "validation fraction" means
 

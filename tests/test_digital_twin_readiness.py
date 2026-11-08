@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import subprocess
+import sys
 from pathlib import Path
 
 from beestack import (
@@ -51,7 +52,7 @@ def test_digital_twin_markdown_names_acceptance_artifacts() -> None:
 def test_digital_twin_readiness_script_writes_reports() -> None:
     project_root = Path(__file__).resolve().parents[1]
     subprocess.run(
-        ["uv", "run", "python", "scripts/assess_digital_twin_readiness.py"],
+        [sys.executable, "scripts/assess_digital_twin_readiness.py"],
         cwd=project_root,
         check=True,
     )

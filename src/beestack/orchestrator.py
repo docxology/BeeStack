@@ -10,6 +10,8 @@ from numpy.typing import NDArray
 
 from .body import BodyState, BodyTelemetry, initial_body_state, step_body
 from .brain import BrainState, decode_waggle, process_observation
+from .brain.mushroom_body import build_kenyon_projection
+from .brain.state import KenyonProjection
 from .config import BeeStackConfig
 from .contracts import Observation, validate_action, validate_observation, zero_action
 from .mind import (
@@ -45,6 +47,7 @@ class SimulationState:
     agents: tuple[BeeAgent, ...]
     pheromones: PheromoneField
     comb: CombGrid
+    kenyon_projection: KenyonProjection
 
 
 @dataclass(frozen=True)
@@ -87,6 +90,7 @@ class SimulationResult:
             "final_mean_pheromone": last.mean_pheromone,
             "final_empirical_odor": last.dominant_empirical_odor,
             "final_empirical_alignment": last.dominant_empirical_alignment,
+            "dance_drive_provenance": "fixed synthetic reduced scenario, not sensory-decoded recruitment",
         }
 
 
@@ -103,14 +107,22 @@ def initialize_simulation(
     observation = _apply_empirical_context(
         observation, cfg, empirical_drive, empirical_antennal_vibration
     )
+    projection = build_kenyon_projection(cfg, cfg.seed)
     brain = process_observation(
-        observation, cfg, seed=cfg.seed, odor_templates=empirical_odor_templates
+        observation,
+        cfg,
+        seed=cfg.seed,
+        odor_templates=empirical_odor_templates,
+        projection=projection,
     )
+    _validate_brain_output(brain, cfg)
     belief = initial_belief(cfg)
     agents = initialize_agents(cfg, seed=cfg.seed + 1)
     pheromones = empty_pheromone_field(cfg)
     comb = seed_hex_comb(empty_comb(cfg))
-    return SimulationState(0, body, observation, brain, belief, agents, pheromones, comb)
+    return SimulationState(
+        0, body, observation, brain, belief, agents, pheromones, comb, projection
+    )
 
 
 def step_simulation(
@@ -135,8 +147,9 @@ def step_simulation(
     brain = process_observation(
         observation,
         cfg,
-        seed=cfg.seed + state.step_index,
+        seed=cfg.seed,
         odor_templates=empirical_odor_templates,
+        projection=state.kenyon_projection,
     )
     _validate_brain_output(brain, cfg)
     recruitment = broadcast_dance(dance, state.agents, cfg)
@@ -155,6 +168,7 @@ def step_simulation(
         agents=state.agents,
         pheromones=pheromones,
         comb=comb,
+        kenyon_projection=state.kenyon_projection,
     )
     record = _record(
         next_state,
@@ -173,7 +187,7 @@ def run_simulation(
     empirical_drive: np.ndarray | None = None,
     empirical_antennal_vibration: np.ndarray | None = None,
 ) -> SimulationResult:
-    """Run the integrated v0 BeeStack simulation."""
+    """Run the integrated reduced BeeStack simulation."""
 
     if steps <= 0:
         raise ValueError("steps must be positive")
@@ -248,6 +262,8 @@ def _apply_empirical_context(
         drive = np.asarray(empirical_drive, dtype=float).reshape(-1)
         if drive.size == 0:
             raise ValueError("empirical_drive must not be empty")
+        if not np.isfinite(drive).all():
+            raise ValueError("empirical_drive must be finite")
         if drive.size != cfg.body.olfactory_channels:
             source = np.linspace(0.0, 1.0, drive.size)
             target = np.linspace(0.0, 1.0, cfg.body.olfactory_channels)
@@ -258,6 +274,8 @@ def _apply_empirical_context(
         vibration = np.asarray(empirical_antennal_vibration, dtype=float).reshape(-1)
         if vibration.shape != (2,):
             raise ValueError("empirical_antennal_vibration must have shape (2,)")
+        if not np.isfinite(vibration).all():
+            raise ValueError("empirical_antennal_vibration must be finite")
         updates["antennal_vibration"] = vibration
     return observation.__class__(**{**observation.__dict__, **updates})
 

@@ -29,6 +29,8 @@ if TYPE_CHECKING:
 def generate_stack_synthesis_figures(
     review: StackSynthesisReview,
     output_dir: Path,
+    *,
+    project_root: Path | None = None,
 ) -> list[Path]:
     """Generate cross-stack synthesis figures."""
 
@@ -51,6 +53,7 @@ def generate_stack_synthesis_figures(
             source_data="output/reports/stack_synthesis_review.json",
             validation_status="nonblank synthesis diagnostic with plot data",
             regeneration_command="uv run python scripts/run_research_suite.py",
+            project_root=project_root,
         )
     return paths
 

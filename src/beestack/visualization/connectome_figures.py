@@ -3,16 +3,24 @@
 from __future__ import annotations
 
 from collections import Counter
+from dataclasses import replace
 from pathlib import Path
 
 import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
+from matplotlib.figure import Figure
 from matplotlib.patches import FancyArrowPatch
 
 from ..brain.connectome import BeeBrainConnectomeReport
 from .figure_output import finalize_static_figures
-from .figure_plot_specs import connectome_plot_data
+from .figure_plot_specs import (
+    connectome_coverage,
+    connectome_fidelity,
+    connectome_graph,
+    connectome_plot_data,
+)
+from .figure_registry import figure_narrative_for_path
 from .style import (
     add_figure_note,
     add_status_badge,
@@ -28,9 +36,11 @@ def generate_connectome_figures(
     output_dir: Path,
     *,
     completeness_tiers: dict[str, object] | None = None,
+    project_root: Path | None = None,
 ) -> list[Path]:
     output_dir.mkdir(parents=True, exist_ok=True)
     context = {"report": report, "tiers": completeness_tiers or {}}
+    evidence = connectome_fidelity(report)
     with style_context():
         paths = [
             _structural_graph(report, output_dir / "connectome_structural_graph.png"),
@@ -50,40 +60,56 @@ def generate_connectome_figures(
         )
 
     def _sidecar(path: Path) -> dict[str, object]:
+        narrative = figure_narrative_for_path(path)
+        assert narrative is not None
+        title = evidence["title"] if path.stem == "connectome_structural_graph" else narrative.title
+        runtime = replace(
+            narrative,
+            title=title,
+            caption=f"{narrative.caption} {evidence['summary']}",
+            alt_text=f"{narrative.alt_text} {evidence['summary']}",
+            claim_tier=evidence["claim_tier"],
+            fidelity_level=evidence["fidelity"],
+        )
         return {
-            "title": path.stem.replace("_", " ").title(),
+            **runtime.as_sidecar_fields(),
+            "title": title,
             "backend": "matplotlib/networkx connectome renderer",
-            "fidelity": "Honeybee Standard Brain structural projectome diagnostic",
+            "fidelity": evidence["fidelity"],
             "source_data": "output/data/bee_brain_connectome.json",
-            "validation_status": "structural connectome tier witness with plot data",
+            "validation_status": evidence["summary"],
             "regeneration_command": "uv run python scripts/analyze_empirical_bee_data.py",
+            "metrics": {
+                key: evidence[key]
+                for key in ("tier", "evidence_state", "edge_counts", "supporting_assets")
+            },
         }
 
-    finalize_static_figures(paths, plot_data_for=_plot_data, sidecar_for=_sidecar)
+    finalize_static_figures(
+        paths, plot_data_for=_plot_data, sidecar_for=_sidecar, project_root=project_root
+    )
     return paths
 
 
 def _structural_graph(report: BeeBrainConnectomeReport, path: Path) -> Path:
-    graph = nx.DiGraph()
-    for node in report.nodes:
-        graph.add_node(
-            node.node_id,
-            label=node.label,
-            kind=node.kind,
-            module_target=node.module_target,
-        )
-    for edge in report.edges:
-        if edge.edge_kind == "structural_tract":
-            graph.add_edge(edge.source_id, edge.target_id, evidence=edge.evidence)
+    fig = _structural_graph_figure(report)
+    fig.savefig(path, dpi=160)
+    plt.close(fig)
+    return path
+
+
+def _structural_graph_figure(report: BeeBrainConnectomeReport) -> Figure:
+    graph = connectome_graph(report)
+    evidence = connectome_fidelity(report)
     fig, ax = plt.subplots(figsize=(9.8, 6.2))
     ax.axis("off")
-    ax.set_title("BeeBrain structural projectome (HSB VRML)", loc="left", pad=12)
+    ax.set_title(evidence["title"], loc="left", pad=12)
     add_status_badge(
         ax,
-        "structural projectome only",
-        status="structural",
+        evidence["evidence_state"].replace("_", " "),
+        status="structural" if evidence["evidence_state"] == "structural_projectome" else "partial",
         xy=(0.03, 0.93),
-        width=28,
+        width=36,
     )
     positions = {
         "antennal_lobe": (0.18, 0.62),
@@ -138,16 +164,20 @@ def _structural_graph(report: BeeBrainConnectomeReport, path: Path) -> Path:
         ("antennal_lobe", "central_complex"): "ACT",
         ("mushroom_body", "central_complex"): "Pe1/Pn",
     }
-    drawn: set[tuple[str, str]] = set()
-    for source, target in graph.edges:
+    drawn: set[tuple[str, str, str]] = set()
+    for source, target, data in graph.edges(data=True):
         source_cluster = _cluster_for_node(source, graph)
         target_cluster = _cluster_for_node(target, graph)
         if source_cluster not in positions or target_cluster not in positions:
             continue
         edge_key = (source_cluster, target_cluster)
-        if edge_key in drawn or source_cluster == target_cluster:
+        kind = data["edge_kind"]
+        drawn_key = (*edge_key, kind)
+        if drawn_key in drawn or source_cluster == target_cluster:
             continue
-        drawn.add(edge_key)
+        drawn.add(drawn_key)
+        schematic = kind == "schematic_pathway"
+        radius = -0.12 if schematic else 0.12
         start = positions[source_cluster]
         end = positions[target_cluster]
         ax.add_patch(
@@ -158,16 +188,18 @@ def _structural_graph(report: BeeBrainConnectomeReport, path: Path) -> Path:
                 arrowstyle="-|>",
                 mutation_scale=16,
                 lw=2.0,
-                color="#334155",
+                linestyle="--" if schematic else "-",
+                color="#B45309" if schematic else "#334155",
                 alpha=0.78,
-                connectionstyle="arc3,rad=0.08",
+                connectionstyle=f"arc3,rad={radius}",
                 zorder=2,
             )
         )
-        label = pathway_labels.get(edge_key, "tract")
+        pathway = pathway_labels.get(edge_key, "pathway")
+        label = f"{pathway} ({'schematic' if schematic else 'VRML-supported'})"
         ax.text(
             (start[0] + end[0]) / 2,
-            (start[1] + end[1]) / 2 + 0.035,
+            (start[1] + end[1]) / 2 + (-0.045 if schematic else 0.055),
             label,
             transform=ax.transAxes,
             ha="center",
@@ -188,18 +220,19 @@ def _structural_graph(report: BeeBrainConnectomeReport, path: Path) -> Path:
         0.64,
         0.23,
         (
-            f"Report inventory: {graph.number_of_nodes()} nodes, "
-            f"{graph.number_of_edges()} structural tract edges. Labels are "
-            "clustered by BeeBrain module to keep manuscript-scale topology readable."
+            f"Report inventory: {graph.number_of_nodes()} nodes; "
+            f"{evidence['edge_counts']['structural_tract']} supported structural edges; "
+            f"{evidence['edge_counts']['schematic_pathway']} schematic edges. "
+            "Module-clustered links: solid = VRML-supported; dashed = schematic."
         ),
         width=44,
-        max_lines=5,
+        max_lines=6,
     )
     bounded_text(
         ax,
         0.03,
         0.23,
-        "Boundary: no synaptic adjacency, no functional Granger completeness, and no calcium-validated dynamics are inferred from the structural paths.",
+        "Boundary: schematic paths are not observed tracts. No synaptic adjacency, functional Granger completeness, or calcium-validated dynamics are inferred.",
         width=44,
         max_lines=5,
         facecolor="#FFF7ED",
@@ -207,13 +240,11 @@ def _structural_graph(report: BeeBrainConnectomeReport, path: Path) -> Path:
     )
     add_figure_note(
         fig,
-        "HSB structural pathways are shown as top-level witnesses; detailed node inventories remain in output/data/bee_brain_connectome.json and plot-data sidecars.",
+        "Pathway topology is grouped by module, not measured spatial geometry. Full edge kinds and evidence remain in the graph report and plot-data sidecars.",
         y=0.02,
     )
     fig.tight_layout()
-    fig.savefig(path, dpi=160)
-    plt.close(fig)
-    return path
+    return fig
 
 
 def _neuropil_module_map(report: BeeBrainConnectomeReport, path: Path) -> Path:
@@ -221,7 +252,7 @@ def _neuropil_module_map(report: BeeBrainConnectomeReport, path: Path) -> Path:
     modules = sorted(counts)
     values = [counts[module] for module in modules]
     fig, ax = plt.subplots(figsize=(7, 4))
-    apply_panel_style(ax, title="Neuropil abbreviations by BeeBrain module")
+    apply_panel_style(ax, title="Graph neuropil nodes by BeeBrain module")
     ax.imshow(np.array([values], dtype=float), aspect="auto", cmap="YlGnBu")
     ax.set_xticks(range(len(modules)))
     ax.set_xticklabels(modules, rotation=35, ha="right", fontsize=8)
@@ -238,14 +269,7 @@ def _completeness_tiers(
     path: Path,
 ) -> Path:
     labels = ["structural", "functional", "synaptic"]
-    coverage = [
-        float(
-            (tiers.get(label, {}) or {}).get(
-                "coverage", report.completeness.get(f"{label}_coverage", 0.0)
-            )
-        )
-        for label in labels
-    ]
+    coverage = connectome_coverage(report, tiers)
     fig, ax = plt.subplots(figsize=(6, 4))
     apply_panel_style(ax, title="Connectome evidence tiers")
     colors = [
@@ -271,7 +295,8 @@ def _completeness_tiers(
         ax,
         0.02,
         0.96,
-        "Structural tier is a projectome witness; unavailable tiers stay explicit rather than filled.",
+        f"{connectome_fidelity(report)['evidence_state'].replace('_', ' ')}; "
+        "schematic pathways do not count toward structural coverage.",
         width=38,
         max_lines=3,
         fontsize=8,
@@ -282,14 +307,14 @@ def _completeness_tiers(
     return path
 
 
-def _cluster_counts(graph: nx.DiGraph) -> Counter[str]:
+def _cluster_counts(graph: nx.MultiDiGraph) -> Counter[str]:
     counts: Counter[str] = Counter()
     for node in graph.nodes:
         counts[_cluster_for_node(node, graph)] += 1
     return counts
 
 
-def _cluster_for_node(node: str, graph: nx.DiGraph) -> str:
+def _cluster_for_node(node: str, graph: nx.MultiDiGraph) -> str:
     node_text = node.lower()
     module = str(graph.nodes[node].get("module_target", "")).lower()
     merged = f"{node_text} {module}"
