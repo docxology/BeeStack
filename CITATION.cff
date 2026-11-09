@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+type: software
+title: "BeeStack"
+authors:
+  - family-names: Friedman
+    given-names: Daniel Ari
+    orcid: "https://orcid.org/0000-0001-6232-9096"
+repository-code: "https://github.com/docxology/BeeStack"
+abstract: "Modular honeybee simulation scaffold in five typed layers — BeeBody (FlyBody locomotion), BeeBrain (odor and waggle-dance decoding), BeeMind (active inference policy selection), BeeSwarm (MuJoCo colony physics, pheromones), BeeNiche (comb, thermals, foraging) — with curated empirical datasets and pytest coverage gates."
+license: MIT
