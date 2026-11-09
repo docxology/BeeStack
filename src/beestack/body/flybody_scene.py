@@ -78,7 +78,9 @@ class FlyBodySceneRenderConfig:
     stop_signal_sensitivity: float
 
     def as_dict(self) -> dict[str, float | int | str]:
-        return asdict(self)
+        payload = asdict(self)
+        payload["visual_profile"] = "viewport_buffers_scene_key_shadows"
+        return payload
 
 
 @dataclass(frozen=True)
@@ -321,6 +323,14 @@ def write_prefixed_multi_bee_scene_xml(
                 copied.set("njmax", str(max(300, 320 * bee_count)))
                 copied.set("nconmax", str(max(256, 32 * bee_count * bee_count)))
             scene.append(copied)
+    visual = scene.find("visual")
+    if visual is None:
+        visual = ET.SubElement(scene, "visual")
+    offscreen = visual.find("global")
+    if offscreen is None:
+        offscreen = ET.SubElement(visual, "global")
+    offscreen.set("offwidth", str(cfg.visualization.body_render_width))
+    offscreen.set("offheight", str(cfg.visualization.body_render_height))
 
     worldbody = ET.SubElement(scene, "worldbody")
     _add_scene_floor(worldbody, floor_z)
@@ -445,6 +455,8 @@ def _scene_render_config(
 def _prefixed_copy(element: ET.Element, prefix: str) -> ET.Element:
     copied = copy.deepcopy(element)
     for node in copied.iter():
+        if node.tag == "light":
+            node.set("castshadow", "false")
         if node.tag == "geom" and (
             "collision" in (node.get("class") or "") or "collision" in (node.get("name") or "")
         ):
@@ -478,6 +490,7 @@ def _add_scene_floor(worldbody: ET.Element, floor_z: float) -> None:
             "pos": "0 -0.6 0.8",
             "dir": "0 0.4 -1",
             "diffuse": "0.7 0.7 0.7",
+            "castshadow": "true",
         },
     )
 

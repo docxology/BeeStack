@@ -10,7 +10,8 @@ The `real_flybody_3d` manifest group identifies a renderer path, not calibration
 
 - `beebody_flybody_morphology.gif`: FlyBody `WalkImitation` rollout
   rendered from the generated `apis_mellifera_worker.xml` MJCF body plan with a
-  name-aware BeeStack-to-FlyBody tripod walking action policy.
+  name-aware BeeStack-to-FlyBody configured tripod-pattern leg controls, not a
+  measured classification of the realized gait.
 - `beebody_flybody_flight.gif`: FlyBody `FlightImitationWBPG` rollout
   rendered from the same bee MJCF with `WingBeatPatternGenerator` wing motion.
 - `beebrain_neural_anatomy.gif`: bee brain anatomy with AL -> MB -> CX neural

@@ -20,3 +20,5 @@
   files remain plot-data-only and must not be forced to carry narrative fields.
 - Schematic figures are acceptable only when labeled as schematic or reduced;
   do not let diagnostic art stand in for FlyBody/MuJoCo or empirical evidence.
+- Label programmed leg-phase patterns as controls, not an inferred or validated
+  gait. Keep animation-manifest titles/captions aligned with manuscript boundaries.

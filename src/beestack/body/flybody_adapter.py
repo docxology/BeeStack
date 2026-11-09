@@ -163,7 +163,7 @@ def flybody_action_names_from_spec(action_spec: Any) -> tuple[str, ...]:
 
 
 def bee_walk_cycle_action(cfg: BeeStackConfig, step_index: int, cycle_steps: int = 24) -> Action:
-    """Generate a tripod-gait BeeStack action for visual FlyBody walking review."""
+    """Generate configured tripod-pattern controls for FlyBody visual review."""
 
     phase = 2.0 * np.pi * (step_index % max(1, cycle_steps)) / max(1, cycle_steps)
     legs = np.zeros(cfg.body.leg_dof, dtype=float)

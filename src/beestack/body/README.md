@@ -18,12 +18,23 @@ orientation telemetry.
 Scene poses are imposed each frame: MuJoCo detects contacts at scripted poses,
 not an integrated forward-dynamics flight or colony simulation. Manuscript
 contact sheets are published under `output/figures/renders/` with sidecar provenance.
+
+Multi-bee scenes declare `visual_profile=viewport_buffers_scene_key_shadows`.
+Offscreen buffers match the requested image viewport rather than the upstream
+cinematic allocation. Inherited body lights retain their illumination but do not
+cast repeated body-local shadows; the scene key light retains scene shadows.
+Antialiasing, shadow-texture quality, transparency, geometry, camera, physics
+steps, bee counts and frame counts remain unchanged. This is visual resource
+control, not a different physical model or biological validation tier.
+
 `BEESTACK_FLYBODY_PATH` or `BeeStackConfig.flybody.local_fork_path` can point
 to a checked-out BeeStack FlyBody fork. Render size, camera, task horizon, and
 motion-validation thresholds, plus strict-scene speed/radius/altitude/substeps
 and contact requirements, are controlled by `BeeStackConfig.flybody` and
 `BeeStackConfig.visualization`. Domain waggle kinematics are controlled by
 `BeeStackConfig.waggle`.
+Walking uses configured tripod-pattern leg controls; a rendered trajectory is
+not a measured classification of the realized gait.
 
 State-based `FlyBodyBeeBackend.step` always executes reduced dynamics and reports
 `backend="reduced"`; strict mode rejects this API regardless of installed packages

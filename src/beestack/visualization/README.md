@@ -7,6 +7,8 @@ built from full generated BeeBody MJCF copies. Contact reports witness geometry
 and contact queries; these scenes are not forward-dynamics or biological
 validation. Brain, Mind, the recruitment-field Swarm view, and Niche remain
 Matplotlib summaries.
+Walking titles and captions describe configured tripod-pattern leg controls;
+they do not classify an observed gait or establish biomechanical calibration.
 Plotting belongs here or in thin scripts, never in Body/Brain/Mind/Swarm/Niche
 core logic.
 

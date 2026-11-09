@@ -29,6 +29,14 @@ tendon, and actuator sections once per bee, adds a free joint to each copy,
 adds invisible contact proxy geoms, places a floor/comb arena under the scene,
 and renders with `mujoco.MjModel`, `mujoco.MjData`, and `mujoco.Renderer`.
 
+The serialized scene config declares
+`visual_profile=viewport_buffers_scene_key_shadows`. Offscreen allocation matches
+the requested output viewport. Body-local lights keep their illumination but
+do not each cast shadows; the scene key light retains scene shadows. The native
+antialiasing and shadow-texture settings, transparency, geometry, camera, physics
+substeps, bee counts and full frame counts are unchanged. These presentation
+controls do not alter the contact evidence or claim biological calibration.
+
 The dancer follows a decoded waggle vector with a phase-aware waggle run and
 return loops. The followers are arranged around the dancer using the domain
 waggle spacing, orientation gain, antennal sampling gain, and empirical

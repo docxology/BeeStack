@@ -150,6 +150,12 @@ containing scene XML, body-plan, contact-report, backend, and contact metric
 paths. They are intentionally called from scripts or visualization orchestrators,
 not from pure reduced-scenario domain kernels.
 
+`FlyBodySceneRenderConfig.as_dict()` also declares the scalar
+`visual_profile="viewport_buffers_scene_key_shadows"`. It identifies viewport-
+matched offscreen buffers and scene-key shadow casting, with inherited body-light
+illumination and native antialiasing/shadow-texture quality retained. The profile
+is presentation configuration, not an independent physical-validation receipt.
+
 `FlyBodyBeeBackend.step(state, action)` is reduced stepping, always labeled
 `reduced`; strict state-based use refuses rather than claiming FlyBody physics.
 Real environment/render methods remain the strict path.

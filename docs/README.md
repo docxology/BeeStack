@@ -39,9 +39,9 @@ project. Use it alongside the root `README.md` and the generated reports in
 - `flybody_integration.md`: BeeBody's FlyBody render path and modified
   honeybee body plan.
 - `animations.md`: module animation outputs, contact sheets, and accessibility
-  manifest.
+  manifest and programmed-control versus observed-behavior claim boundaries.
 - `waggle_3d_scenario.md`: strict short and long BeeBody/FlyBody/MuJoCo waggle
-  scene method, artifacts, and validation criteria.
+  scene method, viewport/shadow profile, artifacts, and validation criteria.
 - `visualization_gallery.md`: every GIF/figure/report mapped to backend,
   fidelity, source data, regeneration command, and validation status.
 

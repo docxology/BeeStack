@@ -361,6 +361,28 @@ def test_prefixed_multi_bee_scene_xml_is_valid_and_contact_capable(tmp_path: Pat
     assert model.nu >= 10
 
 
+def test_swarm_scene_shadow_passes_do_not_scale_with_bee_count(tmp_path: Path) -> None:
+    mujoco = pytest.importorskip("mujoco")
+    cfg = BeeStackConfig()
+    shadow_passes = []
+    for bee_count in (1, 10):
+        scene_xml, _ = write_prefixed_multi_bee_scene_xml(
+            cfg,
+            tmp_path / f"scene_{bee_count}",
+            "collision",
+            bee_count,
+            floor_z=-0.07,
+            include_comb=False,
+        )
+        model = mujoco.MjModel.from_xml_path(str(scene_xml))
+        key_light = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_LIGHT, "scene_key")
+        assert model.light_castshadow[key_light]
+        casting = model.light_castshadow.astype(bool)
+        assert np.all(model.light_bodyid[casting] == 0)
+        shadow_passes.append(int(np.count_nonzero(casting)))
+    assert shadow_passes[0] == shadow_passes[1]
+
+
 def test_body_brain_extra_methods() -> None:
     cfg = config_from_mapping({"brain": {"kenyon_cells_per_hemisphere": 1000}})
     assert metabolic_budget_j(80.0, 2.0) > 0
@@ -636,6 +658,13 @@ def test_module_animation_generation_and_accessibility_manifest(tmp_path: Path) 
         artifact.contact_sheet and Path(artifact.contact_sheet).exists() for artifact in artifacts
     )
     assert all(artifact.frames == 4 for artifact in artifacts)
+    for artifact in artifacts[5:8]:
+        with Image.open(artifact.path) as gif:
+            assert gif.n_frames == artifact.frames == 4
+            assert gif.size == (
+                cfg.visualization.body_render_width,
+                cfg.visualization.body_render_height,
+            )
     assert artifacts[0].as_dict()["module"] == "BeeBody"
     assert artifacts[0].backend == "flybody.walk_imitation+rollout_and_render"
     assert (

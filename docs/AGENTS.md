@@ -13,3 +13,9 @@ variables, validation residuals, and governance boundaries.
 Distinguish regenerable analyses from retained raw payloads, completion records,
 and frozen proof/release packets. Regeneration or a clean Git status does not
 authorize deleting those sources or treating all of `output/` as disposable.
+
+Document visual resource profiles separately from physical fidelity. A changed
+shadow pass is not changed contact physics; preserve geometry, image dimensions,
+full frame counts and existing evidence thresholds when optimizing rendering.
+Programmed gait-pattern controls are not measured gait classifications; keep
+generated animation titles/captions consistent with that distinction.
