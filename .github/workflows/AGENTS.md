@@ -9,5 +9,9 @@ Keep bounded temporary-project regression inputs separate from the full installe
 CLI production gate. Native-runtime diagnostics must not skip tests, relax
 coverage, replace physics, or silently extend the job's hard bound.
 
+Keep native-tool APT sources job-local and per-command. Preserve Ubuntu archive
+signature verification, the runner's codename, and every required package; never
+rewrite host source configuration or turn off authentication to repair transport.
+
 - Canonical source: This directory's files are source-of-truth unless local guidance says otherwise.
 - Regeneration command: n/a

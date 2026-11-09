@@ -117,6 +117,9 @@ All notable changes to BeeStack are documented in this file.
   skipping tests, lowering coverage or increasing its existing hard bound.
 - CI bounds BLAS/OpenMP/NumExpr threads to one, matching the qualified local
   verification environment rather than relying on unknown native-library defaults.
+- CI native tooling uses Ubuntu's signed primary HTTPS archive through a job-local,
+  per-command source file, replacing the observed slow image-provided Azure HTTP
+  mirror without changing required packages, checks, or the 45-minute job bound.
 - The security guide names the canonical configuration adapter; its index and
   custody guidance distinguish regenerable analyses from retained empirical
   payloads, completion records and frozen validation/release packets.

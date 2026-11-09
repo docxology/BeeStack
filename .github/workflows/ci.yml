@@ -37,8 +37,18 @@ jobs:
 
       - name: Install local manuscript and headless rendering tools
         run: |
-          sudo apt-get update
-          sudo apt-get install -y pandoc texlive-xetex texlive-latex-extra texlive-fonts-recommended libegl1
+          . /etc/os-release
+          mkdir -p .uv-cache
+          printf '%s\n' \
+            'Types: deb' \
+            'URIs: https://archive.ubuntu.com/ubuntu' \
+            "Suites: ${VERSION_CODENAME} ${VERSION_CODENAME}-updates ${VERSION_CODENAME}-security" \
+            'Components: main universe' \
+            'Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg' \
+            > .uv-cache/ci-ubuntu.sources
+          apt_sources=(-o "Dir::Etc::sourcelist=$PWD/.uv-cache/ci-ubuntu.sources" -o 'Dir::Etc::sourceparts=-')
+          sudo apt-get "${apt_sources[@]}" update
+          sudo apt-get "${apt_sources[@]}" install -y pandoc texlive-xetex texlive-latex-extra texlive-fonts-recommended libegl1
 
       - name: Lint
         run: uv run ruff check src tests scripts
