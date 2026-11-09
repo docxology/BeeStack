@@ -8,7 +8,7 @@
         "$PROJECT/.uv-cache/wfz-visual-20261108/unit_gates.py"
       ],
       "returncode": 0,
-      "seconds": 364.64
+      "seconds": 149.355
     },
     {
       "argv": [
@@ -16,7 +16,7 @@
         "$PROJECT/.uv-cache/wfz-visual-20261108/observe_available_payloads.py"
       ],
       "returncode": 0,
-      "seconds": 1.8
+      "seconds": 2.293
     },
     {
       "argv": [
@@ -24,7 +24,7 @@
         "$PROJECT/.uv-cache/wfz-visual-20261108/native_gates.py"
       ],
       "returncode": 0,
-      "seconds": 629.856
+      "seconds": 710.458
     },
     {
       "argv": [
@@ -32,7 +32,7 @@
         "$PROJECT/.uv-cache/wfz-visual-20261108/render_boundary_cases.py"
       ],
       "returncode": 0,
-      "seconds": 4.418
+      "seconds": 3.558
     },
     {
       "argv": [
@@ -40,7 +40,7 @@
         "$PROJECT/.uv-cache/wfz-visual-20261108/check_document_links.py"
       ],
       "returncode": 0,
-      "seconds": 5.102
+      "seconds": 4.325
     },
     {
       "argv": [
@@ -48,7 +48,7 @@
         "$PROJECT/.uv-cache/wfz-visual-20261108/inspect_current_visuals.py"
       ],
       "returncode": 0,
-      "seconds": 33.271
+      "seconds": 29.315
     }
   ],
   "complete": true

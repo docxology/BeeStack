@@ -1,0 +1,78 @@
+{
+  "source_commit": "4b91dcca31ed937ef409373d601bf2b7d20fdc80",
+  "full_runtime_test_source_commit": "234d1fc222896931be0d35af6b920f125386a56e",
+  "documentation_only_delta": [
+    "CHANGELOG.md",
+    "docs/AGENTS.md",
+    "docs/README.md",
+    "docs/security_posture.md"
+  ],
+  "scope": "fresh current-source distribution continuity, source archive and complete documentation/security/signposting/hydration/render/publication seal; full physical/installed CLI runtime proof belongs to the byte-identical code/test/config source commit",
+  "steps": [
+    {
+      "argv": [
+        "/opt/homebrew/bin/uv",
+        "lock",
+        "--check",
+        "--offline"
+      ],
+      "returncode": 0,
+      "seconds": 0.037
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/ruff",
+        "check",
+        "src",
+        "tests",
+        "scripts"
+      ],
+      "returncode": 0,
+      "seconds": 0.094
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/ruff",
+        "format",
+        "--check",
+        "src",
+        "tests",
+        "scripts"
+      ],
+      "returncode": 0,
+      "seconds": 0.023
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "$PROJECT/.uv-cache/wfz-visual-20261108/docs_distribution_continuity.py",
+        "$PROJECT",
+        "4b91dcca31ed937ef409373d601bf2b7d20fdc80",
+        "234d1fc222896931be0d35af6b920f125386a56e"
+      ],
+      "returncode": 0,
+      "seconds": 9.255
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "$PROJECT/.uv-cache/wfz-visual-20261108/build_candidate_source_archive.py",
+        "$PROJECT",
+        "4b91dcca31ed937ef409373d601bf2b7d20fdc80"
+      ],
+      "returncode": 0,
+      "seconds": 0.418
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "$PROJECT/.uv-cache/wfz-visual-20261108/post_package_finalize.py",
+        "$PROJECT",
+        "4b91dcca31ed937ef409373d601bf2b7d20fdc80"
+      ],
+      "returncode": 0,
+      "seconds": 168.809
+    }
+  ],
+  "complete": true
+}

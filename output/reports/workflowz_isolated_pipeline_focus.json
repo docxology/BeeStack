@@ -1,0 +1,43 @@
+{
+  "scope": "real temporary-project pipeline, unmodified production physics/resolution/simulation, four-frame regression; protected checkout artifacts",
+  "steps": [
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/ruff",
+        "check",
+        "src",
+        "tests",
+        "scripts"
+      ],
+      "returncode": 0,
+      "seconds": 0.093
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/ruff",
+        "format",
+        "--check",
+        "src",
+        "tests",
+        "scripts"
+      ],
+      "returncode": 0,
+      "seconds": 0.021
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "-m",
+        "pytest",
+        "tests/test_orchestrator_manifest_manuscript.py::test_real_analysis_advances_state_and_hydrates_manuscript",
+        "-s",
+        "-o",
+        "faulthandler_timeout=120",
+        "--durations=10"
+      ],
+      "returncode": 0,
+      "seconds": 47.709
+    }
+  ],
+  "complete": true
+}

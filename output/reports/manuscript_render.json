@@ -50,7 +50,7 @@
   "inspection": "structural render checks only; visual inspection is a separate release requirement",
   "pages": 56,
   "pdf": "output/pdf/BeeStack_combined.pdf",
-  "pdf_sha256": "822e59004897095fff2a9b130eca42deb8d8436e33c8419a81a239819f5acfcb",
+  "pdf_sha256": "70f40da3978f796ca3099eb407038b9b78970bdc043e3c5e52af0210b84113cb",
   "python": "3.12.16",
   "schema": "beestack.manuscript_render.v1",
   "source_sha256": {

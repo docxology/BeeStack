@@ -13,7 +13,7 @@
       ],
       "cwd": "$VALIDATION_STAGE",
       "returncode": 0,
-      "seconds": 2.17
+      "seconds": 2.226
     },
     {
       "argv": [
@@ -30,7 +30,7 @@
       ],
       "cwd": "$VALIDATION_STAGE",
       "returncode": 0,
-      "seconds": 0.203
+      "seconds": 0.189
     },
     {
       "argv": [
@@ -40,7 +40,7 @@
       ],
       "cwd": "$VALIDATION_STAGE",
       "returncode": 0,
-      "seconds": 0.048
+      "seconds": 0.04
     },
     {
       "argv": [
@@ -50,19 +50,19 @@
       ],
       "cwd": "$VALIDATION_STAGE/.uv-cache/cli-outside-cwd",
       "returncode": 0,
-      "seconds": 307.966
+      "seconds": 291.993
     }
   ],
   "artifacts": [
     {
       "path": "dist/beestack-2.0.0-py3-none-any.whl",
       "size": 330838,
-      "sha256": "9facf85850757f2803549617962c3bba87c46d269774f6766ad379d441b06ed1"
+      "sha256": "b2716714d73ee6d57a9da11c26c8e7356f3fd908f4e3e974d0439f00e638b948"
     },
     {
       "path": "dist/beestack-2.0.0.tar.gz",
-      "size": 392318,
-      "sha256": "03d1eaf8fad536a2d303d1db5b000cfd9d66efb8f66da39b25ff38f6dd6edef0"
+      "size": 392198,
+      "sha256": "2445e8253c41a86daac0e39c27f55758e79c1ed6093d71128675a7e5764ff349"
     }
   ],
   "package_source_sha256": {

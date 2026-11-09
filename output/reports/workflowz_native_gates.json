@@ -10,7 +10,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 3.349
+      "seconds": 3.596
     },
     {
       "argv": [
@@ -19,7 +19,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 3.78
+      "seconds": 3.166
     },
     {
       "argv": [
@@ -28,7 +28,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 264.397
+      "seconds": 301.233
     },
     {
       "argv": [
@@ -37,7 +37,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 251.547
+      "seconds": 289.842
     },
     {
       "argv": [
@@ -46,7 +46,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 4.832
+      "seconds": 4.993
     },
     {
       "argv": [
@@ -55,7 +55,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 2.958
+      "seconds": 3.105
     },
     {
       "argv": [
@@ -65,7 +65,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 10.668
+      "seconds": 11.756
     },
     {
       "argv": [
@@ -74,7 +74,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 4.846
+      "seconds": 5.179
     },
     {
       "argv": [
@@ -83,7 +83,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 3.281
+      "seconds": 3.785
     },
     {
       "argv": [
@@ -92,7 +92,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 0.046
+      "seconds": 0.08
     },
     {
       "argv": [
@@ -101,7 +101,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 2.685
+      "seconds": 2.909
     },
     {
       "argv": [
@@ -110,7 +110,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 25.62
+      "seconds": 27.931
     },
     {
       "argv": [
@@ -119,7 +119,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 2.674
+      "seconds": 3.165
     },
     {
       "argv": [
@@ -128,7 +128,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 2.721
+      "seconds": 3.065
     },
     {
       "argv": [
@@ -137,7 +137,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 2.719
+      "seconds": 3.158
     },
     {
       "argv": [
@@ -147,7 +147,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 2.818
+      "seconds": 2.99
     },
     {
       "argv": [
@@ -156,7 +156,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 2.737
+      "seconds": 3.155
     },
     {
       "argv": [
@@ -165,7 +165,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 25.831
+      "seconds": 26.479
     },
     {
       "argv": [
@@ -174,7 +174,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 3.107
+      "seconds": 2.83
     },
     {
       "argv": [
@@ -184,7 +184,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 3.071
+      "seconds": 2.696
     },
     {
       "argv": [
@@ -195,7 +195,7 @@
       ],
       "returncode": 1,
       "expected_returncode": 1,
-      "seconds": 3.075
+      "seconds": 2.775
     },
     {
       "argv": [
@@ -205,7 +205,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 3.051
+      "seconds": 2.518
     }
   ],
   "complete": true,

@@ -222,6 +222,7 @@
 - If no workbook/CSV/MAT empirical panels are local, `scripts/analyze_empirical_bee_data.py`
 - It assembles fidelity-labelled scorecards, empirical-evidence rows,
 - It does not claim connectome-level dynamics, a heavyweight spiking
+- JSON provenance and regeneration commands. Retained raw empirical payloads,
 - Keep optional network/data stages explicit. Empirical scripts may skip when
 - Keep the reduced telemetry path deterministic, but do not silently downgrade
 - Local override: set `BEESTACK_FLYBODY_PATH=/path/to/flybody-beestack` or

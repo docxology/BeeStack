@@ -55,18 +55,18 @@
   "observed_files": [
     {
       "path": "output/data/empirical_sources/anatomy_downloads.json",
-      "sha256": "b18784633c868d1bfd4c782b142ddaabcfe1dce166a06bf3f3253966362cc872",
-      "size": 5868
+      "sha256": "0ff088e1a1836eae0d7d9f978ef69d1f18cbc35b7afae962f44d4513c664531d",
+      "size": 5336
     },
     {
       "path": "output/data/empirical_sources/archives.json",
-      "sha256": "61d83aa37652b89243780e5b4ac1c83df429216ad168ee7177d56d2c1735088d",
-      "size": 4460
+      "sha256": "3b94b0bfd9f07e8037ac67f421f23133fcdcf49fb03ddd274d31c6f1f2cc5784",
+      "size": 3942
     },
     {
       "path": "output/data/empirical_sources/catalog.json",
-      "sha256": "ccf24a6b655e066ae3ad3f67d88366947d3a2db4226b2953f4cfa1357a537eb2",
-      "size": 40880
+      "sha256": "b9857a90cd70da7c3bfcc9d2ae556119e7daeb8c886925435c85f260e11882c5",
+      "size": 3135
     },
     {
       "path": "output/data/empirical_sources/dryad-carcaud-2022-multisite-gcamp/files/README.txt",

@@ -10,7 +10,7 @@
         "--offline"
       ],
       "returncode": 0,
-      "seconds": 0.022
+      "seconds": 0.046
     },
     {
       "argv": [
@@ -21,7 +21,7 @@
         "scripts"
       ],
       "returncode": 0,
-      "seconds": 0.021
+      "seconds": 0.086
     },
     {
       "argv": [
@@ -33,7 +33,7 @@
         "scripts"
       ],
       "returncode": 0,
-      "seconds": 0.023
+      "seconds": 0.022
     },
     {
       "argv": [
@@ -45,7 +45,7 @@
         "--cov-report=json:output/reports/workflowz_coverage.json"
       ],
       "returncode": 0,
-      "seconds": 364.53
+      "seconds": 149.147
     }
   ],
   "complete": true
