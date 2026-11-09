@@ -4,7 +4,7 @@
   "repository": "docxology/BeeStack",
   "candidate_package_version": "2.0.0",
   "manuscript_version": "2.0",
-  "state": "Current source, complete local native/package/installed-CLI/production/PDF and actual visual checks passed. Canonical readback and fresh exact-main Linux/publication are separate following effects, not claimed here.",
+  "state": "Complete current-source local native/package/installed-CLI/production/PDF/actual-visual checks and canonical API readback passed. This pre-publication capture does not anticipate exact-main Linux CI, tag or release.",
   "source_binding": {
     "base_commit": "015550a26d57a36e45bbada018daf126b5332d93",
     "branch": "work/wfz-beestack-render-budget-20261109",
@@ -4011,7 +4011,167 @@
         "No current odor-response panel analysis; retained empirical figures/reports are historical and manuscript values are unavailable, not zero."
       ]
     },
-    "dependency_observation": "output/reports/workflowz_dependency_observation.json"
+    "dependency_observation": "output/reports/workflowz_dependency_observation.json",
+    "canonical_path_proof": {
+      "source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+      "scope": "actual canonical-path API checks after promotion; both installed CLI pipelines and decoded production frames were separately exercised in the owned stage",
+      "publication": {
+        "ok": true,
+        "release": "2.0",
+        "package_version": "2.0.0",
+        "checks": {
+          "manuscript_version": true,
+          "package_version": true,
+          "doi_configured": false,
+          "combined_pdf": true,
+          "manuscript_render_current": true,
+          "legacy_pdf_absent": true,
+          "manuscript_variables_hydrated": true,
+          "manuscript_sections_hydrated": true,
+          "security_posture": true,
+          "generated_report_audit": true,
+          "empirical_analysis_current": false,
+          "parseability_target_satisfied": false,
+          "parseability_flag_consistent": true,
+          "validation_fraction_discloses_gaps": true,
+          "changelog_present": true
+        },
+        "blockers": [],
+        "warnings": [
+          "publication.doi not set in docs/manuscript/config.yaml (mint Zenodo DOI before public deposit)",
+          "No current odor-response panel analysis; retained empirical figures/reports are historical and manuscript values are unavailable, not zero."
+        ]
+      },
+      "strict_deposit": {
+        "ok": false,
+        "release": "2.0",
+        "package_version": "2.0.0",
+        "checks": {
+          "manuscript_version": true,
+          "package_version": true,
+          "doi_configured": false,
+          "combined_pdf": true,
+          "manuscript_render_current": true,
+          "legacy_pdf_absent": true,
+          "manuscript_variables_hydrated": true,
+          "manuscript_sections_hydrated": true,
+          "security_posture": true,
+          "generated_report_audit": true,
+          "empirical_analysis_current": false,
+          "parseability_target_satisfied": false,
+          "parseability_flag_consistent": true,
+          "validation_fraction_discloses_gaps": true,
+          "changelog_present": true
+        },
+        "blockers": [
+          "publication.doi not set in docs/manuscript/config.yaml"
+        ],
+        "warnings": [
+          "No current odor-response panel analysis; retained empirical figures/reports are historical and manuscript values are unavailable, not zero."
+        ]
+      },
+      "generated": {
+        "stale_report_paths": [],
+        "missing_current_evidence_paths": [],
+        "unsupported_report_claims": [],
+        "project_root_path_leaks": [],
+        "passed": true
+      },
+      "security": {
+        "threat_model_present": true,
+        "security_doc_present": true,
+        "uv_lock_present": true,
+        "registry_url_violations": [],
+        "forbidden_pattern_hits": [],
+        "urllib_modules": [
+          "beestack/brain/empirical_fetch.py"
+        ],
+        "passed": true
+      },
+      "canonical_scene_configs": {
+        "collision": {
+          "altitude_m": 0.05,
+          "antennal_sampling_gain": 0.75,
+          "bee_count": 10,
+          "follower_orientation_gain": 0.65,
+          "follower_spacing_m": 0.11,
+          "fps": 8,
+          "frames": 24,
+          "height": 480,
+          "initial_speed_m_s": 0.35,
+          "min_actual_contact_pairs": 1,
+          "scene_name": "collision",
+          "scene_radius_m": 0.18,
+          "stop_signal_sensitivity": 1.0,
+          "substeps": 4,
+          "visual_profile": "viewport_buffers_scene_scoped_lighting",
+          "waggle_amplitude_m": 0.035,
+          "waggle_loop_radius_m": 0.085,
+          "waggle_run_frequency_hz": 13.0,
+          "width": 640
+        },
+        "waggle": {
+          "altitude_m": 0.05,
+          "antennal_sampling_gain": 0.75,
+          "bee_count": 11,
+          "follower_orientation_gain": 0.65,
+          "follower_spacing_m": 0.11,
+          "fps": 8,
+          "frames": 24,
+          "height": 480,
+          "initial_speed_m_s": 0.35,
+          "min_actual_contact_pairs": 1,
+          "scene_name": "waggle",
+          "scene_radius_m": 0.18,
+          "stop_signal_sensitivity": 1.0,
+          "substeps": 4,
+          "visual_profile": "viewport_buffers_scene_scoped_lighting",
+          "waggle_amplitude_m": 0.035,
+          "waggle_loop_radius_m": 0.085,
+          "waggle_run_frequency_hz": 13.0,
+          "width": 640
+        },
+        "waggle_long": {
+          "altitude_m": 0.05,
+          "antennal_sampling_gain": 0.75,
+          "bee_count": 11,
+          "follower_orientation_gain": 0.65,
+          "follower_spacing_m": 0.11,
+          "fps": 12,
+          "frames": 96,
+          "height": 480,
+          "initial_speed_m_s": 0.35,
+          "min_actual_contact_pairs": 1,
+          "scene_name": "waggle_long",
+          "scene_radius_m": 0.18,
+          "stop_signal_sensitivity": 1.0,
+          "substeps": 4,
+          "visual_profile": "viewport_buffers_scene_scoped_lighting",
+          "waggle_amplitude_m": 0.035,
+          "waggle_loop_radius_m": 0.085,
+          "waggle_run_frequency_hz": 13.0,
+          "width": 640
+        }
+      }
+    },
+    "canonical_api_execution": {
+      "name": "current_canonical_scene_and_publication_generated_security_api_smoke",
+      "receipt": "$VAULT/Local/execution-launches/visual-canonical-scene-lighting-clean-evidence/23646-5ee0716963b94138887785730c965d3b/exit.json",
+      "signed_payload_sha256": "d7c00a10772e7f5e0cef5512a4fbcb8694cc8457aab70ccf6bac04c88cbfa421",
+      "source_revision": "0abf70ee5d6ace2cc0e710102a443c825285a647",
+      "code_source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+      "outcome": "SUCCEEDED",
+      "returncode": 0,
+      "source_unchanged": true,
+      "descendants": {
+        "killed_after_grace": [],
+        "observed": 2,
+        "remaining": [],
+        "sample_errors": 0,
+        "samples": 18
+      },
+      "finished": "2026-11-09T05:18:11.420872+00:00"
+    }
   },
   "qualified_receipts": [
     {
@@ -4534,6 +4694,24 @@
         "samples": 2157
       },
       "finished": "2026-11-09T05:12:35.655450+00:00"
+    },
+    {
+      "name": "current_canonical_scene_and_publication_generated_security_api_smoke",
+      "receipt": "$VAULT/Local/execution-launches/visual-canonical-scene-lighting-clean-evidence/23646-5ee0716963b94138887785730c965d3b/exit.json",
+      "signed_payload_sha256": "d7c00a10772e7f5e0cef5512a4fbcb8694cc8457aab70ccf6bac04c88cbfa421",
+      "source_revision": "0abf70ee5d6ace2cc0e710102a443c825285a647",
+      "code_source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+      "outcome": "SUCCEEDED",
+      "returncode": 0,
+      "source_unchanged": true,
+      "descendants": {
+        "killed_after_grace": [],
+        "observed": 2,
+        "remaining": [],
+        "sample_errors": 0,
+        "samples": 18
+      },
+      "finished": "2026-11-09T05:18:11.420872+00:00"
     }
   ],
   "empirical": {
@@ -6507,6 +6685,16 @@
       "name": "Owned canonical-harness admission wait interrupted at 120s during held qualified test",
       "outcome": "Tool read confirmed no file created.",
       "correction": "Defer this short mutation until the running native test releases repository admission; do not bypass its lease."
+    },
+    {
+      "name": "Canonical qualified preflight source observation bound",
+      "outcome": "Refused before child execution with Source observation exceeds bound after large validated binary/derived promotion.",
+      "correction": "Committed only validated owned derived paths, preserving the source-observation limit; qualified canonical readback then succeeded from clean evidence commit 0abf70ee5d6ace2cc0e710102a443c825285a647. No bound increase or policy exception."
+    },
+    {
+      "name": "Pinned Git helper result-shape error before publication mutation",
+      "outcome": "CompletedProcess has no strip attribute; failure occurred while reading remote main, before staging/commit/switch/push.",
+      "correction": "Read and normalize the helper stdout, recheck HEAD/branch/index and exact remote base, then use the same ordinary fast-forward publication route."
     }
   ],
   "custody_note": "Only BeeStack and its repository-local owned validation lane changed. Fresh repository/common-store leases guard mutations; bounded offline receipts prove immutable current source. No sibling/manager/global changes, stash/reset/clean/force, Herdr control or other-owner branch/tree deletion.",

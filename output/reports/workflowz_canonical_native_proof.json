@@ -1,11 +1,11 @@
 {
-  "source_commit": "4b91dcca31ed937ef409373d601bf2b7d20fdc80",
-  "scope": "read-only actual canonical-path API check; native CLI pipelines were already exercised in the owned independent stage",
+  "code_source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
   "qualified_receipt": {
-    "name": "current_canonical_api_smoke",
-    "receipt": "$VAULT/Local/execution-launches/visual-canonical-current-source-readback/22512-3e3d48a2e9a44d6b93fc8ea1618bb967/exit.json",
-    "signed_payload_sha256": "30c4109f0638c4ac02a37b94cff6806b663db35e037182720689186a13591f45",
-    "source_revision": "4b91dcca31ed937ef409373d601bf2b7d20fdc80",
+    "name": "current_canonical_scene_and_publication_generated_security_api_smoke",
+    "receipt": "$VAULT/Local/execution-launches/visual-canonical-scene-lighting-clean-evidence/23646-5ee0716963b94138887785730c965d3b/exit.json",
+    "signed_payload_sha256": "d7c00a10772e7f5e0cef5512a4fbcb8694cc8457aab70ccf6bac04c88cbfa421",
+    "source_revision": "0abf70ee5d6ace2cc0e710102a443c825285a647",
+    "code_source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
     "outcome": "SUCCEEDED",
     "returncode": 0,
     "source_unchanged": true,
@@ -14,81 +14,150 @@
       "observed": 2,
       "remaining": [],
       "sample_errors": 0,
-      "samples": 25
+      "samples": 18
     },
-    "finished": "2026-11-09T02:53:10.618908+00:00"
+    "finished": "2026-11-09T05:18:11.420872+00:00"
   },
-  "publication": {
-    "ok": true,
-    "release": "2.0",
-    "package_version": "2.0.0",
-    "checks": {
-      "manuscript_version": true,
-      "package_version": true,
-      "doi_configured": false,
-      "combined_pdf": true,
-      "manuscript_render_current": true,
-      "legacy_pdf_absent": true,
-      "manuscript_variables_hydrated": true,
-      "manuscript_sections_hydrated": true,
-      "security_posture": true,
-      "generated_report_audit": true,
-      "empirical_analysis_current": false,
-      "parseability_target_satisfied": false,
-      "parseability_flag_consistent": true,
-      "validation_fraction_discloses_gaps": true,
-      "changelog_present": true
+  "proof": {
+    "source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+    "scope": "actual canonical-path API checks after promotion; both installed CLI pipelines and decoded production frames were separately exercised in the owned stage",
+    "publication": {
+      "ok": true,
+      "release": "2.0",
+      "package_version": "2.0.0",
+      "checks": {
+        "manuscript_version": true,
+        "package_version": true,
+        "doi_configured": false,
+        "combined_pdf": true,
+        "manuscript_render_current": true,
+        "legacy_pdf_absent": true,
+        "manuscript_variables_hydrated": true,
+        "manuscript_sections_hydrated": true,
+        "security_posture": true,
+        "generated_report_audit": true,
+        "empirical_analysis_current": false,
+        "parseability_target_satisfied": false,
+        "parseability_flag_consistent": true,
+        "validation_fraction_discloses_gaps": true,
+        "changelog_present": true
+      },
+      "blockers": [],
+      "warnings": [
+        "publication.doi not set in docs/manuscript/config.yaml (mint Zenodo DOI before public deposit)",
+        "No current odor-response panel analysis; retained empirical figures/reports are historical and manuscript values are unavailable, not zero."
+      ]
     },
-    "blockers": [],
-    "warnings": [
-      "publication.doi not set in docs/manuscript/config.yaml (mint Zenodo DOI before public deposit)",
-      "No current odor-response panel analysis; retained empirical figures/reports are historical and manuscript values are unavailable, not zero."
-    ]
-  },
-  "strict_deposit": {
-    "ok": false,
-    "release": "2.0",
-    "package_version": "2.0.0",
-    "checks": {
-      "manuscript_version": true,
-      "package_version": true,
-      "doi_configured": false,
-      "combined_pdf": true,
-      "manuscript_render_current": true,
-      "legacy_pdf_absent": true,
-      "manuscript_variables_hydrated": true,
-      "manuscript_sections_hydrated": true,
-      "security_posture": true,
-      "generated_report_audit": true,
-      "empirical_analysis_current": false,
-      "parseability_target_satisfied": false,
-      "parseability_flag_consistent": true,
-      "validation_fraction_discloses_gaps": true,
-      "changelog_present": true
+    "strict_deposit": {
+      "ok": false,
+      "release": "2.0",
+      "package_version": "2.0.0",
+      "checks": {
+        "manuscript_version": true,
+        "package_version": true,
+        "doi_configured": false,
+        "combined_pdf": true,
+        "manuscript_render_current": true,
+        "legacy_pdf_absent": true,
+        "manuscript_variables_hydrated": true,
+        "manuscript_sections_hydrated": true,
+        "security_posture": true,
+        "generated_report_audit": true,
+        "empirical_analysis_current": false,
+        "parseability_target_satisfied": false,
+        "parseability_flag_consistent": true,
+        "validation_fraction_discloses_gaps": true,
+        "changelog_present": true
+      },
+      "blockers": [
+        "publication.doi not set in docs/manuscript/config.yaml"
+      ],
+      "warnings": [
+        "No current odor-response panel analysis; retained empirical figures/reports are historical and manuscript values are unavailable, not zero."
+      ]
     },
-    "blockers": [
-      "publication.doi not set in docs/manuscript/config.yaml"
-    ],
-    "warnings": [
-      "No current odor-response panel analysis; retained empirical figures/reports are historical and manuscript values are unavailable, not zero."
-    ]
-  },
-  "generated": {
-    "stale_report_paths": [],
-    "missing_current_evidence_paths": [],
-    "unsupported_report_claims": [],
-    "project_root_path_leaks": [],
-    "passed": true
-  },
-  "security": {
-    "threat_model_present": true,
-    "security_doc_present": true,
-    "uv_lock_present": true,
-    "registry_url_violations": [],
-    "forbidden_pattern_hits": [],
-    "urllib_modules": [
-      "beestack/brain/empirical_fetch.py"
-    ],
-    "passed": true
+    "generated": {
+      "stale_report_paths": [],
+      "missing_current_evidence_paths": [],
+      "unsupported_report_claims": [],
+      "project_root_path_leaks": [],
+      "passed": true
+    },
+    "security": {
+      "threat_model_present": true,
+      "security_doc_present": true,
+      "uv_lock_present": true,
+      "registry_url_violations": [],
+      "forbidden_pattern_hits": [],
+      "urllib_modules": [
+        "beestack/brain/empirical_fetch.py"
+      ],
+      "passed": true
+    },
+    "canonical_scene_configs": {
+      "collision": {
+        "altitude_m": 0.05,
+        "antennal_sampling_gain": 0.75,
+        "bee_count": 10,
+        "follower_orientation_gain": 0.65,
+        "follower_spacing_m": 0.11,
+        "fps": 8,
+        "frames": 24,
+        "height": 480,
+        "initial_speed_m_s": 0.35,
+        "min_actual_contact_pairs": 1,
+        "scene_name": "collision",
+        "scene_radius_m": 0.18,
+        "stop_signal_sensitivity": 1.0,
+        "substeps": 4,
+        "visual_profile": "viewport_buffers_scene_scoped_lighting",
+        "waggle_amplitude_m": 0.035,
+        "waggle_loop_radius_m": 0.085,
+        "waggle_run_frequency_hz": 13.0,
+        "width": 640
+      },
+      "waggle": {
+        "altitude_m": 0.05,
+        "antennal_sampling_gain": 0.75,
+        "bee_count": 11,
+        "follower_orientation_gain": 0.65,
+        "follower_spacing_m": 0.11,
+        "fps": 8,
+        "frames": 24,
+        "height": 480,
+        "initial_speed_m_s": 0.35,
+        "min_actual_contact_pairs": 1,
+        "scene_name": "waggle",
+        "scene_radius_m": 0.18,
+        "stop_signal_sensitivity": 1.0,
+        "substeps": 4,
+        "visual_profile": "viewport_buffers_scene_scoped_lighting",
+        "waggle_amplitude_m": 0.035,
+        "waggle_loop_radius_m": 0.085,
+        "waggle_run_frequency_hz": 13.0,
+        "width": 640
+      },
+      "waggle_long": {
+        "altitude_m": 0.05,
+        "antennal_sampling_gain": 0.75,
+        "bee_count": 11,
+        "follower_orientation_gain": 0.65,
+        "follower_spacing_m": 0.11,
+        "fps": 12,
+        "frames": 96,
+        "height": 480,
+        "initial_speed_m_s": 0.35,
+        "min_actual_contact_pairs": 1,
+        "scene_name": "waggle_long",
+        "scene_radius_m": 0.18,
+        "stop_signal_sensitivity": 1.0,
+        "substeps": 4,
+        "visual_profile": "viewport_buffers_scene_scoped_lighting",
+        "waggle_amplitude_m": 0.035,
+        "waggle_loop_radius_m": 0.085,
+        "waggle_run_frequency_hz": 13.0,
+        "width": 640
+      }
+    }
   }
 }
