@@ -53,6 +53,8 @@ project. Use it alongside the root `README.md` and the generated reports in
 - `baseline_readiness.md`: current readiness gates and known cleanup targets.
 - `spec_review.md`: mapping from the specification to implemented coverage.
 - `testing_philosophy.md`: zero-mock verification doctrine.
+- `security_posture.md`: curated-fetch and container/resource controls, provenance,
+  retained-data custody, and the limits of the static security audit.
 - `signposting.md`: directory README/AGENTS coverage and readiness-review rules.
 
 Core generated audits:

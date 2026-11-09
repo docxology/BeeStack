@@ -9,3 +9,7 @@ complete honeybee systems-biology digital-twin status until those backends are
 implemented, assimilative, and validated. It is acceptable to document the full
 digital-twin target when the text also names the missing datasets, state
 variables, validation residuals, and governance boundaries.
+
+Distinguish regenerable analyses from retained raw payloads, completion records,
+and frozen proof/release packets. Regeneration or a clean Git status does not
+authorize deleting those sources or treating all of `output/` as disposable.

@@ -22,7 +22,7 @@ uv run python scripts/run_security_audit.py
 | --- | --- | --- |
 | HTTPS empirical fetch | `src/beestack/brain/empirical_fetch.py` | Every redirect hop is validated before dispatch; exact-origin Dryad credentials never cross origins; OAuth redirects refuse |
 | Container ingest | `src/beestack/brain/empirical_parsers/`, `anatomy.py` | Path rejection plus shared ZIP-tree, XLSX logical-cell, MATLAB/HDF5 graph/array budgets before expansion |
-| Config load | `scripts/analysis_pipeline.py` | `yaml.safe_load` only |
+| Config load | `src/beestack/project_config.py` | `yaml.safe_load` only; canonical `docs/manuscript/config.yaml` |
 | Domain logic | `src/beestack/` | Computation has no network I/O; explicit acquisition and presentation adapters perform bounded side effects |
 
 Curated HTTPS authorities include Dryad, Figshare, the registered FU Berlin
@@ -83,8 +83,11 @@ BeeStack follows template-repo practices inherited from the parent workspace:
 - **`uv lock`** pins dependency versions; posture audit requires `uv.lock` present.
 - **No secrets in git** — optional Dryad credentials belong in environment variables,
   never source/config/output. They are scoped only to the authorized Dryad origin.
-- **Reproducible outputs** — `output/` is disposable; provenance is carried in
-  JSON sidecars and manuscript variable hydration, not opaque checkpoints.
+- **Regenerable does not mean disposable** — analysis and figure artifacts carry
+  JSON provenance and regeneration commands. Retained raw empirical payloads,
+  completion records and frozen validation/release packets are not automatic
+  cleanup targets without explicit review; not everything under `output/` is
+  generated analysis.
 - **Conservative dual-use framing** — dance/pheromone kernels are reduced
   baselines; see [@sec:ethics] in the manuscript.
 
