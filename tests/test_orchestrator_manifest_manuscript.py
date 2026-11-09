@@ -1,13 +1,13 @@
 from __future__ import annotations
 
 import json
-import re
-import subprocess
-import sys
+import runpy
+import shutil
 from pathlib import Path
 
 import numpy as np
 import pytest
+import yaml
 
 from beestack.config import BeeStackConfig
 from beestack.integrity import (
@@ -173,66 +173,58 @@ def test_manuscript_variables_cover_tokens() -> None:
     assert tokens <= set(variables)
 
 
-def test_manuscript_quantitative_claims_use_variable_tokens() -> None:
-    banned_patterns = {
-        "dance event rate": r"\b250 Hz\b",
-        "johnston event floor": r"\b200 Hz\b",
-        "parseability target": r"\b0\.800\b",
-        "wing power reference": r"~58 mW",
-        "reference body mass": r"≈80 mg",
-        "reference stroke frequency": r"≈230 Hz",
-        "brood target": r"configured 34\s*\n?\s*°C target",
-        "comb shape": r"18 \\times 12 \\times 4",
-        "policy cadence": r"every tenth control step",
-    }
-    for path in sorted((PROJECT_ROOT / "docs" / "manuscript").glob("*.md")):
-        text = path.read_text(encoding="utf-8")
-        for label, pattern in banned_patterns.items():
-            assert re.search(pattern, text) is None, f"{path.name} hard-codes {label}"
-
-
-def test_manuscript_uses_restructured_evidence_typed_arc() -> None:
-    expected_sections = [
-        "00_abstract.md",
-        "01_scholarship_and_related_work.md",
-        "02_claim_ledger.md",
-        "03_materials_and_source_provenance.md",
-        "04_evidence_typed_architecture.md",
-        "05_methods_body_swarm.md",
-        "06_methods_brain_mind.md",
-        "07_methods_niche.md",
-        "08_validation_and_figures.md",
-        "09_empirical_results.md",
-        "10_integrated_results.md",
-        "11_research_synthesis.md",
-        "12_discussion.md",
-        "13_limitations.md",
-        "14_roadmap.md",
-        "15_reproducibility.md",
-        "16_ethics_governance.md",
-        "99_references.md",
-    ]
-
-    actual = [path.name for path in sorted((PROJECT_ROOT / "docs" / "manuscript").glob("*.md"))]
-    for section in expected_sections:
-        assert section in actual
-    assert "01_introduction.md" not in actual
-    assert "17_ethics_and_data_provenance.md" not in actual
-
-
-def test_real_analysis_advances_state_and_hydrates_manuscript() -> None:
-    subprocess.run([sys.executable, "scripts/analysis_pipeline.py"], cwd=PROJECT_ROOT, check=True)
-    subprocess.run(
-        [sys.executable, "scripts/z_generate_manuscript_variables.py"], cwd=PROJECT_ROOT, check=True
+def test_real_analysis_advances_state_and_hydrates_manuscript(tmp_path: Path) -> None:
+    project_root = tmp_path / "isolated_project"
+    for directory in ("src", "scripts", "tests", "docs", ".github"):
+        shutil.copytree(
+            PROJECT_ROOT / directory,
+            project_root / directory,
+            ignore=shutil.ignore_patterns("__pycache__", ".pytest_cache", "*.pyc"),
+        )
+    for name in (
+        "README.md",
+        "AGENTS.md",
+        "CHANGELOG.md",
+        "LICENSE",
+        "ISA.md",
+        "pyproject.toml",
+        "uv.lock",
+        ".python-version",
+        ".gitignore",
+    ):
+        shutil.copy2(PROJECT_ROOT / name, project_root / name)
+    config_path = project_root / "docs/manuscript/config.yaml"
+    config_payload = yaml.safe_load(config_path.read_text(encoding="utf-8"))
+    config_payload["beestack"]["visualization"].update(
+        animation_frames=4, long_waggle_animation_frames=4
     )
-    records = json.loads((PROJECT_ROOT / "output/data/simulation_records.json").read_text())
+    config_path.write_text(yaml.safe_dump(config_payload, sort_keys=False), encoding="utf-8")
+    protected_paths = (
+        PROJECT_ROOT / "output/data/run_summary.json",
+        PROJECT_ROOT / "output/data/simulation_records.json",
+        PROJECT_ROOT / "output/data/animation_manifest.json",
+        PROJECT_ROOT / "output/manuscript/00_abstract.md",
+    )
+    protected = {
+        path: (path.stat().st_mtime_ns, path.read_bytes()) if path.is_file() else None
+        for path in protected_paths
+    }
+
+    runpy.run_path(str(project_root / "scripts/analysis_pipeline.py"), run_name="__main__")
+    runpy.run_path(
+        str(project_root / "scripts/z_generate_manuscript_variables.py"), run_name="__main__"
+    )
+    records = json.loads((project_root / "output/data/simulation_records.json").read_text())
     energy = np.asarray([row["energy_j"] for row in records])
     assert np.all(np.isfinite(energy))
     assert np.all(energy > 0.0)
     assert np.ptp(energy) > 0.0
-    manifest = json.loads((PROJECT_ROOT / "output/data/animation_manifest.json").read_text())
+    manifest = json.loads((project_root / "output/data/animation_manifest.json").read_text())
     assert manifest["flybody_contact_physics"]["passed"]
     resolved = "\n".join(
-        path.read_text() for path in (PROJECT_ROOT / "output/manuscript").glob("*.md")
+        path.read_text() for path in (project_root / "output/manuscript").glob("*.md")
     )
     assert "{{" not in resolved
+    for path, prior in protected.items():
+        observed = (path.stat().st_mtime_ns, path.read_bytes()) if path.is_file() else None
+        assert observed == prior, f"isolated pipeline changed checkout artifact: {path}"

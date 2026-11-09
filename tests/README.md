@@ -12,3 +12,9 @@ The test suite validates:
 - documentation/signposting coverage for non-cache directories,
 - optional empirical-data gates that distinguish absent public payloads from
   parseable real datasets.
+
+The real analysis/hydration regression runs in a temporary project, with four
+real animation frames per sequence and unchanged physics, render resolution,
+and simulation steps. It protects checkout artifacts from writes. CI separately
+exercises the installed analysis CLI with the full production configuration;
+the bounded fixture does not replace that end-to-end gate.

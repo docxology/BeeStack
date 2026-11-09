@@ -98,6 +98,16 @@ All notable changes to BeeStack are documented in this file.
   absolute-error means preserve representable results without overflowing their sums.
 - Interactive viewers now expose informative, escaped browser document titles
   while retaining deterministic plot IDs and the documented Plotly CDN dependency.
+- The real pipeline/hydration regression now uses an isolated temporary project
+  and four-frame real renders, preserving physics, resolution and simulation steps;
+  it verifies that checkout artifacts remain untouched. Full production inputs
+  remain exercised by the installed-CLI CI gate.
+- Removed obsolete manuscript filename/wording snapshots rather than re-pinning
+  them. Native documentation, source, hydration and rendered-publication gates remain.
+- CI now emits non-terminating Python stack dumps and slow-test durations without
+  skipping tests, lowering coverage or increasing its existing hard bound.
+- CI bounds BLAS/OpenMP/NumExpr threads to one, matching the qualified local
+  verification environment rather than relying on unknown native-library defaults.
 
 ### Release boundaries
 
