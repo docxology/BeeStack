@@ -1,6 +1,6 @@
 {
   "pdf": "output/pdf/BeeStack_combined.pdf",
-  "pdf_sha256": "17f570ef1ff8d7b54ff851f222bb32e60f2fb04438fa04589f44fa270f8f0647",
+  "pdf_sha256": "c95213d270daad831a5d6f313a75dc53d0177efcbb2701fea3b02aa16fc29ab6",
   "page_count": 56,
   "pages": [
     {
@@ -8,392 +8,392 @@
       "text_characters": 5879,
       "direct_image_objects": 0,
       "starts_with": "BeeStack: An Evidence-Typed Scaffold for Whole-Colony Honeybee Simulation\nA Body\u2013Brain\u2013Mind\u2013Swarm\u2013Niche Substrate for Auditable Apis mellife",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-01.png"
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-01.png"
     },
     {
       "page": 2,
       "text_characters": 7857,
       "direct_image_objects": 0,
       "starts_with": "Actions and energetics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-02.png"
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-02.png"
     },
     {
       "page": 3,
       "text_characters": 7951,
       "direct_image_objects": 0,
       "starts_with": "Research Synthesis of Evidence, Sensitivity , and Readiness 37\nResearch-suite report . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-03.png"
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-03.png"
     },
     {
       "page": 4,
       "text_characters": 6328,
       "direct_image_objects": 0,
-      "starts_with": "Research-use boundaries for ecological and agricultural decisions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 52\nS",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-04.png"
+      "starts_with": "Research-use boundaries for ecological and agricultural decisions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 51\nS",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-04.png"
     },
     {
       "page": 5,
       "text_characters": 6208,
       "direct_image_objects": 0,
       "starts_with": "Software, recruitment, and provenance method anchors\nThe refreshed scholarship layer adds explicit anchors for interfaces that BeeStack can ",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-05.png"
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-05.png"
     },
     {
       "page": 6,
       "text_characters": 5748,
       "direct_image_objects": 0,
       "starts_with": "dance-follower empirical records sit on this literature as interface witnesses : they justify recruitment-boundary language without\nclaiming",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-06.png"
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-06.png"
     },
     {
       "page": 7,
       "text_characters": 4920,
       "direct_image_objects": 0,
       "starts_with": "reporting (Mitchell et al. 2019) without pretending that a biological simulation is an ML benchmark: each module has intended-use\nlanguage, ",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-07.png"
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-07.png"
     },
     {
       "page": 8,
       "text_characters": 3196,
       "direct_image_objects": 1,
       "starts_with": "Claim class Current BeeStack evidence Primary artifact What it does not prove\nMulti-BeeBody\nwaggle and collision\nscenes\nPrefixed BeeBody MJC",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-08.png"
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-08.png"
     },
     {
       "page": 9,
-      "text_characters": 4815,
+      "text_characters": 5248,
       "direct_image_objects": 0,
       "starts_with": "small-scene contact evidence from population-scale demographic validation. \u201d That is why the roadmap can be ambitious without blurring\nprese",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-09.png"
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-09.png"
     },
     {
       "page": 10,
-      "text_characters": 418,
+      "text_characters": 1692,
       "direct_image_objects": 1,
-      "starts_with": "Figure 2: Scholarship evidence matrix mapping directly verified sources to manuscript sections, figure targets, DOI-bearing source records,\n",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-10.png"
+      "starts_with": "Figure 2 links scholarship anchors to verification status and manuscript targets; see also Materials, Source Identity, and Empirical\nA vaila",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-10.png"
     },
     {
       "page": 11,
-      "text_characters": 4434,
+      "text_characters": 4199,
       "direct_image_objects": 0,
-      "starts_with": "Scholarship, method, and validation source tiers\nThe project separates three source tiers. Scholarship anchors support background, related-w",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-11.png"
+      "starts_with": "A vailability-gated empirical inputs\nEmpirical BeeBrain analysis remains data-gated. Public or licensed payloads are first recorded as metad",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-11.png"
     },
     {
       "page": 12,
-      "text_characters": 5062,
+      "text_characters": 4867,
       "direct_image_objects": 0,
-      "starts_with": "Claim routing to sources, artifacts, and gaps\nEvery current-facing claim routes to one of four surfaces: manuscript source with Pandoc citat",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-12.png"
+      "starts_with": "completed transfers. Archive, workbook, and MATLAB/HDF5 intake applies bounded expansion and array/graph admission before\nmaterialization; u",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-12.png"
     },
     {
       "page": 13,
-      "text_characters": 3928,
-      "direct_image_objects": 0,
-      "starts_with": "Configured timing targets and executed reduced cadence\nThe configuration declares a 100 Hz control boundary, 10 Hz target policy cadence (ev",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-13.png"
+      "text_characters": 2266,
+      "direct_image_objects": 1,
+      "starts_with": "Quantity Default value Source / notes\nWing stroke frequency 230 Hz Hover/cruise band\nOmmatidia per eye 6,900 Standard atlas\nAL glomeruli 170",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-13.png"
     },
     {
       "page": 14,
-      "text_characters": 3345,
-      "direct_image_objects": 1,
-      "starts_with": "Figure 3: Executed reduced-scenario schematic: a fixed synthetic DanceVector updates BeeMind and BeeSwarm, BeeMind selects Body\nactions, Bod",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-14.png"
+      "text_characters": 5042,
+      "direct_image_objects": 0,
+      "starts_with": "Module inventory versus executed routing\nThe static module-coverage figure ( output/figures/module_contract_coverage.png , see Integrated Re",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-14.png"
     },
     {
       "page": 15,
       "text_characters": 956,
       "direct_image_objects": 2,
       "starts_with": "Figure 4: Sampled FlyBody walk_imitation frames on the generated apis_mellifera_worker MJCF document rendered body and wing\nmorphology cues,",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-15.png"
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-15.png"
     },
     {
       "page": 16,
-      "text_characters": 2966,
+      "text_characters": 2910,
       "direct_image_objects": 1,
-      "starts_with": "The methods layer now also records a conservative honeybee calibration scorecard. The current morphology score is 1.000, with an\ninertia-res",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-16.png"
+      "starts_with": "antennal contact, leg-load), and a thermosensory scalar. Sensor noise levels \u2014 \ud835\udf0evisual = 0.020 , \ud835\udf0eolfactory = 0.030 , \ud835\udf0emechano = 0.010\n\u2014 are",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-16.png"
     },
     {
       "page": 17,
       "text_characters": 377,
       "direct_image_objects": 1,
       "starts_with": "Figure 7: BeeBody methods dashboard showing reduced telemetry, energy, wing-power, and morphology cues beside the FlyBody-backed\nfidelity bo",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-17.png"
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-17.png"
     },
     {
       "page": 18,
-      "text_characters": 3391,
+      "text_characters": 3671,
       "direct_image_objects": 1,
-      "starts_with": "Uncalibrated BeeBody biomechanics\nBeeBody remains the most stringent fidelity boundary in the stack. It is FlyBody-backed for production ren",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-18.png"
+      "starts_with": "Micro-to-macro calibration boundary\nThe BeeBody-to-BeeSwarm interface is a calibration boundary, not a calibration result. Strict FlyBody/Mu",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-18.png"
     },
     {
       "page": 19,
-      "text_characters": 3350,
+      "text_characters": 3408,
       "direct_image_objects": 1,
-      "starts_with": "MjData with mujoco.Renderer (Todorov et al. 2012). Within each frame the bees are placed at scripted kinematic poses; MuJoCo\nprovides real m",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-19.png"
+      "starts_with": "The figures below are contact-sheet witnesses for the strict MuJoCo scenes: ten prefixed BeeBody models in collision, a configured waggle\nwi",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-19.png"
     },
     {
       "page": 20,
       "text_characters": 893,
       "direct_image_objects": 2,
       "starts_with": "Figure 10: Sampled frames from a scripted-pose MuJoCo waggle scene with one dancer and follower BeeBody models on a comb floor,\nwith contact",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-20.png"
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-20.png"
     },
     {
       "page": 21,
-      "text_characters": 3158,
+      "text_characters": 3320,
       "direct_image_objects": 1,
       "starts_with": "Figure 12: Native report metrics separating scripted-pose small-scene contact evidence from reduced recruitment and adapter-compatible\nsumma",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-21.png"
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-21.png"
     },
     {
       "page": 22,
-      "text_characters": 5264,
+      "text_characters": 5664,
       "direct_image_objects": 0,
-      "starts_with": "Central-complex full-bearing heading integration\nThe CX channel maintains a head-direction estimate on 32 bins by integrating a sky-compass ",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-22.png"
+      "starts_with": "Johnston\u2019s organ and waggle decoding\nThe waggle channel transforms antennal-vibration events into candidate waggle phases, durations, and in",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-22.png"
     },
     {
       "page": 23,
-      "text_characters": 3047,
+      "text_characters": 2790,
       "direct_image_objects": 1,
-      "starts_with": "and decoding improvement N/A. The brain-data parseable-source fraction is N/A. The run records N/A local calcium datasets and 1\nempirical kn",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-23.png"
+      "starts_with": "sources support learning and anatomy labels (Brandt et al. 2005; Rybak et al. 2010). Waggle neuroethology supports follower-interaction\nand ",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-23.png"
     },
     {
       "page": 24,
-      "text_characters": 2892,
+      "text_characters": 3010,
       "direct_image_objects": 1,
       "starts_with": "Figure 14: BeeBrain native report metrics beside configured self-tests, reported availability, claim tier, and conservative interpretation.\n",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-24.png"
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-24.png"
     },
     {
       "page": 25,
-      "text_characters": 3108,
+      "text_characters": 3175,
       "direct_image_objects": 1,
       "starts_with": "Figure 15: Native expected-free-energy, policy-margin, and action-contract metrics beside configured self-test and evidence-boundary\ncontext",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-25.png"
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-25.png"
     },
     {
       "page": 26,
-      "text_characters": 4785,
-      "direct_image_objects": 0,
-      "starts_with": "Reduced brood thermal field\nThermal stepping updates brood-temperature error and supports fanning/heat-source witnesses. The brood-target ba",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-26.png"
+      "text_characters": 3214,
+      "direct_image_objects": 1,
+      "starts_with": "Planned driver and forage data surfaces\nThe reduced BeeNiche baseline uses deterministic seasonal/weather witnesses rather than external obs",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-26.png"
     },
     {
       "page": 27,
-      "text_characters": 867,
-      "direct_image_objects": 2,
-      "starts_with": "Figure 16: Final comb fraction and maximum absolute thermal error from supplied reduced records, beside conceptual NicheAdapter-\nSummary fie",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-27.png"
+      "text_characters": 2859,
+      "direct_image_objects": 1,
+      "starts_with": "Figure 17: BeeNiche methods panel showing comb occupancy, brood thermal error, foraging-radius context, and configured niche-kernel\nself-tes",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-27.png"
     },
     {
       "page": 28,
-      "text_characters": 5150,
+      "text_characters": 5417,
       "direct_image_objects": 0,
-      "starts_with": "Verification Gates, Evidence Tiers, and Figure Provenance\nVisualization is eligible for evidence only with explicit backend, source, availab",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-28.png"
+      "starts_with": "2. BeeSwarm verification requires MuJoCo contact reports for strict scenes. A strict scene with zero unique contact pairs is\nrejected as evi",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-28.png"
     },
     {
       "page": 29,
-      "text_characters": 3627,
-      "direct_image_objects": 1,
-      "starts_with": "The validation figures below separate overview and detail surfaces: evidence tiers, residual readiness blockers, manuscript claim routing,\nm",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-29.png"
+      "text_characters": 885,
+      "direct_image_objects": 2,
+      "starts_with": "Figure 18: Conceptual guide to evidence classes, potential evidence surfaces, and unsupported inferences; it is not a current availability\no",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-29.png"
     },
     {
       "page": 30,
-      "text_characters": 881,
+      "text_characters": 862,
       "direct_image_objects": 2,
-      "starts_with": "Figure 19: Conceptual checklist separating local verification contracts from absent held-out residual, uncertainty, assimilation, and\ngovern",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-30.png"
+      "starts_with": "Figure 20: Registry-derived counts of primary figures by canonical manuscript section and declared claim family; registration is not\nevidenc",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-30.png"
     },
     {
       "page": 31,
-      "text_characters": 855,
+      "text_characters": 778,
       "direct_image_objects": 2,
-      "starts_with": "Figure 21: Grouped source classes with registered artifact counts, declared claim-family counts, and conservative claim ceilings. Full\nper-a",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-31.png"
+      "starts_with": "Figure 22: Per-module configured self-test fractions and separate metric, artifact, evidence-link, and known-gap counts without normal-\nizat",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-31.png"
     },
     {
       "page": 32,
-      "text_characters": 756,
-      "direct_image_objects": 2,
-      "starts_with": "Figure 23: Module configured self-test fractions, visual-artifact counts, evidence-link counts, known-gap counts, and full report inter-\npre",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-32.png"
+      "text_characters": 3653,
+      "direct_image_objects": 1,
+      "starts_with": "Figure 24: Evidence-link and artifact counts in one panel, with configured self-test fractions on a separate axis in the companion panel.\nGe",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-32.png"
     },
     {
       "page": 33,
-      "text_characters": 4830,
+      "text_characters": 4653,
       "direct_image_objects": 0,
-      "starts_with": "null and retain each quantity\u2019s native units. Sweep outputs use independent native-unit axes; mixed counts, fractions, and unlike-unit\nmetri",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-33.png"
+      "starts_with": "the aggregate remains unavailable: standalone parsers may still read other local modalities, but retained reports are not automatically\nprom",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-33.png"
     },
     {
       "page": 34,
-      "text_characters": 4978,
+      "text_characters": 5012,
       "direct_image_objects": 0,
-      "starts_with": "\u2022 VRML/TIFF/HTML metadata derived from the standard-brain ecosystem (Rybak et al. 2010);\n\u2022 neuropil abbreviations (a vocabulary required to ",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-34.png"
+      "starts_with": "remain blocked with explicit remediation notes. Empirically known gaps are catalogued as EMPIRICAL_KNOWN_GAP_COUNT = 1. The\ncurrent run reco",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-34.png"
     },
     {
       "page": 35,
-      "text_characters": 2696,
-      "direct_image_objects": 1,
-      "starts_with": "reduced BeeBody actions, and Body observations enter BeeBrain. BeeNiche temperature advances independently. BrainState does not\nfeed policy ",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-35.png"
+      "text_characters": 620,
+      "direct_image_objects": 2,
+      "starts_with": "Figure 25: Integrated-run BeeBody energy witness showing deterministic reduced energy accounting across control steps. Generated\nfrom output",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-35.png"
     },
     {
       "page": 36,
-      "text_characters": 661,
-      "direct_image_objects": 2,
-      "starts_with": "Figure 26: Integrated-run comb-occupancy witness showing deterministic BeeNiche state changes across control steps. Generated from\noutput/da",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-36.png"
+      "text_characters": 2916,
+      "direct_image_objects": 1,
+      "starts_with": "Figure 27: Module names present in the supplied contract inventory. Presence is not an edge-coverage score, behavioral proof, or\nbiological ",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-36.png"
     },
     {
       "page": 37,
-      "text_characters": 4903,
-      "direct_image_objects": 0,
-      "starts_with": "Reproducibility diagnostics without biological validation\nThese are reproducibility witnesses, not biological validation. The seeded five-mo",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-37.png"
+      "text_characters": 3392,
+      "direct_image_objects": 1,
+      "starts_with": "Links to module methods and empirical results\nWhere the run touches a specific module, the relevant per-module results section provides the ",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-37.png"
     },
     {
       "page": 38,
-      "text_characters": 3360,
-      "direct_image_objects": 1,
-      "starts_with": "Figure 28: Configured self-test fractions and native metric, evidence, gap, and filename-associated artifact counts by module, without\nnorma",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-38.png"
-    },
-    {
-      "page": 39,
       "text_characters": 365,
       "direct_image_objects": 1,
       "starts_with": "Figure 29: Deterministic sensitivity-sweep panel showing reduced-kernel response under controlled one-parameter perturbations. Gen-\nerated f",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-39.png"
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-38.png"
+    },
+    {
+      "page": 39,
+      "text_characters": 2989,
+      "direct_image_objects": 1,
+      "starts_with": "Figure 30: Reported module evidence and gap counts beside declared fidelity. The companion retains all source rows; no measured\nnetwork topo",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-39.png"
     },
     {
       "page": 40,
-      "text_characters": 2859,
-      "direct_image_objects": 1,
-      "starts_with": "Figure 30: Reported module evidence and gap counts beside declared fidelity. The companion retains all source rows; no measured\nnetwork topo",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-40.png"
-    },
-    {
-      "page": 41,
       "text_characters": 388,
       "direct_image_objects": 1,
       "starts_with": "Figure 31: Complete research scorecard evidence and gap text with all empirical source rows, reported availability states, and integra-\ntion",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-41.png"
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-40.png"
     },
     {
-      "page": 42,
+      "page": 41,
       "text_characters": 365,
       "direct_image_objects": 1,
       "starts_with": "Figure 32: Configured self-tests and heuristic readiness beside native inventory counts, native-unit cross-stack statistics, and prioritized",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-42.png"
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-41.png"
+    },
+    {
+      "page": 42,
+      "text_characters": 2875,
+      "direct_image_objects": 1,
+      "starts_with": "Figure 33: Module heuristic-readiness scores and known-gap counts beside all prioritized cross-stack findings. These are report diagnostics,",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-42.png"
     },
     {
       "page": 43,
-      "text_characters": 3422,
-      "direct_image_objects": 1,
-      "starts_with": "Figure 33: Module heuristic-readiness scores and known-gap counts beside all prioritized cross-stack findings. These are report diagnostics,",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-43.png"
+      "text_characters": 5867,
+      "direct_image_objects": 0,
+      "starts_with": "Discussion: Contract Integration without Biological Calibration\nBeeStack\u2019s main result is not a completed digital honey bee. It is a working",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-43.png"
     },
     {
       "page": 44,
-      "text_characters": 5941,
+      "text_characters": 5346,
       "direct_image_objects": 0,
-      "starts_with": "BeeBrain empirical traceability without neural calibration\nBeeBrain occupies a different fidelity tier. Its strongest current feature is emp",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-44.png"
+      "starts_with": "BeeNiche keeps comb occupancy, thermal fields, brood-band compliance, and forage scenarios in the same artifact graph as Body and\nBrain.\nThe",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-44.png"
     },
     {
       "page": 45,
-      "text_characters": 4862,
+      "text_characters": 4938,
       "direct_image_objects": 0,
-      "starts_with": "run can expose module validations, artifact coverage, simulation telemetry, empirical parseability, signposting coverage, and scholarship\nan",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-45.png"
+      "starts_with": "\u2022 antennal stiffness and damping at the scape and pedicel.\nThe visual score 0.991 and MJCF/color cue score 1.000 are engineering heuristics.",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-45.png"
     },
     {
       "page": 46,
-      "text_characters": 4782,
+      "text_characters": 4807,
       "direct_image_objects": 0,
-      "starts_with": "communication, pheromone, and task-allocation kernels at 50 simulated agents representing 20,000 workers, not through full BEEHA VE-\nscale d",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-46.png"
+      "starts_with": "Missing colony calibration and biological variability\nBeyond the per-module limits, three stack-wide limitations deserve explicit acknowledg",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-46.png"
     },
     {
       "page": 47,
-      "text_characters": 4584,
+      "text_characters": 3977,
       "direct_image_objects": 0,
-      "starts_with": "That review reframes the roadmap around eight auditable scales:\n1. molecular, omics, microbiome, pathogen, pesticide, and nutrition state;\n2",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-47.png"
+      "starts_with": "2. Add driver ingestion and assimilation surfaces\nA colony twin requires external drivers rather than internally chosen scenario constants. ",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-47.png"
     },
     {
       "page": 48,
-      "text_characters": 4030,
+      "text_characters": 3921,
       "direct_image_objects": 0,
-      "starts_with": "Acceptance criterion: a methods-analysis Brain panel that reports quantitative residuals against at least one published bee neuroscience\ntas",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-48.png"
+      "starts_with": "Acceptance criterion: a methods-analysis Niche panel that reports source-calibrated seasonal-forage variance, brood-cohort survival, and\na p",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-48.png"
     },
     {
       "page": 49,
-      "text_characters": 4166,
+      "text_characters": 4805,
       "direct_image_objects": 0,
-      "starts_with": "Excluded decision-support and deployment scope\nFor clarity, the following are not current roadmap items:\n\u2022 a colony-health decision-support ",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-49.png"
+      "starts_with": "Publication metadata\npublication.doi is empty for this version until a version-specific deposit identifier is assigned. The historical 1.0 d",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-49.png"
     },
     {
       "page": 50,
-      "text_characters": 4287,
+      "text_characters": 3136,
       "direct_image_objects": 0,
-      "starts_with": "Seeded numerical kernels and empirical freshness\nFixed seeds determine the reduced numerical kernels and model-owned PN\u2192KC connectivity. Thi",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-50.png"
+      "starts_with": "Cross-machine evidence requires matched inputs and runtime\nThe CI workflow selects the same .python-version pin on Ubuntu; it does not decla",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-50.png"
     },
     {
       "page": 51,
-      "text_characters": 3572,
+      "text_characters": 5367,
       "direct_image_objects": 0,
-      "starts_with": "Source DOI / source note License / access note\nCarcaud multisite\nGCaMP (Carcaud\n2022)\n10.5061/dryad.83bk3j9tt Dryad CC0\nAndreu alarm\nrecepto",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-51.png"
+      "starts_with": "External repositories listed in output/data/external_dataset_registry.json (BeeBiome, BeeBDC, EPA hive matrices, survey\nportals) are scholar",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-51.png"
     },
     {
       "page": 52,
-      "text_characters": 4585,
+      "text_characters": 4373,
       "direct_image_objects": 0,
-      "starts_with": "Traceability from manuscript values to source data\nThe provenance trail is the foundation of every other claim in this manuscript. The hydra",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-52.png"
+      "starts_with": "References\nBibliography lives in references.bib. The repository-local renderer invokes Pandoc with --citeproc; bracketed citation keys resol",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-52.png"
     },
     {
       "page": 53,
-      "text_characters": 4479,
+      "text_characters": 4276,
       "direct_image_objects": 0,
-      "starts_with": "Becher, Matthias A. et al. 2014. \u201cBEEHA VE: A Systems Model of Honeybee Colony Dynamics and Foraging to Explore Multifactorial\nCauses of Col",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-53.png"
+      "starts_with": "Couvillon, Margaret J., Roger Schurch, and Francis L. W. Ratnieks. 2014. \u201cWaggle Dance Distances as Integrative Indicators of Seasonal\nForag",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-53.png"
     },
     {
       "page": 54,
-      "text_characters": 4184,
+      "text_characters": 4320,
       "direct_image_objects": 0,
-      "starts_with": "//doi.org/10.1038/nrn2787.\nGalizia, C. Giovanni, Silke Sachse, Andrea Rappert, and Randolf Menzel. 1999. \u201cThe Glomerular Code for Odor Repre",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-54.png"
+      "starts_with": "Plume Structures in the Honey Bee, Apis Mellifera . Dryad. https://doi.org/10.5061/dryad.qjq2bvqw6.\nJohnson, Brian R. 2010. \u201cDivision of Lab",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-54.png"
     },
     {
       "page": 55,
-      "text_characters": 4454,
+      "text_characters": 4318,
       "direct_image_objects": 0,
-      "starts_with": "Academy of Sciences , ahead of print. https://doi.org/10.1073/pnas.2518687123.\nMcAfee, Alison et al. 2018. \u201cA Death Pheromone, Oleic Acid, T",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-55.png"
+      "starts_with": "14678. https://doi.org/10.1038/s41598-017-15249-0 .\nPatir, Anirudh et al. 2023. \u201cCellular Heterogeneity of the Developing Worker Honey Bee (",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-55.png"
     },
     {
       "page": 56,
-      "text_characters": 3433,
+      "text_characters": 905,
       "direct_image_objects": 0,
-      "starts_with": "in Systems Neuroscience 4: 30. https://doi.org/10.3389/fnsys.2010.00030.\nSaltelli, Andrea, Marco Ratto, Terry Andres, et al. 2008. Global Se",
-      "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-56.png"
+      "starts_with": "Wilkinson, Mark D., Michel Dumontier, IJsbrand Jan Aalbersberg, et al. 2016. \u201cThe F AIR Guiding Principles for Scientific Data\nManagement an",
+      "raster": ".uv-cache/pdf-visual-c95213d270daad83/page-56.png"
     }
   ],
   "page_contact_sheets": [
@@ -550,7 +550,7 @@
     },
     {
       "image": "output/figures/methods/beebrain_methods_empirical_completeness.png",
-      "sha256": "3b41eb6a4366c71478f493517f1aff86f3404873acb561d7ae2aa2d784bd5375",
+      "sha256": "57dceff00ade87085bc784cb0d30b6217f37446f07aee7ddecc3b5d389b64d38",
       "sidecar": "output/figures/methods/beebrain_methods_empirical_completeness.json",
       "title": "BeeBrain methods: reported metrics and evidence boundaries",
       "claim_tier": "empirical_reduced_or_availability_gated",
@@ -720,7 +720,7 @@
     },
     {
       "image": "output/figures/research/stack_synthesis_dashboard.png",
-      "sha256": "05d193647bbb2357167df4465c4cf752a23294c585e5e5eca89559234e35146a",
+      "sha256": "e4e3d0608d61766ed3bf8d116ba8e6e901422d37c4c5f10b761e4fc1f485f2f8",
       "sidecar": "output/figures/research/stack_synthesis_dashboard.json",
       "title": "BeeStack cross-stack synthesis dashboard",
       "claim_tier": "cross_stack_synthesis_diagnostic",
@@ -730,7 +730,7 @@
     },
     {
       "image": "output/figures/research/stack_synthesis_findings_detail.png",
-      "sha256": "32145661ae86f9ac8a2d9be7862fc5af7c84589f9428b2563d791ee14d8a3b60",
+      "sha256": "2c5ab9ef60b683e32aa19318cbea4de9e0d6e53b8e5774cad7034e8b0f424eea",
       "sidecar": "output/figures/research/stack_synthesis_findings_detail.json",
       "title": "BeeStack synthesis detail: readiness, gaps, and findings",
       "claim_tier": "cross_stack_synthesis_diagnostic",
@@ -742,19 +742,5 @@
   "missing_glyph_warnings": 0,
   "overfull_boxes": 0,
   "maximum_overfull_pt": 0.0,
-  "scope": "all PDF pages rasterized, all 18 hydrated sections parsed with Pandoc, every referenced image matched to the fresh render seal; manual pixel judgments are recorded separately",
-  "human_review": {
-    "approved": true,
-    "source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
-    "pdf_sha256": "17f570ef1ff8d7b54ff851f222bb32e60f2fb04438fa04589f44fa270f8f0647",
-    "scope": "Actual fresh four PDF contact sheets covering all 56 page layouts, three contact sheets covering all 33 referenced figures, and full-resolution corrected collision/short-waggle/long-waggle contact sheets. Walking/flight and graphical abstract were also inspected in the immediately preceding render epoch; fresh figure contact sheets include them. Not merely PDF compilation.",
-    "observations": [
-      "The executed-scenario graphical abstract has explicit synthetic input, separate broadcast/independent niche, and no asserted BrainState-to-policy feedback.",
-      "Native-unit tables/independent axes, unavailable empirical cells and evidence/claim ceilings remain visible; inventory is not represented as biological validation.",
-      "Shared scene lighting restores floor/body contrast and recognizable amber/dark morphology, legs, antennae, eyes and translucent wings in the real multi-bee scenes.",
-      "Scene-key shadows and unchanged scripted poses remain; pre-existing start-frame wing-edge cropping is not claimed to be fixed or all-bees-in-frame.",
-      "No missing-glyph or overfull-box warnings; all 33 registered image/sidecar paths exist and fresh generated-manuscript gates passed."
-    ],
-    "native_approval_limit": "Scripted-pose contact/render witnesses, not integrated colony dynamics, classified gait or calibrated biology."
-  }
+  "scope": "all PDF pages rasterized, all 18 hydrated sections parsed with Pandoc, every referenced image matched to the fresh render seal; manual pixel judgments are recorded separately"
 }

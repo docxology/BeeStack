@@ -23,7 +23,7 @@
     {
       "artifact_type": "animation",
       "availability_status": "unrecorded",
-      "backend": "matplotlib.funcanimation",
+      "backend": "matplotlib.savefig+Pillow",
       "fidelity_level": "reduced_schematic",
       "path": "output/animations/beebrain_neural_anatomy.gif",
       "regeneration_command": "uv run python scripts/generate_animations.py",
@@ -33,7 +33,7 @@
     {
       "artifact_type": "animation",
       "availability_status": "unrecorded",
-      "backend": "matplotlib.funcanimation",
+      "backend": "matplotlib.savefig+Pillow",
       "fidelity_level": "reduced_schematic",
       "path": "output/animations/beemind_policy_beliefs.gif",
       "regeneration_command": "uv run python scripts/generate_animations.py",
@@ -43,7 +43,7 @@
     {
       "artifact_type": "animation",
       "availability_status": "unrecorded",
-      "backend": "matplotlib.funcanimation",
+      "backend": "matplotlib.savefig+Pillow",
       "fidelity_level": "reduced_schematic",
       "path": "output/animations/beeniche_comb_thermal.gif",
       "regeneration_command": "uv run python scripts/generate_animations.py",
@@ -63,7 +63,7 @@
     {
       "artifact_type": "animation",
       "availability_status": "unrecorded",
-      "backend": "matplotlib.funcanimation",
+      "backend": "matplotlib.savefig+Pillow",
       "fidelity_level": "reduced_schematic",
       "path": "output/animations/beeswarm_dance_pheromone.gif",
       "regeneration_command": "uv run python scripts/generate_animations.py",

@@ -1,7 +1,7 @@
 {
   "documentation_audit": {
     "available": true,
-    "docs_checked": 192,
+    "docs_checked": 194,
     "missing_agents_dirs": [],
     "missing_output_paths": [],
     "missing_readme_dirs": [],
@@ -100,7 +100,7 @@
     "External nectar landscape calibration and brood demography remain future adapter layers."
   ],
   "signposting": {
-    "directory_count": 74,
+    "directory_count": 75,
     "missing_agents_dirs": [],
     "missing_readme_dirs": [],
     "passed": true
@@ -112,7 +112,7 @@
     "top_findings": [
       "Weakest synthesized module is BeeBrain (readiness 0.483; gaps 2).",
       "Cross-stack validation mean is 0.800 with 11 catalogued module gaps.",
-      "Integrated simulation improved brood-temperature error by 3.964 C over 24 steps."
+      "Integrated simulation changed brood-temperature error by 3.964 C over 24 steps."
     ],
     "validation_fraction": 0.75
   }

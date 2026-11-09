@@ -1,7 +1,10 @@
-# Testing Philosophy
+# Behavioral verification, fixture provenance and scientific limits
 
-BeeStack follows the template's zero-mock project testing style. Tests should
-exercise real functions, real arrays, and real deterministic simulations.
+Exercise real functions, arrays, numerical kernels and deterministic simulations;
+never substitute mocks for domain behavior. Deterministic synthetic/adversarial
+fixtures and isolated I/O-adapter doubles test boundaries without pretending to be
+biological observations or hiding missing public data. Native-render checks use
+the real FlyBody/MuJoCo path, not a fabricated renderer.
 
 ## Coverage
 
@@ -25,6 +28,11 @@ uv run pytest --cov=src --cov-report=term-missing
 - Visual artifact quality: generated figures, contact sheets, GIF frames, and
   strict FlyBody/MuJoCo scene metadata must be nonblank, finite, and tied to
   backend/fidelity records.
+- Missing/nonfinite/boolean observations must not become passing zero witnesses;
+  retain explicit availability, support counts and genuine measured zero.
+- Numerical oracles cover representable extreme ranges/cancellation and boundaries;
+  decoded GIF timing, real PNG pixels and source-bound PDF admission exercise
+  consumer-visible artifacts rather than source wording or incidental defaults.
 
 ## Scientific Validation
 

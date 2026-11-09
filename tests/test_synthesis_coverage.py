@@ -48,8 +48,7 @@ def test_module_synthesis_panel_validation_raises() -> None:
 
 
 def test_signposting_fraction_branches() -> None:
-    # total <= 0 -> 0.0
-    assert _signposting_fraction({}, {}) == 0.0
+    assert _signposting_fraction({}, {}) is None
     # union (not max) of distinct dirs each missing a different file
     frac = _signposting_fraction(
         {
@@ -60,8 +59,14 @@ def test_signposting_fraction_branches() -> None:
         {},
     )
     assert frac == pytest.approx((4 - 3) / 4)  # union {a,b,c} = 3 missing
-    # readiness fallback for directory_count, nothing missing -> 1.0
-    assert _signposting_fraction({}, {"signposting": {"directory_count": 2}}) == 1.0
+    assert _signposting_fraction({}, {"signposting": {"directory_count": 2}}) is None
+    assert (
+        _signposting_fraction(
+            {"missing_readme_dirs": (), "missing_agents_dirs": ()},
+            {"signposting": {"directory_count": 2}},
+        )
+        == 1.0
+    )
 
 
 def test_validate_metric_map_raises() -> None:
@@ -82,9 +87,9 @@ def test_simulation_time_series_statistics_empty_records() -> None:
     )
     assert out == {
         "simulation_step_count": 7.0,
-        "simulation_energy_drop_j": 0.0,
-        "simulation_thermal_error_improvement_c": 0.0,
-        "simulation_policy_switch_count": 0.0,
+        "simulation_energy_drop_j": None,
+        "simulation_thermal_error_improvement_c": None,
+        "simulation_policy_switch_count": None,
         "simulation_recruited_total": 3.0,
         "simulation_mean_wing_power_mw": 1.5,
     }

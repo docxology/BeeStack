@@ -13,3 +13,8 @@ write files here; scripts own report and artifact output.
   absence. Unavailable current evidence may be cited as a blocker, never support.
 - Do not raise digital-twin maturity or fidelity labels unless the required
   artifacts and validation residuals already exist.
+- Numeric observations reject builtin/NumPy booleans and nonfinite/unparseable
+  inputs. Missing witnesses stay null and fail without leaving the denominator;
+  actual zero remains observed. Never fabricate an empty-run telemetry point.
+- Preserve independent finite channels and signed energy/thermal changes. Require
+  complete record support for an interval claim, not only its endpoints.

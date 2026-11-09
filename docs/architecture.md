@@ -21,10 +21,12 @@ flowchart TB
 ## Directory Roles
 
 - `src/beestack/`: domain computation plus explicit guarded acquisition and presentation adapters.
-- `tests/`: zero-mock unit and integration tests against source behavior.
+- `tests/`: real domain computations/native integrations plus explicit synthetic
+  boundary fixtures and isolated I/O-adapter doubles, not fabricated biology.
 - `scripts/`: thin orchestration for outputs.
 - `docs/manuscript/`: paper source with `{{VARIABLE}}` tokens.
-- `output/`: regeneratable artifacts.
+- `output/`: regenerated analyses alongside retained raw source payloads and
+  completion records; not universally disposable or guaranteed reacquirable.
 
 ## Module Boundaries
 

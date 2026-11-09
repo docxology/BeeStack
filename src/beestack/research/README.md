@@ -57,3 +57,19 @@ requires scenario panels. Missing sweeps raise a clear `ValueError` before modul
 assembly instead of fabricating a `not_yet_generated` zero panel. Missing empirical
 alignment within an otherwise valid sweep remains available as explicit null
 observations, not a reason to fabricate a range or weaken validation gates.
+
+## Observation support and configured self-test denominators
+
+Research validation values, module metric maps and synthesis statistics may be
+null when observations are absent, unparseable, boolean or nonfinite. Actual zero
+remains numeric zero. An unavailable numeric witness fails its check and remains
+in the validation denominator; configured-parameter and declared-gap checks keep
+their separate meanings. Synthesis energy/thermal changes require complete finite
+record support, including intermediate rows; independent valid channels survive
+partial records. Signed degradation is not clipped into improvement.
+
+Methods telemetry images/raw data share these gaps without an empty-run sample.
+Tables and manuscript metrics show unavailable values explicitly. Metric-field
+inventory counts include declared fields, not biological samples or necessarily
+observed quantities. Configured self-test fractions remain software diagnostics,
+not empirical validation or colony realism.

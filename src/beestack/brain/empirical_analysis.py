@@ -444,7 +444,7 @@ def bee_brain_data_completeness_panel(
     parseability_target: float = 0.8,
     connectome_tiers: Mapping[str, object] | None = None,
 ) -> BeeBrainDataCompletenessPanel:
-    """Build a deterministic completeness scorecard for curated BeeBrain sources."""
+    """Score only the requested population; duplicate dataset identities are invalid."""
 
     downloaded = set(downloaded_dataset_ids)
     parseable = set(parseable_dataset_ids)
@@ -454,8 +454,12 @@ def bee_brain_data_completeness_panel(
     matrix: dict[str, dict[str, int]] = {}
     gaps: list[BeeBrainSourceGap] = []
     statuses: list[BeeBrainSourceStatus] = []
+    dataset_ids: set[str] = set()
     for dataset in datasets:
         dataset_id = str(dataset.dataset_id)
+        if dataset_id in dataset_ids:
+            raise ValueError(f"duplicate dataset identity: {dataset_id}")
+        dataset_ids.add(dataset_id)
         modality = str(getattr(dataset, "modality", "anatomy")).split()[0].lower()
         modality_counts[modality] = modality_counts.get(modality, 0) + 1
         for target in tuple(getattr(dataset, "module_targets", ("whole_brain",))):
@@ -517,9 +521,9 @@ def bee_brain_data_completeness_panel(
         status.source_verified and not status.parseable for status in statuses
     )
     return BeeBrainDataCompletenessPanel(
-        dataset_count=len(tuple(datasets)),
-        downloaded_dataset_count=len(downloaded),
-        parseable_dataset_count=len(parseable),
+        dataset_count=len(statuses),
+        downloaded_dataset_count=sum(status.downloaded for status in statuses),
+        parseable_dataset_count=sum(status.parseable for status in statuses),
         source_verified_dataset_count=verified_count,
         source_verified_blocked_count=verified_blocked_count,
         parseability_target=float(parseability_target),
@@ -557,8 +561,7 @@ def _odor_separability(bank: EmpiricalTemplateBank) -> tuple[float | None, int]:
     for label, template in sorted(bank.templates.items()):
         if not np.isfinite(template).all():
             continue
-        norm = np.linalg.norm(template)
-        if np.isfinite(norm) and norm > 0:
+        if np.any(template != 0.0):
             labels.append(label)
     values = []
     for left, right in combinations(labels, 2):

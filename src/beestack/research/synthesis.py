@@ -10,7 +10,8 @@ import numpy as np
 
 from ..config import BeeStackConfig
 from ..utils import project_relative_path, project_relative_payload
-from .suite import ResearchValidationRecord
+from .methods_helpers import _count_policy_switches, _safe_mean, _series
+from .suite import ResearchValidationRecord, _observation
 
 MODULES = ("BeeBody", "BeeBrain", "BeeMind", "BeeSwarm", "BeeNiche")
 MODULE_KEYWORDS = {
@@ -33,7 +34,7 @@ class ModuleSynthesisPanel:
     evidence_count: int
     known_gap_count: int
     artifact_count: int
-    log_metric_mean: float
+    log_metric_mean: float | None
     readiness_score: float
 
     def __post_init__(self) -> None:
@@ -43,7 +44,7 @@ class ModuleSynthesisPanel:
             raise ValueError("synthesis fidelity_level must be nonempty")
         for name in ("validation_fraction", "log_metric_mean", "readiness_score"):
             value = getattr(self, name)
-            if not np.isfinite(value):
+            if value is not None and not np.isfinite(value):
                 raise ValueError(f"{name} must be finite")
         if not 0 <= self.validation_fraction <= 1:
             raise ValueError("validation_fraction must be in [0, 1]")
@@ -53,7 +54,7 @@ class ModuleSynthesisPanel:
             if getattr(self, name) < 0:
                 raise ValueError(f"{name} must be nonnegative")
 
-    def as_dict(self) -> dict[str, float | int | str]:
+    def as_dict(self) -> dict[str, object]:
         return asdict(self)
 
 
@@ -64,7 +65,7 @@ class StackSynthesisReview:
     title: str
     summary: str
     module_panels: tuple[ModuleSynthesisPanel, ...]
-    statistics: dict[str, float]
+    statistics: dict[str, float | None]
     validations: tuple[ResearchValidationRecord, ...]
     prioritized_findings: tuple[str, ...]
     scholarship_keys: tuple[str, ...]
@@ -183,7 +184,7 @@ def assemble_stack_synthesis_review(
         "empirical_parseable_fraction": _float_from_nested(
             methods_analysis,
             ("module_panels", "BeeBrain", "quantitative_metrics", "brain_data_parseable_fraction"),
-            default=0.0,
+            default=None,
         ),
         "signposting_fraction": _signposting_fraction(documentation_audit, readiness_review),
         "scholarship_reference_count": float(len(bibliography_keys)),
@@ -218,7 +219,7 @@ def stack_synthesis_markdown(
         "",
     ]
     for key, value in sorted(review.statistics.items()):
-        lines.append(f"- `{key}`: {value:.3f}")
+        lines.append(f"- `{key}`: {value:.3f}" if value is not None else f"- `{key}`: unavailable")
     lines.extend(["", "## Module Panels", ""])
     lines.append(
         "| Module | Fidelity | Validation | Readiness | Metrics | Evidence | Artifacts | Gaps |"
@@ -257,8 +258,10 @@ def _module_panel(
 ) -> ModuleSynthesisPanel:
     metrics = dict(scorecard.get("metrics", {}) or {})
     metrics.update(methods_panel.get("quantitative_metrics", {}) or {})
-    metric_values = [float(value) for value in metrics.values() if isinstance(value, int | float)]
-    validation_fraction = float(scorecard.get("validation_fraction", 0.0) or 0.0)
+    metric_values = [
+        observed for value in metrics.values() if (observed := _observation(value)) is not None
+    ]
+    validation_fraction = _observation(scorecard.get("validation_fraction")) or 0.0
     evidence_count = len(scorecard.get("evidence", ()) or ()) + len(
         methods_panel.get("manuscript_evidence", ()) or ()
     )
@@ -284,7 +287,7 @@ def _module_panel(
         evidence_count,
         known_gap_count,
         artifact_count,
-        float(np.mean(np.log10(np.abs(metric_values) + 1.0))) if metric_values else 0.0,
+        float(np.mean(np.log10(np.abs(metric_values) + 1.0))) if metric_values else None,
         readiness_score,
     )
 
@@ -292,40 +295,39 @@ def _module_panel(
 def _simulation_time_series_statistics(
     records: tuple[dict[str, Any], ...],
     summary: dict[str, Any],
-) -> dict[str, float]:
+) -> dict[str, float | None]:
     if not records:
         return {
-            "simulation_step_count": float(summary.get("steps", 0) or 0),
-            "simulation_energy_drop_j": 0.0,
-            "simulation_thermal_error_improvement_c": 0.0,
-            "simulation_policy_switch_count": 0.0,
-            "simulation_recruited_total": float(summary.get("total_recruited_followers", 0) or 0),
-            "simulation_mean_wing_power_mw": float(summary.get("mean_wing_power_mw", 0.0) or 0.0),
+            "simulation_step_count": _observation(summary.get("steps")),
+            "simulation_energy_drop_j": None,
+            "simulation_thermal_error_improvement_c": None,
+            "simulation_policy_switch_count": None,
+            "simulation_recruited_total": _observation(summary.get("total_recruited_followers")),
+            "simulation_mean_wing_power_mw": _observation(summary.get("mean_wing_power_mw")),
         }
-    energies = np.asarray([float(record.get("energy_j", 0.0) or 0.0) for record in records])
-    thermal_errors = np.asarray(
-        [float(record.get("brood_temperature_error_c", 0.0) or 0.0) for record in records]
-    )
-    wing_power = np.asarray([float(record.get("wing_power_mw", 0.0) or 0.0) for record in records])
-    policies = [str(record.get("selected_policy", "")) for record in records]
-    recruited = np.asarray(
-        [float(record.get("recruited_followers", 0.0) or 0.0) for record in records]
-    )
+    energies = _series(records, "energy_j")
+    thermal_errors = _series(records, "brood_temperature_error_c")
+    wing_power = _series(records, "wing_power_mw")
+    recruited = _series(records, "recruited_followers")
     return {
         "simulation_step_count": float(len(records)),
-        "simulation_energy_drop_j": float(energies[0] - energies[-1]),
-        "simulation_thermal_error_improvement_c": float(thermal_errors[0] - thermal_errors[-1]),
-        "simulation_policy_switch_count": float(
-            sum(left != right for left, right in zip(policies, policies[1:], strict=False))
+        "simulation_energy_drop_j": (
+            _observation(energies[0] - energies[-1]) if np.isfinite(energies).all() else None
         ),
-        "simulation_recruited_total": float(np.sum(recruited)),
-        "simulation_mean_wing_power_mw": float(np.mean(wing_power)),
+        "simulation_thermal_error_improvement_c": (
+            _observation(thermal_errors[0] - thermal_errors[-1])
+            if np.isfinite(thermal_errors).all()
+            else None
+        ),
+        "simulation_policy_switch_count": _observation(_count_policy_switches(records)),
+        "simulation_recruited_total": _observation(np.sum(recruited)),
+        "simulation_mean_wing_power_mw": _observation(_safe_mean(wing_power)),
     }
 
 
 def _synthesis_validations(
     cfg: BeeStackConfig,
-    statistics: dict[str, float],
+    statistics: dict[str, float | None],
     panels: tuple[ModuleSynthesisPanel, ...],
 ) -> tuple[ResearchValidationRecord, ...]:
     validation_target_passed = (
@@ -336,7 +338,9 @@ def _synthesis_validations(
         >= cfg.research.synthesis_artifact_coverage_target
     )
     empirical_parseability_passed = (
-        statistics["empirical_parseable_fraction"] >= cfg.research.empirical_completeness_threshold
+        statistics["empirical_parseable_fraction"] is not None
+        and statistics["empirical_parseable_fraction"]
+        >= cfg.research.empirical_completeness_threshold
     )
     return (
         ResearchValidationRecord(
@@ -371,14 +375,14 @@ def _synthesis_validations(
         ResearchValidationRecord(
             "documentation_signposting",
             statistics["signposting_fraction"] == 1.0,
-            round(statistics["signposting_fraction"], 3),
+            _rounded(statistics["signposting_fraction"], 3),
             1.0,
             "Every non-cache directory has README.md and AGENTS.md coverage.",
         ),
         ResearchValidationRecord(
             "empirical_parseability",
             empirical_parseability_passed,
-            round(statistics["empirical_parseable_fraction"], 3),
+            _rounded(statistics["empirical_parseable_fraction"], 3),
             cfg.research.empirical_completeness_threshold,
             _gate_detail(
                 empirical_parseability_passed,
@@ -388,15 +392,17 @@ def _synthesis_validations(
         ),
         ResearchValidationRecord(
             "simulation_energy_finite",
-            statistics["simulation_energy_drop_j"] >= 0.0,
-            round(statistics["simulation_energy_drop_j"], 6),
+            statistics["simulation_energy_drop_j"] is not None
+            and statistics["simulation_energy_drop_j"] >= 0.0,
+            _rounded(statistics["simulation_energy_drop_j"], 6),
             ">= 0",
             "Body energy does not increase during the deterministic integrated run.",
         ),
         ResearchValidationRecord(
             "simulation_thermal_improves",
-            statistics["simulation_thermal_error_improvement_c"] > 0.0,
-            round(statistics["simulation_thermal_error_improvement_c"], 3),
+            statistics["simulation_thermal_error_improvement_c"] is not None
+            and statistics["simulation_thermal_error_improvement_c"] > 0.0,
+            _rounded(statistics["simulation_thermal_error_improvement_c"], 3),
             "> 0",
             "Brood-temperature error improves over the deterministic run.",
         ),
@@ -411,13 +417,17 @@ def _synthesis_validations(
     )
 
 
+def _rounded(value: float | None, digits: int) -> float | None:
+    return _observation(round(value, digits)) if value is not None else None
+
+
 def _gate_detail(passed: bool, pass_detail: str, fail_detail: str) -> str:
     return pass_detail if passed else fail_detail
 
 
 def _prioritized_findings(
     panels: tuple[ModuleSynthesisPanel, ...],
-    statistics: dict[str, float],
+    statistics: dict[str, float | None],
     validations: tuple[ResearchValidationRecord, ...],
 ) -> tuple[str, ...]:
     weakest = min(panels, key=lambda panel: panel.readiness_score)
@@ -427,9 +437,14 @@ def _prioritized_findings(
         f"(readiness {weakest.readiness_score:.3f}; gaps {weakest.known_gap_count}).",
         f"Cross-stack validation mean is {statistics['module_validation_mean']:.3f} "
         f"with {statistics['known_gap_count_total']:.0f} catalogued module gaps.",
-        f"Integrated simulation improved brood-temperature error by "
-        f"{statistics['simulation_thermal_error_improvement_c']:.3f} C over "
-        f"{statistics['simulation_step_count']:.0f} steps.",
+        (
+            f"Integrated simulation changed brood-temperature error by "
+            f"{statistics['simulation_thermal_error_improvement_c']:.3f} C over "
+            f"{statistics['simulation_step_count']:.0f} steps."
+            if statistics["simulation_thermal_error_improvement_c"] is not None
+            and statistics["simulation_step_count"] is not None
+            else "Integrated simulation thermal-error change is unavailable without finite telemetry."
+        ),
     ]
     if failed:
         findings.append(f"Open synthesis validation gates: {', '.join(failed)}.")
@@ -454,29 +469,36 @@ def _artifact_count(
     return count
 
 
-def _float_from_nested(payload: dict[str, Any], path: tuple[str, ...], *, default: float) -> float:
+def _float_from_nested(
+    payload: dict[str, Any], path: tuple[str, ...], *, default: float | None
+) -> float | None:
     if path[:1] == ("module_panels",) and len(path) == 4:
         module = path[1]
         for panel in payload.get("module_panels", ()) or ():
             if panel.get("module") == module:
                 value = panel.get(path[2], {}).get(path[3])
-                return float(value) if isinstance(value, int | float) else default
+                observed = _observation(value)
+                return observed if observed is not None else default
     return default
 
 
 def _signposting_fraction(
     documentation_audit: dict[str, Any],
     readiness_review: dict[str, Any],
-) -> float:
-    total = int(
-        documentation_audit.get("directory_count")
-        or readiness_review.get("signposting", {}).get("directory_count")
-        or 0
+) -> float | None:
+    total = _observation(
+        documentation_audit.get(
+            "directory_count", readiness_review.get("signposting", {}).get("directory_count")
+        )
     )
-    missing_readme = documentation_audit.get("missing_readme_dirs", ()) or ()
-    missing_agents = documentation_audit.get("missing_agents_dirs", ()) or ()
-    if total <= 0:
-        return 0.0
+    if not {"missing_readme_dirs", "missing_agents_dirs"} <= documentation_audit.keys():
+        return None
+    missing_readme = documentation_audit["missing_readme_dirs"]
+    missing_agents = documentation_audit["missing_agents_dirs"]
+    if missing_readme is None or missing_agents is None:
+        return None
+    if total is None or total <= 0:
+        return None
     # A directory is incomplete if it is missing EITHER signpost file. Counting
     # the union (not max of the two counts) prevents a doc-incomplete repo from
     # passing the "every directory documented" gate when distinct directories
@@ -485,11 +507,11 @@ def _signposting_fraction(
     return max(0.0, float((total - missing_dirs) / total))
 
 
-def _validate_metric_map(metrics: dict[str, float], label: str) -> None:
+def _validate_metric_map(metrics: dict[str, float | None], label: str) -> None:
     if not metrics:
         raise ValueError(f"{label} must not be empty")
     for key, value in metrics.items():
         if not key:
             raise ValueError(f"{label} keys must be nonempty")
-        if not isinstance(value, int | float) or not np.isfinite(value):
+        if value is not None and (not isinstance(value, int | float) or not np.isfinite(value)):
             raise ValueError(f"{label} values must be finite numbers")

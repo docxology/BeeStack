@@ -36,6 +36,15 @@ All notable changes to BeeStack are documented in this file.
   sampling rates. Source labels remain positional when biological identities are
   absent; missing values are never silently imputed. Published Wilcoxon W retains
   valid fractional ranks; annotations and figure captions are not table conditions.
+- Research/methods metric maps and validation values preserve null unavailable
+  observations; missing numeric checks fail without disappearing from denominators.
+  Hydrated numeric counts require nonnegative whole numbers, not boolean/fractional
+  substitutes. Public token names remain unchanged.
+- GIF FPS is integer 1..100. Native/Matplotlib paths share one encoder; the
+  Matplotlib backend is `matplotlib.savefig+Pillow`. `ArrayLimits` now lives in
+  `brain.empirical_data`; tabular parsing accepts keyword-only `limits`. The pure
+  policy model resolves through normal runtime type introspection without parser
+  package cycles or compatibility re-exports.
 
 ### Corrected
 
@@ -120,6 +129,28 @@ All notable changes to BeeStack are documented in this file.
 - Walking-manifest titles/captions and animation guidance now name configured
   tripod-pattern controls rather than implying a classified gait, matching the
   manuscript's explicit boundary.
+- Shared cumulative GIF centisecond boundaries remove accumulated per-frame
+  rounding drift, preserve coalesced exposure and close failed Matplotlib figures
+  without replacing prior artifacts before successful frame capture.
+- Finite scale-stable cosine/weighted aggregation and normalized bearing operands
+  preserve representable results. Exact cancellation paths retain residuals that
+  rounded products lose; unsupported finite results fail explicitly.
+- Completeness counts use unique target datasets only. Kenyon subtype counts now
+  share the sparse kernel's truncated boundary, with class fractions in [0, 1].
+- Derived odor-panel allocation is budgeted before dense storage and requires
+  complete support. HDF5 external raw storage and virtual layouts refuse during
+  whole-file preflight, including unselected datasets.
+- Missing/nonfinite report telemetry cannot become a passing zero witness. Raw
+  methods PNG/data and manuscript means/counts reject boolean/nonfinite inputs;
+  empty runs stay empty and actual measured zero remains observed.
+- Unavailable connectome edge counts hydrate as N/A; supplied empty graphs retain
+  zero. Positive KC sparsity retains meaningful precision instead of rounding to0.
+- Default manuscript figure admission now requires exact curated registry paths
+  and caption/label agreement even for tampered indexed metadata. Strict DOI
+  admission rejects malformed/known-1.0 values without pretending to verify an
+  unknown DOI's version assignment. Test-fixture claims distinguish synthetic
+  controls and I/O doubles from biological observations; raw source custody is
+  retained across the runbook, baseline guide and manuscript.
 
 ### Release boundaries
 

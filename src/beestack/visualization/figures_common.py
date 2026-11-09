@@ -6,6 +6,8 @@ from collections.abc import Sequence
 from math import isfinite
 from typing import Any
 
+import numpy as np
+
 
 def _analysis_figure_fidelity(filename: str) -> str:
     """Classify base analysis figures without overstating biological fidelity."""
@@ -61,8 +63,15 @@ def _nullable_series(
         value = row.get(key)
         if value is None and default is not None:
             value = default[index]
-        number = float(value) if value is not None else None
-        series.append(number if number is not None and isfinite(number) else None)
+        if value is None or isinstance(value, (bool, np.bool_)):
+            series.append(None)
+            continue
+        try:
+            number = float(value)
+        except (TypeError, ValueError, OverflowError):
+            series.append(None)
+            continue
+        series.append(number if isfinite(number) else None)
     return series
 
 

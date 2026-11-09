@@ -19,3 +19,11 @@ shadow pass is not changed contact physics; preserve geometry, image dimensions,
 full frame counts and existing evidence thresholds when optimizing rendering.
 Programmed gait-pattern controls are not measured gait classifications; keep
 generated animation titles/captions consistent with that distinction.
+
+Keep API/configuration/validation references aligned with nullable observations,
+supported numeric domains and exact production figure admission. Unknown means
+null/N/A, not zero; unavailable numeric checks remain failed in denominators.
+Separate encoded GIF clocks from physical integration and viewer scheduling.
+Describe real domain computations and synthetic/adversarial fixtures accurately;
+isolated I/O-adapter doubles do not license mocked domain behavior or fabricated
+empirical claims.

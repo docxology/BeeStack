@@ -9,7 +9,7 @@ from pathlib import Path
 
 from .brain.empirical_status import current_empirical_analysis
 from .project_config import load_config
-from .visualization.figure_registry import high_priority_figure_artifacts
+from .visualization.figure_registry import all_figure_narratives, high_priority_figure_artifacts
 
 _MANUSCRIPT_AUDIT_SKIP = frozenset({"README.md", "SYNTAX.md", "AGENTS.md"})
 _IMAGE_RE = re.compile(
@@ -46,6 +46,7 @@ class FigureAudit:
     primary_caption_contract_failures: tuple[str, ...] = ()
     absolute_path_leaks: tuple[str, ...] = ()
     unavailable_empirical_references: tuple[str, ...] = ()
+    uncurated_reference_paths: tuple[str, ...] = ()
 
     @property
     def passed(self) -> bool:
@@ -62,6 +63,7 @@ class FigureAudit:
             or self.primary_caption_contract_failures
             or self.absolute_path_leaks
             or self.unavailable_empirical_references
+            or self.uncurated_reference_paths
         )
 
     def as_dict(self) -> dict[str, object]:
@@ -108,6 +110,16 @@ def audit_figures(
     absent_positive_claims: list[str] = []
     absent_set = set(absent_artifacts)
     unavailable_empirical_references: list[str] = []
+    uncurated_references: set[str] = set()
+    curated_artifacts = (
+        {
+            narrative.artifact_path
+            for narrative in all_figure_narratives()
+            if narrative.priority != "indexed"
+        }
+        if required_primary_artifacts is None
+        else None
+    )
     empirical_current = False
     try:
         cfg = load_config(project_root)
@@ -130,6 +142,8 @@ def audit_figures(
             missing_images.append(_reference_id(project_root, reference))
             continue
         artifact = reference.artifact_path(project_root)
+        if curated_artifacts is not None and artifact not in curated_artifacts:
+            uncurated_references.add(artifact)
         if artifact.startswith("output/figures/empirical/") and not empirical_current:
             unavailable_empirical_references.append(_reference_id(project_root, reference))
         referenced_artifacts.add(artifact)
@@ -160,7 +174,11 @@ def audit_figures(
         sidecar_mismatches,
         primary_caption_failures,
         absolute_path_leaks,
-    ) = _audit_sidecars(project_root, references_by_artifact)
+    ) = _audit_sidecars(
+        project_root,
+        references_by_artifact,
+        check_indexed_references=required_primary_artifacts is None,
+    )
     return FigureAudit(
         image_reference_count=len(references),
         missing_image_paths=tuple(sorted(dict.fromkeys(missing_images))),
@@ -175,6 +193,7 @@ def audit_figures(
         primary_caption_contract_failures=primary_caption_failures,
         absolute_path_leaks=absolute_path_leaks,
         unavailable_empirical_references=tuple(sorted(set(unavailable_empirical_references))),
+        uncurated_reference_paths=tuple(sorted(uncurated_references)),
     )
 
 
@@ -208,6 +227,8 @@ def _reference_id(project_root: Path, reference: FigureReference) -> str:
 def _audit_sidecars(
     project_root: Path,
     references_by_artifact: dict[str, FigureReference],
+    *,
+    check_indexed_references: bool,
 ) -> tuple[tuple[str, ...], tuple[str, ...], tuple[str, ...], tuple[str, ...]]:
     required_failures: list[str] = []
     mismatches: list[str] = []
@@ -236,7 +257,9 @@ def _audit_sidecars(
                 required_failures.append(f"{sidecar_id}:{field}")
         for reference in references:
             if str(payload.get("priority", "")) == "indexed":
-                continue
+                if not check_indexed_references:
+                    continue
+                mismatches.append(f"{sidecar_id}:priority")
             sidecar_label = str(payload.get("manuscript_label", ""))
             reference_label = (
                 reference.label if reference.label.startswith("fig:") else f"fig:{reference.label}"

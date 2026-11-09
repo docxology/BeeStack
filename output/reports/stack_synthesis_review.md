@@ -4,9 +4,9 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 
 ## Global Statistics
 
-- `empirical_parseable_fraction`: 0.000
+- `empirical_parseable_fraction`: unavailable
 - `known_gap_count_total`: 11.000
-- `metric_count_total`: 59.000
+- `metric_count_total`: 47.000
 - `module_artifact_coverage_fraction`: 1.000
 - `module_readiness_mean`: 0.842
 - `module_validation_mean`: 0.800
@@ -29,7 +29,7 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 | Module | Fidelity | Validation | Readiness | Metrics | Evidence | Artifacts | Gaps |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | BeeBody | FlyBody render path plus separate reduced-scenario telemetry | 1.000 | 0.933 | 14 | 2 | 22 | 2 |
-| BeeBrain | empirical reduced AL-MB-CX kernel | 0.000 | 0.483 | 14 | 3 | 29 | 2 |
+| BeeBrain | empirical reduced AL-MB-CX kernel | 0.000 | 0.483 | 2 | 3 | 29 | 2 |
 | BeeMind | bounded active-inference-style policy kernel | 1.000 | 0.933 | 8 | 2 | 9 | 2 |
 | BeeSwarm | reduced communication kernel plus strict FlyBody/MuJoCo BeeBody waggle/collision scenes | 1.000 | 0.925 | 14 | 2 | 23 | 3 |
 | BeeNiche | voxel comb and thermal kernel with adapter schemas | 1.000 | 0.933 | 9 | 2 | 12 | 2 |
@@ -40,7 +40,7 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 - `validation_target`: gap; value `0.8`; threshold `0.9`. Mean module validation fraction does not meet synthesis target.
 - `artifact_coverage`: pass; value `1.0`; threshold `1.0`. Each module has visualization or evidence artifacts.
 - `documentation_signposting`: pass; value `1.0`; threshold `1.0`. Every non-cache directory has README.md and AGENTS.md coverage.
-- `empirical_parseability`: gap; value `0.0`; threshold `0.5`. BeeBrain parseable-source fraction does not clear configured minimum.
+- `empirical_parseability`: gap; value `None`; threshold `0.5`. BeeBrain parseable-source fraction does not clear configured minimum.
 - `simulation_energy_finite`: pass; value `0.000821`; threshold `>= 0`. Body energy does not increase during the deterministic integrated run.
 - `simulation_thermal_improves`: pass; value `3.964`; threshold `> 0`. Brood-temperature error improves over the deterministic run.
 - `scholarship_minimum`: pass; value `93`; threshold `7`. Manuscript bibliography includes the configured minimum scholarship anchors.
@@ -49,7 +49,7 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 
 - Weakest synthesized module is BeeBrain (readiness 0.483; gaps 2).
 - Cross-stack validation mean is 0.800 with 11 catalogued module gaps.
-- Integrated simulation improved brood-temperature error by 3.964 C over 24 steps.
+- Integrated simulation changed brood-temperature error by 3.964 C over 24 steps.
 - Open synthesis validation gates: validation_target, empirical_parseability.
 
 ## Scholarship Anchors

@@ -1,4 +1,4 @@
-"""Real-data coverage for visualization.animations pure helpers (no mocks)."""
+"""Real image encoding and presentation boundary regressions."""
 
 from __future__ import annotations
 
@@ -9,53 +9,35 @@ import pytest
 from PIL import Image
 
 from beestack.config import BeeStackConfig
-from beestack.visualization.animations import (
-    _as_uint8,
-    _frame_to_image,
-    _save_contact_sheet,
-    _save_frames_as_gif,
-    waggle_dance_visualization_config,
-)
+from beestack.visualization.animations import waggle_dance_visualization_config
+from beestack.visualization.figure_output import save_annotated_contact_sheet, save_gif_frames
 
 
-def test_as_uint8_identity_and_clip() -> None:
-    same = np.zeros((2, 2), dtype=np.uint8)
-    assert _as_uint8(same).dtype == np.uint8
-    clipped = _as_uint8(np.array([[-5.0, 300.0]]))
-    assert clipped.dtype == np.uint8
-    assert clipped.tolist() == [[0, 255]]
-
-
-def test_frame_to_image_modes_and_raise() -> None:
-    gray = _frame_to_image(np.zeros((4, 4)))
-    assert gray.mode == "L"
-    assert gray.size == (4, 4)
-    rgb = _frame_to_image(np.zeros((4, 4, 3), dtype=np.uint8))
-    assert rgb.mode == "RGB"
-    with pytest.raises(ValueError, match="grayscale or RGB"):
-        _frame_to_image(np.zeros((4, 4, 2)))
-
-
-def test_save_frames_as_gif(tmp_path: Path) -> None:
+def test_save_gif_preserves_clipped_grayscale_and_rgb_pixels(tmp_path: Path) -> None:
     with pytest.raises(ValueError, match="frames must not be empty"):
-        _save_frames_as_gif([], tmp_path / "x.gif", 10)
-    frames = [np.zeros((8, 8, 3), dtype=np.uint8), np.full((8, 8, 3), 200, dtype=np.uint8)]
+        save_gif_frames([], tmp_path / "x.gif", 10)
+    gray = np.array([[-5.0, 300.0], [100.0, 200.0]])
+    rgb = np.full((2, 2, 3), 50, dtype=np.uint8)
     out = tmp_path / "anim.gif"
-    _save_frames_as_gif(frames, out, 10)
-    assert out.exists()
-    with Image.open(out) as img:
-        assert getattr(img, "n_frames", 1) == 2
+    save_gif_frames([gray, rgb], out, 10)
+    with Image.open(out) as image:
+        assert image.n_frames == 2
+        assert image.convert("RGB").getpixel((0, 0)) == (0, 0, 0)
+        assert image.convert("RGB").getpixel((1, 0)) == (255, 255, 255)
+        image.seek(1)
+        assert image.convert("RGB").getpixel((0, 0)) == (50, 50, 50)
 
 
-def test_save_contact_sheet(tmp_path: Path) -> None:
+def test_contact_sheet_preserves_first_last_samples_and_explicit_layout(tmp_path: Path) -> None:
     with pytest.raises(ValueError, match="frames must not be empty"):
-        _save_contact_sheet([], tmp_path / "s.png")
+        save_annotated_contact_sheet([], tmp_path / "s.png")
     frames = [np.full((20, 20, 3), idx * 10, dtype=np.uint8) for idx in range(10)]
     out = tmp_path / "sheet.png"
-    _save_contact_sheet(frames, out, columns=4)
-    assert out.exists()
-    with Image.open(out) as img:
-        assert img.size[0] > 0 and img.size[1] > 0
+    save_annotated_contact_sheet(frames, out, columns=4, frame_size=(20, 20), footer_height=10)
+    with Image.open(out) as image:
+        assert image.size == (80, 60)
+        assert image.getpixel((10, 10)) == (0, 0, 0)
+        assert image.getpixel((70, 40)) == (90, 90, 90)
 
 
 def test_waggle_dance_visualization_config_pure() -> None:

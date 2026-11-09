@@ -139,11 +139,15 @@ by `uv run python scripts/render_manuscript.py` using Pandoc and XeLaTeX.
 The gate requires a real readable PDF and a matching source/data/figure render
 receipt. All supported Markdown image references and sidecars are sealed, regardless
 of image format or project-local folder. No sibling template checkout is used.
-Core primary figures remain mandatory. Empirical primary figures require current,
-data-bound analysis; retained historical empirical images are rejected from the manuscript.
-`10.5281/zenodo.20420557` identifies the historical 1.0 deposit, not 2.0;
-the new `publication.doi` stays empty until a version-specific DOI is assigned.
-Never reuse the older DOI. See `CHANGELOG.md` for contracts and limitations.
+Core primary figures remain mandatory. Every production manuscript image requires
+an exact curated registry path and matching caption/label, not an indexed fallback.
+Empirical primary figures require current, data-bound analysis; retained historical
+empirical images are rejected from the manuscript.
+`10.5281/zenodo.20420557` identifies the [historical 1.0 deposit](https://zenodo.org/records/20420557),
+not 2.0; the new `publication.doi` stays empty until a version-specific DOI is assigned.
+Strict deposit admission rejects empty/malformed and known historical DOIs; offline
+shape/history checks do not verify assignment of an unknown DOI. Never reuse the
+older DOI. See `CHANGELOG.md` for contracts and limitations.
 
 Empirical intake requires complete observed channel/condition grids and explicit,
 consistent acquisition rates; it never fills absent observations with zeros or
@@ -159,6 +163,11 @@ Current local odor, calcium, and antennal payloads are absent. Standalone waggle
 CSVs and Table S1 statistics are separate evidence, not a current odor-conditioned
 aggregate. Figure sidecars retain provenance and availability; `_data.json` plot
 payloads preserve nullable observations and independent native units.
+Unavailable numeric witnesses fail their configured checks without leaving the
+denominator; raw methods plots and hydrated prose preserve gaps rather than
+turning boolean/nonfinite values into measurements. Actual zero remains observed.
+All GIF writers share cumulative-centisecond timing: integer FPS in 1..100,
+encoded boundary error at most 5 ms, distinct from physics and viewer scheduling.
 
 BeeStack is MIT licensed (`LICENSE`). Vendored/generated FlyBody assets retain their
 upstream Apache-2.0 notice; source datasets retain their own registered licenses.

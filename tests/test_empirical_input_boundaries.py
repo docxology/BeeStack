@@ -15,9 +15,9 @@ from scipy.io import savemat
 
 from beestack.brain import anatomy, empirical_fetch
 from beestack.brain.connectome import structural_wiring
+from beestack.brain.empirical_data import ArrayLimits
 from beestack.brain.empirical_parsers.antennal import antennal_summaries_from_archive
 from beestack.brain.empirical_parsers.calcium import (
-    ArrayLimits,
     calcium_dataset_from_mat_bytes,
     calcium_datasets_from_archive,
     load_hdf5_mat_payload,

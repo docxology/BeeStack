@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
+from fractions import Fraction
+from math import frexp, fsum, ldexp
 from typing import Any
 
 import numpy as np
@@ -40,7 +42,7 @@ def colony_expected_free_energy(
     caste_weights: Array,
     emergence_penalty: float = 0.0,
 ) -> float:
-    """Aggregate individual EFE into a colony-level witness metric."""
+    """Aggregate same-shaped EFE/weights with a positive (possibly signed) weight sum."""
 
     efes = np.asarray(individual_efes, dtype=float)
     weights = np.asarray(caste_weights, dtype=float)
@@ -55,9 +57,71 @@ def colony_expected_free_energy(
         raise ValueError("emergence_penalty must be nonnegative")
     if not np.isfinite(emergence_penalty):
         raise ValueError("emergence_penalty must be finite")
-    if weights.sum() <= 0:
+    if np.min(weights, initial=0.0) < 0.0:
+        return _exact_colony_efe(efes, weights, emergence_penalty)
+    weight_scale = float(np.max(np.abs(weights), initial=0.0))
+    if weight_scale == 0.0:
         raise ValueError("caste_weights must have positive sum")
-    return float(np.average(efes, weights=weights) + emergence_penalty)
+    weight_shift = frexp(weight_scale)[1]
+    scaled_weights = np.ldexp(weights, -weight_shift)
+    if np.any((weights != 0.0) & (np.abs(scaled_weights) < np.finfo(float).tiny)):
+        return _exact_colony_efe(efes, weights, emergence_penalty)
+    weight_sum = fsum(scaled_weights.flat)
+    active_values = efes[weights != 0.0]
+    if np.min(active_values, initial=0.0) < 0.0 and (
+        np.max(active_values, initial=0.0) > 0.0 or emergence_penalty > 0.0
+    ):
+        # Rounded products/means cannot preserve an arbitrarily small cancelling
+        # residual. Keep the exact expression when cancellation is possible.
+        return _exact_colony_efe(efes, weights, emergence_penalty)
+    value_scale = float(np.max(np.abs(active_values), initial=0.0))
+    if value_scale == 0.0:
+        return float(emergence_penalty)
+    value_shift = frexp(value_scale)[1]
+    # Power-of-two normalization preserves represented operands exactly unless
+    # underflow forces the exact path; neither products nor sums need overflow.
+    products = []
+    for value, weight in zip(efes.flat, scaled_weights.flat, strict=True):
+        if weight == 0.0 or value == 0.0:
+            continue
+        product = ldexp(float(value), -value_shift) * float(weight)
+        if value != 0.0 and abs(product) < np.finfo(float).tiny:
+            return _exact_colony_efe(efes, weights, emergence_penalty)
+        products.append(product)
+    numerator = fsum(products)
+    numerator_mantissa, numerator_exponent = frexp(numerator)
+    weight_mantissa, weight_exponent = frexp(weight_sum)
+    try:
+        mean = ldexp(
+            numerator_mantissa / weight_mantissa,
+            numerator_exponent + value_shift - weight_exponent,
+        )
+        if abs(mean) < np.finfo(float).tiny:
+            # Avoid double rounding at the subnormal reconstruction boundary.
+            return _exact_colony_efe(efes, weights, emergence_penalty)
+        result = fsum((mean, float(emergence_penalty)))
+    except OverflowError:
+        return _exact_colony_efe(efes, weights, emergence_penalty)
+    return result
+
+
+def _exact_colony_efe(efes: Array, weights: Array, penalty: float) -> float:
+    """Resolve exceptional underflow/cancellation without discarding finite terms."""
+
+    weight_sum = Fraction(0)
+    numerator = Fraction(0)
+    for value, weight in zip(efes.flat, weights.flat, strict=True):
+        exact_weight = Fraction(float(weight))
+        weight_sum += exact_weight
+        numerator += Fraction(float(value)) * exact_weight
+    if weight_sum <= 0:
+        raise ValueError("caste_weights must have positive sum")
+    try:
+        return float(numerator / weight_sum + Fraction(float(penalty)))
+    except OverflowError as exc:
+        raise ValueError(
+            "colony expected free energy is not representable as a finite float"
+        ) from exc
 
 
 def scale_agent_count(cfg: BeeStackConfig) -> int:

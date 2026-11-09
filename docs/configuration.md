@@ -126,3 +126,9 @@ formats, sensitivity sweeps with fewer than two values, invalid empirical
 completeness thresholds, nonpositive report-figure limits, invalid synthesis
 validation/artifact coverage targets, and negative scholarship-reference
 minimums.
+
+GIF `animation_fps` and `long_waggle_animation_fps` are integers in 1..100, the
+centisecond encoder's supported domain. Cumulative encoded boundaries track the
+requested clock within 5 ms; physics steps, prescribed motion and viewer scheduling
+are separate clocks. `brain.kc_class_i_fraction` lies in [0, 1]; public subtype
+counts and the sparse kernel share the same truncated integer partition.

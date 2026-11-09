@@ -1,7 +1,7 @@
 # BeeStack Project Readiness Review
 
 - Passed: `True`
-- Signposted directories: `74`
+- Signposted directories: `75`
 - Signposting passed: `True`
 - Documentation audit available: `True`
 - Documentation audit passed: `True`
@@ -21,7 +21,7 @@
 
 - Weakest synthesized module is BeeBrain (readiness 0.483; gaps 2).
 - Cross-stack validation mean is 0.800 with 11 catalogued module gaps.
-- Integrated simulation improved brood-temperature error by 3.964 C over 24 steps.
+- Integrated simulation changed brood-temperature error by 3.964 C over 24 steps.
 
 ## Prioritized Improvements
 

@@ -464,18 +464,18 @@
         "AL/MB/CX reduced kernel validation"
       ],
       "quantitative_metrics": {
-        "anatomy_inventory_count": 0.0,
-        "brain_data_parseable_fraction": 0.0,
-        "brain_source_verified_fraction": 0.0,
-        "calcium_dataset_count": 0.0,
-        "empirical_panel_count": 0.0,
+        "anatomy_inventory_count": null,
+        "brain_data_parseable_fraction": null,
+        "brain_source_verified_fraction": null,
+        "calcium_dataset_count": null,
+        "empirical_panel_count": null,
         "enabled_dataset_count": 10.0,
-        "neuropil_count": 0.0,
-        "region_response_class_count": 0.0,
-        "template_count": 0.0,
-        "waggle_both_antennae_error_count": 0.0,
-        "waggle_follower_confidence": 0.0,
-        "waggle_no_antennae_error_count": 0.0
+        "neuropil_count": null,
+        "region_response_class_count": null,
+        "template_count": null,
+        "waggle_both_antennae_error_count": null,
+        "waggle_follower_confidence": null,
+        "waggle_no_antennae_error_count": null
       },
       "validation_panel": {
         "checks": [
@@ -484,14 +484,14 @@
             "name": "template_bank",
             "passed": false,
             "threshold": ">= 2",
-            "value": 0.0
+            "value": null
           },
           {
             "detail": "Honeybee Standard Brain assets are inventoried when local",
             "name": "anatomy_inventory",
             "passed": false,
             "threshold": "> 0",
-            "value": 0
+            "value": null
           },
           {
             "detail": "Hadjitofi-Webb waggle-following data is parsed or explicitly gapped",
@@ -505,49 +505,49 @@
             "name": "brain_parseability_target",
             "passed": false,
             "threshold": ">= 0.8 or all blockers source-verified",
-            "value": 0
+            "value": null
           },
           {
             "detail": "empirical panels present",
             "name": "empirical_panels_present",
             "passed": false,
             "threshold": "> 0",
-            "value": 0.0
+            "value": null
           },
           {
             "detail": "template bank present",
             "name": "template_bank_present",
             "passed": false,
             "threshold": "> 0",
-            "value": 0.0
+            "value": null
           },
           {
             "detail": "anatomy inventory present",
             "name": "anatomy_inventory_present",
             "passed": false,
             "threshold": "> 0",
-            "value": 0.0
+            "value": null
           },
           {
             "detail": "calcium gap declared",
             "name": "calcium_gap_declared",
             "passed": false,
             "threshold": "present or declared gap",
-            "value": 0.0
+            "value": "unavailable"
           },
           {
             "detail": "waggle gap declared",
             "name": "waggle_gap_declared",
             "passed": false,
             "threshold": "present or declared gap",
-            "value": 0.0
+            "value": false
           },
           {
             "detail": "parseability target satisfied",
             "name": "parseability_target_satisfied",
             "passed": false,
             "threshold": ">= 0.8 or source-verified blockers",
-            "value": 0.0
+            "value": null
           }
         ],
         "failed_checks": [
@@ -619,7 +619,7 @@
           "unrecorded"
         ],
         "backends": [
-          "matplotlib.funcanimation",
+          "matplotlib.savefig+Pillow",
           "Matplotlib",
           "Matplotlib",
           "Matplotlib empirical-data renderer",
@@ -850,7 +850,7 @@
           "unrecorded"
         ],
         "backends": [
-          "matplotlib.funcanimation",
+          "matplotlib.savefig+Pillow",
           "Matplotlib",
           "Matplotlib/pandas",
           "Matplotlib/pandas"
@@ -948,7 +948,7 @@
             "name": "strict_contact_scenes",
             "passed": true,
             "threshold": "passed",
-            "value": 3
+            "value": 3.0
           },
           {
             "detail": "Represented colony covers simulated agents",
@@ -976,7 +976,7 @@
             "name": "strict_contact_physics_passed",
             "passed": true,
             "threshold": "passed",
-            "value": 3
+            "value": 3.0
           },
           {
             "detail": "recruitment nonnegative",
@@ -1047,7 +1047,7 @@
         ],
         "backends": [
           "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer",
-          "matplotlib.funcanimation",
+          "matplotlib.savefig+Pillow",
           "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer",
           "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer",
           "Matplotlib",
@@ -1231,7 +1231,7 @@
           "unrecorded"
         ],
         "backends": [
-          "matplotlib.funcanimation",
+          "matplotlib.savefig+Pillow",
           "Matplotlib",
           "Matplotlib",
           "Matplotlib",
@@ -1674,7 +1674,7 @@
     {
       "artifact_type": "animation",
       "availability_status": "unrecorded",
-      "backend": "matplotlib.funcanimation",
+      "backend": "matplotlib.savefig+Pillow",
       "fidelity_level": "reduced_schematic",
       "path": "output/animations/beebrain_neural_anatomy.gif",
       "regeneration_command": "uv run python scripts/generate_animations.py",
@@ -1684,7 +1684,7 @@
     {
       "artifact_type": "animation",
       "availability_status": "unrecorded",
-      "backend": "matplotlib.funcanimation",
+      "backend": "matplotlib.savefig+Pillow",
       "fidelity_level": "reduced_schematic",
       "path": "output/animations/beemind_policy_beliefs.gif",
       "regeneration_command": "uv run python scripts/generate_animations.py",
@@ -1694,7 +1694,7 @@
     {
       "artifact_type": "animation",
       "availability_status": "unrecorded",
-      "backend": "matplotlib.funcanimation",
+      "backend": "matplotlib.savefig+Pillow",
       "fidelity_level": "reduced_schematic",
       "path": "output/animations/beeniche_comb_thermal.gif",
       "regeneration_command": "uv run python scripts/generate_animations.py",
@@ -1714,7 +1714,7 @@
     {
       "artifact_type": "animation",
       "availability_status": "unrecorded",
-      "backend": "matplotlib.funcanimation",
+      "backend": "matplotlib.savefig+Pillow",
       "fidelity_level": "reduced_schematic",
       "path": "output/animations/beeswarm_dance_pheromone.gif",
       "regeneration_command": "uv run python scripts/generate_animations.py",

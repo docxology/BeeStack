@@ -135,14 +135,22 @@ def negative_delta_f_over_f(traces: Array, baseline_frames: int) -> Array:
     data = np.asarray(traces, dtype=float)
     if data.ndim < 2:
         raise ValueError("traces must have at least time and glomerulus axes")
+    if not data.size or not np.isfinite(data).all():
+        raise ValueError("calcium normalization requires complete finite traces")
     if baseline_frames <= 0:
         raise ValueError("baseline_frames must be positive")
     if baseline_frames > data.shape[-2]:
         raise ValueError("baseline_frames must not exceed trace length")
-    baseline = np.mean(data[..., :baseline_frames, :], axis=-2, keepdims=True)
-    if np.any(np.isclose(baseline, 0.0)):
-        raise ValueError("baseline fluorescence must be nonzero")
-    return -((data - baseline) / baseline).astype(float)
+    with np.errstate(over="ignore", invalid="ignore", divide="ignore"):
+        baseline = np.mean(data[..., :baseline_frames, :], axis=-2, keepdims=True)
+        if not np.isfinite(baseline).all():
+            raise ValueError("baseline fluorescence must be finite")
+        if np.any(np.isclose(baseline, 0.0)):
+            raise ValueError("baseline fluorescence must be nonzero")
+        normalized = -((data - baseline) / baseline)
+    if not np.isfinite(normalized).all():
+        raise ValueError("normalized calcium responses must be finite")
+    return normalized.astype(float)
 
 
 def summarize_calcium_trials(
@@ -159,14 +167,22 @@ def summarize_calcium_trials(
     """
 
     protocol = protocol or default_calcium_protocol()
+    if not np.isfinite(protocol.acquisition_hz) or protocol.acquisition_hz <= 0:
+        raise ValueError("acquisition_hz must be finite and positive")
     normalized = negative_delta_f_over_f(traces, protocol.baseline_frames)
     start, stop = protocol.stimulus_frame_window
     if not 0 <= start < stop <= normalized.shape[-2]:
         raise ValueError("stimulus frame window must fit trace length")
     window = normalized[..., start:stop, :]
-    mean_response = np.mean(window, axis=tuple(range(window.ndim - 1))).astype(float)
-    time_mean = np.mean(window, axis=tuple(range(window.ndim - 2))).astype(float)
-    peak_latency_s = (np.argmax(np.abs(time_mean), axis=0) + start) / protocol.acquisition_hz
+    with np.errstate(over="ignore", invalid="ignore", divide="ignore"):
+        mean_response = np.mean(window, axis=tuple(range(window.ndim - 1))).astype(float)
+        time_mean = np.mean(window, axis=tuple(range(window.ndim - 2))).astype(float)
+    if not np.isfinite(mean_response).all() or not np.isfinite(time_mean).all():
+        raise ValueError("calcium response means must be finite")
+    with np.errstate(over="ignore", invalid="ignore", divide="ignore"):
+        peak_latency_s = (np.argmax(np.abs(time_mean), axis=0) + start) / protocol.acquisition_hz
+    if not np.isfinite(peak_latency_s).all():
+        raise ValueError("calcium peak latencies must be finite")
     # `negative_delta_f_over_f` returns the NEGATED ΔF/F: an excitatory odor
     # raises fluorescence (ΔF/F > 0) so its negated response is < 0, and an
     # inhibitory odor (ΔF/F < 0) yields a negated response > 0. The fraction
@@ -219,7 +235,16 @@ def empirical_alignment_score(observed: Array, template: Array) -> float:
     template_arr = np.asarray(template, dtype=float)
     if observed_arr.shape != template_arr.shape:
         raise ValueError("observed and template must have matching shapes")
-    denom = float(np.linalg.norm(observed_arr) * np.linalg.norm(template_arr))
-    if denom == 0:
+    if not np.isfinite(observed_arr).all() or not np.isfinite(template_arr).all():
+        raise ValueError("observed and template must be finite")
+    observed_scale = float(np.max(np.abs(observed_arr), initial=0.0))
+    template_scale = float(np.max(np.abs(template_arr), initial=0.0))
+    if observed_scale == 0.0 or template_scale == 0.0:
         return 0.0
-    return float(np.dot(observed_arr, template_arr) / denom)
+    observed_unit = (observed_arr / observed_scale).ravel()
+    template_unit = (template_arr / template_scale).ravel()
+    denom = float(np.linalg.norm(observed_unit) * np.linalg.norm(template_unit))
+    alignment = float(np.dot(observed_unit, template_unit) / denom)
+    if not np.isfinite(alignment):
+        raise ValueError("cosine alignment must be finite")
+    return float(np.clip(alignment, -1.0, 1.0))

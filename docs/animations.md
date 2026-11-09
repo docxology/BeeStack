@@ -1,4 +1,4 @@
-# Module Animations
+# Animation fidelity, playback clocks and native render evidence
 
 BeeStack generates module-aligned animations with explicit fidelity labels.
 Production BeeBody and BeeSwarm collision/waggle outputs are real
@@ -73,6 +73,18 @@ frequency, follower spacing, follower orientation gain, antennal sampling gain,
 and stop-signal sensitivity come from `beestack.waggle`. Tests also call
 `generate_module_animations()` with explicit overrides for short deterministic
 runs; production generation uses the longer waggle frame/fps settings.
+
+## Encoded playback clock
+
+GIF FPS must be an integer from 1 through 100, matching the format's 10 ms
+resolution. Both native renders and Matplotlib (`matplotlib.savefig+Pillow`)
+use cumulative rounded frame boundaries, keeping elapsed encoded playback within
+5 ms of the requested clock without cumulative per-frame drift. Identical adjacent
+images may share an encoded frame; their durations still add. These are playback
+guarantees, not wall-clock performance, native integration timing, or biological
+motion measurements. Invalid FPS is refused before replacing an existing GIF.
+
+## Native render and contact witnesses
 
 Visual QA is automated by `scripts/verify_bee_render.py` and by the analysis
 pipeline. The checker inspects adjacent-frame change across the full GIF sequence,

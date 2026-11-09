@@ -32,7 +32,7 @@ class ResearchValidationRecord:
 
     name: str
     passed: bool
-    value: float | int | str | bool
+    value: float | int | str | bool | None
     threshold: float | int | str | bool
     detail: str
 
@@ -44,7 +44,7 @@ class ResearchValidationRecord:
         _validate_scalar(self.value, "validation value")
         _validate_scalar(self.threshold, "validation threshold")
 
-    def as_dict(self) -> dict[str, float | int | str | bool]:
+    def as_dict(self) -> dict[str, object]:
         return asdict(self)
 
 
@@ -54,7 +54,7 @@ class ModuleMethodScorecard:
 
     module: str
     fidelity_level: str
-    metrics: dict[str, float]
+    metrics: dict[str, float | None]
     validations: tuple[ResearchValidationRecord, ...]
     evidence: tuple[str, ...]
     known_gaps: tuple[str, ...]
@@ -448,20 +448,19 @@ def _module_scorecards(
     bee_visual = manifest.get("bee_visual_signature", {})
     empirical_summary = empirical.get("activity_summary", {})
     mean_odor_metrics = {}
-    if empirical_summary.get("mean_odor_separability") is not None:
-        mean_odor_metrics["mean_odor_separability"] = float(
-            empirical_summary["mean_odor_separability"]
-        )
+    odor_separability = _observation(empirical_summary.get("mean_odor_separability"))
+    if odor_separability is not None:
+        mean_odor_metrics["mean_odor_separability"] = odor_separability
     anatomy_summary = empirical.get("anatomy_summary", {})
-    template_count = _float(
+    template_count = _observation(
         empirical.get("template_count", empirical.get("template_bank", {}).get("template_count"))
     )
     scene_counts = [
-        _float(scene.get("metrics", {}).get("bee_bee_contact_count"))
+        _observation(scene.get("metrics", {}).get("bee_bee_contact_count"))
         for scene in contact.get("scenes", [])
     ]
     floor_counts = [
-        _float(scene.get("metrics", {}).get("floor_contact_count"))
+        _observation(scene.get("metrics", {}).get("floor_contact_count"))
         for scene in contact.get("scenes", [])
     ]
     body_calibration = bee_body_calibration_summary(cfg)
@@ -481,8 +480,8 @@ def _module_scorecards(
             {
                 "body_mass_mg": cfg.body.body_mass_mg,
                 "wing_stroke_hz": cfg.body.wing_stroke_hz,
-                "bee_visual_score": _float(bee_visual.get("score")),
-                "bee_silhouette_score": _float(bee_visual.get("silhouette_score")),
+                "bee_visual_score": _observation(bee_visual.get("score")),
+                "bee_silhouette_score": _observation(bee_visual.get("silhouette_score")),
                 "morphology_score": body_calibration.morphology_score,
                 "inertia_rescaling_score": body_calibration.inertia_rescaling_score,
                 "contact_proxy_count": float(body_calibration.contact_proxy_count),
@@ -496,8 +495,9 @@ def _module_scorecards(
             (
                 _validation(
                     "bee_visual_signature",
-                    bool(bee_visual.get("bee_like")),
-                    bee_visual.get("score", 0),
+                    bool(bee_visual.get("bee_like"))
+                    and _observation(bee_visual.get("score")) is not None,
+                    _observation(bee_visual.get("score")),
                     ">= 0.8",
                     "BeeBody GIFs remain visually bee-like",
                 ),
@@ -523,32 +523,33 @@ def _module_scorecards(
             module_reports,
             {
                 "registered_dataset_count": float(len(cfg.empirical.enabled_dataset_ids)),
-                "empirical_panel_count": _float(empirical.get("panel_count")),
+                "empirical_panel_count": _observation(empirical.get("panel_count")),
                 "template_count": template_count,
-                "anatomy_inventory_count": _float(anatomy_summary.get("inventory_count")),
+                "anatomy_inventory_count": _observation(anatomy_summary.get("inventory_count")),
                 **mean_odor_metrics,
-                "waggle_follower_confidence": _float(
+                "waggle_follower_confidence": _observation(
                     empirical_summary.get("waggle_follower_summary", {}).get("confidence_score")
                 ),
-                "brain_data_parseable_fraction": _float(
+                "brain_data_parseable_fraction": _observation(
                     brain_completeness.get("parseable_fraction")
                 ),
-                "source_verified_fraction": _float(
+                "source_verified_fraction": _observation(
                     brain_completeness.get("source_verified_fraction")
                 ),
             },
             (
                 _validation(
                     "template_bank",
-                    template_count >= 2,
+                    template_count is not None and template_count >= 2,
                     template_count,
                     ">= 2",
                     "Empirical templates are available for stack integration",
                 ),
                 _validation(
                     "anatomy_inventory",
-                    _float(anatomy_summary.get("inventory_count")) > 0,
-                    anatomy_summary.get("inventory_count", 0),
+                    (count := _observation(anatomy_summary.get("inventory_count"))) is not None
+                    and count > 0,
+                    _observation(anatomy_summary.get("inventory_count")),
                     "> 0",
                     "Honeybee Standard Brain assets are inventoried when local",
                 ),
@@ -562,8 +563,9 @@ def _module_scorecards(
                 ),
                 _validation(
                     "brain_parseability_target",
-                    bool(brain_completeness.get("parseability_target_satisfied")),
-                    brain_completeness.get("parseable_fraction", 0),
+                    bool(brain_completeness.get("parseability_target_satisfied"))
+                    and _observation(brain_completeness.get("parseable_fraction")) is not None,
+                    _observation(brain_completeness.get("parseable_fraction")),
                     ">= 0.8 or all blockers source-verified",
                     "Curated BeeBrain sources are parseable or source-verified blockers",
                 ),
@@ -579,8 +581,10 @@ def _module_scorecards(
                     "policy_horizon": float(cfg.mind.policy_horizon),
                     "branching_factor": float(cfg.mind.branching_factor),
                     "risk_sensitivity": cfg.mind.risk_sensitivity,
-                    "final_energy_j": _float(summary.get("final_energy_j")),
-                    "final_empirical_alignment": summary.get("final_empirical_alignment"),
+                    "final_energy_j": _observation(summary.get("final_energy_j")),
+                    "final_empirical_alignment": _observation(
+                        summary.get("final_empirical_alignment")
+                    ),
                 }.items()
                 if value is not None
             },
@@ -594,8 +598,8 @@ def _module_scorecards(
                 ),
                 _validation(
                     "finite_energy",
-                    np.isfinite(_float(summary.get("final_energy_j"))),
-                    summary.get("final_energy_j", 0),
+                    _observation(summary.get("final_energy_j")) is not None,
+                    _observation(summary.get("final_energy_j")),
                     "finite",
                     "Selected policies preserve finite body energy",
                 ),
@@ -608,25 +612,26 @@ def _module_scorecards(
             {
                 "agent_count": float(cfg.swarm.agent_count),
                 "represented_colony_size": float(cfg.swarm.represented_colony_size),
-                "strict_scene_count": _float(contact.get("scene_count")),
-                "bee_bee_contact_count": float(sum(scene_counts)),
-                "floor_contact_count": float(sum(floor_counts)),
-                "waggle_follower_orientation_confidence": _float(
+                "strict_scene_count": _observation(contact.get("scene_count")),
+                "bee_bee_contact_count": _observed_sum(scene_counts),
+                "floor_contact_count": _observed_sum(floor_counts),
+                "waggle_follower_orientation_confidence": _observation(
                     waggle_metrics.get("follower_orientation_confidence")
                 ),
-                "waggle_follower_orientation_error_deg": _float(
+                "waggle_follower_orientation_error_deg": _observation(
                     waggle_metrics.get("follower_orientation_error_mean_deg")
                 ),
-                "waggle_phase_coupling_score": _float(
+                "waggle_phase_coupling_score": _observation(
                     waggle_metrics.get("waggle_phase_coupling_score")
                 ),
-                "total_recruited_followers": _float(summary.get("total_recruited_followers")),
+                "total_recruited_followers": _observation(summary.get("total_recruited_followers")),
             },
             (
                 _validation(
                     "strict_contact_scenes",
-                    bool(contact.get("passed")),
-                    contact.get("scene_count", 0),
+                    bool(contact.get("passed"))
+                    and _observation(contact.get("scene_count")) is not None,
+                    _observation(contact.get("scene_count")),
                     "passed",
                     "Production waggle/collision scenes are MuJoCo contact-backed",
                 ),
@@ -639,17 +644,27 @@ def _module_scorecards(
                 ),
                 _validation(
                     "waggle_orientation_error_target",
-                    _float(waggle_metrics.get("follower_orientation_error_mean_deg"))
-                    < cfg.waggle.orientation_error_target_deg,
-                    waggle_metrics.get("follower_orientation_error_mean_deg", 0),
+                    (
+                        error := _observation(
+                            waggle_metrics.get("follower_orientation_error_mean_deg")
+                        )
+                    )
+                    is not None
+                    and error < cfg.waggle.orientation_error_target_deg,
+                    _observation(waggle_metrics.get("follower_orientation_error_mean_deg")),
                     f"< {cfg.waggle.orientation_error_target_deg}",
                     "Configured waggle scene followers orient toward the dancer",
                 ),
                 _validation(
                     "waggle_orientation_confidence_target",
-                    _float(waggle_metrics.get("follower_orientation_confidence"))
-                    > cfg.waggle.orientation_confidence_target,
-                    waggle_metrics.get("follower_orientation_confidence", 0),
+                    (
+                        confidence := _observation(
+                            waggle_metrics.get("follower_orientation_confidence")
+                        )
+                    )
+                    is not None
+                    and confidence > cfg.waggle.orientation_confidence_target,
+                    _observation(waggle_metrics.get("follower_orientation_confidence")),
                     f"> {cfg.waggle.orientation_confidence_target}",
                     "Configured waggle scene exceeds follower orientation-confidence target",
                 ),
@@ -662,8 +677,8 @@ def _module_scorecards(
             {
                 "comb_voxels": float(np.prod(cfg.niche.comb_shape)),
                 "brood_temperature_target_c": cfg.niche.brood_temperature_target_c,
-                "final_comb_fraction": _float(summary.get("final_comb_fraction")),
-                "final_brood_temperature_error_c": _float(
+                "final_comb_fraction": _observation(summary.get("final_comb_fraction")),
+                "final_brood_temperature_error_c": _observation(
                     summary.get("final_brood_temperature_error_c")
                 ),
                 "thermoregulation_gain": cfg.niche.thermoregulation_gain,
@@ -681,15 +696,18 @@ def _module_scorecards(
                 ),
                 _validation(
                     "comb_fraction",
-                    _float(summary.get("final_comb_fraction")) >= 0,
-                    summary.get("final_comb_fraction", 0),
+                    (comb := _observation(summary.get("final_comb_fraction"))) is not None
+                    and comb >= 0,
+                    _observation(summary.get("final_comb_fraction")),
                     ">= 0",
                     "Comb occupancy witness stays nonnegative",
                 ),
                 _validation(
                     "brood_temperature_calibrated_error",
-                    _float(summary.get("final_brood_temperature_error_c")) < 3.0,
-                    summary.get("final_brood_temperature_error_c", 0),
+                    (error := _observation(summary.get("final_brood_temperature_error_c")))
+                    is not None
+                    and error < 3.0,
+                    _observation(summary.get("final_brood_temperature_error_c")),
                     "< 3 C",
                     "Thermoregulated reduced Niche run reaches brood-temperature tolerance",
                 ),
@@ -702,7 +720,7 @@ def _module_scorecards(
 def _scorecard(
     module: str,
     module_reports: dict[str, dict[str, Any]],
-    metrics: dict[str, float],
+    metrics: dict[str, float | None],
     validations: tuple[ResearchValidationRecord, ...],
     evidence: tuple[str, ...],
 ) -> ModuleMethodScorecard:
@@ -885,8 +903,11 @@ def _validation(
     return ResearchValidationRecord(name, bool(passed), _scalar(value), _scalar(threshold), detail)
 
 
-def _metric_summary(metrics: dict[str, float]) -> str:
-    return ", ".join(f"`{name}={value:.3g}`" for name, value in sorted(metrics.items()))
+def _metric_summary(metrics: dict[str, float | None]) -> str:
+    return ", ".join(
+        f"`{name}={value:.3g}`" if value is not None else f"`{name}=unavailable`"
+        for name, value in sorted(metrics.items())
+    )
 
 
 def _availability_summary(counts: dict[str, int]) -> str:
@@ -922,6 +943,23 @@ def _empirical_known_gap(
     return ""
 
 
+def _observation(value: Any) -> float | None:
+    """Return only a real finite numeric witness, preserving measured zero."""
+    if value is None or isinstance(value, (bool, np.bool_)):
+        return None
+    try:
+        result = float(value)
+    except (TypeError, ValueError, OverflowError):
+        return None
+    return result if np.isfinite(result) else None
+
+
+def _observed_sum(values: list[float | None]) -> float | None:
+    if not values or any(value is None for value in values):
+        return None
+    return _observation(sum(values))
+
+
 def _float(value: Any, default: float = 0.0) -> float:
     try:
         result = float(value)
@@ -930,16 +968,18 @@ def _float(value: Any, default: float = 0.0) -> float:
     return result if np.isfinite(result) else default
 
 
-def _scalar(value: Any) -> float | int | str | bool:
+def _scalar(value: Any) -> float | int | str | bool | None:
+    if value is None:
+        return None
     if isinstance(value, bool | str | int):
         return value
     if isinstance(value, float):
-        return value if np.isfinite(value) else "nonfinite"
+        return value if np.isfinite(value) else None
     try:
         result = float(value)
     except (TypeError, ValueError):
         return str(value)
-    return result if np.isfinite(result) else "nonfinite"
+    return result if np.isfinite(result) else None
 
 
 def _validate_scalar(value: Any, label: str) -> None:
@@ -947,13 +987,13 @@ def _validate_scalar(value: Any, label: str) -> None:
         raise ValueError(f"{label} must be finite")
 
 
-def _validate_metric_map(metrics: dict[str, float], label: str) -> None:
+def _validate_metric_map(metrics: dict[str, float | None], label: str) -> None:
     if not metrics:
         raise ValueError(f"{label} must not be empty")
     for name, value in metrics.items():
         if not name:
             raise ValueError(f"{label} metric names must be nonempty")
-        if not np.isfinite(float(value)):
+        if value is not None and not np.isfinite(float(value)):
             raise ValueError(f"{label} metric {name} must be finite")
 
 

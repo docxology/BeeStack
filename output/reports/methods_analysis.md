@@ -25,7 +25,7 @@ Science-first per-module methods panels connecting quantitative diagnostics, val
 
 - Fidelity: `empirical reduced AL-MB-CX kernel`
 - Methods: empirical anatomy inventory; workbook/CSV activity parsing; waggle follower antennal-position parsing; odor-template bank projection; AL/MB/CX reduced kernel validation
-- Metrics: `anatomy_inventory_count=0`, `brain_data_parseable_fraction=0`, `brain_source_verified_fraction=0`, `calcium_dataset_count=0`, `empirical_panel_count=0`, `enabled_dataset_count=10`, `neuropil_count=0`, `region_response_class_count=0`, `template_count=0`, `waggle_both_antennae_error_count=0`, `waggle_follower_confidence=0`, `waggle_no_antennae_error_count=0`
+- Metrics: `anatomy_inventory_count=unavailable`, `brain_data_parseable_fraction=unavailable`, `brain_source_verified_fraction=unavailable`, `calcium_dataset_count=unavailable`, `empirical_panel_count=unavailable`, `enabled_dataset_count=10`, `neuropil_count=unavailable`, `region_response_class_count=unavailable`, `template_count=unavailable`, `waggle_both_antennae_error_count=unavailable`, `waggle_follower_confidence=unavailable`, `waggle_no_antennae_error_count=unavailable`
 - Validation fraction: `0.000`
 - Visual artifacts: `22`
 - Evidence status: output/reports/empirical_analysis.md [analysis_unavailable]; output/reports/waggle_follower_analysis.md [analysis_unavailable]

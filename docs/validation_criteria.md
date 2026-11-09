@@ -112,18 +112,20 @@ uv run python scripts/verify_generated_reports.py
   `network_gated_absent`, `missing_optional`, and `analysis_unavailable`.
   An unavailable current aggregate must not imply that standalone files are absent;
   neither unavailable analysis nor absent payload evidence supports current claims.
-- Scorecard metrics and observed sensitivity outputs must be finite, typed, JSON
-  serializable, and deterministic from fixed inputs. Missing empirical sweep values
-  remain null at their parameter coordinates; native units never share one axis.
+- Observed scorecard/methods metrics and sensitivity outputs must be finite, typed,
+  JSON serializable, and deterministic. Unavailable numeric witnesses remain null,
+  fail their checks and stay in denominators; booleans are not measurements and
+  actual zero stays observed. Missing sweep values remain at their parameter
+  coordinates; native units never share one axis.
 - Research figures under `output/figures/research/` must be nonblank, and
   Plotly HTML outputs under `output/interactive/` must contain data traces.
 - The report must preserve fidelity labels: strict FlyBody/MuJoCo for Body and
-  Swarm production animations, empirical reduced for BeeBrain, and reduced
-  validated kernels for Mind, non-visual Swarm dynamics, and Niche.
+  Swarm render paths, availability-gated empirical reduced methods for BeeBrain,
+  and reduced configured-self-test kernels for Mind, non-visual Swarm and Niche.
+  These labels do not establish calibrated biological validity.
 - `MethodsAnalysisReport` must include five module methods panels, validation
-  panels, visualization panels, scenario sweep panels, evidence availability
-  links, a source-claim crosswalk, finite quantitative metrics, and top
-  validation gaps.
+  panels, visualization panels, scenario sweeps, evidence links, a source-claim
+  crosswalk, finite observed or null unavailable metrics, and top validation gaps.
 - Every methods manuscript evidence link must preserve `citation_keys`,
   `source_dois`, `artifact_kind`, `claim_tier`, and `availability_status`.
 - `scripts/verify_generated_reports.py` must pass with no stale
@@ -147,14 +149,19 @@ uv run python scripts/verify_generated_reports.py
   project-local paths must not leak checkout-specific absolute prefixes. Sidecar
   `caption` fields use the same long contract text as manuscript alt-text
   (`FigureNarrative.manuscript_contract_caption()`).
+  Default manuscript admission also requires exact curated registry paths; indexed
+  metadata cannot bypass caption/label agreement. Explicit custom audit inventories
+  do not certify the production manuscript registry.
 - `tests/test_manuscript_quality_guards.py` checks explicit H1 section labels,
   same-file prose references for figure labels, and forbidden raw LaTeX macros.
   Figure audits check hydrated provenance/caption agreement separately. These
   structural checks do not enforce H2 sentence case or prove prose agrees with
   executed scientific behavior; that requires source and artifact review.
-- `StackSynthesisReview` must include five module synthesis panels, finite
-  simulation telemetry statistics, artifact/signposting/scholarship gates, and
-  a nonblank `output/figures/research/stack_synthesis_dashboard.png` figure.
+- `StackSynthesisReview` must include five module panels, finite observed or null
+  unavailable statistics, artifact/signposting/scholarship gates, and a nonblank
+  `output/figures/research/stack_synthesis_dashboard.png` figure. Interval energy/
+  thermal claims require complete finite record support; signed degradation is not
+  clipped into improvement. Empty methods telemetry must not invent a sample.
 
 ## Documentation And Manuscript
 

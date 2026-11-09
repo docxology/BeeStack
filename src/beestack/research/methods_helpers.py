@@ -48,13 +48,13 @@ def _path_is_figure(path: str) -> bool:
 
 
 def _series(records: tuple[dict[str, Any], ...], key: str) -> np.ndarray:
-    if not records:
-        return np.asarray((0.0,), dtype=float)
     return np.asarray([_float(record.get(key)) for record in records], dtype=float)
 
 
-def _count_policy_switches(records: tuple[dict[str, Any], ...]) -> int:
-    policies = [str(record.get("selected_policy", "")) for record in records]
+def _count_policy_switches(records: tuple[dict[str, Any], ...]) -> float:
+    policies = [record.get("selected_policy") for record in records]
+    if not policies or any(not isinstance(policy, str) or not policy for policy in policies):
+        return np.nan
     return sum(left != right for left, right in zip(policies, policies[1:], strict=False))
 
 
@@ -81,7 +81,7 @@ def _check(
 ) -> ResearchValidationRecord:
     return ResearchValidationRecord(
         name=name,
-        passed=bool(passed),
+        passed=bool(passed) and _scalar(value) is not None,
         value=_scalar(value),
         threshold=_scalar(threshold),
         detail=detail or name.replace("_", " "),
@@ -123,30 +123,34 @@ def _empirical_link_status(
 
 
 def _safe_mean(values: np.ndarray) -> float:
-    return float(np.mean(values.astype(float))) if values.size else 0.0
+    return float(np.mean(values.astype(float))) if values.size else np.nan
 
 
 def _safe_min(values: np.ndarray) -> float:
-    return float(np.min(values.astype(float))) if values.size else 0.0
+    return float(np.min(values.astype(float))) if values.size else np.nan
 
 
 def _safe_max(values: np.ndarray) -> float:
-    return float(np.max(values.astype(float))) if values.size else 0.0
+    return float(np.max(values.astype(float))) if values.size else np.nan
 
 
-def _float(value: Any, default: float = 0.0) -> float:
+def _float(value: Any, default: float = np.nan) -> float:
+    if value is None or isinstance(value, (bool, np.bool_)):
+        return default
     try:
         result = float(value)
-    except (TypeError, ValueError):
+    except (TypeError, ValueError, OverflowError):
         return default
     return result if np.isfinite(result) else default
 
 
-def _scalar(value: Any) -> float | int | str | bool:
+def _scalar(value: Any) -> float | int | str | bool | None:
+    if value is None:
+        return None
     if isinstance(value, bool | str | int):
         return value
     result = _float(value, default=np.nan)
-    return result if np.isfinite(result) else str(value)
+    return result if np.isfinite(result) else None
 
 
 def _artifact_key(path: str) -> str:

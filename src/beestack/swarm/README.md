@@ -24,3 +24,10 @@ rendering in `body.flybody_scene`: those strict small scenes impose scripted
 poses and collect real geometry/contact diagnostics, not integrated flight or
 colony-scale forward dynamics. Native-unit recruitment and contact diagnostics
 remain separate from empirical observation means and biological calibration.
+
+`colony_expected_free_energy` aggregates same-shaped finite values/weights with a
+positive total weight and nonnegative finite penalty; signed weights remain
+supported. Power-of-two scaling and compensated summation handle ordinary ranges;
+possible cancellation or exceptional dynamic range uses the exact represented
+expression. Unrepresentable finite outputs fail explicitly. Exact arithmetic has
+input-dependent cost; this metric is not a colony-validation or performance claim.

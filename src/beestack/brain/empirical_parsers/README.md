@@ -18,11 +18,17 @@ individual package members at 128 MB. Limits reject, never crop data.
 
 Calcium intake accepts MATLAB v5 and fixed-width numeric/string HDF5 Paoli
 schemas (`db.bee` or root `bee`, numeric four/five-dimensional arrays). HDF5
-hard-link cycles, excessive depth/nodes, external/soft links and variable-length,
-reference or compound dtypes are explicit policy failures, not missing data.
+hard-link cycles, excessive depth/nodes, external/soft links, external raw storage,
+virtual layouts and variable-length/reference/compound dtypes are explicit policy
+failures, not missing data. Storage/layout checks include unselected datasets.
 Logical storage plus float64/padding/stack materialization is checked before
-scientific array conversion. Defaults are 4 GB logical/materialization budget,
-depth 16 and 10,000 graph nodes/elements. MATLAB v5 compressed streams and nested
+scientific array conversion. Shared `empirical_data.ArrayLimits` defaults are a 4 GB
+logical/materialization budget, depth 16 and 10,000 graph nodes/elements.
+Derived tabular channel × stimulus panels use the same byte cap before allocation;
+only complete observed support is materialized, preserving zero and averaging
+duplicates without filling absent cells. `parse_tabular_odor_response_rows` accepts
+keyword-only `limits` for an explicit policy. These are not peak-RSS guarantees.
+MATLAB v5 compressed streams and nested
 matrix dimensions are preflighted before SciPy loading. HDF5 signatures are
 recognized at zero or any available power-of-two user-block boundary starting
 at 512 bytes, without scanning unrelated offsets or using temporary files. HDF5

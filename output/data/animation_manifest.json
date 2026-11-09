@@ -72,7 +72,7 @@
     },
     {
       "alt_text": "Animated bee brain diagram with antennal lobe, mushroom bodies, central complex, sparse neural activity, and directional flow arrows.",
-      "backend": "matplotlib.funcanimation",
+      "backend": "matplotlib.savefig+Pillow",
       "caption": "BeeBrain animation linking honeybee brain anatomy to AL-MB-CX computation and sparse Kenyon-cell activity.",
       "contact_report": "",
       "contact_sheet": "output/animations/beebrain_neural_anatomy_contact_sheet.png",
@@ -88,7 +88,7 @@
     },
     {
       "alt_text": "Animated bar chart showing caste-prior probabilities changing with worker age and colony need.",
-      "backend": "matplotlib.funcanimation",
+      "backend": "matplotlib.savefig+Pillow",
       "caption": "BeeMind animation showing active-inference-relevant caste priors over the worker lifecycle.",
       "contact_report": "",
       "contact_sheet": "output/animations/beemind_policy_beliefs_contact_sheet.png",
@@ -104,7 +104,7 @@
     },
     {
       "alt_text": "Animated overhead hive view with moving bee agents, a waggle-dance vector, and a pheromone heat field.",
-      "backend": "matplotlib.funcanimation",
+      "backend": "matplotlib.savefig+Pillow",
       "caption": "BeeSwarm animation showing local recruitment dynamics and pheromone-mediated shared state.",
       "contact_report": "",
       "contact_sheet": "output/animations/beeswarm_dance_pheromone_contact_sheet.png",
@@ -168,7 +168,7 @@
     },
     {
       "alt_text": "Animated hexagonal comb grid growing over time with a warm brood-chamber thermal color field.",
-      "backend": "matplotlib.funcanimation",
+      "backend": "matplotlib.savefig+Pillow",
       "caption": "BeeNiche animation showing voxel-comb construction and brood-temperature field maintenance.",
       "contact_report": "",
       "contact_sheet": "output/animations/beeniche_comb_thermal_contact_sheet.png",

@@ -6,7 +6,6 @@ import math
 import struct
 import zipfile
 import zlib
-from dataclasses import dataclass
 from io import BytesIO
 from pathlib import Path
 from typing import Any
@@ -20,6 +19,7 @@ from ...security import (
     assert_safe_zip_member,
     validate_zip_archive_bounds,
 )
+from .. import empirical_data
 from ..empirical_data import EmpiricalCalciumDataset, parse_paoli_matlab_payload
 from .common import dataset_id_from_path
 
@@ -127,18 +127,11 @@ def calcium_dataset_from_mat_bytes(
     )
 
 
-@dataclass(frozen=True)
-class ArrayLimits:
-    max_bytes: int = 4_000_000_000
-    max_depth: int = 16
-    max_nodes: int = 10_000
-
-
 def validate_paoli_normalization(
-    payload: dict[str, Any], limits: ArrayLimits | None = None
+    payload: dict[str, Any], limits: empirical_data.ArrayLimits | None = None
 ) -> None:
     """Account for float64 conversion, padding and the final stacked copy."""
-    limits = limits or ArrayLimits()
+    limits = limits or empirical_data.ArrayLimits()
     db = payload.get("db", payload)
     bee = db.get("bee") if isinstance(db, dict) else getattr(db, "bee", None)
     if bee is None:
@@ -164,10 +157,12 @@ def validate_paoli_normalization(
         raise IntakePolicyError("Paoli float normalization exceeds byte cap")
 
 
-def load_hdf5_mat_payload(data: bytes, *, limits: ArrayLimits | None = None) -> dict[str, Any]:
+def load_hdf5_mat_payload(
+    data: bytes, *, limits: empirical_data.ArrayLimits | None = None
+) -> dict[str, Any]:
     import h5py
 
-    limits = limits or ArrayLimits()
+    limits = limits or empirical_data.ArrayLimits()
     with h5py.File(BytesIO(data), "r") as handle:
         active: set[int] = set()
         visited: set[int] = set()
@@ -193,6 +188,11 @@ def load_hdf5_mat_payload(data: bytes, *, limits: ArrayLimits | None = None) -> 
                         raise IntakePolicyError("HDF5 external/soft links are unsupported")
                     preflight(value[key], depth + 1)
             else:
+                storage = value.id.get_create_plist()
+                if storage.get_external_count():
+                    raise IntakePolicyError("HDF5 external raw storage is unsupported")
+                if storage.get_layout() == h5py.h5d.VIRTUAL:
+                    raise IntakePolicyError("HDF5 virtual datasets are unsupported")
                 dtype = value.dtype
                 if dtype.hasobject or dtype.fields is not None or dtype.kind not in "biufcSU":
                     raise IntakePolicyError("HDF5 requires fixed-width numeric/string datasets")
@@ -233,9 +233,9 @@ def load_hdf5_mat_payload(data: bytes, *, limits: ArrayLimits | None = None) -> 
         return {"db": payload} if "db" in handle else payload
 
 
-def validate_mat_v5(data: bytes, *, limits: ArrayLimits | None = None) -> None:
+def validate_mat_v5(data: bytes, *, limits: empirical_data.ArrayLimits | None = None) -> None:
     """Bound compressed streams and every nested matrix shape before SciPy allocation."""
-    limits = limits or ArrayLimits()
+    limits = limits or empirical_data.ArrayLimits()
     if len(data) < 128 or data[126:128] not in (b"IM", b"MI"):
         raise IntakePolicyError("only MATLAB v5 or HDF5 calcium containers are supported")
     endian = "<" if data[126:128] == b"IM" else ">"

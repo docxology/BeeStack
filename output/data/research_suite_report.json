@@ -124,13 +124,13 @@
         "The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics."
       ],
       "metrics": {
-        "anatomy_inventory_count": 0.0,
-        "brain_data_parseable_fraction": 0.0,
-        "empirical_panel_count": 0.0,
+        "anatomy_inventory_count": null,
+        "brain_data_parseable_fraction": null,
+        "empirical_panel_count": null,
         "registered_dataset_count": 10.0,
-        "source_verified_fraction": 0.0,
-        "template_count": 0.0,
-        "waggle_follower_confidence": 0.0
+        "source_verified_fraction": null,
+        "template_count": null,
+        "waggle_follower_confidence": null
       },
       "module": "BeeBrain",
       "validation_fraction": 0.0,
@@ -140,14 +140,14 @@
           "name": "template_bank",
           "passed": false,
           "threshold": ">= 2",
-          "value": 0.0
+          "value": null
         },
         {
           "detail": "Honeybee Standard Brain assets are inventoried when local",
           "name": "anatomy_inventory",
           "passed": false,
           "threshold": "> 0",
-          "value": 0
+          "value": null
         },
         {
           "detail": "Hadjitofi-Webb waggle-following data is parsed or explicitly gapped",
@@ -161,7 +161,7 @@
           "name": "brain_parseability_target",
           "passed": false,
           "threshold": ">= 0.8 or all blockers source-verified",
-          "value": 0
+          "value": null
         }
       ]
     },
@@ -228,7 +228,7 @@
           "name": "strict_contact_scenes",
           "passed": true,
           "threshold": "passed",
-          "value": 3
+          "value": 3.0
         },
         {
           "detail": "Represented colony covers simulated agents",
@@ -450,7 +450,7 @@
     {
       "artifact_type": "animation",
       "availability_status": "unrecorded",
-      "backend": "matplotlib.funcanimation",
+      "backend": "matplotlib.savefig+Pillow",
       "fidelity_level": "reduced_schematic",
       "path": "output/animations/beebrain_neural_anatomy.gif",
       "regeneration_command": "uv run python scripts/generate_animations.py",
@@ -460,7 +460,7 @@
     {
       "artifact_type": "animation",
       "availability_status": "unrecorded",
-      "backend": "matplotlib.funcanimation",
+      "backend": "matplotlib.savefig+Pillow",
       "fidelity_level": "reduced_schematic",
       "path": "output/animations/beemind_policy_beliefs.gif",
       "regeneration_command": "uv run python scripts/generate_animations.py",
@@ -470,7 +470,7 @@
     {
       "artifact_type": "animation",
       "availability_status": "unrecorded",
-      "backend": "matplotlib.funcanimation",
+      "backend": "matplotlib.savefig+Pillow",
       "fidelity_level": "reduced_schematic",
       "path": "output/animations/beeniche_comb_thermal.gif",
       "regeneration_command": "uv run python scripts/generate_animations.py",
@@ -490,7 +490,7 @@
     {
       "artifact_type": "animation",
       "availability_status": "unrecorded",
-      "backend": "matplotlib.funcanimation",
+      "backend": "matplotlib.savefig+Pillow",
       "fidelity_level": "reduced_schematic",
       "path": "output/animations/beeswarm_dance_pheromone.gif",
       "regeneration_command": "uv run python scripts/generate_animations.py",

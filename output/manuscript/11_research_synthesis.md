@@ -113,7 +113,7 @@ structurally insensitive under the current reduced kernel
 The readiness review writes
 `output/reports/project_readiness_review.md` and
 `output/reports/project_readiness_review.json`. It currently reports
-strict signposting coverage for 74
+strict signposting coverage for 75
 directories and keeps the next-improvement backlog tied to the
 research-suite gaps. The top prioritized improvement is
 **BeeBrain calcium acquisition completion (P27)**.

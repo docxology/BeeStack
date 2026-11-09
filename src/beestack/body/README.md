@@ -27,6 +27,11 @@ Antialiasing, shadow-texture quality, transparency, geometry, camera, physics
 steps, bee counts and frame counts remain unchanged. This is visual resource
 control, not a different physical model or biological validation tier.
 
+Native and Matplotlib GIFs use the same cumulative-centisecond encoder with
+integer FPS in 1..100. Encoded playback boundaries track the requested clock
+within 5 ms; this changes neither integration substeps nor imposed scene poses.
+GIF playback is not measured biological timing or a runtime performance result.
+
 `BEESTACK_FLYBODY_PATH` or `BeeStackConfig.flybody.local_fork_path` can point
 to a checked-out BeeStack FlyBody fork. Render size, camera, task horizon, and
 motion-validation thresholds, plus strict-scene speed/radius/altitude/substeps

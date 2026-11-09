@@ -1,8 +1,8 @@
-"""Shared finalize helpers for figure PNG + metadata + raw plot data."""
+"""Shared PNG, GIF, HTML, metadata and raw plot-data output helpers."""
 
 from __future__ import annotations
 
-from collections.abc import Callable
+from collections.abc import Callable, Sequence
 from html import escape
 from pathlib import Path
 from typing import Any
@@ -95,6 +95,36 @@ def finalize_contact_sheet(
     return write_figure_artifacts(contact_sheet, plot_data, **sidecar_kwargs)
 
 
+def gif_frame_durations(frame_count: int, fps: int) -> list[int]:
+    """Round cumulative boundaries to GIF centiseconds without accumulating drift."""
+
+    if (
+        isinstance(frame_count, bool)
+        or not isinstance(frame_count, (int, np.integer))
+        or frame_count < 1
+    ):
+        raise ValueError("frame_count must be a positive integer")
+    if isinstance(fps, bool) or not isinstance(fps, (int, np.integer)) or not 1 <= fps <= 100:
+        raise ValueError("GIF fps must be an integer between 1 and 100")
+    durations = []
+    previous = 0
+    for index in range(1, frame_count + 1):
+        boundary = (200 * index + fps) // (2 * fps)
+        durations.append(10 * (boundary - previous))
+        previous = boundary
+    return durations
+
+
+def save_gif_frames(frames: Sequence[np.ndarray | Image.Image], path: Path, fps: int) -> None:
+    """Encode supplied frames once with bounded cumulative playback-time error."""
+
+    if not frames:
+        raise ValueError("frames must not be empty")
+    durations = gif_frame_durations(len(frames), fps)
+    images = [_frame_to_rgb_image(frame) for frame in frames]
+    images[0].save(path, save_all=True, append_images=images[1:], duration=durations, loop=0)
+
+
 def save_annotated_contact_sheet(
     frames: list[np.ndarray],
     path: Path,
@@ -140,8 +170,15 @@ def _contact_sheet_sample_indices(frame_count: int) -> list[int]:
     return [int(index) for index in indices]
 
 
-def _frame_to_rgb_image(frame: np.ndarray) -> Image.Image:
+def _frame_to_rgb_image(frame: np.ndarray | Image.Image) -> Image.Image:
+    if isinstance(frame, Image.Image):
+        return frame if frame.mode == "RGB" else frame.convert("RGB")
     array = np.asarray(frame)
+    if array.ndim == 2:
+        array = np.repeat(array[:, :, None], 3, axis=2)
     if array.ndim != 3 or array.shape[2] < 3:
-        raise ValueError("contact-sheet frames must be RGB-like arrays")
-    return Image.fromarray(np.clip(array[:, :, :3], 0, 255).astype(np.uint8), mode="RGB")
+        raise ValueError("frames must be grayscale or RGB/RGBA arrays")
+    array = array[:, :, :3]
+    if array.dtype != np.uint8:
+        array = np.clip(array, 0, 255).astype(np.uint8)
+    return Image.fromarray(array, mode="RGB")

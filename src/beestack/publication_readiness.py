@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import tomllib
 from pathlib import Path
 from typing import Any
@@ -22,6 +23,9 @@ from beestack.version import MANUSCRIPT_VERSION, PACKAGE_VERSION
 
 _COMBINED_PDF = "BeeStack_combined.pdf"
 _LEGACY_PDF = "beestack_manuscript.pdf"
+_DOI_SHAPE_RE = re.compile(r"^10\.[0-9]{4,9}/[^\s\x00-\x1f\x7f]+$")
+# Primary deposit metadata: https://zenodo.org/api/records/20420557, version 1.0.
+_HISTORICAL_VERSION_1_DOI = "10.5281/zenodo.20420557"
 
 
 def _read_json(path: Path) -> dict[str, Any]:
@@ -136,12 +140,22 @@ def check_publication_readiness(
 
     doi = str((config.get("publication") or {}).get("doi", "")).strip()
     checks["doi_configured"] = bool(doi)
+    checks["doi_shape_and_history_valid"] = bool(
+        _DOI_SHAPE_RE.fullmatch(doi) and doi.casefold() != _HISTORICAL_VERSION_1_DOI
+    )
     if not checks["doi_configured"]:
         message = "publication.doi not set in docs/manuscript/config.yaml"
         if require_doi:
             blockers.append(message)
         else:
             warnings.append(f"{message} (mint Zenodo DOI before public deposit)")
+    elif not checks["doi_shape_and_history_valid"]:
+        message = (
+            "publication.doi identifies historical release 1.0, not the current version"
+            if doi.casefold() == _HISTORICAL_VERSION_1_DOI
+            else "publication.doi must be a bare DOI with a valid registrant/suffix shape"
+        )
+        (blockers if require_doi else warnings).append(message)
 
     combined_pdf = root / "output" / "pdf" / _COMBINED_PDF
     try:

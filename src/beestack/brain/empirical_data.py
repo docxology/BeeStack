@@ -11,10 +11,20 @@ import numpy as np
 from numpy.typing import NDArray
 
 from ..config import BeeStackConfig
+from ..security import IntakePolicyError
 from ..utils import project_relative_payload
 from .empirical import CalciumImagingProtocol, default_calcium_protocol, negative_delta_f_over_f
 
 Array = NDArray[np.float64]
+
+
+@dataclass(frozen=True)
+class ArrayLimits:
+    """Logical array admission limits shared by container and derived-panel intake."""
+
+    max_bytes: int = 4_000_000_000
+    max_depth: int = 16
+    max_nodes: int = 10_000
 
 
 @dataclass(frozen=True)
@@ -347,8 +357,12 @@ def parse_tabular_odor_response_rows(
     channel_key: str,
     modality: str,
     units: str,
+    *,
+    limits: ArrayLimits | None = None,
 ) -> EmpiricalOdorResponsePanel:
-    """Parse real workbook/CSV rows into channel x stimulus response matrices."""
+    """Admit complete observed panels before allocating channel x stimulus arrays."""
+
+    limits = limits if limits is not None else ArrayLimits()
 
     if not rows:
         raise ValueError("rows must not be empty")
@@ -360,8 +374,10 @@ def parse_tabular_odor_response_rows(
     )
     if not stimuli or not channels:
         raise ValueError("rows must contain nonempty stimulus and channel values")
-    matrix = np.zeros((len(channels), len(stimuli)), dtype=float)
-    counts = np.zeros_like(matrix)
+    cells = len(channels) * len(stimuli)
+    if cells * np.dtype(float).itemsize > limits.max_bytes:
+        raise IntakePolicyError(f"{dataset_id}: derived odor-response panel exceeds byte cap")
+    observations: dict[tuple[int, int], tuple[float, int]] = {}
     stimulus_index = {label: idx for idx, label in enumerate(stimuli)}
     channel_index = {label: idx for idx, label in enumerate(channels)}
     for row in rows:
@@ -385,15 +401,20 @@ def parse_tabular_odor_response_rows(
             )
         cidx = channel_index[str(row[channel_key])]
         sidx = stimulus_index[str(row[stimulus_key])]
-        count = counts[cidx, sidx] + 1.0
-        matrix[cidx, sidx] += response_value / count - matrix[cidx, sidx] / count
-        counts[cidx, sidx] = count
-    if not np.any(counts):
+        key = (cidx, sidx)
+        mean, count = observations.get(key, (0.0, 0))
+        count += 1
+        mean += response_value / count - mean / count
+        observations[key] = (mean, count)
+    if not observations:
         raise ValueError("rows must contain at least one numeric response")
-    if not counts.all():
+    if len(observations) != cells:
         raise ValueError(
             f"{dataset_id}: incomplete channel by stimulus panel; missing responses cannot become zero"
         )
+    matrix = np.empty((len(channels), len(stimuli)), dtype=float)
+    for (cidx, sidx), (mean, _) in observations.items():
+        matrix[cidx, sidx] = mean
     return EmpiricalOdorResponsePanel(
         dataset_id=dataset_id,
         response_matrix=matrix,

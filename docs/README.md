@@ -38,8 +38,8 @@ project. Use it alongside the root `README.md` and the generated reports in
 
 - `flybody_integration.md`: BeeBody's FlyBody render path and modified
   honeybee body plan.
-- `animations.md`: module animation outputs, contact sheets, and accessibility
-  manifest and programmed-control versus observed-behavior claim boundaries.
+- `animations.md`: fidelity, cumulative encoded playback clocks, contact sheets,
+  accessibility metadata, and programmed-control versus observed-behavior claims.
 - `waggle_3d_scenario.md`: strict short and long BeeBody/FlyBody/MuJoCo waggle
   scene method, viewport/shadow profile, artifacts, and validation criteria.
 - `visualization_gallery.md`: every GIF/figure/report mapped to backend,
@@ -52,7 +52,8 @@ project. Use it alongside the root `README.md` and the generated reports in
   source-to-manuscript artifact trace pattern.
 - `baseline_readiness.md`: current readiness gates and known cleanup targets.
 - `spec_review.md`: mapping from the specification to implemented coverage.
-- `testing_philosophy.md`: zero-mock verification doctrine.
+- `testing_philosophy.md`: real domain computations, explicit boundary fixtures,
+  and the distinction between software verification and biological validation.
 - `security_posture.md`: curated-fetch and container/resource controls, provenance,
   retained-data custody, and the limits of the static security audit.
 - `signposting.md`: directory README/AGENTS coverage and readiness-review rules.
@@ -73,3 +74,8 @@ Core generated audits:
 Network-gated empirical reports such as `output/reports/empirical_analysis.md`
 and `output/reports/waggle_follower_analysis.md` are generated only when local
 public empirical payloads are present and parseable.
+
+The API reference and validation criteria distinguish finite observed values from
+null unavailable witnesses and actual zero. Configuration documents supported GIF
+FPS and Kenyon class fractions; indexed diagnostics are not curated manuscript
+evidence. Historical counts/PASS statements are not a new execution receipt.

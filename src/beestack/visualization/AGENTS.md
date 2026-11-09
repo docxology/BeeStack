@@ -22,3 +22,11 @@
   do not let diagnostic art stand in for FlyBody/MuJoCo or empirical evidence.
 - Label programmed leg-phase patterns as controls, not an inferred or validated
   gait. Keep animation-manifest titles/captions aligned with manuscript boundaries.
+- Use the shared GIF encoder and cumulative centisecond boundaries, not independently
+  rounded frame delays or Matplotlib writer internals. Preserve total duration when
+  images coalesce, close figures on callback failure, and keep playback and physics
+  clocks distinct. The supported GIF FPS domain is integer 1..100.
+- Missing, unparseable, boolean and nonfinite raw telemetry are unavailable gaps
+  in both rendered methods figures and raw exports; preserve actual numeric zero.
+- Default manuscript admission requires exact registered artifacts and matching
+  captions/labels; indexed diagnostic metadata cannot bypass those checks.

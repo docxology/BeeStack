@@ -1,5 +1,5 @@
 {
-  "source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+  "source_commit": "0c6a3a8b815a3126278e6903b1354fb444ce4ed8",
   "scope": "fresh wheel/sdist, every packaged byte, both noneditable installed CLIs from unrelated working directories, real core JSON reproduction and exact committed scholarly source archive",
   "steps": [
     {
@@ -9,7 +9,7 @@
         "$PROJECT"
       ],
       "returncode": 0,
-      "seconds": 52.288
+      "seconds": 97.025
     },
     {
       "argv": [
@@ -18,17 +18,17 @@
         "$PROJECT"
       ],
       "returncode": 0,
-      "seconds": 41.776
+      "seconds": 62.158
     },
     {
       "argv": [
         "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
         "$PROJECT/.uv-cache/wfz-visual-20261108/build_candidate_source_archive.py",
         "$PROJECT",
-        "f94eae7e65792aae400e6585dd890b688e9db4a1"
+        "0c6a3a8b815a3126278e6903b1354fb444ce4ed8"
       ],
       "returncode": 0,
-      "seconds": 0.251
+      "seconds": 0.56
     }
   ],
   "complete": true

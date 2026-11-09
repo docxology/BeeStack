@@ -401,6 +401,8 @@ def validate_config(cfg: BeeStackConfig) -> None:
         raise ValueError("glomeruli must be positive")
     if not 0 < cfg.brain.kc_sparsity <= 0.02:
         raise ValueError("kc_sparsity must be in (0, 0.02]")
+    if not 0 <= cfg.brain.kc_class_i_fraction <= 1:
+        raise ValueError("kc_class_i_fraction must be in [0, 1]")
     if cfg.mind.policy_horizon > 15:
         raise ValueError("policy_horizon must remain <= 15 for tractability")
     if cfg.mind.branching_factor <= 0:
@@ -497,6 +499,8 @@ def validate_config(cfg: BeeStackConfig) -> None:
         raise ValueError("visualization.animation_frames must be at least 2")
     if cfg.visualization.animation_fps <= 0:
         raise ValueError("visualization.animation_fps must be positive")
+    if cfg.visualization.animation_fps > 100:
+        raise ValueError("visualization.animation_fps must not exceed GIF's 100 FPS limit")
     if cfg.visualization.body_render_width <= 0 or cfg.visualization.body_render_height <= 0:
         raise ValueError("visualization body render dimensions must be positive")
     if not cfg.visualization.body_camera_id:
@@ -537,6 +541,10 @@ def validate_config(cfg: BeeStackConfig) -> None:
         )
     if cfg.visualization.long_waggle_animation_fps <= 0:
         raise ValueError("visualization.long_waggle_animation_fps must be positive")
+    if cfg.visualization.long_waggle_animation_fps > 100:
+        raise ValueError(
+            "visualization.long_waggle_animation_fps must not exceed GIF's 100 FPS limit"
+        )
     if cfg.visualization.flybody_scene_substeps <= 0:
         raise ValueError("visualization.flybody_scene_substeps must be positive")
     if cfg.research.scenario_count <= 0:

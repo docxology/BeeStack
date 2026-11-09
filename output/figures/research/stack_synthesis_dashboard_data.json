@@ -19,8 +19,8 @@
       "evidence_count": 3,
       "fidelity_level": "empirical reduced AL-MB-CX kernel",
       "known_gap_count": 2,
-      "log_metric_mean": 0.14877038359403216,
-      "metric_count": 14,
+      "log_metric_mean": 1.0413926851582251,
+      "metric_count": 2,
       "module": "BeeBrain",
       "readiness_score": 0.48333333333333334,
       "validation_fraction": 0.0
@@ -62,7 +62,7 @@
   "prioritized_findings": [
     "Weakest synthesized module is BeeBrain (readiness 0.483; gaps 2).",
     "Cross-stack validation mean is 0.800 with 11 catalogued module gaps.",
-    "Integrated simulation improved brood-temperature error by 3.964 C over 24 steps.",
+    "Integrated simulation changed brood-temperature error by 3.964 C over 24 steps.",
     "Open synthesis validation gates: validation_target, empirical_parseability."
   ],
   "schema": "beestack.figure_data.v1",
@@ -80,7 +80,7 @@
     {
       "statistic": "empirical_parseable_fraction",
       "unit": "fraction",
-      "value": 0.0
+      "value": null
     },
     {
       "statistic": "signposting_fraction",

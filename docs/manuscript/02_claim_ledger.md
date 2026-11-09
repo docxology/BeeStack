@@ -79,9 +79,13 @@ ambitious without blurring present evidence.
 The implementation separates domain computation from explicit I/O adapters.
 `src/beestack/` contains importable kernels plus guarded empirical-acquisition
 and presentation adapters; `scripts/` invokes them and owns orchestration.
-`tests/` uses real computations with no mocks; `docs/manuscript/` holds tokenized prose hydrated
-from real run-time values; and `output/` contains regeneratable
-artifacts. Every non-cache directory is signposted, with
+`tests/` exercises real numerical kernels and native integrations, alongside
+deterministic synthetic/adversarial fixtures and isolated I/O-adapter doubles;
+`docs/manuscript/` holds tokenized prose hydrated from run-time values, with
+unavailable empirical observations kept distinct from measured zero; and
+`output/` holds regenerated analyses alongside retained source payloads and
+completion records; regenerability does not grant deletion permission. Every
+non-cache directory is signposted, with
 {{SIGNPOSTED_DIRECTORY_COUNT}} directories covered by local README and
 AGENTS files so that downstream agents — human or LLM — can pick up the
 project without rediscovering its structure.
@@ -89,9 +93,13 @@ project without rediscovering its structure.
 Executability is enforced at three levels.
 
 1. **Tests** assert that contracts hold under representative inputs and
-   under boundary configurations, using deterministic seeds throughout
-   [@wilson2017good]. There are no mocks; numerical examples and real
-   downloaded payloads stand in for fabricated fixtures.
+   boundary configurations, using deterministic seeds where applicable
+   [@wilson2017good]. Numerical and native-integration checks exercise real
+   computations. Deterministic synthetic/adversarial fixtures test parsing
+   and evidence boundaries, while isolated I/O-adapter doubles exercise
+   acquisition and presentation contracts without requiring live services.
+   These fixtures and doubles are test inputs, not biological observations;
+   empirical claims still require current source-bound payloads.
 2. **Scripts** are thin orchestrators: they import from
    `src/beestack/`, run, and write artifacts to `output/`. A script
    never implements a kernel.

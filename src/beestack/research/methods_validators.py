@@ -6,14 +6,14 @@ import numpy as np
 
 
 def _validate_metric_map(
-    metrics: dict[str, float], label: str, *, allow_empty: bool = False
+    metrics: dict[str, float | None], label: str, *, allow_empty: bool = False
 ) -> None:
     if not metrics and not allow_empty:
         raise ValueError(f"{label} metrics must not be empty")
     for name, value in metrics.items():
         if not name:
             raise ValueError(f"{label} metric names must be nonempty")
-        if not np.isfinite(float(value)):
+        if value is not None and not np.isfinite(float(value)):
             raise ValueError(f"{label} metric {name} must be finite")
 
 

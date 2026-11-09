@@ -14,3 +14,6 @@
   do not copy studio lights with every body. Record the
   effective visual profile separately from physical-fidelity claims.
 - Configured tripod-pattern leg controls do not establish a realized gait class.
+- Reuse the visualization GIF encoder for native frames. Cumulative centisecond
+  playback boundaries must not drift through independently rounded frame delays;
+  playback FPS is distinct from integration steps and prescribed motion parameters.

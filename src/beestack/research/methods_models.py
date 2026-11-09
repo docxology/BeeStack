@@ -174,7 +174,7 @@ class ModuleMethodsPanel:
     module: str
     fidelity_level: str
     primary_methods: tuple[str, ...]
-    quantitative_metrics: dict[str, float]
+    quantitative_metrics: dict[str, float | None]
     validation_panel: ModuleValidationPanel
     visualization_panel: ModuleVisualizationPanel
     manuscript_evidence: tuple[ManuscriptEvidenceLink, ...]

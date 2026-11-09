@@ -21,7 +21,7 @@ uv run python scripts/run_security_audit.py
 | Surface | Location | Control |
 | --- | --- | --- |
 | HTTPS empirical fetch | `src/beestack/brain/empirical_fetch.py` | Every redirect hop is validated before dispatch; exact-origin Dryad credentials never cross origins; OAuth redirects refuse |
-| Container ingest | `src/beestack/brain/empirical_parsers/`, `anatomy.py` | Path rejection plus shared ZIP-tree, XLSX logical-cell, MATLAB/HDF5 graph/array budgets before expansion |
+| Container ingest | `src/beestack/brain/empirical_parsers/`, `anatomy.py` | Shared ZIP-tree, XLSX logical-cell, derived odor-panel and MATLAB/HDF5 graph/array budgets before expansion; external storage/layout refusal |
 | Config load | `src/beestack/project_config.py` | `yaml.safe_load` only; canonical `docs/manuscript/config.yaml` |
 | Domain logic | `src/beestack/` | Computation has no network I/O; explicit acquisition and presentation adapters perform bounded side effects |
 
@@ -44,11 +44,15 @@ metadata-only acquisition and suppressing successful peer observations.
 Default budgets: metadata 8 MB, file 2 GB, fetch operation 12 GB; archive trees
 8 levels/5,000 entries/5 GB expanded; XLSX 512 MB input/256 MB package/128 MB
 member and 100,000 rows/4,096 columns/5 million cells per sheet/10 million total;
-array materialization 4 GB, graph depth 16 and 10,000 nodes. These are logical
-admission limits, not a measured peak-RSS guarantee or proof every upstream
-payload fits. Policy rejection is explicit, never an empty successful parse.
-HDF5 external/soft links, unsupported variable/reference/compound dtypes and
-cycles refuse. VRML consumers read only the bounded prefix they actually use.
+array materialization 4 GB, graph depth 16 and 10,000 nodes. The array budget also
+admits the derived channel × stimulus odor-response matrix before allocation;
+complete observed semantic support is required rather than allocating a sparse
+Cartesian product and filling missing measurements. These are logical admission
+limits, not a measured peak-RSS guarantee or proof every upstream payload fits.
+Policy rejection is explicit, never an empty successful parse. HDF5 external/soft
+links, external raw storage, virtual layouts, unsupported variable/reference/
+compound dtypes and cycles refuse during graph preflight, including unselected
+datasets. VRML consumers read only the bounded prefix they actually use.
 
 Parsers read archive members; they do not extract filesystem links or files.
 The reviewed threat is hostile-data/resource exhaustion, not an invented ZIP

@@ -14,7 +14,6 @@ from types import SimpleNamespace
 from typing import Any, Literal
 
 import numpy as np
-from PIL import Image
 
 from ..brain import decode_waggle, waggle_kinematics_from_config
 from ..config import BeeStackConfig
@@ -425,6 +424,8 @@ def _scene_render_config(
         raise ValueError("frames must be at least 2")
     if resolved_fps <= 0:
         raise ValueError("fps must be positive")
+    if resolved_fps > 100:
+        raise ValueError("GIF fps must not exceed 100")
     bee_count = (
         cfg.visualization.swarm_collision_bee_count
         if scene_name == "collision"
@@ -805,7 +806,9 @@ def _write_scene_artifacts(
     project_root: Path | None,
 ) -> FlyBodySceneArtifact:
     gif_path.parent.mkdir(parents=True, exist_ok=True)
-    _save_frames_as_gif(frames, gif_path, render_cfg.fps)
+    from ..visualization.figure_output import save_gif_frames
+
+    save_gif_frames(frames, gif_path, render_cfg.fps)
     _save_contact_sheet(frames, contact_sheet_path)
     artifact = FlyBodySceneArtifact(
         scene_name=render_cfg.scene_name,
@@ -826,18 +829,6 @@ def _write_scene_artifacts(
         encoding="utf-8",
     )
     return artifact
-
-
-def _save_frames_as_gif(frames: list[np.ndarray], path: Path, fps: int) -> None:
-    images = [Image.fromarray(frame[:, :, :3], mode="RGB") for frame in frames]
-    duration_ms = max(1, round(1000 / fps))
-    images[0].save(
-        path,
-        save_all=True,
-        append_images=images[1:],
-        duration=duration_ms,
-        loop=0,
-    )
 
 
 def _save_contact_sheet(frames: list[np.ndarray], path: Path, columns: int = 4) -> None:

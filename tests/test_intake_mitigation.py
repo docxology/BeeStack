@@ -12,13 +12,17 @@ import pytest
 from openpyxl import Workbook
 from scipy.io import savemat
 
+from beestack.brain.empirical_data import ArrayLimits
 from beestack.brain.empirical_parsers import common
 from beestack.brain.empirical_parsers.calcium import (
-    ArrayLimits,
     calcium_dataset_from_mat_bytes,
     load_hdf5_mat_payload,
 )
-from beestack.brain.empirical_parsers.common import WorkbookLimits, _coordinate, validate_workbook
+from beestack.brain.empirical_parsers.common import (
+    WorkbookLimits,
+    _coordinate,
+    validate_workbook,
+)
 from beestack.brain.empirical_parsers.panels import (
     dataframe_summaries_from_workbook,
     panels_from_workbook,

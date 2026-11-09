@@ -77,6 +77,12 @@ Completeness records separate local parseability from source verification:
 large or access-restricted upstream payloads may be documented as
 source-verified blockers, but they must include parser status and remediation
 text rather than silently inflating parseable counts.
+Target dataset identities must be unique; download/parse IDs outside that target
+population cannot inflate its fractions. Calcium trial summaries require nonempty
+complete finite traces and finite derived observations, not merely a preliminary
+quality-screen pass. `parse_tabular_odor_response_rows(..., limits=...)` accepts
+`ArrayLimits` from `beestack.brain.empirical_data`; derived channel ×
+stimulus storage is admitted before allocation and missing support is not imputed.
 
 Waggle model-error means/improvement and single-antenna means are nullable.
 Condition/channel observation counts distinguish missing evidence from measured
@@ -84,10 +90,11 @@ zero; missing comparisons cannot increase confidence or recruitment alignment.
 
 Without an empirical template bank, `SimulationRecord.dominant_empirical_alignment`
 and summary `final_empirical_alignment` are null. Sweep output tuples preserve
-unavailable entries at their input coordinates; finite scorecard metric maps omit
-unavailable comparisons and unobserved empirical means instead of inventing zeros.
-Observed zero means remain numeric zero. Static/interactive sweep panels retain
-independent native-unit axes; mixed-unit module metrics use a native-unit table.
+unavailable entries at their input coordinates. Scorecard/methods metric maps may
+contain null unavailable observations; existing omitted empirical means remain
+omitted rather than becoming zero. Actual zero remains observed. Static/interactive
+sweep panels retain independent native-unit axes; mixed-unit module metrics use
+a native-unit table.
 
 `current_empirical_analysis(project_root, cfg)` requires a successful current
 stage, report/raw-input hashes, active configuration and implementation identity.
@@ -99,8 +106,9 @@ projectome completeness. Byte integrity, source acquisition identity, parseabili
 and biological validation are separate contracts.
 Missing calcium, aftersmell, and antennal activity diagnostics are nullable.
 Undefined/no-pair odor separability is null, not a measured zero. Its pair count
-includes only defined finite cosine comparisons with positive finite template
-norms. Antennal derivative counts count finite channel cells; paired-angle
+includes only defined finite cosine comparisons between finite, mathematically
+nonzero templates; scaling avoids raw-norm overflow/underflow. Antennal derivative
+counts count finite channel cells; paired-angle
 counts count frames with both angles, even if zero variance leaves correlation
 undefined. These counts are not interchangeable biological sample sizes.
 Correlations/angles retain signed native values; counts/fractions use separate
@@ -161,6 +169,9 @@ is presentation configuration, not an independent physical-validation receipt.
 Real environment/render methods remain the strict path.
 `run_bee_render_verification(project_root, cfg)` requires the resolved configuration
 for scene counts, paths and thresholds; periodic A→B→A motion is valid.
+All GIF writers share cumulative rounded centisecond boundaries at integer FPS
+1..100, with at most 5 ms encoded-boundary error. The Matplotlib backend is
+`matplotlib.savefig+Pillow`; encoded delays are not physics steps or viewer timing.
 
 ## BeeSwarm Waggle Recruitment
 
@@ -198,6 +209,11 @@ and `availability_status` survive into the manuscript index.
 `missing_optional`, or `analysis_unavailable`. The latter means no supplied current
 aggregate, not absent standalone payloads. Represented-record counts/parseability
 refer to that current analysis; dataset presence is independent of confidence.
+`ResearchValidationRecord.value`, module metric maps and synthesis statistics may
+be null when observations are unavailable. Numeric boolean/nonfinite/unparseable
+witnesses fail rather than becoming zero; failed unavailable checks remain in
+denominators. Configured-parameter and explicit availability/gap checks remain
+separate. Methods PNG/raw-data consumers preserve gaps and actual observed zero.
 
 ## Methods Analysis
 

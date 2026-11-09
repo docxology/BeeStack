@@ -74,7 +74,22 @@ MATLAB/HDF5 materialization; a policy rejection never becomes an empty success.
 Executable templates require complete observed grids and explicit shared rates.
 Missing calcium/aftersmell/antennal diagnostics and undefined/no-pair odor
 separability remain null. Odor pair counts include only defined finite cosine
-comparisons: both template norms must be positive and finite. Derivative and
+comparisons: both templates must be finite and mathematically nonzero. Independent
+magnitude scaling preserves tiny/huge finite-vector support instead of relying on
+raw norms that can underflow or overflow. Derivative and
 paired-angle counts distinguish actual zero from undefined statistics; they are
 not interchangeable biological sample sizes. Correlations and angles retain
 signed/native values in plots; counts/fractions are separate metadata.
+
+Calcium trial summaries require nonempty, complete finite traces and finite
+derived baseline/response/latency values; a preliminary quality screen is not an
+executable-template or summary guarantee. Source-completeness counts include only
+the supplied target dataset population, reject duplicate target identities, and
+cannot be inflated by foreign download/parse IDs. Kenyon class-I fractions lie in
+[0, 1]; public subtype counts use the same truncated boundary as the sparse kernel.
+Finite waggle bearing operands are reduced modulo one turn before combination,
+avoiding overflow without substituting a fallback direction.
+
+`ArrayLimits` is a pure policy record in `empirical_data`, shared by tabular and
+MATLAB/HDF5 consumers. Public annotations resolve through standard runtime type
+introspection without importing the eager parser package back into the data models.

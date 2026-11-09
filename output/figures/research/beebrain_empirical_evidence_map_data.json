@@ -5,15 +5,15 @@
   "rows": [
     {
       "metric": "anatomy_inventory_count",
-      "value": 0.0
+      "value": null
     },
     {
       "metric": "brain_data_parseable_fraction",
-      "value": 0.0
+      "value": null
     },
     {
       "metric": "empirical_panel_count",
-      "value": 0.0
+      "value": null
     },
     {
       "metric": "registered_dataset_count",
@@ -21,15 +21,15 @@
     },
     {
       "metric": "source_verified_fraction",
-      "value": 0.0
+      "value": null
     },
     {
       "metric": "template_count",
-      "value": 0.0
+      "value": null
     },
     {
       "metric": "waggle_follower_confidence",
-      "value": 0.0
+      "value": null
     }
   ],
   "schema": "beestack.figure_data.v1",

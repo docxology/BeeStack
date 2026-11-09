@@ -25,7 +25,7 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 
 - Fidelity: `empirical reduced AL-MB-CX kernel`
 - Validation fraction: `0.000`
-- Metrics: `anatomy_inventory_count=0`, `brain_data_parseable_fraction=0`, `empirical_panel_count=0`, `registered_dataset_count=10`, `source_verified_fraction=0`, `template_count=0`, `waggle_follower_confidence=0`
+- Metrics: `anatomy_inventory_count=unavailable`, `brain_data_parseable_fraction=unavailable`, `empirical_panel_count=unavailable`, `registered_dataset_count=10`, `source_verified_fraction=unavailable`, `template_count=unavailable`, `waggle_follower_confidence=unavailable`
 - Evidence: Curated public honeybee anatomy/activity loaders and template-bank integration.
 - Known gaps: No heavyweight spiking simulator is required in the default path.; The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics.
 

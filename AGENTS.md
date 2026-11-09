@@ -42,6 +42,9 @@ This project follows the research-template pattern:
     `output/...` paths, not checkout-specific absolute paths.
     Every supported Markdown image format requires matching sidecar provenance;
     audit and render sealing must share the same resolved image dependencies.
+    Default production admission requires exact curated artifact paths and matching
+    captions/labels; indexed sidecars cannot waive that contract. Explicit custom
+    audit inventories do not certify the production manuscript registry.
     Interactive HTML carries escaped, informative document titles; CDN-dependent
     viewers must not be advertised as fully offline artifacts.
 11. Security posture is a code contract. Curated empirical fetch URLs must pass
@@ -53,7 +56,8 @@ This project follows the research-template pattern:
     source/data/figure-bound combined PDF, all 18 hydrated sections, security and
     generated audits, and `CHANGELOG.md`. Empty DOI, unavailable empirical analysis
     and below-target parseability remain explicit warnings; `--require-doi` blocks
-    a DOI-less deposit. Never reuse an older version DOI.
+    an empty/malformed or known historical DOI. Offline syntax/history checks do
+    not establish unknown DOI assignment. Never reuse an older version DOI.
 13. Runtime authority is `.python-version` (Python 3.12.16); supported Python is
     >=3.11,<3.13 because pinned FlyBody requires NumPy 1.26.4. Vault's management
     Python is unrelated. Use `uv sync --locked --all-extras` for development gates.
@@ -71,6 +75,11 @@ This project follows the research-template pattern:
     bounded model confidence must not clip the reported signed error improvement.
     Derived observations must remain finite or fail explicitly; do not serialize
     infinities, reclip valid degradation, or invent a methods-telemetry point for an empty run.
+    Missing/unparseable/boolean numeric witnesses stay null, fail their checks and
+    remain in denominators. Raw plots and hydration must preserve that distinction;
+    counts require nonnegative whole values, not fractional truncation or bools.
+    Shared GIF encoding uses cumulative centisecond boundaries at integer FPS
+    1..100; encoded clocks are distinct from integration and viewer scheduling.
 15. Render the manuscript locally with `scripts/render_manuscript.py`; Pandoc and
     XeLaTeX are required. No template-root commands or sibling output writes.
 16. Declared `stack_contracts` are not executed-edge coverage. The current reduced

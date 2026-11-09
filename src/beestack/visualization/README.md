@@ -35,6 +35,12 @@ from reduced schematic output.
 body-plan location, bee counts, motion/contact minima, and orientation targets.
 Motion is measured across adjacent frames over the entire sequence, not just
 endpoints. XML counts and actual contact metrics remain independently checked.
+GIFs share one Pillow encoder for native and Matplotlib frames. Requested FPS is
+an integer in 1..100; cumulative boundaries are rounded to GIF centiseconds, so
+encoded elapsed time stays within 5 ms of the requested clock instead of accumulating
+per-frame rounding error. Repeated images may coalesce while retaining duration.
+Viewer scheduling can differ. Playback is not a physics timestep, wall-clock
+benchmark, or biological rate.
 `empirical_figures.py` renders supplied response heatmaps, native-unit panel
 tables, BeeBrain alignment diagnostics, and antennal/waggle summaries. It requires
 an odor-response panel; locally available standalone waggle CSVs or supplementary
@@ -49,16 +55,19 @@ the report, never inferred from a completeness cutoff.
 own units and labels synthesized readiness as a heuristic report score.
 `methods_figures.py` renders methods inventories, module tables, separate
 evidence-count and self-test panels, and optional Plotly methods dashboards.
-Methods images and raw exports share one nullable telemetry extractor: missing or
-nonfinite values are gaps, observed zero remains zero, and an empty run adds no
-synthetic point. Raw plot-data JSON rejects nonfinite payloads before replacement.
+Methods images and raw exports share one nullable telemetry extractor: missing,
+unparseable, boolean or nonfinite values are gaps, observed zero remains zero, and
+an empty run adds no synthetic point. Raw plot-data JSON rejects nonfinite payloads
+before replacement.
 Interactive files carry escaped document titles from their plot headings as well
 as deterministic div IDs, so browser tabs identify the actual dashboard.
 The titled wrapper preserves Plotly's native full-document sizing and supported
 embedding modes, including copying the local bundle for `include_plotlyjs="directory"`.
 
-Any raster promoted into `manuscript/` should have a matching curated
-`FigureNarrative` and should be inserted through `manuscript_image_markdown()`.
+Every manuscript image requires a matching curated `FigureNarrative`; insert it
+through `manuscript_image_markdown()`. The default figure audit enforces exact
+registered artifact paths and caption/label agreement; marking a sidecar `indexed`
+cannot waive that production contract.
 Dense overview figures should keep stable labels and add registered detail
 companions instead of hiding unreadable tables in a single canvas. Generic
 sidecar metadata is only for supporting diagnostics that remain in generated

@@ -1,10 +1,12 @@
-# Baseline Readiness Note
+# Research readiness targets and evidence custody
 
 BeeStack's next-sprint baseline is a Full Snapshot research-operations state:
 source, tests, docs, manuscript, configs, generated reports, figures,
 animations, manifests, and lightweight JSON/Markdown outputs are intended to be
-reviewable in git. Raw empirical archives and large third-party payloads under
-`output/data/empirical_sources/` remain script-regeneratable caches.
+reviewable in git. Retained raw empirical archives, large third-party payloads and
+completion records under `output/data/empirical_sources/` are source evidence,
+not disposable generated analyses. Reacquisition can fail or return changed bytes;
+preserve these inputs rather than inferring deletion permission from regenerability.
 
 Current readiness targets:
 

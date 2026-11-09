@@ -83,6 +83,10 @@ index, gallery, or reports unless they directly reduce manuscript ambiguity.
 Every promoted raster must have a curated `FigureNarrative`. Generic sidecar
 fallback metadata is acceptable for supporting diagnostics, but not for figures
 inserted into the hydrated manuscript.
+The default production audit checks exact registered artifact paths and enforces
+caption/label agreement even if sidecar priority is changed to `indexed`. Explicit
+`required_primary_artifacts` overrides support isolated/custom figure projects;
+they do not certify the production manuscript registry.
 
 ## Hydration Workflow
 
@@ -115,13 +119,20 @@ the final hydration/render seals their current bytes. The receipt includes curre
 raw empirical payloads, not only summaries and figure names. Do not edit sealed
 inputs after rendering or substitute an old PDF. See the root README for the full
 animation, strict-render and research-assembly prerequisites. A DOI-less local PDF
-is not a deposited release; `--require-doi` requires this version's assigned DOI.
+is not a deposited release. `--require-doi` refuses an empty/malformed DOI or the
+known historical 1.0 DOI; offline syntax/known-history checks cannot verify an
+unknown DOI's assignment to this version. Obtain authoritative version-specific
+deposit evidence before setting `publication.doi`; never infer assignment from a
+passing local check.
 Use the native Python 3.12.16 pin. Current empirical values require successful
 analysis bound to raw payload, report, configuration, and implementation hashes;
 retained historical figures/reports cannot supply current missing measurements.
 No default template bank is empirical: absent alignment stays null, and actual
 observed zeros retain their meaning. Plot-data payloads keep native units and
 nullable observations; schematics explain contracts rather than measured biology.
+Raw-summary numeric tokens likewise refuse booleans/nonfinite values as measurements.
+Counts must be nonnegative whole numbers; unknown/invalid counts hydrate as `N/A`,
+not truncated fractions, boolean strings, or literal `nan`/`inf`.
 
 ## Review Checklist
 

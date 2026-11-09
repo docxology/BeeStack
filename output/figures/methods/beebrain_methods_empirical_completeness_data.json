@@ -5,23 +5,23 @@
   "rows": [
     {
       "metric": "anatomy_inventory_count",
-      "value": 0.0
+      "value": null
     },
     {
       "metric": "brain_data_parseable_fraction",
-      "value": 0.0
+      "value": null
     },
     {
       "metric": "brain_source_verified_fraction",
-      "value": 0.0
+      "value": null
     },
     {
       "metric": "calcium_dataset_count",
-      "value": 0.0
+      "value": null
     },
     {
       "metric": "empirical_panel_count",
-      "value": 0.0
+      "value": null
     },
     {
       "metric": "enabled_dataset_count",
@@ -29,27 +29,27 @@
     },
     {
       "metric": "neuropil_count",
-      "value": 0.0
+      "value": null
     },
     {
       "metric": "region_response_class_count",
-      "value": 0.0
+      "value": null
     },
     {
       "metric": "template_count",
-      "value": 0.0
+      "value": null
     },
     {
       "metric": "waggle_both_antennae_error_count",
-      "value": 0.0
+      "value": null
     },
     {
       "metric": "waggle_follower_confidence",
-      "value": 0.0
+      "value": null
     },
     {
       "metric": "waggle_no_antennae_error_count",
-      "value": 0.0
+      "value": null
     }
   ],
   "schema": "beestack.figure_data.v1",

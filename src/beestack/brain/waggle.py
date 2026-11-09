@@ -79,12 +79,21 @@ def decode_waggle(
     clear contract, not an empirically fitted decoder.
     """
 
+    for name, value in (
+        ("duration_s", duration_s),
+        ("angle_deg", angle_deg),
+        ("sun_azimuth_deg", sun_azimuth_deg),
+        ("quality_score", quality_score),
+        ("drift_deg", drift_deg),
+    ):
+        if not np.isfinite(value):
+            raise ValueError(f"{name} must be finite")
     if duration_s < 0:
         raise ValueError("duration_s must be nonnegative")
     if quality_score < 0:
         raise ValueError("quality_score must be nonnegative")
     distance_km = duration_s
-    azimuth = (sun_azimuth_deg + angle_deg - drift_deg) % 360.0
+    azimuth = ((sun_azimuth_deg % 360.0) + (angle_deg % 360.0) - (drift_deg % 360.0)) % 360.0
     confidence = float(np.clip(quality_score / (1.0 + 0.1 * distance_km), 0.0, 1.0))
     return DanceVector(distance_km, azimuth, float(quality_score), confidence)
 

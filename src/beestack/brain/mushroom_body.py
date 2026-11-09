@@ -84,10 +84,10 @@ def kenyon_sparse_code(
 
 
 def kc_class_counts(cfg: BeeStackConfig) -> dict[str, int]:
-    """Return class I and class II Kenyon-cell counts."""
+    """Return class counts using the sparse kernel's truncated integer partition."""
 
     total = cfg.brain.total_kenyon_cells
-    class_i = round(total * cfg.brain.kc_class_i_fraction)
+    class_i = int(total * cfg.brain.kc_class_i_fraction)
     return {
         "class_i": class_i,
         "class_i_active": int(class_i * cfg.brain.kc_sparsity),

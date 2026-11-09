@@ -17,3 +17,7 @@ modality; orchestration lives in `empirical_pipeline.py`.
 
 - No imports from `beestack.visualization` or `run_simulation`.
 - Fail loud on corrupt archives; return empty tuples when payloads are absent.
+- Admit derived channel × stimulus storage before dense allocation and require
+  complete observed support. Reuse `empirical_data.ArrayLimits`, not a second policy.
+- HDF5 graph preflight must reject external raw storage and virtual layouts,
+  including unselected datasets. Container hashing alone cannot seal dependencies.

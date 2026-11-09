@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+from math import isfinite
 from typing import Any
 
 from .body.energetics import REFERENCE_MASS_MG, REFERENCE_STROKE_HZ, REFERENCE_WING_POWER_MW
@@ -56,7 +57,7 @@ def generate_variables(
     groups = animation.get("groups", {})
     waggle = empirical.get("waggle_follower_analysis", {}).get("summary", {})
     completeness = empirical.get("brain_data_completeness", {})
-    connectome = empirical.get("connectome", {})
+    connectome = empirical.get("connectome") or {}
     sensor_noise = cfg.body.sensor_noise
     control_steps_per_policy = round(cfg.timing.control_rate_hz / cfg.timing.policy_rate_hz)
     # Prefer the acquisition rate measured from the parsed calcium dataset; fall back
@@ -89,7 +90,7 @@ def generate_variables(
         "OMMATIDIA_PER_EYE": f"{cfg.body.ommatidia_per_eye:,}",
         "GLOMERULI": str(cfg.brain.glomeruli),
         "KC_PER_HEMISPHERE": f"{cfg.brain.kenyon_cells_per_hemisphere:,}",
-        "KC_SPARSITY": f"{cfg.brain.kc_sparsity:.2f}",
+        "KC_SPARSITY": str(cfg.brain.kc_sparsity),
         "ACTIVE_KC": f"{cfg.brain.active_kenyon_cells:,}",
         "HEADING_BINS": str(cfg.brain.heading_bins),
         "EMPIRICAL_DATASET_COUNT": str(len(cfg.empirical.enabled_dataset_ids)),
@@ -113,12 +114,12 @@ def generate_variables(
         "LONG_WAGGLE_ANIMATION_FRAMES": str(cfg.visualization.long_waggle_animation_frames),
         "LONG_WAGGLE_ANIMATION_FPS": str(cfg.visualization.long_waggle_animation_fps),
         "MODULE_COUNT": str(len(coverage)),
-        "SIMULATION_STEPS": str(summary.get("steps", "N/A")),
+        "SIMULATION_STEPS": _count(summary.get("steps")),
         "FINAL_POLICY": str(summary.get("final_policy", "N/A")),
         "FINAL_SPEED_MS": _fmt(summary.get("final_speed_m_s")),
         "FINAL_ENERGY_J": _fmt(summary.get("final_energy_j")),
         "MEAN_WING_POWER_MW": _fmt(summary.get("mean_wing_power_mw")),
-        "TOTAL_RECRUITED": str(summary.get("total_recruited_followers", "N/A")),
+        "TOTAL_RECRUITED": _count(summary.get("total_recruited_followers")),
         "FINAL_COMB_FRACTION": _fmt(summary.get("final_comb_fraction")),
         "BROOD_TEMP_ERROR_C": _fmt(summary.get("final_brood_temperature_error_c")),
         "FINAL_EMPIRICAL_ODOR": str(summary.get("final_empirical_odor") or "N/A"),
@@ -153,20 +154,10 @@ def generate_variables(
         "EMPIRICAL_KNOWN_GAP_COUNT": _count_list_or_value(empirical.get("known_gaps")),
         "CONNECTOME_TIER": str(connectome.get("tier", "N/A")),
         "CONNECTOME_NODE_COUNT": _count(connectome.get("node_count")),
-        "CONNECTOME_STRUCTURAL_EDGE_COUNT": _count(
-            sum(
-                1
-                for edge in connectome.get("edges", [])
-                if isinstance(edge, dict) and edge.get("edge_kind") == "structural_tract"
-            )
+        "CONNECTOME_STRUCTURAL_EDGE_COUNT": _edge_kind_count(
+            connectome.get("edges"), "structural_tract"
         ),
-        "CONNECTOME_SYNAPTIC_EDGE_COUNT": _count(
-            sum(
-                1
-                for edge in connectome.get("edges", [])
-                if isinstance(edge, dict) and edge.get("edge_kind") == "synaptic"
-            )
-        ),
+        "CONNECTOME_SYNAPTIC_EDGE_COUNT": _edge_kind_count(connectome.get("edges"), "synaptic"),
         "CONNECTOME_STRUCTURAL_COVERAGE": _fmt(
             (connectome.get("completeness") or {}).get("structural_coverage")
         ),
@@ -240,17 +231,31 @@ def generate_variables(
 
 
 def _fmt(value: Any) -> str:
-    if isinstance(value, int | float):
-        return f"{float(value):.3f}"
-    return "N/A"
+    if isinstance(value, bool) or not isinstance(value, int | float):
+        return "N/A"
+    try:
+        number = float(value)
+    except OverflowError:
+        return "N/A"
+    return f"{number:.3f}" if isfinite(number) else "N/A"
 
 
 def _count(value: Any) -> str:
-    if isinstance(value, int):
+    if isinstance(value, bool):
+        return "N/A"
+    if isinstance(value, int) and value >= 0:
         return str(value)
-    if isinstance(value, float):
+    if isinstance(value, float) and isfinite(value) and value >= 0 and value.is_integer():
         return str(int(value))
     return "N/A"
+
+
+def _edge_kind_count(edges: Any, kind: str) -> str:
+    """Distinguish unavailable edges from an observed graph without this kind."""
+
+    if not isinstance(edges, list | tuple):
+        return "N/A"
+    return str(sum(1 for edge in edges if isinstance(edge, dict) and edge.get("edge_kind") == kind))
 
 
 def _count_list_or_value(value: Any, fallback: Any = None) -> str:

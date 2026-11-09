@@ -44,8 +44,8 @@ When that prerequisite is met, the empirical pipeline writes:
 BeeStack distinguishes **structural**, **functional**, and **synaptic**
 connectome evidence. The generated connectome report tier is
 N/A with N/A nodes and
-0 structural tract edges; synaptic
-edge count is 0. Structural coverage
+N/A structural tract edges; synaptic
+edge count is N/A. Structural coverage
 is N/A against the Honeybee Standard
 Brain assets on disk [@brandt2005standardbrain]. No public whole-brain
 synaptic connectome for *Apis mellifera* is claimed. A standalone parser can

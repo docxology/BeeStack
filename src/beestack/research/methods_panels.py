@@ -31,7 +31,7 @@ from .methods_models import (
     ModuleVisualizationPanel,
     ScenarioSweepPanel,
 )
-from .suite import ResearchValidationRecord
+from .suite import ResearchValidationRecord, _observation
 
 
 def _body_panel(
@@ -50,7 +50,9 @@ def _body_panel(
         "beebody" in str(path).lower()
         for path in manifest.get("groups", {}).get("real_flybody_3d", [])
     )
-    energy_drop = max(0.0, float(energy[0] - energy[-1])) if energy.size else 0.0
+    energy_drop = (
+        float(energy[0] - energy[-1]) if energy.size and np.isfinite(energy).all() else np.nan
+    )
     metrics = {
         "mean_speed_m_s": _safe_mean(speed),
         "max_speed_m_s": _safe_max(speed),
@@ -129,7 +131,7 @@ def _brain_panel(
         "template_count": _float(empirical.get("template_count")),
         "anatomy_inventory_count": _float(anatomy.get("inventory_count")),
         "neuropil_count": _float(anatomy.get("neuropil_count")),
-        "region_response_class_count": float(len(region_means)),
+        "region_response_class_count": float(len(region_means)) if activity else np.nan,
         "calcium_dataset_count": calcium_count,
         "waggle_follower_confidence": _float(waggle.get("confidence_score")),
         "waggle_no_antennae_error_count": _float(waggle.get("no_antennae_error_count")),
@@ -138,9 +140,9 @@ def _brain_panel(
         "brain_source_verified_fraction": _float(completeness.get("source_verified_fraction")),
     }
     if activity.get("mean_odor_separability") is not None:
-        metrics["mean_odor_separability"] = float(activity["mean_odor_separability"])
+        metrics["mean_odor_separability"] = _float(activity["mean_odor_separability"])
     if waggle.get("decoding_improvement_fraction") is not None:
-        metrics["waggle_decoding_improvement"] = float(waggle["decoding_improvement_fraction"])
+        metrics["waggle_decoding_improvement"] = _float(waggle["decoding_improvement_fraction"])
     checks = _scorecard_checks(scorecards, "BeeBrain") + (
         _check(
             "empirical_panels_present",
@@ -160,14 +162,14 @@ def _brain_panel(
         _check(
             "calcium_gap_declared",
             calcium_count > 0 or any("calcium" in gap.lower() for gap in known_gaps),
-            calcium_count,
+            calcium_count if np.isfinite(calcium_count) else "unavailable",
             "present or declared gap",
         ),
         _check(
             "waggle_gap_declared",
             bool(empirical.get("waggle_follower_dataset_available"))
             or any("waggle-following" in gap.lower() for gap in known_gaps),
-            metrics["waggle_follower_confidence"],
+            bool(empirical.get("waggle_follower_dataset_available")),
             "present or declared gap",
         ),
         _check(
@@ -178,7 +180,11 @@ def _brain_panel(
         ),
     )
     empirical_status = _empirical_link_status(
-        metrics["empirical_panel_count"] + metrics["anatomy_inventory_count"],
+        sum(
+            value
+            for value in (metrics["empirical_panel_count"], metrics["anatomy_inventory_count"])
+            if np.isfinite(value)
+        ),
         known_gaps,
         "empirical",
         analysis_available=analysis_available,
@@ -347,11 +353,16 @@ def _swarm_panel(
     metrics = {
         "agent_count": float(cfg.swarm.agent_count),
         "represented_colony_size": float(cfg.swarm.represented_colony_size),
-        "total_recruited_followers": float(np.sum(recruitment)) if recruitment.size else 0.0,
+        "total_recruited_followers": float(np.sum(recruitment)) if recruitment.size else np.nan,
         "mean_recruited_followers": _safe_mean(recruitment),
-        "final_mean_pheromone": float(pheromone[-1]) if pheromone.size else 0.0,
+        "final_mean_pheromone": float(pheromone[-1]) if pheromone.size else np.nan,
         "strict_contact_scene_count": _float(contact.get("scene_count")),
-        "unique_bee_contact_pair_count": float(len(contact_pairs)),
+        "unique_bee_contact_pair_count": (
+            float(len(contact_pairs))
+            if scenes
+            and all("bee_bee_contact_pairs" in scene.get("metrics", {}) for scene in scenes)
+            else np.nan
+        ),
         "waggle_follower_orientation_error_deg": _float(
             waggle_scene_metrics.get("follower_orientation_error_mean_deg")
         ),
@@ -367,7 +378,7 @@ def _swarm_panel(
         _check(
             "strict_contact_physics_passed",
             bool(contact.get("passed")),
-            contact.get("scene_count", 0),
+            _float(contact.get("scene_count")),
             "passed",
         ),
         _check(
@@ -531,7 +542,7 @@ def _panel(
         module=module,
         fidelity_level=str(scorecard.get("fidelity_level", "not yet scored")),
         primary_methods=methods,
-        quantitative_metrics=metrics,
+        quantitative_metrics={name: _observation(value) for name, value in metrics.items()},
         validation_panel=ModuleValidationPanel(module, checks),
         visualization_panel=ModuleVisualizationPanel(
             module=module,
@@ -570,7 +581,8 @@ def _scorecard_checks(
         checks.append(
             ResearchValidationRecord(
                 name=str(validation.get("name", "unnamed_validation")),
-                passed=bool(validation.get("passed", False)),
+                passed=bool(validation.get("passed", False))
+                and _scalar(validation.get("value")) is not None,
                 value=_scalar(validation.get("value")),
                 threshold=_scalar(validation.get("threshold")),
                 detail=str(validation.get("detail", "research-suite validation")),

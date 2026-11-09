@@ -53,15 +53,18 @@ not establish completion or bind a failed refresh to a new DOI/version.
 
 ## Data Size Caveats
 
-Dryad archives can be hundreds of megabytes. Do not commit raw archives. They
-belong under `output/data/empirical_sources/` and can be regenerated with uv.
+Dryad archives can be hundreds of megabytes. Do not commit raw archives. Retain
+them and their completion records under `output/data/empirical_sources/`; upstream
+availability is not guaranteed, so reacquisition is not a safe cleanup substitute.
 Some upstream endpoints may reject unauthenticated archive downloads. When that
 happens, BeeStack records the HTTP response and tries file-level URLs where
 available.
 Downloads and container intake are bounded before expansion/materialization. The
 budget contracts in `security_posture.md` cover transfer bytes, archive trees,
-workbook cells, and MATLAB/HDF5 arrays/graphs. A policy refusal remains a blocker,
-never a successful empty parse or permission to bypass limits.
+workbook cells, derived channel × stimulus odor panels, and MATLAB/HDF5 arrays/
+graphs. HDF5 external raw storage and virtual layouts refuse alongside external
+links: a sealed container alone cannot seal those dependencies. A policy refusal
+remains a blocker, never a successful empty parse or permission to bypass limits.
 
 ## After Download
 

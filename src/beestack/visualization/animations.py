@@ -4,11 +4,11 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from dataclasses import asdict, dataclass
+from io import BytesIO
 from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.animation import FuncAnimation, PillowWriter
 from matplotlib.patches import Ellipse, RegularPolygon
 from PIL import Image
 
@@ -23,7 +23,12 @@ from ..brain import decode_waggle
 from ..config import BeeStackConfig, Caste
 from ..mind import caste_prior
 from ..utils import project_relative_payload
-from .figure_output import finalize_contact_sheet, save_annotated_contact_sheet
+from .figure_output import (
+    finalize_contact_sheet,
+    gif_frame_durations,
+    save_annotated_contact_sheet,
+    save_gif_frames,
+)
 
 
 @dataclass(frozen=True)
@@ -37,7 +42,7 @@ class AnimationArtifact:
     title: str
     alt_text: str
     caption: str
-    backend: str = "matplotlib.funcanimation"
+    backend: str = "matplotlib.savefig+Pillow"
     source: str = ""
     contact_sheet: str = ""
     fidelity_level: str = "reduced_schematic"
@@ -107,6 +112,8 @@ def generate_module_animations(
         raise ValueError("frames must be at least 2")
     if fps <= 0:
         raise ValueError("fps must be positive")
+    if fps > 100:
+        raise ValueError("GIF fps must not exceed 100")
     output_dir.mkdir(parents=True, exist_ok=True)
     builders: tuple[Callable[..., AnimationArtifact], ...] = (
         _animate_body,
@@ -125,9 +132,23 @@ def generate_module_animations(
 
 
 def _save(fig, update: Callable[[int], object], frames: int, fps: int, path: Path) -> None:
-    anim = FuncAnimation(fig, update, frames=frames, interval=1000 / fps, blit=False)  # type: ignore[arg-type]
-    anim.save(path, writer=PillowWriter(fps=fps))
-    plt.close(fig)
+    images = []
+    try:
+        gif_frame_durations(frames, fps)
+        size = tuple(int(value) for value in fig.get_size_inches() * fig.dpi)
+        with plt.rc_context({"savefig.bbox": None}):
+            for index in range(frames):
+                update(index)
+                with BytesIO() as buffer:
+                    fig.savefig(buffer, format="rgba", dpi=fig.dpi)
+                    images.append(
+                        Image.frombuffer(
+                            "RGBA", size, buffer.getbuffer(), "raw", "RGBA", 0, 1
+                        ).convert("RGB")
+                    )
+        save_gif_frames(images, path, fps)
+    finally:
+        plt.close(fig)
 
 
 def _animate_body(
@@ -155,7 +176,7 @@ def _animate_body(
             "and ensure MuJoCo can render headlessly, or set BEESTACK_FLYBODY_PATH "
             "to a BeeStack FlyBody fork."
         ) from exc
-    _save_frames_as_gif(rendered_frames, path, fps)
+    save_gif_frames(rendered_frames, path, fps)
     contact_sheet = output_dir / "beebody_flybody_morphology_contact_sheet.png"
     _save_contact_sheet(rendered_frames, contact_sheet)
     _write_contact_sheet_bundle(
@@ -208,7 +229,7 @@ def _animate_body_flight(
             "Run `uv sync` and ensure MuJoCo can render headlessly, or set "
             "BEESTACK_FLYBODY_PATH to a BeeStack FlyBody fork."
         ) from exc
-    _save_frames_as_gif(rendered_frames, path, fps)
+    save_gif_frames(rendered_frames, path, fps)
     contact_sheet = output_dir / "beebody_flybody_flight_contact_sheet.png"
     _save_contact_sheet(rendered_frames, contact_sheet)
     _write_contact_sheet_bundle(
@@ -234,35 +255,6 @@ def _animate_body_flight(
         "real_flybody_3d",
         render_backend="flybody.flight_imitation.WingBeatPatternGenerator+rollout_and_render",
     )
-
-
-def _save_frames_as_gif(frames: list[np.ndarray], path: Path, fps: int) -> None:
-    if not frames:
-        raise ValueError("frames must not be empty")
-    images = [_frame_to_image(frame) for frame in frames]
-    duration_ms = max(1, round(1000 / fps))
-    images[0].save(
-        path,
-        save_all=True,
-        append_images=images[1:],
-        duration=duration_ms,
-        loop=0,
-    )
-
-
-def _frame_to_image(frame: np.ndarray) -> Image.Image:
-    array = np.asarray(frame)
-    if array.ndim == 2:
-        return Image.fromarray(_as_uint8(array), mode="L")
-    if array.ndim != 3 or array.shape[2] < 3:
-        raise ValueError("rendered frame must be grayscale or RGB/RGBA")
-    return Image.fromarray(_as_uint8(array[:, :, :3]), mode="RGB")
-
-
-def _as_uint8(array: np.ndarray) -> np.ndarray:
-    if array.dtype == np.uint8:
-        return array
-    return np.clip(array, 0, 255).astype(np.uint8)
 
 
 def _write_contact_sheet_bundle(
