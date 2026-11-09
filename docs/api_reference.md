@@ -151,9 +151,9 @@ paths. They are intentionally called from scripts or visualization orchestrators
 not from pure reduced-scenario domain kernels.
 
 `FlyBodySceneRenderConfig.as_dict()` also declares the scalar
-`visual_profile="viewport_buffers_scene_key_shadows"`. It identifies viewport-
-matched offscreen buffers and scene-key shadow casting, with inherited body-light
-illumination and native antialiasing/shadow-texture quality retained. The profile
+`visual_profile="viewport_buffers_scene_scoped_lighting"`. It identifies viewport-
+matched offscreen buffers and shared scene lighting rather than copied body studio
+lights. Native antialiasing and shadow-texture quality are retained. The profile
 is presentation configuration, not an independent physical-validation receipt.
 
 `FlyBodyBeeBackend.step(state, action)` is reduced stepping, always labeled

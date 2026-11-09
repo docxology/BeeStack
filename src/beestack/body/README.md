@@ -19,10 +19,10 @@ Scene poses are imposed each frame: MuJoCo detects contacts at scripted poses,
 not an integrated forward-dynamics flight or colony simulation. Manuscript
 contact sheets are published under `output/figures/renders/` with sidecar provenance.
 
-Multi-bee scenes declare `visual_profile=viewport_buffers_scene_key_shadows`.
+Multi-bee scenes declare `visual_profile=viewport_buffers_scene_scoped_lighting`.
 Offscreen buffers match the requested image viewport rather than the upstream
-cinematic allocation. Inherited body lights retain their illumination but do not
-cast repeated body-local shadows; the scene key light retains scene shadows.
+cinematic allocation. Copied studio lights are removed: the scene key and shared
+headlight illuminate the group without bee-count-dependent exposure or shadows.
 Antialiasing, shadow-texture quality, transparency, geometry, camera, physics
 steps, bee counts and frame counts remain unchanged. This is visual resource
 control, not a different physical model or biological validation tier.

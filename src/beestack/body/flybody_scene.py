@@ -79,7 +79,7 @@ class FlyBodySceneRenderConfig:
 
     def as_dict(self) -> dict[str, float | int | str]:
         payload = asdict(self)
-        payload["visual_profile"] = "viewport_buffers_scene_key_shadows"
+        payload["visual_profile"] = "viewport_buffers_scene_scoped_lighting"
         return payload
 
 
@@ -454,9 +454,10 @@ def _scene_render_config(
 
 def _prefixed_copy(element: ET.Element, prefix: str) -> ET.Element:
     copied = copy.deepcopy(element)
+    for parent in copied.findall(".//light/.."):
+        for light in parent.findall("light"):
+            parent.remove(light)
     for node in copied.iter():
-        if node.tag == "light":
-            node.set("castshadow", "false")
         if node.tag == "geom" and (
             "collision" in (node.get("class") or "") or "collision" in (node.get("name") or "")
         ):

@@ -30,9 +30,9 @@ adds invisible contact proxy geoms, places a floor/comb arena under the scene,
 and renders with `mujoco.MjModel`, `mujoco.MjData`, and `mujoco.Renderer`.
 
 The serialized scene config declares
-`visual_profile=viewport_buffers_scene_key_shadows`. Offscreen allocation matches
-the requested output viewport. Body-local lights keep their illumination but
-do not each cast shadows; the scene key light retains scene shadows. The native
+`visual_profile=viewport_buffers_scene_scoped_lighting`. Offscreen allocation matches
+the requested output viewport. Copied studio lights are removed; the shared
+headlight and scene key illuminate the group, with scene-key shadows. The native
 antialiasing and shadow-texture settings, transparency, geometry, camera, physics
 substeps, bee counts and full frame counts are unchanged. These presentation
 controls do not alter the contact evidence or claim biological calibration.

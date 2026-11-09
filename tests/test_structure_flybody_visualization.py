@@ -361,10 +361,11 @@ def test_prefixed_multi_bee_scene_xml_is_valid_and_contact_capable(tmp_path: Pat
     assert model.nu >= 10
 
 
-def test_swarm_scene_shadow_passes_do_not_scale_with_bee_count(tmp_path: Path) -> None:
+def test_swarm_scene_lighting_work_does_not_scale_with_bee_count(tmp_path: Path) -> None:
     mujoco = pytest.importorskip("mujoco")
     cfg = BeeStackConfig()
     shadow_passes = []
+    active_lights = []
     for bee_count in (1, 10):
         scene_xml, _ = write_prefixed_multi_bee_scene_xml(
             cfg,
@@ -377,10 +378,15 @@ def test_swarm_scene_shadow_passes_do_not_scale_with_bee_count(tmp_path: Path) -
         model = mujoco.MjModel.from_xml_path(str(scene_xml))
         key_light = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_LIGHT, "scene_key")
         assert model.light_castshadow[key_light]
+        assert model.light_active[key_light]
+        active = model.light_active.astype(bool)
+        assert np.all(model.light_bodyid[active] == 0)
+        active_lights.append(int(np.count_nonzero(active)))
         casting = model.light_castshadow.astype(bool)
         assert np.all(model.light_bodyid[casting] == 0)
         shadow_passes.append(int(np.count_nonzero(casting)))
     assert shadow_passes[0] == shadow_passes[1]
+    assert active_lights[0] == active_lights[1]
 
 
 def test_body_brain_extra_methods() -> None:

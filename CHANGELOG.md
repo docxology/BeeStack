@@ -112,9 +112,9 @@ All notable changes to BeeStack are documented in this file.
   custody guidance distinguish regenerable analyses from retained empirical
   payloads, completion records and frozen validation/release packets.
 - Native swarm scenes no longer inherit oversized cinematic offscreen buffers
-  or repeat shadow-casting passes for each copied body's studio lights. Buffers
-  match the requested viewport; body-light illumination, native antialiasing and
-  shadow-texture quality remain, while the scene key light casts scene shadows.
+  or repeat lighting/shadow passes for each copied body's studio lights. Buffers
+  match the requested viewport; one scene key and the shared headlight prevent
+  bee-count-dependent exposure. Native antialiasing/shadow-texture quality remain.
   Geometry, physics, dimensions and full frame/bee counts are unchanged, with an
   explicit serialized visual profile and real compiled-model/GIF regressions.
 - Walking-manifest titles/captions and animation guidance now name configured
