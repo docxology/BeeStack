@@ -45,11 +45,11 @@
   "quality": {
     "height_px": 608,
     "max_intensity": 255,
-    "mean_intensity": 201.50744129203215,
+    "mean_intensity": 171.50169841922514,
     "min_intensity": 0,
     "mode": "RGB",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 75.94352913518892,
+    "std_intensity": 70.69570769164514,
     "width_px": 1440
   },
   "regeneration_command": "uv run python scripts/generate_animations.py",

@@ -223,7 +223,7 @@
           "waggle_phase_coupling_score": 0.0,
           "waggle_phase_samples": []
         },
-        "motion_pixels": 790642,
+        "motion_pixels": 777355,
         "passed": true,
         "render_backend": "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer",
         "scene": "collision",
@@ -384,7 +384,7 @@
             0.5415019762845852
           ]
         },
-        "motion_pixels": 528905,
+        "motion_pixels": 448735,
         "passed": true,
         "render_backend": "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer",
         "scene": "waggle",
@@ -756,7 +756,7 @@
             0.37320574162679426
           ]
         },
-        "motion_pixels": 568368,
+        "motion_pixels": 486715,
         "passed": true,
         "render_backend": "flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer",
         "scene": "waggle_long",

@@ -1,9 +1,9 @@
 {
   "scope": "committed source tree excluding generated outputs and operational environments; external pinned dependencies and empirical payloads are not included",
-  "source_commit": "4b91dcca31ed937ef409373d601bf2b7d20fdc80",
+  "source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
   "path": "dist/BeeStack-2.0.0-source.tar.gz",
-  "sha256": "10995d37e1ba543e973f052b20840cbf3827f24d05aae08d2b0b08bbd52bc861",
-  "size": 638472,
+  "sha256": "c0b7546d7ad8c0a6ed599b95623a034aff18698fbf1200e4657ad0526a4dd706",
+  "size": 640567,
   "source_files": 295,
   "canonical_manuscript_sections": 18,
   "paths": [

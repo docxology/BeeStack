@@ -1,210 +1,162 @@
 {
-  "schema": "beestack.workflowz.current-source-proof.v1",
-  "source_commit": "4b91dcca31ed937ef409373d601bf2b7d20fdc80",
-  "source_aggregate_sha256": "28bbcfbcfdc7d960b6eea9de30581d75e9670f6a032292289cdc50bbb2a88380",
-  "source_records": 293,
-  "full_runtime_test_source_commit": "234d1fc222896931be0d35af6b920f125386a56e",
-  "documentation_only_delta_after_runtime_proof": [
-    "docs/security_posture.md",
-    "docs/README.md",
-    "docs/AGENTS.md",
-    "CHANGELOG.md"
-  ],
-  "tests_passed": 801,
+  "source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+  "source_aggregate_sha256": "189fe97891c570e7d4177f5e7e8db71889cd74f53c91ae549387ba02cc26c49f",
+  "tests_passed": 802,
   "coverage": {
-    "covered_lines": 10834,
-    "num_statements": 11441,
-    "percent_covered": 92.49615101412411,
-    "percent_covered_display": "92.50",
-    "missing_lines": 607,
+    "covered_lines": 10845,
+    "num_statements": 11454,
+    "percent_covered": 92.47994652406418,
+    "percent_covered_display": "92.48",
+    "missing_lines": 609,
     "excluded_lines": 12,
-    "percent_statements_covered": 94.69451970981558,
-    "percent_statements_covered_display": "94.69",
-    "num_branches": 3498,
-    "num_partial_branches": 426,
-    "covered_branches": 2984,
-    "missing_branches": 514,
-    "percent_branches_covered": 85.30588907947399,
-    "percent_branches_covered_display": "85.31"
+    "percent_statements_covered": 94.68308014667365,
+    "percent_statements_covered_display": "94.68",
+    "num_branches": 3506,
+    "num_partial_branches": 428,
+    "covered_branches": 2990,
+    "missing_branches": 516,
+    "percent_branches_covered": 85.28237307472904,
+    "percent_branches_covered_display": "85.28"
   },
-  "coverage_floor_percent": 92.0,
-  "qualified_receipts": [
-    {
-      "name": "full_native_and_installed_consumers",
-      "receipt": "$VAULT/Local/execution-launches/visual-isolation-committed-full-unique/22319-cdacd553e03b44a2972a240ef681bc7b/exit.json",
-      "signed_payload_sha256": "012e2be4f9155bef1eba28a07fd37fa5c0af32fe0f894c0c2174a71127512db6",
-      "source_revision": "234d1fc222896931be0d35af6b920f125386a56e",
-      "outcome": "SUCCEEDED",
-      "returncode": 0,
-      "source_unchanged": true,
-      "descendants": {
-        "killed_after_grace": [],
-        "observed": 131,
-        "remaining": [],
-        "sample_errors": 0,
-        "samples": 5989
-      },
-      "finished": "2026-11-09T02:31:19.713323+00:00"
-    },
-    {
-      "name": "current_docs_distribution_and_manuscript_seal",
-      "receipt": "$VAULT/Local/execution-launches/visual-current-docs-distributions-seal/22450-aaaba53baa5b421898944868ed66ab17/exit.json",
-      "signed_payload_sha256": "94a5cabbd0c35913f173d4084ca0e475872984a521a3b8da1f87882e331fe6fe",
-      "source_revision": "4b91dcca31ed937ef409373d601bf2b7d20fdc80",
-      "outcome": "SUCCEEDED",
-      "returncode": 0,
-      "source_unchanged": true,
-      "descendants": {
-        "killed_after_grace": [],
-        "observed": 67,
-        "remaining": [],
-        "sample_errors": 0,
-        "samples": 680
-      },
-      "finished": "2026-11-09T02:41:46.461790+00:00"
-    },
-    {
-      "name": "current_canonical_api_smoke",
-      "receipt": "$VAULT/Local/execution-launches/visual-canonical-current-source-readback/22512-3e3d48a2e9a44d6b93fc8ea1618bb967/exit.json",
-      "signed_payload_sha256": "30c4109f0638c4ac02a37b94cff6806b663db35e037182720689186a13591f45",
-      "source_revision": "4b91dcca31ed937ef409373d601bf2b7d20fdc80",
-      "outcome": "SUCCEEDED",
-      "returncode": 0,
-      "source_unchanged": true,
-      "descendants": {
-        "killed_after_grace": [],
-        "observed": 2,
-        "remaining": [],
-        "sample_errors": 0,
-        "samples": 25
-      },
-      "finished": "2026-11-09T02:53:10.618908+00:00"
-    }
-  ],
-  "distribution_continuity": "output/reports/workflowz_docs_distribution_continuity.json",
-  "full_installed_cli_proofs": [
-    "output/reports/workflowz_final_wheel_runtime.json",
-    "output/reports/workflowz_installed_consumer_completion.json"
-  ],
-  "package_source_files_matched": 119,
-  "public_exports_resolved": 206,
-  "all_current_wheel_member_bytes_identical_to_full_cli_tested_wheel": 125,
-  "core_json_before": {
-    "run_summary.json": "65ea0947b48430c7e8b7950375a997bd0a1eaea09249ee83b0e9fcdb7c3f5eac",
-    "simulation_records.json": "1bfd077e6ffdff0cdf74553c9cfab47a8f51cb1ca00f41ffe5df87e5e543c421",
-    "task_allocation.json": "d3b6256590b0739b1ec2b208c21863ff13a3ab1046eb92ac5b29edb457d610fa"
-  },
-  "core_json_after": {
-    "run_summary.json": "65ea0947b48430c7e8b7950375a997bd0a1eaea09249ee83b0e9fcdb7c3f5eac",
-    "simulation_records.json": "1bfd077e6ffdff0cdf74553c9cfab47a8f51cb1ca00f41ffe5df87e5e543c421",
-    "task_allocation.json": "d3b6256590b0739b1ec2b208c21863ff13a3ab1046eb92ac5b29edb457d610fa"
-  },
-  "pdf": {
-    "path": "output/pdf/BeeStack_combined.pdf",
-    "sha256": "70f40da3978f796ca3099eb407038b9b78970bdc043e3c5e52af0210b84113cb",
-    "pages": 56,
-    "referenced_figures": 33,
-    "visual_inspection": "output/reports/workflowz_pdf_inspection.json",
-    "missing_glyph_warnings": 0,
-    "overfull_boxes": 0
-  },
-  "current_interactive_byte_continuity": [
-    {
-      "path": "output/interactive/methods_dashboard.html",
-      "prior_browser_sha256": "e23ea148bf8428a384b793f0560473826f9591b2acdf2cd6906625cb2a4e895a",
-      "changed_by_promotion": false,
-      "interpretation": "Fresh generated HTML was byte-compared by the atomic promotion helper against the previously browser-exercised canonical artifact; unchanged means exact file-byte continuity, not a new browser action."
-    },
-    {
-      "path": "output/interactive/methods_module_metrics.html",
-      "prior_browser_sha256": "68e470f75aad15682f99514c55fd4c794258c16e398b84ab826838ee354a9820",
-      "changed_by_promotion": false,
-      "interpretation": "Fresh generated HTML was byte-compared by the atomic promotion helper against the previously browser-exercised canonical artifact; unchanged means exact file-byte continuity, not a new browser action."
-    },
-    {
-      "path": "output/interactive/research_scorecards.html",
-      "prior_browser_sha256": "4c1fdc92d42a663699fd3bbc1c4c9c077b35a64d50f6e95e715910d74f630168",
-      "changed_by_promotion": false,
-      "interpretation": "Fresh generated HTML was byte-compared by the atomic promotion helper against the previously browser-exercised canonical artifact; unchanged means exact file-byte continuity, not a new browser action."
-    },
-    {
-      "path": "output/interactive/research_sensitivity_sweeps.html",
-      "prior_browser_sha256": "bac263a53ae23ccef84e30b0e7b4a8bd382f1e8b0702b9f0b6df243fa37ed78e",
-      "changed_by_promotion": false,
-      "interpretation": "Fresh generated HTML was byte-compared by the atomic promotion helper against the previously browser-exercised canonical artifact; unchanged means exact file-byte continuity, not a new browser action."
-    }
-  ],
-  "canonical_api_smoke": {
-    "publication_ok": true,
-    "generated_reports_passed": true,
-    "security_passed": true,
-    "strict_deposit_blockers": [
-      "publication.doi not set in docs/manuscript/config.yaml"
-    ]
-  },
-  "preservation": {
-    "changed_paths": [
-      "pdf/BeeStack_combined.pdf",
-      "reports/documentation_audit.json",
-      "reports/documentation_audit.md",
-      "reports/manuscript_render.json",
-      "reports/workflowz_available_payloads.json",
-      "reports/workflowz_coverage.json",
-      "reports/workflowz_docs_distribution_continuity.json",
-      "reports/workflowz_docs_finalization.json",
-      "reports/workflowz_final_wheel_runtime.json",
-      "reports/workflowz_installed_consumer_completion.json",
-      "reports/workflowz_isolated_candidate_full.json",
-      "reports/workflowz_isolated_pipeline_focus.json",
-      "reports/workflowz_native_gates.json",
-      "reports/workflowz_pdf_inspection.json",
-      "reports/workflowz_post_package_verification.json",
-      "reports/workflowz_release_audit.json",
-      "reports/workflowz_source_archive.json",
-      "reports/workflowz_unit_gates.json",
-      "reports/workflowz_visual_native_execution.json",
-      "reports/workflowz_visual_packaging.json",
-      "tex/BeeStack_combined.log"
-    ],
-    "unchanged_files": 773,
-    "raw_acquisition_files_not_overwritten": 59,
-    "scope": "Verified generated outputs only; original raw acquisition payloads retained. Only three generator-owned acquisition metadata catalogs are eligible."
-  },
-  "prior_main_ci_failure": {
-    "head_sha": "a0ecd42c6cadf048b1a8f03127820a29bdebdc7e",
-    "run_id": 42542825273,
-    "job_id": 128921317794,
-    "url": "https://github.com/docxology/BeeStack/actions/runs/42542825273",
-    "status": "completed",
-    "conclusion": "cancelled",
-    "started_at": "2026-11-09T00:55:53Z",
-    "completed_at": "2026-11-09T01:41:08Z",
-    "annotations": [
+  "complete_native": {
+    "source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+    "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+    "scope": "complete native suite/production analysis, retained real data replay, independent wheel/sdist and both installed CLIs, source archive, current manuscript seal and decoded full production render/unchanged contact contracts",
+    "steps": [
       {
-        "path": ".github",
-        "start_line": 1,
-        "annotation_level": "failure",
-        "message": "The job has exceeded the maximum execution time of 45m0s"
+        "argv": [
+          "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+          "$PROJECT/.uv-cache/wfz-release/stage-001/scripts/signpost_project_tree.py"
+        ],
+        "returncode": 0,
+        "seconds": 2.669
       },
       {
-        "path": ".github",
-        "start_line": 484,
-        "annotation_level": "failure",
-        "message": "The operation was canceled."
+        "argv": [
+          "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+          "$PROJECT/.uv-cache/wfz-visual-20261108/all_native_gates.py"
+        ],
+        "returncode": 0,
+        "seconds": 320.127
       },
       {
-        "path": ".github",
-        "start_line": 1,
-        "annotation_level": "notice",
-        "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\""
+        "argv": [
+          "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+          "$PROJECT/.uv-cache/wfz-visual-20261108/package_current_candidate.py",
+          "$PROJECT",
+          "f94eae7e65792aae400e6585dd890b688e9db4a1"
+        ],
+        "returncode": 0,
+        "seconds": 94.375
+      },
+      {
+        "argv": [
+          "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+          "$PROJECT/.uv-cache/wfz-visual-20261108/post_package_finalize.py",
+          "$PROJECT",
+          "f94eae7e65792aae400e6585dd890b688e9db4a1"
+        ],
+        "returncode": 0,
+        "seconds": 126.568
+      },
+      {
+        "argv": [
+          "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+          "$PROJECT/.uv-cache/wfz-visual-20261108/full_scene_contracts.py",
+          "$PROJECT",
+          "f94eae7e65792aae400e6585dd890b688e9db4a1"
+        ],
+        "returncode": 0,
+        "seconds": 0.491
       }
     ],
-    "log_sha256": "ae36f388e21f2878a78e8411a6fad646a966b2489a5c593b2c08d9c609954f24",
-    "log_bytes": 148717,
-    "cause_limit": "Official annotation proves the job reached its 45-minute hard bound during coverage. No captured stack or low-level latency cause was available.",
-    "disposition": "Superseded only after the repaired candidate completes fresh CI; no success inferred."
+    "complete": true
   },
-  "remote_main_observed_before_current_publication": "a0ecd42c6cadf048b1a8f03127820a29bdebdc7e",
-  "published": false,
-  "note": "Completed local source-content proof. It does not anticipate main push, cloud CI, tag or release success."
+  "production_render": {
+    "source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+    "scope": "decoded full production native scene GIFs and exact deterministic contact/orientation preservation against the prior canonical baseline; no raw-array or declared-frame-count substitute",
+    "scenes": [
+      {
+        "scene": "collision",
+        "decoded_frames": 24,
+        "requested_frames": 24,
+        "width": 640,
+        "height": 480,
+        "bees": 10,
+        "substeps": 4,
+        "requested_fps": 8,
+        "decoded_duration_ms": 2880,
+        "gif_centisecond_rounding_bound_ms": 240,
+        "metrics_identical_to_prior_canonical": true,
+        "visual_profile": "viewport_buffers_scene_scoped_lighting",
+        "gif": "output/animations/beeswarm_10_beebody_collision.gif",
+        "contact_report": "output/animations/flybody_scenes/collision/contact_metrics.json"
+      },
+      {
+        "scene": "waggle",
+        "decoded_frames": 24,
+        "requested_frames": 24,
+        "width": 640,
+        "height": 480,
+        "bees": 11,
+        "substeps": 4,
+        "requested_fps": 8,
+        "decoded_duration_ms": 2880,
+        "gif_centisecond_rounding_bound_ms": 240,
+        "metrics_identical_to_prior_canonical": true,
+        "visual_profile": "viewport_buffers_scene_scoped_lighting",
+        "gif": "output/animations/beeswarm_waggle_dance_configured.gif",
+        "contact_report": "output/animations/flybody_scenes/waggle/contact_metrics.json"
+      },
+      {
+        "scene": "waggle_long",
+        "decoded_frames": 96,
+        "requested_frames": 96,
+        "width": 640,
+        "height": 480,
+        "bees": 11,
+        "substeps": 4,
+        "requested_fps": 12,
+        "decoded_duration_ms": 7680,
+        "gif_centisecond_rounding_bound_ms": 960,
+        "metrics_identical_to_prior_canonical": true,
+        "visual_profile": "viewport_buffers_scene_scoped_lighting",
+        "gif": "output/animations/beeswarm_waggle_dance_long.gif",
+        "contact_report": "output/animations/flybody_scenes/waggle_long/contact_metrics.json"
+      }
+    ],
+    "complete": true
+  },
+  "visual_approval": {
+    "approved": true,
+    "source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+    "pdf_sha256": "17f570ef1ff8d7b54ff851f222bb32e60f2fb04438fa04589f44fa270f8f0647",
+    "scope": "Actual fresh four PDF contact sheets covering all 56 page layouts, three contact sheets covering all 33 referenced figures, and full-resolution corrected collision/short-waggle/long-waggle contact sheets. Walking/flight and graphical abstract were also inspected in the immediately preceding render epoch; fresh figure contact sheets include them. Not merely PDF compilation.",
+    "observations": [
+      "The executed-scenario graphical abstract has explicit synthetic input, separate broadcast/independent niche, and no asserted BrainState-to-policy feedback.",
+      "Native-unit tables/independent axes, unavailable empirical cells and evidence/claim ceilings remain visible; inventory is not represented as biological validation.",
+      "Shared scene lighting restores floor/body contrast and recognizable amber/dark morphology, legs, antennae, eyes and translucent wings in the real multi-bee scenes.",
+      "Scene-key shadows and unchanged scripted poses remain; pre-existing start-frame wing-edge cropping is not claimed to be fixed or all-bees-in-frame.",
+      "No missing-glyph or overfull-box warnings; all 33 registered image/sidecar paths exist and fresh generated-manuscript gates passed."
+    ],
+    "native_approval_limit": "Scripted-pose contact/render witnesses, not integrated colony dynamics, classified gait or calibrated biology."
+  },
+  "qualified_receipt": {
+    "name": "complete_current_native_installed_consumers_and_production_render_contracts",
+    "receipt": "$VAULT/Local/execution-launches/visual-scene-lighting-complete-with-native-guides/23623-fdfc13f0e9464823b044fb33ecf0331a/exit.json",
+    "signed_payload_sha256": "6b86a2eabe0bfd859b5a6717fad19d830c33e0886b3078ab629447a409228f22",
+    "source_revision": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+    "outcome": "SUCCEEDED",
+    "returncode": 0,
+    "source_unchanged": true,
+    "descendants": {
+      "killed_after_grace": [],
+      "observed": 132,
+      "remaining": [],
+      "sample_errors": 0,
+      "samples": 2157
+    },
+    "finished": "2026-11-09T05:12:35.655450+00:00"
+  },
+  "scope": "Complete current-source local integrated proof. Exact-main Linux and publication are not anticipated by this receipt."
 }

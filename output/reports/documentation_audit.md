@@ -1,12 +1,12 @@
 # BeeStack Documentation Audit
 
 - Passed: `True`
-- Documents checked: `188`
-- `uv run` commands referenced: `280`
+- Documents checked: `192`
+- `uv run` commands referenced: `284`
 - Source links referenced: `17`
-- Generated-output paths referenced: `213`
+- Generated-output paths referenced: `214`
 - Unresolved manuscript variables: `0`
-- Signposted directories: `72`
+- Signposted directories: `74`
 - Signposting passed: `True`
 - Source audit passed: `True`
 - Figure audit passed: `True`
@@ -361,6 +361,7 @@
 - `FlyBodyBeeBackend`
 - `FlyBodyContactMetrics`
 - `FlyBodySceneArtifact`
+- `FlyBodySceneRenderConfig.as_dict()` also declares the scalar
 - `FlyBodySceneRenderConfig`
 - `analyze_empirical_bee_data.py` integrates downloaded Honeybee Standard Brain
 - `analyze_empirical_bee_data.py` is intentionally network-gated. When no local
@@ -661,7 +662,7 @@
 - model cards, methods panels, and hydrated manuscript sections. A reduced
 - module readiness, simulation telemetry, visualization artifacts, empirical
 - must not appear in the production `real_flybody_3d` manifest group.
-- name-aware BeeStack-to-FlyBody tripod walking action policy.
+- name-aware BeeStack-to-FlyBody configured tripod-pattern leg controls, not a
 - names, paths, and reproducible commands. Claim strict FlyBody/MuJoCo only for
 - neither a missing odor label nor missing alignment is an empirical selection.
 - network-heavy full empirical downloads to routine CI; use metadata-only fetches,

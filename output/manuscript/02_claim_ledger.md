@@ -82,7 +82,7 @@ and presentation adapters; `scripts/` invokes them and owns orchestration.
 `tests/` uses real computations with no mocks; `docs/manuscript/` holds tokenized prose hydrated
 from real run-time values; and `output/` contains regeneratable
 artifacts. Every non-cache directory is signposted, with
-72 directories covered by local README and
+74 directories covered by local README and
 AGENTS files so that downstream agents — human or LLM — can pick up the
 project without rediscovering its structure.
 

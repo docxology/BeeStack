@@ -1,32 +1,34 @@
 {
-  "source_commit": "4b91dcca31ed937ef409373d601bf2b7d20fdc80",
-  "browser_exercise_source_commit": "a460c466f6ac781eb13925cdd42c08bfacd41556",
-  "all_four_files_byte_identical": true,
-  "surfaces": [
+  "source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+  "scope": "Four fresh generated HTML files byte-identical to previously actually exercised desktop Chrome artifacts; no new browser interaction claimed.",
+  "files": [
     {
       "path": "output/interactive/methods_dashboard.html",
-      "prior_browser_sha256": "e23ea148bf8428a384b793f0560473826f9591b2acdf2cd6906625cb2a4e895a",
-      "changed_by_promotion": false,
-      "interpretation": "Fresh generated HTML was byte-compared by the atomic promotion helper against the previously browser-exercised canonical artifact; unchanged means exact file-byte continuity, not a new browser action."
+      "sha256": "e23ea148bf8428a384b793f0560473826f9591b2acdf2cd6906625cb2a4e895a",
+      "current_source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+      "byte_identical_to_previously_browser_exercised_artifact": true,
+      "new_browser_action": false
     },
     {
       "path": "output/interactive/methods_module_metrics.html",
-      "prior_browser_sha256": "68e470f75aad15682f99514c55fd4c794258c16e398b84ab826838ee354a9820",
-      "changed_by_promotion": false,
-      "interpretation": "Fresh generated HTML was byte-compared by the atomic promotion helper against the previously browser-exercised canonical artifact; unchanged means exact file-byte continuity, not a new browser action."
+      "sha256": "68e470f75aad15682f99514c55fd4c794258c16e398b84ab826838ee354a9820",
+      "current_source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+      "byte_identical_to_previously_browser_exercised_artifact": true,
+      "new_browser_action": false
     },
     {
       "path": "output/interactive/research_scorecards.html",
-      "prior_browser_sha256": "4c1fdc92d42a663699fd3bbc1c4c9c077b35a64d50f6e95e715910d74f630168",
-      "changed_by_promotion": false,
-      "interpretation": "Fresh generated HTML was byte-compared by the atomic promotion helper against the previously browser-exercised canonical artifact; unchanged means exact file-byte continuity, not a new browser action."
+      "sha256": "4c1fdc92d42a663699fd3bbc1c4c9c077b35a64d50f6e95e715910d74f630168",
+      "current_source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+      "byte_identical_to_previously_browser_exercised_artifact": true,
+      "new_browser_action": false
     },
     {
       "path": "output/interactive/research_sensitivity_sweeps.html",
-      "prior_browser_sha256": "bac263a53ae23ccef84e30b0e7b4a8bd382f1e8b0702b9f0b6df243fa37ed78e",
-      "changed_by_promotion": false,
-      "interpretation": "Fresh generated HTML was byte-compared by the atomic promotion helper against the previously browser-exercised canonical artifact; unchanged means exact file-byte continuity, not a new browser action."
+      "sha256": "bac263a53ae23ccef84e30b0e7b4a8bd382f1e8b0702b9f0b6df243fa37ed78e",
+      "current_source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+      "byte_identical_to_previously_browser_exercised_artifact": true,
+      "new_browser_action": false
     }
-  ],
-  "scope": "Prior real Chrome interactions retained; fresh generated HTML was byte-compared during atomic canonical promotion. No new browser action is fabricated."
+  ]
 }

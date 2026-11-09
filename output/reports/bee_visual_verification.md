@@ -124,7 +124,7 @@
 - Scene XML: `output/animations/flybody_scenes/collision/collision_flybody_scene.xml`
 - Contact report: `output/animations/flybody_scenes/collision/contact_metrics.json`
 - Backend: `flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer`
-- Motion pixels: `790642`
+- Motion pixels: `777355`
 - Bee-bee contact pairs: `bee_00-bee_01, bee_00-bee_02, bee_00-bee_09, bee_01-bee_02, bee_01-bee_07, bee_01-bee_09, bee_02-bee_03, bee_03-bee_04, bee_04-bee_05, bee_05-bee_06, bee_06-bee_07, bee_07-bee_08, bee_08-bee_09`
 - Floor contacts: `5`
 - Follower orientation error: `0.000` deg
@@ -137,7 +137,7 @@
 - Scene XML: `output/animations/flybody_scenes/waggle/waggle_flybody_scene.xml`
 - Contact report: `output/animations/flybody_scenes/waggle/contact_metrics.json`
 - Backend: `flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer`
-- Motion pixels: `528905`
+- Motion pixels: `448735`
 - Bee-bee contact pairs: `bee_01-bee_02, bee_01-bee_10, bee_02-bee_03, bee_03-bee_04, bee_04-bee_05, bee_05-bee_06, bee_06-bee_07, bee_07-bee_08, bee_08-bee_09, bee_09-bee_10`
 - Floor contacts: `22`
 - Follower orientation error: `19.096` deg
@@ -150,7 +150,7 @@
 - Scene XML: `output/animations/flybody_scenes/waggle_long/waggle_long_flybody_scene.xml`
 - Contact report: `output/animations/flybody_scenes/waggle_long/contact_metrics.json`
 - Backend: `flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer`
-- Motion pixels: `568368`
+- Motion pixels: `486715`
 - Bee-bee contact pairs: `bee_01-bee_02, bee_01-bee_10, bee_02-bee_03, bee_03-bee_04, bee_04-bee_05, bee_05-bee_06, bee_06-bee_07, bee_07-bee_08, bee_08-bee_09, bee_09-bee_10`
 - Floor contacts: `89`
 - Follower orientation error: `19.096` deg

@@ -13,7 +13,7 @@
       ],
       "cwd": "$VALIDATION_STAGE",
       "returncode": 0,
-      "seconds": 2.226
+      "seconds": 2.182
     },
     {
       "argv": [
@@ -30,7 +30,7 @@
       ],
       "cwd": "$VALIDATION_STAGE",
       "returncode": 0,
-      "seconds": 0.189
+      "seconds": 0.199
     },
     {
       "argv": [
@@ -40,7 +40,7 @@
       ],
       "cwd": "$VALIDATION_STAGE",
       "returncode": 0,
-      "seconds": 0.04
+      "seconds": 0.049
     },
     {
       "argv": [
@@ -50,19 +50,19 @@
       ],
       "cwd": "$VALIDATION_STAGE/.uv-cache/cli-outside-cwd",
       "returncode": 0,
-      "seconds": 291.993
+      "seconds": 49.733
     }
   ],
   "artifacts": [
     {
       "path": "dist/beestack-2.0.0-py3-none-any.whl",
-      "size": 330838,
-      "sha256": "b2716714d73ee6d57a9da11c26c8e7356f3fd908f4e3e974d0439f00e638b948"
+      "size": 331061,
+      "sha256": "e7de2360b81a501a7968c4214c41aa91c53345265cb3cd0f4a54ec527be7d25f"
     },
     {
       "path": "dist/beestack-2.0.0.tar.gz",
-      "size": 392198,
-      "sha256": "2445e8253c41a86daac0e39c27f55758e79c1ed6093d71128675a7e5764ff349"
+      "size": 392913,
+      "sha256": "f0ac7e617ac3e3eccfdefc562ad1d87a3cf3611d8d97768ebce651778a5b5a49"
     }
   ],
   "package_source_sha256": {
@@ -71,8 +71,8 @@
     "beestack/body/__init__.py": "d91705cc9dedb458de408fdeb5040f284a2259229d4ae2a14ecc50b22dcb3f16",
     "beestack/body/bee_mjcf.py": "d2503413bc426e785bb2c4e914fe45d8b9a7050a35959da7d392a865e8c2802b",
     "beestack/body/energetics.py": "f6268d9fe10783e6e9ad1b4124e2e314ef0261a55666766e9d0149cace255b0b",
-    "beestack/body/flybody_adapter.py": "564bd93cc7cd04e1ed96fd7c34721683aa6adfa74fa1bde2796086f5b572d165",
-    "beestack/body/flybody_scene.py": "ee654b771e2440ce846d618c9eb00d9b6caca8fb2a5939e754ef09ac8be48223",
+    "beestack/body/flybody_adapter.py": "ba2b448c9e9a26a64a41be71b0cc7f234111d80c8fb0072a685141da7a9e4456",
+    "beestack/body/flybody_scene.py": "5074f4661b254feb81708bb1f64e8b147754d70dc4e93ef26d691e31c8f834bf",
     "beestack/body/flybody_scene_signpost.py": "9e2be1502ffc211e1c26c0ba1b37360415334599c56729fde9c44953f51173a7",
     "beestack/body/morphology.py": "17874aa9e594cc40b8fc46648b22b69b6c1f1740baf5e3859c23836beeffe8e3",
     "beestack/body/simulation.py": "40a2ee74d9f0e08da4209f0e07e722968ee3de01b61216c0f0d2c9ccb0c573cc",
@@ -162,7 +162,7 @@
     "beestack/version.py": "5d27ba74f3cf1b0e5a930081d8613d5bd6cfe7be310e54b8319b4d88a41467b4",
     "beestack/visualization/__init__.py": "da68661a1ba2851bd637df6c70a1d2064acdedb3933b067eaaaf00f6d012841e",
     "beestack/visualization/animation_manifest.py": "f009ebae98c6b404f8e0707f8a2fd77aec84e29e3a337b509e679955f8b41825",
-    "beestack/visualization/animations.py": "05d927ee935887718dbbf9890591e7e796eb6f9c37c65c8367c4fb2ba8b770f2",
+    "beestack/visualization/animations.py": "ff20b31492f68dbfc36fd42e54497da3d627013878344a27758397bfddbb6857",
     "beestack/visualization/bee_render_verification.py": "48d34ab62631267c10c0df657a0a085173922209359d756c8171a77b0bb2a550",
     "beestack/visualization/bee_signature.py": "2d8a8c9b2bfdf7b9c14d83953a76e56b4abae42e3836b32a9439c2bce42ac91d",
     "beestack/visualization/connectome_figures.py": "c12fd3a90833b0b93f5934a1675781d55ea8094e8a901c879e293d55d67458a4",

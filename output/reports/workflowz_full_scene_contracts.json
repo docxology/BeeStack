@@ -1,0 +1,55 @@
+{
+  "source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+  "scope": "decoded full production native scene GIFs and exact deterministic contact/orientation preservation against the prior canonical baseline; no raw-array or declared-frame-count substitute",
+  "scenes": [
+    {
+      "scene": "collision",
+      "decoded_frames": 24,
+      "requested_frames": 24,
+      "width": 640,
+      "height": 480,
+      "bees": 10,
+      "substeps": 4,
+      "requested_fps": 8,
+      "decoded_duration_ms": 2880,
+      "gif_centisecond_rounding_bound_ms": 240,
+      "metrics_identical_to_prior_canonical": true,
+      "visual_profile": "viewport_buffers_scene_scoped_lighting",
+      "gif": "output/animations/beeswarm_10_beebody_collision.gif",
+      "contact_report": "output/animations/flybody_scenes/collision/contact_metrics.json"
+    },
+    {
+      "scene": "waggle",
+      "decoded_frames": 24,
+      "requested_frames": 24,
+      "width": 640,
+      "height": 480,
+      "bees": 11,
+      "substeps": 4,
+      "requested_fps": 8,
+      "decoded_duration_ms": 2880,
+      "gif_centisecond_rounding_bound_ms": 240,
+      "metrics_identical_to_prior_canonical": true,
+      "visual_profile": "viewport_buffers_scene_scoped_lighting",
+      "gif": "output/animations/beeswarm_waggle_dance_configured.gif",
+      "contact_report": "output/animations/flybody_scenes/waggle/contact_metrics.json"
+    },
+    {
+      "scene": "waggle_long",
+      "decoded_frames": 96,
+      "requested_frames": 96,
+      "width": 640,
+      "height": 480,
+      "bees": 11,
+      "substeps": 4,
+      "requested_fps": 12,
+      "decoded_duration_ms": 7680,
+      "gif_centisecond_rounding_bound_ms": 960,
+      "metrics_identical_to_prior_canonical": true,
+      "visual_profile": "viewport_buffers_scene_scoped_lighting",
+      "gif": "output/animations/beeswarm_waggle_dance_long.gif",
+      "contact_report": "output/animations/flybody_scenes/waggle_long/contact_metrics.json"
+    }
+  ],
+  "complete": true
+}

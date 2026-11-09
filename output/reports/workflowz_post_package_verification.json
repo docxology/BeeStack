@@ -1,5 +1,5 @@
 {
-  "source_commit": "4b91dcca31ed937ef409373d601bf2b7d20fdc80",
+  "source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
   "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
   "scope": "post-installed-CLI real render evidence, regenerated report/visual contracts, complete documentation/security audits and final source-data-figure-bound manuscript seal",
   "steps": [
@@ -10,7 +10,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 6.25
+      "seconds": 4.077
     },
     {
       "argv": [
@@ -19,7 +19,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 3.361
+      "seconds": 2.511
     },
     {
       "argv": [
@@ -29,7 +29,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 12.871
+      "seconds": 9.548
     },
     {
       "argv": [
@@ -38,7 +38,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 6.248
+      "seconds": 4.218
     },
     {
       "argv": [
@@ -47,7 +47,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 4.51
+      "seconds": 3.137
     },
     {
       "argv": [
@@ -56,7 +56,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 0.086
+      "seconds": 0.048
     },
     {
       "argv": [
@@ -65,7 +65,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 3.482
+      "seconds": 2.611
     },
     {
       "argv": [
@@ -74,7 +74,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 30.261
+      "seconds": 22.541
     },
     {
       "argv": [
@@ -83,7 +83,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 3.907
+      "seconds": 2.465
     },
     {
       "argv": [
@@ -92,7 +92,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 3.651
+      "seconds": 2.407
     },
     {
       "argv": [
@@ -101,7 +101,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 3.685
+      "seconds": 2.595
     },
     {
       "argv": [
@@ -111,7 +111,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 3.723
+      "seconds": 2.349
     },
     {
       "argv": [
@@ -120,7 +120,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 3.879
+      "seconds": 2.364
     },
     {
       "argv": [
@@ -129,7 +129,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 28.573
+      "seconds": 21.942
     },
     {
       "argv": [
@@ -138,7 +138,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 3.699
+      "seconds": 2.423
     },
     {
       "argv": [
@@ -148,7 +148,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 3.499
+      "seconds": 2.664
     },
     {
       "argv": [
@@ -159,7 +159,7 @@
       ],
       "returncode": 1,
       "expected_returncode": 1,
-      "seconds": 3.398
+      "seconds": 2.625
     },
     {
       "argv": [
@@ -169,7 +169,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 3.591
+      "seconds": 2.433
     },
     {
       "argv": [
@@ -178,7 +178,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 4.82
+      "seconds": 3.759
     },
     {
       "argv": [
@@ -187,7 +187,7 @@
       ],
       "returncode": 0,
       "expected_returncode": 0,
-      "seconds": 35.242
+      "seconds": 29.789
     }
   ],
   "actual_unavailable_producer_contract": {
@@ -200,7 +200,7 @@
     ],
     "current_represented_records": 0
   },
-  "pdf_sha256": "70f40da3978f796ca3099eb407038b9b78970bdc043e3c5e52af0210b84113cb",
+  "pdf_sha256": "17f570ef1ff8d7b54ff851f222bb32e60f2fb04438fa04589f44fa270f8f0647",
   "strict_deposit_state": "blocked only by missing new version-specific DOI; ordinary repository publication gate passes",
   "complete": true
 }

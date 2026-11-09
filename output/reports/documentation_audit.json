@@ -1,7 +1,7 @@
 {
-  "command_count": 280,
-  "directory_count": 72,
-  "docs_checked": 188,
+  "command_count": 284,
+  "directory_count": 74,
+  "docs_checked": 192,
   "fidelity_claims": [
     "![BeeBody methods dashboard showing reduced telemetry, energy, wing-power, and morphology cues beside the FlyBody-backed fidelity boundary. Generated from MethodsAnalysisReport and simulation records using Matplotlib/pandas. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not calibrate honeybee biomechanics or aerodynamics.](../figures/methods/beebody_methods_telemetry_dashboard.png){#fig:body_methods_dashboard}",
     "![BeeBrain native report metrics beside configured self-tests, reported availability, claim tier, and conservative interpretation. Generated from MethodsAnalysisReport and empirical analysis report using Matplotlib/pandas. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not support connectome-scale or calcium-validated dynamics.](../figures/methods/beebrain_methods_empirical_completeness.png){#fig:brain_methods_completeness}",
@@ -351,6 +351,7 @@
     "`FlyBodyBeeBackend`",
     "`FlyBodyContactMetrics`",
     "`FlyBodySceneArtifact`",
+    "`FlyBodySceneRenderConfig.as_dict()` also declares the scalar",
     "`FlyBodySceneRenderConfig`",
     "`analyze_empirical_bee_data.py` integrates downloaded Honeybee Standard Brain",
     "`analyze_empirical_bee_data.py` is intentionally network-gated. When no local",
@@ -651,7 +652,7 @@
     "model cards, methods panels, and hydrated manuscript sections. A reduced",
     "module readiness, simulation telemetry, visualization artifacts, empirical",
     "must not appear in the production `real_flybody_3d` manifest group.",
-    "name-aware BeeStack-to-FlyBody tripod walking action policy.",
+    "name-aware BeeStack-to-FlyBody configured tripod-pattern leg controls, not a",
     "names, paths, and reproducible commands. Claim strict FlyBody/MuJoCo only for",
     "neither a missing odor label nor missing alignment is an empirical selection.",
     "network-heavy full empirical downloads to routine CI; use metadata-only fetches,",
@@ -886,7 +887,7 @@
   "missing_agents_dirs": [],
   "missing_output_paths": [],
   "missing_readme_dirs": [],
-  "output_reference_count": 213,
+  "output_reference_count": 214,
   "passed": true,
   "signposting_passed": true,
   "source_audit": {

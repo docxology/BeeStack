@@ -1,17 +1,17 @@
 {
   "schema": "beestack.workflowz.release_audit.v1",
-  "observed_at": "2026-11-09T02:56:15.839861+00:00",
+  "observed_at": "2026-11-09T05:16:22.338881+00:00",
   "repository": "docxology/BeeStack",
   "candidate_package_version": "2.0.0",
   "manuscript_version": "2.0",
-  "state": "Current source implemented and locally proved: complete runtime/tests/installed consumers at 234d1fc; the four-document-only successor 4b91dcc has fresh distribution-byte continuity, source archive, documentation/security/render/publication gates and canonical API proof. This source-content receipt precedes current main push/CI and does not anticipate publication success.",
+  "state": "Current source, complete local native/package/installed-CLI/production/PDF and actual visual checks passed. Canonical readback and fresh exact-main Linux/publication are separate following effects, not claimed here.",
   "source_binding": {
     "base_commit": "015550a26d57a36e45bbada018daf126b5332d93",
-    "branch": "work/wfz-beestack-ci-native-20261109",
-    "aggregate_sha256": "28bbcfbcfdc7d960b6eea9de30581d75e9670f6a032292289cdc50bbb2a88380",
+    "branch": "work/wfz-beestack-render-budget-20261109",
+    "aggregate_sha256": "189fe97891c570e7d4177f5e7e8db71889cd74f53c91ae549387ba02cc26c49f",
     "scope": "293 immutable software/test/native-CI/canonical-doc/manuscript/root-contract records; the exact committed source archive also retains two nonruntime .benchmarks guides. Generated outputs and live publication state are separately bound.",
     "aggregate_algorithm": "SHA-256 of UTF-8 compact sorted-key JSON source records, sorted by path",
-    "commit": "4b91dcca31ed937ef409373d601bf2b7d20fdc80",
+    "commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
     "records": [
       {
         "path": ".gitattributes",
@@ -70,8 +70,8 @@
       },
       {
         "path": "CHANGELOG.md",
-        "sha256": "6237fd8b0da7b91ca42f4478fc0e697931589285ce900a797740e76d510a1f06",
-        "size": 12880
+        "sha256": "24c00ebb32dfd893738c4fd8f6482ec04d1a10cecabf54660ed37a77f8edae6c",
+        "size": 13551
       },
       {
         "path": "ISA.md",
@@ -90,13 +90,13 @@
       },
       {
         "path": "docs/AGENTS.md",
-        "sha256": "0aa40ec53a1e64e08f5da47c1b2ab1638676ef365f7e2a995024776657e37067",
-        "size": 940
+        "sha256": "97fa3bac773a881f1209fd1a2244196a088f5d3de6437ba49f158aff5fd027a4",
+        "size": 1326
       },
       {
         "path": "docs/README.md",
-        "sha256": "3f261c94db79305c6f21eea86e93f88491d61ba3256085e80f6ed8ef5729730d",
-        "size": 3577
+        "sha256": "0afd7cee5e984d834dcadb66f3e6944c591b605ddbf399e0abbea1783940368a",
+        "size": 3667
       },
       {
         "path": "docs/agent_instructions.md",
@@ -105,13 +105,13 @@
       },
       {
         "path": "docs/animations.md",
-        "sha256": "1acbefbe0c801406cd4702e66ef675abef78d323a32a40b9b6009eb4db68c714",
-        "size": 5273
+        "sha256": "a470f32341a0d32805a1f8baf12e883b8f55ec1da92b6f378fa324f1bf3ebd98",
+        "size": 5337
       },
       {
         "path": "docs/api_reference.md",
-        "sha256": "54fcb9d7d55f1fea62f43c23087f3948396248f00b263baca5eca6a8f797c985",
-        "size": 11729
+        "sha256": "0fe49442bc9f373b7c2508062687ce76864b4c6fa5351ab0a55c203a2753c63a",
+        "size": 12118
       },
       {
         "path": "docs/architecture.md",
@@ -335,8 +335,8 @@
       },
       {
         "path": "docs/waggle_3d_scenario.md",
-        "sha256": "4151f2719bcd5742a417e34beae242c47d6a8b591dfff44664a349b6374764d5",
-        "size": 2975
+        "sha256": "344d642fddd592690f6da9a8c8ab8c1da487ff162c22af3eea7957e72ce143ba",
+        "size": 3491
       },
       {
         "path": "pyproject.toml",
@@ -485,13 +485,13 @@
       },
       {
         "path": "src/beestack/body/AGENTS.md",
-        "sha256": "25c50f725ce6b28a5a7584589984df00f6817a859a687e25968085d633acd893",
-        "size": 617
+        "sha256": "d48ef70717d94bee15a9c3fa8babdef5c8b5156fbbcd9021b23f449d90164de3",
+        "size": 985
       },
       {
         "path": "src/beestack/body/README.md",
-        "sha256": "c7a039bf9c90462ac4f785ea894928d1107514defbcd900f2ab07d872caaf3e6",
-        "size": 2722
+        "sha256": "0a665c85674023ca1ff493b6dc6f12b1a769e99bc86286550d83d11c6c0e5b0c",
+        "size": 3401
       },
       {
         "path": "src/beestack/body/__init__.py",
@@ -510,13 +510,13 @@
       },
       {
         "path": "src/beestack/body/flybody_adapter.py",
-        "sha256": "564bd93cc7cd04e1ed96fd7c34721683aa6adfa74fa1bde2796086f5b572d165",
-        "size": 29084
+        "sha256": "ba2b448c9e9a26a64a41be71b0cc7f234111d80c8fb0072a685141da7a9e4456",
+        "size": 29081
       },
       {
         "path": "src/beestack/body/flybody_scene.py",
-        "sha256": "ee654b771e2440ce846d618c9eb00d9b6caca8fb2a5939e754ef09ac8be48223",
-        "size": 36757
+        "sha256": "5074f4661b254feb81708bb1f64e8b147754d70dc4e93ef26d691e31c8f834bf",
+        "size": 37389
       },
       {
         "path": "src/beestack/body/flybody_scene_signpost.py",
@@ -1055,13 +1055,13 @@
       },
       {
         "path": "src/beestack/visualization/AGENTS.md",
-        "sha256": "51b3de805336f3f41bb1308ab48fee7b33e17c94608f1c148b2c0067dfa0b21e",
-        "size": 1502
+        "sha256": "f40bedc5e0046805756805091714773094be959f927636148c50fd8db6c6872b",
+        "size": 1666
       },
       {
         "path": "src/beestack/visualization/README.md",
-        "sha256": "cd167301861ead252dbdff75a482472fa11e10f4b8a1558d489fe5830e5b52ee",
-        "size": 6442
+        "sha256": "553d0b4e9d79acc9087806ee38e144c316012cc46dfe384160d8dfb44cdc115c",
+        "size": 6597
       },
       {
         "path": "src/beestack/visualization/__init__.py",
@@ -1075,8 +1075,8 @@
       },
       {
         "path": "src/beestack/visualization/animations.py",
-        "sha256": "05d927ee935887718dbbf9890591e7e796eb6f9c37c65c8367c4fb2ba8b770f2",
-        "size": 29179
+        "sha256": "ff20b31492f68dbfc36fd42e54497da3d627013878344a27758397bfddbb6857",
+        "size": 29236
       },
       {
         "path": "src/beestack/visualization/bee_render_verification.py",
@@ -1435,8 +1435,8 @@
       },
       {
         "path": "tests/test_structure_flybody_visualization.py",
-        "sha256": "b0b43411170d3d8c176ceb884941caecbfb24a9ca8d7f630d24bb4a78b46b9fc",
-        "size": 30282
+        "sha256": "dd0c04bff9bf6b5c6ff18d0bbd7418c3aadc04649e3f0b6e0e2946a3cec7b597",
+        "size": 31722
       },
       {
         "path": "tests/test_supplement_calcium_scientific_boundaries.py",
@@ -1572,6 +1572,40 @@
         "finite native rendering/model construction and platform/runtime differences"
       ],
       "judgment": "No proven external-network hang or infinite loop; no low-level cause assigned to the timed-out cloud run."
+    },
+    {
+      "name": "WfzBeeRenderBottleneck",
+      "workers": 2,
+      "mode": "read-only",
+      "lenses": [
+        "native GL/render-resource amplification",
+        "full source/physical workload completeness"
+      ],
+      "judgment": "Evidence localized oversized offscreen allocation and repeated copied-body lights/shadow work. No unsupported network-hang or GPU/driver diagnosis."
+    },
+    {
+      "name": "WfzBeeRenderRefutation",
+      "workers": 2,
+      "mode": "read-only",
+      "lenses": [
+        "physical versus visual configuration separation",
+        "current-source production/package/PDF completeness"
+      ],
+      "judgment": "No source-level physical regression survived. Parent runtime visual inspection subsequently rejected the shadow-only intermediate for washed-out exposure; static correctness was not treated as visual approval."
+    },
+    {
+      "name": "WfzBeeLightingRefutation",
+      "workers": 2,
+      "mode": "read-only",
+      "lenses": [
+        "copied-light XML/reference and physics separation",
+        "profile serialization, fidelity/provenance and complete acceptance"
+      ],
+      "judgment": "No surviving evidence-backed patch defect. Both reviewers required fresh current-source full production/CLI/package/visual/PDF proof and terminal Linux success; they did not run commands or claim pending acceptance complete.",
+      "evidence": [
+        "agent://WfzBeeLightingRefutation-1",
+        "agent://WfzBeeLightingRefutation-2"
+      ]
     }
   ],
   "adversary_model": {
@@ -1774,47 +1808,742 @@
         "CHANGELOG.md"
       ],
       "impact": "Security documentation pointed configuration loading at the thin script instead of beestack.project_config, omitted security posture from the modular index, and described all output as disposable despite retained raw inputs/completion records. Corrected adapter/path authority and explicit custody boundaries, with nearest README/AGENTS and changelog synchronized. No runtime, test, toolchain or manuscript-source logic changed."
+    },
+    {
+      "paths": [
+        "src/beestack/body/flybody_scene.py",
+        "tests/test_structure_flybody_visualization.py",
+        "src/beestack/body/README.md",
+        "src/beestack/body/AGENTS.md",
+        "docs/waggle_3d_scenario.md",
+        "docs/api_reference.md",
+        "CHANGELOG.md"
+      ],
+      "impact": "Native group scenes inherited 3840x2160 offscreen allocation for 640x480 output, requested 24x MSAA, an 8192 shared shadow texture, and three studio lights/shadow passes per copied bee. Linux native stack dumps reached renderer.render and both prior main CI runs exceeded the unchanged 45-minute bound. Viewport buffers now match the request; copied studio lights are removed, with one scene key and shared headlight. This deliberately changes illumination and avoids bee-count-dependent exposure/passes, not geometry/contact physics. The shadow-only intermediate passed native gates but was rejected by actual visual inspection for overexposure before main publication.",
+      "before_counterexamples": [
+        "visual-render-shadow-regression-before-exact/23462-7652d97d268240c4ab7e2f331411450c",
+        "visual-light-flooding-regression-before/23555-43907983971c4132ad3101d86efcf59a"
+      ],
+      "focused_after": "visual-scene-lighting-after-and-control/23578-ecc2b0e11eeb4ce68bfaae077870834f",
+      "physical_control": "22 compiled geometry/physics/material arrays identical; native four-frame contact metrics identical. Full current-source production and Linux approval must be separately observed.",
+      "limits": "Actual driver MSAA sample count/GPU fault and general speedup were not measured; requested native antialiasing/shadow texture, transparency, cameras, frames/bees/substeps and strict failures are retained."
+    },
+    {
+      "paths": [
+        "src/beestack/visualization/animations.py",
+        "src/beestack/body/flybody_adapter.py",
+        "src/beestack/visualization/README.md",
+        "src/beestack/visualization/AGENTS.md",
+        "docs/animations.md",
+        "docs/README.md",
+        "docs/AGENTS.md",
+        "src/beestack/body/README.md",
+        "src/beestack/body/AGENTS.md",
+        "CHANGELOG.md"
+      ],
+      "impact": "Generated walking titles/captions and the policy docstring still said tripod walking/gait despite the canonical manuscript explicitly distinguishing programmed leg-phase patterns from classification of a realized gait. They now describe configured tripod-pattern controls, with no control computation or measured-gait claim added. No wording snapshot test was introduced."
     }
   ],
   "verification": {
-    "runtime": {
-      "python": "3.12.16",
-      "platform": "macOS arm64",
-      "uv": "0.13.7",
-      "ruff": "0.17.3",
-      "pytest": "9.2.0",
-      "coverage": "7.17.2",
-      "pandoc": "3.13",
-      "xelatex": "TeX Live 2026",
-      "flybody_commit": "d015e9bfe441bd90ae431bac24c55cb74bdbce26"
-    },
-    "tests_passed": 801,
+    "runtime": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+    "tests_passed": 802,
     "coverage": {
-      "covered_lines": 10834,
-      "num_statements": 11441,
-      "percent_covered": 92.49615101412411,
-      "percent_covered_display": "92.50",
-      "missing_lines": 607,
+      "covered_lines": 10845,
+      "num_statements": 11454,
+      "percent_covered": 92.47994652406418,
+      "percent_covered_display": "92.48",
+      "missing_lines": 609,
       "excluded_lines": 12,
-      "percent_statements_covered": 94.69451970981558,
-      "percent_statements_covered_display": "94.69",
-      "num_branches": 3498,
-      "num_partial_branches": 426,
-      "covered_branches": 2984,
-      "missing_branches": 514,
-      "percent_branches_covered": 85.30588907947399,
-      "percent_branches_covered_display": "85.31"
+      "percent_statements_covered": 94.68308014667365,
+      "percent_statements_covered_display": "94.68",
+      "num_branches": 3506,
+      "num_partial_branches": 428,
+      "covered_branches": 2990,
+      "missing_branches": 516,
+      "percent_branches_covered": 85.28237307472904,
+      "percent_branches_covered_display": "85.28"
     },
-    "coverage_floor_percent": 92.0,
+    "coverage_floor_percent": 92,
     "unit_commands": "output/reports/workflowz_unit_gates.json",
-    "native_commands_and_failure_history": "output/reports/workflowz_native_gates.json",
-    "distribution_proof": "output/reports/workflowz_final_wheel_runtime.json",
-    "installed_consumer_proof": "output/reports/workflowz_installed_consumer_completion.json",
+    "native_commands_and_failure_history": {
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "scope": "complete native offline analysis, physical/render checks, content/security/signposting and source-bound manuscript publication checks",
+      "steps": [
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/fetch_empirical_bee_data.py",
+            "--metadata-only"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 3.027
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/analyze_empirical_bee_data.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 2.528
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/analysis_pipeline.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 48.13
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/generate_animations.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 38.223
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/verify_bee_render.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 4.107
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/review_stack_integrity.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 2.457
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/run_research_suite.py",
+            "--assemble-only"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 9.496
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/run_methods_analysis.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 4.304
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/run_stack_synthesis.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 3.058
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/assess_digital_twin_readiness.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 0.071
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/z_generate_manuscript_variables.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 3.132
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/render_manuscript.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 24.299
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/signpost_project_tree.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 3.105
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/audit_documentation.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 2.575
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/run_security_audit.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 2.449
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/signpost_project_tree.py",
+            "--check"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 2.298
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/z_generate_manuscript_variables.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 2.562
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/render_manuscript.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 22.58
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/verify_generated_reports.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 2.525
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/audit_publication_readiness.py",
+            "--check"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 2.483
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/audit_publication_readiness.py",
+            "--check",
+            "--require-doi"
+          ],
+          "returncode": 1,
+          "expected_returncode": 1,
+          "seconds": 2.846
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/audit_publication_readiness.py",
+            "--check"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 2.404
+        }
+      ],
+      "complete": true,
+      "strict_deposit_state": "blocked only by missing new version-specific DOI; normal publication gate passed"
+    },
+    "distribution_proof": {
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "steps": [
+        {
+          "argv": [
+            "/opt/homebrew/bin/uv",
+            "build",
+            "--offline",
+            "--wheel",
+            "--sdist",
+            "--python",
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python"
+          ],
+          "cwd": "$VALIDATION_STAGE",
+          "returncode": 0,
+          "seconds": 2.182
+        },
+        {
+          "argv": [
+            "/opt/homebrew/bin/uv",
+            "pip",
+            "install",
+            "--offline",
+            "--no-deps",
+            "--reinstall-package",
+            "beestack",
+            "--python",
+            "$VALIDATION_STAGE/.uv-cache/wheel-smoke/bin/python",
+            "$VALIDATION_STAGE/dist/beestack-2.0.0-py3-none-any.whl"
+          ],
+          "cwd": "$VALIDATION_STAGE",
+          "returncode": 0,
+          "seconds": 0.199
+        },
+        {
+          "argv": [
+            "$VALIDATION_STAGE/.uv-cache/wheel-smoke/bin/python",
+            "-c",
+            "from pathlib import Path; import beestack; from beestack.version import PACKAGE_VERSION; assert Path(beestack.__file__).resolve().is_relative_to(Path('.uv-cache/wheel-smoke').resolve()); assert PACKAGE_VERSION=='2.0.0'; print('Independent installed-wheel origin and version verified')"
+          ],
+          "cwd": "$VALIDATION_STAGE",
+          "returncode": 0,
+          "seconds": 0.049
+        },
+        {
+          "argv": [
+            "$VALIDATION_STAGE/.uv-cache/wheel-smoke/bin/beestack-analysis",
+            "--project-root",
+            "$VALIDATION_STAGE"
+          ],
+          "cwd": "$VALIDATION_STAGE/.uv-cache/cli-outside-cwd",
+          "returncode": 0,
+          "seconds": 49.733
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "dist/beestack-2.0.0-py3-none-any.whl",
+          "size": 331061,
+          "sha256": "e7de2360b81a501a7968c4214c41aa91c53345265cb3cd0f4a54ec527be7d25f"
+        },
+        {
+          "path": "dist/beestack-2.0.0.tar.gz",
+          "size": 392913,
+          "sha256": "f0ac7e617ac3e3eccfdefc562ad1d87a3cf3611d8d97768ebce651778a5b5a49"
+        }
+      ],
+      "package_source_sha256": {
+        "beestack/__init__.py": "0eade16921bae075ac8b250fa3d0eb6709e1a0a0317933ecfbba3014b89034e0",
+        "beestack/_public_exports.py": "977f1001099c8c599f2d90aa9073647167f3842cb20af3f8b057fe996d54dd4a",
+        "beestack/body/__init__.py": "d91705cc9dedb458de408fdeb5040f284a2259229d4ae2a14ecc50b22dcb3f16",
+        "beestack/body/bee_mjcf.py": "d2503413bc426e785bb2c4e914fe45d8b9a7050a35959da7d392a865e8c2802b",
+        "beestack/body/energetics.py": "f6268d9fe10783e6e9ad1b4124e2e314ef0261a55666766e9d0149cace255b0b",
+        "beestack/body/flybody_adapter.py": "ba2b448c9e9a26a64a41be71b0cc7f234111d80c8fb0072a685141da7a9e4456",
+        "beestack/body/flybody_scene.py": "5074f4661b254feb81708bb1f64e8b147754d70dc4e93ef26d691e31c8f834bf",
+        "beestack/body/flybody_scene_signpost.py": "9e2be1502ffc211e1c26c0ba1b37360415334599c56729fde9c44953f51173a7",
+        "beestack/body/morphology.py": "17874aa9e594cc40b8fc46648b22b69b6c1f1740baf5e3859c23836beeffe8e3",
+        "beestack/body/simulation.py": "40a2ee74d9f0e08da4209f0e07e722968ee3de01b61216c0f0d2c9ccb0c573cc",
+        "beestack/body/state.py": "b66d5574832f4cb835439095976ae099a6ace7782c7fc829c8ed6fe8e475141c",
+        "beestack/brain/__init__.py": "47b12588bfa338a22f8f88e4d09cc04d1c29fdab91aac2d82d0e4cd82e8499fc",
+        "beestack/brain/anatomy.py": "efdbb5fae84093f567e335dde4eae2c1560c3b2ee7475a769d3ed622def60171",
+        "beestack/brain/central_complex.py": "47f0e37245f0f5e680c36386bb80483a69bea3ba9b3f3762f789e51c70eaad63",
+        "beestack/brain/connectome/__init__.py": "0ec9c5973de243c9280af6727ece1537a7d961735e2f8bfaf1153ac30e779240",
+        "beestack/brain/connectome/graph.py": "82583c0887d285172cc8daf57eb331ca98e3d5e96afbe5985d1da5bf3096865c",
+        "beestack/brain/connectome/structural_wiring.py": "189d9872a1f8486ca9c1ec50408b2395c7fbf8eb99df5ffced980a92562dc3c0",
+        "beestack/brain/datasets.py": "a6a86203dddadd225c4a389c7663aebf570a603b0c5a6bbacee2d964ddd378d3",
+        "beestack/brain/empirical.py": "36edd6759682c1b26a1947d42310447eaff13ae86c2638ec737e8573ba396f75",
+        "beestack/brain/empirical_analysis.py": "180bb616d178134cd4cdb2678234875765b128ce173657bd5f7abce03a7990f2",
+        "beestack/brain/empirical_data.py": "60eff91fe8af6edd09f33fd0950e2876f5adb0e0e9bdf7d642c4bb2d98e90ccd",
+        "beestack/brain/empirical_fetch.py": "a48426378c3db198bc784741c772c9ceee7b8f8563f18eeda7f8440bb5295f83",
+        "beestack/brain/empirical_ingest.py": "b2922d8d8092f5ba9c128d053cfdca2842f877af4d1518253d6b4c46e382f0e5",
+        "beestack/brain/empirical_ingest_reports.py": "0f12eb1084658fbb2dbf2b6476dfced471524fdad974b2232fbeff3a7823aafe",
+        "beestack/brain/empirical_parsers/__init__.py": "9411307979e5298a30c4393e1dc2141d4af21d3a8cad54377b623ab96028074e",
+        "beestack/brain/empirical_parsers/anatomy_loader.py": "a9940fc67eca8be3ec5adabde790d9168ef4446cbe275a5f9e4bab3f9c6d4de4",
+        "beestack/brain/empirical_parsers/antennal.py": "2ad220f4464dc45a889daf10e14633f0fac02210e16c1d9b39695d13d5cd12af",
+        "beestack/brain/empirical_parsers/calcium.py": "5d944415cc4fc672d5ac65e6203d800e525fb321053f2a5f268cd258f48817ba",
+        "beestack/brain/empirical_parsers/common.py": "f0c8b460b2e126e83e3ec6601dc3cf192dbc2c59f2da5db676dc0a34b858d045",
+        "beestack/brain/empirical_parsers/nouvian.py": "d3715d198285cd61b71af9d166f9a7fb2c219875db603ce1a065c6915ec89d5c",
+        "beestack/brain/empirical_parsers/panels.py": "eed2bc471334a34d3af79143d84ce956604a0ee075909513a97013b88b360419",
+        "beestack/brain/empirical_parsers/szyszka.py": "64400d70221588df29daf3028f75014a0103c323479adb3d573a6b02769c497a",
+        "beestack/brain/empirical_parsers/waggle.py": "a3626883cec3626390ce1ab6383e900a8f522280857ea3c22ce85d234968c19c",
+        "beestack/brain/empirical_pipeline.py": "6cb2eb45a7b9fce55d3665086ca7097ba4ba3d01fc42cc8ed87cab28a81a4ee5",
+        "beestack/brain/empirical_status.py": "d652552fab623c6e256e377d971af4c6a0ea0df21560d82365eeb966cb90330a",
+        "beestack/brain/mushroom_body.py": "8766b5f8dfacd48f11826104993dd970d5cf26eeab3fd7dc113aa8923bf6f4e2",
+        "beestack/brain/olfaction.py": "d997cfaad7fdf3a7b7c0a28db5ec75702c1cecaef4e9c00531899ab7c541aa12",
+        "beestack/brain/pipeline.py": "e6c34fa9284120b5d59c7789da77e10940e448231b47c2afe52dbcc935747487",
+        "beestack/brain/state.py": "2c1e0f1d1aa4c2288e35d94f2baa4fef220611697c8936b43f11043e19f8842f",
+        "beestack/brain/vision.py": "118c5d004c0b9d7b108e4c8bf1a5a36f93b82ee120b0fdfaaff6496f63e25434",
+        "beestack/brain/waggle.py": "2349b37bd35e87a575b78255d83f130b71bedaa033c147449cd24cf7a45a25a3",
+        "beestack/cli.py": "e5c89edd74b7c8604387b16469e919ee37ce2ffcaf05deb6a53dc338dbde1771",
+        "beestack/config.py": "0f793cd272181df932ffdc85c63ba6a408f48d124d642248ad6c45d358effd43",
+        "beestack/contracts.py": "13fef12ced75fc9cf16124e4b1009e0b05485cc5608646a31e6c4ef7803a9a37",
+        "beestack/digital_twin/__init__.py": "fcc8f2441dc2de16120b532607981f91a9f56c3fbf0e49bfb45fd6ca5793df67",
+        "beestack/digital_twin/readiness.py": "d695956ab0c2f21dce1ed40faa065339679d59a74136c9ca3c3c6bdfdf403bef",
+        "beestack/documentation_audit.py": "4300d608b97cd6f0bc0c931376adc805a02e9cf8c614521cdbe98a596d73575d",
+        "beestack/documentation_signpost.py": "df1d2dc1f40c8164e4d00df02361fd1267ae8fd5aa5d5075f8c5f45da10f2b81",
+        "beestack/figure_audit.py": "b21766291e7d1ee3096b9f5436ab4251a7c563c49fbe1153062536503026130a",
+        "beestack/generated_report_audit.py": "dcb8bd9f08d8f9f6910660c3474be85980287a5decdefde0beb8211e9940da36",
+        "beestack/integrity.py": "6856df4710dab2727309bb3edde0fcf1b9718ed20a55882c5dfff416ca06a625",
+        "beestack/manifest.py": "366bb51ae1836f7f22626ae794232777494879cbfecfc6de7324a23990b8f760",
+        "beestack/manuscript_variables.py": "8a3c75225248d62ec5caa971bbc57cb2e989f15663fade6c76d311b56d512311",
+        "beestack/mind/__init__.py": "bddae02d780d4840e36cfc34900e205cb867b0bbafa953fed6a901a3ad70bd0e",
+        "beestack/mind/caste.py": "62bd78c967ca5bf5d145c9ae130efcaa1bbe071622250f871fc2cb16855a82cd",
+        "beestack/mind/dance.py": "45aa06980a4972a05b54d124a3fa6aefd44874e79b718351767ba723f0a585da",
+        "beestack/mind/policy.py": "5cca12505daa81fdc887cca6ce0e8b58ebdf4375472f5ba1cc5518870f5f7e47",
+        "beestack/mind/state.py": "ed6bdc0ebabb6483a187a990799151e67b0a1e46b02302bb9de8c2c463691efd",
+        "beestack/niche/__init__.py": "5ee0c641cf09876637b1e5a7e6d6ed1edef107e7833a33d736c1765cbcd88811",
+        "beestack/niche/comb.py": "83f3a748df35aa5b5dfb1f8d2a206ee1a9b9c4fd3c65701da9eee2249cae5111",
+        "beestack/niche/landscape.py": "ab1537fc53dc7d1db56781f8e19c1eb6627f18e37023e2050778715ead7f56c2",
+        "beestack/niche/metrics.py": "9cdeebd2181f403b3fa1f052edb41b43b2a448c2c022363b7b9b186ff1e13a93",
+        "beestack/niche/state.py": "aabf7e55ff18ba1743b30a96ffcea7abea15c13f279dcf598cb47005af57cb59",
+        "beestack/niche/thermal.py": "2d4bb64569c6acf097b0752f7e21cd139594f3418ee99f681eafe75719222ee0",
+        "beestack/orchestrator.py": "c3db8955d55d3a2bc879dc6146012d8c7a152c76c1514708a2020c2605156852",
+        "beestack/pipeline.py": "5787cd9e7afb249013db52af24e94d32e0ff63f3b5049a50c9d2815a09db7a81",
+        "beestack/project_config.py": "2f3a2f15d6463bd320c07da3136a3942cf6c26b161db91f82e909308142cc398",
+        "beestack/publication_readiness.py": "994239f60b45e5a259d209c7e0d3490281a1609765bd04e849374b8d21010883",
+        "beestack/research/__init__.py": "63f46c5200824257baf5cf097efb24b12ddd7916a6b421495b8f58534b7cda31",
+        "beestack/research/methods.py": "f920a670b10496a0c1992a363e8d8c4c4e66b5e031dfc05f66c8bcc7d9db7ef1",
+        "beestack/research/methods_assembly.py": "3f8da55d6539b0553be5bd5d267990d1d192b2ab819ab422ca6d731e0e03b640",
+        "beestack/research/methods_helpers.py": "3e923969ec8ffac612e1ef88a0f7c75d9a09e881aee3dbdf1c7367f71f479185",
+        "beestack/research/methods_models.py": "83628b29677c2d53dacfa32f0ed2853d9f1c40aac9c858f2fe45a59663809f9f",
+        "beestack/research/methods_panels.py": "8004f618b403f50b669d3495548dc99f28f370605aaeadd4ec14dc1809b181f9",
+        "beestack/research/methods_validators.py": "ba79c63bc44d3105a70ba9126b739f7ceb3c3b10490f8951af6704eb14520b9a",
+        "beestack/research/suite.py": "dbb01b24884bd105022f75ab671dec1d1394683d7b1b04696a5befb5537d7acb",
+        "beestack/research/synthesis.py": "41f61c246cfe8bbe88865f755e9aef8d4749f79f7651e6ba26d6b11d87aefbab",
+        "beestack/security/__init__.py": "c846de04689eaff7e35b6ef2c5ab7ae35f36abbaa3c841ef9040dffa2c643a29",
+        "beestack/security/path_safety.py": "4a6f9a75eaf8fdaf524a8150614d618b772149e2ba9b5596f736b3661621bc0a",
+        "beestack/security/posture.py": "d4bd8c7e6a4856651b4763c7992fff0bad00a59b818544d5d837ae6173c915dd",
+        "beestack/security/url_policy.py": "b27eb9ed5ceb6f40b0849c6d306a450b4d46bef6f35bf6bf3fdb2b59ee269010",
+        "beestack/source_audit.py": "058bd1f718ed2f363d94f17ebeabfb69798544cf70bc36deb1635056607b8ffb",
+        "beestack/source_refresh.py": "75d9b9edf8ae03f73bcd619c9ea3cd98d37e0998b333d31f5635dd45edbc1a76",
+        "beestack/swarm/__init__.py": "87708d6bac3ff172e1f14cc10bb72d18fa8a8e06aa846eb622692a7d6516fe70",
+        "beestack/swarm/agents.py": "6fa5cc34ad34f0eeab6b766e274b1a2c49f9c266003e16753c8f9f2586fa616a",
+        "beestack/swarm/communication.py": "7076d1b45e4229ae839f38c5ded7b65f61c525909c7bbf850de43083bf22868c",
+        "beestack/swarm/metrics.py": "599520a156aa5d4d90ab65d19a4f52cd08838b886d5d42506a7f1665fbf18e47",
+        "beestack/swarm/pheromones.py": "e678b3743adbc3ac3f3d0fdc19a3b91765c3390c1dbd4424e157312d3ebbc16e",
+        "beestack/swarm/state.py": "f3c3e67f3218f0963e639af0c1adcdf1cde43d3c0dfcdf620f5582f59fb3d0e2",
+        "beestack/utils/__init__.py": "0aa74cb11dd2a250d640ab63ef06c70785347c325bc8715158ca197bde6c6eb9",
+        "beestack/utils/io.py": "99b5c0604e9656605484f8bf9d11ad60181ef07003db2a570c208be2fe40ed98",
+        "beestack/utils/math.py": "a759eaba06afbc7bf54b14364f24f351276e6236cac14c80a6e31ccf9d52a68c",
+        "beestack/utils/paths.py": "cbd441e0e80509b422c63c859b2cae9f807f44a2199039c62d2ba830d6f88eb5",
+        "beestack/version.py": "5d27ba74f3cf1b0e5a930081d8613d5bd6cfe7be310e54b8319b4d88a41467b4",
+        "beestack/visualization/__init__.py": "da68661a1ba2851bd637df6c70a1d2064acdedb3933b067eaaaf00f6d012841e",
+        "beestack/visualization/animation_manifest.py": "f009ebae98c6b404f8e0707f8a2fd77aec84e29e3a337b509e679955f8b41825",
+        "beestack/visualization/animations.py": "ff20b31492f68dbfc36fd42e54497da3d627013878344a27758397bfddbb6857",
+        "beestack/visualization/bee_render_verification.py": "48d34ab62631267c10c0df657a0a085173922209359d756c8171a77b0bb2a550",
+        "beestack/visualization/bee_signature.py": "2d8a8c9b2bfdf7b9c14d83953a76e56b4abae42e3836b32a9439c2bce42ac91d",
+        "beestack/visualization/connectome_figures.py": "c12fd3a90833b0b93f5934a1675781d55ea8094e8a901c879e293d55d67458a4",
+        "beestack/visualization/empirical_figures.py": "f5e901899bbf878a1587d0bf9ae32e4f0c229cd5fc69ec0746297c110e205295",
+        "beestack/visualization/figure_metadata.py": "261627f486ab3217db1b551608ae7eab1c9ac5fb8dc0455900fd8e5dd95f31d1",
+        "beestack/visualization/figure_output.py": "d4769abeca05719686754beb8bce9bbb961dc6b98c7e2974672ab88bbbeffe9f",
+        "beestack/visualization/figure_plot_data.py": "4e7cdab0e49f7ba8e7295b9892f9814fce0d6bffb5e19a0176d185120f6c6147",
+        "beestack/visualization/figure_plot_specs.py": "f0d7ae5fdda908d95cf59e0947509a93a847558e7bbe59aa977a0c6a0b64b2cd",
+        "beestack/visualization/figure_registry.py": "4e32e20066c6bcb8dd8ace93a6814d89bffd10b616f4494cc2e09be76a1715e0",
+        "beestack/visualization/figures.py": "63ca12653374b3173ec5cae8ce8abbfa39e54611e3aa21a1d1a9f434417843a0",
+        "beestack/visualization/figures_analysis_panels.py": "52e119ccf24969f9abe89421f2133c1d6678cbc5a9fa72692d8a5860997cc216",
+        "beestack/visualization/figures_calibration_maps.py": "989599356b571c478925577ea529b5725e16574f59baf9359ceaae8a239ba63b",
+        "beestack/visualization/figures_claim_audit.py": "50e735fc653eeb2d3babbe577119b5998c5255340e944e949cfce6e252fdc12b",
+        "beestack/visualization/figures_common.py": "62cda8e2b0720d86f54f231d706740fba7f7c422db2740faa2684c5ad4ce6a93",
+        "beestack/visualization/figures_overview.py": "1aaff32117dd4372f73c9ada742f8d7632efdd1853d266628a69bf5485d9e3fc",
+        "beestack/visualization/methods_figures.py": "9d6e19ca1ac21151dd1d8d215b05568cca4f0fae7cf7b14e380dbeefe7459a81",
+        "beestack/visualization/render_stills.py": "a811c8eea63360f1619a1ef90e3ce49333c35c65059618b4da001dafaad5fedd",
+        "beestack/visualization/research_figures.py": "a2e85300654ed3ff7803d9b554887105be0fedbf8e1ace6a11cc31efc42d916e",
+        "beestack/visualization/style.py": "73a46b7b4d223b5db0c982b6ea6d5a8d7a17f53e3f3704ed967d58897a7a8029",
+        "beestack/visualization/synthesis_figures.py": "d51efd5cbc496eb9b6223091281347345d69dc06c9cdea48beb40ecf72b5ff6d",
+        "beestack/visualization/visual_quality.py": "bff69f448e1f8be173e79c6525fa237e9c64f337ab7a89fdf841efa9b1ad887d",
+        "beestack/waggle_literature_regression.py": "706955f930bd50d773edd4bb6e5bac2e304d362cf3902d11da96fb25eea5a593"
+      },
+      "core_before": {
+        "run_summary.json": "65ea0947b48430c7e8b7950375a997bd0a1eaea09249ee83b0e9fcdb7c3f5eac",
+        "simulation_records.json": "1bfd077e6ffdff0cdf74553c9cfab47a8f51cb1ca00f41ffe5df87e5e543c421",
+        "task_allocation.json": "d3b6256590b0739b1ec2b208c21863ff13a3ab1046eb92ac5b29edb457d610fa"
+      },
+      "core_after": {
+        "run_summary.json": "65ea0947b48430c7e8b7950375a997bd0a1eaea09249ee83b0e9fcdb7c3f5eac",
+        "simulation_records.json": "1bfd077e6ffdff0cdf74553c9cfab47a8f51cb1ca00f41ffe5df87e5e543c421",
+        "task_allocation.json": "d3b6256590b0739b1ec2b208c21863ff13a3ab1046eb92ac5b29edb457d610fa"
+      },
+      "outside_cwd_outputs_absent": true,
+      "path_variables": {
+        "PROJECT": ".",
+        "VALIDATION_STAGE": ".uv-cache/wfz-release/stage-001"
+      },
+      "scope": "clean final distribution, every packaged source/data file matched to canonical source, real independent CLI from a different cwd; reduced-core equivalence is not biological or binary-render reproducibility"
+    },
+    "installed_consumer_proof": {
+      "scope": "real noneditable installed animation command, all lazy public exports and source-distribution wheel roundtrip",
+      "pythonpath_removed": true,
+      "steps": [
+        {
+          "argv": [
+            "$VALIDATION_STAGE/.uv-cache/wheel-smoke/bin/python",
+            "-c",
+            "import json,beestack; from pathlib import Path; assert '/wheel-smoke/' in str(Path(beestack.__file__).resolve()); names=sorted(beestack.__all__); values=[getattr(beestack,name) for name in names]; print(json.dumps({'resolved_public_symbols':names,'count':len(names)}))"
+          ],
+          "cwd": "$VALIDATION_STAGE",
+          "returncode": 0,
+          "seconds": 2.352
+        },
+        {
+          "argv": [
+            "/opt/homebrew/bin/uv",
+            "build",
+            "--offline",
+            "--wheel",
+            "--python",
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python"
+          ],
+          "cwd": "$VALIDATION_STAGE/.uv-cache/sdist-roundtrip-uw_7tetc/beestack-2.0.0",
+          "returncode": 0,
+          "seconds": 0.812
+        },
+        {
+          "argv": [
+            "$VALIDATION_STAGE/.uv-cache/wheel-smoke/bin/beestack-animations",
+            "--project-root",
+            "$VALIDATION_STAGE"
+          ],
+          "cwd": "$VALIDATION_STAGE/.uv-cache/animation-outside-cwd",
+          "returncode": 0,
+          "seconds": 38.485
+        }
+      ],
+      "lazy_exports": {
+        "resolved_public_symbols": [
+          "Action",
+          "AntennalMovementSummary",
+          "AtlasDownloadRecord",
+          "AtlasInventory",
+          "BeeAgent",
+          "BeeBodyCalibrationSummary",
+          "BeeBodyPlanArtifact",
+          "BeeBrainActivitySummary",
+          "BeeBrainAnatomySummary",
+          "BeeBrainAtlasAsset",
+          "BeeBrainDataCompletenessPanel",
+          "BeeBrainEmpiricalProfile",
+          "BeeBrainEndToEndReport",
+          "BeeBrainSourceGap",
+          "BeeBrainSourceStatus",
+          "BeeStackConfig",
+          "BeehaveColonySummary",
+          "BeliefState",
+          "BodyState",
+          "BodyTelemetry",
+          "BrainState",
+          "CalciumImagingProtocol",
+          "CombGrid",
+          "CombMetrics",
+          "DanceVector",
+          "DataQualityCheck",
+          "DiagnosticRecord",
+          "DigitalTwinReadinessReview",
+          "DocumentationAudit",
+          "EVIDENCE_AVAILABILITY_STATES",
+          "EmpiricalAnatomyDataset",
+          "EmpiricalBrainDataset",
+          "EmpiricalCalciumDataset",
+          "EmpiricalConfig",
+          "EmpiricalEvidenceRecord",
+          "EmpiricalOdorResponsePanel",
+          "EmpiricalPanelStats",
+          "EmpiricalTemplateBank",
+          "EmpiricalWaggleFollowerDataset",
+          "EvidenceTier",
+          "FigureAudit",
+          "FlyBodyBeeBackend",
+          "FlyBodyConfig",
+          "FlyBodyContactMetrics",
+          "FlyBodyModificationPlan",
+          "FlyBodySceneArtifact",
+          "FlyBodySceneRenderConfig",
+          "FollowerOrientationDiagnostics",
+          "GeneratedReportAudit",
+          "GlomerularResponseSummary",
+          "HoneybeeCalibrationTarget",
+          "ManuscriptEvidenceLink",
+          "MethodsAnalysisReport",
+          "ModuleIntegrityReport",
+          "ModuleMethodScorecard",
+          "ModuleMethodsPanel",
+          "ModuleSynthesisPanel",
+          "ModuleValidationPanel",
+          "ModuleVisualizationPanel",
+          "NeuropilAbbreviation",
+          "NicheAdapterSummary",
+          "Observation",
+          "PheromoneField",
+          "PolicyCandidate",
+          "PolicySelectionDiagnostics",
+          "ResearchConfig",
+          "ResearchSuiteReport",
+          "ResearchValidationRecord",
+          "ScaleReadiness",
+          "ScenarioSweepPanel",
+          "SecurityPostureAudit",
+          "SensitivitySweepResult",
+          "SimulationResult",
+          "SimulationState",
+          "SourceAudit",
+          "SparseCode",
+          "StackContract",
+          "StackIntegrityReview",
+          "StackSynthesisReview",
+          "TwinReadinessAxis",
+          "TwinScale",
+          "ValidationRecord",
+          "VisualizationArtifactRecord",
+          "VisualizationConfig",
+          "WaggleDanceKinematics",
+          "WaggleDanceVisualizationConfig",
+          "WaggleDecodingDiagnostics",
+          "WaggleFollowerSummary",
+          "WaggleFollowerTrack",
+          "action_schema",
+          "action_to_flybody_action",
+          "action_to_flybody_named_action",
+          "activity_summary_from_components",
+          "adapter_smoke_rollout",
+          "all_checks_passed",
+          "allocate_tasks",
+          "analyze_odor_panel",
+          "antennal_vibration_from_movement",
+          "assemble_methods_analysis_report",
+          "assemble_research_suite_report",
+          "assemble_stack_synthesis_review",
+          "assess_digital_twin_readiness",
+          "atlas_download_record_from_asset",
+          "atlas_download_records_from_dicts",
+          "atlas_inventories_from_directory",
+          "atlas_inventory_from_zip",
+          "audit_documentation",
+          "audit_figures",
+          "audit_generated_reports",
+          "audit_security_posture",
+          "audit_sources",
+          "bee_body_calibration_summary",
+          "bee_brain_data_completeness_panel",
+          "bee_flight_cycle_action",
+          "bee_walk_cycle_action",
+          "beehave_colony_summary",
+          "broadcast_dance",
+          "build_empirical_template_bank",
+          "build_flybody_modification_plan",
+          "calcium_dataset_from_trial_array",
+          "caste_prior",
+          "comb_metrics",
+          "config_from_mapping",
+          "contract_matrix",
+          "cost_of_transport",
+          "dance_recruitment_diagnostics",
+          "dataset_by_id",
+          "datasets_for_module",
+          "decode_waggle",
+          "digital_twin_axis_catalog",
+          "digital_twin_readiness_markdown",
+          "documentation_audit_markdown",
+          "dominant_caste",
+          "empirical_anatomy_datasets",
+          "empirical_brain_datasets",
+          "empirical_brain_profile",
+          "empty_comb",
+          "extract_pandoc_citation_keys",
+          "finalize_project_outputs",
+          "flybody_action_dim_from_env",
+          "flybody_action_names_from_spec",
+          "flybody_contact_report_markdown",
+          "generated_report_audit_markdown",
+          "heading_estimate_deg",
+          "hexagonal_packing_score",
+          "honeybee_calibration_targets",
+          "honeybee_standard_brain_assets",
+          "integrity_review_markdown",
+          "kc_class_counts",
+          "load_neuropil_abbreviations",
+          "manuscript_figure_index",
+          "manuscript_figure_index_markdown",
+          "metabolic_budget_j",
+          "methods_analysis_markdown",
+          "model_card",
+          "module_coverage",
+          "morphology_summary",
+          "neuropil_abbreviations_from_html",
+          "niche_adapter_summary",
+          "observation_schema",
+          "odor_panel_sparseness",
+          "parse_bibtex_entries",
+          "parse_paoli_matlab_payload",
+          "parse_tabular_odor_response_rows",
+          "pheromone_gradient",
+          "policy_selection_diagnostics",
+          "process_observation",
+          "render_flybody_long_waggle_scene",
+          "render_flybody_swarm_collision_scene",
+          "render_flybody_waggle_scene",
+          "research_report_markdown",
+          "response_templates_from_calcium_dataset",
+          "response_templates_from_odor_panel",
+          "run_sensitivity_sweeps",
+          "run_simulation",
+          "security_posture_markdown",
+          "signposted_directories",
+          "source_audit_markdown",
+          "stack_contracts",
+          "stack_integrity_review",
+          "stack_synthesis_markdown",
+          "step_body",
+          "summarize_anatomy",
+          "summarize_antennal_movement_rows",
+          "summarize_calcium_trials",
+          "summarize_waggle_follower_rows",
+          "task_allocation_snapshot",
+          "template_alignment_matrix",
+          "thermal_step",
+          "validate_bee_body_plan_xml",
+          "validate_calcium_dataset",
+          "validate_config",
+          "validate_diagnostic_payload",
+          "validate_download_url",
+          "validate_odor_panel",
+          "validate_rendered_frames",
+          "validate_stack_contracts",
+          "waggle_dance_visualization_config",
+          "waggle_decoding_diagnostics",
+          "waggle_kinematics_from_config",
+          "waggle_vibration_from_followers",
+          "wing_power_mw",
+          "write_modified_bee_body_plan",
+          "write_prefixed_multi_bee_scene_xml",
+          "zero_action",
+          "zero_observation"
+        ],
+        "count": 206
+      },
+      "sdist_roundtrip": {
+        "package_files": 119,
+        "package_bytes_identical": true
+      },
+      "outside_cwd_outputs_absent": true
+    },
     "lazy_exports_resolved": 206,
     "sdist_roundtrip": {
       "package_files": 119,
       "package_bytes_identical": true
     },
+    "canonical_package_source_files_matched": 119,
     "core_sha256": {
       "run_summary.json": "65ea0947b48430c7e8b7950375a997bd0a1eaea09249ee83b0e9fcdb7c3f5eac",
       "simulation_records.json": "1bfd077e6ffdff0cdf74553c9cfab47a8f51cb1ca00f41ffe5df87e5e543c421",
@@ -1823,60 +2552,1466 @@
     "artifacts": [
       {
         "path": "dist/beestack-2.0.0-py3-none-any.whl",
-        "size": 330838,
-        "sha256": "9facf85850757f2803549617962c3bba87c46d269774f6766ad379d441b06ed1"
+        "size": 331061,
+        "sha256": "e7de2360b81a501a7968c4214c41aa91c53345265cb3cd0f4a54ec527be7d25f"
       },
       {
         "path": "dist/beestack-2.0.0.tar.gz",
-        "size": 392318,
-        "sha256": "03d1eaf8fad536a2d303d1db5b000cfd9d66efb8f66da39b25ff38f6dd6edef0"
+        "size": 392913,
+        "sha256": "f0ac7e617ac3e3eccfdefc562ad1d87a3cf3611d8d97768ebce651778a5b5a49"
       }
     ],
-    "visual_proof": "output/reports/workflowz_pdf_inspection.json",
-    "local_link_proof": "output/reports/workflowz_document_links.json",
-    "dependency_observation": "output/reports/workflowz_dependency_observation.json",
-    "final_integrated_proof": "output/reports/workflowz_integrated_final_proof.json",
-    "interactive_proof": "output/reports/workflowz_interactive_inspection.json",
-    "canonical_package_source_files_matched": 119,
+    "full_runtime_test_source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+    "source_archive_proof": {
+      "scope": "committed source tree excluding generated outputs and operational environments; external pinned dependencies and empirical payloads are not included",
+      "source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+      "path": "dist/BeeStack-2.0.0-source.tar.gz",
+      "sha256": "c0b7546d7ad8c0a6ed599b95623a034aff18698fbf1200e4657ad0526a4dd706",
+      "size": 640567,
+      "source_files": 295,
+      "canonical_manuscript_sections": 18,
+      "path_count": 295,
+      "excluded_top_level": [
+        ".mplconfig",
+        ".pytest_cache",
+        ".uv-cache",
+        ".venv",
+        "build",
+        "dist",
+        "output"
+      ],
+      "published": false
+    },
+    "final_integrated_proof": {
+      "source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "scope": "complete native suite/production analysis, retained real data replay, independent wheel/sdist and both installed CLIs, source archive, current manuscript seal and decoded full production render/unchanged contact contracts",
+      "steps": [
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "$PROJECT/.uv-cache/wfz-release/stage-001/scripts/signpost_project_tree.py"
+          ],
+          "returncode": 0,
+          "seconds": 2.669
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "$PROJECT/.uv-cache/wfz-visual-20261108/all_native_gates.py"
+          ],
+          "returncode": 0,
+          "seconds": 320.127
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "$PROJECT/.uv-cache/wfz-visual-20261108/package_current_candidate.py",
+            "$PROJECT",
+            "f94eae7e65792aae400e6585dd890b688e9db4a1"
+          ],
+          "returncode": 0,
+          "seconds": 94.375
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "$PROJECT/.uv-cache/wfz-visual-20261108/post_package_finalize.py",
+            "$PROJECT",
+            "f94eae7e65792aae400e6585dd890b688e9db4a1"
+          ],
+          "returncode": 0,
+          "seconds": 126.568
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "$PROJECT/.uv-cache/wfz-visual-20261108/full_scene_contracts.py",
+            "$PROJECT",
+            "f94eae7e65792aae400e6585dd890b688e9db4a1"
+          ],
+          "returncode": 0,
+          "seconds": 0.491
+        }
+      ],
+      "complete": true
+    },
+    "final_post_package_proof": {
+      "source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "scope": "post-installed-CLI real render evidence, regenerated report/visual contracts, complete documentation/security audits and final source-data-figure-bound manuscript seal",
+      "steps": [
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/verify_bee_render.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 4.077
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/review_stack_integrity.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 2.511
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/run_research_suite.py",
+            "--assemble-only"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 9.548
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/run_methods_analysis.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 4.218
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/run_stack_synthesis.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 3.137
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/assess_digital_twin_readiness.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 0.048
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/z_generate_manuscript_variables.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 2.611
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/render_manuscript.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 22.541
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/signpost_project_tree.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 2.465
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/audit_documentation.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 2.407
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/run_security_audit.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 2.595
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/signpost_project_tree.py",
+            "--check"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 2.349
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/z_generate_manuscript_variables.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 2.364
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/render_manuscript.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 21.942
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/verify_generated_reports.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 2.423
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/audit_publication_readiness.py",
+            "--check"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 2.664
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/audit_publication_readiness.py",
+            "--check",
+            "--require-doi"
+          ],
+          "returncode": 1,
+          "expected_returncode": 1,
+          "seconds": 2.625
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "scripts/audit_publication_readiness.py",
+            "--check"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 2.433
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "$PROJECT/.uv-cache/wfz-visual-20261108/check_document_links.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 3.759
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "$PROJECT/.uv-cache/wfz-visual-20261108/inspect_current_visuals.py"
+          ],
+          "returncode": 0,
+          "expected_returncode": 0,
+          "seconds": 29.789
+        }
+      ],
+      "actual_unavailable_producer_contract": {
+        "scope": "unavailable current odor-conditioned aggregate, not absence of standalone raw payloads",
+        "research_states": [
+          "analysis_unavailable"
+        ],
+        "methods_brain_states": [
+          "analysis_unavailable"
+        ],
+        "current_represented_records": 0
+      },
+      "pdf_sha256": "17f570ef1ff8d7b54ff851f222bb32e60f2fb04438fa04589f44fa270f8f0647",
+      "strict_deposit_state": "blocked only by missing new version-specific DOI; ordinary repository publication gate passes",
+      "complete": true
+    },
+    "physics_and_render": {
+      "source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+      "scope": "decoded full production native scene GIFs and exact deterministic contact/orientation preservation against the prior canonical baseline; no raw-array or declared-frame-count substitute",
+      "scenes": [
+        {
+          "scene": "collision",
+          "decoded_frames": 24,
+          "requested_frames": 24,
+          "width": 640,
+          "height": 480,
+          "bees": 10,
+          "substeps": 4,
+          "requested_fps": 8,
+          "decoded_duration_ms": 2880,
+          "gif_centisecond_rounding_bound_ms": 240,
+          "metrics_identical_to_prior_canonical": true,
+          "visual_profile": "viewport_buffers_scene_scoped_lighting",
+          "gif": "output/animations/beeswarm_10_beebody_collision.gif",
+          "contact_report": "output/animations/flybody_scenes/collision/contact_metrics.json"
+        },
+        {
+          "scene": "waggle",
+          "decoded_frames": 24,
+          "requested_frames": 24,
+          "width": 640,
+          "height": 480,
+          "bees": 11,
+          "substeps": 4,
+          "requested_fps": 8,
+          "decoded_duration_ms": 2880,
+          "gif_centisecond_rounding_bound_ms": 240,
+          "metrics_identical_to_prior_canonical": true,
+          "visual_profile": "viewport_buffers_scene_scoped_lighting",
+          "gif": "output/animations/beeswarm_waggle_dance_configured.gif",
+          "contact_report": "output/animations/flybody_scenes/waggle/contact_metrics.json"
+        },
+        {
+          "scene": "waggle_long",
+          "decoded_frames": 96,
+          "requested_frames": 96,
+          "width": 640,
+          "height": 480,
+          "bees": 11,
+          "substeps": 4,
+          "requested_fps": 12,
+          "decoded_duration_ms": 7680,
+          "gif_centisecond_rounding_bound_ms": 960,
+          "metrics_identical_to_prior_canonical": true,
+          "visual_profile": "viewport_buffers_scene_scoped_lighting",
+          "gif": "output/animations/beeswarm_waggle_dance_long.gif",
+          "contact_report": "output/animations/flybody_scenes/waggle_long/contact_metrics.json"
+        }
+      ],
+      "complete": true
+    },
+    "focused_lighting_control": {
+      "scope": "real compiled lighting-scaling regression and native baseline/candidate control; illumination deliberately becomes scene-scoped, not preserved per copied body",
+      "steps": [
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/ruff",
+            "check",
+            "src",
+            "tests",
+            "scripts"
+          ],
+          "returncode": 0,
+          "seconds": 0.088
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/ruff",
+            "format",
+            "--check",
+            "src",
+            "tests",
+            "scripts"
+          ],
+          "returncode": 0,
+          "seconds": 0.025
+        },
+        {
+          "argv": [
+            "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+            "-m",
+            "pytest",
+            "tests/test_structure_flybody_visualization.py::test_swarm_scene_lighting_work_does_not_scale_with_bee_count",
+            "tests/test_structure_flybody_visualization.py::test_prefixed_multi_bee_scene_xml_is_valid_and_contact_capable",
+            "tests/test_structure_flybody_visualization.py::test_module_animation_generation_and_accessibility_manifest",
+            "--no-cov",
+            "--durations=10"
+          ],
+          "returncode": 0,
+          "seconds": 19.641
+        }
+      ],
+      "compiled_array_equality": {
+        "arrays": [
+          "body_mass",
+          "body_inertia",
+          "body_pos",
+          "body_quat",
+          "geom_type",
+          "geom_size",
+          "geom_bodyid",
+          "geom_contype",
+          "geom_conaffinity",
+          "geom_friction",
+          "geom_pos",
+          "geom_quat",
+          "geom_rgba",
+          "jnt_type",
+          "jnt_range",
+          "actuator_trntype",
+          "actuator_trnid",
+          "actuator_ctrlrange",
+          "qpos0",
+          "mesh_vert",
+          "mesh_face",
+          "mat_rgba"
+        ],
+        "all_identical": true
+      },
+      "profiles": {
+        "baseline": {
+          "offscreen_width": 3840,
+          "offscreen_height": 2160,
+          "requested_msaa_samples": 24,
+          "shadow_texture_size": 8192,
+          "model_lights": 31,
+          "active_model_lights": 31,
+          "shadow_casting_model_lights": 31
+        },
+        "candidate": {
+          "offscreen_width": 640,
+          "offscreen_height": 480,
+          "requested_msaa_samples": 24,
+          "shadow_texture_size": 8192,
+          "model_lights": 1,
+          "active_model_lights": 1,
+          "shadow_casting_model_lights": 1
+        }
+      },
+      "complete": true,
+      "render_observations": {
+        "baseline": {
+          "seconds": 5.947618,
+          "frames": 4,
+          "width": 640,
+          "height": 480,
+          "metrics": {
+            "scene_name": "collision",
+            "bee_count": 10,
+            "frame_count": 4,
+            "frames_with_any_contacts": 3,
+            "frames_with_bee_bee_contacts": 3,
+            "frames_with_floor_contacts": 0,
+            "bee_bee_contact_count": 28,
+            "floor_contact_count": 0,
+            "bee_bee_contact_pairs": [
+              "bee_00-bee_01",
+              "bee_00-bee_09",
+              "bee_01-bee_02",
+              "bee_02-bee_03",
+              "bee_03-bee_04",
+              "bee_04-bee_05",
+              "bee_05-bee_06",
+              "bee_06-bee_07",
+              "bee_07-bee_08",
+              "bee_08-bee_09"
+            ],
+            "contact_frame_indices": [
+              1,
+              2,
+              3
+            ],
+            "bee_bee_contact_frame_indices": [
+              1,
+              2,
+              3
+            ],
+            "floor_contact_frame_indices": [],
+            "min_contact_distance": -0.009869459453932458,
+            "sample_contact_geoms": [
+              "bee_00__contact_core<->bee_01__contact_core:-0.00419",
+              "bee_00__contact_core<->bee_09__contact_core:-0.00408",
+              "bee_01__contact_core<->bee_02__contact_core:-0.00438",
+              "bee_02__contact_core<->bee_03__contact_core:-0.00437",
+              "bee_03__contact_core<->bee_04__contact_core:-0.00425",
+              "bee_04__contact_core<->bee_05__contact_core:-0.00421",
+              "bee_05__contact_core<->bee_06__contact_core:-0.00428",
+              "bee_06__contact_core<->bee_07__contact_core:-0.00437",
+              "bee_07__contact_core<->bee_08__contact_core:-0.00432",
+              "bee_08__contact_core<->bee_09__contact_core:-0.00417",
+              "bee_00__contact_core<->bee_01__contact_core:-0.00987",
+              "bee_01__contact_core<->bee_02__contact_core:-0.00294",
+              "bee_02__contact_core<->bee_03__contact_core:-0.00956",
+              "bee_03__contact_core<->bee_04__contact_core:-0.00428",
+              "bee_04__contact_core<->bee_05__contact_core:-0.00754",
+              "bee_05__contact_core<->bee_06__contact_core:-0.00187"
+            ],
+            "passed": true,
+            "waggle_phase_samples": [],
+            "follower_orientation_error_mean_deg": 0.0,
+            "follower_orientation_error_max_deg": 0.0,
+            "follower_distance_mean_m": 0.0,
+            "follower_distance_std_m": 0.0,
+            "follower_orientation_confidence": 0.0,
+            "waggle_phase_coupling_score": 0.0,
+            "contact_graph_edge_count": 10
+          },
+          "gif": "output/reports/workflowz_scene_lighting_control/baseline.gif",
+          "contact_sheet": "output/reports/workflowz_scene_lighting_control/baseline.png"
+        },
+        "candidate": {
+          "seconds": 0.727129,
+          "frames": 4,
+          "width": 640,
+          "height": 480,
+          "metrics": {
+            "scene_name": "collision",
+            "bee_count": 10,
+            "frame_count": 4,
+            "frames_with_any_contacts": 3,
+            "frames_with_bee_bee_contacts": 3,
+            "frames_with_floor_contacts": 0,
+            "bee_bee_contact_count": 28,
+            "floor_contact_count": 0,
+            "bee_bee_contact_pairs": [
+              "bee_00-bee_01",
+              "bee_00-bee_09",
+              "bee_01-bee_02",
+              "bee_02-bee_03",
+              "bee_03-bee_04",
+              "bee_04-bee_05",
+              "bee_05-bee_06",
+              "bee_06-bee_07",
+              "bee_07-bee_08",
+              "bee_08-bee_09"
+            ],
+            "contact_frame_indices": [
+              1,
+              2,
+              3
+            ],
+            "bee_bee_contact_frame_indices": [
+              1,
+              2,
+              3
+            ],
+            "floor_contact_frame_indices": [],
+            "min_contact_distance": -0.009869459453932458,
+            "sample_contact_geoms": [
+              "bee_00__contact_core<->bee_01__contact_core:-0.00419",
+              "bee_00__contact_core<->bee_09__contact_core:-0.00408",
+              "bee_01__contact_core<->bee_02__contact_core:-0.00438",
+              "bee_02__contact_core<->bee_03__contact_core:-0.00437",
+              "bee_03__contact_core<->bee_04__contact_core:-0.00425",
+              "bee_04__contact_core<->bee_05__contact_core:-0.00421",
+              "bee_05__contact_core<->bee_06__contact_core:-0.00428",
+              "bee_06__contact_core<->bee_07__contact_core:-0.00437",
+              "bee_07__contact_core<->bee_08__contact_core:-0.00432",
+              "bee_08__contact_core<->bee_09__contact_core:-0.00417",
+              "bee_00__contact_core<->bee_01__contact_core:-0.00987",
+              "bee_01__contact_core<->bee_02__contact_core:-0.00294",
+              "bee_02__contact_core<->bee_03__contact_core:-0.00956",
+              "bee_03__contact_core<->bee_04__contact_core:-0.00428",
+              "bee_04__contact_core<->bee_05__contact_core:-0.00754",
+              "bee_05__contact_core<->bee_06__contact_core:-0.00187"
+            ],
+            "passed": true,
+            "waggle_phase_samples": [],
+            "follower_orientation_error_mean_deg": 0.0,
+            "follower_orientation_error_max_deg": 0.0,
+            "follower_distance_mean_m": 0.0,
+            "follower_distance_std_m": 0.0,
+            "follower_orientation_confidence": 0.0,
+            "waggle_phase_coupling_score": 0.0,
+            "contact_graph_edge_count": 10
+          },
+          "gif": "output/reports/workflowz_scene_lighting_control/candidate.gif",
+          "contact_sheet": "output/reports/workflowz_scene_lighting_control/candidate.png"
+        }
+      },
+      "contact_metrics_identical": true,
+      "visual_profile": "viewport_buffers_scene_scoped_lighting",
+      "timing_limit": "Single ordered local control pair; not a benchmark or a Linux/GPU causal measurement.",
+      "visual_review": {
+        "approved": true,
+        "scope": "Actual matched four-frame before/after native collision contact sheets, not final full-production visual approval.",
+        "observations": [
+          "Shared lighting retains recognizable amber/dark body, black eyes, legs, antennae, and transparent wing structure.",
+          "The floor and body shading are no longer washed out by repeated studio lights; scene-key shadows remain.",
+          "Framing/poses are unchanged; the existing start-frame wing-edge cropping is also present in the baseline."
+        ],
+        "illumination_is_intentionally_changed": true,
+        "physical_geometry_material_arrays_identical": true,
+        "full_production_review_required": true,
+        "before_counterexample": "visual-light-flooding-regression-before/23555-43907983971c4132ad3101d86efcf59a",
+        "after_native_control": "visual-scene-lighting-after-and-control/23578-ecc2b0e11eeb4ce68bfaae077870834f"
+      }
+    },
+    "pdf_artifact_receipt": {
+      "pdf": "output/pdf/BeeStack_combined.pdf",
+      "pdf_sha256": "17f570ef1ff8d7b54ff851f222bb32e60f2fb04438fa04589f44fa270f8f0647",
+      "page_count": 56,
+      "pages": [
+        {
+          "page": 1,
+          "text_characters": 5879,
+          "direct_image_objects": 0,
+          "starts_with": "BeeStack: An Evidence-Typed Scaffold for Whole-Colony Honeybee Simulation\nA Body\u2013Brain\u2013Mind\u2013Swarm\u2013Niche Substrate for Auditable Apis mellife",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-01.png"
+        },
+        {
+          "page": 2,
+          "text_characters": 7857,
+          "direct_image_objects": 0,
+          "starts_with": "Actions and energetics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-02.png"
+        },
+        {
+          "page": 3,
+          "text_characters": 7951,
+          "direct_image_objects": 0,
+          "starts_with": "Research Synthesis of Evidence, Sensitivity , and Readiness 37\nResearch-suite report . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-03.png"
+        },
+        {
+          "page": 4,
+          "text_characters": 6328,
+          "direct_image_objects": 0,
+          "starts_with": "Research-use boundaries for ecological and agricultural decisions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 52\nS",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-04.png"
+        },
+        {
+          "page": 5,
+          "text_characters": 6208,
+          "direct_image_objects": 0,
+          "starts_with": "Software, recruitment, and provenance method anchors\nThe refreshed scholarship layer adds explicit anchors for interfaces that BeeStack can ",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-05.png"
+        },
+        {
+          "page": 6,
+          "text_characters": 5748,
+          "direct_image_objects": 0,
+          "starts_with": "dance-follower empirical records sit on this literature as interface witnesses : they justify recruitment-boundary language without\nclaiming",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-06.png"
+        },
+        {
+          "page": 7,
+          "text_characters": 4920,
+          "direct_image_objects": 0,
+          "starts_with": "reporting (Mitchell et al. 2019) without pretending that a biological simulation is an ML benchmark: each module has intended-use\nlanguage, ",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-07.png"
+        },
+        {
+          "page": 8,
+          "text_characters": 3196,
+          "direct_image_objects": 1,
+          "starts_with": "Claim class Current BeeStack evidence Primary artifact What it does not prove\nMulti-BeeBody\nwaggle and collision\nscenes\nPrefixed BeeBody MJC",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-08.png"
+        },
+        {
+          "page": 9,
+          "text_characters": 4815,
+          "direct_image_objects": 0,
+          "starts_with": "small-scene contact evidence from population-scale demographic validation. \u201d That is why the roadmap can be ambitious without blurring\nprese",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-09.png"
+        },
+        {
+          "page": 10,
+          "text_characters": 418,
+          "direct_image_objects": 1,
+          "starts_with": "Figure 2: Scholarship evidence matrix mapping directly verified sources to manuscript sections, figure targets, DOI-bearing source records,\n",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-10.png"
+        },
+        {
+          "page": 11,
+          "text_characters": 4434,
+          "direct_image_objects": 0,
+          "starts_with": "Scholarship, method, and validation source tiers\nThe project separates three source tiers. Scholarship anchors support background, related-w",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-11.png"
+        },
+        {
+          "page": 12,
+          "text_characters": 5062,
+          "direct_image_objects": 0,
+          "starts_with": "Claim routing to sources, artifacts, and gaps\nEvery current-facing claim routes to one of four surfaces: manuscript source with Pandoc citat",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-12.png"
+        },
+        {
+          "page": 13,
+          "text_characters": 3928,
+          "direct_image_objects": 0,
+          "starts_with": "Configured timing targets and executed reduced cadence\nThe configuration declares a 100 Hz control boundary, 10 Hz target policy cadence (ev",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-13.png"
+        },
+        {
+          "page": 14,
+          "text_characters": 3345,
+          "direct_image_objects": 1,
+          "starts_with": "Figure 3: Executed reduced-scenario schematic: a fixed synthetic DanceVector updates BeeMind and BeeSwarm, BeeMind selects Body\nactions, Bod",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-14.png"
+        },
+        {
+          "page": 15,
+          "text_characters": 956,
+          "direct_image_objects": 2,
+          "starts_with": "Figure 4: Sampled FlyBody walk_imitation frames on the generated apis_mellifera_worker MJCF document rendered body and wing\nmorphology cues,",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-15.png"
+        },
+        {
+          "page": 16,
+          "text_characters": 2966,
+          "direct_image_objects": 1,
+          "starts_with": "The methods layer now also records a conservative honeybee calibration scorecard. The current morphology score is 1.000, with an\ninertia-res",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-16.png"
+        },
+        {
+          "page": 17,
+          "text_characters": 377,
+          "direct_image_objects": 1,
+          "starts_with": "Figure 7: BeeBody methods dashboard showing reduced telemetry, energy, wing-power, and morphology cues beside the FlyBody-backed\nfidelity bo",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-17.png"
+        },
+        {
+          "page": 18,
+          "text_characters": 3391,
+          "direct_image_objects": 1,
+          "starts_with": "Uncalibrated BeeBody biomechanics\nBeeBody remains the most stringent fidelity boundary in the stack. It is FlyBody-backed for production ren",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-18.png"
+        },
+        {
+          "page": 19,
+          "text_characters": 3350,
+          "direct_image_objects": 1,
+          "starts_with": "MjData with mujoco.Renderer (Todorov et al. 2012). Within each frame the bees are placed at scripted kinematic poses; MuJoCo\nprovides real m",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-19.png"
+        },
+        {
+          "page": 20,
+          "text_characters": 893,
+          "direct_image_objects": 2,
+          "starts_with": "Figure 10: Sampled frames from a scripted-pose MuJoCo waggle scene with one dancer and follower BeeBody models on a comb floor,\nwith contact",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-20.png"
+        },
+        {
+          "page": 21,
+          "text_characters": 3158,
+          "direct_image_objects": 1,
+          "starts_with": "Figure 12: Native report metrics separating scripted-pose small-scene contact evidence from reduced recruitment and adapter-compatible\nsumma",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-21.png"
+        },
+        {
+          "page": 22,
+          "text_characters": 5264,
+          "direct_image_objects": 0,
+          "starts_with": "Central-complex full-bearing heading integration\nThe CX channel maintains a head-direction estimate on 32 bins by integrating a sky-compass ",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-22.png"
+        },
+        {
+          "page": 23,
+          "text_characters": 3047,
+          "direct_image_objects": 1,
+          "starts_with": "and decoding improvement N/A. The brain-data parseable-source fraction is N/A. The run records N/A local calcium datasets and 1\nempirical kn",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-23.png"
+        },
+        {
+          "page": 24,
+          "text_characters": 2892,
+          "direct_image_objects": 1,
+          "starts_with": "Figure 14: BeeBrain native report metrics beside configured self-tests, reported availability, claim tier, and conservative interpretation.\n",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-24.png"
+        },
+        {
+          "page": 25,
+          "text_characters": 3108,
+          "direct_image_objects": 1,
+          "starts_with": "Figure 15: Native expected-free-energy, policy-margin, and action-contract metrics beside configured self-test and evidence-boundary\ncontext",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-25.png"
+        },
+        {
+          "page": 26,
+          "text_characters": 4785,
+          "direct_image_objects": 0,
+          "starts_with": "Reduced brood thermal field\nThermal stepping updates brood-temperature error and supports fanning/heat-source witnesses. The brood-target ba",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-26.png"
+        },
+        {
+          "page": 27,
+          "text_characters": 867,
+          "direct_image_objects": 2,
+          "starts_with": "Figure 16: Final comb fraction and maximum absolute thermal error from supplied reduced records, beside conceptual NicheAdapter-\nSummary fie",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-27.png"
+        },
+        {
+          "page": 28,
+          "text_characters": 5150,
+          "direct_image_objects": 0,
+          "starts_with": "Verification Gates, Evidence Tiers, and Figure Provenance\nVisualization is eligible for evidence only with explicit backend, source, availab",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-28.png"
+        },
+        {
+          "page": 29,
+          "text_characters": 3627,
+          "direct_image_objects": 1,
+          "starts_with": "The validation figures below separate overview and detail surfaces: evidence tiers, residual readiness blockers, manuscript claim routing,\nm",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-29.png"
+        },
+        {
+          "page": 30,
+          "text_characters": 881,
+          "direct_image_objects": 2,
+          "starts_with": "Figure 19: Conceptual checklist separating local verification contracts from absent held-out residual, uncertainty, assimilation, and\ngovern",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-30.png"
+        },
+        {
+          "page": 31,
+          "text_characters": 855,
+          "direct_image_objects": 2,
+          "starts_with": "Figure 21: Grouped source classes with registered artifact counts, declared claim-family counts, and conservative claim ceilings. Full\nper-a",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-31.png"
+        },
+        {
+          "page": 32,
+          "text_characters": 756,
+          "direct_image_objects": 2,
+          "starts_with": "Figure 23: Module configured self-test fractions, visual-artifact counts, evidence-link counts, known-gap counts, and full report inter-\npre",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-32.png"
+        },
+        {
+          "page": 33,
+          "text_characters": 4830,
+          "direct_image_objects": 0,
+          "starts_with": "null and retain each quantity\u2019s native units. Sweep outputs use independent native-unit axes; mixed counts, fractions, and unlike-unit\nmetri",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-33.png"
+        },
+        {
+          "page": 34,
+          "text_characters": 4978,
+          "direct_image_objects": 0,
+          "starts_with": "\u2022 VRML/TIFF/HTML metadata derived from the standard-brain ecosystem (Rybak et al. 2010);\n\u2022 neuropil abbreviations (a vocabulary required to ",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-34.png"
+        },
+        {
+          "page": 35,
+          "text_characters": 2696,
+          "direct_image_objects": 1,
+          "starts_with": "reduced BeeBody actions, and Body observations enter BeeBrain. BeeNiche temperature advances independently. BrainState does not\nfeed policy ",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-35.png"
+        },
+        {
+          "page": 36,
+          "text_characters": 661,
+          "direct_image_objects": 2,
+          "starts_with": "Figure 26: Integrated-run comb-occupancy witness showing deterministic BeeNiche state changes across control steps. Generated from\noutput/da",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-36.png"
+        },
+        {
+          "page": 37,
+          "text_characters": 4903,
+          "direct_image_objects": 0,
+          "starts_with": "Reproducibility diagnostics without biological validation\nThese are reproducibility witnesses, not biological validation. The seeded five-mo",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-37.png"
+        },
+        {
+          "page": 38,
+          "text_characters": 3360,
+          "direct_image_objects": 1,
+          "starts_with": "Figure 28: Configured self-test fractions and native metric, evidence, gap, and filename-associated artifact counts by module, without\nnorma",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-38.png"
+        },
+        {
+          "page": 39,
+          "text_characters": 365,
+          "direct_image_objects": 1,
+          "starts_with": "Figure 29: Deterministic sensitivity-sweep panel showing reduced-kernel response under controlled one-parameter perturbations. Gen-\nerated f",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-39.png"
+        },
+        {
+          "page": 40,
+          "text_characters": 2859,
+          "direct_image_objects": 1,
+          "starts_with": "Figure 30: Reported module evidence and gap counts beside declared fidelity. The companion retains all source rows; no measured\nnetwork topo",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-40.png"
+        },
+        {
+          "page": 41,
+          "text_characters": 388,
+          "direct_image_objects": 1,
+          "starts_with": "Figure 31: Complete research scorecard evidence and gap text with all empirical source rows, reported availability states, and integra-\ntion",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-41.png"
+        },
+        {
+          "page": 42,
+          "text_characters": 365,
+          "direct_image_objects": 1,
+          "starts_with": "Figure 32: Configured self-tests and heuristic readiness beside native inventory counts, native-unit cross-stack statistics, and prioritized",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-42.png"
+        },
+        {
+          "page": 43,
+          "text_characters": 3422,
+          "direct_image_objects": 1,
+          "starts_with": "Figure 33: Module heuristic-readiness scores and known-gap counts beside all prioritized cross-stack findings. These are report diagnostics,",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-43.png"
+        },
+        {
+          "page": 44,
+          "text_characters": 5941,
+          "direct_image_objects": 0,
+          "starts_with": "BeeBrain empirical traceability without neural calibration\nBeeBrain occupies a different fidelity tier. Its strongest current feature is emp",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-44.png"
+        },
+        {
+          "page": 45,
+          "text_characters": 4862,
+          "direct_image_objects": 0,
+          "starts_with": "run can expose module validations, artifact coverage, simulation telemetry, empirical parseability, signposting coverage, and scholarship\nan",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-45.png"
+        },
+        {
+          "page": 46,
+          "text_characters": 4782,
+          "direct_image_objects": 0,
+          "starts_with": "communication, pheromone, and task-allocation kernels at 50 simulated agents representing 20,000 workers, not through full BEEHA VE-\nscale d",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-46.png"
+        },
+        {
+          "page": 47,
+          "text_characters": 4584,
+          "direct_image_objects": 0,
+          "starts_with": "That review reframes the roadmap around eight auditable scales:\n1. molecular, omics, microbiome, pathogen, pesticide, and nutrition state;\n2",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-47.png"
+        },
+        {
+          "page": 48,
+          "text_characters": 4030,
+          "direct_image_objects": 0,
+          "starts_with": "Acceptance criterion: a methods-analysis Brain panel that reports quantitative residuals against at least one published bee neuroscience\ntas",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-48.png"
+        },
+        {
+          "page": 49,
+          "text_characters": 4166,
+          "direct_image_objects": 0,
+          "starts_with": "Excluded decision-support and deployment scope\nFor clarity, the following are not current roadmap items:\n\u2022 a colony-health decision-support ",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-49.png"
+        },
+        {
+          "page": 50,
+          "text_characters": 4287,
+          "direct_image_objects": 0,
+          "starts_with": "Seeded numerical kernels and empirical freshness\nFixed seeds determine the reduced numerical kernels and model-owned PN\u2192KC connectivity. Thi",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-50.png"
+        },
+        {
+          "page": 51,
+          "text_characters": 3572,
+          "direct_image_objects": 0,
+          "starts_with": "Source DOI / source note License / access note\nCarcaud multisite\nGCaMP (Carcaud\n2022)\n10.5061/dryad.83bk3j9tt Dryad CC0\nAndreu alarm\nrecepto",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-51.png"
+        },
+        {
+          "page": 52,
+          "text_characters": 4585,
+          "direct_image_objects": 0,
+          "starts_with": "Traceability from manuscript values to source data\nThe provenance trail is the foundation of every other claim in this manuscript. The hydra",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-52.png"
+        },
+        {
+          "page": 53,
+          "text_characters": 4479,
+          "direct_image_objects": 0,
+          "starts_with": "Becher, Matthias A. et al. 2014. \u201cBEEHA VE: A Systems Model of Honeybee Colony Dynamics and Foraging to Explore Multifactorial\nCauses of Col",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-53.png"
+        },
+        {
+          "page": 54,
+          "text_characters": 4184,
+          "direct_image_objects": 0,
+          "starts_with": "//doi.org/10.1038/nrn2787.\nGalizia, C. Giovanni, Silke Sachse, Andrea Rappert, and Randolf Menzel. 1999. \u201cThe Glomerular Code for Odor Repre",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-54.png"
+        },
+        {
+          "page": 55,
+          "text_characters": 4454,
+          "direct_image_objects": 0,
+          "starts_with": "Academy of Sciences , ahead of print. https://doi.org/10.1073/pnas.2518687123.\nMcAfee, Alison et al. 2018. \u201cA Death Pheromone, Oleic Acid, T",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-55.png"
+        },
+        {
+          "page": 56,
+          "text_characters": 3433,
+          "direct_image_objects": 0,
+          "starts_with": "in Systems Neuroscience 4: 30. https://doi.org/10.3389/fnsys.2010.00030.\nSaltelli, Andrea, Marco Ratto, Terry Andres, et al. 2008. Global Se",
+          "raster": ".uv-cache/pdf-visual-17f570ef1ff8d7b5/page-56.png"
+        }
+      ],
+      "page_contact_sheets": [
+        "output/reports/workflowz_visual_review/pdf-overview-1.png",
+        "output/reports/workflowz_visual_review/pdf-overview-2.png",
+        "output/reports/workflowz_visual_review/pdf-overview-3.png",
+        "output/reports/workflowz_visual_review/pdf-overview-4.png"
+      ],
+      "referenced_figure_contact_sheets": [
+        "output/reports/workflowz_visual_review/referenced-figures-1.png",
+        "output/reports/workflowz_visual_review/referenced-figures-2.png",
+        "output/reports/workflowz_visual_review/referenced-figures-3.png"
+      ],
+      "referenced_figures": [
+        {
+          "image": "output/figures/beebody_beeswarm_micro_macro_calibration.png",
+          "sha256": "f9bf11e556fb434e4d8eb95d28528507fffb523c2b042733c100cb6dde17512a",
+          "sidecar": "output/figures/beebody_beeswarm_micro_macro_calibration.json",
+          "title": "Micro-to-macro comparison is not calibration",
+          "claim_tier": "micro_macro_calibration_boundary",
+          "fidelity": "architecture schematic",
+          "source_data": "output/data/simulation_records.json and module coverage records",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/beebody_motion_power_phase.png",
+          "sha256": "09cd5707c28d17da79842b8b75c5a339c565e4c997581287416bbfdf0603b754",
+          "sidecar": "output/figures/beebody_motion_power_phase.json",
+          "title": "Reduced motion\u2013power trajectory",
+          "claim_tier": "integrated_run_witness",
+          "fidelity": "reduced deterministic kernel diagnostic",
+          "source_data": "output/data/simulation_records.json and module coverage records",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/beebrain_beemind_anatomy_policy_map.png",
+          "sha256": "52b5082475a7ac06e02405f6869f3ff1aa4922f0b49b0617008e7583700cab0e",
+          "sidecar": "output/figures/beebrain_beemind_anatomy_policy_map.json",
+          "title": "Anatomy and policy: conceptual analogies only",
+          "claim_tier": "neurocognitive_mapping_diagnostic",
+          "fidelity": "architecture schematic",
+          "source_data": "output/data/simulation_records.json and module coverage records",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/beeniche_adapter_niche_map.png",
+          "sha256": "c9d6f5878f94df216f546342901dcdedd38ba4f9149a467d829dca51cd29267a",
+          "sidecar": "output/figures/beeniche_adapter_niche_map.json",
+          "title": "BeeNiche run witnesses and conceptual adapter schema",
+          "claim_tier": "adapter_boundary_diagnostic",
+          "fidelity": "architecture schematic",
+          "source_data": "output/data/simulation_records.json and module coverage records",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/beestack_evidence_ladder.png",
+          "sha256": "22fe382f6495f49fc511c295b322c5b8cc6a68d6b295b58b79a70c2899ab9167",
+          "sidecar": "output/figures/beestack_evidence_ladder.json",
+          "title": "Evidence classes and claim ceilings",
+          "claim_tier": "fidelity_boundary",
+          "fidelity": "architecture schematic",
+          "source_data": "output/data/simulation_records.json and module coverage records",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/beestack_first_principles_claim_audit.png",
+          "sha256": "9f7f050e407b10428723c126199d9436b7b69898785dccd203ebf42c1dd8ce02",
+          "sidecar": "output/figures/beestack_first_principles_claim_audit.json",
+          "title": "Claim-admission rules (conceptual)",
+          "claim_tier": "first_principles_claim_boundary",
+          "fidelity": "architecture schematic",
+          "source_data": "output/data/simulation_records.json and module coverage records",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/beestack_graphical_abstract.png",
+          "sha256": "0a5f7b1d6360affc07f0a32f8af29fe0d0753cf9a20e7501cba103e1329badff",
+          "sidecar": "output/figures/beestack_graphical_abstract.json",
+          "title": "BeeStack: the executed reduced scenario",
+          "claim_tier": "architecture_schematic",
+          "fidelity": "architecture schematic",
+          "source_data": "output/data/simulation_records.json and module coverage records",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/beestack_scholarship_evidence_matrix.png",
+          "sha256": "c36760d96a41143735dea1bfa366d40d4760bda45988f9e1c0790cd6157de807",
+          "sidecar": "output/figures/beestack_scholarship_evidence_matrix.json",
+          "title": "Scholarly source ledger and availability",
+          "claim_tier": "scholarship_evidence_matrix",
+          "fidelity": "architecture schematic",
+          "source_data": "output/data/simulation_records.json and module coverage records",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/beestack_validation_readiness_residuals.png",
+          "sha256": "42d5ec57e5de5f347d1258d793aee680c300ba4468baf2d7a6c8a305196c23bf",
+          "sidecar": "output/figures/beestack_validation_readiness_residuals.json",
+          "title": "Validation requirements \u2014 no residual data supplied",
+          "claim_tier": "validation_readiness_boundary",
+          "fidelity": "architecture schematic",
+          "source_data": "output/data/simulation_records.json and module coverage records",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/body_energy_timeseries.png",
+          "sha256": "bddf0c81ebe0b5650ee0bab341080202850f66c0a60ec87b93145b3a86f2a933",
+          "sidecar": "output/figures/body_energy_timeseries.json",
+          "title": "Reduced body energy across control steps",
+          "claim_tier": "integrated_run_witness",
+          "fidelity": "reduced deterministic kernel diagnostic",
+          "source_data": "output/data/simulation_records.json and module coverage records",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/comb_fraction_timeseries.png",
+          "sha256": "0e5fe93058debdcf2a26191e747f70d04ce2e219d9d57c2cf9aaa79329fac831",
+          "sidecar": "output/figures/comb_fraction_timeseries.json",
+          "title": "Reduced comb occupancy across control steps",
+          "claim_tier": "integrated_run_witness",
+          "fidelity": "reduced deterministic kernel diagnostic",
+          "source_data": "output/data/simulation_records.json and module coverage records",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/manuscript_figure_claim_detail.png",
+          "sha256": "9f724148dab7ae50b91175fee84c0906264870d1ac722f1eb621bc0cd5a46fef",
+          "sidecar": "output/figures/manuscript_figure_claim_detail.json",
+          "title": "Primary-figure sources and claim ceilings",
+          "claim_tier": "manuscript_figure_provenance_map",
+          "fidelity": "architecture schematic",
+          "source_data": "output/data/simulation_records.json and module coverage records",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/manuscript_figure_claim_map.png",
+          "sha256": "0a4914074002990126fa2967433cef18730253e92dc7046f34755317c8395f4e",
+          "sidecar": "output/figures/manuscript_figure_claim_map.json",
+          "title": "Registered primary figures by section",
+          "claim_tier": "manuscript_figure_provenance_map",
+          "fidelity": "architecture schematic",
+          "source_data": "output/data/simulation_records.json and module coverage records",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/methods/beebody_methods_telemetry_dashboard.png",
+          "sha256": "182df3945636d1b1805f7c7274ce8995799c5c6fc505a550936acdb92f7e6df5",
+          "sidecar": "output/figures/methods/beebody_methods_telemetry_dashboard.json",
+          "title": "BeeBody methods telemetry dashboard",
+          "claim_tier": "strict_visual_plus_reduced_telemetry",
+          "fidelity": "scripted-pose FlyBody render diagnostics plus reduced telemetry; not forward dynamics",
+          "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/methods/beebrain_methods_empirical_completeness.png",
+          "sha256": "3b41eb6a4366c71478f493517f1aff86f3404873acb561d7ae2aa2d784bd5375",
+          "sidecar": "output/figures/methods/beebrain_methods_empirical_completeness.json",
+          "title": "BeeBrain methods: reported metrics and evidence boundaries",
+          "claim_tier": "empirical_reduced_or_availability_gated",
+          "fidelity": "empirical completeness summary projected into reduced BeeBrain contracts",
+          "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/methods/beemind_methods_policy_landscape.png",
+          "sha256": "a348ea3ed6d0f14001bbe9782287ac0777c25badda7a6d3e76464837d765b216",
+          "sidecar": "output/figures/methods/beemind_methods_policy_landscape.json",
+          "title": "BeeMind methods: reduced policy metrics and boundaries",
+          "claim_tier": "reduced_validated_kernel",
+          "fidelity": "reduced deterministic kernel diagnostic",
+          "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/methods/beeniche_methods_comb_thermal.png",
+          "sha256": "2141f21b9462c958c9049af94650a43f1c43026af748ec6ca55b40132caa7800",
+          "sidecar": "output/figures/methods/beeniche_methods_comb_thermal.json",
+          "title": "BeeNiche comb and thermal diagnostics",
+          "claim_tier": "reduced_validated_kernel",
+          "fidelity": "reduced deterministic kernel diagnostic",
+          "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/methods/beeswarm_methods_contact_recruitment.png",
+          "sha256": "016d5ef68b9f020bb9baa70bc9e814b99f86e5b0fb52d48f648426fe867142f3",
+          "sidecar": "output/figures/methods/beeswarm_methods_contact_recruitment.json",
+          "title": "BeeSwarm contact and recruitment diagnostics",
+          "claim_tier": "strict_small_scene_not_colony_dynamics",
+          "fidelity": "scripted-pose scene contact/recruitment diagnostic with reduced-kernel context",
+          "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/methods/methods_dashboard_detail.png",
+          "sha256": "0cf58864d18fa0299b3a561e395fb684a5039431e6b7c4ad8d7c5e278304a9e2",
+          "sidecar": "output/figures/methods/methods_dashboard_detail.json",
+          "title": "Methods detail: module evidence and explicit boundaries",
+          "claim_tier": "methods_provenance_diagnostic",
+          "fidelity": "methods provenance diagnostic",
+          "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/methods/methods_manuscript_evidence_index.png",
+          "sha256": "d6a703dffc016627ccb4736f04dd8590eb64baecdbcbe72e326fdd7fe0c29114",
+          "sidecar": "output/figures/methods/methods_manuscript_evidence_index.json",
+          "title": "Manuscript evidence inventory and configured self-tests",
+          "claim_tier": "methods_provenance_diagnostic",
+          "fidelity": "methods provenance diagnostic",
+          "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/methods/methods_repo_dashboard.png",
+          "sha256": "85167f87f8e9297c8a6939c824495bc57d177948063d452502610a9463629b79",
+          "sidecar": "output/figures/methods/methods_repo_dashboard.json",
+          "title": "Methods inventory in native units",
+          "claim_tier": "methods_provenance_diagnostic",
+          "fidelity": "methods provenance diagnostic",
+          "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/module_contract_coverage.png",
+          "sha256": "a93ab169ecbfbb71ae7f0750bccde7dbb8195be5cbc9cf624b5936b5c8eb3c8c",
+          "sidecar": "output/figures/module_contract_coverage.json",
+          "title": "Module contract inventory",
+          "claim_tier": "contract_coverage_witness",
+          "fidelity": "architecture schematic",
+          "source_data": "output/data/simulation_records.json and module coverage records",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/renders/beebody_flybody_flight_contact_sheet.png",
+          "sha256": "bb7382942068a2ca0b638e26311932807d4fbb5a28f01f7ce88edf17ec51d0c6",
+          "sidecar": "output/figures/renders/beebody_flybody_flight_contact_sheet.json",
+          "title": "beebody flybody flight contact sheet",
+          "claim_tier": "strict_flybody_render",
+          "fidelity": "real_flybody_3d contact sheet",
+          "source_data": "output/animations/beebody_flybody_flight_contact_sheet.png",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/renders/beebody_flybody_morphology_contact_sheet.png",
+          "sha256": "7536762bb903ab48fbd4393508864d523a6b886107aa9445210acddd466252c8",
+          "sidecar": "output/figures/renders/beebody_flybody_morphology_contact_sheet.json",
+          "title": "beebody flybody morphology contact sheet",
+          "claim_tier": "strict_flybody_render",
+          "fidelity": "real_flybody_3d contact sheet",
+          "source_data": "output/animations/beebody_flybody_morphology_contact_sheet.png",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/renders/beeswarm_10_beebody_collision_contact_sheet.png",
+          "sha256": "96893be2a7d1ed90894fc49c221eac53f01323b2bc5785c4c0c49838e2059448",
+          "sidecar": "output/figures/renders/beeswarm_10_beebody_collision_contact_sheet.json",
+          "title": "beeswarm 10 beebody collision contact sheet",
+          "claim_tier": "strict_small_scene_not_colony_dynamics",
+          "fidelity": "real_flybody_3d contact sheet",
+          "source_data": "output/animations/beeswarm_10_beebody_collision_contact_sheet.png",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/renders/beeswarm_waggle_dance_configured_contact_sheet.png",
+          "sha256": "fba5b5e5a6a3dd0e364c4905cd9b6091234efd97cbdc9cbc147d7fa7c7892aa3",
+          "sidecar": "output/figures/renders/beeswarm_waggle_dance_configured_contact_sheet.json",
+          "title": "beeswarm waggle dance configured contact sheet",
+          "claim_tier": "strict_small_scene_not_colony_dynamics",
+          "fidelity": "real_flybody_3d contact sheet",
+          "source_data": "output/animations/beeswarm_waggle_dance_configured_contact_sheet.png",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/renders/beeswarm_waggle_dance_long_contact_sheet.png",
+          "sha256": "b84e8ac300db4d7396bb77fbd2e4b211da0df7be14f8745f7e6d6d512f957b7d",
+          "sidecar": "output/figures/renders/beeswarm_waggle_dance_long_contact_sheet.json",
+          "title": "beeswarm waggle dance long contact sheet",
+          "claim_tier": "strict_small_scene_not_colony_dynamics",
+          "fidelity": "real_flybody_3d contact sheet",
+          "source_data": "output/animations/beeswarm_waggle_dance_long_contact_sheet.png",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/research/research_evidence_detail.png",
+          "sha256": "5d9447ed83f79a9538d48a742f2e61a5ead989bda86cfbe7abca1d0a7a0d37d7",
+          "sidecar": "output/figures/research/research_evidence_detail.json",
+          "title": "Research evidence detail: report sources and explicit gaps",
+          "claim_tier": "research_evidence_inventory",
+          "fidelity": "research provenance diagnostic",
+          "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/research/research_fidelity_evidence_network.png",
+          "sha256": "869c4e8545ee4ccfbb37fc876dbe27f0fc2b0189585ef4b8cf2d84318db3e8b5",
+          "sidecar": "output/figures/research/research_fidelity_evidence_network.json",
+          "title": "Evidence inventory overview",
+          "claim_tier": "research_evidence_inventory",
+          "fidelity": "research provenance diagnostic",
+          "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/research/research_module_scorecard_heatmap.png",
+          "sha256": "00ec949d5f6ae69888b267aeb72d786d3afe8b09a6d8493d16bf2e1be2e075f3",
+          "sidecar": "output/figures/research/research_module_scorecard_heatmap.json",
+          "title": "Research inventory in native units",
+          "claim_tier": "research_scorecard_diagnostic",
+          "fidelity": "research provenance diagnostic",
+          "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/research/research_sensitivity_sweeps.png",
+          "sha256": "0ab9b43b18bb8d8f887d0e90c83c1829f013468c4ba434cd434cb2f2a0835acd",
+          "sidecar": "output/figures/research/research_sensitivity_sweeps.json",
+          "title": "BeeStack research sensitivity sweeps",
+          "claim_tier": "reduced_sensitivity_diagnostic",
+          "fidelity": "reduced deterministic kernel diagnostic",
+          "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/research/stack_synthesis_dashboard.png",
+          "sha256": "05d193647bbb2357167df4465c4cf752a23294c585e5e5eca89559234e35146a",
+          "sidecar": "output/figures/research/stack_synthesis_dashboard.json",
+          "title": "BeeStack cross-stack synthesis dashboard",
+          "claim_tier": "cross_stack_synthesis_diagnostic",
+          "fidelity": "cross-stack synthesis diagnostic, not biological validation",
+          "source_data": "output/reports/stack_synthesis_review.json",
+          "availability_status": null
+        },
+        {
+          "image": "output/figures/research/stack_synthesis_findings_detail.png",
+          "sha256": "32145661ae86f9ac8a2d9be7862fc5af7c84589f9428b2563d791ee14d8a3b60",
+          "sidecar": "output/figures/research/stack_synthesis_findings_detail.json",
+          "title": "BeeStack synthesis detail: readiness, gaps, and findings",
+          "claim_tier": "cross_stack_synthesis_diagnostic",
+          "fidelity": "cross-stack synthesis diagnostic, not biological validation",
+          "source_data": "output/reports/stack_synthesis_review.json",
+          "availability_status": null
+        }
+      ],
+      "missing_glyph_warnings": 0,
+      "overfull_boxes": 0,
+      "maximum_overfull_pt": 0.0,
+      "scope": "all PDF pages rasterized, all 18 hydrated sections parsed with Pandoc, every referenced image matched to the fresh render seal; manual pixel judgments are recorded separately",
+      "human_review": {
+        "approved": true,
+        "source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+        "pdf_sha256": "17f570ef1ff8d7b54ff851f222bb32e60f2fb04438fa04589f44fa270f8f0647",
+        "scope": "Actual fresh four PDF contact sheets covering all 56 page layouts, three contact sheets covering all 33 referenced figures, and full-resolution corrected collision/short-waggle/long-waggle contact sheets. Walking/flight and graphical abstract were also inspected in the immediately preceding render epoch; fresh figure contact sheets include them. Not merely PDF compilation.",
+        "observations": [
+          "The executed-scenario graphical abstract has explicit synthetic input, separate broadcast/independent niche, and no asserted BrainState-to-policy feedback.",
+          "Native-unit tables/independent axes, unavailable empirical cells and evidence/claim ceilings remain visible; inventory is not represented as biological validation.",
+          "Shared scene lighting restores floor/body contrast and recognizable amber/dark morphology, legs, antennae, eyes and translucent wings in the real multi-bee scenes.",
+          "Scene-key shadows and unchanged scripted poses remain; pre-existing start-frame wing-edge cropping is not claimed to be fixed or all-bees-in-frame.",
+          "No missing-glyph or overfull-box warnings; all 33 registered image/sidecar paths exist and fresh generated-manuscript gates passed."
+        ],
+        "native_approval_limit": "Scripted-pose contact/render witnesses, not integrated colony dynamics, classified gait or calibrated biology."
+      }
+    },
     "pdf_pages": 56,
-    "visual_review_scope": "Actual current output: all 56 page layouts through four contact sheets; all 33 referenced figures through three contact sheets; current graphical abstract separately at full resolution. Prior C2 detailed page and interactive review remains historical evidence, not a new browser exercise.",
-    "interactive_surfaces": 4,
+    "visual_review_scope": {
+      "approved": true,
+      "source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+      "pdf_sha256": "17f570ef1ff8d7b54ff851f222bb32e60f2fb04438fa04589f44fa270f8f0647",
+      "scope": "Actual fresh four PDF contact sheets covering all 56 page layouts, three contact sheets covering all 33 referenced figures, and full-resolution corrected collision/short-waggle/long-waggle contact sheets. Walking/flight and graphical abstract were also inspected in the immediately preceding render epoch; fresh figure contact sheets include them. Not merely PDF compilation.",
+      "observations": [
+        "The executed-scenario graphical abstract has explicit synthetic input, separate broadcast/independent niche, and no asserted BrainState-to-policy feedback.",
+        "Native-unit tables/independent axes, unavailable empirical cells and evidence/claim ceilings remain visible; inventory is not represented as biological validation.",
+        "Shared scene lighting restores floor/body contrast and recognizable amber/dark morphology, legs, antennae, eyes and translucent wings in the real multi-bee scenes.",
+        "Scene-key shadows and unchanged scripted poses remain; pre-existing start-frame wing-edge cropping is not claimed to be fixed or all-bees-in-frame.",
+        "No missing-glyph or overfull-box warnings; all 33 registered image/sidecar paths exist and fresh generated-manuscript gates passed."
+      ],
+      "native_approval_limit": "Scripted-pose contact/render witnesses, not integrated colony dynamics, classified gait or calibrated biology."
+    },
+    "interactive_byte_continuity": [
+      {
+        "path": "output/interactive/methods_dashboard.html",
+        "sha256": "e23ea148bf8428a384b793f0560473826f9591b2acdf2cd6906625cb2a4e895a",
+        "current_source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+        "byte_identical_to_previously_browser_exercised_artifact": true,
+        "new_browser_action": false
+      },
+      {
+        "path": "output/interactive/methods_module_metrics.html",
+        "sha256": "68e470f75aad15682f99514c55fd4c794258c16e398b84ab826838ee354a9820",
+        "current_source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+        "byte_identical_to_previously_browser_exercised_artifact": true,
+        "new_browser_action": false
+      },
+      {
+        "path": "output/interactive/research_scorecards.html",
+        "sha256": "4c1fdc92d42a663699fd3bbc1c4c9c077b35a64d50f6e95e715910d74f630168",
+        "current_source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+        "byte_identical_to_previously_browser_exercised_artifact": true,
+        "new_browser_action": false
+      },
+      {
+        "path": "output/interactive/research_sensitivity_sweeps.html",
+        "sha256": "bac263a53ae23ccef84e30b0e7b4a8bd382f1e8b0702b9f0b6df243fa37ed78e",
+        "current_source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+        "byte_identical_to_previously_browser_exercised_artifact": true,
+        "new_browser_action": false
+      }
+    ],
+    "local_link_proof": {
+      "parser": "Pandoc 3.13 Markdown AST; code examples are not interpreted as links",
+      "documents": 88,
+      "local_links_checked": 20,
+      "failures": [],
+      "scope": "all root Markdown plus source-owned docs, src, scripts and GitHub Markdown; remote HTTP identity/provenance checked separately"
+    },
+    "normal_publication_gate": {
+      "blockers": [],
+      "checks": {
+        "changelog_present": true,
+        "combined_pdf": true,
+        "doi_configured": false,
+        "empirical_analysis_current": false,
+        "generated_report_audit": true,
+        "legacy_pdf_absent": true,
+        "manuscript_render_current": true,
+        "manuscript_sections_hydrated": true,
+        "manuscript_variables_hydrated": true,
+        "manuscript_version": true,
+        "package_version": true,
+        "parseability_flag_consistent": true,
+        "parseability_target_satisfied": false,
+        "security_posture": true,
+        "validation_fraction_discloses_gaps": true
+      },
+      "ok": true,
+      "package_version": "2.0.0",
+      "release": "2.0",
+      "warnings": [
+        "publication.doi not set in docs/manuscript/config.yaml (mint Zenodo DOI before public deposit)",
+        "No current odor-response panel analysis; retained empirical figures/reports are historical and manuscript values are unavailable, not zero."
+      ]
+    },
     "strict_doi_gate": {
-      "returncode": 1,
       "blockers": [
         "publication.doi not set in docs/manuscript/config.yaml"
       ],
-      "scope": "strict scholarly deposit only; ordinary repository publication gate passes"
+      "checks": {
+        "changelog_present": true,
+        "combined_pdf": true,
+        "doi_configured": false,
+        "empirical_analysis_current": false,
+        "generated_report_audit": true,
+        "legacy_pdf_absent": true,
+        "manuscript_render_current": true,
+        "manuscript_sections_hydrated": true,
+        "manuscript_variables_hydrated": true,
+        "manuscript_version": true,
+        "package_version": true,
+        "parseability_flag_consistent": true,
+        "parseability_target_satisfied": false,
+        "security_posture": true,
+        "validation_fraction_discloses_gaps": true
+      },
+      "ok": false,
+      "package_version": "2.0.0",
+      "release": "2.0",
+      "warnings": [
+        "No current odor-response panel analysis; retained empirical figures/reports are historical and manuscript values are unavailable, not zero."
+      ]
     },
-    "local_links": {
-      "source_markdown_documents": 88,
-      "local_links_checked": 20,
-      "failures": []
-    },
-    "physics_and_render": "9 actual animations: 2 strict FlyBody body renders, 3 MuJoCo scripted-pose contact scenes and 4 reduced schematics; current engineering checks passed, not biological or forward-dynamics calibration.",
-    "pdf_artifact": {
-      "path": "output/pdf/BeeStack_combined.pdf",
-      "sha256": "70f40da3978f796ca3099eb407038b9b78970bdc043e3c5e52af0210b84113cb",
-      "pages": 56
-    },
-    "pdf_artifact_receipt": "output/reports/workflowz_pdf_inspection.json",
-    "final_post_package_proof": "output/reports/workflowz_post_package_verification.json",
-    "source_archive_proof": "output/reports/workflowz_source_archive.json",
-    "canonical_path_proof": "output/reports/workflowz_canonical_native_proof.json",
-    "full_runtime_test_source_commit": "234d1fc222896931be0d35af6b920f125386a56e",
-    "documentation_only_delta_after_full_runtime_proof": [
-      "docs/security_posture.md",
-      "docs/README.md",
-      "docs/AGENTS.md",
-      "CHANGELOG.md"
-    ],
-    "current_documentation_source_commit": "4b91dcca31ed937ef409373d601bf2b7d20fdc80",
-    "current_documentation_seal": "output/reports/workflowz_docs_finalization.json",
-    "current_distribution_continuity": "output/reports/workflowz_docs_distribution_continuity.json",
-    "current_wheel_payload_members_identical": 125,
-    "interactive_byte_continuity": "output/reports/workflowz_interactive_continuity.json",
-    "interactive_browser_exercise_source": "a460c466f6ac781eb13925cdd42c08bfacd41556",
-    "current_html_byte_identical_to_exercised_source": true
+    "dependency_observation": "output/reports/workflowz_dependency_observation.json"
   },
   "qualified_receipts": [
     {
@@ -2382,6 +4517,23 @@
         "samples": 25
       },
       "finished": "2026-11-09T02:53:10.618908+00:00"
+    },
+    {
+      "name": "complete_current_native_installed_consumers_and_production_render_contracts",
+      "receipt": "$VAULT/Local/execution-launches/visual-scene-lighting-complete-with-native-guides/23623-fdfc13f0e9464823b044fb33ecf0331a/exit.json",
+      "signed_payload_sha256": "6b86a2eabe0bfd859b5a6717fad19d830c33e0886b3078ab629447a409228f22",
+      "source_revision": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+      "outcome": "SUCCEEDED",
+      "returncode": 0,
+      "source_unchanged": true,
+      "descendants": {
+        "killed_after_grace": [],
+        "observed": 132,
+        "remaining": [],
+        "sample_errors": 0,
+        "samples": 2157
+      },
+      "finished": "2026-11-09T05:12:35.655450+00:00"
     }
   ],
   "empirical": {
@@ -4241,7 +6393,7 @@
     "scope": "92 records and 76 DOI identity observations, not independent full-text claim verification; Seeley 1989 primary access unavailable and three uncited/nonrequired records outside the handoff verification set."
   },
   "unexamined_or_not_exercised": [
-    "Python 3.11, Linux execution and remote CI.",
+    "Python 3.11 not exercised. Current macOS complete proof is bound below; Linux source-bound outcomes are recorded only after actual remote CI completion.",
     "No separately configured standalone type gate; runtime/lint/tests are not formal type proof.",
     "No held-out biological validation, longitudinal assimilation, calibrated colony dynamics or synaptic connectome.",
     "Absent empirical payloads were not synthesized; full modality analyses cannot be certified.",
@@ -4250,7 +6402,8 @@
     "Historical ISA 119/119 and May PASS statements are not today\u2019s criterion-by-criterion proof.",
     "Primary-source identity/DOI checks do not independently full-text verify every scientific claim or parameter.",
     "Interactive files exercised on desktop installed Chrome only; no mobile, cross-browser or WCAG certification. Their Plotly viewer requires cdn.plot.ly; PNG/PDF artifacts remain the offline presentation surface.",
-    "Live main push/post-push Linux CI, tag/release/assets and remote branch cleanup are subsequent effects outside this pre-publication source-content receipt; exact outcomes belong to the repository-local release manifest and final delivery. No success is anticipated here."
+    "Live main push/post-push Linux CI, tag/release/assets and remote branch cleanup are subsequent effects outside this pre-publication source-content receipt; exact outcomes belong to the repository-local release manifest and final delivery. No success is anticipated here.",
+    "GIF delays are centisecond-quantized; decoded actual production durations are 2880/2880/7680 ms for requested 8/8/12 FPS. No exact wall-clock or biological-temporal-fidelity claim follows."
   ],
   "failures_and_superseded_evidence": [
     "Intermediate coverage, manuscript path/cwd, offline-figure, typography and build-contamination failures were fixed and re-exercised; native command history retains failed attempts.",
@@ -4320,14 +6473,48 @@
         "docs/manuscript/10_integrated_results.md:26-30"
       ],
       "judgment": "No download-to-canonical-summary route demonstrated. Canonical hydration reads the default synthetic run_summary.json; empirical-template summary is a separate nested field in empirical_analysis.json. Arbitrary local artifact/prose tampering or caller-supplied markup is not evidence of a remote dataset exploit. No blanket text-sanitization or TeX-sandbox guarantee is claimed."
+    },
+    {
+      "name": "Linux CI #34 terminal timeout",
+      "source_commit": "4b91dcca31ed937ef409373d601bf2b7d20fdc80",
+      "main_commit": "5fea17d6f84c6eb59d228d2528b53cdef9ee44b1",
+      "url": "https://github.com/docxology/BeeStack/actions/runs/42554444184",
+      "outcome": "cancelled at unchanged 45m bound",
+      "completed_substage": "801 tests/92.54%; installed full analysis CLI did not finish",
+      "evidence": "dist/release-2.0.0-4b91dcca31ed/terminal-linux-ci.json"
+    },
+    {
+      "name": "Shadow-only native render candidate rejected visually",
+      "source_commit": "e38de2c3715c1d530149855a471089da2b025009",
+      "native_result": "802 passed/92.48%, installed CLIs, full GIF/contact equality and manuscript gates passed",
+      "visual_approval": false,
+      "reason": "Repeated active body lights caused washed-out scenes after their shadows were disabled; no native/compile success was substituted for visual acceptance.",
+      "evidence": "dist/release-2.0.0-e38de2c3715c-superseded-visual/disposition.json"
+    },
+    {
+      "name": "Current-source first full attempt lacked native guides for new controlled-output directory",
+      "source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
+      "outcome": "1 failed/801 passed; folder README/AGENTS assertion",
+      "correction": "Existing native signpost producer precedes the unchanged full suite; no gate weakening.",
+      "evidence": "dist/release-2.0.0-e38de2c3715c-superseded-visual/f94eae7e-first-attempt.json"
+    },
+    {
+      "name": "Oversized coverage JSON read projection",
+      "outcome": "reader JSONDecodeError; no source change",
+      "correction": "Read only meta/totals with the JSON selector; no result invented."
+    },
+    {
+      "name": "Owned canonical-harness admission wait interrupted at 120s during held qualified test",
+      "outcome": "Tool read confirmed no file created.",
+      "correction": "Defer this short mutation until the running native test releases repository admission; do not bypass its lease."
     }
   ],
   "custody_note": "Only BeeStack and its repository-local owned validation lane changed. Fresh repository/common-store leases guard mutations; bounded offline receipts prove immutable current source. No sibling/manager/global changes, stash/reset/clean/force, Herdr control or other-owner branch/tree deletion.",
   "publication": {
-    "state_at_receipt_capture": "Source 4b91dcc ready locally; live main a0ecd42 has the preserved 45-minute cancelled CI. Current main push and CI have not yet occurred.",
-    "remote_main_observed": "a0ecd42c6cadf048b1a8f03127820a29bdebdc7e",
+    "state_at_receipt_capture": "Current-source local gates and actual visual inspection passed; exact-main push/CI/tag/release/assets remain separate subsequent effects.",
+    "remote_main_observed": "5fea17d6f84c6eb59d228d2528b53cdef9ee44b1",
     "target_branch": "main",
-    "code_source_commit": "4b91dcca31ed937ef409373d601bf2b7d20fdc80",
+    "code_source_commit": "f94eae7e65792aae400e6585dd890b688e9db4a1",
     "planned_version_tag": "v2.0.0",
     "new_release_url": null,
     "pr_url": null,
@@ -4336,19 +6523,37 @@
     "historical_doi": "10.5281/zenodo.20420557",
     "new_doi": null,
     "write_classes_observed": [
-      "issues",
-      "state"
+      "issues"
     ],
-    "effective_main_rules_observed": [
-      "deletion",
-      "non_fast_forward"
-    ],
+    "effective_main_rules_observed": {
+      "effective_rules": {
+        "http_status": 200,
+        "rules": [
+          {
+            "type": "deletion",
+            "ruleset_source_type": "Repository",
+            "ruleset_source": "docxology/BeeStack",
+            "ruleset_id": 26456219
+          },
+          {
+            "type": "non_fast_forward",
+            "ruleset_source_type": "Repository",
+            "ruleset_source": "docxology/BeeStack",
+            "ruleset_id": 26456219
+          }
+        ]
+      },
+      "classic_protection": {
+        "http_status": 404,
+        "rules": null
+      }
+    },
     "native_main_route": "Documented authorized owned-project ordinary exact-SHA fast-forward push under repository/common-store lease, pinned-token identity and live readback; no force or branch-protection bypass. Typed name-only push route not used.",
     "blockers": [
-      "The release write class is not enabled; exact-target release review previously refused WRITES-DISABLED and current classes still exclude release.",
-      "Merged remote chore cleanup is not applied. The state class is now enabled by an external policy change; a fresh reviewed plan and exact confirmation remain required. Earlier state-disabled refusal is historical, not current.",
-      "The current reviewed asset-manifest continuation is HumMarkets-specific and cannot publish BeeStack\u2019s established combined PDF.",
-      "Strict scholarly deposit needs a new version-specific DOI; the verified historical DOI belongs to version 1.0/v1.0.0, not this candidate."
+      "Fresh exact-main Linux CI not yet launched at capture.",
+      "Release and state write classes disabled in live configuration; no settings change or bypass is authorized.",
+      "Documented managed asset continuation is not enabled for BeeStack or its established PDF asset.",
+      "New 2.0 publication DOI is empty; historical Zenodo DOI is version1.0 and is not reused."
     ],
     "operator_prerequisites": [
       "Release-class admission through the owner-controlled settings service; no configuration change is authorized here.",

@@ -1,0 +1,247 @@
+{
+  "scope": "real compiled lighting-scaling regression and native baseline/candidate control; illumination deliberately becomes scene-scoped, not preserved per copied body",
+  "steps": [
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/ruff",
+        "check",
+        "src",
+        "tests",
+        "scripts"
+      ],
+      "returncode": 0,
+      "seconds": 0.088
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/ruff",
+        "format",
+        "--check",
+        "src",
+        "tests",
+        "scripts"
+      ],
+      "returncode": 0,
+      "seconds": 0.025
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "-m",
+        "pytest",
+        "tests/test_structure_flybody_visualization.py::test_swarm_scene_lighting_work_does_not_scale_with_bee_count",
+        "tests/test_structure_flybody_visualization.py::test_prefixed_multi_bee_scene_xml_is_valid_and_contact_capable",
+        "tests/test_structure_flybody_visualization.py::test_module_animation_generation_and_accessibility_manifest",
+        "--no-cov",
+        "--durations=10"
+      ],
+      "returncode": 0,
+      "seconds": 19.641
+    }
+  ],
+  "compiled_array_equality": {
+    "arrays": [
+      "body_mass",
+      "body_inertia",
+      "body_pos",
+      "body_quat",
+      "geom_type",
+      "geom_size",
+      "geom_bodyid",
+      "geom_contype",
+      "geom_conaffinity",
+      "geom_friction",
+      "geom_pos",
+      "geom_quat",
+      "geom_rgba",
+      "jnt_type",
+      "jnt_range",
+      "actuator_trntype",
+      "actuator_trnid",
+      "actuator_ctrlrange",
+      "qpos0",
+      "mesh_vert",
+      "mesh_face",
+      "mat_rgba"
+    ],
+    "all_identical": true
+  },
+  "profiles": {
+    "baseline": {
+      "offscreen_width": 3840,
+      "offscreen_height": 2160,
+      "requested_msaa_samples": 24,
+      "shadow_texture_size": 8192,
+      "model_lights": 31,
+      "active_model_lights": 31,
+      "shadow_casting_model_lights": 31
+    },
+    "candidate": {
+      "offscreen_width": 640,
+      "offscreen_height": 480,
+      "requested_msaa_samples": 24,
+      "shadow_texture_size": 8192,
+      "model_lights": 1,
+      "active_model_lights": 1,
+      "shadow_casting_model_lights": 1
+    }
+  },
+  "complete": true,
+  "render_observations": {
+    "baseline": {
+      "seconds": 5.947618,
+      "frames": 4,
+      "width": 640,
+      "height": 480,
+      "metrics": {
+        "scene_name": "collision",
+        "bee_count": 10,
+        "frame_count": 4,
+        "frames_with_any_contacts": 3,
+        "frames_with_bee_bee_contacts": 3,
+        "frames_with_floor_contacts": 0,
+        "bee_bee_contact_count": 28,
+        "floor_contact_count": 0,
+        "bee_bee_contact_pairs": [
+          "bee_00-bee_01",
+          "bee_00-bee_09",
+          "bee_01-bee_02",
+          "bee_02-bee_03",
+          "bee_03-bee_04",
+          "bee_04-bee_05",
+          "bee_05-bee_06",
+          "bee_06-bee_07",
+          "bee_07-bee_08",
+          "bee_08-bee_09"
+        ],
+        "contact_frame_indices": [
+          1,
+          2,
+          3
+        ],
+        "bee_bee_contact_frame_indices": [
+          1,
+          2,
+          3
+        ],
+        "floor_contact_frame_indices": [],
+        "min_contact_distance": -0.009869459453932458,
+        "sample_contact_geoms": [
+          "bee_00__contact_core<->bee_01__contact_core:-0.00419",
+          "bee_00__contact_core<->bee_09__contact_core:-0.00408",
+          "bee_01__contact_core<->bee_02__contact_core:-0.00438",
+          "bee_02__contact_core<->bee_03__contact_core:-0.00437",
+          "bee_03__contact_core<->bee_04__contact_core:-0.00425",
+          "bee_04__contact_core<->bee_05__contact_core:-0.00421",
+          "bee_05__contact_core<->bee_06__contact_core:-0.00428",
+          "bee_06__contact_core<->bee_07__contact_core:-0.00437",
+          "bee_07__contact_core<->bee_08__contact_core:-0.00432",
+          "bee_08__contact_core<->bee_09__contact_core:-0.00417",
+          "bee_00__contact_core<->bee_01__contact_core:-0.00987",
+          "bee_01__contact_core<->bee_02__contact_core:-0.00294",
+          "bee_02__contact_core<->bee_03__contact_core:-0.00956",
+          "bee_03__contact_core<->bee_04__contact_core:-0.00428",
+          "bee_04__contact_core<->bee_05__contact_core:-0.00754",
+          "bee_05__contact_core<->bee_06__contact_core:-0.00187"
+        ],
+        "passed": true,
+        "waggle_phase_samples": [],
+        "follower_orientation_error_mean_deg": 0.0,
+        "follower_orientation_error_max_deg": 0.0,
+        "follower_distance_mean_m": 0.0,
+        "follower_distance_std_m": 0.0,
+        "follower_orientation_confidence": 0.0,
+        "waggle_phase_coupling_score": 0.0,
+        "contact_graph_edge_count": 10
+      },
+      "gif": "output/reports/workflowz_scene_lighting_control/baseline.gif",
+      "contact_sheet": "output/reports/workflowz_scene_lighting_control/baseline.png"
+    },
+    "candidate": {
+      "seconds": 0.727129,
+      "frames": 4,
+      "width": 640,
+      "height": 480,
+      "metrics": {
+        "scene_name": "collision",
+        "bee_count": 10,
+        "frame_count": 4,
+        "frames_with_any_contacts": 3,
+        "frames_with_bee_bee_contacts": 3,
+        "frames_with_floor_contacts": 0,
+        "bee_bee_contact_count": 28,
+        "floor_contact_count": 0,
+        "bee_bee_contact_pairs": [
+          "bee_00-bee_01",
+          "bee_00-bee_09",
+          "bee_01-bee_02",
+          "bee_02-bee_03",
+          "bee_03-bee_04",
+          "bee_04-bee_05",
+          "bee_05-bee_06",
+          "bee_06-bee_07",
+          "bee_07-bee_08",
+          "bee_08-bee_09"
+        ],
+        "contact_frame_indices": [
+          1,
+          2,
+          3
+        ],
+        "bee_bee_contact_frame_indices": [
+          1,
+          2,
+          3
+        ],
+        "floor_contact_frame_indices": [],
+        "min_contact_distance": -0.009869459453932458,
+        "sample_contact_geoms": [
+          "bee_00__contact_core<->bee_01__contact_core:-0.00419",
+          "bee_00__contact_core<->bee_09__contact_core:-0.00408",
+          "bee_01__contact_core<->bee_02__contact_core:-0.00438",
+          "bee_02__contact_core<->bee_03__contact_core:-0.00437",
+          "bee_03__contact_core<->bee_04__contact_core:-0.00425",
+          "bee_04__contact_core<->bee_05__contact_core:-0.00421",
+          "bee_05__contact_core<->bee_06__contact_core:-0.00428",
+          "bee_06__contact_core<->bee_07__contact_core:-0.00437",
+          "bee_07__contact_core<->bee_08__contact_core:-0.00432",
+          "bee_08__contact_core<->bee_09__contact_core:-0.00417",
+          "bee_00__contact_core<->bee_01__contact_core:-0.00987",
+          "bee_01__contact_core<->bee_02__contact_core:-0.00294",
+          "bee_02__contact_core<->bee_03__contact_core:-0.00956",
+          "bee_03__contact_core<->bee_04__contact_core:-0.00428",
+          "bee_04__contact_core<->bee_05__contact_core:-0.00754",
+          "bee_05__contact_core<->bee_06__contact_core:-0.00187"
+        ],
+        "passed": true,
+        "waggle_phase_samples": [],
+        "follower_orientation_error_mean_deg": 0.0,
+        "follower_orientation_error_max_deg": 0.0,
+        "follower_distance_mean_m": 0.0,
+        "follower_distance_std_m": 0.0,
+        "follower_orientation_confidence": 0.0,
+        "waggle_phase_coupling_score": 0.0,
+        "contact_graph_edge_count": 10
+      },
+      "gif": "output/reports/workflowz_scene_lighting_control/candidate.gif",
+      "contact_sheet": "output/reports/workflowz_scene_lighting_control/candidate.png"
+    }
+  },
+  "contact_metrics_identical": true,
+  "visual_profile": "viewport_buffers_scene_scoped_lighting",
+  "timing_limit": "Single ordered local control pair; not a benchmark or a Linux/GPU causal measurement.",
+  "visual_review": {
+    "approved": true,
+    "scope": "Actual matched four-frame before/after native collision contact sheets, not final full-production visual approval.",
+    "observations": [
+      "Shared lighting retains recognizable amber/dark body, black eyes, legs, antennae, and transparent wing structure.",
+      "The floor and body shading are no longer washed out by repeated studio lights; scene-key shadows remain.",
+      "Framing/poses are unchanged; the existing start-frame wing-edge cropping is also present in the baseline."
+    ],
+    "illumination_is_intentionally_changed": true,
+    "physical_geometry_material_arrays_identical": true,
+    "full_production_review_required": true,
+    "before_counterexample": "visual-light-flooding-regression-before/23555-43907983971c4132ad3101d86efcf59a",
+    "after_native_control": "visual-scene-lighting-after-and-control/23578-ecc2b0e11eeb4ce68bfaae077870834f"
+  }
+}
