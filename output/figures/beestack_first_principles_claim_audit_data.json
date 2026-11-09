@@ -9,9 +9,9 @@
   "nodes": [
     {
       "id": "fig:first_principles_claim_audit",
-      "label": "BeeStack first-principles claim audit"
+      "label": "Claim-admission rules (conceptual)"
     }
   ],
   "schema": "beestack.figure_data.v1",
-  "title": "BeeStack first-principles claim audit"
+  "title": "Claim-admission rules (conceptual)"
 }

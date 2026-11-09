@@ -17,7 +17,7 @@
 ## BeeBody
 
 - Passed: `True`
-- Fidelity: FlyBody render path plus reduced closed-loop telemetry
+- Fidelity: FlyBody render path plus separate reduced-scenario telemetry
 - Deterministic: `True`
 - Public API: `Observation`, `Action`, `BodyState`, `BodyTelemetry`, `FlyBodyBeeBackend`, `BeeBodyPlanArtifact`
 - Config knobs: `body_mass_mg=80.0`, `wing_stroke_hz=230.0`, `wing_model=coupled_hamuli`, `action_dim_default=59`, `body_render_size=640x480`

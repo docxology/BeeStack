@@ -1,18 +1,18 @@
 # Abstract {#sec:abstract}
 
-BeeStack is an executable research scaffold for whole-colony simulation
-of the Western honey bee, *Apis mellifera*. It converts a five-layer
-biophysical specification — body, brain, mind, swarm, and niche — into
-5 typed Python modules with explicit contracts, deterministic
-seeding, and a continuous evidentiary trail running from raw configuration to
-hydrated manuscript. The implementation is deliberately tiered. BeeBody uses
+BeeStack is an offline research CLI for reduced models of the Western honey bee,
+*Apis mellifera*, not a whole-colony simulator. It represents a five-layer
+specification — body, brain, mind, swarm, and niche — as 5 typed
+Python modules with explicit contracts, deterministic seeding, and provenance
+from configuration to hydrated manuscript. The driver executes selected reduced
+interfaces; other feedback routes remain declarations. BeeBody uses
 FlyBody [@vaxenburg2025flybody] walking and wing-beat flight tasks
 through a generated honeybee MJCF body plan rendered in MuJoCo
 [@todorov2012mujoco]; strict BeeSwarm waggle and collision scenes use
 full BeeBody MJCF copies inside the same physics engine with required contact
 metrics, while remaining scripted small-scene visual/contact witnesses rather
-than integrated colony dynamics; BeeBrain ingests curated public
-*Apis mellifera* anatomy and activity datasets — including the Honey-Bee
+than integrated colony dynamics; BeeBrain provides gated acquisition and parsing
+for curated public *Apis mellifera* anatomy and activity sources — including the Honey-Bee
 Standard Brain atlas and integration ecosystem
 [@brandt2005standardbrain; @rybak2010digital], glomerular odor codes
 [@galizia1999glomerular], calcium imaging
@@ -21,10 +21,10 @@ subtype gene expression [@kaneko2016kenyon], alarm-pheromone receptors
 [@andreu2025dryad], antennal active-sensing kinematics
 [@jernigan2026dryad], biogenic-amine spreadsheets [@nouvian2017dryad],
 and Hadjitofi–Webb dance-follower antennal positioning
-[@hadjitofi2024figshare; @hadjitofi2024currentbiology] — and converts them into typed anatomy
-inventories, response panels, and dance-decoding templates; while BeeMind,
-the non-visual swarm communication kernel, and BeeNiche remain reduced
-deterministic kernels with explicit contracts and labeled gaps.
+[@hadjitofi2024figshare; @hadjitofi2024currentbiology] — into typed anatomy
+inventories, response panels, and templates only when compatible local payloads
+support analysis; BeeMind, the non-visual swarm communication kernel, and BeeNiche
+remain reduced deterministic kernels with explicit contracts and labeled gaps.
 
 Field-scale colony-health stressors—mites, viruses, pesticides, and
 survey-documented losses—motivate the roadmap's colony ledger and assimilation

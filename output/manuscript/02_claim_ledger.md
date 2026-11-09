@@ -1,11 +1,11 @@
-# Claim Ledger {#sec:claim_ledger}
+# Claim Ledger: Executed Kernels and Unsupported Inferences {#sec:claim_ledger}
 
 BeeStack is a *research-operations* project rather than a single monolithic
 simulator. It scopes itself around three commitments — fidelity honesty,
 executable separation of concerns, and measurable improvement — that
 together determine which claims the stack is and is not entitled to make.
 
-## Commitment 1: separate biological ambition from implemented fidelity
+## Implemented fidelity across the five modules
 
 The five biological layers do not currently sit at the same level of
 biological realism, and the project is explicit about that asymmetry.
@@ -16,8 +16,8 @@ biological realism, and the project is explicit about that asymmetry.
   `WalkImitation`, `FlightImitationWBPG`, and `WingBeatPatternGenerator`
   tasks [@vaxenburg2025flybody] running inside MuJoCo
   [@todorov2012mujoco].
-- **Empirical claims** are tied to the BeeBrain data registry and to
-  downloaded payloads on disk. The current empirical run integrates
+- **Empirical claims** require current source-bound analysis, not merely a
+  retained report or downloaded file. When available, the aggregate integrates
   N/A response panels, N/A
   anatomy inventories, N/A antennal-movement
   summaries, and N/A integrated odor templates,
@@ -46,7 +46,7 @@ reduced kernel, or on empirical anchor data.
 | Scholarship and figure provenance | Verified source-refresh ledger, bibliography DOI audit, and figure sidecars | `output/llm/source_refresh_ledger.md`; `output/data/manuscript_figure_index.json` | Web synthesis replacing direct scholarly/official verification |
 | Whole-stack reproducibility | Hydrated manuscript, manifests, audits, and tests | `output/data/manuscript_variables.json` | Biological predictive validity by itself |
 
-## First-principles claim boundary
+## Non-negotiable evidence constraints
 
 The claim ledger is not just a table of cautious wording; it is the
 project's boundary between hard constraints and replaceable choices. A
@@ -63,7 +63,7 @@ public contracts remain satisfied.
 
 [@fig:first_principles_claim_audit] summarizes how registered reports and contracts map to claim tiers.
 
-![Matplotlib beestack first-principles claim audit shows First-principles claim audit separating hard evidence constraints, replaceable implementation choices, and blocked digital-twin claims. Generated from figure registry, source audit, and generated project contracts. Sidecar validation checks raster, source routing, and registered claim tier. Does not add evidence beyond registered reports or make blocked claims current.](../figures/beestack_first_principles_claim_audit.png){#fig:first_principles_claim_audit}
+![First-principles claim audit separating hard evidence constraints, replaceable implementation choices, and blocked digital-twin claims. Generated from figure registry, source audit, and generated project contracts using Matplotlib. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not add evidence beyond registered reports or make blocked claims current.](../figures/beestack_first_principles_claim_audit.png){#fig:first_principles_claim_audit}
 
 This boundary keeps the scope falsifiable. If a future BeeBrain backend
 adds spiking AL-MB-CX dynamics, the hard requirement is not "keep the old
@@ -74,16 +74,15 @@ recruitment equation"; it is "separate small-scene contact evidence from
 population-scale demographic validation." That is why the roadmap can be
 ambitious without blurring present evidence.
 
-## Commitment 2: make the stack executable end-to-end
+## Executable module, script, and manuscript boundaries
 
-The implementation follows the research-template separation of concerns
-that the surrounding repository enforces: `src/beestack/` contains
-importable module logic with no filesystem or network side effects;
-`scripts/` owns I/O, downloads, and orchestration; `tests/` uses real
-computations with no mocks; `docs/manuscript/` holds tokenized prose hydrated
+The implementation separates domain computation from explicit I/O adapters.
+`src/beestack/` contains importable kernels plus guarded empirical-acquisition
+and presentation adapters; `scripts/` invokes them and owns orchestration.
+`tests/` uses real computations with no mocks; `docs/manuscript/` holds tokenized prose hydrated
 from real run-time values; and `output/` contains regeneratable
 artifacts. Every non-cache directory is signposted, with
-71 directories covered by local README and
+72 directories covered by local README and
 AGENTS files so that downstream agents — human or LLM — can pick up the
 project without rediscovering its structure.
 
@@ -101,7 +100,7 @@ Executability is enforced at three levels.
    are not transcribed from notes; they are read from the JSON files
    that the same pipeline writes.
 
-## Commitment 3: make improvement measurable
+## Scorecards, sensitivity sweeps, and known gaps
 
 The research suite assembles five module scorecards, empirical evidence
 records, visualization inventories, deterministic sensitivity sweeps,
@@ -114,7 +113,7 @@ review currently prioritizes **BeeBrain calcium acquisition completion (P27)** a
 follow-up item, making the next pass a *scientific decision* rather than
 an unstructured refactor.
 
-## Contributions summary
+## Implemented artifacts and typed contracts
 
 The implementation therefore contributes an audited substrate for
 progressive fidelity upgrades:
@@ -128,13 +127,13 @@ progressive fidelity upgrades:
 3. **Typed cross-layer contracts** (`Observation`, `Action`,
    `BrainState`, `BeliefState`, `BeeAgent`, `PheromoneField`, `CombGrid`)
    that survive module replacement.
-4. **Validated reduced kernels** for BeeMind active-inference policy
-   scoring, BeeSwarm dance recruitment, and BeeNiche comb-and-thermal
-   stepping, each with explicit diagnostic panels.
-5. **Manuscript hydration and project-wide readiness reports** so that
-   prose and reports never drift from the artifacts they describe.
+4. **Verified reduced kernels** for BeeMind policy scoring, BeeSwarm dance
+   recruitment, and BeeNiche stepping, with deterministic diagnostics and
+   regression checks rather than biological calibration.
+5. **Manuscript hydration and project-wide readiness reports** to detect stale
+   prose/report inputs before publication.
 
-## What BeeStack is not
+## Unsupported simulator and decision-support claims
 
 For clarity, BeeStack is not a calibrated honey-bee biophysical simulator,
 not a connectome-level brain model, not a learned generative

@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
-  "alt_text": "Contact sheet of eight FlyBody-rendered flight frames for a single nestmate honeybee body plan.",
+  "alt_text": "Sampled FlyBody flight-task frames of the generated honeybee body plan.",
   "artifact_kind": "figure",
   "backend": "FlyBody/MuJoCo",
-  "caption": "FlyBody/MuJoCo beebody flybody wing-beat flight render shows Eight-frame contact sheet from FlightImitationWBPG and WingBeatPatternGenerator on the same honeybee MJCF, showing coupled forewing/hindwing surfaces and wing-beat flight posture. Generated from animation manifest, bee visual verification, and apis_mellifera_worker MJCF. Sidecar validation checks raster, source routing, and registered claim tier. Does not calibrate honeybee aerodynamics or hovering power against measured loads.",
+  "caption": "Sampled FlightImitationWBPG and WingBeatPatternGenerator frames on the honeybee MJCF document forewing/hindwing surfaces and flight-task posture. Generated from animation manifest, bee visual verification, and apis_mellifera_worker MJCF using FlyBody/MuJoCo. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not calibrate honeybee aerodynamics or hovering power against measured loads.",
   "citation_keys": [
     "vaxenburg2025flybody",
     "todorov2012mujoco"

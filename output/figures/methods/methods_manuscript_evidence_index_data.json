@@ -1,7 +1,15 @@
 {
-  "chart_type": "schematic",
+  "chart_type": "separate_count_and_fraction_panels",
+  "count_columns": [
+    "evidence_links",
+    "visual_artifacts"
+  ],
   "figure_path": "output/figures/methods/methods_manuscript_evidence_index.png",
-  "nodes": [
+  "fraction_columns": [
+    "validation_fraction"
+  ],
+  "independent_axes": true,
+  "rows": [
     {
       "evidence_links": 1,
       "module": "BeeBody",
@@ -34,5 +42,5 @@
     }
   ],
   "schema": "beestack.figure_data.v1",
-  "title": "Manuscript evidence index by module"
+  "title": "Manuscript evidence inventory and configured self-tests"
 }

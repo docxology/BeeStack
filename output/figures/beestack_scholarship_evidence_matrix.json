@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
   "alt_text": "Matrix of verified scholarship sources with DOI status, target sections, target figures, and claim-tier categories.",
   "artifact_kind": "figure",
   "backend": "Matplotlib",
-  "caption": "Matplotlib beestack scholarship evidence matrix shows Scholarship evidence matrix mapping directly verified sources to manuscript sections, figure targets, DOI-bearing source records, and claim tiers. Generated from source refresh ledger, bibliography, source audit, and figure registry. Sidecar validation checks raster, source routing, and registered claim tier. Does not replace direct DOI/source verification or add empirical data.",
+  "caption": "Scholarship evidence matrix mapping directly verified sources to manuscript sections, figure targets, DOI-bearing source records, and claim tiers. Generated from source refresh ledger, bibliography, source audit, and figure registry using Matplotlib. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not replace direct DOI/source verification or add empirical data.",
   "citation_keys": [
     "fair4rs2022principles",
     "wilkinson2016fair",
@@ -43,14 +44,14 @@
   "plot_data_path": "output/figures/beestack_scholarship_evidence_matrix_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 1589,
+    "height_px": 2180,
     "max_intensity": 255,
-    "mean_intensity": 238.2099752471867,
+    "mean_intensity": 248.08894282908813,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 45.89850033308358,
-    "width_px": 2396
+    "std_intensity": 30.271650648924638,
+    "width_px": 2504
   },
   "regeneration_command": "uv run python scripts/analysis_pipeline.py",
   "schema": "beestack.figure.v1",
@@ -60,19 +61,19 @@
     "10.1038/sdata.2016.18",
     "10.3233/DS-190026"
   ],
-  "title": "Beestack Scholarship Evidence Matrix",
+  "title": "Scholarly source ledger and availability",
   "unsupported_inference": "Does not replace direct DOI/source verification or add empirical data.",
   "validation_status": "nonblank quality sidecar and plot data generated",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 1.508,
+    "aspect_ratio": 1.149,
     "figure_role": "dashboard",
-    "height_px": 1589,
+    "height_px": 2180,
     "label_density": "dense",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 2396,
-    "min_dimension_px": 1589,
+    "max_dimension_px": 2504,
+    "min_dimension_px": 2180,
     "readability_status": "pass",
-    "width_px": 2396
+    "width_px": 2504
   }
 }

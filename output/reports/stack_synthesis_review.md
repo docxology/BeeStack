@@ -28,7 +28,7 @@ Statistical synthesis of module readiness, simulation telemetry, visualization e
 
 | Module | Fidelity | Validation | Readiness | Metrics | Evidence | Artifacts | Gaps |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| BeeBody | FlyBody render path plus reduced closed-loop telemetry | 1.000 | 0.933 | 14 | 2 | 22 | 2 |
+| BeeBody | FlyBody render path plus separate reduced-scenario telemetry | 1.000 | 0.933 | 14 | 2 | 22 | 2 |
 | BeeBrain | empirical reduced AL-MB-CX kernel | 0.000 | 0.483 | 14 | 3 | 29 | 2 |
 | BeeMind | bounded active-inference-style policy kernel | 1.000 | 0.933 | 8 | 2 | 9 | 2 |
 | BeeSwarm | reduced communication kernel plus strict FlyBody/MuJoCo BeeBody waggle/collision scenes | 1.000 | 0.925 | 14 | 2 | 23 | 3 |

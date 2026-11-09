@@ -1,7 +1,17 @@
 {
+  "annotations": [
+    "Configure, compute, write artifacts, and audit/release, with a separate pose/contact animation branch.",
+    "claim_tier=architecture_schematic",
+    "source_data=project workflow contract and separate animation branch"
+  ],
   "chart_type": "schematic",
   "figure_path": "output/figures/beestack_pipeline_overview.png",
-  "nodes": [],
+  "nodes": [
+    {
+      "id": "fig:research_artifact_workflow",
+      "label": "Research artifact workflow (conceptual)"
+    }
+  ],
   "schema": "beestack.figure_data.v1",
-  "title": "beestack pipeline overview"
+  "title": "Research artifact workflow (conceptual)"
 }

@@ -1,23 +1,27 @@
 {
-  "annotations": [
-    "primary_figure_count=42"
+  "chart_type": "heatmap",
+  "column_labels": [
+    "empirical",
+    "strict render",
+    "methods",
+    "source",
+    "synthesis",
+    "boundary"
   ],
-  "chart_type": "schematic",
   "figure_path": "output/figures/manuscript_figure_claim_map.png",
-  "nodes": [],
-  "rows": [
+  "inventory_rows": [
     {
       "artifact_path": "output/figures/beestack_graphical_abstract.png",
       "claim_tier": "architecture_schematic",
       "manuscript_section": "docs/manuscript/04_evidence_typed_architecture.md",
-      "source_data": "module coverage records and stack contract definitions",
-      "unsupported_inference": "Does not support a claim of biological or digital-twin validation."
+      "source_data": "reduced orchestrator execution flow and SimulationRecord contract",
+      "unsupported_inference": "Does not establish neural feedback, biological validation, or calibrated digital-twin behavior."
     },
     {
       "artifact_path": "output/figures/beestack_evidence_ladder.png",
       "claim_tier": "fidelity_boundary",
       "manuscript_section": "docs/manuscript/08_validation_and_figures.md",
-      "source_data": "methods analysis, readiness review, and generated artifact manifests",
+      "source_data": "conceptual evidence-class and claim-ceiling contract",
       "unsupported_inference": "Does not remove the assimilation, residual, uncertainty, or governance gaps."
     },
     {
@@ -52,7 +56,7 @@
       "artifact_path": "output/figures/beebody_beeswarm_micro_macro_calibration.png",
       "claim_tier": "micro_macro_calibration_boundary",
       "manuscript_section": "docs/manuscript/05_methods_body_swarm.md",
-      "source_data": "FlyBody scene metrics, simulation records, BEEHAVE anchor, and source refresh ledger",
+      "source_data": "simulation records, separate scene-interface contract, and scholarly anchors",
       "unsupported_inference": "Does not calibrate colony-scale recruitment or make small-scene contacts a population model."
     },
     {
@@ -73,7 +77,7 @@
       "artifact_path": "output/figures/beestack_validation_readiness_residuals.png",
       "claim_tier": "validation_readiness_boundary",
       "manuscript_section": "docs/manuscript/08_validation_and_figures.md",
-      "source_data": "source refresh ledger, readiness review, generated reports, and figure sidecars",
+      "source_data": "declared verification, validation, and digital-twin requirements",
       "unsupported_inference": "Does not provide held-out residuals, uncertainty quantification, or digital-twin readiness."
     },
     {
@@ -109,7 +113,7 @@
       "claim_tier": "strict_flybody_render",
       "manuscript_section": "docs/manuscript/05_methods_body_swarm.md",
       "source_data": "animation manifest, bee visual verification, and apis_mellifera_worker MJCF",
-      "unsupported_inference": "Does not calibrate honeybee walking biomechanics or prove field-scale locomotion."
+      "unsupported_inference": "Does not classify tripod gait, measure silhouette overlap, calibrate walking biomechanics, or prove field-scale locomotion."
     },
     {
       "artifact_path": "output/figures/renders/beebody_flybody_flight_contact_sheet.png",
@@ -274,14 +278,14 @@
     },
     {
       "artifact_path": "output/figures/research/research_fidelity_evidence_network.png",
-      "claim_tier": "research_evidence_network",
+      "claim_tier": "research_evidence_inventory",
       "manuscript_section": "docs/manuscript/11_research_synthesis.md",
       "source_data": "ResearchSuiteReport evidence records",
       "unsupported_inference": "Does not make empirical coverage complete."
     },
     {
       "artifact_path": "output/figures/research/research_evidence_detail.png",
-      "claim_tier": "research_evidence_network",
+      "claim_tier": "research_evidence_inventory",
       "manuscript_section": "docs/manuscript/11_research_synthesis.md",
       "source_data": "ResearchSuiteReport evidence records and empirical availability rows",
       "unsupported_inference": "Does not make empirical coverage complete."
@@ -301,6 +305,101 @@
       "unsupported_inference": "Does not make BeeStack digital-twin ready."
     }
   ],
+  "matrix": [
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      7,
+      0,
+      0,
+      0,
+      2
+    ],
+    [
+      1,
+      0,
+      1,
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      0,
+      1,
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      0,
+      3,
+      2,
+      0,
+      2
+    ],
+    [
+      9,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      0,
+      0,
+      2
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      5,
+      1
+    ]
+  ],
+  "row_labels": [
+    "02_claim_ledger",
+    "03_materials_and_source_provenance",
+    "04_evidence_typed_architecture",
+    "05_methods_body_swarm",
+    "06_methods_brain_mind",
+    "07_methods_niche",
+    "08_validation_and_figures",
+    "09_empirical_results",
+    "10_integrated_results",
+    "11_research_synthesis"
+  ],
   "schema": "beestack.figure_data.v1",
-  "title": "Manuscript figure claim map"
+  "title": "Registered primary figures by section",
+  "value_label": "Registered primary figure count (not evidence strength)"
 }

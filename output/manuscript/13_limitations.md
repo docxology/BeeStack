@@ -1,4 +1,4 @@
-# Limitations {#sec:limitations}
+# Limitations of Reduced Kernels and Scripted Contact Scenes {#sec:limitations}
 
 The current BeeStack implementation should be read as *executable architecture*. Its strongest
 claim is not biological prediction, but disciplined integration: each
@@ -8,7 +8,7 @@ explicit contracts. The honest framing of the limitations is therefore
 declared in [@sec:architecture] and the scorecards summarized in
 [@sec:research_synthesis].
 
-## BeeBody: calibration
+## BeeBody: uncalibrated biomechanics
 
 The primary BeeBody limitation is **biomechanical calibration**. The
 renderer uses FlyBody walking and flight tasks
@@ -27,7 +27,7 @@ The visual score 0.991 and MJCF/color cue score
 morphology cues and rendered color/motion statistics, not reference-silhouette
 overlap, gait classification, or biological kinetics.
 
-## BeeBrain: dynamical fidelity
+## BeeBrain: reduced dynamics and unavailable inputs
 
 The primary BeeBrain limitation is **dynamical fidelity**. BeeBrain
 can acquire, parse, summarize, and integrate real honey-bee anatomy
@@ -43,7 +43,7 @@ N/A parsed calcium datasets. Paoli recordings
 payloads are actually local; unavailable payloads remain explicit blockers.
 Template alignment is not a held-out predictive likelihood.
 
-## BeeMind: generative-model depth
+## BeeMind: unlearned generative models
 
 The primary BeeMind limitation is **generative-model depth**. Policy
 scoring is transparent and diagnostic, but transition and observation
@@ -63,7 +63,7 @@ Three concrete consequences:
 3. Caste transitions are gated by simple thresholds, not by a fitted
    demographic model [@johnson2010temporal].
 
-## BeeSwarm: scale
+## BeeSwarm: scripted poses and colony-scale gap
 
 The BeeSwarm limitations are **scale** and **scene fidelity**. The
 strict visual scenes are *scripted-pose* multi-bee scenes: bees are
@@ -82,7 +82,7 @@ BEEHAVE-scale demography [@becher2014beehave]. The
 small-scene-to-colony gap is the most visible scale jump in the
 stack, and the manuscript and figure index make it explicit.
 
-## BeeNiche: ecology
+## BeeNiche: missing ecology and runtime coupling
 
 The primary BeeNiche limitation is **ecology**. Comb, thermal, and
 deterministic seasonal/weather forage witnesses are executable, but
@@ -112,7 +112,7 @@ variables. Each item cites the scholarship context and points to
   omics/microbiome state.
 - **Pesticide burden in hive matrices** — residue surveys and landscape
   exposure [@glinski2024hivematrices; @hisamoto2024landscape]; BeeNiche
-  driver stubs in roadmap item 11.
+  provenance-bound driver observations in roadmap item 11.
 - **Commercial colony-loss statistics** — national surveys and triage
   reports [@aurell2024survey; @scitotenv2025triage]; assimilation targets
   in roadmap axis 7, not present-tense model outputs.
@@ -120,7 +120,7 @@ variables. Each item cites the scholarship context and points to
   adaptation literature [@cridland2017demography; @chen2016genomic]; no
   apiary-genetics state or measured managed-U.S. bottleneck in the reduced baseline.
 
-## Stack-wide limitations
+## Missing colony calibration and biological variability
 
 Beyond the per-module limits, three stack-wide limitations deserve
 explicit acknowledgement.
@@ -133,12 +133,12 @@ explicit acknowledgement.
    stack is currently *too smooth*: real colonies experience
    noise, disease, and individual variability that the reduced baseline
    does not represent.
-3. **Visualization fidelity is not scientific fidelity.** The MuJoCo
-   contact scenes, the BeeBody MJCF cues, and the silhouette
-   matching are visual evidence. They do not substitute for
-   quantitative biological calibration.
+3. **Visualization fidelity is not scientific fidelity.** MuJoCo contact
+   scenes, BeeBody MJCF cues, and rendered color/motion checks are engineering
+   evidence, not reference-silhouette matching or quantitative biological
+   calibration.
 
-## Closing the gaps
+## Module-level calibration and replacement requirements
 
 Every limitation in this section appears in the research-suite known-gaps
 catalog, is interpreted in the discussion, and appears again in the roadmap,

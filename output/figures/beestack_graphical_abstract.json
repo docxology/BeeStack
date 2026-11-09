@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
-  "alt_text": "Five BeeStack modules arranged as a left-to-right contract chain.",
+  "alt_text": "Reduced execution flow with synthetic dance input and no BrainState-to-policy feedback.",
   "artifact_kind": "figure",
   "backend": "Matplotlib",
-  "caption": "Matplotlib beestack graphical abstract shows Showcase architecture schematic linking BeeBody, BeeBrain, BeeMind, BeeSwarm, and BeeNiche through typed contracts and generated evidence. Generated from module coverage records and stack contract definitions. Sidecar validation checks raster, source routing, and registered claim tier. Does not support a claim of biological or digital-twin validation.",
+  "caption": "Executed reduced-scenario schematic: a fixed synthetic DanceVector updates BeeMind and BeeSwarm, BeeMind selects Body actions, Body observations enter BeeBrain, and BeeNiche receives an independent thermal update. Generated from reduced orchestrator execution flow and SimulationRecord contract using Matplotlib. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not establish neural feedback, biological validation, or calibrated digital-twin behavior.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
@@ -42,14 +43,14 @@
   "plot_data_path": "output/figures/beestack_graphical_abstract_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 956,
+    "height_px": 1068,
     "max_intensity": 255,
-    "mean_intensity": 237.27569719012706,
-    "min_intensity": 0,
+    "mean_intensity": 247.25487066142765,
+    "min_intensity": 24,
     "mode": "RGBA",
-    "nonzero_histogram_bins": 256,
-    "std_intensity": 49.86418705186189,
-    "width_px": 2180
+    "nonzero_histogram_bins": 232,
+    "std_intensity": 32.76998761698426,
+    "width_px": 2036
   },
   "regeneration_command": "uv run python scripts/analysis_pipeline.py",
   "schema": "beestack.figure.v1",
@@ -58,19 +59,19 @@
     "10.1371/journal.pcbi.1005510",
     "10.3233/DS-190026"
   ],
-  "title": "Beestack Graphical Abstract",
-  "unsupported_inference": "Does not support a claim of biological or digital-twin validation.",
+  "title": "BeeStack: the executed reduced scenario",
+  "unsupported_inference": "Does not establish neural feedback, biological validation, or calibrated digital-twin behavior.",
   "validation_status": "nonblank quality sidecar and plot data generated",
   "visual_quality": {
-    "aspect_class": "wide",
-    "aspect_ratio": 2.28,
+    "aspect_class": "balanced",
+    "aspect_ratio": 1.906,
     "figure_role": "overview",
-    "height_px": 956,
+    "height_px": 1068,
     "label_density": "dense",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 2180,
-    "min_dimension_px": 956,
+    "max_dimension_px": 2036,
+    "min_dimension_px": 1068,
     "readability_status": "pass",
-    "width_px": 2180
+    "width_px": 2036
   }
 }

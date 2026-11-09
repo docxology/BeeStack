@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
-  "alt_text": "Comb, thermal, forage, BEEHAVE, and Hiveopolis adapter nodes connected through explicit current and blocked interfaces.",
+  "alt_text": "Reduced-run witness values beside separately labeled conceptual adapter fields.",
   "artifact_kind": "figure",
   "backend": "Matplotlib",
-  "caption": "Matplotlib beeniche adapter and niche map shows Adapter map placing BEEHAVE-compatible colony summaries beside comb, thermal, and forage fields without claiming full hive ecology. Generated from source refresh ledger, niche methods records, simulation records, and adapter notes. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate full ecology, real-time hive control, or thermodynamic colony dynamics.",
+  "caption": "Final comb fraction and maximum absolute thermal error from supplied reduced records, beside conceptual NicheAdapterSummary field groups. No adapter payload is supplied to this figure. Generated from source refresh ledger, niche methods records, simulation records, and adapter notes using Matplotlib. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not validate full ecology, real-time hive control, or thermodynamic colony dynamics.",
   "citation_keys": [
     "becher2014beehave",
     "hiveopolis2019project",
@@ -43,13 +44,13 @@
   "plot_data_path": "output/figures/beeniche_adapter_niche_map_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 1028,
+    "height_px": 975,
     "max_intensity": 255,
-    "mean_intensity": 233.88136834641816,
+    "mean_intensity": 247.75609792957533,
     "min_intensity": 24,
     "mode": "RGBA",
     "nonzero_histogram_bins": 232,
-    "std_intensity": 52.33242748876625,
+    "std_intensity": 32.31090734927747,
     "width_px": 2036
   },
   "regeneration_command": "uv run python scripts/analysis_pipeline.py",
@@ -60,18 +61,18 @@
     "10.3030/824069",
     "10.1007/BF00688889"
   ],
-  "title": "Beeniche Adapter Niche Map",
+  "title": "BeeNiche run witnesses and conceptual adapter schema",
   "unsupported_inference": "Does not validate full ecology, real-time hive control, or thermodynamic colony dynamics.",
   "validation_status": "nonblank quality sidecar and plot data generated",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 1.981,
+    "aspect_ratio": 2.088,
     "figure_role": "overview",
-    "height_px": 1028,
+    "height_px": 975,
     "label_density": "moderate",
     "manuscript_use": "manuscript_primary",
     "max_dimension_px": 2036,
-    "min_dimension_px": 1028,
+    "min_dimension_px": 975,
     "readability_status": "pass",
     "width_px": 2036
   }

@@ -1,120 +1,45 @@
 {
-  "chart_type": "schematic",
-  "edges": [
-    {
-      "source": "BeeBody",
-      "target": "BeeBody:evidence"
-    },
-    {
-      "source": "BeeBrain",
-      "target": "BeeBrain:evidence"
-    },
-    {
-      "source": "BeeMind",
-      "target": "BeeMind:evidence"
-    },
-    {
-      "source": "BeeSwarm",
-      "target": "BeeSwarm:evidence"
-    },
-    {
-      "source": "BeeNiche",
-      "target": "BeeNiche:evidence"
-    },
-    {
-      "label": "BeeBrain templates",
-      "source": "empirical-panels",
-      "target": "BeeBrain"
-    },
-    {
-      "label": "BeeBrain calcium summaries",
-      "source": "calcium-datasets",
-      "target": "BeeBrain"
-    },
-    {
-      "label": "BeeBrain anatomy mapping",
-      "source": "honeybee-standard-brain",
-      "target": "BeeBrain"
-    },
-    {
-      "label": "Stack empirical drive",
-      "source": "template-bank",
-      "target": "BeeBrain"
-    },
-    {
-      "label": "BeeBrain/BeeSwarm waggle decoding",
-      "source": "figshare-hadjitofi-2024-waggle-following",
-      "target": "BeeBrain"
-    }
+  "chart_type": "table",
+  "columns": [
+    "module",
+    "evidence_count",
+    "known_gap_count",
+    "fidelity_level"
   ],
+  "empirical_evidence_count": 5,
   "figure_path": "output/figures/research/research_fidelity_evidence_network.png",
-  "nodes": [
+  "rows": [
     {
-      "id": "BeeBody",
-      "kind": "module"
+      "evidence_count": 1,
+      "fidelity_level": "FlyBody render path plus separate reduced-scenario telemetry",
+      "known_gap_count": 2,
+      "module": "BeeBody"
     },
     {
-      "id": "BeeBrain",
-      "kind": "module"
+      "evidence_count": 1,
+      "fidelity_level": "empirical reduced AL-MB-CX kernel",
+      "known_gap_count": 2,
+      "module": "BeeBrain"
     },
     {
-      "id": "BeeMind",
-      "kind": "module"
+      "evidence_count": 1,
+      "fidelity_level": "bounded active-inference-style policy kernel",
+      "known_gap_count": 2,
+      "module": "BeeMind"
     },
     {
-      "id": "BeeSwarm",
-      "kind": "module"
+      "evidence_count": 1,
+      "fidelity_level": "reduced communication kernel plus strict FlyBody/MuJoCo BeeBody waggle/collision scenes",
+      "known_gap_count": 3,
+      "module": "BeeSwarm"
     },
     {
-      "id": "BeeNiche",
-      "kind": "module"
-    },
-    {
-      "id": "BeeBody:evidence",
-      "kind": "evidence",
-      "label": "FlyBody walking and flig"
-    },
-    {
-      "id": "BeeBrain:evidence",
-      "kind": "evidence",
-      "label": "Curated public honeybee "
-    },
-    {
-      "id": "BeeMind:evidence",
-      "kind": "evidence",
-      "label": "Expected-free-energy pol"
-    },
-    {
-      "id": "BeeSwarm:evidence",
-      "kind": "evidence",
-      "label": "Strict FlyBody/MuJoCo co"
-    },
-    {
-      "id": "BeeNiche:evidence",
-      "kind": "evidence",
-      "label": "Voxel comb, brood therma"
-    },
-    {
-      "id": "empirical-panels",
-      "kind": "empirical"
-    },
-    {
-      "id": "calcium-datasets",
-      "kind": "empirical"
-    },
-    {
-      "id": "honeybee-standard-brain",
-      "kind": "empirical"
-    },
-    {
-      "id": "template-bank",
-      "kind": "empirical"
-    },
-    {
-      "id": "figshare-hadjitofi-2024-waggle-following",
-      "kind": "empirical"
+      "evidence_count": 1,
+      "fidelity_level": "voxel comb and thermal kernel with adapter schemas",
+      "known_gap_count": 2,
+      "module": "BeeNiche"
     }
   ],
   "schema": "beestack.figure_data.v1",
-  "title": "Research fidelity evidence network"
+  "title": "Evidence inventory overview"
 }

@@ -596,16 +596,17 @@
       "summary": {
         "binned_row_count": 407,
         "both_antennae_error_count": 118,
-        "both_antennae_mean_abs_error_deg": 60.178485797519286,
-        "confidence_score": 0.28875178634201437,
+        "both_antennae_mean_abs_error_deg": 60.1784857975193,
+        "confidence_score": 0.2887517863420166,
         "dataset_id": "figshare-hadjitofi-2024-waggle-following",
-        "decoding_improvement_fraction": 0.24776741229159377,
+        "decoding_improvement_fraction": 0.24776741229160107,
         "feature_row_count": 11263,
         "follower_angle_midpoint_correlation": 0.33386139556393624,
+        "follower_angle_midpoint_source": "feature_rows",
         "frame_max": 2640,
         "frame_min": 0,
         "left_right_antenna_synchrony": -0.2516068210965096,
-        "mean_abs_vector_error_deg": 63.662946226908595,
+        "mean_abs_vector_error_deg": 63.662946226907884,
         "mean_angle_to_dancer_deg": 8.044836400546622,
         "mean_antenna_midpoint_deg": 2.5302660105794708,
         "mean_dancer_angle_to_gravity_deg": 9.900070576417585,
@@ -614,7 +615,19 @@
         "mean_scape_angle_deg": 83.44276810668595,
         "model_error_row_count": 56870,
         "no_antennae_error_count": 22585,
-        "no_antennae_mean_abs_error_deg": 79.99983885415868,
+        "no_antennae_mean_abs_error_deg": 79.99983885415948,
+        "observation_counts": {
+          "follower_angle_midpoint_correlation": 11263,
+          "frame": 11263,
+          "left_right_antenna_synchrony": 11263,
+          "mean_angle_to_dancer_deg": 11263,
+          "mean_antenna_midpoint_deg": 11263,
+          "mean_dancer_angle_to_gravity_deg": 11263,
+          "mean_left_antenna_deg": 11263,
+          "mean_right_antenna_deg": 11263,
+          "mean_scape_angle_deg": 11263,
+          "straightness_mean": 59
+        },
         "straightness_mean": 0.487850371035793,
         "straightness_row_count": 59,
         "track_count": 59
@@ -631,6 +644,16 @@
           "mean_left_antenna_deg": 37.133844666251214,
           "mean_right_antenna_deg": -29.041444152914472,
           "mean_scape_angle_deg": 66.17528881916563,
+          "observation_counts": {
+            "frame": 329,
+            "left_right_antenna_synchrony": 329,
+            "mean_angle_to_dancer_deg": 329,
+            "mean_antenna_midpoint_deg": 329,
+            "mean_dancer_angle_to_gravity_deg": 329,
+            "mean_left_antenna_deg": 329,
+            "mean_right_antenna_deg": 329,
+            "mean_scape_angle_deg": 329
+          },
           "row_count": 329
         },
         {
@@ -644,6 +667,16 @@
           "mean_left_antenna_deg": 65.86094330569912,
           "mean_right_antenna_deg": -36.54381826155382,
           "mean_scape_angle_deg": 102.40476156725283,
+          "observation_counts": {
+            "frame": 322,
+            "left_right_antenna_synchrony": 322,
+            "mean_angle_to_dancer_deg": 322,
+            "mean_antenna_midpoint_deg": 322,
+            "mean_dancer_angle_to_gravity_deg": 322,
+            "mean_left_antenna_deg": 322,
+            "mean_right_antenna_deg": 322,
+            "mean_scape_angle_deg": 322
+          },
           "row_count": 322
         },
         {
@@ -657,6 +690,16 @@
           "mean_left_antenna_deg": 38.671868435404875,
           "mean_right_antenna_deg": -32.991381192286916,
           "mean_scape_angle_deg": 71.6632496276918,
+          "observation_counts": {
+            "frame": 109,
+            "left_right_antenna_synchrony": 109,
+            "mean_angle_to_dancer_deg": 109,
+            "mean_antenna_midpoint_deg": 109,
+            "mean_dancer_angle_to_gravity_deg": 109,
+            "mean_left_antenna_deg": 109,
+            "mean_right_antenna_deg": 109,
+            "mean_scape_angle_deg": 109
+          },
           "row_count": 109
         },
         {
@@ -670,6 +713,16 @@
           "mean_left_antenna_deg": 46.73567619823651,
           "mean_right_antenna_deg": -51.26912520774183,
           "mean_scape_angle_deg": 98.00480140597828,
+          "observation_counts": {
+            "frame": 281,
+            "left_right_antenna_synchrony": 281,
+            "mean_angle_to_dancer_deg": 281,
+            "mean_antenna_midpoint_deg": 281,
+            "mean_dancer_angle_to_gravity_deg": 281,
+            "mean_left_antenna_deg": 281,
+            "mean_right_antenna_deg": 281,
+            "mean_scape_angle_deg": 281
+          },
           "row_count": 281
         },
         {
@@ -683,6 +736,16 @@
           "mean_left_antenna_deg": 48.77954085392984,
           "mean_right_antenna_deg": -43.76505736656794,
           "mean_scape_angle_deg": 92.54459822049782,
+          "observation_counts": {
+            "frame": 295,
+            "left_right_antenna_synchrony": 295,
+            "mean_angle_to_dancer_deg": 295,
+            "mean_antenna_midpoint_deg": 295,
+            "mean_dancer_angle_to_gravity_deg": 295,
+            "mean_left_antenna_deg": 295,
+            "mean_right_antenna_deg": 295,
+            "mean_scape_angle_deg": 295
+          },
           "row_count": 295
         },
         {
@@ -696,6 +759,16 @@
           "mean_left_antenna_deg": 49.353770618332696,
           "mean_right_antenna_deg": -53.617629644345094,
           "mean_scape_angle_deg": 102.97140026267772,
+          "observation_counts": {
+            "frame": 271,
+            "left_right_antenna_synchrony": 271,
+            "mean_angle_to_dancer_deg": 271,
+            "mean_antenna_midpoint_deg": 271,
+            "mean_dancer_angle_to_gravity_deg": 271,
+            "mean_left_antenna_deg": 271,
+            "mean_right_antenna_deg": 271,
+            "mean_scape_angle_deg": 271
+          },
           "row_count": 271
         },
         {
@@ -709,6 +782,16 @@
           "mean_left_antenna_deg": 41.04314900807151,
           "mean_right_antenna_deg": -44.232483755863534,
           "mean_scape_angle_deg": 85.27563276393494,
+          "observation_counts": {
+            "frame": 268,
+            "left_right_antenna_synchrony": 268,
+            "mean_angle_to_dancer_deg": 268,
+            "mean_antenna_midpoint_deg": 268,
+            "mean_dancer_angle_to_gravity_deg": 268,
+            "mean_left_antenna_deg": 268,
+            "mean_right_antenna_deg": 268,
+            "mean_scape_angle_deg": 268
+          },
           "row_count": 268
         },
         {
@@ -722,6 +805,16 @@
           "mean_left_antenna_deg": 39.99916805418406,
           "mean_right_antenna_deg": -25.09219763741616,
           "mean_scape_angle_deg": 65.09136569160022,
+          "observation_counts": {
+            "frame": 118,
+            "left_right_antenna_synchrony": 118,
+            "mean_angle_to_dancer_deg": 118,
+            "mean_antenna_midpoint_deg": 118,
+            "mean_dancer_angle_to_gravity_deg": 118,
+            "mean_left_antenna_deg": 118,
+            "mean_right_antenna_deg": 118,
+            "mean_scape_angle_deg": 118
+          },
           "row_count": 118
         },
         {
@@ -735,6 +828,16 @@
           "mean_left_antenna_deg": 43.78034158855597,
           "mean_right_antenna_deg": -31.603475527211785,
           "mean_scape_angle_deg": 75.38381711576774,
+          "observation_counts": {
+            "frame": 167,
+            "left_right_antenna_synchrony": 167,
+            "mean_angle_to_dancer_deg": 167,
+            "mean_antenna_midpoint_deg": 167,
+            "mean_dancer_angle_to_gravity_deg": 167,
+            "mean_left_antenna_deg": 167,
+            "mean_right_antenna_deg": 167,
+            "mean_scape_angle_deg": 167
+          },
           "row_count": 167
         },
         {
@@ -748,6 +851,16 @@
           "mean_left_antenna_deg": 13.937317165038381,
           "mean_right_antenna_deg": -68.13805797201172,
           "mean_scape_angle_deg": 82.0753751370501,
+          "observation_counts": {
+            "frame": 29,
+            "left_right_antenna_synchrony": 29,
+            "mean_angle_to_dancer_deg": 29,
+            "mean_antenna_midpoint_deg": 29,
+            "mean_dancer_angle_to_gravity_deg": 29,
+            "mean_left_antenna_deg": 29,
+            "mean_right_antenna_deg": 29,
+            "mean_scape_angle_deg": 29
+          },
           "row_count": 29
         },
         {
@@ -761,6 +874,16 @@
           "mean_left_antenna_deg": 35.38039761519825,
           "mean_right_antenna_deg": -53.62403961130762,
           "mean_scape_angle_deg": 89.00443722650587,
+          "observation_counts": {
+            "frame": 40,
+            "left_right_antenna_synchrony": 40,
+            "mean_angle_to_dancer_deg": 40,
+            "mean_antenna_midpoint_deg": 40,
+            "mean_dancer_angle_to_gravity_deg": 40,
+            "mean_left_antenna_deg": 40,
+            "mean_right_antenna_deg": 40,
+            "mean_scape_angle_deg": 40
+          },
           "row_count": 40
         },
         {
@@ -774,6 +897,16 @@
           "mean_left_antenna_deg": 61.8727415696888,
           "mean_right_antenna_deg": -23.506576299843967,
           "mean_scape_angle_deg": 85.37931786953277,
+          "observation_counts": {
+            "frame": 33,
+            "left_right_antenna_synchrony": 33,
+            "mean_angle_to_dancer_deg": 33,
+            "mean_antenna_midpoint_deg": 33,
+            "mean_dancer_angle_to_gravity_deg": 33,
+            "mean_left_antenna_deg": 33,
+            "mean_right_antenna_deg": 33,
+            "mean_scape_angle_deg": 33
+          },
           "row_count": 33
         },
         {
@@ -787,6 +920,16 @@
           "mean_left_antenna_deg": 65.04222897848281,
           "mean_right_antenna_deg": -33.44151380588101,
           "mean_scape_angle_deg": 98.48374278436383,
+          "observation_counts": {
+            "frame": 25,
+            "left_right_antenna_synchrony": 25,
+            "mean_angle_to_dancer_deg": 25,
+            "mean_antenna_midpoint_deg": 25,
+            "mean_dancer_angle_to_gravity_deg": 25,
+            "mean_left_antenna_deg": 25,
+            "mean_right_antenna_deg": 25,
+            "mean_scape_angle_deg": 25
+          },
           "row_count": 25
         },
         {
@@ -800,6 +943,16 @@
           "mean_left_antenna_deg": 36.57994749328332,
           "mean_right_antenna_deg": -58.90140889415759,
           "mean_scape_angle_deg": 95.48135638744093,
+          "observation_counts": {
+            "frame": 29,
+            "left_right_antenna_synchrony": 29,
+            "mean_angle_to_dancer_deg": 29,
+            "mean_antenna_midpoint_deg": 29,
+            "mean_dancer_angle_to_gravity_deg": 29,
+            "mean_left_antenna_deg": 29,
+            "mean_right_antenna_deg": 29,
+            "mean_scape_angle_deg": 29
+          },
           "row_count": 29
         },
         {
@@ -813,6 +966,16 @@
           "mean_left_antenna_deg": 29.037670052414207,
           "mean_right_antenna_deg": -60.63489771387601,
           "mean_scape_angle_deg": 89.67256776629021,
+          "observation_counts": {
+            "frame": 60,
+            "left_right_antenna_synchrony": 60,
+            "mean_angle_to_dancer_deg": 60,
+            "mean_antenna_midpoint_deg": 60,
+            "mean_dancer_angle_to_gravity_deg": 60,
+            "mean_left_antenna_deg": 60,
+            "mean_right_antenna_deg": 60,
+            "mean_scape_angle_deg": 60
+          },
           "row_count": 60
         },
         {
@@ -826,6 +989,16 @@
           "mean_left_antenna_deg": 27.93326844615801,
           "mean_right_antenna_deg": -52.46604315611635,
           "mean_scape_angle_deg": 80.39931160227435,
+          "observation_counts": {
+            "frame": 41,
+            "left_right_antenna_synchrony": 41,
+            "mean_angle_to_dancer_deg": 41,
+            "mean_antenna_midpoint_deg": 41,
+            "mean_dancer_angle_to_gravity_deg": 41,
+            "mean_left_antenna_deg": 41,
+            "mean_right_antenna_deg": 41,
+            "mean_scape_angle_deg": 41
+          },
           "row_count": 41
         },
         {
@@ -839,6 +1012,16 @@
           "mean_left_antenna_deg": 31.951221318794218,
           "mean_right_antenna_deg": -35.056978809255,
           "mean_scape_angle_deg": 67.00820012804918,
+          "observation_counts": {
+            "frame": 283,
+            "left_right_antenna_synchrony": 283,
+            "mean_angle_to_dancer_deg": 283,
+            "mean_antenna_midpoint_deg": 283,
+            "mean_dancer_angle_to_gravity_deg": 283,
+            "mean_left_antenna_deg": 283,
+            "mean_right_antenna_deg": 283,
+            "mean_scape_angle_deg": 283
+          },
           "row_count": 283
         },
         {
@@ -852,6 +1035,16 @@
           "mean_left_antenna_deg": 33.206178639524985,
           "mean_right_antenna_deg": -49.22189223590408,
           "mean_scape_angle_deg": 82.42807087542906,
+          "observation_counts": {
+            "frame": 95,
+            "left_right_antenna_synchrony": 95,
+            "mean_angle_to_dancer_deg": 95,
+            "mean_antenna_midpoint_deg": 95,
+            "mean_dancer_angle_to_gravity_deg": 95,
+            "mean_left_antenna_deg": 95,
+            "mean_right_antenna_deg": 95,
+            "mean_scape_angle_deg": 95
+          },
           "row_count": 95
         },
         {
@@ -865,6 +1058,16 @@
           "mean_left_antenna_deg": 47.43034850903071,
           "mean_right_antenna_deg": -41.03709453752573,
           "mean_scape_angle_deg": 88.4674430465565,
+          "observation_counts": {
+            "frame": 307,
+            "left_right_antenna_synchrony": 307,
+            "mean_angle_to_dancer_deg": 307,
+            "mean_antenna_midpoint_deg": 307,
+            "mean_dancer_angle_to_gravity_deg": 307,
+            "mean_left_antenna_deg": 307,
+            "mean_right_antenna_deg": 307,
+            "mean_scape_angle_deg": 307
+          },
           "row_count": 307
         },
         {
@@ -878,6 +1081,16 @@
           "mean_left_antenna_deg": 34.35357435201152,
           "mean_right_antenna_deg": -35.1266792671373,
           "mean_scape_angle_deg": 69.48025361914884,
+          "observation_counts": {
+            "frame": 263,
+            "left_right_antenna_synchrony": 263,
+            "mean_angle_to_dancer_deg": 263,
+            "mean_antenna_midpoint_deg": 263,
+            "mean_dancer_angle_to_gravity_deg": 263,
+            "mean_left_antenna_deg": 263,
+            "mean_right_antenna_deg": 263,
+            "mean_scape_angle_deg": 263
+          },
           "row_count": 263
         },
         {
@@ -891,6 +1104,16 @@
           "mean_left_antenna_deg": 41.05361530441934,
           "mean_right_antenna_deg": -35.423474920557844,
           "mean_scape_angle_deg": 76.47709022497718,
+          "observation_counts": {
+            "frame": 233,
+            "left_right_antenna_synchrony": 233,
+            "mean_angle_to_dancer_deg": 233,
+            "mean_antenna_midpoint_deg": 233,
+            "mean_dancer_angle_to_gravity_deg": 233,
+            "mean_left_antenna_deg": 233,
+            "mean_right_antenna_deg": 233,
+            "mean_scape_angle_deg": 233
+          },
           "row_count": 233
         },
         {
@@ -904,6 +1127,16 @@
           "mean_left_antenna_deg": 41.03172673133774,
           "mean_right_antenna_deg": -39.889616475565276,
           "mean_scape_angle_deg": 80.92134320690297,
+          "observation_counts": {
+            "frame": 149,
+            "left_right_antenna_synchrony": 149,
+            "mean_angle_to_dancer_deg": 149,
+            "mean_antenna_midpoint_deg": 149,
+            "mean_dancer_angle_to_gravity_deg": 149,
+            "mean_left_antenna_deg": 149,
+            "mean_right_antenna_deg": 149,
+            "mean_scape_angle_deg": 149
+          },
           "row_count": 149
         },
         {
@@ -917,6 +1150,16 @@
           "mean_left_antenna_deg": 48.17095984057076,
           "mean_right_antenna_deg": -48.166509884814324,
           "mean_scape_angle_deg": 96.3374697253851,
+          "observation_counts": {
+            "frame": 167,
+            "left_right_antenna_synchrony": 167,
+            "mean_angle_to_dancer_deg": 167,
+            "mean_antenna_midpoint_deg": 167,
+            "mean_dancer_angle_to_gravity_deg": 167,
+            "mean_left_antenna_deg": 167,
+            "mean_right_antenna_deg": 167,
+            "mean_scape_angle_deg": 167
+          },
           "row_count": 167
         },
         {
@@ -930,6 +1173,16 @@
           "mean_left_antenna_deg": 58.330763214049306,
           "mean_right_antenna_deg": -42.296315538685285,
           "mean_scape_angle_deg": 100.62707875273458,
+          "observation_counts": {
+            "frame": 297,
+            "left_right_antenna_synchrony": 297,
+            "mean_angle_to_dancer_deg": 297,
+            "mean_antenna_midpoint_deg": 297,
+            "mean_dancer_angle_to_gravity_deg": 297,
+            "mean_left_antenna_deg": 297,
+            "mean_right_antenna_deg": 297,
+            "mean_scape_angle_deg": 297
+          },
           "row_count": 297
         },
         {
@@ -943,6 +1196,16 @@
           "mean_left_antenna_deg": 52.98122219797272,
           "mean_right_antenna_deg": -37.17811669259911,
           "mean_scape_angle_deg": 90.1593388905718,
+          "observation_counts": {
+            "frame": 176,
+            "left_right_antenna_synchrony": 176,
+            "mean_angle_to_dancer_deg": 176,
+            "mean_antenna_midpoint_deg": 176,
+            "mean_dancer_angle_to_gravity_deg": 176,
+            "mean_left_antenna_deg": 176,
+            "mean_right_antenna_deg": 176,
+            "mean_scape_angle_deg": 176
+          },
           "row_count": 176
         },
         {
@@ -956,6 +1219,16 @@
           "mean_left_antenna_deg": 43.7429901372663,
           "mean_right_antenna_deg": -29.73942212262427,
           "mean_scape_angle_deg": 73.48241225989058,
+          "observation_counts": {
+            "frame": 350,
+            "left_right_antenna_synchrony": 350,
+            "mean_angle_to_dancer_deg": 350,
+            "mean_antenna_midpoint_deg": 350,
+            "mean_dancer_angle_to_gravity_deg": 350,
+            "mean_left_antenna_deg": 350,
+            "mean_right_antenna_deg": 350,
+            "mean_scape_angle_deg": 350
+          },
           "row_count": 350
         },
         {
@@ -969,6 +1242,16 @@
           "mean_left_antenna_deg": 42.47216686249362,
           "mean_right_antenna_deg": -51.571291520988424,
           "mean_scape_angle_deg": 94.04345838348206,
+          "observation_counts": {
+            "frame": 295,
+            "left_right_antenna_synchrony": 295,
+            "mean_angle_to_dancer_deg": 295,
+            "mean_antenna_midpoint_deg": 295,
+            "mean_dancer_angle_to_gravity_deg": 295,
+            "mean_left_antenna_deg": 295,
+            "mean_right_antenna_deg": 295,
+            "mean_scape_angle_deg": 295
+          },
           "row_count": 295
         },
         {
@@ -982,6 +1265,16 @@
           "mean_left_antenna_deg": 65.89353193648584,
           "mean_right_antenna_deg": -43.015078158496564,
           "mean_scape_angle_deg": 108.90861009498238,
+          "observation_counts": {
+            "frame": 46,
+            "left_right_antenna_synchrony": 46,
+            "mean_angle_to_dancer_deg": 46,
+            "mean_antenna_midpoint_deg": 46,
+            "mean_dancer_angle_to_gravity_deg": 46,
+            "mean_left_antenna_deg": 46,
+            "mean_right_antenna_deg": 46,
+            "mean_scape_angle_deg": 46
+          },
           "row_count": 46
         },
         {
@@ -995,6 +1288,16 @@
           "mean_left_antenna_deg": 61.6198439440073,
           "mean_right_antenna_deg": -29.912010760036228,
           "mean_scape_angle_deg": 91.53185470404352,
+          "observation_counts": {
+            "frame": 290,
+            "left_right_antenna_synchrony": 290,
+            "mean_angle_to_dancer_deg": 290,
+            "mean_antenna_midpoint_deg": 290,
+            "mean_dancer_angle_to_gravity_deg": 290,
+            "mean_left_antenna_deg": 290,
+            "mean_right_antenna_deg": 290,
+            "mean_scape_angle_deg": 290
+          },
           "row_count": 290
         },
         {
@@ -1008,6 +1311,16 @@
           "mean_left_antenna_deg": 55.23893815525581,
           "mean_right_antenna_deg": -22.580216075605986,
           "mean_scape_angle_deg": 78.29030565439754,
+          "observation_counts": {
+            "frame": 448,
+            "left_right_antenna_synchrony": 448,
+            "mean_angle_to_dancer_deg": 448,
+            "mean_antenna_midpoint_deg": 448,
+            "mean_dancer_angle_to_gravity_deg": 448,
+            "mean_left_antenna_deg": 448,
+            "mean_right_antenna_deg": 448,
+            "mean_scape_angle_deg": 448
+          },
           "row_count": 448
         },
         {
@@ -1021,6 +1334,16 @@
           "mean_left_antenna_deg": 53.204799210469055,
           "mean_right_antenna_deg": -39.250111052513994,
           "mean_scape_angle_deg": 92.45491026298303,
+          "observation_counts": {
+            "frame": 224,
+            "left_right_antenna_synchrony": 224,
+            "mean_angle_to_dancer_deg": 224,
+            "mean_antenna_midpoint_deg": 224,
+            "mean_dancer_angle_to_gravity_deg": 224,
+            "mean_left_antenna_deg": 224,
+            "mean_right_antenna_deg": 224,
+            "mean_scape_angle_deg": 224
+          },
           "row_count": 224
         },
         {
@@ -1034,6 +1357,16 @@
           "mean_left_antenna_deg": 37.18618889850265,
           "mean_right_antenna_deg": -45.891556176302494,
           "mean_scape_angle_deg": 83.07774507480518,
+          "observation_counts": {
+            "frame": 84,
+            "left_right_antenna_synchrony": 84,
+            "mean_angle_to_dancer_deg": 84,
+            "mean_antenna_midpoint_deg": 84,
+            "mean_dancer_angle_to_gravity_deg": 84,
+            "mean_left_antenna_deg": 84,
+            "mean_right_antenna_deg": 84,
+            "mean_scape_angle_deg": 84
+          },
           "row_count": 84
         },
         {
@@ -1047,6 +1380,16 @@
           "mean_left_antenna_deg": 49.72696854554967,
           "mean_right_antenna_deg": -42.34305001898248,
           "mean_scape_angle_deg": 92.75756467278475,
+          "observation_counts": {
+            "frame": 284,
+            "left_right_antenna_synchrony": 284,
+            "mean_angle_to_dancer_deg": 284,
+            "mean_antenna_midpoint_deg": 284,
+            "mean_dancer_angle_to_gravity_deg": 284,
+            "mean_left_antenna_deg": 284,
+            "mean_right_antenna_deg": 284,
+            "mean_scape_angle_deg": 284
+          },
           "row_count": 284
         },
         {
@@ -1060,6 +1403,16 @@
           "mean_left_antenna_deg": 47.39195169911876,
           "mean_right_antenna_deg": -50.22559104156286,
           "mean_scape_angle_deg": 97.6175427406816,
+          "observation_counts": {
+            "frame": 52,
+            "left_right_antenna_synchrony": 52,
+            "mean_angle_to_dancer_deg": 52,
+            "mean_antenna_midpoint_deg": 52,
+            "mean_dancer_angle_to_gravity_deg": 52,
+            "mean_left_antenna_deg": 52,
+            "mean_right_antenna_deg": 52,
+            "mean_scape_angle_deg": 52
+          },
           "row_count": 52
         },
         {
@@ -1073,6 +1426,16 @@
           "mean_left_antenna_deg": 41.025330431098844,
           "mean_right_antenna_deg": -49.94378055389388,
           "mean_scape_angle_deg": 92.64635490100186,
+          "observation_counts": {
+            "frame": 116,
+            "left_right_antenna_synchrony": 116,
+            "mean_angle_to_dancer_deg": 116,
+            "mean_antenna_midpoint_deg": 116,
+            "mean_dancer_angle_to_gravity_deg": 116,
+            "mean_left_antenna_deg": 116,
+            "mean_right_antenna_deg": 116,
+            "mean_scape_angle_deg": 116
+          },
           "row_count": 116
         },
         {
@@ -1086,6 +1449,16 @@
           "mean_left_antenna_deg": 55.96809725634491,
           "mean_right_antenna_deg": -39.66953345375216,
           "mean_scape_angle_deg": 95.63763071009706,
+          "observation_counts": {
+            "frame": 81,
+            "left_right_antenna_synchrony": 81,
+            "mean_angle_to_dancer_deg": 81,
+            "mean_antenna_midpoint_deg": 81,
+            "mean_dancer_angle_to_gravity_deg": 81,
+            "mean_left_antenna_deg": 81,
+            "mean_right_antenna_deg": 81,
+            "mean_scape_angle_deg": 81
+          },
           "row_count": 81
         },
         {
@@ -1099,6 +1472,16 @@
           "mean_left_antenna_deg": 26.096137230596227,
           "mean_right_antenna_deg": -33.549936333300394,
           "mean_scape_angle_deg": 59.65454258672069,
+          "observation_counts": {
+            "frame": 165,
+            "left_right_antenna_synchrony": 165,
+            "mean_angle_to_dancer_deg": 165,
+            "mean_antenna_midpoint_deg": 165,
+            "mean_dancer_angle_to_gravity_deg": 165,
+            "mean_left_antenna_deg": 165,
+            "mean_right_antenna_deg": 165,
+            "mean_scape_angle_deg": 165
+          },
           "row_count": 165
         },
         {
@@ -1112,6 +1495,16 @@
           "mean_left_antenna_deg": 31.112042567831686,
           "mean_right_antenna_deg": -42.17190067328376,
           "mean_scape_angle_deg": 73.28394324111541,
+          "observation_counts": {
+            "frame": 223,
+            "left_right_antenna_synchrony": 223,
+            "mean_angle_to_dancer_deg": 223,
+            "mean_antenna_midpoint_deg": 223,
+            "mean_dancer_angle_to_gravity_deg": 223,
+            "mean_left_antenna_deg": 223,
+            "mean_right_antenna_deg": 223,
+            "mean_scape_angle_deg": 223
+          },
           "row_count": 223
         },
         {
@@ -1125,6 +1518,16 @@
           "mean_left_antenna_deg": 37.6264808495574,
           "mean_right_antenna_deg": -58.08727197725219,
           "mean_scape_angle_deg": 95.71375282680958,
+          "observation_counts": {
+            "frame": 251,
+            "left_right_antenna_synchrony": 251,
+            "mean_angle_to_dancer_deg": 251,
+            "mean_antenna_midpoint_deg": 251,
+            "mean_dancer_angle_to_gravity_deg": 251,
+            "mean_left_antenna_deg": 251,
+            "mean_right_antenna_deg": 251,
+            "mean_scape_angle_deg": 251
+          },
           "row_count": 251
         },
         {
@@ -1138,6 +1541,16 @@
           "mean_left_antenna_deg": 57.56887540823303,
           "mean_right_antenna_deg": -14.745303044594127,
           "mean_scape_angle_deg": 72.31417845282711,
+          "observation_counts": {
+            "frame": 328,
+            "left_right_antenna_synchrony": 328,
+            "mean_angle_to_dancer_deg": 328,
+            "mean_antenna_midpoint_deg": 328,
+            "mean_dancer_angle_to_gravity_deg": 328,
+            "mean_left_antenna_deg": 328,
+            "mean_right_antenna_deg": 328,
+            "mean_scape_angle_deg": 328
+          },
           "row_count": 328
         },
         {
@@ -1151,6 +1564,16 @@
           "mean_left_antenna_deg": 62.84388644000179,
           "mean_right_antenna_deg": -22.51060269923882,
           "mean_scape_angle_deg": 85.3544891392406,
+          "observation_counts": {
+            "frame": 297,
+            "left_right_antenna_synchrony": 297,
+            "mean_angle_to_dancer_deg": 297,
+            "mean_antenna_midpoint_deg": 297,
+            "mean_dancer_angle_to_gravity_deg": 297,
+            "mean_left_antenna_deg": 297,
+            "mean_right_antenna_deg": 297,
+            "mean_scape_angle_deg": 297
+          },
           "row_count": 297
         },
         {
@@ -1164,6 +1587,16 @@
           "mean_left_antenna_deg": 36.82109839191495,
           "mean_right_antenna_deg": -21.916256025499248,
           "mean_scape_angle_deg": 58.7373544174142,
+          "observation_counts": {
+            "frame": 139,
+            "left_right_antenna_synchrony": 139,
+            "mean_angle_to_dancer_deg": 139,
+            "mean_antenna_midpoint_deg": 139,
+            "mean_dancer_angle_to_gravity_deg": 139,
+            "mean_left_antenna_deg": 139,
+            "mean_right_antenna_deg": 139,
+            "mean_scape_angle_deg": 139
+          },
           "row_count": 139
         },
         {
@@ -1177,6 +1610,16 @@
           "mean_left_antenna_deg": 39.423425712002114,
           "mean_right_antenna_deg": -47.717108244512126,
           "mean_scape_angle_deg": 87.14053395651425,
+          "observation_counts": {
+            "frame": 149,
+            "left_right_antenna_synchrony": 149,
+            "mean_angle_to_dancer_deg": 149,
+            "mean_antenna_midpoint_deg": 149,
+            "mean_dancer_angle_to_gravity_deg": 149,
+            "mean_left_antenna_deg": 149,
+            "mean_right_antenna_deg": 149,
+            "mean_scape_angle_deg": 149
+          },
           "row_count": 149
         },
         {
@@ -1190,6 +1633,16 @@
           "mean_left_antenna_deg": 46.62925577170733,
           "mean_right_antenna_deg": -38.217493745839555,
           "mean_scape_angle_deg": 84.84674951754687,
+          "observation_counts": {
+            "frame": 95,
+            "left_right_antenna_synchrony": 95,
+            "mean_angle_to_dancer_deg": 95,
+            "mean_antenna_midpoint_deg": 95,
+            "mean_dancer_angle_to_gravity_deg": 95,
+            "mean_left_antenna_deg": 95,
+            "mean_right_antenna_deg": 95,
+            "mean_scape_angle_deg": 95
+          },
           "row_count": 95
         },
         {
@@ -1203,6 +1656,16 @@
           "mean_left_antenna_deg": 51.4048987558165,
           "mean_right_antenna_deg": -34.468711742825796,
           "mean_scape_angle_deg": 85.87361049864226,
+          "observation_counts": {
+            "frame": 112,
+            "left_right_antenna_synchrony": 112,
+            "mean_angle_to_dancer_deg": 112,
+            "mean_antenna_midpoint_deg": 112,
+            "mean_dancer_angle_to_gravity_deg": 112,
+            "mean_left_antenna_deg": 112,
+            "mean_right_antenna_deg": 112,
+            "mean_scape_angle_deg": 112
+          },
           "row_count": 112
         },
         {
@@ -1216,6 +1679,16 @@
           "mean_left_antenna_deg": 31.687015719848308,
           "mean_right_antenna_deg": -41.98304975460379,
           "mean_scape_angle_deg": 73.67006547445212,
+          "observation_counts": {
+            "frame": 285,
+            "left_right_antenna_synchrony": 285,
+            "mean_angle_to_dancer_deg": 285,
+            "mean_antenna_midpoint_deg": 285,
+            "mean_dancer_angle_to_gravity_deg": 285,
+            "mean_left_antenna_deg": 285,
+            "mean_right_antenna_deg": 285,
+            "mean_scape_angle_deg": 285
+          },
           "row_count": 285
         },
         {
@@ -1229,6 +1702,16 @@
           "mean_left_antenna_deg": 31.680577709882893,
           "mean_right_antenna_deg": -48.51142219630614,
           "mean_scape_angle_deg": 80.19199990618904,
+          "observation_counts": {
+            "frame": 94,
+            "left_right_antenna_synchrony": 94,
+            "mean_angle_to_dancer_deg": 94,
+            "mean_antenna_midpoint_deg": 94,
+            "mean_dancer_angle_to_gravity_deg": 94,
+            "mean_left_antenna_deg": 94,
+            "mean_right_antenna_deg": 94,
+            "mean_scape_angle_deg": 94
+          },
           "row_count": 94
         },
         {
@@ -1242,6 +1725,16 @@
           "mean_left_antenna_deg": 28.98803260093546,
           "mean_right_antenna_deg": -39.929021925190156,
           "mean_scape_angle_deg": 68.91705452612555,
+          "observation_counts": {
+            "frame": 174,
+            "left_right_antenna_synchrony": 174,
+            "mean_angle_to_dancer_deg": 174,
+            "mean_antenna_midpoint_deg": 174,
+            "mean_dancer_angle_to_gravity_deg": 174,
+            "mean_left_antenna_deg": 174,
+            "mean_right_antenna_deg": 174,
+            "mean_scape_angle_deg": 174
+          },
           "row_count": 174
         },
         {
@@ -1255,6 +1748,16 @@
           "mean_left_antenna_deg": 19.50628013932372,
           "mean_right_antenna_deg": -61.93243286919325,
           "mean_scape_angle_deg": 81.52851114600712,
+          "observation_counts": {
+            "frame": 77,
+            "left_right_antenna_synchrony": 77,
+            "mean_angle_to_dancer_deg": 77,
+            "mean_antenna_midpoint_deg": 77,
+            "mean_dancer_angle_to_gravity_deg": 77,
+            "mean_left_antenna_deg": 77,
+            "mean_right_antenna_deg": 77,
+            "mean_scape_angle_deg": 77
+          },
           "row_count": 77
         },
         {
@@ -1268,6 +1771,16 @@
           "mean_left_antenna_deg": 33.645974070512345,
           "mean_right_antenna_deg": -55.06746571820786,
           "mean_scape_angle_deg": 88.71343978872017,
+          "observation_counts": {
+            "frame": 346,
+            "left_right_antenna_synchrony": 346,
+            "mean_angle_to_dancer_deg": 346,
+            "mean_antenna_midpoint_deg": 346,
+            "mean_dancer_angle_to_gravity_deg": 346,
+            "mean_left_antenna_deg": 346,
+            "mean_right_antenna_deg": 346,
+            "mean_scape_angle_deg": 346
+          },
           "row_count": 346
         },
         {
@@ -1281,6 +1794,16 @@
           "mean_left_antenna_deg": 45.908359337491554,
           "mean_right_antenna_deg": -53.04738389319276,
           "mean_scape_angle_deg": 98.95574323068429,
+          "observation_counts": {
+            "frame": 183,
+            "left_right_antenna_synchrony": 183,
+            "mean_angle_to_dancer_deg": 183,
+            "mean_antenna_midpoint_deg": 183,
+            "mean_dancer_angle_to_gravity_deg": 183,
+            "mean_left_antenna_deg": 183,
+            "mean_right_antenna_deg": 183,
+            "mean_scape_angle_deg": 183
+          },
           "row_count": 183
         },
         {
@@ -1294,6 +1817,16 @@
           "mean_left_antenna_deg": 74.20392365278269,
           "mean_right_antenna_deg": -17.95443088608572,
           "mean_scape_angle_deg": 92.15835453886842,
+          "observation_counts": {
+            "frame": 46,
+            "left_right_antenna_synchrony": 46,
+            "mean_angle_to_dancer_deg": 46,
+            "mean_antenna_midpoint_deg": 46,
+            "mean_dancer_angle_to_gravity_deg": 46,
+            "mean_left_antenna_deg": 46,
+            "mean_right_antenna_deg": 46,
+            "mean_scape_angle_deg": 46
+          },
           "row_count": 46
         },
         {
@@ -1307,6 +1840,16 @@
           "mean_left_antenna_deg": 38.79848212519665,
           "mean_right_antenna_deg": -53.45237136612343,
           "mean_scape_angle_deg": 92.25085349132004,
+          "observation_counts": {
+            "frame": 233,
+            "left_right_antenna_synchrony": 233,
+            "mean_angle_to_dancer_deg": 233,
+            "mean_antenna_midpoint_deg": 233,
+            "mean_dancer_angle_to_gravity_deg": 233,
+            "mean_left_antenna_deg": 233,
+            "mean_right_antenna_deg": 233,
+            "mean_scape_angle_deg": 233
+          },
           "row_count": 233
         },
         {
@@ -1320,6 +1863,16 @@
           "mean_left_antenna_deg": 28.57211010530161,
           "mean_right_antenna_deg": -46.20700913620242,
           "mean_scape_angle_deg": 74.77911924150395,
+          "observation_counts": {
+            "frame": 187,
+            "left_right_antenna_synchrony": 187,
+            "mean_angle_to_dancer_deg": 187,
+            "mean_antenna_midpoint_deg": 187,
+            "mean_dancer_angle_to_gravity_deg": 187,
+            "mean_left_antenna_deg": 187,
+            "mean_right_antenna_deg": 187,
+            "mean_scape_angle_deg": 187
+          },
           "row_count": 187
         },
         {
@@ -1333,6 +1886,16 @@
           "mean_left_antenna_deg": 50.30300809055991,
           "mean_right_antenna_deg": -31.014114614211167,
           "mean_scape_angle_deg": 81.31712270477115,
+          "observation_counts": {
+            "frame": 400,
+            "left_right_antenna_synchrony": 400,
+            "mean_angle_to_dancer_deg": 400,
+            "mean_antenna_midpoint_deg": 400,
+            "mean_dancer_angle_to_gravity_deg": 400,
+            "mean_left_antenna_deg": 400,
+            "mean_right_antenna_deg": 400,
+            "mean_scape_angle_deg": 400
+          },
           "row_count": 400
         },
         {
@@ -1346,6 +1909,16 @@
           "mean_left_antenna_deg": 41.2091882756993,
           "mean_right_antenna_deg": -30.388151249550848,
           "mean_scape_angle_deg": 71.59733952525013,
+          "observation_counts": {
+            "frame": 350,
+            "left_right_antenna_synchrony": 350,
+            "mean_angle_to_dancer_deg": 350,
+            "mean_antenna_midpoint_deg": 350,
+            "mean_dancer_angle_to_gravity_deg": 350,
+            "mean_left_antenna_deg": 350,
+            "mean_right_antenna_deg": 350,
+            "mean_scape_angle_deg": 350
+          },
           "row_count": 350
         },
         {
@@ -1359,6 +1932,16 @@
           "mean_left_antenna_deg": 30.453806502909224,
           "mean_right_antenna_deg": -31.32756668156739,
           "mean_scape_angle_deg": 61.78137318447666,
+          "observation_counts": {
+            "frame": 99,
+            "left_right_antenna_synchrony": 99,
+            "mean_angle_to_dancer_deg": 99,
+            "mean_antenna_midpoint_deg": 99,
+            "mean_dancer_angle_to_gravity_deg": 99,
+            "mean_left_antenna_deg": 99,
+            "mean_right_antenna_deg": 99,
+            "mean_scape_angle_deg": 99
+          },
           "row_count": 99
         },
         {
@@ -1372,6 +1955,16 @@
           "mean_left_antenna_deg": 37.57711482901203,
           "mean_right_antenna_deg": -49.60768867625571,
           "mean_scape_angle_deg": 87.18480350526777,
+          "observation_counts": {
+            "frame": 307,
+            "left_right_antenna_synchrony": 307,
+            "mean_angle_to_dancer_deg": 307,
+            "mean_antenna_midpoint_deg": 307,
+            "mean_dancer_angle_to_gravity_deg": 307,
+            "mean_left_antenna_deg": 307,
+            "mean_right_antenna_deg": 307,
+            "mean_scape_angle_deg": 307
+          },
           "row_count": 307
         },
         {
@@ -1385,6 +1978,16 @@
           "mean_left_antenna_deg": 24.556705637297018,
           "mean_right_antenna_deg": -23.76133435596687,
           "mean_scape_angle_deg": 48.31803999326387,
+          "observation_counts": {
+            "frame": 66,
+            "left_right_antenna_synchrony": 66,
+            "mean_angle_to_dancer_deg": 66,
+            "mean_antenna_midpoint_deg": 66,
+            "mean_dancer_angle_to_gravity_deg": 66,
+            "mean_left_antenna_deg": 66,
+            "mean_right_antenna_deg": 66,
+            "mean_scape_angle_deg": 66
+          },
           "row_count": 66
         }
       ]

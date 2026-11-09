@@ -1,28 +1,38 @@
 {
   "annotations": [
-    "Observation -> BrainState -> BeliefState -> BeeAgent/PheromoneField -> CombGrid"
+    "BeeNiche receives an independent reduced thermal update per control tick.",
+    "No BrainState-to-policy feedback or biological validation is asserted.",
+    "SimulationRecord retains native telemetry and nullable empirical alignment."
   ],
   "chart_type": "schematic",
   "edges": [
     {
-      "source": "BeeBody",
-      "target": "BeeBrain"
-    },
-    {
-      "source": "BeeBrain",
+      "payload": "belief update",
+      "source": "synthetic_dance",
       "target": "BeeMind"
     },
     {
-      "source": "BeeMind",
+      "payload": "broadcast",
+      "source": "synthetic_dance",
       "target": "BeeSwarm"
     },
     {
-      "source": "BeeSwarm",
-      "target": "BeeNiche"
+      "payload": "Action",
+      "source": "BeeMind",
+      "target": "BeeBody"
+    },
+    {
+      "payload": "Observation",
+      "source": "BeeBody",
+      "target": "BeeBrain"
     }
   ],
   "figure_path": "output/figures/beestack_graphical_abstract.png",
   "nodes": [
+    {
+      "id": "synthetic_dance",
+      "label": "Fixed synthetic DanceVector"
+    },
     {
       "id": "BeeBody",
       "label": "BeeBody"
@@ -45,5 +55,5 @@
     }
   ],
   "schema": "beestack.figure_data.v1",
-  "title": "BeeStack graphical abstract"
+  "title": "BeeStack: the executed reduced scenario"
 }

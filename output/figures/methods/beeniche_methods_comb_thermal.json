@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
   "alt_text": "BeeNiche methods panel with comb, thermal, and forage-context diagnostics.",
   "artifact_kind": "figure",
   "backend": "Matplotlib/pandas",
-  "caption": "Matplotlib/pandas/NetworkX beeniche comb and thermal diagnostics shows BeeNiche methods panel showing comb occupancy, brood thermal error, foraging-radius context, and deterministic niche-kernel validation. Generated from MethodsAnalysisReport and simulation records. Sidecar validation checks raster, source routing, and registered claim tier. Does not support a full ecology or hive thermodynamics engine.",
+  "caption": "BeeNiche methods panel showing comb occupancy, brood thermal error, foraging-radius context, and configured niche-kernel self-tests. Generated from MethodsAnalysisReport and simulation records using Matplotlib/pandas. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not support a full ecology or hive thermodynamics engine.",
   "citation_keys": [
     "kronenberg1982colonial",
     "becher2014beehave"
@@ -44,11 +45,11 @@
   "quality": {
     "height_px": 837,
     "max_intensity": 255,
-    "mean_intensity": 249.583890423268,
+    "mean_intensity": 249.21193419352164,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 30.28627748178778,
+    "std_intensity": 31.55790919375333,
     "width_px": 1787
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
@@ -58,7 +59,7 @@
     "10.1007/BF00688889",
     "10.1111/1365-2664.12222"
   ],
-  "title": "Beeniche Methods Comb Thermal",
+  "title": "BeeNiche comb and thermal diagnostics",
   "unsupported_inference": "Does not support a full ecology or hive thermodynamics engine.",
   "validation_status": "nonblank image, quality sidecar, and plot data passed",
   "visual_quality": {

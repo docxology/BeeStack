@@ -8,18 +8,18 @@
       ],
       "name": "hadjitofi_antenna_decoding_improvement",
       "notes": "Local antenna/no-antenna comparison; unavailable conditions are not zero error.",
-      "observed": 0.24776741229159377,
+      "observed": 0.24776741229160107,
       "passed": true
     },
     {
-      "bound": "< observed no-antennae error (79.99983885415868)",
+      "bound": "< observed no-antennae error (79.99983885415948)",
       "citation_keys": [
         "hadjitofi2024figshare",
         "hadjitofi2024currentbiology"
       ],
       "name": "hadjitofi_both_antennae_beat_no_antennae",
       "notes": "Requires observed errors for both conditions, not an inferred missing-condition baseline.",
-      "observed": 60.178485797519286,
+      "observed": 60.1784857975193,
       "passed": true
     },
     {

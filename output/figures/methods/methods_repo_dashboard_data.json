@@ -1,53 +1,56 @@
 {
-  "chart_type": "schematic",
+  "chart_type": "table",
+  "columns": [
+    "module",
+    "validation_fraction",
+    "metric_count",
+    "visual_artifacts",
+    "evidence_links",
+    "gap_count"
+  ],
   "figure_path": "output/figures/methods/methods_repo_dashboard.png",
-  "nodes": [
+  "rows": [
     {
-      "evidence_links": 1.0,
-      "gap_count": 2.0,
-      "id": "BeeBody",
-      "metric_count": 11.0,
+      "evidence_links": 1,
+      "gap_count": 2,
+      "metric_count": 11,
       "module": "BeeBody",
       "validation_fraction": 1.0,
-      "visual_artifacts": 11.0
+      "visual_artifacts": 11
     },
     {
-      "evidence_links": 2.0,
-      "gap_count": 2.0,
-      "id": "BeeBrain",
-      "metric_count": 12.0,
+      "evidence_links": 2,
+      "gap_count": 2,
+      "metric_count": 12,
       "module": "BeeBrain",
       "validation_fraction": 0.0,
-      "visual_artifacts": 22.0
+      "visual_artifacts": 22
     },
     {
-      "evidence_links": 1.0,
-      "gap_count": 2.0,
-      "id": "BeeMind",
-      "metric_count": 7.0,
+      "evidence_links": 1,
+      "gap_count": 2,
+      "metric_count": 7,
       "module": "BeeMind",
       "validation_fraction": 1.0,
-      "visual_artifacts": 4.0
+      "visual_artifacts": 4
     },
     {
-      "evidence_links": 1.0,
-      "gap_count": 3.0,
-      "id": "BeeSwarm",
-      "metric_count": 11.0,
+      "evidence_links": 1,
+      "gap_count": 3,
+      "metric_count": 11,
       "module": "BeeSwarm",
       "validation_fraction": 1.0,
-      "visual_artifacts": 9.0
+      "visual_artifacts": 9
     },
     {
-      "evidence_links": 1.0,
-      "gap_count": 2.0,
-      "id": "BeeNiche",
-      "metric_count": 8.0,
+      "evidence_links": 1,
+      "gap_count": 2,
+      "metric_count": 8,
       "module": "BeeNiche",
       "validation_fraction": 1.0,
-      "visual_artifacts": 6.0
+      "visual_artifacts": 6
     }
   ],
   "schema": "beestack.figure_data.v1",
-  "title": "methods repo dashboard"
+  "title": "Methods inventory in native units"
 }

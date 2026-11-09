@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
-  "alt_text": "BeeSwarm methods panel with contact metrics and reduced recruitment traces.",
+  "alt_text": "BeeSwarm native metric table beside self-test, availability, and claim-boundary context.",
   "artifact_kind": "figure",
   "backend": "Matplotlib/pandas",
-  "caption": "Matplotlib/pandas/NetworkX beeswarm contact and recruitment diagnostics shows BeeSwarm dashboard separating strict small-scene contact physics from reduced recruitment and BEEHAVE-compatible colony summaries. Generated from MethodsAnalysisReport, animation manifest, and simulation records. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate colony-scale recruitment dynamics.",
+  "caption": "Native report metrics separating scripted-pose small-scene contact evidence from reduced recruitment and adapter-compatible summaries. Generated from MethodsAnalysisReport, animation manifest, and simulation records using Matplotlib/pandas. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not validate colony-scale recruitment dynamics.",
   "citation_keys": [
     "todorov2012mujoco",
     "becher2014beehave",
@@ -36,21 +37,21 @@
     "10.1145/2133806.2133821",
     "10.1109/TVCG.2015.2467551"
   ],
-  "fidelity": "strict scene contact/recruitment diagnostic with reduced-kernel context",
+  "fidelity": "scripted-pose scene contact/recruitment diagnostic with reduced-kernel context",
   "figure_path": "output/figures/methods/beeswarm_methods_contact_recruitment.png",
   "manuscript_label": "fig:swarm_methods_contact",
   "manuscript_section": "docs/manuscript/05_methods_body_swarm.md",
   "plot_data_path": "output/figures/methods/beeswarm_methods_contact_recruitment_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 976,
+    "height_px": 1075,
     "max_intensity": 255,
-    "mean_intensity": 243.74831870075974,
+    "mean_intensity": 243.9022141632167,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 47.3106800467313,
-    "width_px": 1983
+    "std_intensity": 48.35888568453075,
+    "width_px": 2129
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
   "schema": "beestack.figure.v1",
@@ -60,19 +61,19 @@
     "10.1111/1365-2664.12222",
     "10.1016/j.cub.2024.02.045"
   ],
-  "title": "Beeswarm Methods Contact Recruitment",
+  "title": "BeeSwarm contact and recruitment diagnostics",
   "unsupported_inference": "Does not validate colony-scale recruitment dynamics.",
   "validation_status": "nonblank image, quality sidecar, and plot data passed",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 2.032,
+    "aspect_ratio": 1.98,
     "figure_role": "overview",
-    "height_px": 976,
-    "label_density": "moderate",
+    "height_px": 1075,
+    "label_density": "dense",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 1983,
-    "min_dimension_px": 976,
+    "max_dimension_px": 2129,
+    "min_dimension_px": 1075,
     "readability_status": "pass",
-    "width_px": 1983
+    "width_px": 2129
   }
 }

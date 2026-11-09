@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
-  "alt_text": "Grouped bars for module evidence links and visual artifacts with a validation-fraction line.",
+  "alt_text": "Grouped inventory bars beside independently scaled configured self-test fractions.",
   "artifact_kind": "figure",
   "backend": "Matplotlib/pandas",
-  "caption": "Matplotlib/pandas/NetworkX beestack manuscript evidence index shows Manuscript evidence index comparing evidence-link counts, visual-artifact counts, and validation fractions by BeeStack module. Generated from MethodsAnalysisReport manuscript evidence links. Sidecar validation checks raster, source routing, and registered claim tier. Does not substitute evidence links for absent empirical support.",
+  "caption": "Evidence-link and artifact counts in one panel, with configured self-test fractions on a separate axis in the companion panel. Generated from MethodsAnalysisReport manuscript evidence links using Matplotlib/pandas. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not substitute evidence links for absent empirical support.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
@@ -42,14 +43,14 @@
   "plot_data_path": "output/figures/methods/methods_manuscript_evidence_index_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 885,
+    "height_px": 849,
     "max_intensity": 255,
-    "mean_intensity": 234.42870429591727,
+    "mean_intensity": 214.24583493336246,
     "min_intensity": 0,
     "mode": "RGBA",
-    "nonzero_histogram_bins": 256,
-    "std_intensity": 48.959607045719714,
-    "width_px": 1696
+    "nonzero_histogram_bins": 255,
+    "std_intensity": 70.30515052976978,
+    "width_px": 2006
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
   "schema": "beestack.figure.v1",
@@ -58,19 +59,19 @@
     "10.1371/journal.pcbi.1005510",
     "10.3233/DS-190026"
   ],
-  "title": "Methods Manuscript Evidence Index",
+  "title": "Manuscript evidence inventory and configured self-tests",
   "unsupported_inference": "Does not substitute evidence links for absent empirical support.",
   "validation_status": "nonblank image, quality sidecar, and plot data passed",
   "visual_quality": {
-    "aspect_class": "balanced",
-    "aspect_ratio": 1.916,
+    "aspect_class": "wide",
+    "aspect_ratio": 2.363,
     "figure_role": "overview",
-    "height_px": 885,
+    "height_px": 849,
     "label_density": "dense",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 1696,
-    "min_dimension_px": 885,
+    "max_dimension_px": 2006,
+    "min_dimension_px": 849,
     "readability_status": "pass",
-    "width_px": 1696
+    "width_px": 2006
   }
 }

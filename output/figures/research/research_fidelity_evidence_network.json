@@ -7,17 +7,18 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
-  "alt_text": "Network diagram linking BeeStack modules to evidence and empirical source nodes.",
+  "alt_text": "Table of module evidence counts, known-gap counts, and reported fidelity.",
   "artifact_kind": "figure",
-  "backend": "Matplotlib/pandas/NetworkX",
-  "caption": "Matplotlib/NetworkX beestack fidelity evidence network shows Evidence network linking module scorecards, empirical BeeBrain records, and provenance nodes from the research suite. Generated from ResearchSuiteReport evidence records. Sidecar validation checks raster, source routing, and registered claim tier. Does not make empirical coverage complete.",
+  "backend": "Matplotlib/pandas",
+  "caption": "Reported module evidence and gap counts beside declared fidelity. The companion retains all source rows; no measured network topology is inferred. Generated from ResearchSuiteReport evidence records using Matplotlib/pandas. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not make empirical coverage complete.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
   ],
-  "claim_tier": "research_evidence_network",
+  "claim_tier": "research_evidence_inventory",
   "design_citation_keys": [
     "rougier2014figures",
     "cleveland1984graphical",
@@ -42,14 +43,14 @@
   "plot_data_path": "output/figures/research/research_fidelity_evidence_network_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 1072,
+    "height_px": 906,
     "max_intensity": 255,
-    "mean_intensity": 250.64343042640203,
-    "min_intensity": 24,
+    "mean_intensity": 244.97708186155805,
+    "min_intensity": 0,
     "mode": "RGBA",
-    "nonzero_histogram_bins": 232,
-    "std_intensity": 25.621880883851137,
-    "width_px": 1719
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 44.881921127833834,
+    "width_px": 1753
   },
   "regeneration_command": "uv run python scripts/run_research_suite.py",
   "schema": "beestack.figure.v1",
@@ -58,20 +59,20 @@
     "10.1371/journal.pcbi.1005510",
     "10.3233/DS-190026"
   ],
-  "title": "Research Fidelity Evidence Network",
+  "title": "Evidence inventory overview",
   "unsupported_inference": "Does not make empirical coverage complete.",
   "validation_status": "nonblank image, quality sidecar, and plot data passed",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 1.604,
+    "aspect_ratio": 1.935,
     "figure_role": "overview",
-    "height_px": 1072,
+    "height_px": 906,
     "label_density": "dense",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 1719,
-    "min_dimension_px": 1072,
+    "max_dimension_px": 1753,
+    "min_dimension_px": 906,
     "readability_status": "pass",
     "split_group": "research_evidence",
-    "width_px": 1719
+    "width_px": 1753
   }
 }

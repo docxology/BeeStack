@@ -8,14 +8,14 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 - Empirical registry/evidence rows: `5`
 - Parsed empirical evidence rows: `0`
 - Local empirical records represented: `0`
-- Empirical availability states: `generated=0, missing_optional=1, network_gated_absent=3, parsed=0, registered_absent=1`
+- Empirical availability states: `analysis_unavailable=5, generated=0, missing_optional=0, network_gated_absent=0, parsed=0, registered_absent=0`
 - Sensitivity sweeps: `3`
 
 ## Module Scorecards
 
 ### BeeBody
 
-- Fidelity: `FlyBody render path plus reduced closed-loop telemetry`
+- Fidelity: `FlyBody render path plus separate reduced-scenario telemetry`
 - Validation fraction: `1.000`
 - Metrics: `bee_silhouette_score=1`, `bee_visual_score=0.991`, `body_mass_mg=80`, `contact_proxy_count=3`, `inertia_rescaling_score=0.82`, `morphology_score=1`, `real_flybody_animation_count=3`, `wing_stroke_hz=230`
 - Evidence: FlyBody walking and flight GIFs with MJCF cue scoring.
@@ -93,7 +93,7 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 - `output/figures/beestack_first_principles_claim_audit.png`: figure, architecture schematic, nonblank quality sidecar and plot data generated
 - `output/figures/beestack_graphical_abstract.png`: figure, architecture schematic, nonblank quality sidecar and plot data generated
 - `output/figures/beestack_pipeline_overview.png`: figure, architecture schematic, nonblank quality sidecar and plot data generated
-- `output/figures/beestack_scale_ladder.png`: figure, reduced deterministic kernel diagnostic, nonblank quality sidecar and plot data generated
+- `output/figures/beestack_scale_ladder.png`: figure, architecture schematic, nonblank quality sidecar and plot data generated
 - `output/figures/beestack_scholarship_evidence_matrix.png`: figure, architecture schematic, nonblank quality sidecar and plot data generated
 - `output/figures/beestack_validation_readiness_residuals.png`: figure, architecture schematic, nonblank quality sidecar and plot data generated
 - `output/figures/beeswarm_recruitment_task_allocation.png`: figure, reduced deterministic kernel diagnostic, nonblank quality sidecar and plot data generated
@@ -115,13 +115,13 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 - `output/figures/empirical/empirical_stack_alignment.png`: figure, empirical panel summary diagnostic, nonblank empirical diagnostic with plot data
 - `output/figures/empirical/waggle_follower_alignment.png`: figure, empirical waggle/follower summary diagnostic, nonblank empirical diagnostic with plot data
 - `output/figures/empirical/waggle_phase_coupling.png`: figure, empirical waggle/follower summary diagnostic, nonblank empirical diagnostic with plot data
-- `output/figures/manuscript_figure_claim_detail.png`: figure, reduced deterministic kernel diagnostic, nonblank quality sidecar and plot data generated
+- `output/figures/manuscript_figure_claim_detail.png`: figure, architecture schematic, nonblank quality sidecar and plot data generated
 - `output/figures/manuscript_figure_claim_map.png`: figure, architecture schematic, nonblank quality sidecar and plot data generated
-- `output/figures/methods/beebody_methods_telemetry_dashboard.png`: figure, FlyBody-backed render diagnostics plus reduced telemetry, nonblank image, quality sidecar, and plot data passed
+- `output/figures/methods/beebody_methods_telemetry_dashboard.png`: figure, scripted-pose FlyBody render diagnostics plus reduced telemetry; not forward dynamics, nonblank image, quality sidecar, and plot data passed
 - `output/figures/methods/beebrain_methods_empirical_completeness.png`: figure, empirical completeness summary projected into reduced BeeBrain contracts, nonblank image, quality sidecar, and plot data passed
 - `output/figures/methods/beemind_methods_policy_landscape.png`: figure, reduced deterministic kernel diagnostic, nonblank image, quality sidecar, and plot data passed
 - `output/figures/methods/beeniche_methods_comb_thermal.png`: figure, reduced deterministic kernel diagnostic, nonblank image, quality sidecar, and plot data passed
-- `output/figures/methods/beeswarm_methods_contact_recruitment.png`: figure, strict scene contact/recruitment diagnostic with reduced-kernel context, nonblank image, quality sidecar, and plot data passed
+- `output/figures/methods/beeswarm_methods_contact_recruitment.png`: figure, scripted-pose scene contact/recruitment diagnostic with reduced-kernel context, nonblank image, quality sidecar, and plot data passed
 - `output/figures/methods/methods_dashboard_detail.png`: figure, methods provenance diagnostic, nonblank image, quality sidecar, and plot data passed
 - `output/figures/methods/methods_manuscript_evidence_index.png`: figure, methods provenance diagnostic, nonblank image, quality sidecar, and plot data passed
 - `output/figures/methods/methods_repo_dashboard.png`: figure, methods provenance diagnostic, nonblank image, quality sidecar, and plot data passed
@@ -131,13 +131,13 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 - `output/figures/renders/beeswarm_10_beebody_collision_contact_sheet.png`: figure, real_flybody_3d contact sheet, nonblank contact sheet with plot data
 - `output/figures/renders/beeswarm_waggle_dance_configured_contact_sheet.png`: figure, real_flybody_3d contact sheet, nonblank contact sheet with plot data
 - `output/figures/renders/beeswarm_waggle_dance_long_contact_sheet.png`: figure, real_flybody_3d contact sheet, nonblank contact sheet with plot data
-- `output/figures/research/beebody_method_diagnostics.png`: figure, FlyBody-backed render diagnostics plus reduced telemetry, nonblank image, quality sidecar, and plot data passed
-- `output/figures/research/beebrain_empirical_evidence_map.png`: figure, empirical summary projected into reduced BeeBrain contracts, nonblank image, quality sidecar, and plot data passed
+- `output/figures/research/beebody_method_diagnostics.png`: figure, scripted-pose FlyBody render diagnostics plus reduced telemetry; not forward dynamics, nonblank image, quality sidecar, and plot data passed
+- `output/figures/research/beebrain_empirical_evidence_map.png`: figure, empirical source inventory / parseability diagnostic; not biological validation, nonblank image, quality sidecar, and plot data passed
 - `output/figures/research/beemind_policy_sensitivity.png`: figure, reduced deterministic kernel diagnostic, nonblank image, quality sidecar, and plot data passed
 - `output/figures/research/beeniche_thermal_comb_scorecard.png`: figure, research provenance diagnostic, nonblank image, quality sidecar, and plot data passed
 - `output/figures/research/beeswarm_contact_recruitment_scorecard.png`: figure, research provenance diagnostic, nonblank image, quality sidecar, and plot data passed
-- `output/figures/research/research_empirical_completeness.png`: figure, empirical summary projected into reduced BeeBrain contracts, nonblank image, quality sidecar, and plot data passed
-- `output/figures/research/research_evidence_detail.png`: figure, reduced deterministic kernel diagnostic, nonblank image, quality sidecar, and plot data passed
+- `output/figures/research/research_empirical_completeness.png`: figure, empirical source inventory / parseability diagnostic; not biological validation, nonblank image, quality sidecar, and plot data passed
+- `output/figures/research/research_evidence_detail.png`: figure, research provenance diagnostic, nonblank image, quality sidecar, and plot data passed
 - `output/figures/research/research_fidelity_evidence_network.png`: figure, research provenance diagnostic, nonblank image, quality sidecar, and plot data passed
 - `output/figures/research/research_module_scorecard_heatmap.png`: figure, research provenance diagnostic, nonblank image, quality sidecar, and plot data passed
 - `output/figures/research/research_sensitivity_sweeps.png`: figure, reduced deterministic kernel diagnostic, nonblank image, quality sidecar, and plot data passed
@@ -150,8 +150,8 @@ Unified scorecards for FlyBody 3D Body/Swarm outputs, empirical BeeBrain evidenc
 
 ## Empirical Evidence
 
-- `empirical-panels`: workbook/CSV odor response panels, status `network_gated_absent`, completeness `0.000`, records `0`, gap `network gated absent; below configured completeness threshold`
-- `calcium-datasets`: Paoli-style calcium traces, status `network_gated_absent`, completeness `0.000`, records `0`, gap `network gated absent; below configured completeness threshold`
-- `honeybee-standard-brain`: atlas/VRML/TIFF anatomy assets, status `registered_absent`, completeness `0.000`, records `0`, gap `registered absent; below configured completeness threshold`
-- `template-bank`: glomerulus-length empirical templates, status `missing_optional`, completeness `0.000`, records `0`, gap `missing optional; below configured completeness threshold`
-- `figshare-hadjitofi-2024-waggle-following`: waggle follower antennal-position CSVs, status `network_gated_absent`, completeness `0.000`, records `0`, gap `network gated absent; below configured completeness threshold`
+- `empirical-panels`: workbook/CSV odor response panels, status `analysis_unavailable`, completeness `0.000`, records `0`, gap `No supplied current aggregate; standalone payload availability is not assessed`
+- `calcium-datasets`: Paoli-style calcium traces, status `analysis_unavailable`, completeness `0.000`, records `0`, gap `No supplied current aggregate; standalone payload availability is not assessed`
+- `honeybee-standard-brain`: atlas/VRML/TIFF anatomy assets, status `analysis_unavailable`, completeness `0.000`, records `0`, gap `No supplied current aggregate; standalone payload availability is not assessed`
+- `template-bank`: glomerulus-length empirical templates, status `analysis_unavailable`, completeness `0.000`, records `0`, gap `No supplied current aggregate; standalone payload availability is not assessed`
+- `figshare-hadjitofi-2024-waggle-following`: waggle follower antennal-position CSVs, status `analysis_unavailable`, completeness `0.000`, records `0`, gap `No supplied current aggregate; standalone payload availability is not assessed`

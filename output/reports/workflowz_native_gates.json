@@ -1,13 +1,43 @@
 {
   "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+  "scope": "complete native offline analysis, physical/render checks, content/security/signposting and source-bound manuscript publication checks",
   "steps": [
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/fetch_empirical_bee_data.py",
+        "--metadata-only"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "seconds": 3.349
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/analyze_empirical_bee_data.py"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "seconds": 3.78
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/analysis_pipeline.py"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "seconds": 264.397
+    },
     {
       "argv": [
         "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
         "scripts/generate_animations.py"
       ],
       "returncode": 0,
-      "seconds": 220.858
+      "expected_returncode": 0,
+      "seconds": 251.547
     },
     {
       "argv": [
@@ -15,7 +45,8 @@
         "scripts/verify_bee_render.py"
       ],
       "returncode": 0,
-      "seconds": 4.194
+      "expected_returncode": 0,
+      "seconds": 4.832
     },
     {
       "argv": [
@@ -23,7 +54,8 @@
         "scripts/review_stack_integrity.py"
       ],
       "returncode": 0,
-      "seconds": 2.365
+      "expected_returncode": 0,
+      "seconds": 2.958
     },
     {
       "argv": [
@@ -32,7 +64,8 @@
         "--assemble-only"
       ],
       "returncode": 0,
-      "seconds": 8.394
+      "expected_returncode": 0,
+      "seconds": 10.668
     },
     {
       "argv": [
@@ -40,7 +73,8 @@
         "scripts/run_methods_analysis.py"
       ],
       "returncode": 0,
-      "seconds": 3.187
+      "expected_returncode": 0,
+      "seconds": 4.846
     },
     {
       "argv": [
@@ -48,7 +82,8 @@
         "scripts/run_stack_synthesis.py"
       ],
       "returncode": 0,
-      "seconds": 2.743
+      "expected_returncode": 0,
+      "seconds": 3.281
     },
     {
       "argv": [
@@ -56,7 +91,8 @@
         "scripts/assess_digital_twin_readiness.py"
       ],
       "returncode": 0,
-      "seconds": 0.048
+      "expected_returncode": 0,
+      "seconds": 0.046
     },
     {
       "argv": [
@@ -64,23 +100,8 @@
         "scripts/z_generate_manuscript_variables.py"
       ],
       "returncode": 0,
-      "seconds": 1.981
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/render_manuscript.py"
-      ],
-      "returncode": 1,
-      "seconds": 1.83
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/render_manuscript.py"
-      ],
-      "returncode": 1,
-      "seconds": 2.76
+      "expected_returncode": 0,
+      "seconds": 2.685
     },
     {
       "argv": [
@@ -88,7 +109,8 @@
         "scripts/render_manuscript.py"
       ],
       "returncode": 0,
-      "seconds": 17.247
+      "expected_returncode": 0,
+      "seconds": 25.62
     },
     {
       "argv": [
@@ -96,7 +118,8 @@
         "scripts/signpost_project_tree.py"
       ],
       "returncode": 0,
-      "seconds": 2.364
+      "expected_returncode": 0,
+      "seconds": 2.674
     },
     {
       "argv": [
@@ -104,7 +127,8 @@
         "scripts/audit_documentation.py"
       ],
       "returncode": 0,
-      "seconds": 2.288
+      "expected_returncode": 0,
+      "seconds": 2.721
     },
     {
       "argv": [
@@ -112,7 +136,8 @@
         "scripts/run_security_audit.py"
       ],
       "returncode": 0,
-      "seconds": 1.794
+      "expected_returncode": 0,
+      "seconds": 2.719
     },
     {
       "argv": [
@@ -121,7 +146,8 @@
         "--check"
       ],
       "returncode": 0,
-      "seconds": 1.737
+      "expected_returncode": 0,
+      "seconds": 2.818
     },
     {
       "argv": [
@@ -129,7 +155,8 @@
         "scripts/z_generate_manuscript_variables.py"
       ],
       "returncode": 0,
-      "seconds": 1.765
+      "expected_returncode": 0,
+      "seconds": 2.737
     },
     {
       "argv": [
@@ -137,80 +164,8 @@
         "scripts/render_manuscript.py"
       ],
       "returncode": 0,
-      "seconds": 16.205
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/verify_generated_reports.py"
-      ],
-      "returncode": 1,
-      "seconds": 1.901
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/z_generate_manuscript_variables.py"
-      ],
-      "returncode": 0,
-      "seconds": 2.165
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/render_manuscript.py"
-      ],
-      "returncode": 0,
-      "seconds": 17.232
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/signpost_project_tree.py"
-      ],
-      "returncode": 0,
-      "seconds": 1.978
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/audit_documentation.py"
-      ],
-      "returncode": 0,
-      "seconds": 2.033
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/run_security_audit.py"
-      ],
-      "returncode": 0,
-      "seconds": 1.994
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/signpost_project_tree.py",
-        "--check"
-      ],
-      "returncode": 0,
-      "seconds": 1.915
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/z_generate_manuscript_variables.py"
-      ],
-      "returncode": 0,
-      "seconds": 2.295
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/render_manuscript.py"
-      ],
-      "returncode": 0,
-      "seconds": 19.087
+      "expected_returncode": 0,
+      "seconds": 25.831
     },
     {
       "argv": [
@@ -218,7 +173,8 @@
         "scripts/verify_generated_reports.py"
       ],
       "returncode": 0,
-      "seconds": 2.227
+      "expected_returncode": 0,
+      "seconds": 3.107
     },
     {
       "argv": [
@@ -227,7 +183,8 @@
         "--check"
       ],
       "returncode": 0,
-      "seconds": 2.153
+      "expected_returncode": 0,
+      "seconds": 3.071
     },
     {
       "argv": [
@@ -237,80 +194,8 @@
         "--require-doi"
       ],
       "returncode": 1,
-      "seconds": 2.216
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/z_generate_manuscript_variables.py"
-      ],
-      "returncode": 0,
-      "seconds": 4.645
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/render_manuscript.py"
-      ],
-      "returncode": 0,
-      "seconds": 32.428
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/signpost_project_tree.py"
-      ],
-      "returncode": 0,
-      "seconds": 3.722
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/audit_documentation.py"
-      ],
-      "returncode": 0,
-      "seconds": 3.875
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/run_security_audit.py"
-      ],
-      "returncode": 0,
-      "seconds": 3.477
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/signpost_project_tree.py",
-        "--check"
-      ],
-      "returncode": 0,
-      "seconds": 3.295
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/z_generate_manuscript_variables.py"
-      ],
-      "returncode": 0,
-      "seconds": 3.322
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/render_manuscript.py"
-      ],
-      "returncode": 0,
-      "seconds": 28.653
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/verify_generated_reports.py"
-      ],
-      "returncode": 0,
-      "seconds": 4.053
+      "expected_returncode": 1,
+      "seconds": 3.075
     },
     {
       "argv": [
@@ -319,386 +204,10 @@
         "--check"
       ],
       "returncode": 0,
-      "seconds": 4.055
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/audit_publication_readiness.py",
-        "--check",
-        "--require-doi"
-      ],
-      "returncode": 1,
-      "seconds": 3.851
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/z_generate_manuscript_variables.py"
-      ],
-      "returncode": 0,
-      "seconds": 6.29
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/render_manuscript.py"
-      ],
-      "returncode": 0,
-      "seconds": 47.297
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/signpost_project_tree.py"
-      ],
-      "returncode": 0,
-      "seconds": 3.207
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/audit_documentation.py"
-      ],
-      "returncode": 0,
-      "seconds": 3.297
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/run_security_audit.py"
-      ],
-      "returncode": 0,
-      "seconds": 3.271
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/signpost_project_tree.py",
-        "--check"
-      ],
-      "returncode": 0,
-      "seconds": 3.34
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/z_generate_manuscript_variables.py"
-      ],
-      "returncode": 0,
-      "seconds": 3.445
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/render_manuscript.py"
-      ],
-      "returncode": 0,
-      "seconds": 33.831
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/verify_generated_reports.py"
-      ],
-      "returncode": 0,
-      "seconds": 4.373
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/audit_publication_readiness.py",
-        "--check"
-      ],
-      "returncode": 0,
-      "seconds": 3.941
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/audit_publication_readiness.py",
-        "--check",
-        "--require-doi"
-      ],
-      "returncode": 1,
-      "seconds": 3.429
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/z_generate_manuscript_variables.py"
-      ],
-      "returncode": 0,
-      "seconds": 6.182
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/render_manuscript.py"
-      ],
-      "returncode": 0,
-      "seconds": 27.949
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/signpost_project_tree.py"
-      ],
-      "returncode": 0,
-      "seconds": 1.846
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/audit_documentation.py"
-      ],
-      "returncode": 0,
-      "seconds": 1.899
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/run_security_audit.py"
-      ],
-      "returncode": 0,
-      "seconds": 2.125
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/signpost_project_tree.py",
-        "--check"
-      ],
-      "returncode": 0,
-      "seconds": 2.123
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/z_generate_manuscript_variables.py"
-      ],
-      "returncode": 0,
-      "seconds": 1.909
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/render_manuscript.py"
-      ],
-      "returncode": 0,
-      "seconds": 19.233
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/verify_generated_reports.py"
-      ],
-      "returncode": 0,
-      "seconds": 2.415
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/audit_publication_readiness.py",
-        "--check"
-      ],
-      "returncode": 0,
-      "seconds": 1.802
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/audit_publication_readiness.py",
-        "--check",
-        "--require-doi"
-      ],
-      "returncode": 1,
-      "seconds": 1.648
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/z_generate_manuscript_variables.py"
-      ],
-      "returncode": 0,
-      "seconds": 2.578
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/render_manuscript.py"
-      ],
-      "returncode": 0,
-      "seconds": 17.794
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/signpost_project_tree.py"
-      ],
-      "returncode": 0,
-      "seconds": 1.666
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/audit_documentation.py"
-      ],
-      "returncode": 0,
-      "seconds": 1.793
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/run_security_audit.py"
-      ],
-      "returncode": 0,
-      "seconds": 1.673
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/signpost_project_tree.py",
-        "--check"
-      ],
-      "returncode": 0,
-      "seconds": 1.607
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/z_generate_manuscript_variables.py"
-      ],
-      "returncode": 0,
-      "seconds": 1.665
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/render_manuscript.py"
-      ],
-      "returncode": 0,
-      "seconds": 16.569
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/verify_generated_reports.py"
-      ],
-      "returncode": 0,
-      "seconds": 1.965
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/audit_publication_readiness.py",
-        "--check"
-      ],
-      "returncode": 0,
-      "seconds": 1.917
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/audit_publication_readiness.py",
-        "--check",
-        "--require-doi"
-      ],
-      "returncode": 1,
-      "seconds": 2.024
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/z_generate_manuscript_variables.py"
-      ],
-      "returncode": 0,
-      "seconds": 3.919
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/render_manuscript.py"
-      ],
-      "returncode": 0,
-      "seconds": 26.839
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/signpost_project_tree.py"
-      ],
-      "returncode": 0,
-      "seconds": 2.493
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/audit_documentation.py"
-      ],
-      "returncode": 0,
-      "seconds": 2.709
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/run_security_audit.py"
-      ],
-      "returncode": 0,
-      "seconds": 2.378
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/signpost_project_tree.py",
-        "--check"
-      ],
-      "returncode": 0,
-      "seconds": 2.044
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/z_generate_manuscript_variables.py"
-      ],
-      "returncode": 0,
-      "seconds": 2.842
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/render_manuscript.py"
-      ],
-      "returncode": 0,
-      "seconds": 19.729
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/verify_generated_reports.py"
-      ],
-      "returncode": 0,
-      "seconds": 2.264
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/audit_publication_readiness.py",
-        "--check"
-      ],
-      "returncode": 0,
-      "seconds": 2.059
-    },
-    {
-      "argv": [
-        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/audit_publication_readiness.py",
-        "--check",
-        "--require-doi"
-      ],
-      "returncode": 1,
-      "seconds": 2.277
+      "expected_returncode": 0,
+      "seconds": 3.051
     }
   ],
-  "complete": true
+  "complete": true,
+  "strict_deposit_state": "blocked only by missing new version-specific DOI; normal publication gate passed"
 }

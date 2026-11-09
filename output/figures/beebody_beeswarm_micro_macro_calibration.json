@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
-  "alt_text": "Flow diagram from strict body-scene metrics through waggle evidence to reduced swarm and BEEHAVE-compatible summaries.",
+  "alt_text": "Three independent evidence surfaces above requirements for matched observables, residuals, and uncertainty.",
   "artifact_kind": "figure",
   "backend": "Matplotlib",
-  "caption": "Matplotlib beebody and beeswarm micro-to-macro calibration map shows Calibration-boundary map connecting strict BeeBody/FlyBody scene metrics, waggle-motion anchors, and reduced BeeSwarm or BEEHAVE-compatible colony summaries. Generated from FlyBody scene metrics, simulation records, BEEHAVE anchor, and source refresh ledger. Sidecar validation checks raster, source routing, and registered claim tier. Does not calibrate colony-scale recruitment or make small-scene contacts a population model.",
+  "caption": "Independent scene interfaces, scholarly anchors, and supplied reduced-run means, separated from the unmet requirements for micro-to-colony calibration. No scene payload or empirical track is supplied to this figure. Generated from simulation records, separate scene-interface contract, and scholarly anchors using Matplotlib. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not calibrate colony-scale recruitment or make small-scene contacts a population model.",
   "citation_keys": [
     "vaxenburg2025flybody",
     "todorov2012mujoco",
@@ -45,14 +46,14 @@
   "plot_data_path": "output/figures/beebody_beeswarm_micro_macro_calibration_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 956,
+    "height_px": 992,
     "max_intensity": 255,
-    "mean_intensity": 230.43569825427141,
-    "min_intensity": 0,
+    "mean_intensity": 248.2578903428198,
+    "min_intensity": 24,
     "mode": "RGBA",
-    "nonzero_histogram_bins": 256,
-    "std_intensity": 54.624109117286736,
-    "width_px": 2252
+    "nonzero_histogram_bins": 232,
+    "std_intensity": 30.27288905535414,
+    "width_px": 2072
   },
   "regeneration_command": "uv run python scripts/analysis_pipeline.py",
   "schema": "beestack.figure.v1",
@@ -64,19 +65,19 @@
     "10.1038/nature03526",
     "10.1371/journal.pone.0021354"
   ],
-  "title": "Beebody Beeswarm Micro Macro Calibration",
+  "title": "Micro-to-macro comparison is not calibration",
   "unsupported_inference": "Does not calibrate colony-scale recruitment or make small-scene contacts a population model.",
   "validation_status": "nonblank quality sidecar and plot data generated",
   "visual_quality": {
-    "aspect_class": "wide",
-    "aspect_ratio": 2.356,
+    "aspect_class": "balanced",
+    "aspect_ratio": 2.089,
     "figure_role": "overview",
-    "height_px": 956,
+    "height_px": 992,
     "label_density": "moderate",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 2252,
-    "min_dimension_px": 956,
+    "max_dimension_px": 2072,
+    "min_dimension_px": 992,
     "readability_status": "pass",
-    "width_px": 2252
+    "width_px": 2072
   }
 }

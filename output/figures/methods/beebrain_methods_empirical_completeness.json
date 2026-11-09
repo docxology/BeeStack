@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
-  "alt_text": "BeeBrain empirical completeness panel with source availability and gap markers.",
+  "alt_text": "Native BeeBrain metric table beside source availability and claim-boundary context.",
   "artifact_kind": "figure",
   "backend": "Matplotlib/pandas",
-  "caption": "Matplotlib/pandas/NetworkX beebrain empirical methods completeness shows BeeBrain completeness dashboard reporting available empirical channels, parser gaps, and the absence of locally parsed calcium datasets. Generated from MethodsAnalysisReport and empirical analysis report. Sidecar validation checks raster, source routing, and registered claim tier. Does not support connectome-scale or calcium-validated dynamics.",
+  "caption": "BeeBrain native report metrics beside configured self-tests, reported availability, claim tier, and conservative interpretation. Generated from MethodsAnalysisReport and empirical analysis report using Matplotlib/pandas. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not support connectome-scale or calcium-validated dynamics.",
   "citation_keys": [
     "galizia1999glomerular",
     "brandt2005standardbrain",
@@ -43,14 +44,14 @@
   "plot_data_path": "output/figures/methods/beebrain_methods_empirical_completeness_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 976,
+    "height_px": 1075,
     "max_intensity": 255,
-    "mean_intensity": 243.19488552284582,
+    "mean_intensity": 243.13572044960512,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 48.44195732594917,
-    "width_px": 1983
+    "std_intensity": 49.8675286326248,
+    "width_px": 2129
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
   "schema": "beestack.figure.v1",
@@ -60,19 +61,19 @@
     "10.1002/cne.20644",
     "10.5061/dryad.qbzkh18sc"
   ],
-  "title": "Beebrain Methods Empirical Completeness",
+  "title": "BeeBrain methods: reported metrics and evidence boundaries",
   "unsupported_inference": "Does not support connectome-scale or calcium-validated dynamics.",
   "validation_status": "nonblank image, quality sidecar, and plot data passed",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 2.032,
+    "aspect_ratio": 1.98,
     "figure_role": "overview",
-    "height_px": 976,
-    "label_density": "moderate",
+    "height_px": 1075,
+    "label_density": "dense",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 1983,
-    "min_dimension_px": 976,
+    "max_dimension_px": 2129,
+    "min_dimension_px": 1075,
     "readability_status": "pass",
-    "width_px": 1983
+    "width_px": 2129
   }
 }

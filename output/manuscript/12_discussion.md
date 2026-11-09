@@ -1,4 +1,4 @@
-# Discussion {#sec:discussion}
+# Discussion: Contract Integration without Biological Calibration {#sec:discussion}
 
 BeeStack's main result is not a completed digital honey bee. It is a
 working argument about how such a model should be built: body, brain,
@@ -9,7 +9,7 @@ system shows that these layers can share typed contracts, generated
 diagnostics, visual evidence, empirical source records, and manuscript
 variables in one reproducible loop.
 
-## A superorganism needs more than a swarm model
+## Colony integration beyond task allocation
 
 The colony-as-superorganism literature motivates BeeStack but also
 disciplines it. A superorganism is not just a large population simulator;
@@ -30,7 +30,7 @@ state are all visible and auditable. The current implementation is still
 reduced in several layers, but the reduction is explicit enough that a
 reader can see where a stronger engine should enter.
 
-## Body-first realism is an epistemic constraint
+## Body geometry constrains render and contact claims
 
 The BeeBody and strict BeeSwarm scenes are deliberately body-first.
 This choice is not cosmetic. Work on morphological computation argues
@@ -55,7 +55,7 @@ coefficients, adhesive contact, inertial tensors, and wing-load coupling
 remain calibration gaps. That distinction matters because a convincing
 bee-shaped render can otherwise hide incorrect physics.
 
-## BeeBrain as a data-assimilation surface
+## BeeBrain empirical traceability without neural calibration
 
 BeeBrain occupies a different fidelity tier. Its strongest current
 feature is empirical traceability: Honey-Bee Standard Brain anatomy,
@@ -78,7 +78,7 @@ that is registered but unavailable locally is not converted into a
 synthetic number. It appears as a gap in the source completeness matrix,
 methods-analysis report, and roadmap.
 
-## Field crisis vs scaffold fidelity
+## Colony-health motivation versus implemented state
 
 U.S. colony-loss surveys and beekeeper triage reports provide field context
 [@aurell2024survey; @scitotenv2025triage], alongside separate studies of
@@ -97,7 +97,7 @@ Pollination economics and production statistics motivate the societal
 stakes [@pollination2016value] without turning BeeStack into an
 agricultural decision-support product.
 
-## Reduced kernels are useful when their boundaries are explicit
+## Reduced-kernel diagnostics and replacement boundaries
 
 BeeMind, the broad BeeSwarm kernels, and BeeNiche are not calibrated
 biological engines. They are reduced validated kernels with diagnostics.
@@ -117,7 +117,7 @@ generative model, or a neural simulator if it satisfies the same public
 contracts. Until then, the correct claim is "validated witness," not
 "calibrated biological mechanism."
 
-## What the visualization suite contributes
+## Visualization separates evidence classes
 
 The visualization suite is a second argument about scientific reporting.
 Figures and animations are not decorations; they are classified evidence
@@ -137,7 +137,7 @@ multiple prefixed MJCF copies. None of these figures is valuable because
 it "looks like a colony" in a general cinematic sense. The contact report
 and manifest define what each animation proves.
 
-## Future colony-coupling implications
+## Missing assimilation and colony-specific calibration
 
 BeeStack should be described as an evidence-typed scaffold rather than a
 completed colony-specific twin. Mature colony-coupled models integrate large
@@ -165,7 +165,7 @@ property: the same generated run can expose module validations, artifact
 coverage, simulation telemetry, empirical parseability, signposting
 coverage, and scholarship anchors in one auditable record.
 
-## Reading the current results
+## Integrated results establish reproducibility, not prediction
 
 The integrated results and research-suite results should
 therefore be read as reproducibility and integrity results first, and

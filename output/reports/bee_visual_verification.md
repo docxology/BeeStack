@@ -113,7 +113,7 @@
 - none
 
 
-# FlyBody Contact Physics Report
+# BeeSwarm Strict FlyBody Contact Verification
 
 - Passed: `True`
 - Scene count: `3`
@@ -121,50 +121,38 @@
 ## collision
 
 - GIF: `output/animations/beeswarm_10_beebody_collision.gif`
-- Contact sheet: `output/animations/beeswarm_10_beebody_collision_contact_sheet.png`
 - Scene XML: `output/animations/flybody_scenes/collision/collision_flybody_scene.xml`
-- Body plan: `output/animations/flybody_scenes/collision/body_plan/assets/apis_mellifera_worker.xml`
-- Render backend: `flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer`
-- Bee count: `10`
-- Frames with bee-bee contacts: `20`
+- Contact report: `output/animations/flybody_scenes/collision/contact_metrics.json`
+- Backend: `flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer`
+- Motion pixels: `790642`
 - Bee-bee contact pairs: `bee_00-bee_01, bee_00-bee_02, bee_00-bee_09, bee_01-bee_02, bee_01-bee_07, bee_01-bee_09, bee_02-bee_03, bee_03-bee_04, bee_04-bee_05, bee_05-bee_06, bee_06-bee_07, bee_07-bee_08, bee_08-bee_09`
-- Floor contact count: `5`
-- Minimum contact distance: `-0.03247810612617867`
-- Mean follower orientation error: `0.000` deg
+- Floor contacts: `5`
+- Follower orientation error: `0.000` deg
 - Follower orientation confidence: `0.000`
-- Waggle phase coupling score: `0.000`
-- Contact graph edges: `13`
+- XML passed: `True`
 
 ## waggle
 
 - GIF: `output/animations/beeswarm_waggle_dance_configured.gif`
-- Contact sheet: `output/animations/beeswarm_waggle_dance_configured_contact_sheet.png`
 - Scene XML: `output/animations/flybody_scenes/waggle/waggle_flybody_scene.xml`
-- Body plan: `output/animations/flybody_scenes/waggle/body_plan/assets/apis_mellifera_worker.xml`
-- Render backend: `flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer`
-- Bee count: `11`
-- Frames with bee-bee contacts: `24`
+- Contact report: `output/animations/flybody_scenes/waggle/contact_metrics.json`
+- Backend: `flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer`
+- Motion pixels: `528905`
 - Bee-bee contact pairs: `bee_01-bee_02, bee_01-bee_10, bee_02-bee_03, bee_03-bee_04, bee_04-bee_05, bee_05-bee_06, bee_06-bee_07, bee_07-bee_08, bee_08-bee_09, bee_09-bee_10`
-- Floor contact count: `22`
-- Minimum contact distance: `-0.007145678300099613`
-- Mean follower orientation error: `19.096` deg
+- Floor contacts: `22`
+- Follower orientation error: `19.096` deg
 - Follower orientation confidence: `0.788`
-- Waggle phase coupling score: `0.000`
-- Contact graph edges: `10`
+- XML passed: `True`
 
 ## waggle_long
 
 - GIF: `output/animations/beeswarm_waggle_dance_long.gif`
-- Contact sheet: `output/animations/beeswarm_waggle_dance_long_contact_sheet.png`
 - Scene XML: `output/animations/flybody_scenes/waggle_long/waggle_long_flybody_scene.xml`
-- Body plan: `output/animations/flybody_scenes/waggle_long/body_plan/assets/apis_mellifera_worker.xml`
-- Render backend: `flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer`
-- Bee count: `11`
-- Frames with bee-bee contacts: `96`
+- Contact report: `output/animations/flybody_scenes/waggle_long/contact_metrics.json`
+- Backend: `flybody-generated-mjcf+mujoco.MjModel+MjData+Renderer`
+- Motion pixels: `568368`
 - Bee-bee contact pairs: `bee_01-bee_02, bee_01-bee_10, bee_02-bee_03, bee_03-bee_04, bee_04-bee_05, bee_05-bee_06, bee_06-bee_07, bee_07-bee_08, bee_08-bee_09, bee_09-bee_10`
-- Floor contact count: `89`
-- Minimum contact distance: `-0.007151945532773438`
-- Mean follower orientation error: `19.096` deg
+- Floor contacts: `89`
+- Follower orientation error: `19.096` deg
 - Follower orientation confidence: `0.788`
-- Waggle phase coupling score: `0.000`
-- Contact graph edges: `10`
+- XML passed: `True`

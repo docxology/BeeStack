@@ -1,16 +1,17 @@
 {
   "schema": "beestack.workflowz.release_audit.v1",
-  "observed_at": "2026-11-08T08:29:37.412072+00:00",
+  "observed_at": "2026-11-09T00:40:44.901221+00:00",
   "repository": "docxology/BeeStack",
   "candidate_package_version": "2.0.0",
   "manuscript_version": "2.0",
-  "state": "implemented and locally validated candidate; publication blocked, not released",
+  "state": "Current source fully implemented and locally verified; this source-content receipt precedes live main publication and does not anticipate its success.",
   "source_binding": {
     "base_commit": "015550a26d57a36e45bbada018daf126b5332d93",
     "branch": "work/wfz-beestack-release-20261107",
-    "aggregate_sha256": "abc33dc69147371e83ae8ca9118824a5ef3dccc2263c551598f47324db9b7d88",
-    "scope": "software, tests, native CI, canonical docs/manuscript and root contracts; generated outputs are separately sealed",
+    "aggregate_sha256": "8746831117b0fb87ebcd429b8b46937fef5a7326b4595a469fd84d9438aec53e",
+    "scope": "293 immutable software/test/native-CI/canonical-doc/manuscript/root-contract records; the exact committed source archive also retains two nonruntime .benchmarks guides. Generated outputs and live publication state are separately bound.",
     "aggregate_algorithm": "SHA-256 of UTF-8 compact sorted-key JSON source records, sorted by path",
+    "commit": "a460c466f6ac781eb13925cdd42c08bfacd41556",
     "records": [
       {
         "path": ".gitattributes",
@@ -49,8 +50,8 @@
       },
       {
         "path": ".gitignore",
-        "sha256": "48c8c2024e9ed11ae83501385bd3f818cbf49f18d944b3f39fa3f276ffd84cfc",
-        "size": 1875
+        "sha256": "d6c8ca8c009515c352dca85fc6799361222a111986893c937e0bc9896a9d8760",
+        "size": 1902
       },
       {
         "path": ".python-version",
@@ -59,8 +60,8 @@
       },
       {
         "path": "AGENTS.md",
-        "sha256": "91d2c30bc086e7668249ea6392dc141fd64e3db93dd5ba6d020f5b89c068e421",
-        "size": 6093
+        "sha256": "30b5cf70f189d83bf62e020b3e0b8a1d7cf455f934c989c9bbc8234fba4d77e8",
+        "size": 7670
       },
       {
         "path": "BeeStack-threat-model.md",
@@ -69,8 +70,8 @@
       },
       {
         "path": "CHANGELOG.md",
-        "sha256": "0fea5b9164e9f0ce31eb47e4b87db26a4389cf8d517db0da4a890f0bdec97735",
-        "size": 9656
+        "sha256": "40499d630ef6be9a117741b7a7ac023cb29b27886a73f5198107a6f753e00c06",
+        "size": 11880
       },
       {
         "path": "ISA.md",
@@ -84,8 +85,8 @@
       },
       {
         "path": "README.md",
-        "sha256": "65e58b07660d74f25de2776391385e97976fc62e144d5540cb0260419a745421",
-        "size": 17463
+        "sha256": "135a2a250b30b9679a75ace9fbd97b74c208627615280db74a3d1ccdd7f763e1",
+        "size": 18770
       },
       {
         "path": "docs/AGENTS.md",
@@ -94,48 +95,48 @@
       },
       {
         "path": "docs/README.md",
-        "sha256": "64685fee878e3758f7ba4a97ee5530868907add4d094c8122fe40276abc23243",
-        "size": 3412
+        "sha256": "0a2fb822aa052dffe559fae8e39fd0879bf0d28cccbc836526134276aefc3c46",
+        "size": 3423
       },
       {
         "path": "docs/agent_instructions.md",
-        "sha256": "a927408ba3574f8ab2f6b44b25f4620fdd8c4a65c611dfe1bc90c0256685624c",
-        "size": 1871
+        "sha256": "8bdeb54575d7a2cb964dab6b032bcb2f4d62cb33597e92350bbf072a4f01369c",
+        "size": 1935
       },
       {
         "path": "docs/animations.md",
-        "sha256": "c3e7f2da83167c109fed9dc15073b14bd24f36d04d16f47808c90f8746e86d46",
-        "size": 4701
+        "sha256": "1acbefbe0c801406cd4702e66ef675abef78d323a32a40b9b6009eb4db68c714",
+        "size": 5273
       },
       {
         "path": "docs/api_reference.md",
-        "sha256": "07aa5d6e0bb80f7fb8c944e6333e3fcb4e596dbf9335b7c416454f69e8c80282",
-        "size": 10905
+        "sha256": "54fcb9d7d55f1fea62f43c23087f3948396248f00b263baca5eca6a8f797c985",
+        "size": 11729
       },
       {
         "path": "docs/architecture.md",
-        "sha256": "fcf85bb26997c57bf5e9e3d9575fbbfd132e4c318d05370292eb9a3dc827c235",
-        "size": 4426
+        "sha256": "7768a49f98b575c57481fe9f289597dc26eff03d78648afb9b2c20d26183cf20",
+        "size": 5396
       },
       {
         "path": "docs/baseline_readiness.md",
-        "sha256": "55a92f6d3d075fe5595881dfcd3e316d8eb8138cd68ea854bb9fc266f357550a",
-        "size": 2533
+        "sha256": "4e965ee02f1bb127f1f3f8b532eb165b068cb800af645dc0e732e1499bc26d27",
+        "size": 2295
       },
       {
         "path": "docs/beebrain_data_pipeline.md",
-        "sha256": "187635f55c8eab806fad4090e5ec00faa60c33f92346aff46e2cfd725cee7080",
-        "size": 7424
+        "sha256": "1c6f699f415ef0a425c83170e317d9a05d7c83b9267a752f4da933fcbd48532a",
+        "size": 8060
       },
       {
         "path": "docs/configuration.md",
-        "sha256": "54a1bafac837d41b30fb20102dd3dee4ebc50217e56d29b5c1a28dae157935fa",
-        "size": 4822
+        "sha256": "d771229a2b2ff0389fa2ba96b2ffa83ac5465eb443c5b8f47c06cf03374ab804",
+        "size": 5229
       },
       {
         "path": "docs/data_acquisition_runbook.md",
-        "sha256": "68453b2d13ebec22fb8e9404c572345fbb499c4235e4b95b24286fcd7a00de95",
-        "size": 2506
+        "sha256": "c931795928afce3bd4824b1b048701687da1ce37e7bf73978320ab8d1c23d691",
+        "size": 3162
       },
       {
         "path": "docs/digital_twin_path.md",
@@ -144,103 +145,103 @@
       },
       {
         "path": "docs/empirical_beebrain.md",
-        "sha256": "88323f6e076948493d102fa1bf4e2139882febabdef0c65f1e8a9a37b18f5aa4",
-        "size": 5628
+        "sha256": "4c9592eae3749b990ec42cb62f3c9e4c0f7342ee89c8ce776c26f4f34eb019ee",
+        "size": 5953
       },
       {
         "path": "docs/flybody_integration.md",
-        "sha256": "5e00c730f72e6e11e8826f28d5624793a3586e6bbe865fb9a0330ae6d458c5b6",
-        "size": 5489
+        "sha256": "1cf90f991bd92d8d665596a7969e533b5b85deb537fb605d4c3719f8e247d37a",
+        "size": 5980
       },
       {
         "path": "docs/generated_outputs.md",
-        "sha256": "07c4fd22a1e8d99abd33c91c08f60b805b950fd869847adfdc7c1f5e3e75d58d",
-        "size": 13342
+        "sha256": "61880470c85c2dc060b01a33e2ad15b4f297a55c3f765e050d1a055a5552bda1",
+        "size": 14114
       },
       {
         "path": "docs/manuscript/00_abstract.md",
-        "sha256": "0cf3b2db13969bcc3e4f2a473c1bbdc2c8793e9a914df153a7e6f79ddf1965c1",
-        "size": 4479
+        "sha256": "2dc259f313d9542185f4435ec2c08811f5f11ca2ec36b4f9677a5353467673b0",
+        "size": 4545
       },
       {
         "path": "docs/manuscript/01_scholarship_and_related_work.md",
-        "sha256": "3e0deddef275eb1de2f2506cf8f21ca8bc23a63b3704de55754bfdce7d787926",
-        "size": 16802
+        "sha256": "0a59b94dca6e0cb41884cefeb0f9a06470473e1bd284bc3012c05fd041b0881f",
+        "size": 16863
       },
       {
         "path": "docs/manuscript/02_claim_ledger.md",
-        "sha256": "e029fd5b54ed46478f0ecd6048da377c7657ac874b0635323829256b33e3ec35",
-        "size": 9255
+        "sha256": "8b7dee31489d9c943cbb96bc47e3f3f5b5c415150dda972f5b3370b9fb3dca9a",
+        "size": 9294
       },
       {
         "path": "docs/manuscript/03_materials_and_source_provenance.md",
-        "sha256": "abe4ed13a2f8d2adbb2d0e53cefcd2714eec85d64cc2e348fdc6043ff30b7dc1",
-        "size": 7725
+        "sha256": "03c5be3a94178998ae04b540583bc6e9a9a5fffd4473c19becd31d2b9b8b005a",
+        "size": 8050
       },
       {
         "path": "docs/manuscript/04_evidence_typed_architecture.md",
-        "sha256": "eda9f05c60c61da8cb40b34bb8099a8916c90efe7bf50914ece3e70fbb422583",
-        "size": 8168
+        "sha256": "9af41f54f0507f23f13728530f7a48cd76727bf571caad19f034b4823408f02e",
+        "size": 8903
       },
       {
         "path": "docs/manuscript/05_methods_body_swarm.md",
-        "sha256": "6010f079299bc07518806d70ab3ac404c244def670d9a4e1d70387f4f6b2390c",
-        "size": 17182
+        "sha256": "90be411fd7fceaa15dc10ca5c20ccbf7878664f13990ec1f78a3d1ce3ecbd28b",
+        "size": 17356
       },
       {
         "path": "docs/manuscript/06_methods_brain_mind.md",
-        "sha256": "d8b756c6272c406fab7fcef3ccdd20080159279d34e06570196d5e5cfd60b497",
-        "size": 15069
+        "sha256": "f89348473923e767b636b5c81dcf46ac99769407b2b80524aafa5fd423366855",
+        "size": 17142
       },
       {
         "path": "docs/manuscript/07_methods_niche.md",
-        "sha256": "1a3d04fa6acd302142224511871fbcab6771c7587e21b4a09f525ed2973a3c2d",
-        "size": 6803
+        "sha256": "78b211c607107ca2b86da10ab21563bfed7993ff34a51c0c2b71c7efa09cf024",
+        "size": 7178
       },
       {
         "path": "docs/manuscript/08_validation_and_figures.md",
-        "sha256": "f4f912e00740644d7a642b256bb0faed0c2347d779555fbe18fd86effc5be416",
-        "size": 13252
+        "sha256": "7b416e2dc41c72ec7a7ab2c7d054f0f05dffd55ba9584eca4ad7b35acf75c7d0",
+        "size": 14378
       },
       {
         "path": "docs/manuscript/09_empirical_results.md",
-        "sha256": "fad484c3ffb8172b8bfba71f086de510ee474b5a636e9fa5f8bf2d511f05dfe6",
-        "size": 7732
+        "sha256": "0239c86911477a9994398121cc746b8222fa60ae48a7949bb818d0125c0557a7",
+        "size": 8464
       },
       {
         "path": "docs/manuscript/10_integrated_results.md",
-        "sha256": "c25f436c9902b30d648314aebf66c75ef1801e826cd64d10f115a3ea4dbe3316",
-        "size": 6353
+        "sha256": "18a21bb4f5c48369833f0be6a4ed261da8a0e49041f0238f383105c99eadf593",
+        "size": 6948
       },
       {
         "path": "docs/manuscript/11_research_synthesis.md",
-        "sha256": "b2ef85e77e57227612349adc083a55ac8b4932bf986267eb727035fe2ad8e80f",
-        "size": 10678
+        "sha256": "304346ccf427441a4bd216b2ff917c220532ea65af736ddb8223395fb4c96918",
+        "size": 11008
       },
       {
         "path": "docs/manuscript/12_discussion.md",
-        "sha256": "eeb6f005fb8fba6aa75db58c1fc4b4c6b0e2eb9f6cd2909b60e3432ba062c09d",
-        "size": 10247
+        "sha256": "8ab7fc32c907728c9f9168545abceba0044f822a864e522cd2b951ebe316a753",
+        "size": 10378
       },
       {
         "path": "docs/manuscript/13_limitations.md",
-        "sha256": "e9532e6df770052e6c71bae1da6deddd363b24e1d12cb187b50b035f5953a885",
-        "size": 7489
+        "sha256": "31fbcee9bead7b3f8210ef83ea07200c4a9a20bf33e51cee54e684a89cb38ec9",
+        "size": 7739
       },
       {
         "path": "docs/manuscript/14_roadmap.md",
-        "sha256": "0da27773b24e6819255a25097ee060499301a0a7b2975502a3454e7b21645405",
-        "size": 10561
+        "sha256": "aa6dc30cbad8349c42d221d92b66b74a25dce5e759f9f165511597b751e3934b",
+        "size": 10762
       },
       {
         "path": "docs/manuscript/15_reproducibility.md",
-        "sha256": "cfd33a708c8b4d3b43196d0d0ac5cb0927f9cce2acee185a0098ac51024fc01f",
-        "size": 7043
+        "sha256": "e9e6a5b750069ca497426ef2efd1dcd79000a8f57e93cee3c18deaf89fba7f04",
+        "size": 7103
       },
       {
         "path": "docs/manuscript/16_ethics_governance.md",
-        "sha256": "e294ab10f77fc7f0c8f7bd8ea0a414a630b67f5b781da0f75b1e7aa70bec7556",
-        "size": 7237
+        "sha256": "a3f2e223bb30bad6697e32138499928838c6d56cd827485a66f5f283ce01d4f5",
+        "size": 7560
       },
       {
         "path": "docs/manuscript/99_references.md",
@@ -249,23 +250,23 @@
       },
       {
         "path": "docs/manuscript/AGENTS.md",
-        "sha256": "44c58bbbaef1f366b0fbb8979594e40e9c2c04e7e1fed083d03713c20b680981",
-        "size": 3386
+        "sha256": "eae23c5f522d68464826965b9ba7a5b2a534eea5748fadd7b6fa3fbe3e6a52ec",
+        "size": 3614
       },
       {
         "path": "docs/manuscript/MANUSCRIPT_STATUS.md",
-        "sha256": "8bf5a7825f6b3a45ca30b7a7ca1ac7794ac83c306a25bef349ef282b867d841b",
-        "size": 524
+        "sha256": "3d4a99778f72e303e24bc046074127796042e95edbf7462f5d7bdef57152e938",
+        "size": 583
       },
       {
         "path": "docs/manuscript/README.md",
-        "sha256": "7fa075bd792c41ef4654e6a5188e4a81b82266f152626c175b1b3fa8886c720c",
-        "size": 1839
+        "sha256": "6f48daafcbb2c0369466f3ab99aa4014701e1c483f229d4c3c63a0a279269754",
+        "size": 1981
       },
       {
         "path": "docs/manuscript/SYNTAX.md",
-        "sha256": "78d34ac71dcb32d7c15f08662db4710a747785c89f0d8e488882664bb8c5eba9",
-        "size": 7709
+        "sha256": "ebb6359e98185f9f9e06e36256921921f985b3c17f1673ffe627c3b0e73f9d5e",
+        "size": 8325
       },
       {
         "path": "docs/manuscript/config.yaml",
@@ -284,13 +285,13 @@
       },
       {
         "path": "docs/manuscript_development.md",
-        "sha256": "5ffe15d4dcb59b392d7a20802f4d7498f1aaf366d664ff24f483c14cebf87241",
-        "size": 8214
+        "sha256": "415950b6bfb6b0926ed98612684e5613e5e1822bcf2a873fd00f672085f7d946",
+        "size": 9015
       },
       {
         "path": "docs/research_operations_playbook.md",
-        "sha256": "9dd71e3bde1e30ba49e9b70fb3078222b9cda9e14e72eb3177a3edc3c07ad3e4",
-        "size": 7848
+        "sha256": "14162fcd96214871f3bb1cd38abb3394b6fd3d5522128d98c645c0f2af6a5777",
+        "size": 9278
       },
       {
         "path": "docs/security_posture.md",
@@ -304,13 +305,13 @@
       },
       {
         "path": "docs/spec_review.md",
-        "sha256": "1ce735e44095dacbe4e35012b0a39e8e7ce57cf6d4fb42f22288e3a25c2bde40",
-        "size": 3509
+        "sha256": "5b341aa94f9ab1a59b92fb4f51d607a9d43b210e384543a0b1ecd959c1a437c3",
+        "size": 4086
       },
       {
         "path": "docs/stack_contracts.md",
-        "sha256": "b39821de4df9bd8bf3eb47271de5fd56d26ccf602d82da0417ba28b4d9b32571",
-        "size": 1068
+        "sha256": "a7b53c7383f7a13e7597ad7fe94fd8e233dcb524577f1a2e1bd0c6e9a30c8176",
+        "size": 1831
       },
       {
         "path": "docs/testing_philosophy.md",
@@ -319,23 +320,23 @@
       },
       {
         "path": "docs/troubleshooting.md",
-        "sha256": "befe0ad872cc4beb2d03ec2ee976c4f5e88484e1e64cce68af857b598737511f",
-        "size": 5222
+        "sha256": "170f0d9db8bd33763d7e438b7afddf10fae7bd091016bd431de8493ef98ceffb",
+        "size": 5620
       },
       {
         "path": "docs/validation_criteria.md",
-        "sha256": "57de2892a5f8086333297e87ba5fd153b768c0bcb04e972bb6e2f6752868af1e",
-        "size": 9849
+        "sha256": "a87af751797d8f70c6591343ef38a6cff631ede41940b2fc9cb2c38a78211d95",
+        "size": 10851
       },
       {
         "path": "docs/visualization_gallery.md",
-        "sha256": "ebfe55e700994831f82867962c95bf029128c3602a8db7e4b46b369a71ea6f4c",
-        "size": 9687
+        "sha256": "0e99a8cf5df675fe79fc36d994373aa655e25e0561be89fe9deee9640419d488",
+        "size": 10492
       },
       {
         "path": "docs/waggle_3d_scenario.md",
-        "sha256": "fb3126398c9536a377d7fc185ecf51e501f70a66f685587635aa8349384537ae",
-        "size": 2666
+        "sha256": "4151f2719bcd5742a417e34beae242c47d6a8b591dfff44664a349b6374764d5",
+        "size": 2975
       },
       {
         "path": "pyproject.toml",
@@ -454,8 +455,8 @@
       },
       {
         "path": "src/README.md",
-        "sha256": "09b4b54a5b3a1bec0df5cb31874cbf351c8c6f7d9e1b3eb0d7129f9ac155f986",
-        "size": 750
+        "sha256": "b126f8efd56b2df6f190e2fd36aff74fabafb2e1e55c12e2b2db3c15bb7cafb1",
+        "size": 885
       },
       {
         "path": "src/STYLE.md",
@@ -489,8 +490,8 @@
       },
       {
         "path": "src/beestack/body/README.md",
-        "sha256": "dca005138adc2a2ef9f9476933117415a5fff9211dca8f6c8f8164a7db6c3e67",
-        "size": 2482
+        "sha256": "c7a039bf9c90462ac4f785ea894928d1107514defbcd900f2ab07d872caaf3e6",
+        "size": 2722
       },
       {
         "path": "src/beestack/body/__init__.py",
@@ -544,8 +545,8 @@
       },
       {
         "path": "src/beestack/brain/README.md",
-        "sha256": "ad93844041cd635c46c180e0a47374f30c3c03c239a6dd948fe0a19d044c7d78",
-        "size": 3371
+        "sha256": "a200ecd75cd9111185c60efe72a8e3bb501b4bc8c8dc28ed2428005574783eb1",
+        "size": 5255
       },
       {
         "path": "src/beestack/brain/__init__.py",
@@ -599,13 +600,13 @@
       },
       {
         "path": "src/beestack/brain/empirical_analysis.py",
-        "sha256": "711b70a632da1bcf5d717e71a11a1b70692d02404de94dc02c75a38cc6527fdb",
-        "size": 23288
+        "sha256": "180bb616d178134cd4cdb2678234875765b128ce173657bd5f7abce03a7990f2",
+        "size": 25106
       },
       {
         "path": "src/beestack/brain/empirical_data.py",
-        "sha256": "9b3e2d80c8e898942798c4812fe76421d8e73a3545e3d33df626c65653182ac6",
-        "size": 33516
+        "sha256": "60eff91fe8af6edd09f33fd0950e2876f5adb0e0e9bdf7d642c4bb2d98e90ccd",
+        "size": 35961
       },
       {
         "path": "src/beestack/brain/empirical_fetch.py",
@@ -619,8 +620,8 @@
       },
       {
         "path": "src/beestack/brain/empirical_ingest_reports.py",
-        "sha256": "80bd13889d3c8a6c7d4c41452d385675bf255ce1cdff9ed8846a6f954a071bba",
-        "size": 8798
+        "sha256": "0f12eb1084658fbb2dbf2b6476dfced471524fdad974b2232fbeff3a7823aafe",
+        "size": 9214
       },
       {
         "path": "src/beestack/brain/empirical_parsers/AGENTS.md",
@@ -679,8 +680,8 @@
       },
       {
         "path": "src/beestack/brain/empirical_pipeline.py",
-        "sha256": "e1401ef34b3872ce6d29409b582a35a8b5199a3be671160f1d4e453f84285854",
-        "size": 11250
+        "sha256": "6cb2eb45a7b9fce55d3665086ca7097ba4ba3d01fc42cc8ed87cab28a81a4ee5",
+        "size": 11302
       },
       {
         "path": "src/beestack/brain/empirical_status.py",
@@ -769,13 +770,13 @@
       },
       {
         "path": "src/beestack/generated_report_audit.py",
-        "sha256": "960ffabf96c4ee3c601504ab08e2ac54305840d72e954033e26b0a1ba1a60af4",
-        "size": 7945
+        "sha256": "dcb8bd9f08d8f9f6910660c3474be85980287a5decdefde0beb8211e9940da36",
+        "size": 7969
       },
       {
         "path": "src/beestack/integrity.py",
-        "sha256": "2001bddcd4ed74a16573d319664764e0b0859721c3d31085a291d08adb676362",
-        "size": 23286
+        "sha256": "6856df4710dab2727309bb3edde0fcf1b9718ed20a55882c5dfff416ca06a625",
+        "size": 23292
       },
       {
         "path": "src/beestack/manifest.py",
@@ -794,8 +795,8 @@
       },
       {
         "path": "src/beestack/mind/README.md",
-        "sha256": "b6a65dcbcdb8bfcecec654d73a7d47d4520dd1d17592e988d0d3975a2fd6a607",
-        "size": 281
+        "sha256": "9483ed82c8b3c84ee926c2d38e3e3b6639db556096a928fef28d582a9e095931",
+        "size": 457
       },
       {
         "path": "src/beestack/mind/__init__.py",
@@ -864,8 +865,8 @@
       },
       {
         "path": "src/beestack/orchestrator.py",
-        "sha256": "923ca6bb5d45b2f4feb89a9d6cffacc34e1a738f1482fa42c02dbdbd675be60e",
-        "size": 10841
+        "sha256": "c3db8955d55d3a2bc879dc6146012d8c7a152c76c1514708a2020c2605156852",
+        "size": 10851
       },
       {
         "path": "src/beestack/pipeline.py",
@@ -884,13 +885,13 @@
       },
       {
         "path": "src/beestack/research/AGENTS.md",
-        "sha256": "23f6c71a435e4a56de06d3e9713e4888547641e5a7f4023226e393b02e478e5c",
-        "size": 774
+        "sha256": "93fe485779f530fa6f49350aa2ece49a27a9e426fdff032d4d42506e221b5d8f",
+        "size": 841
       },
       {
         "path": "src/beestack/research/README.md",
-        "sha256": "50f8eb18db2f3d1b02835602bb64371cf8c4a7db7ecb29eee9111146cada8243",
-        "size": 3464
+        "sha256": "3d146b52642253e7426a6803197f801e9368f38f778a4bd37cad11634f6a3f8f",
+        "size": 3788
       },
       {
         "path": "src/beestack/research/__init__.py",
@@ -909,8 +910,8 @@
       },
       {
         "path": "src/beestack/research/methods_helpers.py",
-        "sha256": "133dd4d77195aff88cd018d85845814b53aaba020ec594a96b32f0fd149cd814",
-        "size": 5486
+        "sha256": "3e923969ec8ffac612e1ef88a0f7c75d9a09e881aee3dbdf1c7367f71f479185",
+        "size": 5592
       },
       {
         "path": "src/beestack/research/methods_models.py",
@@ -919,8 +920,8 @@
       },
       {
         "path": "src/beestack/research/methods_panels.py",
-        "sha256": "ef8f2f8b8b88ead2c2924918de231b2c6935f555096883da75be4221a67e8580",
-        "size": 27083
+        "sha256": "8004f618b403f50b669d3495548dc99f28f370605aaeadd4ec14dc1809b181f9",
+        "size": 27385
       },
       {
         "path": "src/beestack/research/methods_validators.py",
@@ -929,8 +930,8 @@
       },
       {
         "path": "src/beestack/research/suite.py",
-        "sha256": "3c642036ada58c9a9dbe39337730d543fc91375d6a9c928f5e3d761320ddbb8f",
-        "size": 37934
+        "sha256": "dbb01b24884bd105022f75ab671dec1d1394683d7b1b04696a5befb5537d7acb",
+        "size": 38296
       },
       {
         "path": "src/beestack/research/synthesis.py",
@@ -984,8 +985,8 @@
       },
       {
         "path": "src/beestack/swarm/README.md",
-        "sha256": "ac84e99996faded46c5bd2b028a0ddfde21f7ac65d34d57177cf3540cc4c8b86",
-        "size": 917
+        "sha256": "c8c8dbd341e253ef7811648b31cbfe230f38ab1ba1b3e68ea98990ace28ed216",
+        "size": 1305
       },
       {
         "path": "src/beestack/swarm/__init__.py",
@@ -1059,8 +1060,8 @@
       },
       {
         "path": "src/beestack/visualization/README.md",
-        "sha256": "d2651c5435829b89056543962a83a29942e160e0bef3018d5a638eadf875d735",
-        "size": 5126
+        "sha256": "cd167301861ead252dbdff75a482472fa11e10f4b8a1558d489fe5830e5b52ee",
+        "size": 6442
       },
       {
         "path": "src/beestack/visualization/__init__.py",
@@ -1089,13 +1090,13 @@
       },
       {
         "path": "src/beestack/visualization/connectome_figures.py",
-        "sha256": "5b133091c462b58fb731d53c841cf8c0b9dd3d4b00fe851f072de0ad17f9cf4d",
-        "size": 10814
+        "sha256": "c12fd3a90833b0b93f5934a1675781d55ea8094e8a901c879e293d55d67458a4",
+        "size": 11513
       },
       {
         "path": "src/beestack/visualization/empirical_figures.py",
-        "sha256": "ac6cbb9a126c128d58a90ab31fe646592abeb8a9a7ec82455f7b8a5a32d1337c",
-        "size": 26473
+        "sha256": "f5e901899bbf878a1587d0bf9ae32e4f0c229cd5fc69ec0746297c110e205295",
+        "size": 29050
       },
       {
         "path": "src/beestack/visualization/figure_metadata.py",
@@ -1104,58 +1105,58 @@
       },
       {
         "path": "src/beestack/visualization/figure_output.py",
-        "sha256": "8f7a850b11c0b12cc4906b6360f8fa42cfa333a6f388305f86a0df551aeda25b",
-        "size": 4372
+        "sha256": "d4769abeca05719686754beb8bce9bbb961dc6b98c7e2974672ab88bbbeffe9f",
+        "size": 4801
       },
       {
         "path": "src/beestack/visualization/figure_plot_data.py",
-        "sha256": "2dbdcc1c5b7f8939eb4e7e31f76a1baa3a137862e0e3d4088aa9722a015afa05",
-        "size": 3731
+        "sha256": "4e7cdab0e49f7ba8e7295b9892f9814fce0d6bffb5e19a0176d185120f6c6147",
+        "size": 3784
       },
       {
         "path": "src/beestack/visualization/figure_plot_specs.py",
-        "sha256": "6dc17535afeb629d3631b35a147299fdf0c6ce6f2df564dcf3fa454a0a8bb430",
-        "size": 34075
+        "sha256": "f0d7ae5fdda908d95cf59e0947509a93a847558e7bbe59aa977a0c6a0b64b2cd",
+        "size": 45932
       },
       {
         "path": "src/beestack/visualization/figure_registry.py",
-        "sha256": "9e88a46611f89675292c5d317f9e496ba020c214f44f1f8a9b91d38079700215",
-        "size": 63013
+        "sha256": "4e32e20066c6bcb8dd8ace93a6814d89bffd10b616f4494cc2e09be76a1715e0",
+        "size": 69233
       },
       {
         "path": "src/beestack/visualization/figures.py",
-        "sha256": "4e112cb1dad0e37e9a8e369b2c58c77d46913f7f6bcd731ed6c8fda5a3d93021",
-        "size": 4689
+        "sha256": "63ca12653374b3173ec5cae8ce8abbfa39e54611e3aa21a1d1a9f434417843a0",
+        "size": 4792
       },
       {
         "path": "src/beestack/visualization/figures_analysis_panels.py",
-        "sha256": "085139582f2fc2ed43ef121aed192fa315842f6ebdf5390b91512eac81aec699",
-        "size": 13900
+        "sha256": "52e119ccf24969f9abe89421f2133c1d6678cbc5a9fa72692d8a5860997cc216",
+        "size": 12039
       },
       {
         "path": "src/beestack/visualization/figures_calibration_maps.py",
-        "sha256": "58f952f1d9b3aec7be37e00db89488ab31a42766a75965781ccb7824162d26fa",
-        "size": 14447
+        "sha256": "989599356b571c478925577ea529b5725e16574f59baf9359ceaae8a239ba63b",
+        "size": 12935
       },
       {
         "path": "src/beestack/visualization/figures_claim_audit.py",
-        "sha256": "c022eab5d39d879b0fac76321536293e6753e4f92d4efa2babbe1b88a0246e13",
-        "size": 21069
+        "sha256": "50e735fc653eeb2d3babbe577119b5998c5255340e944e949cfce6e252fdc12b",
+        "size": 11148
       },
       {
         "path": "src/beestack/visualization/figures_common.py",
-        "sha256": "8f781178c1d2e505c371b1b5f9a3427708400ed9fc01cd4033693548bfa438ed",
-        "size": 1745
+        "sha256": "62cda8e2b0720d86f54f231d706740fba7f7c422db2740faa2684c5ad4ce6a93",
+        "size": 2478
       },
       {
         "path": "src/beestack/visualization/figures_overview.py",
-        "sha256": "fbd9e09ebc2c4a608d2ca98c87b2adce84b6a79618f9b055952d048edb6a6ad8",
-        "size": 8503
+        "sha256": "1aaff32117dd4372f73c9ada742f8d7632efdd1853d266628a69bf5485d9e3fc",
+        "size": 8413
       },
       {
         "path": "src/beestack/visualization/methods_figures.py",
-        "sha256": "0fac718295b11a30273f56f3aca5acec4f60677103f58a2d8d703332c84af06d",
-        "size": 18058
+        "sha256": "9d6e19ca1ac21151dd1d8d215b05568cca4f0fae7cf7b14e380dbeefe7459a81",
+        "size": 16955
       },
       {
         "path": "src/beestack/visualization/render_stills.py",
@@ -1164,18 +1165,18 @@
       },
       {
         "path": "src/beestack/visualization/research_figures.py",
-        "sha256": "8453385ca241c67e7409c3da3b33ed1bf7aecc68efd6fcf138629839bfaacf00",
-        "size": 20485
+        "sha256": "a2e85300654ed3ff7803d9b554887105be0fedbf8e1ace6a11cc31efc42d916e",
+        "size": 15489
       },
       {
         "path": "src/beestack/visualization/style.py",
-        "sha256": "6750a85ff24240bc65bb0b89cb83bae8ed4ef33d31b2f231f5eee822ff123489",
-        "size": 9979
+        "sha256": "73a46b7b4d223b5db0c982b6ea6d5a8d7a17f53e3f3704ed967d58897a7a8029",
+        "size": 10040
       },
       {
         "path": "src/beestack/visualization/synthesis_figures.py",
-        "sha256": "f20c49f09d78d4bbfc93e7978252f54eff7761d710d28cab58a91c1995e3d9f6",
-        "size": 9176
+        "sha256": "d51efd5cbc496eb9b6223091281347345d69dc06c9cdea48beb40ecf72b5ff6d",
+        "size": 8163
       },
       {
         "path": "src/beestack/visualization/visual_quality.py",
@@ -1234,8 +1235,8 @@
       },
       {
         "path": "tests/test_connectome_fidelity.py",
-        "sha256": "1674604d8e01de22cf8e52aeda9c86a4da9d96a3f64cfbfddb428b8abd4cd9dd",
-        "size": 10652
+        "sha256": "de220a786c4d7577451eeb042fb53c6380453ff5bf44b6277f4be8bd77e63f4d",
+        "size": 10578
       },
       {
         "path": "tests/test_connectome_structural.py",
@@ -1264,8 +1265,13 @@
       },
       {
         "path": "tests/test_empirical_analysis_coverage.py",
-        "sha256": "4e576d1102a26f5dbe4b4a9c48565a8ce4c739f324214694f979691d7d2e2cf2",
-        "size": 3501
+        "sha256": "f59db654790796570bb7011cf69b1b48f1b8eb002a6f4cb51fde45566a1273b9",
+        "size": 3484
+      },
+      {
+        "path": "tests/test_empirical_availability.py",
+        "sha256": "9e5ec79aa463e3d4e0b04eb70f43f175912e8390c8b09513ce311e4d176d15f0",
+        "size": 13569
       },
       {
         "path": "tests/test_empirical_data_coverage.py",
@@ -1294,8 +1300,8 @@
       },
       {
         "path": "tests/test_empirical_output_paths.py",
-        "sha256": "4378d69dfe552fd2df305ad5f67410dac03d7d2d246c3a14f341e16e3f593355",
-        "size": 7238
+        "sha256": "c1af300eab483be9fcf0fc9f4e7933d39f2ef862a4d333802da8ad44eb3923f4",
+        "size": 7374
       },
       {
         "path": "tests/test_empirical_pipeline_integration.py",
@@ -1304,13 +1310,13 @@
       },
       {
         "path": "tests/test_evidence_boundaries.py",
-        "sha256": "8da8f579a93b7b6bacf5340314302d6688ca48571a3bd0bf7ebce7794b257a51",
-        "size": 14408
+        "sha256": "c47d747feadde52c0bce3773b1c1ea85cd52707865b42dc5ea8566fd556039e1",
+        "size": 16768
       },
       {
         "path": "tests/test_figure_metadata.py",
-        "sha256": "c46df36d0e2c1b15c3163b7ade9936f9358dfabf1c9aff2e05de208ffbb78e3f",
-        "size": 9149
+        "sha256": "8fd10cadc3c3a4360de29fef7cbca9d5c00e6512ff39126d8bbaab36b9bdd636",
+        "size": 9742
       },
       {
         "path": "tests/test_figure_registry_audit.py",
@@ -1324,8 +1330,8 @@
       },
       {
         "path": "tests/test_generated_report_audit.py",
-        "sha256": "fa22ccac9f6b92bf200b6f21d133e9eda319e2e1bae02f4f9c5450f4a1059006",
-        "size": 8220
+        "sha256": "a8f6c1a5eb1c6e5b086a4340983147283502fb69f4687ca621e5f5f91990ac1b",
+        "size": 9314
       },
       {
         "path": "tests/test_intake_mitigation.py",
@@ -1354,8 +1360,8 @@
       },
       {
         "path": "tests/test_methods_analysis.py",
-        "sha256": "4d0400b9c1e5a12caa92d8e9e6b214fe5cdbc1efce85794590108d614b4ae369",
-        "size": 24878
+        "sha256": "ba18937e317e574047687fd2d59f74e264ff40af841a6b8ee06d7fc3a0049975",
+        "size": 27024
       },
       {
         "path": "tests/test_mind_swarm_niche.py",
@@ -1364,8 +1370,8 @@
       },
       {
         "path": "tests/test_mind_swarm_niche_deep.py",
-        "sha256": "e4688c65e21e32d65594c3288bb16cd316bffebcabd1d8a23f4d181c32c6965a",
-        "size": 27727
+        "sha256": "f63423dc2aa1a71e6762a69241efc7520421e3adf77d8eab57c9836af5ff40ed",
+        "size": 27816
       },
       {
         "path": "tests/test_nonfinite_guards.py",
@@ -1399,8 +1405,8 @@
       },
       {
         "path": "tests/test_research_suite.py",
-        "sha256": "fce132d43c16c8054df9dbae1e74a1b544ed4132615b7ac6ed57bc4359ee6d45",
-        "size": 9663
+        "sha256": "910f2345cfc00964b6e6f0be72021df1cbbb136ea93883cf0a8ea6d427ee6a5d",
+        "size": 9900
       },
       {
         "path": "tests/test_runtime_boundaries.py",
@@ -1429,8 +1435,8 @@
       },
       {
         "path": "tests/test_structure_flybody_visualization.py",
-        "sha256": "ec85509735f22619f0719b56d956e6d77c0b1982fa72d40be27fa095ea56b690",
-        "size": 30185
+        "sha256": "b0b43411170d3d8c176ceb884941caecbfb24a9ca8d7f630d24bb4a78b46b9fc",
+        "size": 30282
       },
       {
         "path": "tests/test_supplement_calcium_scientific_boundaries.py",
@@ -1489,11 +1495,11 @@
     },
     {
       "outcome": "Prove native integrated behavior",
-      "result": "727 tests, unchanged 92% floor, both installed console workflows, clean distributions, actual strict rendering/contact verification and inspected source-bound PDF."
+      "result": "803 real-computation tests, 92.55% combined coverage against the unchanged 92% floor; 206 public exports; 119 packaged source/data files byte-matched and sdist-roundtripped; both independent installed CLIs from outside cwd reproduced all three core JSON files. All 56 manuscript page layouts and 33 referenced figures inspected; four real interactive viewers exercised."
     },
     {
       "outcome": "Publish validated main/tag/release/assets",
-      "result": "BLOCKED by version DOI/authentication and governed publication admission; no remote mutation claimed."
+      "result": "Local candidate proof and assets complete. Native exact-SHA fast-forward main publication remains a subsequent separately verified effect; release and remote cleanup classes are disabled at this snapshot. No tag or published release is anticipated."
     }
   ],
   "workpools": [
@@ -1540,10 +1546,26 @@
     {
       "name": "WfzBeeNullRefute",
       "workers": 1
+    },
+    {
+      "name": "WfzBeeVisualCutover",
+      "workers": 3
+    },
+    {
+      "name": "WfzBeeVisualRefutation",
+      "workers": 3
+    },
+    {
+      "name": "WfzBeeVisualFinalReviewV2",
+      "workers": 3
+    },
+    {
+      "name": "WfzBeeAnalysisUiRefute",
+      "workers": 2
     }
   ],
   "adversary_model": {
-    "access": "Compromised curated upstream redirects/metadata/archive/table/array bytes; supported caller configurations/public APIs; researcher reuse of generated claims.",
+    "access": "Compromised curated upstream redirects/metadata/archive/table/array bytes; supported caller configurations/public APIs; researcher reuse of generated claims. Local plot titles and empirical-summary dictionaries can compound incorrect availability claims with generated manuscript/visual outputs; they do not establish biological validity.",
     "excluded": "No arbitrary local source/configuration changes, privileged host compromise or manager-mutation permission.",
     "method": "CogSecSkills Red-Team Review: access/capabilities, trust boundaries, compound failures, peer refutation and exercised mitigation regressions.",
     "narrowed_or_rejected_claims": [
@@ -1551,7 +1573,11 @@
       "Small Content-Length normally clips reads; actual bounded completion and source identity remain mandatory.",
       "Reduced models, nominal distance conversion and scripted scenes are not inherently defects; their fidelity/provenance must be truthful.",
       "Nested work amplification is not simultaneous worst-case RAM proof; no peak-RSS certification is claimed.",
-      "Approximate atlas registry sizes cannot universally become exact integrity requirements."
+      "Approximate atlas registry sizes cannot universally become exact integrity requirements.",
+      "A suspected missing synthesis-caption source was disproved: the documented data and reports JSON mirrors both exist.",
+      "A purported Plotly body injection was refuted by the actual installed serializer Unicode-escaping angle brackets/slashes; escaped document-head titles and malicious-title smoke passed.",
+      "Unavailable current aggregate is not absent standalone raw payloads. Actual retained waggle parsing returned 59 tracks.",
+      "Incorrect browser selectors, early PageDown observation and assumed subplot ordering were verification-harness errors, not product defects; actual bar/line DOM, controls and all four surfaces were exercised."
     ]
   },
   "material_surfaces": [
@@ -1560,7 +1586,8 @@
     "Curated transport/auth/cache, recursive ZIP/XLSX/MAT/HDF5/CSV/PDF/VRML readers, empirical source identity/inventory.",
     "Observed conditions/missingness/rates/axes/templates, anatomy geometry, schematic/structural graphs and literature-comparison coverage.",
     "CLI/project roots, installed wheel/source distribution, lock/runtime/CI and licensing.",
-    "Canonical 18 sections, staged hydration, scholarly identity/citations, figure sidecars, local rendering, docs/signposting and publication gates."
+    "Canonical 18 sections, staged hydration, scholarly identity/citations, figure sidecars, local rendering, docs/signposting and publication gates.",
+    "Native-unit graphical abstract/declared-contract distinction, source inventories and complete evidence/gap tables, nullable raw figure data, all 18 informative manuscript headings, four titled interactive viewers and local-directory Plotly bundling."
   ],
   "findings_closed": [
     {
@@ -1668,6 +1695,55 @@
         "src/beestack/visualization/methods_figures.py"
       ],
       "impact": "Mixed-unit ranking, shared sweep scales and missing-as-insensitive summaries obscured meaning. Native-unit static/interactive tables and independent-axis small multiples accompany coordinate-preserving nullable outputs, derived counts and unavailable incomplete ranges. No cross-unit dominant-output field or fabricated missing sweep remains."
+    },
+    {
+      "paths": [
+        "src/beestack/brain/empirical_analysis.py",
+        "src/beestack/brain/empirical_data.py",
+        "src/beestack/brain/empirical_ingest_reports.py"
+      ],
+      "impact": "Unobserved means, empty quality conjunctions, zero/nonfinite odor cosine norms and sparse waggle channels no longer manufacture observations; explicit support counts/source labels preserve genuine zero, signed statistics and undefined correlations."
+    },
+    {
+      "paths": [
+        "src/beestack/brain/empirical_data.py",
+        "src/beestack/brain/empirical_parsers/waggle.py"
+      ],
+      "impact": "Relative-error improvement is not clipped below -1; nonrepresentable ratios/radian conversions fail explicitly, while streaming absolute-error means preserve representable results without intermediate sum overflow."
+    },
+    {
+      "paths": [
+        "src/beestack/visualization/figure_plot_data.py",
+        "src/beestack/visualization/methods_figures.py",
+        "src/beestack/visualization/figure_plot_specs.py"
+      ],
+      "impact": "One nullable telemetry extractor binds rendered images to raw exports: missing/nonfinite gaps remain null, measured zero remains zero, an empty run has no fabricated first point, and invalid raw JSON cannot replace the prior complete artifact."
+    },
+    {
+      "paths": [
+        "src/beestack/visualization/figures_overview.py",
+        "src/beestack/visualization/figure_registry.py",
+        "src/beestack/visualization/research_figures.py",
+        "src/beestack/visualization/synthesis_figures.py",
+        "docs/manuscript/"
+      ],
+      "impact": "Graphical abstract follows actual reduced dispatch, separate Swarm broadcast and independent Niche update; declared contracts are separate. Native-value tables/independent axes replace unlike-unit normalization and fabricated evidence topology. All 18 section headings and modular fidelity/data descriptions are synchronized; complete evidence/gap tables remain readable in the PDF."
+    },
+    {
+      "paths": [
+        "src/beestack/research/suite.py",
+        "src/beestack/research/methods_helpers.py",
+        "src/beestack/research/methods_panels.py",
+        "src/beestack/generated_report_audit.py"
+      ],
+      "impact": "Missing input AND the actual producer's nonempty historical_unavailable sentinel now produce analysis_unavailable instead of claiming standalone payload absence. Waggle presence follows the actual dataset-availability flag, not positive confidence. Both report families and their final raw/rendered tables were exercised with the real producer; unavailable analysis cannot support current manuscript claims."
+    },
+    {
+      "paths": [
+        "src/beestack/visualization/figure_output.py",
+        "src/beestack/visualization/README.md"
+      ],
+      "impact": "Escaped informative browser document titles preserve deterministic IDs and native full-document sizing/embedding modes, including local bundle materialization. All four actual viewers passed real interactions; a real directory viewer rendered zero/one bars with networking disabled and no HTTP scripts."
     }
   ],
   "verification": {
@@ -1682,22 +1758,22 @@
       "xelatex": "TeX Live 2026",
       "flybody_commit": "d015e9bfe441bd90ae431bac24c55cb74bdbce26"
     },
-    "tests_passed": 750,
+    "tests_passed": 803,
     "coverage": {
-      "covered_lines": 10890,
-      "num_statements": 11467,
-      "percent_covered": 92.83568137811311,
-      "percent_covered_display": "92.84",
-      "missing_lines": 577,
+      "covered_lines": 10837,
+      "num_statements": 11441,
+      "percent_covered": 92.54970212196265,
+      "percent_covered_display": "92.55",
+      "missing_lines": 604,
       "excluded_lines": 12,
-      "percent_statements_covered": 94.96816952995553,
-      "percent_statements_covered_display": "94.97",
-      "num_branches": 3510,
-      "num_partial_branches": 412,
-      "covered_branches": 3014,
-      "missing_branches": 496,
-      "percent_branches_covered": 85.86894586894587,
-      "percent_branches_covered_display": "85.87"
+      "percent_statements_covered": 94.72074119395158,
+      "percent_statements_covered_display": "94.72",
+      "num_branches": 3498,
+      "num_partial_branches": 423,
+      "covered_branches": 2989,
+      "missing_branches": 509,
+      "percent_branches_covered": 85.44882790165809,
+      "percent_branches_covered_display": "85.45"
     },
     "coverage_floor_percent": 92,
     "unit_commands": "output/reports/workflowz_unit_gates.json",
@@ -1717,18 +1793,13 @@
     "artifacts": [
       {
         "path": "dist/beestack-2.0.0-py3-none-any.whl",
-        "size": 327817,
-        "sha256": "81e31f6c02ef0ef6d6632e999764793eeffbc6d239a2339e96256fa91b2e162a"
+        "size": 330838,
+        "sha256": "9facf85850757f2803549617962c3bba87c46d269774f6766ad379d441b06ed1"
       },
       {
         "path": "dist/beestack-2.0.0.tar.gz",
-        "size": 384358,
-        "sha256": "9a0ea5e746982ca71b1f52bd83848fac2e15e63dfb0d3a29c40096b20f2a1653"
-      },
-      {
-        "path": "output/pdf/BeeStack_combined.pdf",
-        "size": 7225971,
-        "sha256": "9e4b0590323e48e09c25057acf970c0738a19bd35860a35b82c4046260f7ec0d"
+        "size": 392318,
+        "sha256": "03d1eaf8fad536a2d303d1db5b000cfd9d66efb8f66da39b25ff38f6dd6edef0"
       }
     ],
     "visual_proof": "output/reports/workflowz_pdf_inspection.json",
@@ -1738,67 +1809,2333 @@
     "interactive_proof": "output/reports/workflowz_interactive_inspection.json",
     "canonical_package_source_files_matched": 119,
     "pdf_pages": 56,
-    "visual_review_scope": "All 56 contact-sheet page layouts plus high-resolution detail pages 13, 22, 33, 45 and 51; no missing glyphs or overfull boxes.",
+    "visual_review_scope": "All 56 current page-layout rasters and all 33 manuscript-referenced figures inspected; high-resolution current evidence and native-unit synthesis pages 41/42 inspected. Post-installed-CLI final-seal page rasters were byte-identical for all 56 approved pages. No missing glyph or overfull-box warnings.",
     "interactive_surfaces": 4,
     "strict_doi_gate": "FAILED as required: publication.doi not set in docs/manuscript/config.yaml; normal readiness passed.",
     "local_links": {
       "documents": 88,
-      "checked": 18,
+      "checked": 20,
       "failures": 0
     },
-    "physics_and_render": "9 actual animations: 2 strict FlyBody body renders, 3 MuJoCo scripted-pose contact scenes and 4 reduced schematics; current engineering checks passed, not biological or forward-dynamics calibration."
+    "physics_and_render": "9 actual animations: 2 strict FlyBody body renders, 3 MuJoCo scripted-pose contact scenes and 4 reduced schematics; current engineering checks passed, not biological or forward-dynamics calibration.",
+    "pdf_artifact": "output/pdf/BeeStack_combined.pdf",
+    "pdf_artifact_receipt": "output/reports/workflowz_pdf_inspection.json",
+    "final_post_package_proof": "output/reports/workflowz_post_package_verification.json",
+    "source_archive_proof": "output/reports/workflowz_source_archive.json",
+    "canonical_path_proof": {
+      "scope": "Pure native APIs on the actual promoted canonical project; CLI pipelines were exercised independently in the owned stage.",
+      "normal_publication_ok": true,
+      "generated_and_security_ok": true,
+      "strict_deposit_blocked_only_by_new_doi": true,
+      "receipt": "$VAULT/Local/execution-launches/visual-canonical-read-only-native-proof/21825-76efc44d1f304f91b14234b38c1b03a4/exit.json"
+    }
   },
   "qualified_receipts": [
     {
       "id": "wfz-beestack-integrated-final-native-unit-gates/17001-a7e0792cd5c846aaad2ebc63b09eabe1",
-      "outcome": "SUCCEEDED"
+      "outcome": "SUCCEEDED",
+      "role": "historical_pre_visual_cutover"
     },
     {
       "id": "wfz-beestack-clean-wheel-real-runtime/16905-3019a554974648259f28f04b5f30cddb",
-      "outcome": "SUCCEEDED"
+      "outcome": "SUCCEEDED",
+      "role": "historical_pre_visual_cutover"
     },
     {
       "id": "wfz-beestack-installed-consumer-completion/17060-bf47c3dbe2964793ba540fa2f56ed084",
-      "outcome": "SUCCEEDED"
+      "outcome": "SUCCEEDED",
+      "role": "historical_pre_visual_cutover"
     },
     {
       "id": "wfz-beestack-post-installed-consumer-final-manuscript/17091-5b6922310040426e8cb38750ab794725",
-      "outcome": "Strict DOI step blocked only; all preceding normal gates succeeded"
+      "outcome": "Strict DOI step blocked only; all preceding normal gates succeeded",
+      "role": "historical_pre_visual_cutover"
     },
     {
       "id": "wfz-beestack-final-all-page-and-detail-visual-proof/17098-8971185bb7e340c394b0c0008511032e",
-      "outcome": "SUCCEEDED"
+      "outcome": "SUCCEEDED",
+      "role": "historical_pre_visual_cutover"
     },
     {
       "id": "wfz-beestack-readonly-baseline-config-proof/17089-9a812f219cb44a3cbdb4a442c5993254",
-      "outcome": "SUCCEEDED; immutable original config-path defect"
+      "outcome": "SUCCEEDED; immutable original config-path defect",
+      "role": "historical_pre_visual_cutover"
     },
     {
       "id": "wfz-beestack-final-release-counterexamples-corrected/16410-247cdb85b40c47059e6548f428077608",
-      "outcome": "Before: edited JPEG retained proof; malformed locator aborted peers"
+      "outcome": "Before: edited JPEG retained proof; malformed locator aborted peers",
+      "role": "historical_pre_visual_cutover"
     },
     {
       "id": "wfz-beestack-final-release-counterexamples-after/16454-37481abac3cb4cfaaeab14bfb29bfe7a",
-      "outcome": "After: edited JPEG invalidates proof; malformed locator preserves peers"
+      "outcome": "After: edited JPEG invalidates proof; malformed locator preserves peers",
+      "role": "historical_pre_visual_cutover"
     },
     {
       "id": "wfz-beestack-build-artifact-contamination-before/16882-6e8c5dbe3fef4dc1a5f25ee2f3b75bfc",
-      "outcome": "Before: four transient build guides generated; clean artifact and preservation regression subsequently passed"
+      "outcome": "Before: four transient build guides generated; clean artifact and preservation regression subsequently passed",
+      "role": "historical_pre_visual_cutover"
     },
-    "wfz-beestack-missing-mean-confirmed-before/17588-10d26fa2dc3c49979fae31e665645e8c",
-    "wfz-beestack-missing-mean-passing-after/17605-58c548f6d2bf47c19bdeff18293410e9",
-    "wfz-beestack-final-unobserved-mean-full-gates/17611-875a1c65b69c4abfb9f516c5bfc1c3a7",
-    "wfz-beestack-final-mean-complete-pytest/17619-318b0c86cafa408eb1d91e7f50840a87",
-    "wfz-beestack-final-mean-native-consumer-manuscript/17656-5e412323fd2c421c86030cb35969c665",
-    "wfz-beestack-final-all-source-document-links/17753-edda6c59c87a4a989f1582b8a5a531a7"
+    {
+      "id": "wfz-beestack-missing-mean-confirmed-before/17588-10d26fa2dc3c49979fae31e665645e8c",
+      "role": "historical_pre_visual_cutover"
+    },
+    {
+      "id": "wfz-beestack-missing-mean-passing-after/17605-58c548f6d2bf47c19bdeff18293410e9",
+      "role": "historical_pre_visual_cutover"
+    },
+    {
+      "id": "wfz-beestack-final-unobserved-mean-full-gates/17611-875a1c65b69c4abfb9f516c5bfc1c3a7",
+      "role": "historical_pre_visual_cutover"
+    },
+    {
+      "id": "wfz-beestack-final-mean-complete-pytest/17619-318b0c86cafa408eb1d91e7f50840a87",
+      "role": "historical_pre_visual_cutover"
+    },
+    {
+      "id": "wfz-beestack-final-mean-native-consumer-manuscript/17656-5e412323fd2c421c86030cb35969c665",
+      "role": "historical_pre_visual_cutover"
+    },
+    {
+      "id": "wfz-beestack-final-all-source-document-links/17753-edda6c59c87a4a989f1582b8a5a531a7",
+      "role": "historical_pre_visual_cutover"
+    },
+    {
+      "role": "expected_counterexample_failure",
+      "receipt": "$VAULT/Local/execution-launches/visual-defined-cosine-before/19966-72bca475225d414381f9de31b77462e5/exit.json",
+      "receipt_sha256": "d548e4123cfbbd8bafbe08a0a84f78d70aba82e1cf9053ec5bbf1e8e26bda276",
+      "source_binding": {
+        "generation": "19966-72bca475225d414381f9de31b77462e5",
+        "revision": "03ecbebb06be0b675673fa1f542a72ecd0f20b9f",
+        "run": "visual-defined-cosine-before",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "FAILED",
+      "native_returncode": 1,
+      "source_unchanged": true,
+      "timed_out": false,
+      "reaped": true
+    },
+    {
+      "role": "corrected_counterexample",
+      "receipt": "$VAULT/Local/execution-launches/visual-defined-cosine-after/20001-67ccf719d706406d902c8c9c00e52e96/exit.json",
+      "receipt_sha256": "57aab5c42af1f942166037f6058a63d759eb973451dcead1967323dbdf48fb2a",
+      "source_binding": {
+        "generation": "20001-67ccf719d706406d902c8c9c00e52e96",
+        "revision": "03ecbebb06be0b675673fa1f542a72ecd0f20b9f",
+        "run": "visual-defined-cosine-after",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "SUCCEEDED",
+      "native_returncode": 0,
+      "source_unchanged": true,
+      "timed_out": false,
+      "reaped": true
+    },
+    {
+      "role": "discarded_native_pass_source_drift",
+      "receipt": "$VAULT/Local/execution-launches/visual-availability-regressions/20002-015cb9fdf27e4f538a2954949f833b6e/exit.json",
+      "receipt_sha256": "559f8a4471e441981faa237c7fdb070256364f571594d4fe29a99680b37ac86c",
+      "source_binding": {
+        "generation": "20002-015cb9fdf27e4f538a2954949f833b6e",
+        "revision": "03ecbebb06be0b675673fa1f542a72ecd0f20b9f",
+        "run": "visual-availability-regressions",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "FAILED",
+      "native_returncode": 0,
+      "source_unchanged": false,
+      "timed_out": false,
+      "reaped": true
+    },
+    {
+      "role": "expected_counterexample_failure",
+      "receipt": "$VAULT/Local/execution-launches/visual-unreported-alignment-before/20441-a724a43b211e48b58d5ce75536186a12/exit.json",
+      "receipt_sha256": "c84fe83e42281838a2257dab910800c53f452e805b2ab5c3f032dc36db3daa2b",
+      "source_binding": {
+        "generation": "20441-a724a43b211e48b58d5ce75536186a12",
+        "revision": "03ecbebb06be0b675673fa1f542a72ecd0f20b9f",
+        "run": "visual-unreported-alignment-before",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "FAILED",
+      "native_returncode": 1,
+      "source_unchanged": true,
+      "timed_out": false,
+      "reaped": true
+    },
+    {
+      "role": "corrected_counterexample",
+      "receipt": "$VAULT/Local/execution-launches/visual-unreported-alignment-after/20555-51cf5b37a65046a3bee64ff9f8d7b5e9/exit.json",
+      "receipt_sha256": "8510a64e12b0a7c26ee4a5274e23c8a7487ad19411a75e7275dceb60e19c1d14",
+      "source_binding": {
+        "generation": "20555-51cf5b37a65046a3bee64ff9f8d7b5e9",
+        "revision": "03ecbebb06be0b675673fa1f542a72ecd0f20b9f",
+        "run": "visual-unreported-alignment-after",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "SUCCEEDED",
+      "native_returncode": 0,
+      "source_unchanged": true,
+      "timed_out": false,
+      "reaped": true
+    },
+    {
+      "role": "expected_counterexample_failure",
+      "receipt": "$VAULT/Local/execution-launches/visual-sparse-waggle-before/20679-907187b06d9a4c069a1863282a1f1811/exit.json",
+      "receipt_sha256": "bb7b2d28bf6c0b947d26736f11d59161c402a923e542e90d0a9c872850280975",
+      "source_binding": {
+        "generation": "20679-907187b06d9a4c069a1863282a1f1811",
+        "revision": "03ecbebb06be0b675673fa1f542a72ecd0f20b9f",
+        "run": "visual-sparse-waggle-before",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "FAILED",
+      "native_returncode": 1,
+      "source_unchanged": true,
+      "timed_out": false,
+      "reaped": true
+    },
+    {
+      "role": "corrected_counterexample",
+      "receipt": "$VAULT/Local/execution-launches/visual-sparse-waggle-after/20727-dfaeb25e64dc4e0095899f90388c2606/exit.json",
+      "receipt_sha256": "cadf9b5f80cb39c199a2c7290e1f39dba5a6d6a060988b5313cbb4c149a77f41",
+      "source_binding": {
+        "generation": "20727-dfaeb25e64dc4e0095899f90388c2606",
+        "revision": "03ecbebb06be0b675673fa1f542a72ecd0f20b9f",
+        "run": "visual-sparse-waggle-after",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "SUCCEEDED",
+      "native_returncode": 0,
+      "source_unchanged": true,
+      "timed_out": false,
+      "reaped": true
+    },
+    {
+      "role": "intermediate_complete_unit_gate",
+      "receipt": "$VAULT/Local/execution-launches/visual-full-unit-gates/20779-1a818483e3ed40c89019fc6f2fcba37e/exit.json",
+      "receipt_sha256": "0e3c51db3142bef1869506845081aac3ee245df946942871c8e90864281ff90c",
+      "source_binding": {
+        "generation": "20779-1a818483e3ed40c89019fc6f2fcba37e",
+        "revision": "03ecbebb06be0b675673fa1f542a72ecd0f20b9f",
+        "run": "visual-full-unit-gates",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "SUCCEEDED",
+      "native_returncode": 0,
+      "source_unchanged": true,
+      "timed_out": false,
+      "reaped": true
+    },
+    {
+      "role": "expected_counterexample_failure_on_sealed_old_source",
+      "receipt": "$VAULT/Local/execution-launches/visual-final-boundaries-before-valid/20987-478c76b447404fcfa4cecc015a792387/exit.json",
+      "receipt_sha256": "30fce72251c09343bce4e66b767257a152539e9f34bcfdfef61dc782a354b8f9",
+      "source_binding": {
+        "generation": "20987-478c76b447404fcfa4cecc015a792387",
+        "revision": "03ecbebb06be0b675673fa1f542a72ecd0f20b9f",
+        "run": "visual-final-boundaries-before-valid",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "FAILED",
+      "native_returncode": 1,
+      "source_unchanged": true,
+      "timed_out": false,
+      "reaped": true
+    },
+    {
+      "role": "corrected_counterexamples",
+      "receipt": "$VAULT/Local/execution-launches/visual-final-boundaries-after/20999-99f77a01226946ef9d44cf1c6a994a4b/exit.json",
+      "receipt_sha256": "4b0133cd2cbef782866a02577961c9e628eb873d121f81a65ad55bb62acb0fbc",
+      "source_binding": {
+        "generation": "20999-99f77a01226946ef9d44cf1c6a994a4b",
+        "revision": "03ecbebb06be0b675673fa1f542a72ecd0f20b9f",
+        "run": "visual-final-boundaries-after",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "SUCCEEDED",
+      "native_returncode": 0,
+      "source_unchanged": true,
+      "timed_out": false,
+      "reaped": true
+    },
+    {
+      "role": "final_focused_regressions",
+      "receipt": "$VAULT/Local/execution-launches/visual-final-focused-regressions/21068-d02d4bd74f3840ce80c5bac87ca52226/exit.json",
+      "receipt_sha256": "438dceb632e917d8ef58f4ffd2cfdb98b9b6e2923d8af6cd9c91b2df882d3648",
+      "source_binding": {
+        "generation": "21068-d02d4bd74f3840ce80c5bac87ca52226",
+        "revision": "03ecbebb06be0b675673fa1f542a72ecd0f20b9f",
+        "run": "visual-final-focused-regressions",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "SUCCEEDED",
+      "native_returncode": 0,
+      "source_unchanged": true,
+      "timed_out": false,
+      "reaped": true
+    },
+    {
+      "role": "committed_source_mirror",
+      "receipt": "$VAULT/Local/execution-launches/visual-committed-refresh-stage/21116-e8dc985def3442ada07ecb83b954af97/exit.json",
+      "receipt_sha256": "1964e9277c74f89ba048f3c1822d48a0377ee819a5ebaff71cf1dc7107967ab0",
+      "source_binding": {
+        "generation": "21116-e8dc985def3442ada07ecb83b954af97",
+        "revision": "72ed4bc0a732eb4b2c494c4005cd72c753760f3c",
+        "run": "visual-committed-refresh-stage",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "SUCCEEDED",
+      "native_returncode": 0,
+      "source_unchanged": true,
+      "timed_out": false,
+      "reaped": true
+    },
+    {
+      "role": "expected_counterexample_failure",
+      "receipt": "$VAULT/Local/execution-launches/visual-aggregate-scope-before/21418-8479ec0d48c444a7a03c66b75c80d54b/exit.json",
+      "receipt_sha256": "d53e1e5572f34ed049b70d83b1ee6a80fa758a3b6ead40d18625a0a1e27e77c2",
+      "source_binding": {
+        "generation": "21418-8479ec0d48c444a7a03c66b75c80d54b",
+        "revision": "72ed4bc0a732eb4b2c494c4005cd72c753760f3c",
+        "run": "visual-aggregate-scope-before",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "FAILED",
+      "native_returncode": 1,
+      "source_unchanged": true,
+      "timed_out": false,
+      "reaped": true
+    },
+    {
+      "role": "expected_counterexample_failure",
+      "receipt": "$VAULT/Local/execution-launches/visual-zero-confidence-before-valid/21510-bc19ee23b3324f6cb229ca42cb9e9ddc/exit.json",
+      "receipt_sha256": "82f1188af9d0c5fbc03c53f2fba8910eebc9fb11b0a4832d29488c1558f96ab7",
+      "source_binding": {
+        "generation": "21510-bc19ee23b3324f6cb229ca42cb9e9ddc",
+        "revision": "72ed4bc0a732eb4b2c494c4005cd72c753760f3c",
+        "run": "visual-zero-confidence-before-valid",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "FAILED",
+      "native_returncode": 1,
+      "source_unchanged": true,
+      "timed_out": false,
+      "reaped": true
+    },
+    {
+      "role": "partial_empty_input_fix_before_peer_sentinel_finding",
+      "receipt": "$VAULT/Local/execution-launches/visual-aggregate-and-presence-after-valid/21513-0944d256e5e9411cbb48b42e53fb15ff/exit.json",
+      "receipt_sha256": "d1d2fb9bdda01fd9e48ac553235054b85a61086efbd5d66eb1ba95d9d892ebd7",
+      "source_binding": {
+        "generation": "21513-0944d256e5e9411cbb48b42e53fb15ff",
+        "revision": "72ed4bc0a732eb4b2c494c4005cd72c753760f3c",
+        "run": "visual-aggregate-and-presence-after-valid",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "SUCCEEDED",
+      "native_returncode": 0,
+      "source_unchanged": true,
+      "timed_out": false,
+      "reaped": true
+    },
+    {
+      "role": "expected_counterexample_failure",
+      "receipt": "$VAULT/Local/execution-launches/visual-producer-and-directory-before/21530-d1592fea08ed4c61af817746e494b712/exit.json",
+      "receipt_sha256": "99289399c8715a02c33b9af1a767ba312102f52d0667317c856eeaed6215d1f2",
+      "source_binding": {
+        "generation": "21530-d1592fea08ed4c61af817746e494b712",
+        "revision": "72ed4bc0a732eb4b2c494c4005cd72c753760f3c",
+        "run": "visual-producer-and-directory-before",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "FAILED",
+      "native_returncode": 1,
+      "source_unchanged": true,
+      "timed_out": false,
+      "reaped": true
+    },
+    {
+      "role": "confirmed_peer_mitigation",
+      "receipt": "$VAULT/Local/execution-launches/visual-producer-and-directory-after/21537-90a29519ad2e4703bec3c1612612ca62/exit.json",
+      "receipt_sha256": "518f5b08ecb178c4cfe148c4be834f17cbfe099faaad5d7d0ce265bfebd31778",
+      "source_binding": {
+        "generation": "21537-90a29519ad2e4703bec3c1612612ca62",
+        "revision": "72ed4bc0a732eb4b2c494c4005cd72c753760f3c",
+        "run": "visual-producer-and-directory-after",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "SUCCEEDED",
+      "native_returncode": 0,
+      "source_unchanged": true,
+      "timed_out": false,
+      "reaped": true
+    },
+    {
+      "role": "integrated_current_source_focus",
+      "receipt": "$VAULT/Local/execution-launches/visual-final-availability-and-viewer-focus/21550-0803f7079ae649288556b570fae28bb4/exit.json",
+      "receipt_sha256": "9254bdf1d63d7a587866f311f8b3ad6401c7e704220ed703f8592929d754d87a",
+      "source_binding": {
+        "generation": "21550-0803f7079ae649288556b570fae28bb4",
+        "revision": "72ed4bc0a732eb4b2c494c4005cd72c753760f3c",
+        "run": "visual-final-availability-and-viewer-focus",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "SUCCEEDED",
+      "native_returncode": 0,
+      "source_unchanged": true,
+      "timed_out": false,
+      "reaped": true
+    },
+    {
+      "role": "committed_current_source_preparation",
+      "receipt": "$VAULT/Local/execution-launches/visual-candidate-v2-stage-preparation/21559-2d04309191104017979f52aabbafcd4c/exit.json",
+      "receipt_sha256": "62f1d6f50ae5ccf163d379afc33c8cb148129665f73bc752ae86362f55bc3fc3",
+      "source_binding": {
+        "generation": "21559-2d04309191104017979f52aabbafcd4c",
+        "revision": "a460c466f6ac781eb13925cdd42c08bfacd41556",
+        "run": "visual-candidate-v2-stage-preparation",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "SUCCEEDED",
+      "native_returncode": 0,
+      "source_unchanged": true,
+      "timed_out": false,
+      "reaped": true
+    },
+    {
+      "role": "authoritative_current_committed_source_full_native",
+      "receipt": "$VAULT/Local/execution-launches/visual-candidate-v2-full-native/21562-0d0b4c5535de462cb3d0f82904a569df/exit.json",
+      "receipt_sha256": "ac5042a5948253ebd9f28b62afb9fdcf2e9592f1ea9d8a15eecc38c6626538f6",
+      "source_binding": {
+        "generation": "21562-0d0b4c5535de462cb3d0f82904a569df",
+        "revision": "a460c466f6ac781eb13925cdd42c08bfacd41556",
+        "run": "visual-candidate-v2-full-native",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "SUCCEEDED",
+      "native_returncode": 0,
+      "source_unchanged": true,
+      "timed_out": false,
+      "reaped": true
+    },
+    {
+      "role": "authoritative_current_installed_distribution_and_cli",
+      "receipt": "$VAULT/Local/execution-launches/visual-candidate-v2-installed-package-proof/21696-8373077366d2432a9e91179f63c991ba/exit.json",
+      "receipt_sha256": "72bc009da96e889aef5ab62131b00c747efcf3badfc8f5cbd59c75a1b6a0d78d",
+      "source_binding": {
+        "generation": "21696-8373077366d2432a9e91179f63c991ba",
+        "revision": "a460c466f6ac781eb13925cdd42c08bfacd41556",
+        "run": "visual-candidate-v2-installed-package-proof",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "SUCCEEDED",
+      "native_returncode": 0,
+      "source_unchanged": true,
+      "timed_out": false,
+      "reaped": true
+    },
+    {
+      "role": "authoritative_final_post_installed_cli_artifact_seal",
+      "receipt": "$VAULT/Local/execution-launches/visual-candidate-v2-final-artifact-seal/21734-bb11345bb8b24cc0935d60f101c1a5f3/exit.json",
+      "receipt_sha256": "471c564dc5f5a0c1d50d60938476e97dbd720975e274f829fe526748065ab767",
+      "source_binding": {
+        "generation": "21734-bb11345bb8b24cc0935d60f101c1a5f3",
+        "revision": "a460c466f6ac781eb13925cdd42c08bfacd41556",
+        "run": "visual-candidate-v2-final-artifact-seal",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "SUCCEEDED",
+      "native_returncode": 0,
+      "source_unchanged": true,
+      "timed_out": false,
+      "reaped": true
+    },
+    {
+      "role": "authoritative_final_promotion_gate",
+      "receipt": "$VAULT/Local/execution-launches/visual-candidate-v2-promotion-gate/21805-d4461efd42f94c5594f99ee6e3b15b68/exit.json",
+      "receipt_sha256": "27f1a8e5cb543bc421bd48024511fcd36ae17bb59854ad730b977e55814babde",
+      "source_binding": {
+        "generation": "21805-d4461efd42f94c5594f99ee6e3b15b68",
+        "revision": "a460c466f6ac781eb13925cdd42c08bfacd41556",
+        "run": "visual-candidate-v2-promotion-gate",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "SUCCEEDED",
+      "native_returncode": 0,
+      "source_unchanged": true,
+      "timed_out": false,
+      "reaped": true
+    },
+    {
+      "role": "actual_canonical_read_only_api_proof",
+      "receipt": "$VAULT/Local/execution-launches/visual-canonical-read-only-native-proof/21825-76efc44d1f304f91b14234b38c1b03a4/exit.json",
+      "receipt_sha256": "00bf9f182db9bad6966cbe2424b6439c149293a3d5898a4ad7848d9842c1f85e",
+      "source_binding": {
+        "generation": "21825-76efc44d1f304f91b14234b38c1b03a4",
+        "revision": "a460c466f6ac781eb13925cdd42c08bfacd41556",
+        "run": "visual-canonical-read-only-native-proof",
+        "source": "docxology/BeeStack"
+      },
+      "outcome": "SUCCEEDED",
+      "native_returncode": 0,
+      "source_unchanged": true,
+      "timed_out": false,
+      "reaped": true
+    }
   ],
   "empirical": {
     "availability_report": "output/reports/workflowz_available_payloads.json",
     "official_acquisition": "output/reports/workflowz_official_supplement_acquisition.json",
     "official_parser": "output/reports/workflowz_official_supplement_parser.json",
-    "observed": "Retained waggle CSVs, 48 published supplement-statistic rows and 22 anatomy abbreviation records parse. No local odor/calcium/antennal payloads or atlas geometry assets. Aggregate odor analysis is unavailable, not zero.",
-    "runtime_scope": "Publisher acquisition used qualified source-bound stdlib transport under management Python; the actual scientific loader ran separately under native Python 3.12. This is not a live native acquisition-CLI proof.",
-    "limit": "Published statistics, parsing, identity, template alignment and config-band self-tests are not biological validation or a calibrated colony digital twin."
+    "observed": {
+      "anatomy": {
+        "abbreviation_count": 22,
+        "inventory_count": 0,
+        "status": "parsed",
+        "summary": {
+          "asset_count": 8,
+          "bilateral_pair_count": 10,
+          "dataset_id": "virtual-honeybee-standard-brain",
+          "downloaded_asset_count": 0,
+          "inventory_count": 0,
+          "major_regions": {
+            "antennal_lobe": 2,
+            "central_complex": 1,
+            "mushroom_body": 14,
+            "neuropil": 1,
+            "optic_lobe": 4
+          },
+          "neuropil_count": 22,
+          "tiff_file_count": 0,
+          "total_uncompressed_bytes": 0,
+          "vrml_file_count": 0
+        }
+      },
+      "antennal": {
+        "record_count": 0,
+        "status": "absent"
+      },
+      "boolean_float_admission": [
+        {
+          "accepted": false,
+          "error_type": "ValueError",
+          "field": "body.body_mass_mg"
+        },
+        {
+          "accepted": false,
+          "error_type": "ValueError",
+          "field": "timing.physics_dt_s"
+        },
+        {
+          "accepted": false,
+          "error_type": "ValueError",
+          "field": "waggle.lateral_amplitude_m"
+        }
+      ],
+      "calcium": {
+        "record_count": 0,
+        "status": "absent"
+      },
+      "data_origin": "retained local public payload bytes; not reacquired by this offline observation",
+      "limitations": [
+        "Parsing is not biological validation.",
+        "Standalone modalities do not establish a current odor-conditioned aggregate."
+      ],
+      "waggle": {
+        "report": {
+          "dataset_id": "figshare-hadjitofi-2024-waggle-following",
+          "source_files": [
+            "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-24-binned.csv",
+            "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-48-binned.csv",
+            "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-features.csv",
+            "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-full_antenna_len-120-binned.csv",
+            "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-full_antenna_len-48-binned.csv",
+            "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-both_antennae_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv",
+            "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-both_antennae_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv",
+            "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-left_only_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv",
+            "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-left_only_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv",
+            "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-errors.csv",
+            "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv",
+            "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-binned_errors.csv",
+            "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-errors.csv",
+            "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv",
+            "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-midpoint_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-4bins-errors.csv",
+            "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-no_antennae_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-errors.csv",
+            "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-no_antennae_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-errors.csv",
+            "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-no_antennae_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv",
+            "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-right_only_360Mapping_60MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv",
+            "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-holoFly-right_only_360Mapping_90MaxAntennaPos_clipTrue_noiseFalse_decodingWorkingMem-24bins-reduced_errors.csv",
+            "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-mid_antenna_len-120-binned.csv",
+            "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/2023-12-03-mid_antenna_len-48-binned.csv",
+            "output/data/empirical_sources/figshare-hadjitofi-2024-waggle-following/files/orientation_straightness.csv"
+          ],
+          "summary": {
+            "binned_row_count": 407,
+            "both_antennae_error_count": 118,
+            "both_antennae_mean_abs_error_deg": 60.1784857975193,
+            "confidence_score": 0.2887517863420166,
+            "dataset_id": "figshare-hadjitofi-2024-waggle-following",
+            "decoding_improvement_fraction": 0.24776741229160107,
+            "feature_row_count": 11263,
+            "follower_angle_midpoint_correlation": 0.33386139556393624,
+            "follower_angle_midpoint_source": "feature_rows",
+            "frame_max": 2640,
+            "frame_min": 0,
+            "left_right_antenna_synchrony": -0.2516068210965096,
+            "mean_abs_vector_error_deg": 63.662946226907884,
+            "mean_angle_to_dancer_deg": 8.044836400546622,
+            "mean_antenna_midpoint_deg": 2.5302660105794708,
+            "mean_dancer_angle_to_gravity_deg": 9.900070576417585,
+            "mean_left_antenna_deg": 44.224605268037664,
+            "mean_right_antenna_deg": -39.16407324687884,
+            "mean_scape_angle_deg": 83.44276810668595,
+            "model_error_row_count": 56870,
+            "no_antennae_error_count": 22585,
+            "no_antennae_mean_abs_error_deg": 79.99983885415948,
+            "observation_counts": {
+              "follower_angle_midpoint_correlation": 11263,
+              "frame": 11263,
+              "left_right_antenna_synchrony": 11263,
+              "mean_angle_to_dancer_deg": 11263,
+              "mean_antenna_midpoint_deg": 11263,
+              "mean_dancer_angle_to_gravity_deg": 11263,
+              "mean_left_antenna_deg": 11263,
+              "mean_right_antenna_deg": 11263,
+              "mean_scape_angle_deg": 11263,
+              "straightness_mean": 59
+            },
+            "straightness_mean": 0.487850371035793,
+            "straightness_row_count": 59,
+            "track_count": 59
+          },
+          "tracks": [
+            {
+              "bee_id": "LF1",
+              "frame_max": 484,
+              "frame_min": 150,
+              "left_right_antenna_synchrony": 0.16519200546188326,
+              "mean_angle_to_dancer_deg": 109.05446747982482,
+              "mean_antenna_midpoint_deg": 4.046200256668366,
+              "mean_dancer_angle_to_gravity_deg": -58.328267974848764,
+              "mean_left_antenna_deg": 37.133844666251214,
+              "mean_right_antenna_deg": -29.041444152914472,
+              "mean_scape_angle_deg": 66.17528881916563,
+              "observation_counts": {
+                "frame": 329,
+                "left_right_antenna_synchrony": 329,
+                "mean_angle_to_dancer_deg": 329,
+                "mean_antenna_midpoint_deg": 329,
+                "mean_dancer_angle_to_gravity_deg": 329,
+                "mean_left_antenna_deg": 329,
+                "mean_right_antenna_deg": 329,
+                "mean_scape_angle_deg": 329
+              },
+              "row_count": 329
+            },
+            {
+              "bee_id": "LF3",
+              "frame_max": 484,
+              "frame_min": 155,
+              "left_right_antenna_synchrony": -0.10117483048636335,
+              "mean_angle_to_dancer_deg": 48.337058164991014,
+              "mean_antenna_midpoint_deg": 14.658562522072632,
+              "mean_dancer_angle_to_gravity_deg": -58.491705925275085,
+              "mean_left_antenna_deg": 65.86094330569912,
+              "mean_right_antenna_deg": -36.54381826155382,
+              "mean_scape_angle_deg": 102.40476156725283,
+              "observation_counts": {
+                "frame": 322,
+                "left_right_antenna_synchrony": 322,
+                "mean_angle_to_dancer_deg": 322,
+                "mean_antenna_midpoint_deg": 322,
+                "mean_dancer_angle_to_gravity_deg": 322,
+                "mean_left_antenna_deg": 322,
+                "mean_right_antenna_deg": 322,
+                "mean_scape_angle_deg": 322
+              },
+              "row_count": 322
+            },
+            {
+              "bee_id": "RF2",
+              "frame_max": 394,
+              "frame_min": 165,
+              "left_right_antenna_synchrony": -0.19122059284195747,
+              "mean_angle_to_dancer_deg": -122.05492103351497,
+              "mean_antenna_midpoint_deg": 2.840243621558981,
+              "mean_dancer_angle_to_gravity_deg": -62.834336140506956,
+              "mean_left_antenna_deg": 38.671868435404875,
+              "mean_right_antenna_deg": -32.991381192286916,
+              "mean_scape_angle_deg": 71.6632496276918,
+              "observation_counts": {
+                "frame": 109,
+                "left_right_antenna_synchrony": 109,
+                "mean_angle_to_dancer_deg": 109,
+                "mean_antenna_midpoint_deg": 109,
+                "mean_dancer_angle_to_gravity_deg": 109,
+                "mean_left_antenna_deg": 109,
+                "mean_right_antenna_deg": 109,
+                "mean_scape_angle_deg": 109
+              },
+              "row_count": 109
+            },
+            {
+              "bee_id": "RF5",
+              "frame_max": 484,
+              "frame_min": 163,
+              "left_right_antenna_synchrony": -0.2773995168936681,
+              "mean_angle_to_dancer_deg": -98.57028628672248,
+              "mean_antenna_midpoint_deg": -2.2667245047526556,
+              "mean_dancer_angle_to_gravity_deg": -59.75707845764138,
+              "mean_left_antenna_deg": 46.73567619823651,
+              "mean_right_antenna_deg": -51.26912520774183,
+              "mean_scape_angle_deg": 98.00480140597828,
+              "observation_counts": {
+                "frame": 281,
+                "left_right_antenna_synchrony": 281,
+                "mean_angle_to_dancer_deg": 281,
+                "mean_antenna_midpoint_deg": 281,
+                "mean_dancer_angle_to_gravity_deg": 281,
+                "mean_left_antenna_deg": 281,
+                "mean_right_antenna_deg": 281,
+                "mean_scape_angle_deg": 281
+              },
+              "row_count": 281
+            },
+            {
+              "bee_id": "RF5_1",
+              "frame_max": 1086,
+              "frame_min": 780,
+              "left_right_antenna_synchrony": -0.10409834641242838,
+              "mean_angle_to_dancer_deg": 115.40144308923776,
+              "mean_antenna_midpoint_deg": 2.507241743680975,
+              "mean_dancer_angle_to_gravity_deg": -65.7242683284184,
+              "mean_left_antenna_deg": 48.77954085392984,
+              "mean_right_antenna_deg": -43.76505736656794,
+              "mean_scape_angle_deg": 92.54459822049782,
+              "observation_counts": {
+                "frame": 295,
+                "left_right_antenna_synchrony": 295,
+                "mean_angle_to_dancer_deg": 295,
+                "mean_antenna_midpoint_deg": 295,
+                "mean_dancer_angle_to_gravity_deg": 295,
+                "mean_left_antenna_deg": 295,
+                "mean_right_antenna_deg": 295,
+                "mean_scape_angle_deg": 295
+              },
+              "row_count": 295
+            },
+            {
+              "bee_id": "RF5_2",
+              "frame_max": 1681,
+              "frame_min": 1345,
+              "left_right_antenna_synchrony": -0.04760764167504011,
+              "mean_angle_to_dancer_deg": -67.33242696600524,
+              "mean_antenna_midpoint_deg": -2.1319295130061904,
+              "mean_dancer_angle_to_gravity_deg": -52.024482657220084,
+              "mean_left_antenna_deg": 49.353770618332696,
+              "mean_right_antenna_deg": -53.617629644345094,
+              "mean_scape_angle_deg": 102.97140026267772,
+              "observation_counts": {
+                "frame": 271,
+                "left_right_antenna_synchrony": 271,
+                "mean_angle_to_dancer_deg": 271,
+                "mean_antenna_midpoint_deg": 271,
+                "mean_dancer_angle_to_gravity_deg": 271,
+                "mean_left_antenna_deg": 271,
+                "mean_right_antenna_deg": 271,
+                "mean_scape_angle_deg": 271
+              },
+              "row_count": 271
+            },
+            {
+              "bee_id": "RF8",
+              "frame_max": 483,
+              "frame_min": 150,
+              "left_right_antenna_synchrony": -0.14833004868747607,
+              "mean_angle_to_dancer_deg": -84.1109094546565,
+              "mean_antenna_midpoint_deg": -1.5946673738960284,
+              "mean_dancer_angle_to_gravity_deg": -60.42539822721631,
+              "mean_left_antenna_deg": 41.04314900807151,
+              "mean_right_antenna_deg": -44.232483755863534,
+              "mean_scape_angle_deg": 85.27563276393494,
+              "observation_counts": {
+                "frame": 268,
+                "left_right_antenna_synchrony": 268,
+                "mean_angle_to_dancer_deg": 268,
+                "mean_antenna_midpoint_deg": 268,
+                "mean_dancer_angle_to_gravity_deg": 268,
+                "mean_left_antenna_deg": 268,
+                "mean_right_antenna_deg": 268,
+                "mean_scape_angle_deg": 268
+              },
+              "row_count": 268
+            },
+            {
+              "bee_id": "n10",
+              "frame_max": 179,
+              "frame_min": 1,
+              "left_right_antenna_synchrony": -0.34521620777435347,
+              "mean_angle_to_dancer_deg": 122.2414428828605,
+              "mean_antenna_midpoint_deg": 7.453485208383938,
+              "mean_dancer_angle_to_gravity_deg": -34.8557316531986,
+              "mean_left_antenna_deg": 39.99916805418406,
+              "mean_right_antenna_deg": -25.09219763741616,
+              "mean_scape_angle_deg": 65.09136569160022,
+              "observation_counts": {
+                "frame": 118,
+                "left_right_antenna_synchrony": 118,
+                "mean_angle_to_dancer_deg": 118,
+                "mean_antenna_midpoint_deg": 118,
+                "mean_dancer_angle_to_gravity_deg": 118,
+                "mean_left_antenna_deg": 118,
+                "mean_right_antenna_deg": 118,
+                "mean_scape_angle_deg": 118
+              },
+              "row_count": 118
+            },
+            {
+              "bee_id": "n11",
+              "frame_max": 190,
+              "frame_min": 0,
+              "left_right_antenna_synchrony": 0.21417414523360898,
+              "mean_angle_to_dancer_deg": 89.43774304974032,
+              "mean_antenna_midpoint_deg": 6.088433030672078,
+              "mean_dancer_angle_to_gravity_deg": -34.311973199160825,
+              "mean_left_antenna_deg": 43.78034158855597,
+              "mean_right_antenna_deg": -31.603475527211785,
+              "mean_scape_angle_deg": 75.38381711576774,
+              "observation_counts": {
+                "frame": 167,
+                "left_right_antenna_synchrony": 167,
+                "mean_angle_to_dancer_deg": 167,
+                "mean_antenna_midpoint_deg": 167,
+                "mean_dancer_angle_to_gravity_deg": 167,
+                "mean_left_antenna_deg": 167,
+                "mean_right_antenna_deg": 167,
+                "mean_scape_angle_deg": 167
+              },
+              "row_count": 167
+            },
+            {
+              "bee_id": "n11_1",
+              "frame_max": 847,
+              "frame_min": 816,
+              "left_right_antenna_synchrony": -0.2799652511621814,
+              "mean_angle_to_dancer_deg": -64.06521518181258,
+              "mean_antenna_midpoint_deg": -27.100370403486664,
+              "mean_dancer_angle_to_gravity_deg": -28.178564723865268,
+              "mean_left_antenna_deg": 13.937317165038381,
+              "mean_right_antenna_deg": -68.13805797201172,
+              "mean_scape_angle_deg": 82.0753751370501,
+              "observation_counts": {
+                "frame": 29,
+                "left_right_antenna_synchrony": 29,
+                "mean_angle_to_dancer_deg": 29,
+                "mean_antenna_midpoint_deg": 29,
+                "mean_dancer_angle_to_gravity_deg": 29,
+                "mean_left_antenna_deg": 29,
+                "mean_right_antenna_deg": 29,
+                "mean_scape_angle_deg": 29
+              },
+              "row_count": 29
+            },
+            {
+              "bee_id": "n12",
+              "frame_max": 847,
+              "frame_min": 807,
+              "left_right_antenna_synchrony": -0.2444227785901538,
+              "mean_angle_to_dancer_deg": 107.01174419058654,
+              "mean_antenna_midpoint_deg": -9.121820998054693,
+              "mean_dancer_angle_to_gravity_deg": -24.31827827006464,
+              "mean_left_antenna_deg": 35.38039761519825,
+              "mean_right_antenna_deg": -53.62403961130762,
+              "mean_scape_angle_deg": 89.00443722650587,
+              "observation_counts": {
+                "frame": 40,
+                "left_right_antenna_synchrony": 40,
+                "mean_angle_to_dancer_deg": 40,
+                "mean_antenna_midpoint_deg": 40,
+                "mean_dancer_angle_to_gravity_deg": 40,
+                "mean_left_antenna_deg": 40,
+                "mean_right_antenna_deg": 40,
+                "mean_scape_angle_deg": 40
+              },
+              "row_count": 40
+            },
+            {
+              "bee_id": "n14",
+              "frame_max": 847,
+              "frame_min": 814,
+              "left_right_antenna_synchrony": -0.18317122175680314,
+              "mean_angle_to_dancer_deg": 58.825532945266254,
+              "mean_antenna_midpoint_deg": 19.1830826349224,
+              "mean_dancer_angle_to_gravity_deg": -25.821099893871846,
+              "mean_left_antenna_deg": 61.8727415696888,
+              "mean_right_antenna_deg": -23.506576299843967,
+              "mean_scape_angle_deg": 85.37931786953277,
+              "observation_counts": {
+                "frame": 33,
+                "left_right_antenna_synchrony": 33,
+                "mean_angle_to_dancer_deg": 33,
+                "mean_antenna_midpoint_deg": 33,
+                "mean_dancer_angle_to_gravity_deg": 33,
+                "mean_left_antenna_deg": 33,
+                "mean_right_antenna_deg": 33,
+                "mean_scape_angle_deg": 33
+              },
+              "row_count": 33
+            },
+            {
+              "bee_id": "n18",
+              "frame_max": 191,
+              "frame_min": 165,
+              "left_right_antenna_synchrony": -0.5464482949073816,
+              "mean_angle_to_dancer_deg": 47.499293291957,
+              "mean_antenna_midpoint_deg": 15.800357586300882,
+              "mean_dancer_angle_to_gravity_deg": -30.35943942261888,
+              "mean_left_antenna_deg": 65.04222897848281,
+              "mean_right_antenna_deg": -33.44151380588101,
+              "mean_scape_angle_deg": 98.48374278436383,
+              "observation_counts": {
+                "frame": 25,
+                "left_right_antenna_synchrony": 25,
+                "mean_angle_to_dancer_deg": 25,
+                "mean_antenna_midpoint_deg": 25,
+                "mean_dancer_angle_to_gravity_deg": 25,
+                "mean_left_antenna_deg": 25,
+                "mean_right_antenna_deg": 25,
+                "mean_scape_angle_deg": 25
+              },
+              "row_count": 25
+            },
+            {
+              "bee_id": "n18_1",
+              "frame_max": 847,
+              "frame_min": 815,
+              "left_right_antenna_synchrony": -0.33911757404783344,
+              "mean_angle_to_dancer_deg": -47.71101258746363,
+              "mean_antenna_midpoint_deg": -11.160730700437139,
+              "mean_dancer_angle_to_gravity_deg": -27.570699041102035,
+              "mean_left_antenna_deg": 36.57994749328332,
+              "mean_right_antenna_deg": -58.90140889415759,
+              "mean_scape_angle_deg": 95.48135638744093,
+              "observation_counts": {
+                "frame": 29,
+                "left_right_antenna_synchrony": 29,
+                "mean_angle_to_dancer_deg": 29,
+                "mean_antenna_midpoint_deg": 29,
+                "mean_dancer_angle_to_gravity_deg": 29,
+                "mean_left_antenna_deg": 29,
+                "mean_right_antenna_deg": 29,
+                "mean_scape_angle_deg": 29
+              },
+              "row_count": 29
+            },
+            {
+              "bee_id": "n19",
+              "frame_max": 191,
+              "frame_min": 67,
+              "left_right_antenna_synchrony": 0.13344213898381463,
+              "mean_angle_to_dancer_deg": -43.63397443154074,
+              "mean_antenna_midpoint_deg": -15.798613830730892,
+              "mean_dancer_angle_to_gravity_deg": -34.51860474020881,
+              "mean_left_antenna_deg": 29.037670052414207,
+              "mean_right_antenna_deg": -60.63489771387601,
+              "mean_scape_angle_deg": 89.67256776629021,
+              "observation_counts": {
+                "frame": 60,
+                "left_right_antenna_synchrony": 60,
+                "mean_angle_to_dancer_deg": 60,
+                "mean_antenna_midpoint_deg": 60,
+                "mean_dancer_angle_to_gravity_deg": 60,
+                "mean_left_antenna_deg": 60,
+                "mean_right_antenna_deg": 60,
+                "mean_scape_angle_deg": 60
+              },
+              "row_count": 60
+            },
+            {
+              "bee_id": "n20",
+              "frame_max": 225,
+              "frame_min": 150,
+              "left_right_antenna_synchrony": 0.06572594065435935,
+              "mean_angle_to_dancer_deg": -48.286257653396355,
+              "mean_antenna_midpoint_deg": -12.266387354979177,
+              "mean_dancer_angle_to_gravity_deg": -68.77166945565051,
+              "mean_left_antenna_deg": 27.93326844615801,
+              "mean_right_antenna_deg": -52.46604315611635,
+              "mean_scape_angle_deg": 80.39931160227435,
+              "observation_counts": {
+                "frame": 41,
+                "left_right_antenna_synchrony": 41,
+                "mean_angle_to_dancer_deg": 41,
+                "mean_antenna_midpoint_deg": 41,
+                "mean_dancer_angle_to_gravity_deg": 41,
+                "mean_left_antenna_deg": 41,
+                "mean_right_antenna_deg": 41,
+                "mean_scape_angle_deg": 41
+              },
+              "row_count": 41
+            },
+            {
+              "bee_id": "n21",
+              "frame_max": 875,
+              "frame_min": 526,
+              "left_right_antenna_synchrony": 0.005351417361627005,
+              "mean_angle_to_dancer_deg": -31.129848823296605,
+              "mean_antenna_midpoint_deg": -1.5528787452303916,
+              "mean_dancer_angle_to_gravity_deg": -39.511523898755506,
+              "mean_left_antenna_deg": 31.951221318794218,
+              "mean_right_antenna_deg": -35.056978809255,
+              "mean_scape_angle_deg": 67.00820012804918,
+              "observation_counts": {
+                "frame": 283,
+                "left_right_antenna_synchrony": 283,
+                "mean_angle_to_dancer_deg": 283,
+                "mean_antenna_midpoint_deg": 283,
+                "mean_dancer_angle_to_gravity_deg": 283,
+                "mean_left_antenna_deg": 283,
+                "mean_right_antenna_deg": 283,
+                "mean_scape_angle_deg": 283
+              },
+              "row_count": 283
+            },
+            {
+              "bee_id": "n22",
+              "frame_max": 893,
+              "frame_min": 746,
+              "left_right_antenna_synchrony": -0.2880516096244662,
+              "mean_angle_to_dancer_deg": -82.92484613262037,
+              "mean_antenna_midpoint_deg": -8.007856798189554,
+              "mean_dancer_angle_to_gravity_deg": -41.33063339362153,
+              "mean_left_antenna_deg": 33.206178639524985,
+              "mean_right_antenna_deg": -49.22189223590408,
+              "mean_scape_angle_deg": 82.42807087542906,
+              "observation_counts": {
+                "frame": 95,
+                "left_right_antenna_synchrony": 95,
+                "mean_angle_to_dancer_deg": 95,
+                "mean_antenna_midpoint_deg": 95,
+                "mean_dancer_angle_to_gravity_deg": 95,
+                "mean_left_antenna_deg": 95,
+                "mean_right_antenna_deg": 95,
+                "mean_scape_angle_deg": 95
+              },
+              "row_count": 95
+            },
+            {
+              "bee_id": "n23",
+              "frame_max": 1674,
+              "frame_min": 1347,
+              "left_right_antenna_synchrony": -0.07851395584341742,
+              "mean_angle_to_dancer_deg": 88.59334427671467,
+              "mean_antenna_midpoint_deg": 3.1966269857524763,
+              "mean_dancer_angle_to_gravity_deg": -53.279866323382045,
+              "mean_left_antenna_deg": 47.43034850903071,
+              "mean_right_antenna_deg": -41.03709453752573,
+              "mean_scape_angle_deg": 88.4674430465565,
+              "observation_counts": {
+                "frame": 307,
+                "left_right_antenna_synchrony": 307,
+                "mean_angle_to_dancer_deg": 307,
+                "mean_antenna_midpoint_deg": 307,
+                "mean_dancer_angle_to_gravity_deg": 307,
+                "mean_left_antenna_deg": 307,
+                "mean_right_antenna_deg": 307,
+                "mean_scape_angle_deg": 307
+              },
+              "row_count": 307
+            },
+            {
+              "bee_id": "n24",
+              "frame_max": 1674,
+              "frame_min": 1351,
+              "left_right_antenna_synchrony": -0.45404215842836176,
+              "mean_angle_to_dancer_deg": 137.6601752525471,
+              "mean_antenna_midpoint_deg": -0.38655245756288675,
+              "mean_dancer_angle_to_gravity_deg": -50.890415736169416,
+              "mean_left_antenna_deg": 34.35357435201152,
+              "mean_right_antenna_deg": -35.1266792671373,
+              "mean_scape_angle_deg": 69.48025361914884,
+              "observation_counts": {
+                "frame": 263,
+                "left_right_antenna_synchrony": 263,
+                "mean_angle_to_dancer_deg": 263,
+                "mean_antenna_midpoint_deg": 263,
+                "mean_dancer_angle_to_gravity_deg": 263,
+                "mean_left_antenna_deg": 263,
+                "mean_right_antenna_deg": 263,
+                "mean_scape_angle_deg": 263
+              },
+              "row_count": 263
+            },
+            {
+              "bee_id": "n25",
+              "frame_max": 397,
+              "frame_min": 135,
+              "left_right_antenna_synchrony": -0.34960656971289517,
+              "mean_angle_to_dancer_deg": 152.42639862581206,
+              "mean_antenna_midpoint_deg": 2.8150701919307473,
+              "mean_dancer_angle_to_gravity_deg": -45.04217935291278,
+              "mean_left_antenna_deg": 41.05361530441934,
+              "mean_right_antenna_deg": -35.423474920557844,
+              "mean_scape_angle_deg": 76.47709022497718,
+              "observation_counts": {
+                "frame": 233,
+                "left_right_antenna_synchrony": 233,
+                "mean_angle_to_dancer_deg": 233,
+                "mean_antenna_midpoint_deg": 233,
+                "mean_dancer_angle_to_gravity_deg": 233,
+                "mean_left_antenna_deg": 233,
+                "mean_right_antenna_deg": 233,
+                "mean_scape_angle_deg": 233
+              },
+              "row_count": 233
+            },
+            {
+              "bee_id": "n26",
+              "frame_max": 400,
+              "frame_min": 131,
+              "left_right_antenna_synchrony": 0.05880660662411037,
+              "mean_angle_to_dancer_deg": -80.93409136490867,
+              "mean_antenna_midpoint_deg": 0.5710551278862172,
+              "mean_dancer_angle_to_gravity_deg": -44.55509160191575,
+              "mean_left_antenna_deg": 41.03172673133774,
+              "mean_right_antenna_deg": -39.889616475565276,
+              "mean_scape_angle_deg": 80.92134320690297,
+              "observation_counts": {
+                "frame": 149,
+                "left_right_antenna_synchrony": 149,
+                "mean_angle_to_dancer_deg": 149,
+                "mean_antenna_midpoint_deg": 149,
+                "mean_dancer_angle_to_gravity_deg": 149,
+                "mean_left_antenna_deg": 149,
+                "mean_right_antenna_deg": 149,
+                "mean_scape_angle_deg": 149
+              },
+              "row_count": 149
+            },
+            {
+              "bee_id": "n27",
+              "frame_max": 400,
+              "frame_min": 131,
+              "left_right_antenna_synchrony": -0.2020668306252026,
+              "mean_angle_to_dancer_deg": -116.62665663256739,
+              "mean_antenna_midpoint_deg": 0.0022249778782283437,
+              "mean_dancer_angle_to_gravity_deg": -47.3095250876064,
+              "mean_left_antenna_deg": 48.17095984057076,
+              "mean_right_antenna_deg": -48.166509884814324,
+              "mean_scape_angle_deg": 96.3374697253851,
+              "observation_counts": {
+                "frame": 167,
+                "left_right_antenna_synchrony": 167,
+                "mean_angle_to_dancer_deg": 167,
+                "mean_antenna_midpoint_deg": 167,
+                "mean_dancer_angle_to_gravity_deg": 167,
+                "mean_left_antenna_deg": 167,
+                "mean_right_antenna_deg": 167,
+                "mean_scape_angle_deg": 167
+              },
+              "row_count": 167
+            },
+            {
+              "bee_id": "n27_1",
+              "frame_max": 1081,
+              "frame_min": 720,
+              "left_right_antenna_synchrony": -0.23841555377993884,
+              "mean_angle_to_dancer_deg": 115.25774463049049,
+              "mean_antenna_midpoint_deg": 8.017223837682021,
+              "mean_dancer_angle_to_gravity_deg": -26.661538845437015,
+              "mean_left_antenna_deg": 58.330763214049306,
+              "mean_right_antenna_deg": -42.296315538685285,
+              "mean_scape_angle_deg": 100.62707875273458,
+              "observation_counts": {
+                "frame": 297,
+                "left_right_antenna_synchrony": 297,
+                "mean_angle_to_dancer_deg": 297,
+                "mean_antenna_midpoint_deg": 297,
+                "mean_dancer_angle_to_gravity_deg": 297,
+                "mean_left_antenna_deg": 297,
+                "mean_right_antenna_deg": 297,
+                "mean_scape_angle_deg": 297
+              },
+              "row_count": 297
+            },
+            {
+              "bee_id": "n27_2",
+              "frame_max": 1666,
+              "frame_min": 1430,
+              "left_right_antenna_synchrony": 0.08965364720368592,
+              "mean_angle_to_dancer_deg": 111.24354061536965,
+              "mean_antenna_midpoint_deg": 7.9015527526867695,
+              "mean_dancer_angle_to_gravity_deg": -24.37913609980652,
+              "mean_left_antenna_deg": 52.98122219797272,
+              "mean_right_antenna_deg": -37.17811669259911,
+              "mean_scape_angle_deg": 90.1593388905718,
+              "observation_counts": {
+                "frame": 176,
+                "left_right_antenna_synchrony": 176,
+                "mean_angle_to_dancer_deg": 176,
+                "mean_antenna_midpoint_deg": 176,
+                "mean_dancer_angle_to_gravity_deg": 176,
+                "mean_left_antenna_deg": 176,
+                "mean_right_antenna_deg": 176,
+                "mean_scape_angle_deg": 176
+              },
+              "row_count": 176
+            },
+            {
+              "bee_id": "n28",
+              "frame_max": 1081,
+              "frame_min": 720,
+              "left_right_antenna_synchrony": 0.012746783114756955,
+              "mean_angle_to_dancer_deg": 147.65726805458303,
+              "mean_antenna_midpoint_deg": 7.001784007321009,
+              "mean_dancer_angle_to_gravity_deg": -28.609297018419742,
+              "mean_left_antenna_deg": 43.7429901372663,
+              "mean_right_antenna_deg": -29.73942212262427,
+              "mean_scape_angle_deg": 73.48241225989058,
+              "observation_counts": {
+                "frame": 350,
+                "left_right_antenna_synchrony": 350,
+                "mean_angle_to_dancer_deg": 350,
+                "mean_antenna_midpoint_deg": 350,
+                "mean_dancer_angle_to_gravity_deg": 350,
+                "mean_left_antenna_deg": 350,
+                "mean_right_antenna_deg": 350,
+                "mean_scape_angle_deg": 350
+              },
+              "row_count": 350
+            },
+            {
+              "bee_id": "n29",
+              "frame_max": 1777,
+              "frame_min": 1430,
+              "left_right_antenna_synchrony": -0.028423854718073623,
+              "mean_angle_to_dancer_deg": -133.58025142420692,
+              "mean_antenna_midpoint_deg": -4.549562329247388,
+              "mean_dancer_angle_to_gravity_deg": -23.27366876136881,
+              "mean_left_antenna_deg": 42.47216686249362,
+              "mean_right_antenna_deg": -51.571291520988424,
+              "mean_scape_angle_deg": 94.04345838348206,
+              "observation_counts": {
+                "frame": 295,
+                "left_right_antenna_synchrony": 295,
+                "mean_angle_to_dancer_deg": 295,
+                "mean_antenna_midpoint_deg": 295,
+                "mean_dancer_angle_to_gravity_deg": 295,
+                "mean_left_antenna_deg": 295,
+                "mean_right_antenna_deg": 295,
+                "mean_scape_angle_deg": 295
+              },
+              "row_count": 295
+            },
+            {
+              "bee_id": "n30",
+              "frame_max": 221,
+              "frame_min": 92,
+              "left_right_antenna_synchrony": 0.281881367358834,
+              "mean_angle_to_dancer_deg": 31.11608215219128,
+              "mean_antenna_midpoint_deg": 11.43922688899462,
+              "mean_dancer_angle_to_gravity_deg": 86.15056849490587,
+              "mean_left_antenna_deg": 65.89353193648584,
+              "mean_right_antenna_deg": -43.015078158496564,
+              "mean_scape_angle_deg": 108.90861009498238,
+              "observation_counts": {
+                "frame": 46,
+                "left_right_antenna_synchrony": 46,
+                "mean_angle_to_dancer_deg": 46,
+                "mean_antenna_midpoint_deg": 46,
+                "mean_dancer_angle_to_gravity_deg": 46,
+                "mean_left_antenna_deg": 46,
+                "mean_right_antenna_deg": 46,
+                "mean_scape_angle_deg": 46
+              },
+              "row_count": 46
+            },
+            {
+              "bee_id": "n31",
+              "frame_max": 340,
+              "frame_min": 17,
+              "left_right_antenna_synchrony": -0.4368474978394432,
+              "mean_angle_to_dancer_deg": 41.790682814644036,
+              "mean_antenna_midpoint_deg": 15.853916591985518,
+              "mean_dancer_angle_to_gravity_deg": 88.88540612864237,
+              "mean_left_antenna_deg": 61.6198439440073,
+              "mean_right_antenna_deg": -29.912010760036228,
+              "mean_scape_angle_deg": 91.53185470404352,
+              "observation_counts": {
+                "frame": 290,
+                "left_right_antenna_synchrony": 290,
+                "mean_angle_to_dancer_deg": 290,
+                "mean_antenna_midpoint_deg": 290,
+                "mean_dancer_angle_to_gravity_deg": 290,
+                "mean_left_antenna_deg": 290,
+                "mean_right_antenna_deg": 290,
+                "mean_scape_angle_deg": 290
+              },
+              "row_count": 290
+            },
+            {
+              "bee_id": "n31_1",
+              "frame_max": 1349,
+              "frame_min": 882,
+              "left_right_antenna_synchrony": -0.217891164875195,
+              "mean_angle_to_dancer_deg": 53.416769715241635,
+              "mean_antenna_midpoint_deg": 16.329361039824892,
+              "mean_dancer_angle_to_gravity_deg": 94.98354881259148,
+              "mean_left_antenna_deg": 55.23893815525581,
+              "mean_right_antenna_deg": -22.580216075605986,
+              "mean_scape_angle_deg": 78.29030565439754,
+              "observation_counts": {
+                "frame": 448,
+                "left_right_antenna_synchrony": 448,
+                "mean_angle_to_dancer_deg": 448,
+                "mean_antenna_midpoint_deg": 448,
+                "mean_dancer_angle_to_gravity_deg": 448,
+                "mean_left_antenna_deg": 448,
+                "mean_right_antenna_deg": 448,
+                "mean_scape_angle_deg": 448
+              },
+              "row_count": 448
+            },
+            {
+              "bee_id": "n32",
+              "frame_max": 328,
+              "frame_min": 1,
+              "left_right_antenna_synchrony": -0.1890714677799371,
+              "mean_angle_to_dancer_deg": 120.55810384822928,
+              "mean_antenna_midpoint_deg": 6.977344078977516,
+              "mean_dancer_angle_to_gravity_deg": 89.33335258857218,
+              "mean_left_antenna_deg": 53.204799210469055,
+              "mean_right_antenna_deg": -39.250111052513994,
+              "mean_scape_angle_deg": 92.45491026298303,
+              "observation_counts": {
+                "frame": 224,
+                "left_right_antenna_synchrony": 224,
+                "mean_angle_to_dancer_deg": 224,
+                "mean_antenna_midpoint_deg": 224,
+                "mean_dancer_angle_to_gravity_deg": 224,
+                "mean_left_antenna_deg": 224,
+                "mean_right_antenna_deg": 224,
+                "mean_scape_angle_deg": 224
+              },
+              "row_count": 224
+            },
+            {
+              "bee_id": "n33",
+              "frame_max": 334,
+              "frame_min": 70,
+              "left_right_antenna_synchrony": 0.04895889704241234,
+              "mean_angle_to_dancer_deg": -109.13027414450441,
+              "mean_antenna_midpoint_deg": -4.35268363889992,
+              "mean_dancer_angle_to_gravity_deg": 84.37843551538751,
+              "mean_left_antenna_deg": 37.18618889850265,
+              "mean_right_antenna_deg": -45.891556176302494,
+              "mean_scape_angle_deg": 83.07774507480518,
+              "observation_counts": {
+                "frame": 84,
+                "left_right_antenna_synchrony": 84,
+                "mean_angle_to_dancer_deg": 84,
+                "mean_antenna_midpoint_deg": 84,
+                "mean_dancer_angle_to_gravity_deg": 84,
+                "mean_left_antenna_deg": 84,
+                "mean_right_antenna_deg": 84,
+                "mean_scape_angle_deg": 84
+              },
+              "row_count": 84
+            },
+            {
+              "bee_id": "n33_1",
+              "frame_max": 1349,
+              "frame_min": 736,
+              "left_right_antenna_synchrony": 0.05977163578239018,
+              "mean_angle_to_dancer_deg": 113.5598461594756,
+              "mean_antenna_midpoint_deg": 3.691959263283596,
+              "mean_dancer_angle_to_gravity_deg": 98.93224773980988,
+              "mean_left_antenna_deg": 49.72696854554967,
+              "mean_right_antenna_deg": -42.34305001898248,
+              "mean_scape_angle_deg": 92.75756467278475,
+              "observation_counts": {
+                "frame": 284,
+                "left_right_antenna_synchrony": 284,
+                "mean_angle_to_dancer_deg": 284,
+                "mean_antenna_midpoint_deg": 284,
+                "mean_dancer_angle_to_gravity_deg": 284,
+                "mean_left_antenna_deg": 284,
+                "mean_right_antenna_deg": 284,
+                "mean_scape_angle_deg": 284
+              },
+              "row_count": 284
+            },
+            {
+              "bee_id": "n34",
+              "frame_max": 334,
+              "frame_min": 136,
+              "left_right_antenna_synchrony": 0.23420269373588853,
+              "mean_angle_to_dancer_deg": -103.00406395231457,
+              "mean_antenna_midpoint_deg": -1.4168196712220533,
+              "mean_dancer_angle_to_gravity_deg": 83.69422912847064,
+              "mean_left_antenna_deg": 47.39195169911876,
+              "mean_right_antenna_deg": -50.22559104156286,
+              "mean_scape_angle_deg": 97.6175427406816,
+              "observation_counts": {
+                "frame": 52,
+                "left_right_antenna_synchrony": 52,
+                "mean_angle_to_dancer_deg": 52,
+                "mean_antenna_midpoint_deg": 52,
+                "mean_dancer_angle_to_gravity_deg": 52,
+                "mean_left_antenna_deg": 52,
+                "mean_right_antenna_deg": 52,
+                "mean_scape_angle_deg": 52
+              },
+              "row_count": 52
+            },
+            {
+              "bee_id": "n35",
+              "frame_max": 340,
+              "frame_min": 31,
+              "left_right_antenna_synchrony": 0.3847656383693905,
+              "mean_angle_to_dancer_deg": -104.98358036912238,
+              "mean_antenna_midpoint_deg": -4.4592250613975155,
+              "mean_dancer_angle_to_gravity_deg": 86.41269154597877,
+              "mean_left_antenna_deg": 41.025330431098844,
+              "mean_right_antenna_deg": -49.94378055389388,
+              "mean_scape_angle_deg": 92.64635490100186,
+              "observation_counts": {
+                "frame": 116,
+                "left_right_antenna_synchrony": 116,
+                "mean_angle_to_dancer_deg": 116,
+                "mean_antenna_midpoint_deg": 116,
+                "mean_dancer_angle_to_gravity_deg": 116,
+                "mean_left_antenna_deg": 116,
+                "mean_right_antenna_deg": 116,
+                "mean_scape_angle_deg": 116
+              },
+              "row_count": 116
+            },
+            {
+              "bee_id": "n36",
+              "frame_max": 409,
+              "frame_min": 3,
+              "left_right_antenna_synchrony": -0.13910812197430408,
+              "mean_angle_to_dancer_deg": 104.43063797796312,
+              "mean_antenna_midpoint_deg": 8.149281901296373,
+              "mean_dancer_angle_to_gravity_deg": 73.2330125975858,
+              "mean_left_antenna_deg": 55.96809725634491,
+              "mean_right_antenna_deg": -39.66953345375216,
+              "mean_scape_angle_deg": 95.63763071009706,
+              "observation_counts": {
+                "frame": 81,
+                "left_right_antenna_synchrony": 81,
+                "mean_angle_to_dancer_deg": 81,
+                "mean_antenna_midpoint_deg": 81,
+                "mean_dancer_angle_to_gravity_deg": 81,
+                "mean_left_antenna_deg": 81,
+                "mean_right_antenna_deg": 81,
+                "mean_scape_angle_deg": 81
+              },
+              "row_count": 81
+            },
+            {
+              "bee_id": "n37",
+              "frame_max": 444,
+              "frame_min": 4,
+              "left_right_antenna_synchrony": -0.24080027445315458,
+              "mean_angle_to_dancer_deg": 6.670436832012254,
+              "mean_antenna_midpoint_deg": -3.7268995513520835,
+              "mean_dancer_angle_to_gravity_deg": 70.37742559825949,
+              "mean_left_antenna_deg": 26.096137230596227,
+              "mean_right_antenna_deg": -33.549936333300394,
+              "mean_scape_angle_deg": 59.65454258672069,
+              "observation_counts": {
+                "frame": 165,
+                "left_right_antenna_synchrony": 165,
+                "mean_angle_to_dancer_deg": 165,
+                "mean_antenna_midpoint_deg": 165,
+                "mean_dancer_angle_to_gravity_deg": 165,
+                "mean_left_antenna_deg": 165,
+                "mean_right_antenna_deg": 165,
+                "mean_scape_angle_deg": 165
+              },
+              "row_count": 165
+            },
+            {
+              "bee_id": "n38",
+              "frame_max": 449,
+              "frame_min": 1,
+              "left_right_antenna_synchrony": 0.38343536522927185,
+              "mean_angle_to_dancer_deg": -104.34330179413519,
+              "mean_antenna_midpoint_deg": -5.529929052726051,
+              "mean_dancer_angle_to_gravity_deg": 63.69103970047267,
+              "mean_left_antenna_deg": 31.112042567831686,
+              "mean_right_antenna_deg": -42.17190067328376,
+              "mean_scape_angle_deg": 73.28394324111541,
+              "observation_counts": {
+                "frame": 223,
+                "left_right_antenna_synchrony": 223,
+                "mean_angle_to_dancer_deg": 223,
+                "mean_antenna_midpoint_deg": 223,
+                "mean_dancer_angle_to_gravity_deg": 223,
+                "mean_left_antenna_deg": 223,
+                "mean_right_antenna_deg": 223,
+                "mean_scape_angle_deg": 223
+              },
+              "row_count": 223
+            },
+            {
+              "bee_id": "n39",
+              "frame_max": 434,
+              "frame_min": 1,
+              "left_right_antenna_synchrony": 0.07439374061358682,
+              "mean_angle_to_dancer_deg": -99.42472444467707,
+              "mean_antenna_midpoint_deg": -10.230395563847416,
+              "mean_dancer_angle_to_gravity_deg": 62.12664709581267,
+              "mean_left_antenna_deg": 37.6264808495574,
+              "mean_right_antenna_deg": -58.08727197725219,
+              "mean_scape_angle_deg": 95.71375282680958,
+              "observation_counts": {
+                "frame": 251,
+                "left_right_antenna_synchrony": 251,
+                "mean_angle_to_dancer_deg": 251,
+                "mean_antenna_midpoint_deg": 251,
+                "mean_dancer_angle_to_gravity_deg": 251,
+                "mean_left_antenna_deg": 251,
+                "mean_right_antenna_deg": 251,
+                "mean_scape_angle_deg": 251
+              },
+              "row_count": 251
+            },
+            {
+              "bee_id": "n40",
+              "frame_max": 347,
+              "frame_min": 0,
+              "left_right_antenna_synchrony": -0.09501182606365745,
+              "mean_angle_to_dancer_deg": 41.14168472222802,
+              "mean_antenna_midpoint_deg": 21.411786181819412,
+              "mean_dancer_angle_to_gravity_deg": 107.74873376074407,
+              "mean_left_antenna_deg": 57.56887540823303,
+              "mean_right_antenna_deg": -14.745303044594127,
+              "mean_scape_angle_deg": 72.31417845282711,
+              "observation_counts": {
+                "frame": 328,
+                "left_right_antenna_synchrony": 328,
+                "mean_angle_to_dancer_deg": 328,
+                "mean_antenna_midpoint_deg": 328,
+                "mean_dancer_angle_to_gravity_deg": 328,
+                "mean_left_antenna_deg": 328,
+                "mean_right_antenna_deg": 328,
+                "mean_scape_angle_deg": 328
+              },
+              "row_count": 328
+            },
+            {
+              "bee_id": "n41",
+              "frame_max": 353,
+              "frame_min": 0,
+              "left_right_antenna_synchrony": 0.10669433920329717,
+              "mean_angle_to_dancer_deg": 60.64926663235336,
+              "mean_antenna_midpoint_deg": 20.166641870381447,
+              "mean_dancer_angle_to_gravity_deg": 110.76093557103576,
+              "mean_left_antenna_deg": 62.84388644000179,
+              "mean_right_antenna_deg": -22.51060269923882,
+              "mean_scape_angle_deg": 85.3544891392406,
+              "observation_counts": {
+                "frame": 297,
+                "left_right_antenna_synchrony": 297,
+                "mean_angle_to_dancer_deg": 297,
+                "mean_antenna_midpoint_deg": 297,
+                "mean_dancer_angle_to_gravity_deg": 297,
+                "mean_left_antenna_deg": 297,
+                "mean_right_antenna_deg": 297,
+                "mean_scape_angle_deg": 297
+              },
+              "row_count": 297
+            },
+            {
+              "bee_id": "n42",
+              "frame_max": 148,
+              "frame_min": 0,
+              "left_right_antenna_synchrony": -0.3158474606203488,
+              "mean_angle_to_dancer_deg": 99.34416722941559,
+              "mean_antenna_midpoint_deg": 7.45242118320784,
+              "mean_dancer_angle_to_gravity_deg": 102.70356825831165,
+              "mean_left_antenna_deg": 36.82109839191495,
+              "mean_right_antenna_deg": -21.916256025499248,
+              "mean_scape_angle_deg": 58.7373544174142,
+              "observation_counts": {
+                "frame": 139,
+                "left_right_antenna_synchrony": 139,
+                "mean_angle_to_dancer_deg": 139,
+                "mean_antenna_midpoint_deg": 139,
+                "mean_dancer_angle_to_gravity_deg": 139,
+                "mean_left_antenna_deg": 139,
+                "mean_right_antenna_deg": 139,
+                "mean_scape_angle_deg": 139
+              },
+              "row_count": 139
+            },
+            {
+              "bee_id": "n43",
+              "frame_max": 353,
+              "frame_min": 0,
+              "left_right_antenna_synchrony": 0.17211665178369476,
+              "mean_angle_to_dancer_deg": 114.71622739916161,
+              "mean_antenna_midpoint_deg": -4.146841266255024,
+              "mean_dancer_angle_to_gravity_deg": 113.20551339584893,
+              "mean_left_antenna_deg": 39.423425712002114,
+              "mean_right_antenna_deg": -47.717108244512126,
+              "mean_scape_angle_deg": 87.14053395651425,
+              "observation_counts": {
+                "frame": 149,
+                "left_right_antenna_synchrony": 149,
+                "mean_angle_to_dancer_deg": 149,
+                "mean_antenna_midpoint_deg": 149,
+                "mean_dancer_angle_to_gravity_deg": 149,
+                "mean_left_antenna_deg": 149,
+                "mean_right_antenna_deg": 149,
+                "mean_scape_angle_deg": 149
+              },
+              "row_count": 149
+            },
+            {
+              "bee_id": "n44",
+              "frame_max": 353,
+              "frame_min": 70,
+              "left_right_antenna_synchrony": -0.014181714919848711,
+              "mean_angle_to_dancer_deg": 10.964947195912885,
+              "mean_antenna_midpoint_deg": 4.205881012933871,
+              "mean_dancer_angle_to_gravity_deg": 116.76010879774113,
+              "mean_left_antenna_deg": 46.62925577170733,
+              "mean_right_antenna_deg": -38.217493745839555,
+              "mean_scape_angle_deg": 84.84674951754687,
+              "observation_counts": {
+                "frame": 95,
+                "left_right_antenna_synchrony": 95,
+                "mean_angle_to_dancer_deg": 95,
+                "mean_antenna_midpoint_deg": 95,
+                "mean_dancer_angle_to_gravity_deg": 95,
+                "mean_left_antenna_deg": 95,
+                "mean_right_antenna_deg": 95,
+                "mean_scape_angle_deg": 95
+              },
+              "row_count": 95
+            },
+            {
+              "bee_id": "n45",
+              "frame_max": 210,
+              "frame_min": 0,
+              "left_right_antenna_synchrony": 0.12468063597547163,
+              "mean_angle_to_dancer_deg": -128.4739664978717,
+              "mean_antenna_midpoint_deg": 8.468093506495306,
+              "mean_dancer_angle_to_gravity_deg": 99.36795311107834,
+              "mean_left_antenna_deg": 51.4048987558165,
+              "mean_right_antenna_deg": -34.468711742825796,
+              "mean_scape_angle_deg": 85.87361049864226,
+              "observation_counts": {
+                "frame": 112,
+                "left_right_antenna_synchrony": 112,
+                "mean_angle_to_dancer_deg": 112,
+                "mean_antenna_midpoint_deg": 112,
+                "mean_dancer_angle_to_gravity_deg": 112,
+                "mean_left_antenna_deg": 112,
+                "mean_right_antenna_deg": 112,
+                "mean_scape_angle_deg": 112
+              },
+              "row_count": 112
+            },
+            {
+              "bee_id": "n46",
+              "frame_max": 350,
+              "frame_min": 0,
+              "left_right_antenna_synchrony": -0.18361988004288937,
+              "mean_angle_to_dancer_deg": -92.75050881353447,
+              "mean_antenna_midpoint_deg": -5.148017017377763,
+              "mean_dancer_angle_to_gravity_deg": 103.72345331299759,
+              "mean_left_antenna_deg": 31.687015719848308,
+              "mean_right_antenna_deg": -41.98304975460379,
+              "mean_scape_angle_deg": 73.67006547445212,
+              "observation_counts": {
+                "frame": 285,
+                "left_right_antenna_synchrony": 285,
+                "mean_angle_to_dancer_deg": 285,
+                "mean_antenna_midpoint_deg": 285,
+                "mean_dancer_angle_to_gravity_deg": 285,
+                "mean_left_antenna_deg": 285,
+                "mean_right_antenna_deg": 285,
+                "mean_scape_angle_deg": 285
+              },
+              "row_count": 285
+            },
+            {
+              "bee_id": "n47",
+              "frame_max": 277,
+              "frame_min": 0,
+              "left_right_antenna_synchrony": 0.12184448600193264,
+              "mean_angle_to_dancer_deg": -37.25688102931259,
+              "mean_antenna_midpoint_deg": -8.415422243211633,
+              "mean_dancer_angle_to_gravity_deg": 103.39436137773872,
+              "mean_left_antenna_deg": 31.680577709882893,
+              "mean_right_antenna_deg": -48.51142219630614,
+              "mean_scape_angle_deg": 80.19199990618904,
+              "observation_counts": {
+                "frame": 94,
+                "left_right_antenna_synchrony": 94,
+                "mean_angle_to_dancer_deg": 94,
+                "mean_antenna_midpoint_deg": 94,
+                "mean_dancer_angle_to_gravity_deg": 94,
+                "mean_left_antenna_deg": 94,
+                "mean_right_antenna_deg": 94,
+                "mean_scape_angle_deg": 94
+              },
+              "row_count": 94
+            },
+            {
+              "bee_id": "n48",
+              "frame_max": 353,
+              "frame_min": 149,
+              "left_right_antenna_synchrony": -0.3539420317261781,
+              "mean_angle_to_dancer_deg": -98.74656548595756,
+              "mean_antenna_midpoint_deg": -5.4704946621273525,
+              "mean_dancer_angle_to_gravity_deg": 111.57163213492045,
+              "mean_left_antenna_deg": 28.98803260093546,
+              "mean_right_antenna_deg": -39.929021925190156,
+              "mean_scape_angle_deg": 68.91705452612555,
+              "observation_counts": {
+                "frame": 174,
+                "left_right_antenna_synchrony": 174,
+                "mean_angle_to_dancer_deg": 174,
+                "mean_antenna_midpoint_deg": 174,
+                "mean_dancer_angle_to_gravity_deg": 174,
+                "mean_left_antenna_deg": 174,
+                "mean_right_antenna_deg": 174,
+                "mean_scape_angle_deg": 174
+              },
+              "row_count": 174
+            },
+            {
+              "bee_id": "n49",
+              "frame_max": 340,
+              "frame_min": 180,
+              "left_right_antenna_synchrony": -0.44050942453166364,
+              "mean_angle_to_dancer_deg": -76.62637140396507,
+              "mean_antenna_midpoint_deg": -21.213076364934796,
+              "mean_dancer_angle_to_gravity_deg": 86.83682511737597,
+              "mean_left_antenna_deg": 19.50628013932372,
+              "mean_right_antenna_deg": -61.93243286919325,
+              "mean_scape_angle_deg": 81.52851114600712,
+              "observation_counts": {
+                "frame": 77,
+                "left_right_antenna_synchrony": 77,
+                "mean_angle_to_dancer_deg": 77,
+                "mean_antenna_midpoint_deg": 77,
+                "mean_dancer_angle_to_gravity_deg": 77,
+                "mean_left_antenna_deg": 77,
+                "mean_right_antenna_deg": 77,
+                "mean_scape_angle_deg": 77
+              },
+              "row_count": 77
+            },
+            {
+              "bee_id": "n49_1",
+              "frame_max": 1346,
+              "frame_min": 730,
+              "left_right_antenna_synchrony": -0.23357761147340902,
+              "mean_angle_to_dancer_deg": -89.40238530880643,
+              "mean_antenna_midpoint_deg": -10.710745823847788,
+              "mean_dancer_angle_to_gravity_deg": 94.90600017161196,
+              "mean_left_antenna_deg": 33.645974070512345,
+              "mean_right_antenna_deg": -55.06746571820786,
+              "mean_scape_angle_deg": 88.71343978872017,
+              "observation_counts": {
+                "frame": 346,
+                "left_right_antenna_synchrony": 346,
+                "mean_angle_to_dancer_deg": 346,
+                "mean_antenna_midpoint_deg": 346,
+                "mean_dancer_angle_to_gravity_deg": 346,
+                "mean_left_antenna_deg": 346,
+                "mean_right_antenna_deg": 346,
+                "mean_scape_angle_deg": 346
+              },
+              "row_count": 346
+            },
+            {
+              "bee_id": "n5",
+              "frame_max": 223,
+              "frame_min": 0,
+              "left_right_antenna_synchrony": -0.2705520554358929,
+              "mean_angle_to_dancer_deg": -129.92175846527704,
+              "mean_antenna_midpoint_deg": -3.5695122778505977,
+              "mean_dancer_angle_to_gravity_deg": -53.813039114340754,
+              "mean_left_antenna_deg": 45.908359337491554,
+              "mean_right_antenna_deg": -53.04738389319276,
+              "mean_scape_angle_deg": 98.95574323068429,
+              "observation_counts": {
+                "frame": 183,
+                "left_right_antenna_synchrony": 183,
+                "mean_angle_to_dancer_deg": 183,
+                "mean_antenna_midpoint_deg": 183,
+                "mean_dancer_angle_to_gravity_deg": 183,
+                "mean_left_antenna_deg": 183,
+                "mean_right_antenna_deg": 183,
+                "mean_scape_angle_deg": 183
+              },
+              "row_count": 183
+            },
+            {
+              "bee_id": "n50",
+              "frame_max": 1343,
+              "frame_min": 1271,
+              "left_right_antenna_synchrony": -0.7587433353061633,
+              "mean_angle_to_dancer_deg": 1.7443509865291678,
+              "mean_antenna_midpoint_deg": 28.124746383348477,
+              "mean_dancer_angle_to_gravity_deg": 95.35021635270736,
+              "mean_left_antenna_deg": 74.20392365278269,
+              "mean_right_antenna_deg": -17.95443088608572,
+              "mean_scape_angle_deg": 92.15835453886842,
+              "observation_counts": {
+                "frame": 46,
+                "left_right_antenna_synchrony": 46,
+                "mean_angle_to_dancer_deg": 46,
+                "mean_antenna_midpoint_deg": 46,
+                "mean_dancer_angle_to_gravity_deg": 46,
+                "mean_left_antenna_deg": 46,
+                "mean_right_antenna_deg": 46,
+                "mean_scape_angle_deg": 46
+              },
+              "row_count": 46
+            },
+            {
+              "bee_id": "n5_1",
+              "frame_max": 894,
+              "frame_min": 533,
+              "left_right_antenna_synchrony": -0.6350785900738734,
+              "mean_angle_to_dancer_deg": -120.96905154835066,
+              "mean_antenna_midpoint_deg": -7.326944620463368,
+              "mean_dancer_angle_to_gravity_deg": -39.941093343610675,
+              "mean_left_antenna_deg": 38.79848212519665,
+              "mean_right_antenna_deg": -53.45237136612343,
+              "mean_scape_angle_deg": 92.25085349132004,
+              "observation_counts": {
+                "frame": 233,
+                "left_right_antenna_synchrony": 233,
+                "mean_angle_to_dancer_deg": 233,
+                "mean_antenna_midpoint_deg": 233,
+                "mean_dancer_angle_to_gravity_deg": 233,
+                "mean_left_antenna_deg": 233,
+                "mean_right_antenna_deg": 233,
+                "mean_scape_angle_deg": 233
+              },
+              "row_count": 233
+            },
+            {
+              "bee_id": "n6",
+              "frame_max": 228,
+              "frame_min": 0,
+              "left_right_antenna_synchrony": -0.16171249415157934,
+              "mean_angle_to_dancer_deg": -78.49930398161126,
+              "mean_antenna_midpoint_deg": -8.81744951545038,
+              "mean_dancer_angle_to_gravity_deg": -55.95998106317305,
+              "mean_left_antenna_deg": 28.57211010530161,
+              "mean_right_antenna_deg": -46.20700913620242,
+              "mean_scape_angle_deg": 74.77911924150395,
+              "observation_counts": {
+                "frame": 187,
+                "left_right_antenna_synchrony": 187,
+                "mean_angle_to_dancer_deg": 187,
+                "mean_antenna_midpoint_deg": 187,
+                "mean_dancer_angle_to_gravity_deg": 187,
+                "mean_left_antenna_deg": 187,
+                "mean_right_antenna_deg": 187,
+                "mean_scape_angle_deg": 187
+              },
+              "row_count": 187
+            },
+            {
+              "bee_id": "n7",
+              "frame_max": 2640,
+              "frame_min": 2207,
+              "left_right_antenna_synchrony": -0.11824150464714177,
+              "mean_angle_to_dancer_deg": 103.32594151033169,
+              "mean_antenna_midpoint_deg": 9.644446738174373,
+              "mean_dancer_angle_to_gravity_deg": -39.781239758478826,
+              "mean_left_antenna_deg": 50.30300809055991,
+              "mean_right_antenna_deg": -31.014114614211167,
+              "mean_scape_angle_deg": 81.31712270477115,
+              "observation_counts": {
+                "frame": 400,
+                "left_right_antenna_synchrony": 400,
+                "mean_angle_to_dancer_deg": 400,
+                "mean_antenna_midpoint_deg": 400,
+                "mean_dancer_angle_to_gravity_deg": 400,
+                "mean_left_antenna_deg": 400,
+                "mean_right_antenna_deg": 400,
+                "mean_scape_angle_deg": 400
+              },
+              "row_count": 400
+            },
+            {
+              "bee_id": "n8",
+              "frame_max": 1081,
+              "frame_min": 720,
+              "left_right_antenna_synchrony": 0.019712428238093292,
+              "mean_angle_to_dancer_deg": -57.845952855322516,
+              "mean_antenna_midpoint_deg": 5.410518513074222,
+              "mean_dancer_angle_to_gravity_deg": -28.679871185316333,
+              "mean_left_antenna_deg": 41.2091882756993,
+              "mean_right_antenna_deg": -30.388151249550848,
+              "mean_scape_angle_deg": 71.59733952525013,
+              "observation_counts": {
+                "frame": 350,
+                "left_right_antenna_synchrony": 350,
+                "mean_angle_to_dancer_deg": 350,
+                "mean_antenna_midpoint_deg": 350,
+                "mean_dancer_angle_to_gravity_deg": 350,
+                "mean_left_antenna_deg": 350,
+                "mean_right_antenna_deg": 350,
+                "mean_scape_angle_deg": 350
+              },
+              "row_count": 350
+            },
+            {
+              "bee_id": "n8_1",
+              "frame_max": 1633,
+              "frame_min": 1511,
+              "left_right_antenna_synchrony": 0.1275475961263127,
+              "mean_angle_to_dancer_deg": 133.07753124467507,
+              "mean_antenna_midpoint_deg": -0.43688008932907946,
+              "mean_dancer_angle_to_gravity_deg": -23.836525220488717,
+              "mean_left_antenna_deg": 30.453806502909224,
+              "mean_right_antenna_deg": -31.32756668156739,
+              "mean_scape_angle_deg": 61.78137318447666,
+              "observation_counts": {
+                "frame": 99,
+                "left_right_antenna_synchrony": 99,
+                "mean_angle_to_dancer_deg": 99,
+                "mean_antenna_midpoint_deg": 99,
+                "mean_dancer_angle_to_gravity_deg": 99,
+                "mean_left_antenna_deg": 99,
+                "mean_right_antenna_deg": 99,
+                "mean_scape_angle_deg": 99
+              },
+              "row_count": 99
+            },
+            {
+              "bee_id": "n8_2",
+              "frame_max": 2581,
+              "frame_min": 2209,
+              "left_right_antenna_synchrony": -0.19819936183568593,
+              "mean_angle_to_dancer_deg": -107.51126777927148,
+              "mean_antenna_midpoint_deg": -6.01528692362184,
+              "mean_dancer_angle_to_gravity_deg": -40.73783811009973,
+              "mean_left_antenna_deg": 37.57711482901203,
+              "mean_right_antenna_deg": -49.60768867625571,
+              "mean_scape_angle_deg": 87.18480350526777,
+              "observation_counts": {
+                "frame": 307,
+                "left_right_antenna_synchrony": 307,
+                "mean_angle_to_dancer_deg": 307,
+                "mean_antenna_midpoint_deg": 307,
+                "mean_dancer_angle_to_gravity_deg": 307,
+                "mean_left_antenna_deg": 307,
+                "mean_right_antenna_deg": 307,
+                "mean_scape_angle_deg": 307
+              },
+              "row_count": 307
+            },
+            {
+              "bee_id": "n9",
+              "frame_max": 67,
+              "frame_min": 0,
+              "left_right_antenna_synchrony": -0.44210640086825165,
+              "mean_angle_to_dancer_deg": 151.96623706731464,
+              "mean_antenna_midpoint_deg": 0.39768564066506146,
+              "mean_dancer_angle_to_gravity_deg": -33.61342736512585,
+              "mean_left_antenna_deg": 24.556705637297018,
+              "mean_right_antenna_deg": -23.76133435596687,
+              "mean_scape_angle_deg": 48.31803999326387,
+              "observation_counts": {
+                "frame": 66,
+                "left_right_antenna_synchrony": 66,
+                "mean_angle_to_dancer_deg": 66,
+                "mean_antenna_midpoint_deg": 66,
+                "mean_dancer_angle_to_gravity_deg": 66,
+                "mean_left_antenna_deg": 66,
+                "mean_right_antenna_deg": 66,
+                "mean_scape_angle_deg": 66
+              },
+              "row_count": 66
+            }
+          ]
+        },
+        "status": "parsed"
+      },
+      "odor_panels": {
+        "record_count": 0,
+        "status": "absent"
+      },
+      "supplement": {
+        "report": {
+          "dataset_id": "szyszka-2023-granger-al-network",
+          "odor_labels": [
+            "1HEX",
+            "3HEX",
+            "1NON",
+            "ISOA",
+            "ACPH",
+            "BZDA"
+          ],
+          "rows": [
+            {
+              "condition_index": 0,
+              "fdr_p": 0.0004,
+              "odor": "1HEX",
+              "original_p": 0.0001,
+              "signed_rank_w": 119.0
+            },
+            {
+              "condition_index": 1,
+              "fdr_p": 0.02,
+              "odor": "1HEX",
+              "original_p": 0.013,
+              "signed_rank_w": 103.0
+            },
+            {
+              "condition_index": 2,
+              "fdr_p": 0.72,
+              "odor": "1HEX",
+              "original_p": 0.72,
+              "signed_rank_w": 52.0
+            },
+            {
+              "condition_index": 3,
+              "fdr_p": 0.001,
+              "odor": "1HEX",
+              "original_p": 0.0016,
+              "signed_rank_w": 110.0
+            },
+            {
+              "condition_index": 4,
+              "fdr_p": 0.32,
+              "odor": "1HEX",
+              "original_p": 0.16,
+              "signed_rank_w": 84.0
+            },
+            {
+              "condition_index": 5,
+              "fdr_p": 0.24,
+              "odor": "1HEX",
+              "original_p": 0.078,
+              "signed_rank_w": 29.0
+            },
+            {
+              "condition_index": 6,
+              "fdr_p": 0.0002,
+              "odor": "1HEX",
+              "original_p": 0.0002,
+              "signed_rank_w": 118.0
+            },
+            {
+              "condition_index": 7,
+              "fdr_p": 0.11,
+              "odor": "1HEX",
+              "original_p": 0.07,
+              "signed_rank_w": 92.0
+            },
+            {
+              "condition_index": 0,
+              "fdr_p": 0.0032,
+              "odor": "3HEX",
+              "original_p": 0.0016,
+              "signed_rank_w": 99.0
+            },
+            {
+              "condition_index": 1,
+              "fdr_p": 0.0044,
+              "odor": "3HEX",
+              "original_p": 0.0022,
+              "signed_rank_w": 98.0
+            },
+            {
+              "condition_index": 2,
+              "fdr_p": 0.59,
+              "odor": "3HEX",
+              "original_p": 0.3,
+              "signed_rank_w": 53.0
+            },
+            {
+              "condition_index": 3,
+              "fdr_p": 0.54,
+              "odor": "3HEX",
+              "original_p": 0.45,
+              "signed_rank_w": 75.0
+            },
+            {
+              "condition_index": 4,
+              "fdr_p": 0.54,
+              "odor": "3HEX",
+              "original_p": 0.45,
+              "signed_rank_w": 75.0
+            },
+            {
+              "condition_index": 5,
+              "fdr_p": 0.04,
+              "odor": "3HEX",
+              "original_p": 0.0065,
+              "signed_rank_w": 15.0
+            },
+            {
+              "condition_index": 6,
+              "fdr_p": 0.0002,
+              "odor": "3HEX",
+              "original_p": 0.0001,
+              "signed_rank_w": 119.0
+            },
+            {
+              "condition_index": 7,
+              "fdr_p": 0.0015,
+              "odor": "3HEX",
+              "original_p": 0.0005,
+              "signed_rank_w": 114.0
+            },
+            {
+              "condition_index": 0,
+              "fdr_p": 0.005,
+              "odor": "1NON",
+              "original_p": 0.0034,
+              "signed_rank_w": 109.0
+            },
+            {
+              "condition_index": 1,
+              "fdr_p": 0.0015,
+              "odor": "1NON",
+              "original_p": 0.0005,
+              "signed_rank_w": 78.0
+            },
+            {
+              "condition_index": 2,
+              "fdr_p": 0.64,
+              "odor": "1NON",
+              "original_p": 0.54,
+              "signed_rank_w": 42.0
+            },
+            {
+              "condition_index": 3,
+              "fdr_p": 0.012,
+              "odor": "1NON",
+              "original_p": 0.0056,
+              "signed_rank_w": 105.0
+            },
+            {
+              "condition_index": 4,
+              "fdr_p": 0.21,
+              "odor": "1NON",
+              "original_p": 0.07,
+              "signed_rank_w": 92.0
+            },
+            {
+              "condition_index": 5,
+              "fdr_p": 0.38,
+              "odor": "1NON",
+              "original_p": 0.32,
+              "signed_rank_w": 42.0
+            },
+            {
+              "condition_index": 6,
+              "fdr_p": 0.0002,
+              "odor": "1NON",
+              "original_p": 0.0001,
+              "signed_rank_w": 105.0
+            },
+            {
+              "condition_index": 7,
+              "fdr_p": 0.0007,
+              "odor": "1NON",
+              "original_p": 0.0001,
+              "signed_rank_w": 119.0
+            },
+            {
+              "condition_index": 0,
+              "fdr_p": 0.0004,
+              "odor": "ISOA",
+              "original_p": 0.0001,
+              "signed_rank_w": 120.0
+            },
+            {
+              "condition_index": 1,
+              "fdr_p": 0.0015,
+              "odor": "ISOA",
+              "original_p": 0.0004,
+              "signed_rank_w": 103.0
+            },
+            {
+              "condition_index": 2,
+              "fdr_p": 0.59,
+              "odor": "ISOA",
+              "original_p": 0.12,
+              "signed_rank_w": 78.0
+            },
+            {
+              "condition_index": 3,
+              "fdr_p": 0.012,
+              "odor": "ISOA",
+              "original_p": 0.0056,
+              "signed_rank_w": 105.0
+            },
+            {
+              "condition_index": 4,
+              "fdr_p": 0.1,
+              "odor": "ISOA",
+              "original_p": 0.016,
+              "signed_rank_w": 99.0
+            },
+            {
+              "condition_index": 5,
+              "fdr_p": 0.45,
+              "odor": "ISOA",
+              "original_p": 0.45,
+              "signed_rank_w": 75.0
+            },
+            {
+              "condition_index": 6,
+              "fdr_p": 0.0002,
+              "odor": "ISOA",
+              "original_p": 0.0001,
+              "signed_rank_w": 120.0
+            },
+            {
+              "condition_index": 7,
+              "fdr_p": 0.012,
+              "odor": "ISOA",
+              "original_p": 0.0056,
+              "signed_rank_w": 105.0
+            },
+            {
+              "condition_index": 0,
+              "fdr_p": 0.018,
+              "odor": "ACPH",
+              "original_p": 0.018,
+              "signed_rank_w": 101.0
+            },
+            {
+              "condition_index": 1,
+              "fdr_p": 0.33,
+              "odor": "ACPH",
+              "original_p": 0.28,
+              "signed_rank_w": 71.0
+            },
+            {
+              "condition_index": 2,
+              "fdr_p": 0.64,
+              "odor": "ACPH",
+              "original_p": 0.52,
+              "signed_rank_w": 42.0
+            },
+            {
+              "condition_index": 3,
+              "fdr_p": 0.47,
+              "odor": "ACPH",
+              "original_p": 0.32,
+              "signed_rank_w": 42.0
+            },
+            {
+              "condition_index": 4,
+              "fdr_p": 0.47,
+              "odor": "ACPH",
+              "original_p": 0.32,
+              "signed_rank_w": 42.0
+            },
+            {
+              "condition_index": 5,
+              "fdr_p": 0.32,
+              "odor": "ACPH",
+              "original_p": 0.16,
+              "signed_rank_w": 84.0
+            },
+            {
+              "condition_index": 6,
+              "fdr_p": 0.001,
+              "odor": "ACPH",
+              "original_p": 0.001,
+              "signed_rank_w": 101.0
+            },
+            {
+              "condition_index": 7,
+              "fdr_p": 0.2,
+              "odor": "ACPH",
+              "original_p": 0.16,
+              "signed_rank_w": 84.0
+            },
+            {
+              "condition_index": 0,
+              "fdr_p": 0.013,
+              "odor": "BZDA",
+              "original_p": 0.011,
+              "signed_rank_w": 92.0
+            },
+            {
+              "condition_index": 1,
+              "fdr_p": 0.99,
+              "odor": "BZDA",
+              "original_p": 0.99,
+              "signed_rank_w": 61.0
+            },
+            {
+              "condition_index": 2,
+              "fdr_p": 0.59,
+              "odor": "BZDA",
+              "original_p": 0.22,
+              "signed_rank_w": 27.0
+            },
+            {
+              "condition_index": 3,
+              "fdr_p": 0.56,
+              "odor": "BZDA",
+              "original_p": 0.56,
+              "signed_rank_w": 55.0
+            },
+            {
+              "condition_index": 4,
+              "fdr_p": 0.68,
+              "odor": "BZDA",
+              "original_p": 0.68,
+              "signed_rank_w": 60.0
+            },
+            {
+              "condition_index": 5,
+              "fdr_p": 0.38,
+              "odor": "BZDA",
+              "original_p": 0.32,
+              "signed_rank_w": 42.0
+            },
+            {
+              "condition_index": 6,
+              "fdr_p": 0.0002,
+              "odor": "BZDA",
+              "original_p": 0.0001,
+              "signed_rank_w": 105.0
+            },
+            {
+              "condition_index": 7,
+              "fdr_p": 0.71,
+              "odor": "BZDA",
+              "original_p": 0.71,
+              "signed_rank_w": 54.0
+            }
+          ],
+          "source_files": [
+            "output/data/empirical_sources/szyszka-2023-granger-al-network/supplementary/insects-14-00539-s001.zip"
+          ],
+          "table_s1_row_count": 48,
+          "var_connectivity_available": false
+        },
+        "status": "parsed"
+      }
+    },
+    "runtime_scope": "Real retained standalone parser replay, not new acquisition or a current odor-conditioned aggregate. Final research and methods use analysis_unavailable, with zero CURRENT-analysis contribution; no raw-payload-absence inference.",
+    "limit": "No local odor-response panel/calcium/antennal payload was synthesized. Waggle parsing and anatomy vocabulary/supplement parsing are not biological validation or anatomical geometry evidence."
   },
   "scholarship": {
     "report": "output/reports/workflowz_source_verification.json",
@@ -1812,9 +4149,9 @@
     "No exhaustive decompressor fuzzing, worst-case peak-RSS proof or full third-party/native bundled-library audit. OSV returned zero findings for 73 exact PyPI lock versions only.",
     "No comparable performance benchmark or cross-platform binary/render reproducibility claim.",
     "Historical ISA 119/119 and May PASS statements are not today\u2019s criterion-by-criterion proof.",
-    "Authenticated deposit, remote main/tag/release/assets and post-push CI not performed.",
     "Primary-source identity/DOI checks do not independently full-text verify every scientific claim or parameter.",
-    "Interactive files exercised on desktop installed Chrome only; no mobile, cross-browser or WCAG certification. Their Plotly viewer requires cdn.plot.ly; PNG/PDF artifacts remain the offline presentation surface."
+    "Interactive files exercised on desktop installed Chrome only; no mobile, cross-browser or WCAG certification. Their Plotly viewer requires cdn.plot.ly; PNG/PDF artifacts remain the offline presentation surface.",
+    "Live main push/post-push Linux CI, tag/release/assets and remote branch cleanup are subsequent effects outside this pre-publication source-content receipt; exact outcomes belong to the repository-local release manifest and final delivery. No success is anticipated here."
   ],
   "failures_and_superseded_evidence": [
     "Intermediate coverage, manuscript path/cwd, offline-figure, typography and build-contamination failures were fixed and re-exercised; native command history retains failed attempts.",
@@ -1828,38 +4165,35 @@
     "One final full-suite launch was interrupted by the Eval client timeout after successful lock/lint/format steps. Its process tree was reaped; only the interrupted pytest step and subsequent payload observer were resumed successfully.",
     "A superseded native run was intentionally cancelled after the unobserved empirical mean defect was confirmed. No result from that cancelled chain certifies the final source."
   ],
-  "custody_note": "Initial dependency-cache bootstrap let Git discover the ancestor repository from an empty cache path. Guarded corrective fetch restored nonshallow history; original HEAD/origin/branches were preserved, without stash/reset/history rewrite or unrelated checkout mutation.",
+  "custody_note": "Only BeeStack and its repository-local owned validation lane changed. Fresh repository/common-store leases guard mutations; bounded offline receipts prove immutable current source. No sibling/manager/global changes, stash/reset/clean/force, Herdr control or other-owner branch/tree deletion.",
   "publication": {
+    "state_at_receipt_capture": "not tagged or published; native main push not yet performed",
     "remote_main_observed": "015550a26d57a36e45bbada018daf126b5332d93",
-    "merged_to_remote_main": false,
-    "new_tag": null,
+    "target_branch": "main",
+    "code_source_commit": "a460c466f6ac781eb13925cdd42c08bfacd41556",
+    "planned_version_tag": "v2.0.0",
     "new_release_url": null,
     "pr_url": null,
     "published": false,
     "historical_release": "https://github.com/docxology/BeeStack/releases/tag/v1.0.0",
     "historical_doi": "10.5281/zenodo.20420557",
     "new_doi": null,
-    "live_zenodo": "Concept 20420556 has one public record, version 1.0 (20420557); not reused for 2.0.",
-    "blockers": [
-      "Strict --check --require-doi refuses the absent version DOI; no Zenodo token or reachable authenticated owner browser session.",
-      "Governed GitHub config enables only issues; release writes disabled and installed asset continuation does not authorize BeeStack PDF uploads. No raw gh/HTTP/CI bypass.",
-      "Default-branch push requires a frozen one-repository plan and exact PUSH 1 OWNED REPOSITORIES confirmation; no confirmed candidate plan available."
+    "write_classes_observed": [
+      "issues",
+      "repo-create"
     ],
-    "operator_prerequisites": "Reserve the version DOI with authenticated owner access and provide an approved governed release/asset route, then rerender/reseal and obtain exact frozen push confirmation. Manager/configuration changes are outside this task.",
-    "candidate_v2_tag_collisions_observed": [],
     "effective_main_rules_observed": [
       "deletion",
       "non_fast_forward"
     ],
-    "remote_observation_urls": [
-      "https://api.github.com/repos/docxology/BeeStack/git/ref/heads/main",
-      "https://api.github.com/repos/docxology/BeeStack/git/matching-refs/tags/v2",
-      "https://api.github.com/repos/docxology/BeeStack/releases/latest",
-      "https://api.github.com/repos/docxology/BeeStack/rules/branches/main"
+    "native_main_route": "Documented authorized owned-project ordinary exact-SHA fast-forward push under repository/common-store lease, pinned-token identity and live readback; no force or branch-protection bypass. Typed name-only push route not used.",
+    "blockers": [
+      "Governed release class disabled; no alternate remote tag/release write attempted.",
+      "Established BeeStack release has a combined PDF; reviewed asset continuation is HumMarkets-only and accepts wheel/sdist/checksums, not a BeeStack PDF. No HumOS/manager paths or configuration imported.",
+      "New version DOI unassigned: strict deposit fails explicitly; ordinary repository publication gate passes.",
+      "Remote branch cleanup requires state write class and actual exact reviewed confirmation; current classes exclude state."
     ],
-    "write_classes_observed": [
-      "issues"
-    ],
-    "local_source_commit_note": "Final commit SHA and committed-source archive binding live in the repository-local candidate manifest/final chat; this generated receipt seals source content without a self-referential commit hash."
+    "operator_prerequisites": "Approved governed BeeStack release/PDF-asset route and release/state admission with actual exact plan confirmations; new version DOI only for strict deposit. No manager/configuration changes authorized.",
+    "local_source_commit_note": "This source-content receipt precedes publication. Exact subsequent main/CI/tag/release state is recorded separately without a self-referential commit hash."
   }
 }

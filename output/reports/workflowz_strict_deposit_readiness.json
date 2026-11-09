@@ -1,0 +1,28 @@
+{
+  "blockers": [
+    "publication.doi not set in docs/manuscript/config.yaml"
+  ],
+  "checks": {
+    "changelog_present": true,
+    "combined_pdf": true,
+    "doi_configured": false,
+    "empirical_analysis_current": false,
+    "generated_report_audit": true,
+    "legacy_pdf_absent": true,
+    "manuscript_render_current": true,
+    "manuscript_sections_hydrated": true,
+    "manuscript_variables_hydrated": true,
+    "manuscript_version": true,
+    "package_version": true,
+    "parseability_flag_consistent": true,
+    "parseability_target_satisfied": false,
+    "security_posture": true,
+    "validation_fraction_discloses_gaps": true
+  },
+  "ok": false,
+  "package_version": "2.0.0",
+  "release": "2.0",
+  "warnings": [
+    "No current odor-response panel analysis; retained empirical figures/reports are historical and manuscript values are unavailable, not zero."
+  ]
+}

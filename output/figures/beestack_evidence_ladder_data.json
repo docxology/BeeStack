@@ -1,17 +1,17 @@
 {
   "annotations": [
-    "Visual evidence contract separating backend, claim tier, validation status, source data, and unsupported inference for current BeeStack figures.",
+    "Conceptual guide to evidence classes, potential evidence surfaces, and unsupported inferences; it is not a current availability or validation report.",
     "claim_tier=fidelity_boundary",
-    "source_data=methods analysis, readiness review, and generated artifact manifests"
+    "source_data=conceptual evidence-class and claim-ceiling contract"
   ],
   "chart_type": "schematic",
   "figure_path": "output/figures/beestack_evidence_ladder.png",
   "nodes": [
     {
       "id": "fig:beestack_evidence_ladder",
-      "label": "BeeStack evidence ladder"
+      "label": "Evidence classes and claim ceilings"
     }
   ],
   "schema": "beestack.figure_data.v1",
-  "title": "BeeStack evidence ladder"
+  "title": "Evidence classes and claim ceilings"
 }

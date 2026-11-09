@@ -7,7 +7,7 @@
     {
       "artifact_count": 22,
       "evidence_count": 2,
-      "fidelity_level": "FlyBody render path plus reduced closed-loop telemetry",
+      "fidelity_level": "FlyBody render path plus separate reduced-scenario telemetry",
       "known_gap_count": 2,
       "log_metric_mean": 0.8128488265126244,
       "metric_count": 14,

@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
-  "alt_text": "Diagram mapping BeeBrain anatomy and waggle neuroethology anchors into BeeMind belief, preference, and policy terms.",
+  "alt_text": "Anatomical anchors, conceptual roles, and controller analogies joined by non-directional dashed links.",
   "artifact_kind": "figure",
   "backend": "Matplotlib",
-  "caption": "Matplotlib beebrain to beemind anatomy-policy map shows Anatomy-to-policy map linking antennal-lobe, mushroom-body, central-complex, and waggle-follower anchors to BeeMind belief and policy contracts. Generated from source refresh ledger, BeeBrain source registry, and active-inference methods records. Sidecar validation checks raster, source routing, and registered claim tier. Does not support connectome-scale, calcium-validated, or learned generative dynamics.",
+  "caption": "Scholarly anatomy and neuroethology anchors beside conceptual roles and controller analogies. Dashed links do not represent fitted mappings or executed neural feedback. Generated from source refresh ledger, BeeBrain source registry, and active-inference methods records using Matplotlib. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not support connectome-scale, calcium-validated, or learned generative dynamics.",
   "citation_keys": [
     "brandt2005standardbrain",
     "rybak2010digital",
@@ -46,14 +47,14 @@
   "plot_data_path": "output/figures/beebrain_beemind_anatomy_policy_map_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 1028,
+    "height_px": 1027,
     "max_intensity": 255,
-    "mean_intensity": 241.28737684289436,
+    "mean_intensity": 250.6718067569806,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 43.59007295790262,
-    "width_px": 2180
+    "std_intensity": 28.02969077346608,
+    "width_px": 1928
   },
   "regeneration_command": "uv run python scripts/analysis_pipeline.py",
   "schema": "beestack.figure.v1",
@@ -66,19 +67,19 @@
     "10.1038/nrn2787",
     "10.1038/s41598-017-15249-0"
   ],
-  "title": "Beebrain Beemind Anatomy Policy Map",
+  "title": "Anatomy and policy: conceptual analogies only",
   "unsupported_inference": "Does not support connectome-scale, calcium-validated, or learned generative dynamics.",
   "validation_status": "nonblank quality sidecar and plot data generated",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 2.121,
+    "aspect_ratio": 1.877,
     "figure_role": "overview",
-    "height_px": 1028,
-    "label_density": "dense",
+    "height_px": 1027,
+    "label_density": "moderate",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 2180,
-    "min_dimension_px": 1028,
+    "max_dimension_px": 1928,
+    "min_dimension_px": 1027,
     "readability_status": "pass",
-    "width_px": 2180
+    "width_px": 1928
   }
 }

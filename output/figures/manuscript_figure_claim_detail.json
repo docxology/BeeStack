@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
-  "alt_text": "Two-column detail table of registered primary figure provenance and not-supported boundaries.",
+  "alt_text": "Table of source classes, artifact counts, declared family counts, and claim ceilings.",
   "artifact_kind": "figure",
   "backend": "Matplotlib",
-  "caption": "Matplotlib beestack manuscript figure claim detail shows Split companion table listing primary figures, source-data classes, claim tiers, and unsupported-inference boundaries. Generated from figure registry and manuscript figure index. Sidecar validation checks raster, source routing, and registered claim tier. Does not add empirical evidence beyond the registered figure sidecars.",
+  "caption": "Grouped source classes with registered artifact counts, declared claim-family counts, and conservative claim ceilings. Full per-artifact routes and unsupported inferences remain in the registry and raw inventory. Generated from figure registry and manuscript figure index using Matplotlib. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not add empirical evidence beyond the registered figure sidecars.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
@@ -35,7 +36,7 @@
     "10.1145/2133806.2133821",
     "10.1109/TVCG.2015.2467551"
   ],
-  "fidelity": "reduced deterministic kernel diagnostic",
+  "fidelity": "architecture schematic",
   "figure_path": "output/figures/manuscript_figure_claim_detail.png",
   "manuscript_label": "fig:manuscript_figure_claim_detail",
   "manuscript_section": "docs/manuscript/08_validation_and_figures.md",
@@ -45,14 +46,14 @@
   "plot_data_path": "output/figures/manuscript_figure_claim_detail_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 2014,
+    "height_px": 1153,
     "max_intensity": 255,
-    "mean_intensity": 244.7334160133906,
+    "mean_intensity": 248.4412032137926,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 35.4193637277201,
-    "width_px": 2684
+    "std_intensity": 30.575688042510944,
+    "width_px": 2108
   },
   "regeneration_command": "uv run python scripts/analysis_pipeline.py",
   "schema": "beestack.figure.v1",
@@ -61,20 +62,20 @@
     "10.1371/journal.pcbi.1005510",
     "10.3233/DS-190026"
   ],
-  "title": "Manuscript Figure Claim Detail",
+  "title": "Primary-figure sources and claim ceilings",
   "unsupported_inference": "Does not add empirical evidence beyond the registered figure sidecars.",
   "validation_status": "nonblank quality sidecar and plot data generated",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 1.333,
+    "aspect_ratio": 1.828,
     "figure_role": "detail",
-    "height_px": 2014,
+    "height_px": 1153,
     "label_density": "dense",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 2684,
-    "min_dimension_px": 2014,
+    "max_dimension_px": 2108,
+    "min_dimension_px": 1153,
     "readability_status": "pass",
     "split_group": "manuscript_figure_claims",
-    "width_px": 2684
+    "width_px": 2108
   }
 }

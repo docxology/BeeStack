@@ -1,63 +1,90 @@
 {
-  "scope": "final standalone native source, clean distribution, both installed commands and manuscript admission",
+  "source_commit": "a460c466f6ac781eb13925cdd42c08bfacd41556",
+  "scope": "final promotion gate after all audit/UI evidence: documentation, security, signposting, fresh hydration/render seal, generated/publication audits and current pixels/local links",
   "steps": [
     {
       "argv": [
         "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "scripts/analysis_pipeline.py"
+        "scripts/signpost_project_tree.py"
       ],
       "returncode": 0,
-      "seconds": 216.872,
-      "expected_returncode": 0
+      "seconds": 3.2
     },
     {
       "argv": [
         "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "$PROJECT/.uv-cache/wfz-release/final_wheel_runtime.py",
-        "$PROJECT"
+        "scripts/audit_documentation.py"
       ],
       "returncode": 0,
-      "seconds": 257.236,
-      "expected_returncode": 0
+      "seconds": 2.568
     },
     {
       "argv": [
         "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "$PROJECT/.uv-cache/wfz-release/installed_consumer_completion.py",
-        "$PROJECT"
+        "scripts/run_security_audit.py"
       ],
       "returncode": 0,
-      "seconds": 263.814,
-      "expected_returncode": 0
+      "seconds": 2.651
     },
     {
       "argv": [
         "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "$PROJECT/.uv-cache/wfz-release/native_remaining_gates.py"
+        "scripts/signpost_project_tree.py",
+        "--check"
       ],
-      "returncode": 1,
-      "seconds": 69.605,
-      "expected_returncode": 1
+      "returncode": 0,
+      "seconds": 2.963
     },
     {
       "argv": [
         "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "$PROJECT/.uv-cache/wfz-release/inspect_pdf.py"
+        "scripts/z_generate_manuscript_variables.py"
       ],
       "returncode": 0,
-      "seconds": 3.998,
-      "expected_returncode": 0
+      "seconds": 2.813
     },
     {
       "argv": [
         "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
-        "$PROJECT/.uv-cache/wfz-release/pdf_detail_inspection.py"
+        "scripts/render_manuscript.py"
       ],
       "returncode": 0,
-      "seconds": 1.681,
-      "expected_returncode": 0
+      "seconds": 24.849
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/verify_generated_reports.py"
+      ],
+      "returncode": 0,
+      "seconds": 3.623
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/audit_publication_readiness.py",
+        "--check"
+      ],
+      "returncode": 0,
+      "seconds": 3.913
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "$PROJECT/.uv-cache/wfz-visual-20261108/inspect_current_visuals.py"
+      ],
+      "returncode": 0,
+      "seconds": 34.452
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "$PROJECT/.uv-cache/wfz-visual-20261108/check_document_links.py"
+      ],
+      "returncode": 0,
+      "seconds": 5.326
     }
   ],
   "completed": true,
-  "strict_deposit_state": "blocked only by new version-specific DOI"
+  "strict_deposit_state": "separately exercised and blocked only by the unassigned new DOI; ordinary publication check passes"
 }

@@ -1,9 +1,10 @@
 {
   "all_validations_passed": false,
   "evidence_availability_counts": {
+    "analysis_unavailable": 2,
     "generated": 4,
-    "missing_optional": 1,
-    "network_gated_absent": 1,
+    "missing_optional": 0,
+    "network_gated_absent": 0,
     "parsed": 0,
     "registered_absent": 0
   },
@@ -48,7 +49,7 @@
     {
       "artifact_kind": "empirical_report",
       "artifact_path": "output/reports/empirical_analysis.md",
-      "availability_status": "network_gated_absent",
+      "availability_status": "analysis_unavailable",
       "citation_keys": [
         "brandt2005standardbrain",
         "rybak2010digital",
@@ -83,7 +84,7 @@
     {
       "artifact_kind": "empirical_report",
       "artifact_path": "output/reports/waggle_follower_analysis.md",
-      "availability_status": "missing_optional",
+      "availability_status": "analysis_unavailable",
       "citation_keys": [
         "hadjitofi2024figshare",
         "hadjitofi2024currentbiology"
@@ -180,8 +181,8 @@
   "module_count": 5,
   "module_panels": [
     {
-      "fidelity_level": "FlyBody render path plus reduced closed-loop telemetry",
-      "interpretation": "Body evidence combines FlyBody output with finite closed-loop telemetry.",
+      "fidelity_level": "FlyBody render path plus separate reduced-scenario telemetry",
+      "interpretation": "Body evidence combines separate FlyBody output and reduced-scenario telemetry; it does not demonstrate neural or niche feedback.",
       "known_gaps": [
         "Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.",
         "Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset."
@@ -329,7 +330,7 @@
           "FlyBody/MuJoCo",
           "FlyBody/MuJoCo",
           "FlyBody/MuJoCo",
-          "Matplotlib/pandas/NetworkX"
+          "Matplotlib/pandas"
         ],
         "fidelity_levels": [
           "real_flybody_3d",
@@ -338,11 +339,11 @@
           "architecture schematic",
           "reduced deterministic kernel diagnostic",
           "reduced deterministic kernel diagnostic",
-          "FlyBody-backed render diagnostics plus reduced telemetry",
+          "scripted-pose FlyBody render diagnostics plus reduced telemetry; not forward dynamics",
           "real_flybody_3d contact sheet",
           "real_flybody_3d contact sheet",
           "real_flybody_3d contact sheet",
-          "FlyBody-backed render diagnostics plus reduced telemetry"
+          "scripted-pose FlyBody render diagnostics plus reduced telemetry; not forward dynamics"
         ],
         "figure_count": 8,
         "module": "BeeBody",
@@ -398,7 +399,7 @@
         {
           "artifact_kind": "empirical_report",
           "artifact_path": "output/reports/empirical_analysis.md",
-          "availability_status": "network_gated_absent",
+          "availability_status": "analysis_unavailable",
           "citation_keys": [
             "brandt2005standardbrain",
             "rybak2010digital",
@@ -433,7 +434,7 @@
         {
           "artifact_kind": "empirical_report",
           "artifact_path": "output/reports/waggle_follower_analysis.md",
-          "availability_status": "missing_optional",
+          "availability_status": "analysis_unavailable",
           "citation_keys": [
             "hadjitofi2024figshare",
             "hadjitofi2024currentbiology"
@@ -638,8 +639,8 @@
           "Matplotlib empirical-data renderer",
           "Matplotlib empirical-data renderer",
           "Matplotlib/pandas",
-          "Matplotlib/pandas/NetworkX",
-          "Matplotlib/pandas/NetworkX"
+          "Matplotlib/pandas",
+          "Matplotlib/pandas"
         ],
         "fidelity_levels": [
           "reduced_schematic",
@@ -662,8 +663,8 @@
           "empirical waggle/follower summary diagnostic",
           "empirical waggle/follower summary diagnostic",
           "empirical completeness summary projected into reduced BeeBrain contracts",
-          "empirical summary projected into reduced BeeBrain contracts",
-          "empirical summary projected into reduced BeeBrain contracts"
+          "empirical source inventory / parseability diagnostic; not biological validation",
+          "empirical source inventory / parseability diagnostic; not biological validation"
         ],
         "figure_count": 21,
         "module": "BeeBrain",
@@ -852,7 +853,7 @@
           "matplotlib.funcanimation",
           "Matplotlib",
           "Matplotlib/pandas",
-          "Matplotlib/pandas/NetworkX"
+          "Matplotlib/pandas"
         ],
         "fidelity_levels": [
           "reduced_schematic",
@@ -1053,7 +1054,7 @@
           "Matplotlib/pandas",
           "FlyBody/MuJoCo",
           "FlyBody/MuJoCo",
-          "Matplotlib/pandas/NetworkX"
+          "Matplotlib/pandas"
         ],
         "fidelity_levels": [
           "real_flybody_3d_contact_physics",
@@ -1061,7 +1062,7 @@
           "real_flybody_3d_contact_physics",
           "real_flybody_3d_contact_physics",
           "reduced deterministic kernel diagnostic",
-          "strict scene contact/recruitment diagnostic with reduced-kernel context",
+          "scripted-pose scene contact/recruitment diagnostic with reduced-kernel context",
           "real_flybody_3d contact sheet",
           "real_flybody_3d contact sheet",
           "research provenance diagnostic"
@@ -1235,7 +1236,7 @@
           "Matplotlib",
           "Matplotlib",
           "Matplotlib/pandas",
-          "Matplotlib/pandas/NetworkX"
+          "Matplotlib/pandas"
         ],
         "fidelity_levels": [
           "reduced_schematic",
@@ -1498,7 +1499,7 @@
     {
       "artifact_kind": "empirical_report",
       "artifact_path": "output/reports/empirical_analysis.md",
-      "availability_status": "network_gated_absent",
+      "availability_status": "analysis_unavailable",
       "citation_keys": [
         "brandt2005standardbrain",
         "rybak2010digital",
@@ -1535,7 +1536,7 @@
     {
       "artifact_kind": "empirical_report",
       "artifact_path": "output/reports/waggle_follower_analysis.md",
-      "availability_status": "missing_optional",
+      "availability_status": "analysis_unavailable",
       "citation_keys": [
         "hadjitofi2024figshare",
         "hadjitofi2024currentbiology"
@@ -1571,8 +1572,8 @@
         "POLICY_HORIZON",
         "METHODS_VALIDATION_FRACTION"
       ],
-      "figure_alt_text": "BeeMind policy diagnostics with finite policy metrics and validation status.",
-      "figure_caption": "BeeMind policy landscape showing finite expected-free-energy terms, candidate-policy margin, and deterministic action-contract outputs.",
+      "figure_alt_text": "BeeMind native policy-metric table and conservative interpretation.",
+      "figure_caption": "Native expected-free-energy, policy-margin, and action-contract metrics beside configured self-test and evidence-boundary context.",
       "manuscript_section": "docs/manuscript/06_methods_brain_mind.md",
       "method": "expected-free-energy term decomposition; competing-policy margin analysis; belief and colony-need sensitivity; deterministic action contract mapping",
       "module": "BeeMind",
@@ -1626,7 +1627,7 @@
         "BROOD_TEMP_ERROR_C"
       ],
       "figure_alt_text": "BeeNiche methods panel with comb, thermal, and forage-context diagnostics.",
-      "figure_caption": "BeeNiche methods panel showing comb occupancy, brood thermal error, foraging-radius context, and deterministic niche-kernel validation.",
+      "figure_caption": "BeeNiche methods panel showing comb occupancy, brood thermal error, foraging-radius context, and configured niche-kernel self-tests.",
       "manuscript_section": "docs/manuscript/07_methods_niche.md",
       "method": "voxel comb occupancy metrics; brood thermal stability witness; forage landscape scenario fields; Hiveopolis/BEEHAVE adapter schemas",
       "module": "BeeNiche",
@@ -1864,7 +1865,7 @@
       "artifact_type": "figure",
       "availability_status": "unrecorded",
       "backend": "Matplotlib",
-      "fidelity_level": "reduced deterministic kernel diagnostic",
+      "fidelity_level": "architecture schematic",
       "path": "output/figures/beestack_scale_ladder.png",
       "regeneration_command": "uv run python scripts/analysis_pipeline.py",
       "source_data": "output/data/simulation_records.json and module coverage records",
@@ -2084,7 +2085,7 @@
       "artifact_type": "figure",
       "availability_status": "unrecorded",
       "backend": "Matplotlib",
-      "fidelity_level": "reduced deterministic kernel diagnostic",
+      "fidelity_level": "architecture schematic",
       "path": "output/figures/manuscript_figure_claim_detail.png",
       "regeneration_command": "uv run python scripts/analysis_pipeline.py",
       "source_data": "output/data/simulation_records.json and module coverage records",
@@ -2104,7 +2105,7 @@
       "artifact_type": "figure",
       "availability_status": "unrecorded",
       "backend": "Matplotlib/pandas",
-      "fidelity_level": "FlyBody-backed render diagnostics plus reduced telemetry",
+      "fidelity_level": "scripted-pose FlyBody render diagnostics plus reduced telemetry; not forward dynamics",
       "path": "output/figures/methods/beebody_methods_telemetry_dashboard.png",
       "regeneration_command": "uv run python scripts/run_methods_analysis.py",
       "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
@@ -2144,7 +2145,7 @@
       "artifact_type": "figure",
       "availability_status": "unrecorded",
       "backend": "Matplotlib/pandas",
-      "fidelity_level": "strict scene contact/recruitment diagnostic with reduced-kernel context",
+      "fidelity_level": "scripted-pose scene contact/recruitment diagnostic with reduced-kernel context",
       "path": "output/figures/methods/beeswarm_methods_contact_recruitment.png",
       "regeneration_command": "uv run python scripts/run_methods_analysis.py",
       "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
@@ -2243,8 +2244,8 @@
     {
       "artifact_type": "figure",
       "availability_status": "unrecorded",
-      "backend": "Matplotlib/pandas/NetworkX",
-      "fidelity_level": "FlyBody-backed render diagnostics plus reduced telemetry",
+      "backend": "Matplotlib/pandas",
+      "fidelity_level": "scripted-pose FlyBody render diagnostics plus reduced telemetry; not forward dynamics",
       "path": "output/figures/research/beebody_method_diagnostics.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",
       "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
@@ -2253,8 +2254,8 @@
     {
       "artifact_type": "figure",
       "availability_status": "unrecorded",
-      "backend": "Matplotlib/pandas/NetworkX",
-      "fidelity_level": "empirical summary projected into reduced BeeBrain contracts",
+      "backend": "Matplotlib/pandas",
+      "fidelity_level": "empirical source inventory / parseability diagnostic; not biological validation",
       "path": "output/figures/research/beebrain_empirical_evidence_map.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",
       "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
@@ -2263,7 +2264,7 @@
     {
       "artifact_type": "figure",
       "availability_status": "unrecorded",
-      "backend": "Matplotlib/pandas/NetworkX",
+      "backend": "Matplotlib/pandas",
       "fidelity_level": "reduced deterministic kernel diagnostic",
       "path": "output/figures/research/beemind_policy_sensitivity.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",
@@ -2273,7 +2274,7 @@
     {
       "artifact_type": "figure",
       "availability_status": "unrecorded",
-      "backend": "Matplotlib/pandas/NetworkX",
+      "backend": "Matplotlib/pandas",
       "fidelity_level": "research provenance diagnostic",
       "path": "output/figures/research/beeniche_thermal_comb_scorecard.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",
@@ -2283,7 +2284,7 @@
     {
       "artifact_type": "figure",
       "availability_status": "unrecorded",
-      "backend": "Matplotlib/pandas/NetworkX",
+      "backend": "Matplotlib/pandas",
       "fidelity_level": "research provenance diagnostic",
       "path": "output/figures/research/beeswarm_contact_recruitment_scorecard.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",
@@ -2293,8 +2294,8 @@
     {
       "artifact_type": "figure",
       "availability_status": "unrecorded",
-      "backend": "Matplotlib/pandas/NetworkX",
-      "fidelity_level": "empirical summary projected into reduced BeeBrain contracts",
+      "backend": "Matplotlib/pandas",
+      "fidelity_level": "empirical source inventory / parseability diagnostic; not biological validation",
       "path": "output/figures/research/research_empirical_completeness.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",
       "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
@@ -2303,8 +2304,8 @@
     {
       "artifact_type": "figure",
       "availability_status": "unrecorded",
-      "backend": "Matplotlib/pandas/NetworkX",
-      "fidelity_level": "reduced deterministic kernel diagnostic",
+      "backend": "Matplotlib/pandas",
+      "fidelity_level": "research provenance diagnostic",
       "path": "output/figures/research/research_evidence_detail.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",
       "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
@@ -2313,7 +2314,7 @@
     {
       "artifact_type": "figure",
       "availability_status": "unrecorded",
-      "backend": "Matplotlib/pandas/NetworkX",
+      "backend": "Matplotlib/pandas",
       "fidelity_level": "research provenance diagnostic",
       "path": "output/figures/research/research_fidelity_evidence_network.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",
@@ -2323,7 +2324,7 @@
     {
       "artifact_type": "figure",
       "availability_status": "unrecorded",
-      "backend": "Matplotlib/pandas/NetworkX",
+      "backend": "Matplotlib/pandas",
       "fidelity_level": "research provenance diagnostic",
       "path": "output/figures/research/research_module_scorecard_heatmap.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",
@@ -2333,7 +2334,7 @@
     {
       "artifact_type": "figure",
       "availability_status": "unrecorded",
-      "backend": "Matplotlib/pandas/NetworkX",
+      "backend": "Matplotlib/pandas",
       "fidelity_level": "reduced deterministic kernel diagnostic",
       "path": "output/figures/research/research_sensitivity_sweeps.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",
@@ -2343,7 +2344,7 @@
     {
       "artifact_type": "figure",
       "availability_status": "unrecorded",
-      "backend": "Matplotlib/pandas/NetworkX",
+      "backend": "Matplotlib/pandas",
       "fidelity_level": "research provenance diagnostic",
       "path": "output/figures/research/research_validation_scorecard.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",
@@ -2353,7 +2354,7 @@
     {
       "artifact_type": "figure",
       "availability_status": "unrecorded",
-      "backend": "Matplotlib/pandas/NetworkX",
+      "backend": "Matplotlib/pandas",
       "fidelity_level": "research provenance diagnostic",
       "path": "output/figures/research/research_visualization_inventory.png",
       "regeneration_command": "uv run python scripts/run_research_suite.py",

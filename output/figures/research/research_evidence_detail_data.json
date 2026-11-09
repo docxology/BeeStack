@@ -1,120 +1,85 @@
 {
-  "chart_type": "schematic",
-  "edges": [
-    {
-      "source": "BeeBody",
-      "target": "BeeBody:evidence"
-    },
-    {
-      "source": "BeeBrain",
-      "target": "BeeBrain:evidence"
-    },
-    {
-      "source": "BeeMind",
-      "target": "BeeMind:evidence"
-    },
-    {
-      "source": "BeeSwarm",
-      "target": "BeeSwarm:evidence"
-    },
-    {
-      "source": "BeeNiche",
-      "target": "BeeNiche:evidence"
-    },
-    {
-      "label": "BeeBrain templates",
-      "source": "empirical-panels",
-      "target": "BeeBrain"
-    },
-    {
-      "label": "BeeBrain calcium summaries",
-      "source": "calcium-datasets",
-      "target": "BeeBrain"
-    },
-    {
-      "label": "BeeBrain anatomy mapping",
-      "source": "honeybee-standard-brain",
-      "target": "BeeBrain"
-    },
-    {
-      "label": "Stack empirical drive",
-      "source": "template-bank",
-      "target": "BeeBrain"
-    },
-    {
-      "label": "BeeBrain/BeeSwarm waggle decoding",
-      "source": "figshare-hadjitofi-2024-waggle-following",
-      "target": "BeeBrain"
-    }
+  "chart_type": "table",
+  "columns": [
+    "module",
+    "kind",
+    "item",
+    "status",
+    "boundary"
   ],
   "figure_path": "output/figures/research/research_evidence_detail.png",
-  "nodes": [
+  "rows": [
     {
-      "id": "BeeBody",
-      "kind": "module"
+      "boundary": "Underlying articulated topology remains FlyBody fruitfly-derived until a full calibrated bee MJCF fork is maintained upstream.; Mass and inertia are represented conservatively, not yet validated against a full honeybee biomechanics dataset.",
+      "item": "FlyBody walking and flight GIFs with MJCF cue scoring.",
+      "kind": "scorecard",
+      "module": "BeeBody",
+      "status": "1.00 self-test fraction"
     },
     {
-      "id": "BeeBrain",
-      "kind": "module"
+      "boundary": "No heavyweight spiking simulator is required in the default path.; The model validates output shapes and empirical provenance but does not claim full connectome-level neural dynamics.",
+      "item": "Curated public honeybee anatomy/activity loaders and template-bank integration.",
+      "kind": "scorecard",
+      "module": "BeeBrain",
+      "status": "0.00 self-test fraction"
     },
     {
-      "id": "BeeMind",
-      "kind": "module"
+      "boundary": "No learned transition model or recursive social-belief inference yet.; Expected free energy terms are transparent hand-calibrated witnesses.",
+      "item": "Expected-free-energy policy diagnostics and deterministic policy selection.",
+      "kind": "scorecard",
+      "module": "BeeMind",
+      "status": "1.00 self-test fraction"
     },
     {
-      "id": "BeeSwarm",
-      "kind": "module"
+      "boundary": "Large-N colony dynamics are summarized by configured scaling rather than simulated at full population by default.; Strict visual scenes prove small-scene contacts, not full BEEHAVE-scale population dynamics.; Trophallaxis, brood demography, and external weather-forage runtime coupling remain adapter targets.",
+      "item": "Strict FlyBody/MuJoCo contact scenes plus reduced communication kernel.",
+      "kind": "scorecard",
+      "module": "BeeSwarm",
+      "status": "1.00 self-test fraction"
     },
     {
-      "id": "BeeNiche",
-      "kind": "module"
+      "boundary": "No external Hiveopolis or BEEHAVE engine is required in the default path.; External nectar landscape calibration and brood demography remain future adapter layers.",
+      "item": "Voxel comb, brood thermal field, and adapter-schema metrics.",
+      "kind": "scorecard",
+      "module": "BeeNiche",
+      "status": "1.00 self-test fraction"
     },
     {
-      "id": "BeeBody:evidence",
-      "kind": "evidence",
-      "label": "FlyBody walking and flig"
+      "boundary": "BeeBrain templates",
+      "item": "empirical-panels",
+      "kind": "empirical",
+      "module": "BeeBrain",
+      "status": "analysis_unavailable"
     },
     {
-      "id": "BeeBrain:evidence",
-      "kind": "evidence",
-      "label": "Curated public honeybee "
+      "boundary": "BeeBrain calcium summaries",
+      "item": "calcium-datasets",
+      "kind": "empirical",
+      "module": "BeeBrain",
+      "status": "analysis_unavailable"
     },
     {
-      "id": "BeeMind:evidence",
-      "kind": "evidence",
-      "label": "Expected-free-energy pol"
+      "boundary": "BeeBrain anatomy mapping",
+      "item": "honeybee-standard-brain",
+      "kind": "empirical",
+      "module": "BeeBrain",
+      "status": "analysis_unavailable"
     },
     {
-      "id": "BeeSwarm:evidence",
-      "kind": "evidence",
-      "label": "Strict FlyBody/MuJoCo co"
+      "boundary": "Stack empirical drive",
+      "item": "template-bank",
+      "kind": "empirical",
+      "module": "BeeBrain",
+      "status": "analysis_unavailable"
     },
     {
-      "id": "BeeNiche:evidence",
-      "kind": "evidence",
-      "label": "Voxel comb, brood therma"
-    },
-    {
-      "id": "empirical-panels",
-      "kind": "empirical"
-    },
-    {
-      "id": "calcium-datasets",
-      "kind": "empirical"
-    },
-    {
-      "id": "honeybee-standard-brain",
-      "kind": "empirical"
-    },
-    {
-      "id": "template-bank",
-      "kind": "empirical"
-    },
-    {
-      "id": "figshare-hadjitofi-2024-waggle-following",
-      "kind": "empirical"
+      "boundary": "BeeBrain/BeeSwarm waggle decoding",
+      "item": "figshare-hadjitofi-2024-waggle-following",
+      "kind": "empirical",
+      "module": "BeeBrain",
+      "status": "analysis_unavailable"
     }
   ],
   "schema": "beestack.figure_data.v1",
-  "title": "Research fidelity evidence network"
+  "title": "Research evidence detail: report sources and explicit gaps"
 }

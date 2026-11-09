@@ -10,7 +10,7 @@
       ],
       "cwd": "$VALIDATION_STAGE",
       "returncode": 0,
-      "seconds": 2.608
+      "seconds": 3.901
     },
     {
       "argv": [
@@ -21,9 +21,9 @@
         "--python",
         "$PROJECT/.uv-cache/wfz-release/venv312/bin/python"
       ],
-      "cwd": "$VALIDATION_STAGE/.uv-cache/sdist-roundtrip-ydsbch56/beestack-2.0.0",
+      "cwd": "$VALIDATION_STAGE/.uv-cache/sdist-roundtrip-32ti2t_y/beestack-2.0.0",
       "returncode": 0,
-      "seconds": 1.063
+      "seconds": 1.644
     },
     {
       "argv": [
@@ -33,7 +33,7 @@
       ],
       "cwd": "$VALIDATION_STAGE/.uv-cache/animation-outside-cwd",
       "returncode": 0,
-      "seconds": 259.976
+      "seconds": 333.698
     }
   ],
   "lazy_exports": {

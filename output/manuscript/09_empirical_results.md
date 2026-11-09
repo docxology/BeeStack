@@ -1,4 +1,4 @@
-# Empirical Results {#sec:empirical_results}
+# Empirical Results and Current Data Availability {#sec:empirical_results}
 
 The aggregate empirical pipeline connects BeeBrain to local *Apis mellifera*
 data only after at least one parseable odor-response panel is present. A
@@ -11,8 +11,12 @@ Current odor-response analysis availability: `historical_unavailable`.
 When payloads are absent, N/A denotes unavailable current measurements.
 Retained empirical reports and figures are historical snapshots, explicitly
 marked in their sidecars/index; they do not establish current data availability.
+Research and methods rows use `analysis_unavailable` when no current aggregate
+is supplied. Their represented-record counts and parseability refer to that
+analysis, not the standalone acquisition inventory. A parsed waggle dataset can
+therefore coexist with an unavailable aggregate; confidence is not a presence test.
 
-## Empirical analysis reports
+## Odor-panel-gated aggregate reports
 
 When that prerequisite is met, the empirical pipeline writes:
 
@@ -35,7 +39,7 @@ When that prerequisite is met, the empirical pipeline writes:
   supporting assets are absent, with separately identified structural links
   only where local HSB VRML files support them; synaptic evidence remains unavailable.
 
-## Connectome evidence tiers
+## Schematic, structural, functional, and synaptic evidence tiers
 
 BeeStack distinguishes **structural**, **functional**, and **synaptic**
 connectome evidence. The generated connectome report tier is
@@ -77,18 +81,19 @@ Activity records summarize:
   @hadjitofi2024currentbiology];
 - neuromodulatory spreadsheets from Nouvian biogenic-amine assays
   [@nouvian2017dryad];
-- template-bank integration (Galizia–Sachse glomerular maps
-  [@galizia1999glomerular] combined with Szyszka transient
-  dynamics [@szyszka2023granger]).
+- template-bank integration from compatible observed odor panels or recordings;
+  the Galizia–Sachse source [@galizia1999glomerular] remains a citation anchor
+  until its matrix is registered, and Szyszka Table S1 [@szyszka2023granger]
+  statistics are not transient recordings or a connectivity matrix.
 
-The latest run contains N/A empirical panels,
-N/A antennal summaries, and
-N/A integrated templates. The waggle-follower
-analysis contributes N/A tracks with
-confidence N/A when the Figshare source is
-local and parseable.
+When a current aggregate is available, it contains N/A
+empirical panels, N/A antennal summaries, and
+N/A integrated templates. Standalone waggle-follower
+analysis may report N/A tracks and confidence
+N/A when its Figshare inputs are local and parseable;
+this does not establish availability of the odor-conditioned aggregate.
 
-## Data completeness
+## Parseability, source verification, and missing payloads
 
 The brain-data completeness panel reports a parseable-source fraction
 of N/A and a source-verified fraction of
@@ -111,7 +116,7 @@ present, the pipeline can derive response templates for the integrated bank.
 Neither parsing nor template alignment establishes held-out predictive or
 biological validation. No synthetic traces replace missing empirical data.
 
-## Figure availability
+## Historical figures versus current empirical evidence
 
 Historical empirical images remain under `output/figures/empirical/` for
 inspection and custody. They are not embedded here as current results while
@@ -127,7 +132,7 @@ retained PNG, successful parse or readable sidecar does not satisfy those
 scientific prerequisites. Newly generated synthetic/model figures elsewhere
 in this manuscript remain explicitly separate from biological observations.
 
-## Why the gap honesty matters
+## Missing measurements remain unavailable
 
 A reduced BeeBrain that substitutes synthetic values for missing calcium
 traces would still produce a complete-looking manuscript. The gap-explicit

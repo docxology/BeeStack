@@ -1,6 +1,6 @@
 {
   "annotations": [
-    "Anatomy-to-policy map linking antennal-lobe, mushroom-body, central-complex, and waggle-follower anchors to BeeMind belief and policy contracts.",
+    "Scholarly anatomy and neuroethology anchors beside conceptual roles and controller analogies. Dashed links do not represent fitted mappings or executed neural feedback.",
     "claim_tier=neurocognitive_mapping_diagnostic",
     "source_data=source refresh ledger, BeeBrain source registry, and active-inference methods records"
   ],
@@ -9,9 +9,9 @@
   "nodes": [
     {
       "id": "fig:brain_mind_anatomy_policy",
-      "label": "BeeBrain to BeeMind anatomy-policy map"
+      "label": "Anatomy and policy: conceptual analogies only"
     }
   ],
   "schema": "beestack.figure_data.v1",
-  "title": "BeeBrain to BeeMind anatomy-policy map"
+  "title": "Anatomy and policy: conceptual analogies only"
 }

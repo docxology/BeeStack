@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
   "alt_text": "Heatmap-style overview of manuscript sections by claim family with counts in each cell.",
   "artifact_kind": "figure",
   "backend": "Matplotlib",
-  "caption": "Matplotlib beestack manuscript figure claim map shows Overview matrix grouping inserted primary figures by manuscript section and registered claim family. Generated from figure registry and manuscript figure index. Sidecar validation checks raster, source routing, and registered claim tier. Does not add empirical evidence beyond the registered figure sidecars.",
+  "caption": "Registry-derived counts of primary figures by canonical manuscript section and declared claim family; registration is not evidence strength or insertion status. Generated from figure registry and manuscript figure index using Matplotlib. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not add empirical evidence beyond the registered figure sidecars.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
@@ -47,12 +48,12 @@
   "quality": {
     "height_px": 1003,
     "max_intensity": 255,
-    "mean_intensity": 240.16923277165893,
-    "min_intensity": 23,
+    "mean_intensity": 241.1516677777319,
+    "min_intensity": 24,
     "mode": "RGBA",
-    "nonzero_histogram_bins": 233,
-    "std_intensity": 41.942688995021626,
-    "width_px": 1915
+    "nonzero_histogram_bins": 232,
+    "std_intensity": 40.87935291624445,
+    "width_px": 2028
   },
   "regeneration_command": "uv run python scripts/analysis_pipeline.py",
   "schema": "beestack.figure.v1",
@@ -61,20 +62,20 @@
     "10.1371/journal.pcbi.1005510",
     "10.3233/DS-190026"
   ],
-  "title": "Manuscript Figure Claim Map",
+  "title": "Registered primary figures by section",
   "unsupported_inference": "Does not add empirical evidence beyond the registered figure sidecars.",
   "validation_status": "nonblank quality sidecar and plot data generated",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 1.909,
+    "aspect_ratio": 2.022,
     "figure_role": "overview",
     "height_px": 1003,
     "label_density": "dense",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 1915,
+    "max_dimension_px": 2028,
     "min_dimension_px": 1003,
     "readability_status": "pass",
     "split_group": "manuscript_figure_claims",
-    "width_px": 1915
+    "width_px": 2028
   }
 }

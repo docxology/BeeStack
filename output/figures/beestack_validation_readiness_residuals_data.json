@@ -1,17 +1,17 @@
 {
   "annotations": [
-    "Validation-readiness panel separating implemented verification checks from blocked held-out residual, uncertainty, assimilation, and governance evidence.",
+    "Conceptual checklist separating local verification contracts from absent held-out residual, uncertainty, assimilation, and governance evidence. It is not a receipt that local checks passed.",
     "claim_tier=validation_readiness_boundary",
-    "source_data=source refresh ledger, readiness review, generated reports, and figure sidecars"
+    "source_data=declared verification, validation, and digital-twin requirements"
   ],
   "chart_type": "schematic",
   "figure_path": "output/figures/beestack_validation_readiness_residuals.png",
   "nodes": [
     {
       "id": "fig:validation_readiness_residuals",
-      "label": "BeeStack validation readiness and residual blockers"
+      "label": "Validation requirements \u2014 no residual data supplied"
     }
   ],
   "schema": "beestack.figure_data.v1",
-  "title": "BeeStack validation readiness and residual blockers"
+  "title": "Validation requirements \u2014 no residual data supplied"
 }

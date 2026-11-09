@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
-  "alt_text": "Contact sheet of eight multi-bee MuJoCo frames with ten full BeeBody models converging in a collision scene.",
+  "alt_text": "Sampled scripted-pose MuJoCo frames with ten full BeeBody models converging in a contact scene.",
   "artifact_kind": "figure",
   "backend": "Pillow contact sheet",
-  "caption": "FlyBody/MuJoCo beeswarm ten-beebody collision scene shows Eight-frame contact sheet from a strict MuJoCo scene with ten prefixed BeeBody MJCF copies, recording bee-bee contact pairs and collision-proxy distances. Generated from animation manifest, flybody_scenes/collision contact report, and scene XML. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate colony-scale collision dynamics or integrated flight physics.",
+  "caption": "Sampled frames from a scripted-pose MuJoCo scene with ten prefixed BeeBody MJCF copies, recording contact pairs and collision-proxy distances. Generated from animation manifest, flybody_scenes/collision contact report, and scene XML using FlyBody/MuJoCo. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not validate colony-scale collision dynamics or integrated flight physics.",
   "citation_keys": [
     "vaxenburg2025flybody",
     "todorov2012mujoco"

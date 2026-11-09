@@ -1,536 +1,759 @@
 {
   "pdf": "output/pdf/BeeStack_combined.pdf",
-  "pdf_sha256": "9e4b0590323e48e09c25057acf970c0738a19bd35860a35b82c4046260f7ec0d",
+  "pdf_sha256": "822e59004897095fff2a9b130eca42deb8d8436e33c8419a81a239819f5acfcb",
+  "page_count": 56,
   "pages": [
     {
       "page": 1,
-      "text_characters": 5758,
-      "image_count": 0,
-      "topics": [
-        "Claim ledger"
-      ],
-      "starts_with": "BeeStack: An Evidence-Typed Scaffold for Whole-Colony Honeybee Simulation\nA Body\u2013Brain\u2013Mind\u2013Swarm\u2013Niche Substr"
+      "text_characters": 5879,
+      "direct_image_objects": 0,
+      "starts_with": "BeeStack: An Evidence-Typed Scaffold for Whole-Colony Honeybee Simulation\nA Body\u2013Brain\u2013Mind\u2013Swarm\u2013Niche Substrate for Auditable Apis mellife",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-01.png"
     },
     {
       "page": 2,
-      "text_characters": 7853,
-      "image_count": 0,
-      "topics": [
-        "Empirical results",
-        "References",
-        "Integrated results"
-      ],
-      "starts_with": "Actions and energetics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+      "text_characters": 7857,
+      "direct_image_objects": 0,
+      "starts_with": "Actions and energetics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-02.png"
     },
     {
       "page": 3,
-      "text_characters": 7777,
-      "image_count": 0,
-      "topics": [
-        "Limitations",
-        "Ethics"
-      ],
-      "starts_with": "Research Synthesis 36\nResearch-suite report . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . "
+      "text_characters": 7951,
+      "direct_image_objects": 0,
+      "starts_with": "Research Synthesis of Evidence, Sensitivity , and Readiness 37\nResearch-suite report . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-03.png"
     },
     {
       "page": 4,
-      "text_characters": 6195,
-      "image_count": 0,
-      "topics": [
-        "References"
-      ],
-      "starts_with": "Closing note . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+      "text_characters": 6328,
+      "direct_image_objects": 0,
+      "starts_with": "Research-use boundaries for ecological and agricultural decisions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 52\nS",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-04.png"
     },
     {
       "page": 5,
-      "text_characters": 6095,
-      "image_count": 0,
-      "topics": [],
-      "starts_with": "Scholarship anchors refreshed for this draft\nThe refreshed scholarship layer adds explicit anchors for interfa"
+      "text_characters": 6208,
+      "direct_image_objects": 0,
+      "starts_with": "Software, recruitment, and provenance method anchors\nThe refreshed scholarship layer adds explicit anchors for interfaces that BeeStack can ",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-05.png"
     },
     {
       "page": 6,
-      "text_characters": 5721,
-      "image_count": 0,
-      "topics": [],
-      "starts_with": "dance-follower empirical records sit on this literature as interface witnesses : they justify recruitment-boun"
+      "text_characters": 5748,
+      "direct_image_objects": 0,
+      "starts_with": "dance-follower empirical records sit on this literature as interface witnesses : they justify recruitment-boundary language without\nclaiming",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-06.png"
     },
     {
       "page": 7,
-      "text_characters": 4936,
-      "image_count": 0,
-      "topics": [
-        "Claim ledger",
-        "Empirical results",
-        "Limitations",
-        "Ethics",
-        "Integrated results"
-      ],
-      "starts_with": "reporting (Mitchell et al. 2019) without pretending that a biological simulation is an ML benchmark: each modu"
+      "text_characters": 4920,
+      "direct_image_objects": 0,
+      "starts_with": "reporting (Mitchell et al. 2019) without pretending that a biological simulation is an ML benchmark: each module has intended-use\nlanguage, ",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-07.png"
     },
     {
       "page": 8,
-      "text_characters": 3094,
-      "image_count": 1,
-      "topics": [
-        "Claim ledger"
-      ],
-      "starts_with": "Claim class Current BeeStack evidence Primary artifact What it does not prove\nBeeBrain empirical\nanchoring\nCur"
+      "text_characters": 3196,
+      "direct_image_objects": 1,
+      "starts_with": "Claim class Current BeeStack evidence Primary artifact What it does not prove\nMulti-BeeBody\nwaggle and collision\nscenes\nPrefixed BeeBody MJC",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-08.png"
     },
     {
       "page": 9,
-      "text_characters": 4981,
-      "image_count": 0,
-      "topics": [],
-      "starts_with": "Commitment 2: make the stack executable end-to-end\nThe implementation follows the research-template separation"
+      "text_characters": 4815,
+      "direct_image_objects": 0,
+      "starts_with": "small-scene contact evidence from population-scale demographic validation. \u201d That is why the roadmap can be ambitious without blurring\nprese",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-09.png"
     },
     {
       "page": 10,
-      "text_characters": 448,
-      "image_count": 1,
-      "topics": [],
-      "starts_with": "Figure 2: Matplotlib beestack scholarship evidence matrix shows Scholarship evidence matrix mapping directly v"
+      "text_characters": 418,
+      "direct_image_objects": 1,
+      "starts_with": "Figure 2: Scholarship evidence matrix mapping directly verified sources to manuscript sections, figure targets, DOI-bearing source records,\n",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-10.png"
     },
     {
       "page": 11,
-      "text_characters": 4249,
-      "image_count": 0,
-      "topics": [],
-      "starts_with": "the manuscript distinguishes software verification from biological validation, uncertainty, residuals, and clo"
+      "text_characters": 4434,
+      "direct_image_objects": 0,
+      "starts_with": "Scholarship, method, and validation source tiers\nThe project separates three source tiers. Scholarship anchors support background, related-w",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-11.png"
     },
     {
       "page": 12,
-      "text_characters": 4616,
-      "image_count": 0,
-      "topics": [
-        "Limitations",
-        "Ethics"
-      ],
-      "starts_with": "or limitations sections. This routing keeps the source-refresh ledger, bibliography, figure registry, document"
+      "text_characters": 5062,
+      "direct_image_objects": 0,
+      "starts_with": "Claim routing to sources, artifacts, and gaps\nEvery current-facing claim routes to one of four surfaces: manuscript source with Pandoc citat",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-12.png"
     },
     {
       "page": 13,
-      "text_characters": 2408,
-      "image_count": 1,
-      "topics": [
-        "Integrated results"
-      ],
-      "starts_with": "Quantity Default value Source / notes\nBody mass 80.0 mg Worker average\nWing stroke frequency 230 Hz Hover/crui"
+      "text_characters": 3928,
+      "direct_image_objects": 0,
+      "starts_with": "Configured timing targets and executed reduced cadence\nThe configuration declares a 100 Hz control boundary, 10 Hz target policy cadence (ev",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-13.png"
     },
     {
       "page": 14,
-      "text_characters": 5108,
-      "image_count": 0,
-      "topics": [],
-      "starts_with": "Architectural invariants\nFive invariants keep the architecture reviewable as fidelity improves.\n1. No hidden d"
+      "text_characters": 3345,
+      "direct_image_objects": 1,
+      "starts_with": "Figure 3: Executed reduced-scenario schematic: a fixed synthetic DanceVector updates BeeMind and BeeSwarm, BeeMind selects Body\nactions, Bod",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-14.png"
     },
     {
       "page": 15,
-      "text_characters": 1014,
-      "image_count": 2,
-      "topics": [],
-      "starts_with": "Figure 4: FlyBody/MuJoCo beebody flybody tripod walking render shows Eight-frame contact sheet from the FlyBod"
+      "text_characters": 956,
+      "direct_image_objects": 2,
+      "starts_with": "Figure 4: Sampled FlyBody walk_imitation frames on the generated apis_mellifera_worker MJCF document rendered body and wing\nmorphology cues,",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-15.png"
     },
     {
       "page": 16,
-      "text_characters": 2794,
-      "image_count": 1,
-      "topics": [],
-      "starts_with": "model: hovering wing power is pinned to a fixed ~58 mW worker reference ( \u2248 80 mg body mass, \u2248 230 Hz stroke) "
+      "text_characters": 2966,
+      "direct_image_objects": 1,
+      "starts_with": "The methods layer now also records a conservative honeybee calibration scorecard. The current morphology score is 1.000, with an\ninertia-res",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-16.png"
     },
     {
       "page": 17,
-      "text_characters": 929,
-      "image_count": 2,
-      "topics": [],
-      "starts_with": "Figure 7: Matplotlib/pandas/NetworkX beebody methods telemetry dashboard shows BeeBody methods dashboard showi"
+      "text_characters": 377,
+      "direct_image_objects": 1,
+      "starts_with": "Figure 7: BeeBody methods dashboard showing reduced telemetry, energy, wing-power, and morphology cues beside the FlyBody-backed\nfidelity bo",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-17.png"
     },
     {
       "page": 18,
-      "text_characters": 3810,
-      "image_count": 1,
-      "topics": [],
-      "starts_with": "BeeSwarm reduced communication kernel\nThe reduced kernel initializes 50 agents, broadcasts dance recruitment e"
+      "text_characters": 3391,
+      "direct_image_objects": 1,
+      "starts_with": "Uncalibrated BeeBody biomechanics\nBeeBody remains the most stringent fidelity boundary in the stack. It is FlyBody-backed for production ren",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-18.png"
     },
     {
       "page": 19,
-      "text_characters": 991,
-      "image_count": 2,
-      "topics": [],
-      "starts_with": "Figure 10: FlyBody/MuJoCo beeswarm configured waggle dance scene shows Eight-frame contact sheet from a strict"
+      "text_characters": 3350,
+      "direct_image_objects": 1,
+      "starts_with": "MjData with mujoco.Renderer (Todorov et al. 2012). Within each frame the bees are placed at scripted kinematic poses; MuJoCo\nprovides real m",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-19.png"
     },
     {
       "page": 20,
-      "text_characters": 2881,
-      "image_count": 1,
-      "topics": [],
-      "starts_with": "configured bounds; partial signals do not increment recruitment counts. Dance recruitment then feeds back into"
+      "text_characters": 893,
+      "direct_image_objects": 2,
+      "starts_with": "Figure 10: Sampled frames from a scripted-pose MuJoCo waggle scene with one dancer and follower BeeBody models on a comb floor,\nwith contact",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-20.png"
     },
     {
       "page": 21,
-      "text_characters": 5035,
-      "image_count": 0,
-      "topics": [],
-      "starts_with": "Mushroom body (MB)\nThe MB layer maps the dense AL representation onto a sparse population of 170,000 Kenyon ce"
+      "text_characters": 3158,
+      "direct_image_objects": 1,
+      "starts_with": "Figure 12: Native report metrics separating scripted-pose small-scene contact evidence from reduced recruitment and adapter-compatible\nsumma",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-21.png"
     },
     {
       "page": 22,
-      "text_characters": 2886,
-      "image_count": 1,
-      "topics": [
-        "References"
-      ],
-      "starts_with": "Empirical run integration\nThe current empirical run integrates N/A odor-response panels, N/A anatomy inventori"
+      "text_characters": 5264,
+      "direct_image_objects": 0,
+      "starts_with": "Central-complex full-bearing heading integration\nThe CX channel maintains a head-direction estimate on 32 bins by integrating a sky-compass ",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-22.png"
     },
     {
       "page": 23,
-      "text_characters": 2898,
-      "image_count": 1,
-      "topics": [],
-      "starts_with": "Figure 14: Matplotlib/pandas/NetworkX beebrain empirical methods completeness shows BeeBrain completeness dash"
+      "text_characters": 3047,
+      "direct_image_objects": 1,
+      "starts_with": "and decoding improvement N/A. The brain-data parseable-source fraction is N/A. The run records N/A local calcium datasets and 1\nempirical kn",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-23.png"
     },
     {
       "page": 24,
-      "text_characters": 3213,
-      "image_count": 1,
-      "topics": [],
-      "starts_with": "Figure 15: Matplotlib/pandas/NetworkX beemind policy landscape shows BeeMind policy landscape showing finite e"
+      "text_characters": 2892,
+      "direct_image_objects": 1,
+      "starts_with": "Figure 14: BeeBrain native report metrics beside configured self-tests, reported availability, claim tier, and conservative interpretation.\n",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-24.png"
     },
     {
       "page": 25,
-      "text_characters": 4122,
-      "image_count": 0,
-      "topics": [],
-      "starts_with": "is a measurable thermoregulation witness. The sprint calibration adds a bounded thermoregulation gain of 0.240"
+      "text_characters": 3108,
+      "direct_image_objects": 1,
+      "starts_with": "Figure 15: Native expected-free-energy, policy-margin, and action-contract metrics beside configured self-test and evidence-boundary\ncontext",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-25.png"
     },
     {
       "page": 26,
-      "text_characters": 882,
-      "image_count": 2,
-      "topics": [],
-      "starts_with": "Figure 16: Matplotlib beeniche adapter and niche map shows Adapter map placing BEEHA VE-compatible colony summ"
+      "text_characters": 4785,
+      "direct_image_objects": 0,
+      "starts_with": "Reduced brood thermal field\nThermal stepping updates brood-temperature error and supports fanning/heat-source witnesses. The brood-target ba",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-26.png"
     },
     {
       "page": 27,
-      "text_characters": 5122,
-      "image_count": 0,
-      "topics": [
-        "Ethics",
-        "References"
-      ],
-      "starts_with": "Animation manifest\nThe animation manifest currently contains 9 animations: 5 FlyBody/MuJoCo outputs and 4 redu"
+      "text_characters": 867,
+      "direct_image_objects": 2,
+      "starts_with": "Figure 16: Final comb fraction and maximum absolute thermal error from supplied reduced records, beside conceptual NicheAdapter-\nSummary fie",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-27.png"
     },
     {
       "page": 28,
-      "text_characters": 938,
-      "image_count": 2,
-      "topics": [],
-      "starts_with": "Figure 18: Matplotlib beestack evidence ladder shows Visual evidence contract separating backend, claim tier, "
+      "text_characters": 5150,
+      "direct_image_objects": 0,
+      "starts_with": "Verification Gates, Evidence Tiers, and Figure Provenance\nVisualization is eligible for evidence only with explicit backend, source, availab",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-28.png"
     },
     {
       "page": 29,
-      "text_characters": 3047,
-      "image_count": 1,
-      "topics": [],
-      "starts_with": "Figure 20: Matplotlib beestack manuscript figure claim map shows Overview matrix grouping inserted primary fig"
+      "text_characters": 3627,
+      "direct_image_objects": 1,
+      "starts_with": "The validation figures below separate overview and detail surfaces: evidence tiers, residual readiness blockers, manuscript claim routing,\nm",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-29.png"
     },
     {
       "page": 30,
-      "text_characters": 397,
-      "image_count": 1,
-      "topics": [],
-      "starts_with": "Figure 21: Matplotlib beestack manuscript figure claim detail shows Split companion table listing primary figu"
+      "text_characters": 881,
+      "direct_image_objects": 2,
+      "starts_with": "Figure 19: Conceptual checklist separating local verification contracts from absent held-out residual, uncertainty, assimilation, and\ngovern",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-30.png"
     },
     {
       "page": 31,
-      "text_characters": 810,
-      "image_count": 2,
-      "topics": [],
-      "starts_with": "Figure 22: Matplotlib/pandas/NetworkX beestack methods dashboard shows Methods dashboard summarizing per-modul"
+      "text_characters": 855,
+      "direct_image_objects": 2,
+      "starts_with": "Figure 21: Grouped source classes with registered artifact counts, declared claim-family counts, and conservative claim ceilings. Full\nper-a",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-31.png"
     },
     {
       "page": 32,
-      "text_characters": 2453,
-      "image_count": 1,
-      "topics": [
-        "Empirical results"
-      ],
-      "starts_with": "Figure 24: Matplotlib/pandas/NetworkX beestack manuscript evidence index shows Manuscript evidence index compa"
+      "text_characters": 756,
+      "direct_image_objects": 2,
+      "starts_with": "Figure 23: Module configured self-test fractions, visual-artifact counts, evidence-link counts, known-gap counts, and full report inter-\npre",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-32.png"
     },
     {
       "page": 33,
-      "text_characters": 4630,
-      "image_count": 0,
-      "topics": [],
-      "starts_with": "\u2022 output/data/waggle_follower_analysis.json \u2014 Hadjitofi\u2013Webb waggle-follower antennal-position summaries and B"
+      "text_characters": 4830,
+      "direct_image_objects": 0,
+      "starts_with": "null and retain each quantity\u2019s native units. Sweep outputs use independent native-unit axes; mixed counts, fractions, and unlike-unit\nmetri",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-33.png"
     },
     {
       "page": 34,
-      "text_characters": 2853,
-      "image_count": 1,
-      "topics": [
-        "Ethics",
-        "Integrated results"
-      ],
-      "starts_with": "Why the gap honesty matters\nA reduced BeeBrain that substitutes synthetic values for missing calcium traces wo"
+      "text_characters": 4978,
+      "direct_image_objects": 0,
+      "starts_with": "\u2022 VRML/TIFF/HTML metadata derived from the standard-brain ecosystem (Rybak et al. 2010);\n\u2022 neuropil abbreviations (a vocabulary required to ",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-34.png"
     },
     {
       "page": 35,
-      "text_characters": 2906,
-      "image_count": 1,
-      "topics": [],
-      "starts_with": "Figure 26 traces BeeNiche comb occupancy across the integrated run.\nFigure 26: Matplotlib beeniche comb occupa"
+      "text_characters": 2696,
+      "direct_image_objects": 1,
+      "starts_with": "reduced BeeBody actions, and Body observations enter BeeBrain. BeeNiche temperature advances independently. BrainState does not\nfeed policy ",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-35.png"
     },
     {
       "page": 36,
-      "text_characters": 2585,
-      "image_count": 1,
-      "topics": [
-        "Empirical results",
-        "References"
-      ],
-      "starts_with": "Figure 27: Matplotlib beestack module contract coverage shows Contract-coverage witness showing the implemente"
+      "text_characters": 661,
+      "direct_image_objects": 2,
+      "starts_with": "Figure 26: Integrated-run comb-occupancy witness showing deterministic BeeNiche state changes across control steps. Generated from\noutput/da",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-36.png"
     },
     {
       "page": 37,
-      "text_characters": 400,
-      "image_count": 1,
-      "topics": [],
-      "starts_with": "Figure 28: Matplotlib/pandas/NetworkX beestack research module scorecard heatmap shows Research scorecard heat"
+      "text_characters": 4903,
+      "direct_image_objects": 0,
+      "starts_with": "Reproducibility diagnostics without biological validation\nThese are reproducibility witnesses, not biological validation. The seeded five-mo",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-37.png"
     },
     {
       "page": 38,
-      "text_characters": 402,
-      "image_count": 1,
-      "topics": [],
-      "starts_with": "Figure 29: Matplotlib/pandas/NetworkX beestack research sensitivity sweeps shows Deterministic sensitivity-swe"
+      "text_characters": 3360,
+      "direct_image_objects": 1,
+      "starts_with": "Figure 28: Configured self-test fractions and native metric, evidence, gap, and filename-associated artifact counts by module, without\nnorma",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-38.png"
     },
     {
       "page": 39,
-      "text_characters": 367,
-      "image_count": 1,
-      "topics": [],
-      "starts_with": "Figure 30: Matplotlib/NetworkX beestack fidelity evidence network shows Evidence network linking module scorec"
+      "text_characters": 365,
+      "direct_image_objects": 1,
+      "starts_with": "Figure 29: Deterministic sensitivity-sweep panel showing reduced-kernel response under controlled one-parameter perturbations. Gen-\nerated f",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-39.png"
     },
     {
       "page": 40,
-      "text_characters": 2743,
-      "image_count": 1,
-      "topics": [],
-      "starts_with": "Figure 31: Matplotlib/pandas/NetworkX beestack research evidence detail shows Split companion table listing re"
+      "text_characters": 2859,
+      "direct_image_objects": 1,
+      "starts_with": "Figure 30: Reported module evidence and gap counts beside declared fidelity. The companion retains all source rows; no measured\nnetwork topo",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-40.png"
     },
     {
       "page": 41,
-      "text_characters": 396,
-      "image_count": 1,
-      "topics": [],
-      "starts_with": "Figure 32: Matplotlib/pandas/NetworkX beestack cross-stack synthesis dashboard shows Cross-stack synthesis das"
+      "text_characters": 388,
+      "direct_image_objects": 1,
+      "starts_with": "Figure 31: Complete research scorecard evidence and gap text with all empirical source rows, reported availability states, and integra-\ntion",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-41.png"
     },
     {
       "page": 42,
-      "text_characters": 2609,
-      "image_count": 1,
-      "topics": [],
-      "starts_with": "Figure 33: Matplotlib/pandas/NetworkX beestack synthesis findings detail shows Split companion panel showing m"
+      "text_characters": 365,
+      "direct_image_objects": 1,
+      "starts_with": "Figure 32: Configured self-tests and heuristic readiness beside native inventory counts, native-unit cross-stack statistics, and prioritized",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-42.png"
     },
     {
       "page": 43,
-      "text_characters": 5579,
-      "image_count": 0,
-      "topics": [],
-      "starts_with": "Every JSON report in the suite is small enough to read directly; that is intentional. A reproducible-research "
+      "text_characters": 3422,
+      "direct_image_objects": 1,
+      "starts_with": "Figure 33: Module heuristic-readiness scores and known-gap counts beside all prioritized cross-stack findings. These are report diagnostics,",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-43.png"
     },
     {
       "page": 44,
-      "text_characters": 5664,
-      "image_count": 0,
-      "topics": [
-        "Limitations",
-        "Integrated results"
-      ],
-      "starts_with": "adaptation study (Chen et al. 2016) does not establish managed-U.S. genetic bottlenecks. Those findings explai"
+      "text_characters": 5941,
+      "direct_image_objects": 0,
+      "starts_with": "BeeBrain empirical traceability without neural calibration\nBeeBrain occupies a different fidelity tier. Its strongest current feature is emp",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-44.png"
     },
     {
       "page": 45,
-      "text_characters": 4390,
-      "image_count": 0,
-      "topics": [
-        "Limitations"
-      ],
-      "starts_with": "of the limitations is therefore per module, with each module\u2019s limit pinned to the fidelity tier declared in E"
+      "text_characters": 4862,
+      "direct_image_objects": 0,
+      "starts_with": "run can expose module validations, artifact coverage, simulation telemetry, empirical parseability, signposting coverage, and scholarship\nan",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-45.png"
     },
     {
       "page": 46,
-      "text_characters": 4988,
-      "image_count": 0,
-      "topics": [
-        "Limitations"
-      ],
-      "starts_with": "\u2022 Varroa destructor and treatment resistance \u2014 amitraz resistance and meta-analytic treatment e\ufb00icacy (Tokach "
+      "text_characters": 4782,
+      "direct_image_objects": 0,
+      "starts_with": "communication, pheromone, and task-allocation kernels at 50 simulated agents representing 20,000 workers, not through full BEEHA VE-\nscale d",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-46.png"
     },
     {
       "page": 47,
-      "text_characters": 3933,
-      "image_count": 0,
-      "topics": [],
-      "starts_with": "targets with held-out residuals (Apiary Inspectors of America and Auburn University 2025; COLOSS Network 2013)"
+      "text_characters": 4584,
+      "direct_image_objects": 0,
+      "starts_with": "That review reframes the roadmap around eight auditable scales:\n1. molecular, omics, microbiome, pathogen, pesticide, and nutrition state;\n2",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-47.png"
     },
     {
       "page": 48,
-      "text_characters": 3703,
-      "image_count": 0,
-      "topics": [],
-      "starts_with": "2. later, training surrogate agents from higher-fidelity rollouts so that the 50-to-20,000 scale gap becomes a"
+      "text_characters": 4030,
+      "direct_image_objects": 0,
+      "starts_with": "Acceptance criterion: a methods-analysis Brain panel that reports quantitative residuals against at least one published bee neuroscience\ntas",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-48.png"
     },
     {
       "page": 49,
-      "text_characters": 3897,
-      "image_count": 0,
-      "topics": [
-        "References"
-      ],
-      "starts_with": "Reproducibility\nReproducibility in BeeStack is a property of the pipeline , not a property of any individual a"
+      "text_characters": 4166,
+      "direct_image_objects": 0,
+      "starts_with": "Excluded decision-support and deployment scope\nFor clarity, the following are not current roadmap items:\n\u2022 a colony-health decision-support ",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-49.png"
     },
     {
       "page": 50,
-      "text_characters": 3832,
-      "image_count": 0,
-      "topics": [
-        "Ethics"
-      ],
-      "starts_with": "The empirical stage seals a current report hash only after successful analysis. On an offline skip or failure,"
+      "text_characters": 4287,
+      "direct_image_objects": 0,
+      "starts_with": "Seeded numerical kernels and empirical freshness\nFixed seeds determine the reduced numerical kernels and model-owned PN\u2192KC connectivity. Thi",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-50.png"
     },
     {
       "page": 51,
-      "text_characters": 3805,
-      "image_count": 0,
-      "topics": [
-        "Limitations",
-        "Ethics"
-      ],
-      "starts_with": "Source DOI / source note License / access note\nJernigan antennal\nkinematics (Jernigan\net al. 2026)\n10.5061/dry"
+      "text_characters": 3572,
+      "direct_image_objects": 0,
+      "starts_with": "Source DOI / source note License / access note\nCarcaud multisite\nGCaMP (Carcaud\n2022)\n10.5061/dryad.83bk3j9tt Dryad CC0\nAndreu alarm\nrecepto",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-51.png"
     },
     {
       "page": 52,
-      "text_characters": 4318,
-      "image_count": 0,
-      "topics": [
-        "References"
-      ],
-      "starts_with": "1. Open output/data/manuscript_variables.json to find the manuscript variable.\n2. Follow the variable to its g"
+      "text_characters": 4585,
+      "direct_image_objects": 0,
+      "starts_with": "Traceability from manuscript values to source data\nThe provenance trail is the foundation of every other claim in this manuscript. The hydra",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-52.png"
     },
     {
       "page": 53,
-      "text_characters": 4468,
-      "image_count": 0,
-      "topics": [],
-      "starts_with": "Brandt, Robert, Torsten Rohlfing, J\u00fcrgen Rybak, et al. 2005. \u201cThree-Dimensional A verage-Shape Atlas of the Ho"
+      "text_characters": 4479,
+      "direct_image_objects": 0,
+      "starts_with": "Becher, Matthias A. et al. 2014. \u201cBEEHA VE: A Systems Model of Honeybee Colony Dynamics and Foraging to Explore Multifactorial\nCauses of Col",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-53.png"
     },
     {
       "page": 54,
-      "text_characters": 4191,
-      "image_count": 0,
-      "topics": [],
-      "starts_with": "176329. https://doi.org/10.1016/j.scitotenv.2024.176329.\nHadjitofi, Anna, and Barbara Webb. 2024a. \u201cDynamic An"
+      "text_characters": 4184,
+      "direct_image_objects": 0,
+      "starts_with": "//doi.org/10.1038/nrn2787.\nGalizia, C. Giovanni, Silke Sachse, Andrea Rappert, and Randolf Menzel. 1999. \u201cThe Glomerular Code for Odor Repre",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-54.png"
     },
     {
       "page": 55,
-      "text_characters": 4409,
-      "image_count": 0,
-      "topics": [],
-      "starts_with": "758\u201368. https://doi.org/10.1038/nrn3357.\nMenzel, Randolf, and Martin Giurfa. 2001. \u201cCognitive Architecture of "
+      "text_characters": 4454,
+      "direct_image_objects": 0,
+      "starts_with": "Academy of Sciences , ahead of print. https://doi.org/10.1073/pnas.2518687123.\nMcAfee, Alison et al. 2018. \u201cA Death Pheromone, Oleic Acid, T",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-55.png"
     },
     {
       "page": 56,
-      "text_characters": 3328,
-      "image_count": 0,
-      "topics": [],
-      "starts_with": "Annual Review of Entomology 63: 259\u201375. https://doi.org/10.1146/annurev-ento-020117-043249 .\nSeeley, Thomas D."
+      "text_characters": 3433,
+      "direct_image_objects": 0,
+      "starts_with": "in Systems Neuroscience 4: 30. https://doi.org/10.3389/fnsys.2010.00030.\nSaltelli, Andrea, Marco Ratto, Terry Andres, et al. 2008. Global Se",
+      "raster": ".uv-cache/pdf-visual-822e59004897095f/page-56.png"
     }
   ],
-  "contact_sheets": [
-    "output/reports/workflowz_pdf_overview_1.png",
-    "output/reports/workflowz_pdf_overview_2.png",
-    "output/reports/workflowz_pdf_overview_3.png",
-    "output/reports/workflowz_pdf_overview_4.png"
+  "page_contact_sheets": [
+    "output/reports/workflowz_visual_review/pdf-overview-1.png",
+    "output/reports/workflowz_visual_review/pdf-overview-2.png",
+    "output/reports/workflowz_visual_review/pdf-overview-3.png",
+    "output/reports/workflowz_visual_review/pdf-overview-4.png"
+  ],
+  "referenced_figure_contact_sheets": [
+    "output/reports/workflowz_visual_review/referenced-figures-1.png",
+    "output/reports/workflowz_visual_review/referenced-figures-2.png",
+    "output/reports/workflowz_visual_review/referenced-figures-3.png"
+  ],
+  "referenced_figures": [
+    {
+      "image": "output/figures/beebody_beeswarm_micro_macro_calibration.png",
+      "sha256": "f9bf11e556fb434e4d8eb95d28528507fffb523c2b042733c100cb6dde17512a",
+      "sidecar": "output/figures/beebody_beeswarm_micro_macro_calibration.json",
+      "title": "Micro-to-macro comparison is not calibration",
+      "claim_tier": "micro_macro_calibration_boundary",
+      "fidelity": "architecture schematic",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/beebody_motion_power_phase.png",
+      "sha256": "09cd5707c28d17da79842b8b75c5a339c565e4c997581287416bbfdf0603b754",
+      "sidecar": "output/figures/beebody_motion_power_phase.json",
+      "title": "Reduced motion\u2013power trajectory",
+      "claim_tier": "integrated_run_witness",
+      "fidelity": "reduced deterministic kernel diagnostic",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/beebrain_beemind_anatomy_policy_map.png",
+      "sha256": "52b5082475a7ac06e02405f6869f3ff1aa4922f0b49b0617008e7583700cab0e",
+      "sidecar": "output/figures/beebrain_beemind_anatomy_policy_map.json",
+      "title": "Anatomy and policy: conceptual analogies only",
+      "claim_tier": "neurocognitive_mapping_diagnostic",
+      "fidelity": "architecture schematic",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/beeniche_adapter_niche_map.png",
+      "sha256": "c9d6f5878f94df216f546342901dcdedd38ba4f9149a467d829dca51cd29267a",
+      "sidecar": "output/figures/beeniche_adapter_niche_map.json",
+      "title": "BeeNiche run witnesses and conceptual adapter schema",
+      "claim_tier": "adapter_boundary_diagnostic",
+      "fidelity": "architecture schematic",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/beestack_evidence_ladder.png",
+      "sha256": "22fe382f6495f49fc511c295b322c5b8cc6a68d6b295b58b79a70c2899ab9167",
+      "sidecar": "output/figures/beestack_evidence_ladder.json",
+      "title": "Evidence classes and claim ceilings",
+      "claim_tier": "fidelity_boundary",
+      "fidelity": "architecture schematic",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/beestack_first_principles_claim_audit.png",
+      "sha256": "9f7f050e407b10428723c126199d9436b7b69898785dccd203ebf42c1dd8ce02",
+      "sidecar": "output/figures/beestack_first_principles_claim_audit.json",
+      "title": "Claim-admission rules (conceptual)",
+      "claim_tier": "first_principles_claim_boundary",
+      "fidelity": "architecture schematic",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/beestack_graphical_abstract.png",
+      "sha256": "0a5f7b1d6360affc07f0a32f8af29fe0d0753cf9a20e7501cba103e1329badff",
+      "sidecar": "output/figures/beestack_graphical_abstract.json",
+      "title": "BeeStack: the executed reduced scenario",
+      "claim_tier": "architecture_schematic",
+      "fidelity": "architecture schematic",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/beestack_scholarship_evidence_matrix.png",
+      "sha256": "c36760d96a41143735dea1bfa366d40d4760bda45988f9e1c0790cd6157de807",
+      "sidecar": "output/figures/beestack_scholarship_evidence_matrix.json",
+      "title": "Scholarly source ledger and availability",
+      "claim_tier": "scholarship_evidence_matrix",
+      "fidelity": "architecture schematic",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/beestack_validation_readiness_residuals.png",
+      "sha256": "42d5ec57e5de5f347d1258d793aee680c300ba4468baf2d7a6c8a305196c23bf",
+      "sidecar": "output/figures/beestack_validation_readiness_residuals.json",
+      "title": "Validation requirements \u2014 no residual data supplied",
+      "claim_tier": "validation_readiness_boundary",
+      "fidelity": "architecture schematic",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/body_energy_timeseries.png",
+      "sha256": "bddf0c81ebe0b5650ee0bab341080202850f66c0a60ec87b93145b3a86f2a933",
+      "sidecar": "output/figures/body_energy_timeseries.json",
+      "title": "Reduced body energy across control steps",
+      "claim_tier": "integrated_run_witness",
+      "fidelity": "reduced deterministic kernel diagnostic",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/comb_fraction_timeseries.png",
+      "sha256": "0e5fe93058debdcf2a26191e747f70d04ce2e219d9d57c2cf9aaa79329fac831",
+      "sidecar": "output/figures/comb_fraction_timeseries.json",
+      "title": "Reduced comb occupancy across control steps",
+      "claim_tier": "integrated_run_witness",
+      "fidelity": "reduced deterministic kernel diagnostic",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/manuscript_figure_claim_detail.png",
+      "sha256": "9f724148dab7ae50b91175fee84c0906264870d1ac722f1eb621bc0cd5a46fef",
+      "sidecar": "output/figures/manuscript_figure_claim_detail.json",
+      "title": "Primary-figure sources and claim ceilings",
+      "claim_tier": "manuscript_figure_provenance_map",
+      "fidelity": "architecture schematic",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/manuscript_figure_claim_map.png",
+      "sha256": "0a4914074002990126fa2967433cef18730253e92dc7046f34755317c8395f4e",
+      "sidecar": "output/figures/manuscript_figure_claim_map.json",
+      "title": "Registered primary figures by section",
+      "claim_tier": "manuscript_figure_provenance_map",
+      "fidelity": "architecture schematic",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/methods/beebody_methods_telemetry_dashboard.png",
+      "sha256": "182df3945636d1b1805f7c7274ce8995799c5c6fc505a550936acdb92f7e6df5",
+      "sidecar": "output/figures/methods/beebody_methods_telemetry_dashboard.json",
+      "title": "BeeBody methods telemetry dashboard",
+      "claim_tier": "strict_visual_plus_reduced_telemetry",
+      "fidelity": "scripted-pose FlyBody render diagnostics plus reduced telemetry; not forward dynamics",
+      "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/methods/beebrain_methods_empirical_completeness.png",
+      "sha256": "3b41eb6a4366c71478f493517f1aff86f3404873acb561d7ae2aa2d784bd5375",
+      "sidecar": "output/figures/methods/beebrain_methods_empirical_completeness.json",
+      "title": "BeeBrain methods: reported metrics and evidence boundaries",
+      "claim_tier": "empirical_reduced_or_availability_gated",
+      "fidelity": "empirical completeness summary projected into reduced BeeBrain contracts",
+      "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/methods/beemind_methods_policy_landscape.png",
+      "sha256": "a348ea3ed6d0f14001bbe9782287ac0777c25badda7a6d3e76464837d765b216",
+      "sidecar": "output/figures/methods/beemind_methods_policy_landscape.json",
+      "title": "BeeMind methods: reduced policy metrics and boundaries",
+      "claim_tier": "reduced_validated_kernel",
+      "fidelity": "reduced deterministic kernel diagnostic",
+      "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/methods/beeniche_methods_comb_thermal.png",
+      "sha256": "2141f21b9462c958c9049af94650a43f1c43026af748ec6ca55b40132caa7800",
+      "sidecar": "output/figures/methods/beeniche_methods_comb_thermal.json",
+      "title": "BeeNiche comb and thermal diagnostics",
+      "claim_tier": "reduced_validated_kernel",
+      "fidelity": "reduced deterministic kernel diagnostic",
+      "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/methods/beeswarm_methods_contact_recruitment.png",
+      "sha256": "016d5ef68b9f020bb9baa70bc9e814b99f86e5b0fb52d48f648426fe867142f3",
+      "sidecar": "output/figures/methods/beeswarm_methods_contact_recruitment.json",
+      "title": "BeeSwarm contact and recruitment diagnostics",
+      "claim_tier": "strict_small_scene_not_colony_dynamics",
+      "fidelity": "scripted-pose scene contact/recruitment diagnostic with reduced-kernel context",
+      "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/methods/methods_dashboard_detail.png",
+      "sha256": "0cf58864d18fa0299b3a561e395fb684a5039431e6b7c4ad8d7c5e278304a9e2",
+      "sidecar": "output/figures/methods/methods_dashboard_detail.json",
+      "title": "Methods detail: module evidence and explicit boundaries",
+      "claim_tier": "methods_provenance_diagnostic",
+      "fidelity": "methods provenance diagnostic",
+      "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/methods/methods_manuscript_evidence_index.png",
+      "sha256": "d6a703dffc016627ccb4736f04dd8590eb64baecdbcbe72e326fdd7fe0c29114",
+      "sidecar": "output/figures/methods/methods_manuscript_evidence_index.json",
+      "title": "Manuscript evidence inventory and configured self-tests",
+      "claim_tier": "methods_provenance_diagnostic",
+      "fidelity": "methods provenance diagnostic",
+      "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/methods/methods_repo_dashboard.png",
+      "sha256": "85167f87f8e9297c8a6939c824495bc57d177948063d452502610a9463629b79",
+      "sidecar": "output/figures/methods/methods_repo_dashboard.json",
+      "title": "Methods inventory in native units",
+      "claim_tier": "methods_provenance_diagnostic",
+      "fidelity": "methods provenance diagnostic",
+      "source_data": "MethodsAnalysisReport, simulation records, and manuscript evidence links",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/module_contract_coverage.png",
+      "sha256": "a93ab169ecbfbb71ae7f0750bccde7dbb8195be5cbc9cf624b5936b5c8eb3c8c",
+      "sidecar": "output/figures/module_contract_coverage.json",
+      "title": "Module contract inventory",
+      "claim_tier": "contract_coverage_witness",
+      "fidelity": "architecture schematic",
+      "source_data": "output/data/simulation_records.json and module coverage records",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/renders/beebody_flybody_flight_contact_sheet.png",
+      "sha256": "bb7382942068a2ca0b638e26311932807d4fbb5a28f01f7ce88edf17ec51d0c6",
+      "sidecar": "output/figures/renders/beebody_flybody_flight_contact_sheet.json",
+      "title": "beebody flybody flight contact sheet",
+      "claim_tier": "strict_flybody_render",
+      "fidelity": "real_flybody_3d contact sheet",
+      "source_data": "output/animations/beebody_flybody_flight_contact_sheet.png",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/renders/beebody_flybody_morphology_contact_sheet.png",
+      "sha256": "7536762bb903ab48fbd4393508864d523a6b886107aa9445210acddd466252c8",
+      "sidecar": "output/figures/renders/beebody_flybody_morphology_contact_sheet.json",
+      "title": "beebody flybody morphology contact sheet",
+      "claim_tier": "strict_flybody_render",
+      "fidelity": "real_flybody_3d contact sheet",
+      "source_data": "output/animations/beebody_flybody_morphology_contact_sheet.png",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/renders/beeswarm_10_beebody_collision_contact_sheet.png",
+      "sha256": "19a411c5d204d806a14b3d11c52613b8e38bb557eaaf56b7fda652f6a36b5da1",
+      "sidecar": "output/figures/renders/beeswarm_10_beebody_collision_contact_sheet.json",
+      "title": "beeswarm 10 beebody collision contact sheet",
+      "claim_tier": "strict_small_scene_not_colony_dynamics",
+      "fidelity": "real_flybody_3d contact sheet",
+      "source_data": "output/animations/beeswarm_10_beebody_collision_contact_sheet.png",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/renders/beeswarm_waggle_dance_configured_contact_sheet.png",
+      "sha256": "dff66d1a5c2ff1d1fa5d5e227fe85dd860228a1d8850ec6b66080e0021b7c14d",
+      "sidecar": "output/figures/renders/beeswarm_waggle_dance_configured_contact_sheet.json",
+      "title": "beeswarm waggle dance configured contact sheet",
+      "claim_tier": "strict_small_scene_not_colony_dynamics",
+      "fidelity": "real_flybody_3d contact sheet",
+      "source_data": "output/animations/beeswarm_waggle_dance_configured_contact_sheet.png",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/renders/beeswarm_waggle_dance_long_contact_sheet.png",
+      "sha256": "ecf9be42b4efcf793603f5d6410c996d1052ae9432a791a1debb8fad6b0f68ac",
+      "sidecar": "output/figures/renders/beeswarm_waggle_dance_long_contact_sheet.json",
+      "title": "beeswarm waggle dance long contact sheet",
+      "claim_tier": "strict_small_scene_not_colony_dynamics",
+      "fidelity": "real_flybody_3d contact sheet",
+      "source_data": "output/animations/beeswarm_waggle_dance_long_contact_sheet.png",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/research/research_evidence_detail.png",
+      "sha256": "5d9447ed83f79a9538d48a742f2e61a5ead989bda86cfbe7abca1d0a7a0d37d7",
+      "sidecar": "output/figures/research/research_evidence_detail.json",
+      "title": "Research evidence detail: report sources and explicit gaps",
+      "claim_tier": "research_evidence_inventory",
+      "fidelity": "research provenance diagnostic",
+      "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/research/research_fidelity_evidence_network.png",
+      "sha256": "869c4e8545ee4ccfbb37fc876dbe27f0fc2b0189585ef4b8cf2d84318db3e8b5",
+      "sidecar": "output/figures/research/research_fidelity_evidence_network.json",
+      "title": "Evidence inventory overview",
+      "claim_tier": "research_evidence_inventory",
+      "fidelity": "research provenance diagnostic",
+      "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/research/research_module_scorecard_heatmap.png",
+      "sha256": "00ec949d5f6ae69888b267aeb72d786d3afe8b09a6d8493d16bf2e1be2e075f3",
+      "sidecar": "output/figures/research/research_module_scorecard_heatmap.json",
+      "title": "Research inventory in native units",
+      "claim_tier": "research_scorecard_diagnostic",
+      "fidelity": "research provenance diagnostic",
+      "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/research/research_sensitivity_sweeps.png",
+      "sha256": "0ab9b43b18bb8d8f887d0e90c83c1829f013468c4ba434cd434cb2f2a0835acd",
+      "sidecar": "output/figures/research/research_sensitivity_sweeps.json",
+      "title": "BeeStack research sensitivity sweeps",
+      "claim_tier": "reduced_sensitivity_diagnostic",
+      "fidelity": "reduced deterministic kernel diagnostic",
+      "source_data": "ResearchSuiteReport scorecards, evidence records, sweeps, and visual inventory",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/research/stack_synthesis_dashboard.png",
+      "sha256": "05d193647bbb2357167df4465c4cf752a23294c585e5e5eca89559234e35146a",
+      "sidecar": "output/figures/research/stack_synthesis_dashboard.json",
+      "title": "BeeStack cross-stack synthesis dashboard",
+      "claim_tier": "cross_stack_synthesis_diagnostic",
+      "fidelity": "cross-stack synthesis diagnostic, not biological validation",
+      "source_data": "output/reports/stack_synthesis_review.json",
+      "availability_status": null
+    },
+    {
+      "image": "output/figures/research/stack_synthesis_findings_detail.png",
+      "sha256": "32145661ae86f9ac8a2d9be7862fc5af7c84589f9428b2563d791ee14d8a3b60",
+      "sidecar": "output/figures/research/stack_synthesis_findings_detail.json",
+      "title": "BeeStack synthesis detail: readiness, gaps, and findings",
+      "claim_tier": "cross_stack_synthesis_diagnostic",
+      "fidelity": "cross-stack synthesis diagnostic, not biological validation",
+      "source_data": "output/reports/stack_synthesis_review.json",
+      "availability_status": null
+    }
   ],
   "missing_glyph_warnings": 0,
   "overfull_boxes": 0,
-  "maximum_overfull_pt": 0,
-  "inspection": "All pages rasterized and text/structure observed; visual judgment recorded separately by the integration owner.",
-  "integration_owner_visual_review": {
-    "all_page_contact_sheet_layout_review": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18,
-      19,
-      20,
-      21,
-      22,
-      23,
-      24,
-      25,
-      26,
-      27,
-      28,
-      29,
-      30,
-      31,
-      32,
-      33,
-      34,
-      35,
-      36,
-      37,
-      38,
-      39,
-      40,
-      41,
-      42,
-      43,
-      44,
-      45,
-      46,
-      47,
-      48,
-      49,
-      50,
-      51,
-      52,
-      53,
-      54,
-      55,
-      56
-    ],
+  "maximum_overfull_pt": 0.0,
+  "scope": "all PDF pages rasterized, all 18 hydrated sections parsed with Pandoc, every referenced image matched to the fresh render seal; manual pixel judgments are recorded separately",
+  "visual_review": {
+    "source_commit": "a460c466f6ac781eb13925cdd42c08bfacd41556",
+    "all_page_layouts_inspected": 56,
+    "all_referenced_figures_inspected": 33,
     "high_resolution_detail_pages": [
-      13,
-      22,
-      33,
-      45,
-      51
+      41,
+      42
     ],
-    "high_resolution_long_edge_px": 1600,
-    "accepted_layout": true,
-    "observations": [
-      "All 56 page compositions inspected; references and tables remain within page geometry.",
-      "Detail views inspected runtime/units/reproducibility, empirical N/A values, modality/aggregate distinctions, conservative fidelity limits and source provenance wrapping.",
-      "Figure captions distinguish software/render witnesses and synthetic model outputs from empirical biological validation."
-    ],
-    "limits": "Contact-sheet review is not full-resolution proofreading of every line; DOI/source-identity checks are not full-text scientific claim verification."
+    "post_installed_cli_page_pixel_hashes_match_approved_source_pdf": true,
+    "approved_pre_final_pdf_sha256": "5d0ece6cac990b16b0ca64334f0b189fd775f8b457fe9cd5ec35d4c7a640b418",
+    "limits": "Layout/legibility/provenance inspection, not full-text biological claim certification or cross-platform binary reproducibility.",
+    "final_promotion_pdf_pixels_match_all_approved_pages": true
   }
 }

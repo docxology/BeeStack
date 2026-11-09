@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
   "alt_text": "Four-panel BeeBody telemetry dashboard with speed, wing power, energy, and cues.",
   "artifact_kind": "figure",
   "backend": "Matplotlib/pandas",
-  "caption": "Matplotlib/pandas/NetworkX beebody methods telemetry dashboard shows BeeBody methods dashboard showing reduced telemetry, energy, wing-power, and morphology cues beside the FlyBody-backed fidelity boundary. Generated from MethodsAnalysisReport and simulation records. Sidecar validation checks raster, source routing, and registered claim tier. Does not calibrate honeybee biomechanics or aerodynamics.",
+  "caption": "BeeBody methods dashboard showing reduced telemetry, energy, wing-power, and morphology cues beside the FlyBody-backed fidelity boundary. Generated from MethodsAnalysisReport and simulation records using Matplotlib/pandas. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not calibrate honeybee biomechanics or aerodynamics.",
   "citation_keys": [
     "vaxenburg2025flybody",
     "todorov2012mujoco"
@@ -35,20 +36,20 @@
     "10.1145/2133806.2133821",
     "10.1109/TVCG.2015.2467551"
   ],
-  "fidelity": "FlyBody-backed render diagnostics plus reduced telemetry",
+  "fidelity": "scripted-pose FlyBody render diagnostics plus reduced telemetry; not forward dynamics",
   "figure_path": "output/figures/methods/beebody_methods_telemetry_dashboard.png",
   "manuscript_label": "fig:body_methods_dashboard",
   "manuscript_section": "docs/manuscript/05_methods_body_swarm.md",
   "plot_data_path": "output/figures/methods/beebody_methods_telemetry_dashboard_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 1085,
+    "height_px": 1168,
     "max_intensity": 255,
-    "mean_intensity": 243.62149970618253,
+    "mean_intensity": 247.1103187919463,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 41.591275895246625,
+    "std_intensity": 37.57196773130744,
     "width_px": 1788
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
@@ -58,18 +59,18 @@
     "10.1038/s41586-025-09029-4",
     "10.1109/IROS.2012.6386109"
   ],
-  "title": "Beebody Methods Telemetry Dashboard",
+  "title": "BeeBody methods telemetry dashboard",
   "unsupported_inference": "Does not calibrate honeybee biomechanics or aerodynamics.",
   "validation_status": "nonblank image, quality sidecar, and plot data passed",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 1.648,
+    "aspect_ratio": 1.531,
     "figure_role": "dashboard",
-    "height_px": 1085,
+    "height_px": 1168,
     "label_density": "dense",
     "manuscript_use": "manuscript_primary",
     "max_dimension_px": 1788,
-    "min_dimension_px": 1085,
+    "min_dimension_px": 1168,
     "readability_status": "pass",
     "width_px": 1788
   }

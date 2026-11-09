@@ -1,374 +1,77 @@
 {
-  "scope": "real generated local HTML in installed desktop Google Chrome, anonymous repository-local profile",
+  "scope": "Actual current installed Chrome rendering and interactions for all four native viewers; final file digests bound below. Plotly CDN viewers are not self-contained offline artifacts.",
+  "source_commit": "a460c466f6ac781eb13925cdd42c08bfacd41556",
   "viewport_css_pixels": {
-    "width": 1600,
-    "height": 1000
+    "width": 1280,
+    "height": 900,
+    "deviceScaleFactor": 2
   },
   "surfaces": [
     {
       "path": "output/interactive/methods_dashboard.html",
-      "sha256": "59242001315a4b9c4686de629c5effa065ac11c5ee848e211e8b90f600e00e8f",
-      "observed": {
-        "title": "BeeStack methods: configured self-tests and visualization coverage",
-        "traceTypes": [
-          "scatter",
-          "scatter",
-          "scatter",
-          "scatter",
-          "scatter"
-        ],
-        "traceCount": 5,
-        "tableRows": null,
-        "unobservedOdorMeanPresent": null,
-        "axes": [
-          {
-            "name": "xaxis",
-            "matches": null,
-            "showticklabels": null,
-            "range": [
-              2.811870057714946,
-              23.40154223979903
-            ]
-          },
-          {
-            "name": "yaxis",
-            "matches": null,
-            "showticklabels": null,
-            "range": [
-              0,
-              1.05
-            ]
-          }
-        ],
-        "fullyMissingYTraces": 0
-      },
+      "sha256": "e23ea148bf8428a384b793f0560473826f9591b2acdf2cd6906625cb2a4e895a",
+      "document_title": "BeeStack methods: configured self-tests and visualization coverage",
       "screenshot": "output/reports/workflowz_ui_methods_dashboard.jpg",
-      "screenshot_sha256": "d3ac6353433b5d5d9c6c34ed01e0d48870377720c821146297f3107053193d54"
+      "interaction": {
+        "pan_selected": true,
+        "zoom_changed_visible_ticks": true,
+        "autoscale_exercised": true
+      },
+      "horizontal_overflow": false
     },
     {
       "path": "output/interactive/methods_module_metrics.html",
-      "sha256": "60dc10150ccbd822584a003683e158a029fa9e29eb6ce067ead22a694b0c3175",
-      "observed": {
-        "title": "BeeStack module metrics: unlike units are not compared on one axis",
-        "traceTypes": [
-          "table"
-        ],
-        "traceCount": 1,
-        "tableRows": 49,
-        "unobservedOdorMeanPresent": false,
-        "axes": [],
-        "fullyMissingYTraces": 0
-      },
+      "sha256": "68e470f75aad15682f99514c55fd4c794258c16e398b84ab826838ee354a9820",
+      "document_title": "BeeStack module metrics: unlike units are not compared on one axis",
       "screenshot": "output/reports/workflowz_ui_methods_module_metrics.jpg",
-      "screenshot_sha256": "d68a9d3caacf1c26471362017e44aba1fc8b247abe0fd47a6e798123d6611b6a"
+      "interaction": {
+        "actual_scroll_to_niche_rows_exercised": true,
+        "all_five_modules_rendered": true
+      },
+      "horizontal_overflow": false
     },
     {
       "path": "output/interactive/research_scorecards.html",
-      "sha256": "b8c821212471f0bd2f8384579c829150f5443576e5f4b3bccbfccd497c0114fc",
-      "observed": {
-        "title": "BeeStack research configured self-test scorecards (not biological validation)",
-        "traceTypes": [
-          "bar",
-          "bar",
-          "bar",
-          "bar",
-          "bar"
-        ],
-        "traceCount": 5,
-        "tableRows": null,
-        "unobservedOdorMeanPresent": null,
-        "axes": [
-          {
-            "name": "xaxis",
-            "matches": null,
-            "showticklabels": null,
-            "range": [
-              -0.5,
-              4.5
-            ]
-          },
-          {
-            "name": "yaxis",
-            "matches": null,
-            "showticklabels": null,
-            "range": [
-              0,
-              1
-            ]
-          }
-        ],
-        "fullyMissingYTraces": 0
-      },
+      "sha256": "4c1fdc92d42a663699fd3bbc1c4c9c077b35a64d50f6e95e715910d74f630168",
+      "document_title": "BeeStack research configured self-test scorecards (not biological validation)",
       "screenshot": "output/reports/workflowz_ui_research_scorecards.jpg",
-      "screenshot_sha256": "dbf274b9844a9b6ce964496ee36dca652bb470ce9c37b4091638376748a4baa5"
+      "interaction": {
+        "actual_hover_exposes_module_and_fidelity": true,
+        "pan_selected": true,
+        "autoscale_exercised": true
+      },
+      "horizontal_overflow": false
     },
     {
       "path": "output/interactive/research_sensitivity_sweeps.html",
-      "sha256": "6b77fd5008d5a36253da8467a0d9279e00ae42fee2e2631ba4d67b48ce215589",
-      "observed": {
-        "title": "Reduced-kernel sensitivity: independent native-unit axes; missing output has no points",
-        "traceTypes": [
-          "scatter",
-          "scatter",
-          "scatter",
-          "scatter",
-          "scatter",
-          "scatter",
-          "scatter",
-          "scatter",
-          "scatter",
-          "scatter",
-          "scatter",
-          "scatter"
-        ],
-        "traceCount": 12,
-        "tableRows": null,
-        "unobservedOdorMeanPresent": null,
-        "axes": [
-          {
-            "name": "xaxis",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              0.15,
-              0.75
-            ]
-          },
-          {
-            "name": "yaxis",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              -1,
-              4
-            ]
-          },
-          {
-            "name": "xaxis2",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              0.1,
-              0.7
-            ]
-          },
-          {
-            "name": "yaxis2",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              -1,
-              4
-            ]
-          },
-          {
-            "name": "xaxis3",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              18,
-              34
-            ]
-          },
-          {
-            "name": "yaxis3",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              -1,
-              4
-            ]
-          },
-          {
-            "name": "xaxis4",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              0.15,
-              0.75
-            ]
-          },
-          {
-            "name": "yaxis4",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              -0.9166666666666666,
-              1.0833333333333333
-            ]
-          },
-          {
-            "name": "xaxis5",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              0.1,
-              0.7
-            ]
-          },
-          {
-            "name": "yaxis5",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              -0.9166666666666666,
-              1.0833333333333333
-            ]
-          },
-          {
-            "name": "xaxis6",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              18,
-              34
-            ]
-          },
-          {
-            "name": "yaxis6",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              -0.9166666666666666,
-              1.0833333333333333
-            ]
-          },
-          {
-            "name": "xaxis7",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              0.15,
-              0.75
-            ]
-          },
-          {
-            "name": "yaxis7",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              34,
-              36
-            ]
-          },
-          {
-            "name": "xaxis8",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              0.1,
-              0.7
-            ]
-          },
-          {
-            "name": "yaxis8",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              8.333333333333334,
-              41.666666666666664
-            ]
-          },
-          {
-            "name": "xaxis9",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              18,
-              34
-            ]
-          },
-          {
-            "name": "yaxis9",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              34,
-              36
-            ]
-          },
-          {
-            "name": "xaxis10",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              0.15,
-              0.75
-            ]
-          },
-          {
-            "name": "yaxis10",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              22.99982150291375,
-              24.99982150291375
-            ]
-          },
-          {
-            "name": "xaxis11",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              0.1,
-              0.7
-            ]
-          },
-          {
-            "name": "yaxis11",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              22.99982150291375,
-              24.99982150291375
-            ]
-          },
-          {
-            "name": "xaxis12",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              18,
-              34
-            ]
-          },
-          {
-            "name": "yaxis12",
-            "matches": null,
-            "showticklabels": true,
-            "range": [
-              22.99982150291375,
-              24.99982150291375
-            ]
-          }
-        ],
-        "fullyMissingYTraces": 3
-      },
+      "sha256": "bac263a53ae23ccef84e30b0e7b4a8bd382f1e8b0702b9f0b6df243fa37ed78e",
+      "document_title": "Reduced-kernel sensitivity: independent native-unit axes; missing output has no points",
       "screenshot": "output/reports/workflowz_ui_research_sensitivity_sweeps.jpg",
-      "screenshot_sha256": "facff60a88da30a039f876d516a185656c5fbfe75c76c7f5c0a0d50d5bee2a20"
+      "interaction": {
+        "zoom_changed_visible_ticks": true,
+        "autoscale_exercised": true,
+        "nine_computed_line_panels_and_three_unavailable_empty_panels_observed": true
+      },
+      "horizontal_overflow": false
     }
   ],
-  "interaction": {
-    "path": "output/interactive/methods_dashboard.html",
-    "sha256": "59242001315a4b9c4686de629c5effa065ac11c5ee848e211e8b90f600e00e8f",
-    "hidden_observed": "legendonly",
-    "restored_observed": true,
-    "visible_scatter_groups_after_restore": 5,
-    "browser": "dedicated installed Google Chrome, anonymous repository-local profile",
-    "viewport": {
-      "width": 1600,
-      "height": 1000
-    },
-    "harness_failures": [
-      "Raw-page animation-frame wait timed out despite later confirmed hide.",
-      "An attempted unique CSS selector was non-unique; no click was issued.",
-      "Raw Puppeteer page expando context was unavailable; supported direct helpers used."
+  "interaction": "Real pan/zoom/autoscale, hover exposing module/fidelity, and below-fold metric-table scrolling; no external share action.",
+  "directory_mode_offline_control": {
+    "title": "Local bundle: zero remains zero",
+    "bar_heights": [
+      0,
+      684
     ],
-    "restoration_action": "direct clickAt on live observed legend rectangle; subsequent state observation, not a synthesized event"
+    "network_script_count": 0,
+    "local_bundle": true,
+    "scope": "constructed diagnostic zero/one inputs, not empirical data",
+    "screenshot": "output/reports/workflowz_ui_directory_offline.jpg"
   },
+  "browser_errors": [],
+  "browser_released": true,
   "limitations": [
-    "No cross-browser, mobile, WCAG or offline-CDN certification.",
-    "Plotly viewer loads cdn.plot.ly; PNG/PDF are the offline presentation artifacts."
-  ],
-  "browser_released": true
+    "Desktop Chrome only; no mobile, cross-browser or WCAG certification.",
+    "Native CDN viewers require cdn.plot.ly; PNG/PDF and explicitly bundled directory-mode control are the offline presentation surfaces.",
+    "Initial guessed scatter/annotation selectors and a premature keyboard-scroll assertion were rejected as harness errors, not software findings. Actual bar/line DOM and visual outputs were inspected."
+  ]
 }

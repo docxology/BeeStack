@@ -9,9 +9,9 @@
   "nodes": [
     {
       "id": "fig:scholarship_evidence_matrix",
-      "label": "BeeStack scholarship evidence matrix"
+      "label": "Scholarly source ledger and availability"
     }
   ],
   "schema": "beestack.figure_data.v1",
-  "title": "BeeStack scholarship evidence matrix"
+  "title": "Scholarly source ledger and availability"
 }

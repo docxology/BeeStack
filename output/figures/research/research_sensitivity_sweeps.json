@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
   "alt_text": "Small-multiple line charts of sensitivity sweep outputs by parameter.",
   "artifact_kind": "figure",
-  "backend": "Matplotlib/pandas/NetworkX",
-  "caption": "Matplotlib/pandas/NetworkX beestack research sensitivity sweeps shows Deterministic sensitivity-sweep panel showing reduced-kernel response under controlled one-parameter perturbations. Generated from ResearchSuiteReport sensitivity sweeps. Sidecar validation checks raster, source routing, and registered claim tier. Does not replace Bayesian calibration or external scenario validation.",
+  "backend": "Matplotlib/pandas",
+  "caption": "Deterministic sensitivity-sweep panel showing reduced-kernel response under controlled one-parameter perturbations. Generated from ResearchSuiteReport sensitivity sweeps using Matplotlib/pandas. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not replace Bayesian calibration or external scenario validation.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
@@ -42,14 +43,14 @@
   "plot_data_path": "output/figures/research/research_sensitivity_sweeps_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 1571,
+    "height_px": 1771,
     "max_intensity": 255,
-    "mean_intensity": 248.24935733617022,
+    "mean_intensity": 248.68931021252885,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 33.69557114632531,
-    "width_px": 2026
+    "std_intensity": 32.70308556237211,
+    "width_px": 1822
   },
   "regeneration_command": "uv run python scripts/run_research_suite.py",
   "schema": "beestack.figure.v1",
@@ -58,19 +59,19 @@
     "10.1371/journal.pcbi.1005510",
     "10.3233/DS-190026"
   ],
-  "title": "Research Sensitivity Sweeps",
+  "title": "BeeStack research sensitivity sweeps",
   "unsupported_inference": "Does not replace Bayesian calibration or external scenario validation.",
   "validation_status": "nonblank image, quality sidecar, and plot data passed",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 1.29,
+    "aspect_ratio": 1.029,
     "figure_role": "overview",
-    "height_px": 1571,
+    "height_px": 1771,
     "label_density": "dense",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 2026,
-    "min_dimension_px": 1571,
+    "max_dimension_px": 1822,
+    "min_dimension_px": 1771,
     "readability_status": "pass",
-    "width_px": 2026
+    "width_px": 1822
   }
 }

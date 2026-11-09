@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
-  "alt_text": "Contact sheet of eight MuJoCo frames showing a configured waggle dancer and follower BeeBody models.",
+  "alt_text": "Sampled MuJoCo frames showing a configured waggle dancer and follower BeeBody models in a scripted-pose scene.",
   "artifact_kind": "figure",
   "backend": "FlyBody/MuJoCo",
-  "caption": "FlyBody/MuJoCo beeswarm configured waggle dance scene shows Eight-frame contact sheet from a strict MuJoCo waggle scene with one dancer and follower BeeBody models on a comb floor, with floor/body contacts recorded. Generated from animation manifest, flybody_scenes/waggle contact report, and decoded dance settings. Sidecar validation checks raster, source routing, and registered claim tier. Does not validate recruitment outcomes against field colony traces.",
+  "caption": "Sampled frames from a scripted-pose MuJoCo waggle scene with one dancer and follower BeeBody models on a comb floor, with contacts recorded. Generated from animation manifest, flybody_scenes/waggle contact report, and decoded dance settings using FlyBody/MuJoCo. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not validate recruitment outcomes against field colony traces.",
   "citation_keys": [
     "vaxenburg2025flybody",
     "todorov2012mujoco",

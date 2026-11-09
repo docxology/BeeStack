@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
-  "alt_text": "Module-by-module methods detail table with validation, artifacts, evidence links, gaps, and conservative boundary text.",
+  "alt_text": "Module detail table with configured self-tests, inventory counts, known gaps, and conservative boundary text.",
   "artifact_kind": "figure",
   "backend": "Matplotlib/pandas",
-  "caption": "Matplotlib/pandas/NetworkX beestack methods dashboard detail shows Split companion table showing module validation fractions, visual artifact counts, evidence-link counts, gap counts, and boundaries. Generated from MethodsAnalysisReport module panels and visual QA report. Sidecar validation checks raster, source routing, and registered claim tier. Does not support biological predictive validity.",
+  "caption": "Module configured self-test fractions, visual-artifact counts, evidence-link counts, known-gap counts, and full report interpretations. Generated from MethodsAnalysisReport module panels and visual QA report using Matplotlib/pandas. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not support biological predictive validity.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
@@ -42,13 +43,13 @@
   "plot_data_path": "output/figures/methods/methods_dashboard_detail_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 1136,
+    "height_px": 993,
     "max_intensity": 255,
-    "mean_intensity": 249.51223297592415,
+    "mean_intensity": 243.12690094197288,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 27.021901918941072,
+    "std_intensity": 49.47754038907642,
     "width_px": 2216
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
@@ -58,18 +59,18 @@
     "10.1371/journal.pcbi.1005510",
     "10.3233/DS-190026"
   ],
-  "title": "Methods Dashboard Detail",
+  "title": "Methods detail: module evidence and explicit boundaries",
   "unsupported_inference": "Does not support biological predictive validity.",
   "validation_status": "nonblank image, quality sidecar, and plot data passed",
   "visual_quality": {
-    "aspect_class": "balanced",
-    "aspect_ratio": 1.951,
+    "aspect_class": "wide",
+    "aspect_ratio": 2.232,
     "figure_role": "detail",
-    "height_px": 1136,
+    "height_px": 993,
     "label_density": "dense",
     "manuscript_use": "manuscript_primary",
     "max_dimension_px": 2216,
-    "min_dimension_px": 1136,
+    "min_dimension_px": 993,
     "readability_status": "pass",
     "split_group": "methods_dashboard",
     "width_px": 2216

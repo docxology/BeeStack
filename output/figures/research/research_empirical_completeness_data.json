@@ -1,21 +1,38 @@
 {
-  "chart_type": "bar",
-  "figure_path": "output/figures/research/research_empirical_completeness.png",
-  "labels": [
-    "empirical-panels",
-    "calcium-datasets",
-    "honeybee-standard-brain",
-    "template-bank",
-    "figshare-hadjitofi-2024-waggle-following"
+  "chart_type": "table",
+  "columns": [
+    "dataset_id",
+    "completeness_fraction",
+    "availability_status"
   ],
-  "orientation": "horizontal",
+  "figure_path": "output/figures/research/research_empirical_completeness.png",
+  "rows": [
+    {
+      "availability_status": "analysis_unavailable",
+      "completeness_fraction": 0.0,
+      "dataset_id": "empirical-panels"
+    },
+    {
+      "availability_status": "analysis_unavailable",
+      "completeness_fraction": 0.0,
+      "dataset_id": "calcium-datasets"
+    },
+    {
+      "availability_status": "analysis_unavailable",
+      "completeness_fraction": 0.0,
+      "dataset_id": "honeybee-standard-brain"
+    },
+    {
+      "availability_status": "analysis_unavailable",
+      "completeness_fraction": 0.0,
+      "dataset_id": "template-bank"
+    },
+    {
+      "availability_status": "analysis_unavailable",
+      "completeness_fraction": 0.0,
+      "dataset_id": "figshare-hadjitofi-2024-waggle-following"
+    }
+  ],
   "schema": "beestack.figure_data.v1",
-  "title": "Research empirical completeness",
-  "values": [
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0
-  ]
+  "title": "Current-aggregate evidence availability (reported state)"
 }

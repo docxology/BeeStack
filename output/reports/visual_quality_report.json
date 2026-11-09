@@ -1,36 +1,38 @@
 {
-  "blockers": [],
+  "blockers": [
+    "output/figures/methods/methods_repo_dashboard.png: dense figure lacks readable primary rendering"
+  ],
   "items": [
     {
-      "alt_text_length": 65,
+      "alt_text_length": 87,
       "artifact_path": "output/figures/beestack_graphical_abstract.png",
-      "caption_length": 398,
+      "caption_length": 492,
       "figure_role": "overview",
-      "height_px": 956,
+      "height_px": 1068,
       "label_density": "dense",
       "manuscript_label": "fig:beestack_graphical_abstract",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 2180
+      "width_px": 2036
     },
     {
-      "alt_text_length": 77,
+      "alt_text_length": 71,
       "artifact_path": "output/figures/beestack_evidence_ladder.png",
-      "caption_length": 425,
+      "caption_length": 396,
       "figure_role": "overview",
-      "height_px": 1028,
+      "height_px": 1045,
       "label_density": "dense",
       "manuscript_label": "fig:beestack_evidence_ladder",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 2180
+      "width_px": 2144
     },
     {
       "alt_text_length": 87,
       "artifact_path": "output/figures/manuscript_figure_claim_map.png",
-      "caption_length": 362,
+      "caption_length": 392,
       "figure_role": "overview",
       "height_px": 1003,
       "label_density": "dense",
@@ -38,25 +40,25 @@
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "manuscript_figure_claims",
-      "width_px": 1915
+      "width_px": 2028
     },
     {
-      "alt_text_length": 93,
+      "alt_text_length": 85,
       "artifact_path": "output/figures/manuscript_figure_claim_detail.png",
-      "caption_length": 383,
+      "caption_length": 444,
       "figure_role": "detail",
-      "height_px": 2014,
+      "height_px": 1153,
       "label_density": "dense",
       "manuscript_label": "fig:manuscript_figure_claim_detail",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "manuscript_figure_claims",
-      "width_px": 2684
+      "width_px": 2108
     },
     {
       "alt_text_length": 107,
       "artifact_path": "output/figures/beestack_first_principles_claim_audit.png",
-      "caption_length": 426,
+      "caption_length": 395,
       "figure_role": "overview",
       "height_px": 1028,
       "label_density": "dense",
@@ -69,48 +71,48 @@
     {
       "alt_text_length": 115,
       "artifact_path": "output/figures/beestack_scholarship_evidence_matrix.png",
-      "caption_length": 435,
+      "caption_length": 405,
       "figure_role": "dashboard",
-      "height_px": 1589,
+      "height_px": 2180,
       "label_density": "dense",
       "manuscript_label": "fig:scholarship_evidence_matrix",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 2396
+      "width_px": 2504
     },
     {
-      "alt_text_length": 118,
+      "alt_text_length": 107,
       "artifact_path": "output/figures/beebody_beeswarm_micro_macro_calibration.png",
-      "caption_length": 497,
+      "caption_length": 502,
       "figure_role": "overview",
-      "height_px": 956,
+      "height_px": 992,
       "label_density": "moderate",
       "manuscript_label": "fig:body_swarm_micro_macro",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 2252
+      "width_px": 2072
     },
     {
-      "alt_text_length": 116,
+      "alt_text_length": 102,
       "artifact_path": "output/figures/beebrain_beemind_anatomy_policy_map.png",
-      "caption_length": 465,
+      "caption_length": 457,
       "figure_role": "overview",
-      "height_px": 1028,
-      "label_density": "dense",
+      "height_px": 1027,
+      "label_density": "moderate",
       "manuscript_label": "fig:brain_mind_anatomy_policy",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 2180
+      "width_px": 1928
     },
     {
-      "alt_text_length": 119,
+      "alt_text_length": 79,
       "artifact_path": "output/figures/beeniche_adapter_niche_map.png",
-      "caption_length": 446,
+      "caption_length": 475,
       "figure_role": "overview",
-      "height_px": 1028,
+      "height_px": 975,
       "label_density": "moderate",
       "manuscript_label": "fig:niche_adapter_map",
       "readability_exception": "",
@@ -119,37 +121,37 @@
       "width_px": 2036
     },
     {
-      "alt_text_length": 126,
+      "alt_text_length": 79,
       "artifact_path": "output/figures/beestack_validation_readiness_residuals.png",
-      "caption_length": 487,
+      "caption_length": 463,
       "figure_role": "overview",
-      "height_px": 1064,
-      "label_density": "dense",
+      "height_px": 1098,
+      "label_density": "moderate",
       "manuscript_label": "fig:validation_readiness_residuals",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 2216
+      "width_px": 1928
     },
     {
-      "alt_text_length": 123,
+      "alt_text_length": 74,
       "artifact_path": "output/figures/methods/methods_repo_dashboard.png",
-      "caption_length": 386,
+      "caption_length": 383,
       "figure_role": "dashboard",
-      "height_px": 881,
+      "height_px": 731,
       "label_density": "dense",
       "manuscript_label": "fig:methods_dashboard",
-      "readability_exception": "",
-      "readability_status": "pass",
+      "readability_exception": "registered dense manuscript figure has a split companion or constrained label set",
+      "readability_status": "exception",
       "split_group": "methods_dashboard",
-      "width_px": 1746
+      "width_px": 1928
     },
     {
-      "alt_text_length": 119,
+      "alt_text_length": 109,
       "artifact_path": "output/figures/methods/methods_dashboard_detail.png",
-      "caption_length": 398,
+      "caption_length": 365,
       "figure_role": "detail",
-      "height_px": 1136,
+      "height_px": 993,
       "label_density": "dense",
       "manuscript_label": "fig:methods_dashboard_detail",
       "readability_exception": "",
@@ -158,24 +160,24 @@
       "width_px": 2216
     },
     {
-      "alt_text_length": 92,
+      "alt_text_length": 82,
       "artifact_path": "output/figures/methods/methods_manuscript_evidence_index.png",
-      "caption_length": 400,
+      "caption_length": 363,
       "figure_role": "overview",
-      "height_px": 885,
+      "height_px": 849,
       "label_density": "dense",
       "manuscript_label": "fig:methods_evidence_index",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 1696
+      "width_px": 2006
     },
     {
       "alt_text_length": 80,
       "artifact_path": "output/figures/methods/beebody_methods_telemetry_dashboard.png",
-      "caption_length": 402,
+      "caption_length": 364,
       "figure_role": "dashboard",
-      "height_px": 1085,
+      "height_px": 1168,
       "label_density": "dense",
       "manuscript_label": "fig:body_methods_dashboard",
       "readability_exception": "",
@@ -184,9 +186,9 @@
       "width_px": 1788
     },
     {
-      "alt_text_length": 96,
+      "alt_text_length": 64,
       "artifact_path": "output/figures/renders/beebody_flybody_morphology_contact_sheet.png",
-      "caption_length": 498,
+      "caption_length": 507,
       "figure_role": "contact_sheet",
       "height_px": 608,
       "label_density": "frame_strip",
@@ -197,9 +199,9 @@
       "width_px": 1440
     },
     {
-      "alt_text_length": 95,
+      "alt_text_length": 71,
       "artifact_path": "output/figures/renders/beebody_flybody_flight_contact_sheet.png",
-      "caption_length": 492,
+      "caption_length": 425,
       "figure_role": "contact_sheet",
       "height_px": 608,
       "label_density": "frame_strip",
@@ -210,9 +212,9 @@
       "width_px": 1440
     },
     {
-      "alt_text_length": 67,
+      "alt_text_length": 68,
       "artifact_path": "output/figures/beebody_motion_power_phase.png",
-      "caption_length": 442,
+      "caption_length": 376,
       "figure_role": "overview",
       "height_px": 738,
       "label_density": "compact",
@@ -223,9 +225,9 @@
       "width_px": 1216
     },
     {
-      "alt_text_length": 108,
+      "alt_text_length": 95,
       "artifact_path": "output/figures/renders/beeswarm_10_beebody_collision_contact_sheet.png",
-      "caption_length": 460,
+      "caption_length": 418,
       "figure_role": "contact_sheet",
       "height_px": 608,
       "label_density": "frame_strip",
@@ -236,9 +238,9 @@
       "width_px": 1440
     },
     {
-      "alt_text_length": 100,
+      "alt_text_length": 110,
       "artifact_path": "output/figures/renders/beeswarm_waggle_dance_configured_contact_sheet.png",
-      "caption_length": 461,
+      "caption_length": 414,
       "figure_role": "contact_sheet",
       "height_px": 608,
       "label_density": "frame_strip",
@@ -249,9 +251,9 @@
       "width_px": 1440
     },
     {
-      "alt_text_length": 123,
+      "alt_text_length": 110,
       "artifact_path": "output/figures/renders/beeswarm_waggle_dance_long_contact_sheet.png",
-      "caption_length": 504,
+      "caption_length": 453,
       "figure_role": "contact_sheet",
       "height_px": 608,
       "label_density": "frame_strip",
@@ -262,48 +264,48 @@
       "width_px": 1440
     },
     {
-      "alt_text_length": 79,
+      "alt_text_length": 83,
       "artifact_path": "output/figures/methods/beebrain_methods_empirical_completeness.png",
-      "caption_length": 419,
+      "caption_length": 369,
       "figure_role": "overview",
-      "height_px": 976,
-      "label_density": "moderate",
+      "height_px": 1075,
+      "label_density": "dense",
       "manuscript_label": "fig:brain_methods_completeness",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 1983
+      "width_px": 2129
     },
     {
-      "alt_text_length": 76,
+      "alt_text_length": 67,
       "artifact_path": "output/figures/methods/beemind_methods_policy_landscape.png",
-      "caption_length": 413,
+      "caption_length": 381,
       "figure_role": "overview",
-      "height_px": 976,
-      "label_density": "moderate",
+      "height_px": 1075,
+      "label_density": "dense",
       "manuscript_label": "fig:mind_methods_policy",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 1983
+      "width_px": 2129
     },
     {
-      "alt_text_length": 75,
+      "alt_text_length": 88,
       "artifact_path": "output/figures/methods/beeswarm_methods_contact_recruitment.png",
-      "caption_length": 420,
+      "caption_length": 377,
       "figure_role": "overview",
-      "height_px": 976,
-      "label_density": "moderate",
+      "height_px": 1075,
+      "label_density": "dense",
       "manuscript_label": "fig:swarm_methods_contact",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 1983
+      "width_px": 2129
     },
     {
       "alt_text_length": 74,
       "artifact_path": "output/figures/methods/beeniche_methods_comb_thermal.png",
-      "caption_length": 407,
+      "caption_length": 364,
       "figure_role": "overview",
       "height_px": 837,
       "label_density": "moderate",
@@ -316,7 +318,7 @@
     {
       "alt_text_length": 63,
       "artifact_path": "output/figures/body_energy_timeseries.png",
-      "caption_length": 320,
+      "caption_length": 300,
       "figure_role": "overview",
       "height_px": 702,
       "label_density": "compact",
@@ -324,12 +326,12 @@
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 1246
+      "width_px": 1247
     },
     {
       "alt_text_length": 66,
       "artifact_path": "output/figures/comb_fraction_timeseries.png",
-      "caption_length": 323,
+      "caption_length": 294,
       "figure_role": "overview",
       "height_px": 702,
       "label_density": "compact",
@@ -340,17 +342,17 @@
       "width_px": 1245
     },
     {
-      "alt_text_length": 69,
+      "alt_text_length": 66,
       "artifact_path": "output/figures/module_contract_coverage.png",
-      "caption_length": 334,
+      "caption_length": 341,
       "figure_role": "overview",
-      "height_px": 705,
+      "height_px": 719,
       "label_density": "compact",
       "manuscript_label": "fig:module_coverage",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 1244
+      "width_px": 1247
     },
     {
       "alt_text_length": 59,
@@ -470,85 +472,85 @@
       "width_px": 1425
     },
     {
-      "alt_text_length": 54,
+      "alt_text_length": 79,
       "artifact_path": "output/figures/research/research_module_scorecard_heatmap.png",
-      "caption_length": 386,
+      "caption_length": 384,
       "figure_role": "dashboard",
-      "height_px": 985,
+      "height_px": 691,
       "label_density": "moderate",
       "manuscript_label": "fig:research_scorecard",
-      "readability_exception": "",
-      "readability_status": "pass",
+      "readability_exception": "registered dense manuscript figure has a split companion or constrained label set",
+      "readability_status": "exception",
       "split_group": "",
-      "width_px": 1653
+      "width_px": 1821
     },
     {
       "alt_text_length": 69,
       "artifact_path": "output/figures/research/research_sensitivity_sweeps.png",
-      "caption_length": 388,
+      "caption_length": 349,
       "figure_role": "overview",
-      "height_px": 1571,
+      "height_px": 1771,
       "label_density": "dense",
       "manuscript_label": "fig:research_sweeps",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "",
-      "width_px": 2026
+      "width_px": 1822
     },
     {
-      "alt_text_length": 80,
+      "alt_text_length": 73,
       "artifact_path": "output/figures/research/research_fidelity_evidence_network.png",
-      "caption_length": 351,
+      "caption_length": 350,
       "figure_role": "overview",
-      "height_px": 1072,
+      "height_px": 906,
       "label_density": "dense",
       "manuscript_label": "fig:research_network",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "research_evidence",
-      "width_px": 1719
+      "width_px": 1753
     },
     {
       "alt_text_length": 104,
       "artifact_path": "output/figures/research/research_evidence_detail.png",
-      "caption_length": 399,
+      "caption_length": 372,
       "figure_role": "detail",
-      "height_px": 1111,
+      "height_px": 1848,
       "label_density": "dense",
       "manuscript_label": "fig:research_evidence_detail",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "research_evidence",
-      "width_px": 2059
+      "width_px": 2229
     },
     {
-      "alt_text_length": 94,
+      "alt_text_length": 95,
       "artifact_path": "output/figures/research/stack_synthesis_dashboard.png",
-      "caption_length": 380,
+      "caption_length": 349,
       "figure_role": "dashboard",
-      "height_px": 1352,
+      "height_px": 1530,
       "label_density": "dense",
       "manuscript_label": "fig:stack_synthesis_dashboard",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "stack_synthesis",
-      "width_px": 2018
+      "width_px": 2228
     },
     {
-      "alt_text_length": 82,
+      "alt_text_length": 64,
       "artifact_path": "output/figures/research/stack_synthesis_findings_detail.png",
-      "caption_length": 341,
+      "caption_length": 366,
       "figure_role": "detail",
-      "height_px": 1046,
-      "label_density": "moderate",
+      "height_px": 1048,
+      "label_density": "dense",
       "manuscript_label": "fig:stack_synthesis_findings_detail",
       "readability_exception": "",
       "readability_status": "pass",
       "split_group": "stack_synthesis",
-      "width_px": 1990
+      "width_px": 2176
     }
   ],
-  "passed": true,
+  "passed": false,
   "primary_figure_count": 42,
   "schema": "beestack.visual_quality_report.v1",
   "split_groups": {

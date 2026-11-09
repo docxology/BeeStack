@@ -1,7 +1,17 @@
 {
+  "annotations": [
+    "Illustrative process ranges for the five modules, not measured biological timing or a common simulation clock.",
+    "claim_tier=architecture_schematic",
+    "source_data=conceptual process-scale labels in the overview figure builder"
+  ],
   "chart_type": "schematic",
   "figure_path": "output/figures/beestack_scale_ladder.png",
-  "nodes": [],
+  "nodes": [
+    {
+      "id": "fig:conceptual_process_scales",
+      "label": "Conceptual biological scales \u2014 not executed timing"
+    }
+  ],
   "schema": "beestack.figure_data.v1",
-  "title": "beestack scale ladder"
+  "title": "Conceptual biological scales \u2014 not executed timing"
 }

@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
-  "alt_text": "Heatmap of methods-analysis module rows and normalized validation, metric, visual-artifact, evidence-link, and gap columns.",
+  "alt_text": "Native-value table of configured self-test fractions and inventory counts.",
   "artifact_kind": "figure",
   "backend": "Matplotlib/pandas",
-  "caption": "Matplotlib/pandas/NetworkX beestack methods dashboard shows Methods dashboard summarizing per-module validation, evidence links, visual artifacts, metric counts, and explicit gap counts. Generated from MethodsAnalysisReport module panels and validation panels. Sidecar validation checks raster, source routing, and registered claim tier. Does not support biological predictive validity.",
+  "caption": "Per-module configured self-test fractions and separate metric, artifact, evidence-link, and known-gap counts without normalization or a composite score. Generated from MethodsAnalysisReport module panels and validation panels using Matplotlib/pandas. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not support biological predictive validity.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
@@ -42,14 +43,14 @@
   "plot_data_path": "output/figures/methods/methods_repo_dashboard_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 881,
+    "height_px": 731,
     "max_intensity": 255,
-    "mean_intensity": 162.9028848816754,
+    "mean_intensity": 243.3328541587435,
     "min_intensity": 0,
     "mode": "RGBA",
-    "nonzero_histogram_bins": 255,
-    "std_intensity": 97.26940113031434,
-    "width_px": 1746
+    "nonzero_histogram_bins": 256,
+    "std_intensity": 49.30530669178828,
+    "width_px": 1928
   },
   "regeneration_command": "uv run python scripts/run_methods_analysis.py",
   "schema": "beestack.figure.v1",
@@ -58,20 +59,21 @@
     "10.1371/journal.pcbi.1005510",
     "10.3233/DS-190026"
   ],
-  "title": "Methods Repo Dashboard",
+  "title": "Methods inventory in native units",
   "unsupported_inference": "Does not support biological predictive validity.",
   "validation_status": "nonblank image, quality sidecar, and plot data passed",
   "visual_quality": {
-    "aspect_class": "balanced",
-    "aspect_ratio": 1.982,
+    "aspect_class": "wide",
+    "aspect_ratio": 2.637,
     "figure_role": "dashboard",
-    "height_px": 881,
+    "height_px": 731,
     "label_density": "dense",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 1746,
-    "min_dimension_px": 881,
-    "readability_status": "pass",
+    "max_dimension_px": 1928,
+    "min_dimension_px": 731,
+    "readability_exception": "registered dense manuscript figure has a split companion or constrained label set",
+    "readability_status": "exception",
     "split_group": "methods_dashboard",
-    "width_px": 1746
+    "width_px": 1928
   }
 }

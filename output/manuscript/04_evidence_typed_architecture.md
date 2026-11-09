@@ -1,4 +1,4 @@
-# Evidence-Typed Architecture {#sec:architecture}
+# Declared Contracts and Executed Scenario Architecture {#sec:architecture}
 
 BeeStack is organized around the five biological layers named in the
 project specification [@friedman2026beestack], each implemented as a
@@ -7,7 +7,7 @@ discipline is uniform across layers: a small, finite, serializable
 record set is the only currency that crosses module boundaries, and
 every record has a contract that pinned tests check at every commit.
 
-## The five layers
+## Five modules and their fidelity boundaries
 
 - **BeeBody** emits validated observations and accepts validated actions
   at 100 Hz. It owns morphology
@@ -17,7 +17,7 @@ every record has a contract that pinned tests check at every commit.
   unpacking (leg torques, wing kinematics, antennal motion), and
   energetics. Production rendering runs through FlyBody tasks
   [@vaxenburg2025flybody] inside MuJoCo [@todorov2012mujoco]; the
-  reduced closed-loop kernel remains for deterministic telemetry tests.
+  reduced scenario kernel remains separate for deterministic telemetry tests.
 - **BeeBrain** transforms observations into `BrainState` records that
   carry antennal-lobe (AL), mushroom-body (MB), central-complex (CX),
   waggle-decoding, and empirical-alignment fields. The AL channel
@@ -27,12 +27,12 @@ every record has a contract that pinned tests check at every commit.
   whole-brain 170,000×2 population); the
   CX uses 32 heading bins
   [@stone2017central; @honkanen2019sky].
-- **BeeMind** transforms `BrainState` and colony-summary inputs into a
-  `BeliefState` over a 32-dimensional latent space and an
-  `Action` policy. The policy horizon is 10 steps; the
-  active-inference-style policy scoring computes pragmatic value,
-  epistemic value, energy cost, risk cost, and caste priors with
-  explicit diagnostics [@friston2010free; @parr2017working].
+- **BeeMind** updates a `BeliefState` over a 32-dimensional
+  latent space from a supplied `DanceVector` and selects an `Action` policy.
+  The current driver supplies a fixed synthetic dance; `BrainState` and dynamic
+  colony-summary feedback remain declared but unwired. The 10-step
+  active-inference-style scorer computes pragmatic value, epistemic value,
+  energy cost, risk cost, and caste priors [@friston2010free; @parr2017working].
 - **BeeSwarm** maintains agent, dance, pheromone, and task-allocation
   state with 50 simulated agents representing
   20,000 workers. The strict
@@ -43,30 +43,32 @@ every record has a contract that pinned tests check at every commit.
   [@becher2014beehave] and Hiveopolis [@hiveopolis2019project]
   adapter schemas to support future runtime coupling.
 
-## The cross-layer contracts
+## Typed cross-layer records
 
-The seven cross-layer contracts are intentionally small and typed:
+`stack_contracts(cfg)` declares these directed payload interfaces:
 
-- `Observation` — sensory snapshot crossing BeeBody → BeeBrain;
-- `Action` — motor decision crossing BeeMind → BeeBody;
-- `BrainState` — neural digest crossing BeeBrain → BeeMind;
-- `BeliefState` — latent digest internal to BeeMind, exposed for
-  diagnostics;
-- `BeeAgent` — agent identity and current task crossing BeeMind →
-  BeeSwarm;
-- `PheromoneField` — concentration grid crossing BeeSwarm → BeeNiche;
-- `CombGrid` — voxel content grid crossing BeeNiche → BeeSwarm and
-  BeeNiche → BeeBody (proprioception against comb geometry).
+- `Observation`: BeeBody → BeeBrain, including full-bearing degrees and a
+  separate angular-velocity rate; executed in the reduced driver.
+- `Action`: BeeMind → BeeBody; executed from the selected policy.
+- `BrainState`: BeeBrain → BeeMind; not passed to current policy selection.
+- `DanceVector`: BeeBrain → BeeSwarm; current recruitment instead receives a
+  fixed synthetic dance, not a sensory-decoded Brain output.
+- `colony_need`: BeeSwarm → BeeMind; declared, not dynamic task feedback here.
+- `PheromoneField`: BeeSwarm → BeeNiche; declared, not a thermal-update input.
+- `thermal_and_surface_context`: BeeNiche → BeeBody; declared, not a Body input.
 
-These records are the stack's compatibility boundary. They are finite,
-shaped by configuration (no hidden runtime dimensions), serializable
-for reports, and validated before orchestration via lightweight
-`@dataclass` plus a contract-check function in
-`src/beestack/contracts.py`. This makes module replacement possible: a
-future spiking BeeBrain or calibrated BeeBody simply has to satisfy the
-same data contracts before it can enter the closed loop.
+`BeliefState`, `BeeAgent`, and `CombGrid` are supporting state records; their
+presence does not demonstrate additional executed edges.
 
-## Timing and scale
+These records define compatibility boundaries, not proof that every route is
+executed. Shapes and finite values are checked against configuration and typed
+contracts in `src/beestack/contracts.py`. Current orchestration runs selected
+interfaces only: BrainState is not passed to policy selection, niche context is
+not passed to the Body step, and recruitment does not retask agents. Replacing a
+module therefore requires both contract conformance and explicit integration of
+its intended feedback, not merely a compatible dataclass.
+
+## Configured timing targets and executed reduced cadence
 
 The configuration declares a 100 Hz control boundary,
 10 Hz target policy cadence (every
@@ -94,7 +96,7 @@ variables:
 | Represented colony size | 20,000 | Mid-season colony scale |
 | Comb voxels | 864 | Default $18 \times 12 \times 4$ |
 
-## Determinism and reproducibility
+## Run-owned seeds and scoped reproducibility evidence
 
 Run-owned random projections and agent initialization derive their seeds from
 `seed = 20260513` using NumPy [@millman2020scientific]. A clean,
@@ -105,11 +107,11 @@ byte-identical `run_summary.json`, `simulation_records.json`, and
 identical rendering, dependency environments, metadata timestamps, or empirical
 collection state across platforms.
 
-## The analysis pipeline
+## Analysis outputs and evidence manifests
 
 The analysis pipeline writes module coverage, model cards, integrity
-reviews, visualization manifests, empirical analyses, research-suite
-reports, methods-analysis dashboards, and hydrated manuscript files.
+reviews, visualization manifests, availability-gated empirical analyses,
+research-suite reports, methods-analysis dashboards, and hydrated manuscript files.
 These outputs are not incidental side effects; they are how BeeStack
 records what level of evidence backs each claim. The animation manifest
 currently contains 9 animations
@@ -118,16 +120,16 @@ reduced schematic), and the manuscript figure index links
 75 figures and visual artifacts to their
 backend, fidelity tier, validation status, and regeneration command.
 
-[@fig:beestack_graphical_abstract] summarizes module coverage and stack contracts at a glance.
+[@fig:beestack_graphical_abstract] shows the executed reduced scenario, separately from the declared contract graph.
 
-![Matplotlib beestack graphical abstract shows Showcase architecture schematic linking BeeBody, BeeBrain, BeeMind, BeeSwarm, and BeeNiche through typed contracts and generated evidence. Generated from module coverage records and stack contract definitions. Sidecar validation checks raster, source routing, and registered claim tier. Does not support a claim of biological or digital-twin validation.](../figures/beestack_graphical_abstract.png){#fig:beestack_graphical_abstract}
+![Executed reduced-scenario schematic: a fixed synthetic DanceVector updates BeeMind and BeeSwarm, BeeMind selects Body actions, Body observations enter BeeBrain, and BeeNiche receives an independent thermal update. Generated from reduced orchestrator execution flow and SimulationRecord contract using Matplotlib. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not establish neural feedback, biological validation, or calibrated digital-twin behavior.](../figures/beestack_graphical_abstract.png){#fig:beestack_graphical_abstract}
 
-## Module dependencies
+## Module inventory versus executed routing
 
 The static module-coverage figure (`output/figures/module_contract_coverage.png`,
-see [@sec:integrated_results]) renders the dependency surface explicitly so that reviewers can
-trace the path from a single observation to a single action without
-having to read the code.
+see [@sec:integrated_results]) inventories module names. It does not measure
+dependency edges or trace observations into actions. The separate declared-contract
+network and executed-scenario schematic distinguish those two routing surfaces.
 
 ## Architectural invariants
 

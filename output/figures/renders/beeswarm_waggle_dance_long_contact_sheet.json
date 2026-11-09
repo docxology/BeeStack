@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
-  "alt_text": "Contact sheet of eight MuJoCo frames from the long multi-BeeBody waggle scenario with dancer and follower orientation cues.",
+  "alt_text": "Sampled MuJoCo frames from the long scripted multi-BeeBody scenario with dancer and follower orientation cues.",
   "artifact_kind": "figure",
   "backend": "FlyBody/MuJoCo",
-  "caption": "FlyBody/MuJoCo beeswarm long waggle dance scenario shows Eight-frame contact sheet from the long configured waggle rollout with phase-aware runs, follower-orientation diagnostics, and contact-graph evidence across the full dance. Generated from animation manifest, flybody_scenes/waggle_long contact report, and follower-orientation diagnostics. Sidecar validation checks raster, source routing, and registered claim tier. Does not prove colony-scale dance-language use or calibrated follower kinematics.",
+  "caption": "Sampled frames from the long scripted-pose waggle scenario with configured dance phases, follower-orientation diagnostics, and contact-graph evidence. Generated from animation manifest, flybody_scenes/waggle_long contact report, and follower-orientation diagnostics using FlyBody/MuJoCo. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not prove colony-scale dance-language use or calibrated follower kinematics.",
   "citation_keys": [
     "vaxenburg2025flybody",
     "todorov2012mujoco",

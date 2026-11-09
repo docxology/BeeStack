@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
-  "alt_text": "Two-panel synthesis detail with readiness bars and prioritized finding text boxes.",
+  "alt_text": "Module readiness/gap table beside full prioritized finding text.",
   "artifact_kind": "figure",
   "backend": "Matplotlib/pandas synthesis dashboard",
-  "caption": "Matplotlib/pandas/NetworkX beestack synthesis findings detail shows Split companion panel showing module readiness scores beside prioritized cross-stack findings. Generated from output/reports/stack_synthesis_review.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not make BeeStack digital-twin ready.",
+  "caption": "Module heuristic-readiness scores and known-gap counts beside all prioritized cross-stack findings. These are report diagnostics, not biological validation. Generated from output/reports/stack_synthesis_review.json using Matplotlib/pandas. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not make BeeStack digital-twin ready.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
@@ -42,14 +43,14 @@
   "plot_data_path": "output/figures/research/stack_synthesis_findings_detail_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 1046,
+    "height_px": 1048,
     "max_intensity": 255,
-    "mean_intensity": 226.35062645925612,
+    "mean_intensity": 249.57018226243264,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 55.766319738858726,
-    "width_px": 1990
+    "std_intensity": 32.83034426922226,
+    "width_px": 2176
   },
   "regeneration_command": "uv run python scripts/run_research_suite.py",
   "schema": "beestack.figure.v1",
@@ -58,20 +59,20 @@
     "10.1371/journal.pcbi.1005510",
     "10.3233/DS-190026"
   ],
-  "title": "Stack Synthesis Findings Detail",
+  "title": "BeeStack synthesis detail: readiness, gaps, and findings",
   "unsupported_inference": "Does not make BeeStack digital-twin ready.",
   "validation_status": "nonblank synthesis diagnostic with plot data",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 1.902,
+    "aspect_ratio": 2.076,
     "figure_role": "detail",
-    "height_px": 1046,
-    "label_density": "moderate",
+    "height_px": 1048,
+    "label_density": "dense",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 1990,
-    "min_dimension_px": 1046,
+    "max_dimension_px": 2176,
+    "min_dimension_px": 1048,
     "readability_status": "pass",
     "split_group": "stack_synthesis",
-    "width_px": 1990
+    "width_px": 2176
   }
 }

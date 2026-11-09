@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
   "alt_text": "Table-style claim audit mapping hard constraints, evidence surfaces, and unsupported manuscript boundaries.",
   "artifact_kind": "figure",
   "backend": "Matplotlib",
-  "caption": "Matplotlib beestack first-principles claim audit shows First-principles claim audit separating hard evidence constraints, replaceable implementation choices, and blocked digital-twin claims. Generated from figure registry, source audit, and generated project contracts. Sidecar validation checks raster, source routing, and registered claim tier. Does not add evidence beyond registered reports or make blocked claims current.",
+  "caption": "First-principles claim audit separating hard evidence constraints, replaceable implementation choices, and blocked digital-twin claims. Generated from figure registry, source audit, and generated project contracts using Matplotlib. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not add evidence beyond registered reports or make blocked claims current.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
@@ -44,11 +45,11 @@
   "quality": {
     "height_px": 1028,
     "max_intensity": 255,
-    "mean_intensity": 247.69868150276025,
+    "mean_intensity": 247.34529123179144,
     "min_intensity": 24,
     "mode": "RGBA",
     "nonzero_histogram_bins": 232,
-    "std_intensity": 31.53973288354099,
+    "std_intensity": 32.82474707708676,
     "width_px": 2216
   },
   "regeneration_command": "uv run python scripts/analysis_pipeline.py",
@@ -58,7 +59,7 @@
     "10.1371/journal.pcbi.1005510",
     "10.3233/DS-190026"
   ],
-  "title": "Beestack First Principles Claim Audit",
+  "title": "Claim-admission rules (conceptual)",
   "unsupported_inference": "Does not add evidence beyond registered reports or make blocked claims current.",
   "validation_status": "nonblank quality sidecar and plot data generated",
   "visual_quality": {

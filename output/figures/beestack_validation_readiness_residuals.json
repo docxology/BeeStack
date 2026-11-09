@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
-  "alt_text": "Readiness panel showing implemented checks and explicitly blocked residual or uncertainty rows instead of invented validation.",
+  "alt_text": "Checklist with Local contract and Not supplied rows; no invented residual bars.",
   "artifact_kind": "figure",
   "backend": "Matplotlib",
-  "caption": "Matplotlib beestack validation readiness and residual blockers shows Validation-readiness panel separating implemented verification checks from blocked held-out residual, uncertainty, assimilation, and governance evidence. Generated from source refresh ledger, readiness review, generated reports, and figure sidecars. Sidecar validation checks raster, source routing, and registered claim tier. Does not provide held-out residuals, uncertainty quantification, or digital-twin readiness.",
+  "caption": "Conceptual checklist separating local verification contracts from absent held-out residual, uncertainty, assimilation, and governance evidence. It is not a receipt that local checks passed. Generated from declared verification, validation, and digital-twin requirements using Matplotlib. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not provide held-out residuals, uncertainty quantification, or digital-twin readiness.",
   "citation_keys": [
     "oreskes1994verification",
     "fair4rs2022principles",
@@ -43,14 +44,14 @@
   "plot_data_path": "output/figures/beestack_validation_readiness_residuals_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 1064,
+    "height_px": 1098,
     "max_intensity": 255,
-    "mean_intensity": 244.0484781730952,
+    "mean_intensity": 247.5261641309359,
     "min_intensity": 0,
     "mode": "RGBA",
-    "nonzero_histogram_bins": 256,
-    "std_intensity": 38.6390587460828,
-    "width_px": 2216
+    "nonzero_histogram_bins": 255,
+    "std_intensity": 30.725993556830975,
+    "width_px": 1928
   },
   "regeneration_command": "uv run python scripts/analysis_pipeline.py",
   "schema": "beestack.figure.v1",
@@ -60,19 +61,19 @@
     "10.1038/s41597-022-01710-x",
     "10.1186/s13073-019-0701-3"
   ],
-  "title": "Beestack Validation Readiness Residuals",
+  "title": "Validation requirements \u2014 no residual data supplied",
   "unsupported_inference": "Does not provide held-out residuals, uncertainty quantification, or digital-twin readiness.",
   "validation_status": "nonblank quality sidecar and plot data generated",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 2.083,
+    "aspect_ratio": 1.756,
     "figure_role": "overview",
-    "height_px": 1064,
-    "label_density": "dense",
+    "height_px": 1098,
+    "label_density": "moderate",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 2216,
-    "min_dimension_px": 1064,
+    "max_dimension_px": 1928,
+    "min_dimension_px": 1098,
     "readability_status": "pass",
-    "width_px": 2216
+    "width_px": 1928
   }
 }

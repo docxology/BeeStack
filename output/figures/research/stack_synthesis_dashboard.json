@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
-  "alt_text": "Four-panel synthesis dashboard with readiness bars, artifact-gap scatter, gates, and findings.",
+  "alt_text": "Four panels separating self-tests/readiness, inventory counts, native statistics, and findings.",
   "artifact_kind": "figure",
   "backend": "Matplotlib/pandas synthesis dashboard",
-  "caption": "Matplotlib/pandas/NetworkX beestack cross-stack synthesis dashboard shows Cross-stack synthesis dashboard summarizing validation fractions, readiness, artifacts, explicit gaps, and scholarship anchors. Generated from output/reports/stack_synthesis_review.json. Sidecar validation checks raster, source routing, and registered claim tier. Does not make BeeStack digital-twin ready.",
+  "caption": "Configured self-tests and heuristic readiness beside native inventory counts, native-unit cross-stack statistics, and prioritized findings. Generated from output/reports/stack_synthesis_review.json using Matplotlib/pandas. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not make BeeStack digital-twin ready.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
@@ -42,14 +43,14 @@
   "plot_data_path": "output/figures/research/stack_synthesis_dashboard_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 1352,
+    "height_px": 1530,
     "max_intensity": 255,
-    "mean_intensity": 224.890516050809,
+    "mean_intensity": 237.86676904753523,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 60.129489512084454,
-    "width_px": 2018
+    "std_intensity": 49.590944146728106,
+    "width_px": 2228
   },
   "regeneration_command": "uv run python scripts/run_research_suite.py",
   "schema": "beestack.figure.v1",
@@ -58,20 +59,20 @@
     "10.1371/journal.pcbi.1005510",
     "10.3233/DS-190026"
   ],
-  "title": "Stack Synthesis Dashboard",
+  "title": "BeeStack cross-stack synthesis dashboard",
   "unsupported_inference": "Does not make BeeStack digital-twin ready.",
   "validation_status": "nonblank synthesis diagnostic with plot data",
   "visual_quality": {
     "aspect_class": "balanced",
-    "aspect_ratio": 1.493,
+    "aspect_ratio": 1.456,
     "figure_role": "dashboard",
-    "height_px": 1352,
+    "height_px": 1530,
     "label_density": "dense",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 2018,
-    "min_dimension_px": 1352,
+    "max_dimension_px": 2228,
+    "min_dimension_px": 1530,
     "readability_status": "pass",
     "split_group": "stack_synthesis",
-    "width_px": 2018
+    "width_px": 2228
   }
 }

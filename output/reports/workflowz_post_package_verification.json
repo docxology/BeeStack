@@ -1,0 +1,206 @@
+{
+  "source_commit": "a460c466f6ac781eb13925cdd42c08bfacd41556",
+  "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+  "scope": "post-installed-CLI real render evidence, regenerated report/visual contracts, complete documentation/security audits and final source-data-figure-bound manuscript seal",
+  "steps": [
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/verify_bee_render.py"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "seconds": 7.358
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/review_stack_integrity.py"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "seconds": 4.105
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/run_research_suite.py",
+        "--assemble-only"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "seconds": 18.439
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/run_methods_analysis.py"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "seconds": 7.374
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/run_stack_synthesis.py"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "seconds": 5.104
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/assess_digital_twin_readiness.py"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "seconds": 0.091
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/z_generate_manuscript_variables.py"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "seconds": 4.401
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/render_manuscript.py"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "seconds": 40.596
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/signpost_project_tree.py"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "seconds": 4.776
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/audit_documentation.py"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "seconds": 4.361
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/run_security_audit.py"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "seconds": 4.385
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/signpost_project_tree.py",
+        "--check"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "seconds": 4.277
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/z_generate_manuscript_variables.py"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "seconds": 4.513
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/render_manuscript.py"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "seconds": 33.132
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/verify_generated_reports.py"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "seconds": 3.755
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/audit_publication_readiness.py",
+        "--check"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "seconds": 3.522
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/audit_publication_readiness.py",
+        "--check",
+        "--require-doi"
+      ],
+      "returncode": 1,
+      "expected_returncode": 1,
+      "seconds": 3.569
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "scripts/audit_publication_readiness.py",
+        "--check"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "seconds": 3.47
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "$PROJECT/.uv-cache/wfz-visual-20261108/check_document_links.py"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "seconds": 5.455
+    },
+    {
+      "argv": [
+        "$PROJECT/.uv-cache/wfz-release/venv312/bin/python",
+        "$PROJECT/.uv-cache/wfz-visual-20261108/inspect_current_visuals.py"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "seconds": 40.882
+    }
+  ],
+  "actual_unavailable_producer_contract": {
+    "scope": "unavailable current odor-conditioned aggregate, not absence of standalone raw payloads",
+    "research_states": [
+      "analysis_unavailable"
+    ],
+    "methods_brain_states": [
+      "analysis_unavailable"
+    ],
+    "current_represented_records": 0
+  },
+  "pdf_sha256": "a0657d2651b13bb23f5ae5dd18f6b5504d69ea5c65755f5b9c8107485d9180ab",
+  "strict_deposit_state": "blocked only by missing new version-specific DOI; ordinary repository publication gate passes",
+  "complete": true
+}

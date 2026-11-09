@@ -10,7 +10,7 @@
   ],
   "orientation": "horizontal",
   "schema": "beestack.figure_data.v1",
-  "title": "Research validation scorecard",
+  "title": "Configured self-tests (not biological validation)",
   "values": [
     1.0,
     0.0,

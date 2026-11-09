@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
-  "alt_text": "Heatmap of module-level research scorecard quantities.",
+  "alt_text": "Module inventory table with separate configured self-test fractions and counts.",
   "artifact_kind": "figure",
-  "backend": "Matplotlib/pandas/NetworkX",
-  "caption": "Matplotlib/pandas/NetworkX beestack research module scorecard heatmap shows Research scorecard heatmap summarizing validation fraction, metrics, evidence, gaps, and visual artifacts by module. Generated from ResearchSuiteReport scorecards and visual inventory. Sidecar validation checks raster, source routing, and registered claim tier. Does not support biological predictive validity.",
+  "backend": "Matplotlib/pandas",
+  "caption": "Configured self-test fractions and native metric, evidence, gap, and filename-associated artifact counts by module, without normalization or a composite score. Generated from ResearchSuiteReport scorecards and visual inventory using Matplotlib/pandas. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not support biological predictive validity.",
   "citation_keys": [
     "wilson2017good",
     "lamprecht2020fairsoftware"
@@ -42,14 +43,14 @@
   "plot_data_path": "output/figures/research/research_module_scorecard_heatmap_data.json",
   "priority": "primary",
   "quality": {
-    "height_px": 985,
+    "height_px": 691,
     "max_intensity": 255,
-    "mean_intensity": 183.11307175693477,
+    "mean_intensity": 243.43176766316117,
     "min_intensity": 0,
     "mode": "RGBA",
     "nonzero_histogram_bins": 256,
-    "std_intensity": 79.22622009033333,
-    "width_px": 1653
+    "std_intensity": 48.278549820770955,
+    "width_px": 1821
   },
   "regeneration_command": "uv run python scripts/run_research_suite.py",
   "schema": "beestack.figure.v1",
@@ -58,19 +59,20 @@
     "10.1371/journal.pcbi.1005510",
     "10.3233/DS-190026"
   ],
-  "title": "Research Module Scorecard Heatmap",
+  "title": "Research inventory in native units",
   "unsupported_inference": "Does not support biological predictive validity.",
   "validation_status": "nonblank image, quality sidecar, and plot data passed",
   "visual_quality": {
-    "aspect_class": "balanced",
-    "aspect_ratio": 1.678,
+    "aspect_class": "wide",
+    "aspect_ratio": 2.635,
     "figure_role": "dashboard",
-    "height_px": 985,
+    "height_px": 691,
     "label_density": "moderate",
     "manuscript_use": "manuscript_primary",
-    "max_dimension_px": 1653,
-    "min_dimension_px": 985,
-    "readability_status": "pass",
-    "width_px": 1653
+    "max_dimension_px": 1821,
+    "min_dimension_px": 691,
+    "readability_exception": "registered dense manuscript figure has a split companion or constrained label set",
+    "readability_status": "exception",
+    "width_px": 1821
   }
 }

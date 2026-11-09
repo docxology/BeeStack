@@ -7,12 +7,13 @@
     "large_text_threshold": 3.0,
     "normal_text_passed": true,
     "normal_text_threshold": 4.5,
+    "scope": "supplied_foreground_background_pair_only",
     "standard": "WCAG 2.1 AA contrast thresholds"
   },
-  "alt_text": "Contact sheet of eight FlyBody-rendered walking frames for a single nestmate honeybee body plan.",
+  "alt_text": "Sampled walking-task frames of the generated honeybee body plan.",
   "artifact_kind": "figure",
   "backend": "Pillow contact sheet",
-  "caption": "FlyBody/MuJoCo beebody flybody tripod walking render shows Eight-frame contact sheet from the FlyBody walk_imitation rollout on the generated apis_mellifera_worker MJCF, showing tripod gait, corbiculae, hindwing coupling, and honeybee visual cues. Generated from animation manifest, bee visual verification, and apis_mellifera_worker MJCF. Sidecar validation checks raster, source routing, and registered claim tier. Does not calibrate honeybee walking biomechanics or prove field-scale locomotion.",
+  "caption": "Sampled FlyBody walk_imitation frames on the generated apis_mellifera_worker MJCF document rendered body and wing morphology cues, not a gait classification or image-overlap measurement. Generated from animation manifest, bee visual verification, and apis_mellifera_worker MJCF using FlyBody/MuJoCo. Sidecar validation checks image integrity, source routing, and declared claim tier. Does not classify tripod gait, measure silhouette overlap, calibrate walking biomechanics, or prove field-scale locomotion.",
   "citation_keys": [
     "vaxenburg2025flybody",
     "todorov2012mujoco"
@@ -59,7 +60,7 @@
     "10.1109/IROS.2012.6386109"
   ],
   "title": "BeeBody FlyBody morphology contact sheet",
-  "unsupported_inference": "Does not calibrate honeybee walking biomechanics or prove field-scale locomotion.",
+  "unsupported_inference": "Does not classify tripod gait, measure silhouette overlap, calibrate walking biomechanics, or prove field-scale locomotion.",
   "validation_status": "nonblank contact sheet with plot data",
   "visual_quality": {
     "aspect_class": "contact_sheet",

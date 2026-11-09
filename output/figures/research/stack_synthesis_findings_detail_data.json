@@ -1,17 +1,12 @@
 {
-  "annotations": [
-    "Weakest synthesized module is BeeBrain (readiness 0.483; gaps 2).",
-    "Cross-stack validation mean is 0.800 with 11 catalogued module gaps.",
-    "Integrated simulation improved brood-temperature error by 3.964 C over 24 steps.",
-    "Open synthesis validation gates: validation_target, empirical_parseability."
-  ],
-  "chart_type": "schematic",
+  "chart_type": "multipanel",
   "figure_path": "output/figures/research/stack_synthesis_findings_detail.png",
-  "nodes": [
+  "interpretation": "Configured self-tests and heuristic readiness are not biological validation; statistics retain native values and signs.",
+  "module_rows": [
     {
       "artifact_count": 22,
       "evidence_count": 2,
-      "fidelity_level": "FlyBody render path plus reduced closed-loop telemetry",
+      "fidelity_level": "FlyBody render path plus separate reduced-scenario telemetry",
       "known_gap_count": 2,
       "log_metric_mean": 0.8128488265126244,
       "metric_count": 14,
@@ -64,28 +59,39 @@
       "validation_fraction": 1.0
     }
   ],
-  "rows": [
+  "prioritized_findings": [
+    "Weakest synthesized module is BeeBrain (readiness 0.483; gaps 2).",
+    "Cross-stack validation mean is 0.800 with 11 catalogued module gaps.",
+    "Integrated simulation improved brood-temperature error by 3.964 C over 24 steps.",
+    "Open synthesis validation gates: validation_target, empirical_parseability."
+  ],
+  "schema": "beestack.figure_data.v1",
+  "statistics_table": [
     {
-      "name": "simulation_thermal_error_improvement_c",
+      "statistic": "simulation_thermal_error_improvement_c",
+      "unit": "degrees Celsius",
       "value": 3.9640439099763785
     },
     {
-      "name": "module_artifact_coverage_fraction",
+      "statistic": "module_artifact_coverage_fraction",
+      "unit": "fraction",
       "value": 1.0
     },
     {
-      "name": "empirical_parseable_fraction",
+      "statistic": "empirical_parseable_fraction",
+      "unit": "fraction",
       "value": 0.0
     },
     {
-      "name": "signposting_fraction",
+      "statistic": "signposting_fraction",
+      "unit": "fraction",
       "value": 1.0
     },
     {
-      "name": "scholarship_reference_count",
+      "statistic": "scholarship_reference_count",
+      "unit": "count",
       "value": 93.0
     }
   ],
-  "schema": "beestack.figure_data.v1",
-  "title": "stack synthesis findings detail"
+  "title": "BeeStack synthesis detail: readiness, gaps, and findings"
 }

@@ -1,19 +1,5 @@
 {
   "chart_type": "schematic",
-  "edges": [
-    {
-      "source": "micro",
-      "target": "waggle"
-    },
-    {
-      "source": "waggle",
-      "target": "macro"
-    },
-    {
-      "source": "macro",
-      "target": "blocked"
-    }
-  ],
   "figure_path": "output/figures/beebody_beeswarm_micro_macro_calibration.png",
   "nodes": [
     {
@@ -40,5 +26,5 @@
     }
   ],
   "schema": "beestack.figure_data.v1",
-  "title": "BeeBody to BeeSwarm micro-to-macro calibration boundary"
+  "title": "Micro-to-macro comparison is not calibration"
 }

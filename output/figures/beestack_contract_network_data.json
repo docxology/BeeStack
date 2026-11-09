@@ -1,7 +1,70 @@
 {
+  "annotations": [
+    "Declared endpoints and payloads, not measured biological causation.",
+    "Default configuration resolves declarations only, not executed timing.",
+    "The reduced orchestrator does not execute every declared feedback route."
+  ],
   "chart_type": "schematic",
+  "edges": [
+    {
+      "payload": "Observation",
+      "source": "BeeBody",
+      "target": "BeeBrain"
+    },
+    {
+      "payload": "BrainState",
+      "source": "BeeBrain",
+      "target": "BeeMind"
+    },
+    {
+      "payload": "Action",
+      "source": "BeeMind",
+      "target": "BeeBody"
+    },
+    {
+      "payload": "DanceVector",
+      "source": "BeeBrain",
+      "target": "BeeSwarm"
+    },
+    {
+      "payload": "colony_need",
+      "source": "BeeSwarm",
+      "target": "BeeMind"
+    },
+    {
+      "payload": "PheromoneField",
+      "source": "BeeSwarm",
+      "target": "BeeNiche"
+    },
+    {
+      "payload": "thermal_and_surface_context",
+      "source": "BeeNiche",
+      "target": "BeeBody"
+    }
+  ],
   "figure_path": "output/figures/beestack_contract_network.png",
-  "nodes": [],
+  "nodes": [
+    {
+      "id": "BeeBody",
+      "label": "BeeBody"
+    },
+    {
+      "id": "BeeBrain",
+      "label": "BeeBrain"
+    },
+    {
+      "id": "BeeMind",
+      "label": "BeeMind"
+    },
+    {
+      "id": "BeeSwarm",
+      "label": "BeeSwarm"
+    },
+    {
+      "id": "BeeNiche",
+      "label": "BeeNiche"
+    }
+  ],
   "schema": "beestack.figure_data.v1",
-  "title": "beestack contract network"
+  "title": "Declared cross-layer contracts"
 }
