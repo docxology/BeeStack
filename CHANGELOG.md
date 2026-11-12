@@ -199,7 +199,8 @@ First publication-ready manuscript and package release.
 
 ### Known gaps (documented, not hidden)
 
-- `publication.doi` must be minted at Zenodo before public deposit.
+- `publication.doi`: resolved — DOI `10.5281/zenodo.20420557` minted at Zenodo and
+  recorded in `manuscript/config.yaml` before public deposit.
 - Paoli Dryad calcium archive (`[@paoli2024dryad]`) is downloaded and parsed as a
   citation anchor, but not yet wired as a model input or held-out validation target
   (its contribution is evidentiary, not integrative).
