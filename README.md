@@ -1,5 +1,15 @@
 # BeeStack
 
+<p align="center">
+  <a href="https://github.com/docxology/BeeStack/actions/workflows/ci.yml"><img alt="ci.yml workflow status on main" src="https://github.com/docxology/BeeStack/actions/workflows/ci.yml/badge.svg?branch=main"></a>
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue"></a>
+  <img alt="Requires Python 3.11 to 3.12" src="https://img.shields.io/badge/python-3.11%E2%80%933.12-3776AB?logo=python&logoColor=white">
+</p>
+
+<p align="center">
+  <img src="output/animations/beebody_flybody_flight.gif" alt="Animated FlyBody render of BeeStack's generated honeybee body plan beating its wings above a checkered floor." width="560">
+</p>
+
 BeeStack is a uv-managed offline research CLI for reduced honeybee models and
 declared multiscale interfaces, not a calibrated colony digital twin. Its typed layers are:
 
@@ -40,6 +50,22 @@ auditable through `beestack.digital_twin`, `docs/digital_twin_path.md`, and
 `output/data/digital_twin_readiness.json`; these artifacts name the missing
 state variables, datasets, validation residuals, and governance boundaries
 rather than treating the target as a present-tense result.
+
+## The layers in motion
+
+Committed renders from `output/animations/`. The FlyBody flight at the top replays scripted poses;
+these four panels come from the deterministic reduced kernels described above, not calibrated colony behavior.
+
+<table>
+  <tr>
+    <td align="center" width="50%"><img src="output/animations/beebrain_neural_anatomy.gif" alt="Animated BeeBrain schematic: activity spirals through the antennal lobe (170 glomeruli), the mushroom body (170,000 Kenyon cells per hemisphere) and the central complex (32 bins), connected by arrows from AL to MB to CX." width="100%"><br><sub><b>BeeBrain</b>: reduced AL → MB → CX anatomy</sub></td>
+    <td align="center" width="50%"><img src="output/animations/beemind_policy_beliefs.gif" alt="Animated BeeMind bar chart of posterior caste probabilities as a simulated bee ages from 2 to 30 days with a 10-step horizon: belief moves from nurse and comb builder toward forager, with smaller guard and scout shares." width="100%"><br><sub><b>BeeMind</b>: temporal polyethism and policy priors</sub></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><img src="output/animations/beeniche_comb_thermal.gif" alt="Animated BeeNiche comb: hexagonal cells are built one by one and colored by brood temperature, warmest at the center, against a 34.0 degree Celsius target." width="100%"><br><sub><b>BeeNiche</b>: comb construction and brood thermal field</sub></td>
+    <td align="center" width="50%"><img src="output/animations/beeswarm_dance_pheromone.gif" alt="Animated BeeSwarm dance floor: 50 agents, representing a colony of 20,000, sit over a moving pheromone hotspot while an arrow shows the advertised waggle-dance direction rotating." width="100%"><br><sub><b>BeeSwarm</b>: dance-floor recruitment and pheromone field</sub></td>
+  </tr>
+</table>
 
 ## Reader Paths
 
@@ -278,6 +304,47 @@ for generated FlyBody assets, empirical dataset leaves, diagnostic folders, LLM
 audit evidence, logs, simulation exports, and local export leaves. Cache
 directories such as `.uv-cache/`, `.mypy_cache/`, `.pytest_cache/`,
 `.ruff_cache/`, `__pycache__/`, and `*.egg-info` are deliberately excluded.
+
+### Package map
+
+Generated on 2026-11-12 from the `import` statements under `src/beestack/`. An arrow from A to B means code in A imports B; arrows already implied by a longer path are left out, so the picture shows layering rather than every edge. It shows 14 of the package's 28 top-level parts: the largest ones that import or are imported by others.
+
+```mermaid
+flowchart TB
+    accTitle: Internal dependency map of the beestack package
+    accDescr: Generated from import statements in src/beestack. Each box is a subpackage or module of the package; an arrow from A to B means code in A imports B; arrows already implied by a longer path are omitted. Most-imported: brain, config, visualization.
+    n_visualization["visualization/"]
+    n_brain["brain/"]
+    n_research["research/"]
+    n_body["body/"]
+    n_documentation_signpost["documentation_signpost.py"]
+    n_pipeline["pipeline.py"]
+    n_source_refresh["source_refresh.py"]
+    n_integrity["integrity.py"]
+    n_config["config.py"]
+    n_swarm["swarm/"]
+    n_source_audit["source_audit.py"]
+    n_security["security/"]
+    n_figure_audit["figure_audit.py"]
+    n_niche["niche/"]
+    n_brain --> n_security
+    n_brain --> n_config
+    n_visualization --> n_brain
+    n_niche --> n_config
+    n_visualization --> n_research
+    n_body --> n_visualization
+    n_research --> n_body
+    n_security --> n_brain
+    n_swarm --> n_brain
+    n_figure_audit --> n_visualization
+    n_integrity --> n_body
+    n_integrity --> n_niche
+    n_integrity --> n_swarm
+    n_pipeline --> n_documentation_signpost
+    n_pipeline --> n_integrity
+    n_source_audit --> n_visualization
+    n_visualization --> n_source_refresh
+```
 
 ## Empirical BeeBrain Scope
 
