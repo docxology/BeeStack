@@ -9,3 +9,18 @@ updates:
     groups:
       github-actions:
         patterns: ["*"]
+
+  # Package-ecosystem watch added by the private-partition currency pass (CUR-12, wave 3b).
+  # The entry above watches this repository's workflows; the entries below watch the
+  # manifests that carry its Dependabot alerts. Nothing above this line was changed.
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 5
+    groups:
+      python:
+        patterns: ["*"]
