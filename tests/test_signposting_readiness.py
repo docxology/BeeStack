@@ -187,3 +187,12 @@ def test_project_readiness_review_uses_signposting_and_known_gaps(tmp_path: Path
     assert payload["research_known_gaps"]
     assert payload["prioritized_improvements"][0]["priority"] >= 1
     assert "BeeStack Project Readiness Review" in md_path.read_text(encoding="utf-8")
+
+
+def test_github_dir_uses_github_md_signpost(tmp_path: Path) -> None:
+    (tmp_path / ".github" / "workflows").mkdir(parents=True)
+    result = write_signposts(tmp_path)
+    assert ".github/GITHUB.md" in result.readme_written
+    assert ".github/workflows/README.md" in result.readme_written
+    assert not (tmp_path / ".github" / "README.md").exists()
+    assert (tmp_path / ".github" / "GITHUB.md").is_file()

@@ -55,7 +55,7 @@ from beestack.brain import (
 )
 from beestack.config import BeeStackConfig, config_from_mapping
 from beestack.contracts import zero_action
-from beestack.documentation_audit import signposted_directories
+from beestack.documentation_audit import signpost_readme_name, signposted_directories
 from beestack.manuscript_variables import generate_variables
 from beestack.mind import PolicyCandidate, action_from_policy, dominant_caste, initial_belief
 from beestack.niche import (
@@ -91,8 +91,9 @@ def test_source_and_project_directories_have_readme_and_agents() -> None:
     required_dirs = signposted_directories(PROJECT_ROOT)
     assert len(required_dirs) >= 50
     for directory in required_dirs:
-        assert (directory / "README.md").exists(), directory
+        assert (directory / signpost_readme_name(PROJECT_ROOT, directory)).exists(), directory
         assert (directory / "AGENTS.md").exists(), directory
+    assert not (PROJECT_ROOT / ".github" / "README.md").exists()
 
 
 def test_body_and_scene_artifact_dicts_use_repo_relative_paths(
