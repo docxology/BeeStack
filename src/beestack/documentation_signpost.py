@@ -7,7 +7,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
-from .documentation_audit import signposted_directories
+from .documentation_audit import signpost_readme_name, signposted_directories
 
 
 @dataclass(frozen=True)
@@ -32,7 +32,7 @@ def write_signposts(project_root: Path, *, overwrite: bool = False) -> SignpostW
     readme_written: list[str] = []
     agents_written: list[str] = []
     for directory in directories:
-        readme_path = directory / "README.md"
+        readme_path = directory / signpost_readme_name(project_root, directory)
         agents_path = directory / "AGENTS.md"
         if overwrite or not readme_path.exists():
             readme_path.write_text(render_readme(project_root, directory), encoding="utf-8")
@@ -43,7 +43,7 @@ def write_signposts(project_root: Path, *, overwrite: bool = False) -> SignpostW
     missing_readmes = tuple(
         _relative(project_root, directory)
         for directory in directories
-        if not (directory / "README.md").exists()
+        if not (directory / signpost_readme_name(project_root, directory)).exists()
     )
     missing_agents = tuple(
         _relative(project_root, directory)
@@ -149,7 +149,7 @@ def _signposting_payload(project_root: Path) -> dict[str, object]:
     missing_readmes = tuple(
         _relative(project_root, directory)
         for directory in directories
-        if not (directory / "README.md").exists()
+        if not (directory / signpost_readme_name(project_root, directory)).exists()
     )
     missing_agents = tuple(
         _relative(project_root, directory)

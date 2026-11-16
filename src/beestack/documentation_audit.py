@@ -106,7 +106,7 @@ def audit_documentation(project_root: Path) -> DocumentationAudit:
     missing_readmes = tuple(
         _relative_dir(project_root, directory)
         for directory in signposted_dirs
-        if not (directory / "README.md").exists()
+        if not (directory / signpost_readme_name(project_root, directory)).exists()
     )
     missing_agents = tuple(
         _relative_dir(project_root, directory)
@@ -185,7 +185,10 @@ def documentation_audit_markdown(audit: DocumentationAudit) -> str:
         lines.append("- None detected.")
     lines.extend(["", "## Missing README Files", ""])
     if audit.missing_readme_dirs:
-        lines.extend(f"- `{path}/README.md`" for path in audit.missing_readme_dirs)
+        lines.extend(
+            f"- `{path}/{'GITHUB.md' if path == '.github' else 'README.md'}`"
+            for path in audit.missing_readme_dirs
+        )
     else:
         lines.append("- None detected.")
     lines.extend(["", "## Missing AGENTS Files", ""])
@@ -253,6 +256,12 @@ def _is_excluded_signpost_dir(directory: Path, project_root: Path) -> bool:
     return directory.name.endswith(".egg-info")
 
 
+def signpost_readme_name(project_root: Path, directory: Path) -> str:
+    """Return the expected human signpost filename for *directory*."""
+
+    return "GITHUB.md" if _relative_dir(project_root, directory) == ".github" else "README.md"
+
+
 def _relative_dir(project_root: Path, directory: Path) -> str:
     relative = directory.resolve().relative_to(project_root.resolve())
     return "." if not relative.parts else relative.as_posix()
@@ -274,8 +283,9 @@ def _documentation_files(project_root: Path) -> tuple[Path, ...]:
         elif root.is_dir():
             files.update(root.glob("*.md"))
     for directory in signposted_directories(project_root):
+        readme_name = signpost_readme_name(project_root, directory)
         files.update(
-            path for path in (directory / "README.md", directory / "AGENTS.md") if path.exists()
+            path for path in (directory / readme_name, directory / "AGENTS.md") if path.exists()
         )
     return tuple(sorted(files))
 
