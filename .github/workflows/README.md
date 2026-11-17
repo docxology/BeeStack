@@ -3,8 +3,12 @@
 Continuous integration workflows for BeeStack's uv-managed test, lint,
 generated-report, documentation, and manuscript gates.
 
-The 45-minute verification job retains the complete coverage suite and full
-installed-wheel analysis/render/manuscript path. Pytest emits non-terminating
+Two parallel 45-minute jobs on one runner image keep every gate. `test` runs
+lint, format, lockfile and the complete coverage suite; the suite leaves the
+tracked tree unchanged, so it shares no state with `verify`, which runs the full
+installed-wheel analysis/render/manuscript path in its original order on a fresh
+checkout. Both jobs install the same native toolchain. A newer push to a branch
+or pull request cancels its superseded run; runs on `main` are never cancelled. Pytest emits non-terminating
 120-second stack dumps and the slowest 20 test durations for native-runtime
 diagnosis; neither diagnostics nor temporary-project regression inputs skip gates.
 BLAS/OpenMP/NumExpr thread limits match the single-thread native verification

@@ -9,8 +9,16 @@ on:
 permissions:
   contents: read
 
+# A newer push to the same branch or pull request supersedes the running build;
+# main keeps every run.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
 jobs:
-  verify:
+  # Lint, format, lockfile and the coverage-gated test suite. The suite leaves the
+  # tracked tree unchanged, so it runs beside the artifact pipeline below.
+  test:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     env:
@@ -64,6 +72,52 @@ jobs:
 
       - name: Test with coverage
         run: uv run pytest --cov=src --cov-report=term-missing -o faulthandler_timeout=120 --durations=20
+
+
+  # Wheel build, installed-CLI analysis, render/report verification and the
+  # sealed manuscript, in the original order on a fresh checkout.
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      MUJOCO_GL: egl
+      MPLBACKEND: Agg
+      PYTHONFAULTHANDLER: "1"
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v7.0.1
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # astral-sh/setup-uv@v10.3.3
+        with:
+          enable-cache: true
+          version: "0.13.7"
+
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # actions/setup-python@v7.1.0
+        with:
+          python-version-file: ".python-version"
+
+      - name: Install dependencies
+        run: uv sync --locked --all-extras
+
+      - name: Install local manuscript and headless rendering tools
+        run: |
+          . /etc/os-release
+          mkdir -p .uv-cache
+          printf '%s\n' \
+            'Types: deb' \
+            'URIs: https://archive.ubuntu.com/ubuntu' \
+            "Suites: ${VERSION_CODENAME} ${VERSION_CODENAME}-updates ${VERSION_CODENAME}-security" \
+            'Components: main universe' \
+            'Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg' \
+            > .uv-cache/ci-ubuntu.sources
+          apt_sources=(-o "Dir::Etc::sourcelist=$PWD/.uv-cache/ci-ubuntu.sources" -o 'Dir::Etc::sourceparts=-')
+          sudo apt-get "${apt_sources[@]}" update
+          sudo apt-get "${apt_sources[@]}" install -y pandoc texlive-xetex texlive-latex-extra texlive-fonts-recommended libegl1
 
       - name: Build package artifacts
         run: uv build --wheel --sdist
