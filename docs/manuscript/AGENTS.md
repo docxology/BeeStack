@@ -44,7 +44,9 @@
   registry sidecars. Hydrated `output/manuscript/` paths must resolve
   against generated project-local artifacts and matching format-independent sidecars.
 - PDF geometry comes from `metadata.geometry` in `config.yaml`; the local renderer
-  records its Pandoc/XeLaTeX commands and working directories. Do not use a sibling template.
+  records its Pandoc/XeLaTeX commands and working directories. Use the local renderer
+  for release sealing and the [pinned snapshot guide](../template_snapshot.md)
+  for independent format verification.
 - After edits, run `scripts/z_generate_manuscript_variables.py` and check that
   no unresolved token placeholders remain in `output/manuscript/`.
 - Render the combined PDF inside BeeStack with

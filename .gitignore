@@ -33,6 +33,8 @@ output/web/*
 !output/pdf/
 !output/pdf/AGENTS.md
 !output/pdf/README.md
+# The pinned Template validates these standalone deliverables in its local inventory.
+!output/pdf/BeeStack_combined.pdf
 !output/simulations/
 !output/simulations/AGENTS.md
 !output/simulations/README.md
@@ -45,6 +47,10 @@ output/web/*
 !output/web/
 !output/web/AGENTS.md
 !output/web/README.md
+!output/web/index.html
+!output/web/manuscript__*.html
+!output/web/favicon.ico
+!output/web/assets/
 
 # Full Snapshot policy: keep generated reports, figures, GIFs, manifests, and
 # lightweight JSON/Markdown outputs; exclude raw external empirical payloads

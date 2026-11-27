@@ -7,13 +7,13 @@ sources to `output/manuscript/` with `{{TOKEN}}` values resolved.
 
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 from beestack.manuscript_variables import hydrate_text  # noqa: E402
-from beestack.pipeline import manuscript_variables_for_project  # noqa: E402
 
 
 def hydrate_manuscript(project_root: Path, variables: dict[str, str]) -> None:
@@ -41,9 +41,28 @@ def hydrate_manuscript(project_root: Path, variables: dict[str, str]) -> None:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--template-snapshot",
+        action="store_true",
+        help="Replay the retained manuscript variables and figure sidecars for the pinned Template",
+    )
+    args = parser.parse_args()
+    data_path = PROJECT_ROOT / "output" / "data" / "manuscript_variables.json"
+
+    if args.template_snapshot:
+        from beestack.template_snapshot import write_template_snapshot_metadata
+
+        variables = json.loads(data_path.read_text(encoding="utf-8"))
+        hydrate_manuscript(PROJECT_ROOT, variables)
+        write_template_snapshot_metadata(PROJECT_ROOT, variables)
+        print(f"Replayed {len(variables)} archived manuscript variables")
+        return
+
+    from beestack.pipeline import manuscript_variables_for_project
+
     variables = manuscript_variables_for_project(PROJECT_ROOT)
     hydrate_manuscript(PROJECT_ROOT, variables)
-    data_path = PROJECT_ROOT / "output" / "data" / "manuscript_variables.json"
     data_path.parent.mkdir(parents=True, exist_ok=True)
     data_path.write_text(json.dumps(variables, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
