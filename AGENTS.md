@@ -81,7 +81,9 @@ This project follows the research-template pattern:
     Shared GIF encoding uses cumulative centisecond boundaries at integer FPS
     1..100; encoded clocks are distinct from integration and viewer scheduling.
 15. Render the manuscript locally with `scripts/render_manuscript.py`; Pandoc and
-    XeLaTeX are required. No template-root commands or sibling output writes.
+    XeLaTeX are required. Keep native release writes inside the project. The
+    [independent pinned snapshot check](docs/template_snapshot.md) uses a disposable
+    project checkout.
 16. Declared `stack_contracts` are not executed-edge coverage. The current reduced
     driver uses a fixed synthetic dance, does not pass BrainState to policy or
     niche context to Body, and does not retask agents from recruitment matches.
@@ -123,7 +125,7 @@ uv run python scripts/audit_publication_readiness.py --check
 uv run python scripts/audit_publication_readiness.py --check --require-doi
 ```
 
-Historical maintainability evidence: [`ISA.md`](ISA.md), section J, and
+Historical maintainability evidence: [`ISA.md`](docs/ISA.md), section J, and
 [`output/reports/thermo_nuclear_code_quality_review.md`](output/reports/thermo_nuclear_code_quality_review.md)
 record the May 2026 review. Those PASS/count statements are not current runtime
 or release evidence; use the current source-bound release receipt.

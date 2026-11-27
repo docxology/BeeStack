@@ -16,6 +16,9 @@ authors:
     corresponding: false
 
 publication:
+  github_repository: "docxology/BeeStack"
+  transmission_bookends:
+    enabled: false
   doi: ""
   journal: ""
   year: "2026"
@@ -41,6 +44,14 @@ metadata:
   language: "en"
   manuscript_dir: "docs/manuscript"
   geometry: "margin=0.15in"
+
+render:
+  formats:
+    pdf: true
+    html: true
+    slides: false
+    docx: false
+    epub: false
 
 beestack:
   seed: 20260513

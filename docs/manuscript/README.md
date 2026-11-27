@@ -18,7 +18,7 @@ are removed only after the current sections have been resolved and written;
 this is not an atomic transaction across all output files.
 
 For section roles, figure-callout rules, claim tiers, and the review checklist,
-see `docs/manuscript_development.md`. For every number derived from code,
+see the [manuscript development guide](../manuscript_development.md). For every number derived from code,
 configuration, or generated reports, prefer a supported template token over a
 literal value. For every fidelity claim, state whether the evidence is strict
 FlyBody/MuJoCo, empirical reduced, reduced validated, or diagnostic/schematic.
@@ -34,3 +34,5 @@ Primary-source identity evidence and unresolved retrieval gaps are retained in
 `output/reports/workflowz_source_verification.json`. Its registry observations
 do not establish manuscript claim validity or biological validation; consult
 the recorded scope limits before reusing a citation.
+
+The [offline snapshot build](../template_snapshot.md) replays the retained variables and published figure sidecars with the pinned Template runner. Use the native renderer for release sealing.

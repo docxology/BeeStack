@@ -1,62 +1,65 @@
 # BeeStack Documentation Index
 
 This directory is the operating manual for BeeStack as a research-engineering
-project. Use it alongside the root `README.md` and the generated reports in
-`output/reports/`.
+project. Use it alongside the [project overview](../README.md) and the generated reports under `output/reports/`.
+
+- [Canonical manuscript](manuscript/README.md)
+- [Pinned PDF and HTML snapshot verification](template_snapshot.md)
+- [Project record](ISA.md) and [maintainer backlog](TODO.md)
 
 ## Start Here
 
-- `architecture.md`: module boundaries, data flow, and stack layering.
-- `stack_contracts.md`: executable cross-layer contracts and rates.
-- `configuration.md`: validated YAML knobs in `docs/manuscript/config.yaml`.
-- `api_reference.md`: public typed records and pure helper functions.
-- `generated_outputs.md`: where every major artifact is written.
-- `digital_twin_path.md`: concrete path from the current scaffold to a full
+- [architecture.md](architecture.md): module boundaries, data flow, and stack layering.
+- [stack_contracts.md](stack_contracts.md): executable cross-layer contracts and rates.
+- [configuration.md](configuration.md): validated YAML knobs in `docs/manuscript/config.yaml`.
+- [api_reference.md](api_reference.md): public typed records and pure helper functions.
+- [generated_outputs.md](generated_outputs.md): where every major artifact is written.
+- [digital_twin_path.md](digital_twin_path.md): concrete path from the current scaffold to a full
   systems-biology colony and population-of-colonies digital twin.
-- `research_operations_playbook.md`: what to run and inspect for each review
+- [research_operations_playbook.md](research_operations_playbook.md): what to run and inspect for each review
   question.
-- `baseline_readiness.md`: current Full Snapshot readiness targets, generated
+- [baseline_readiness.md](baseline_readiness.md): current Full Snapshot readiness targets, generated
   evidence anchors, and tracked follow-ups.
-- `manuscript_development.md`: section roles, claim rules, hydration workflow,
+- [manuscript_development.md](manuscript_development.md): section roles, claim rules, hydration workflow,
   and manuscript review checklist.
-- `validation_criteria.md`: acceptance criteria for Body, Brain, Mind, Swarm,
+- [validation_criteria.md](validation_criteria.md): acceptance criteria for Body, Brain, Mind, Swarm,
   Niche, docs, and manuscript outputs.
-- `visualization_gallery.md`: FlyBody 3D, empirical, reduced schematic,
+- [visualization_gallery.md](visualization_gallery.md): FlyBody 3D, empirical, reduced schematic,
   diagnostic, research-suite, and methods-analysis artifact index.
 
 ## BeeBrain Research Operations
 
-- `empirical_beebrain.md`: curated anatomy/activity source registry and fidelity
+- [empirical_beebrain.md](empirical_beebrain.md): curated anatomy/activity source registry and fidelity
   notes.
-- `beebrain_data_pipeline.md`: end-to-end download, parse, validate, analyze,
+- [beebrain_data_pipeline.md](beebrain_data_pipeline.md): end-to-end download, parse, validate, analyze,
   visualize, and report workflow.
-- `data_acquisition_runbook.md`: operational guidance for full downloads,
+- [data_acquisition_runbook.md](data_acquisition_runbook.md): operational guidance for full downloads,
   source-bound completion-cache behavior, upstream errors, and bounded intake.
-- `troubleshooting.md`: common failures and recovery steps.
+- [troubleshooting.md](troubleshooting.md): common failures and recovery steps.
 
 ## Body And Visualization
 
-- `flybody_integration.md`: BeeBody's FlyBody render path and modified
+- [flybody_integration.md](flybody_integration.md): BeeBody's FlyBody render path and modified
   honeybee body plan.
-- `animations.md`: fidelity, cumulative encoded playback clocks, contact sheets,
+- [animations.md](animations.md): fidelity, cumulative encoded playback clocks, contact sheets,
   accessibility metadata, and programmed-control versus observed-behavior claims.
 - `waggle_3d_scenario.md`: strict short and long BeeBody/FlyBody/MuJoCo waggle
   scene method, viewport/shadow profile, artifacts, and validation criteria.
-- `visualization_gallery.md`: every GIF/figure/report mapped to backend,
+- [visualization_gallery.md](visualization_gallery.md): every GIF/figure/report mapped to backend,
   fidelity, source data, regeneration command, and validation status.
 
 ## Project Governance
 
-- `agent_instructions.md`: operating rules for future agents.
-- `research_operations_playbook.md`: regeneration tiers, claim tiers, and the
+- [agent_instructions.md](agent_instructions.md): operating rules for future agents.
+- [research_operations_playbook.md](research_operations_playbook.md): regeneration tiers, claim tiers, and the
   source-to-manuscript artifact trace pattern.
-- `baseline_readiness.md`: current readiness gates and known cleanup targets.
-- `spec_review.md`: mapping from the specification to implemented coverage.
-- `testing_philosophy.md`: real domain computations, explicit boundary fixtures,
+- [baseline_readiness.md](baseline_readiness.md): current readiness gates and known cleanup targets.
+- [spec_review.md](spec_review.md): mapping from the specification to implemented coverage.
+- [testing_philosophy.md](testing_philosophy.md): real domain computations, explicit boundary fixtures,
   and the distinction between software verification and biological validation.
-- `security_posture.md`: curated-fetch and container/resource controls, provenance,
+- [security_posture.md](security_posture.md): curated-fetch and container/resource controls, provenance,
   retained-data custody, and the limits of the static security audit.
-- `signposting.md`: directory README/AGENTS coverage and readiness-review rules.
+- [signposting.md](signposting.md): directory README/AGENTS coverage and readiness-review rules.
 
 Core generated audits:
 
