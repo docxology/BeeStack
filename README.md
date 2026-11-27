@@ -51,6 +51,12 @@ auditable through `beestack.digital_twin`, `docs/digital_twin_path.md`, and
 state variables, datasets, validation residuals, and governance boundaries
 rather than treating the target as a present-tense result.
 
+## Start here
+
+- [Documentation index](docs/README.md) for architecture, examples, and output paths
+- [Canonical manuscript](docs/manuscript/README.md) for the evidence and its limits
+- [Offline PDF and HTML snapshot check](docs/template_snapshot.md) to render from retained inputs
+
 ## The layers in motion
 
 Committed renders from `output/animations/`. The FlyBody flight at the top replays scripted poses;
