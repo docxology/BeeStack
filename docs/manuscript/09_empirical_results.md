@@ -121,7 +121,7 @@ biological validation. No synthetic traces replace missing empirical data.
 Historical empirical images remain under `output/figures/empirical/` for
 inspection and custody. They are not embedded here as current results while
 their generating inputs cannot be re-established. The
-[figure index](../../output/reports/manuscript_figure_index.md) records each
+figure index at `output/reports/manuscript_figure_index.md` records each
 artifact's availability, backend, claim tier and regeneration command.
 
 Panel heatmaps and alignment plots require current odor-response inputs.
